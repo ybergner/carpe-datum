@@ -17,9 +17,20 @@ What *exactly* am I even saying in my claim, you might be thinking? What do you 
 
 Now, if someone is making what to *them* appears to be a common-sense claim but to you appears false or at least non-obvious, you have a few options. You can challenge the assumption and ask for evidence. Or you can accept the assumption, *for argument's sake*, to see where this is going. Hopefully, my claim feels common-sense to you too (we have that in common). If not, I'll just ask you to follow along to see where this is all going...
 
-## Categories and counts
+## Categories that count
 
-More 
+Particulary when represented graphically or pictorially, "two kinds of people" questions have become something of an internet meme. There is even a whole [blog devoted to them by João Rocha](https://2kindsofpeople.tumblr.com/). The images below probably needs no explanation. 
+
+```{r out.width='90%', echo=FALSE}
+knitr::include_graphics("images/Toilet_paper_orientation_over.jpg")
+knitr::include_graphics("images/Toilet_paper_orientation_under.jpg")
+```
+sources [Wikimedia Commons User:Elya](https://commons.wikimedia.org/wiki/File:Toilet_paper_orientation_over.jpg), [Wikimedia Commons User:Elya](https://commons.wikimedia.org/wiki/File:Toilet_paper_orientation_under.jpg)
+
+The [toilet paper orientation](https://en.wikipedia.org/wiki/Toilet_paper_orientation) is a distinguishing "test question" that separates people into one of two kinds. You choose one way or the other. Let's call this roll choice over_hang (shown on left) or under_hang (shown on right). Perhaps you have debated which is better with a friend or family member. Or perhaps you are lucky enough to have never thought about it at all. In any case, armed with this particular test question, we can go out an collect some data.
+
+
+
 
 ## Dimensions
 
