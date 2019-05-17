@@ -14,7 +14,7 @@ description: "A coursebook."
 ---
 # Preface {-}
 
-This book is an incomplete draft of a work in progress!
+This book is an incomplete draft of a work in progress being developed as lecture notes for an online course. It is provision, contingent, and possibly wrong.  
 
 ## Guiding principles in this book {-}
 
