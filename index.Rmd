@@ -14,11 +14,32 @@ description: "A coursebook."
 ---
 # Preface {-}
 
-A preface
+This book is an incomplete draft of a work in progress!
 
-## Subsection {-}
+## Guiding principles in this book {-}
 
-With subsections
+### Question-driven {-}
+
+Because the presentation of topics in this book is question-driven rather than method-driven, this book has some idiosyncracies. Some topics that might be considered rather basic may be omitted, while some topics that are typically considered as advanced will get (a simplified) treatment.
+
+### Statistical properties will be demonstrated, rather than derived {-}
+
+As a mathematical subject, statistics is often taught with derivation and proof using definitions, simple assumptions, and the logic of algebra and calculus. Mathematical formulas are the standard languge of statistics. This approach to learning is powerful if the math supports rather than gets in the way of understanding. However, for many learners, the math obscures rather than clarifies, and another way--using demonstrations and simulations--might enable understanding, as Johnson & Johnson once said, without tears.
+
+Now, a demonstration is not a proof. That said, repeated experiments can be convincing even in the absence of proof. For example, I can prove to you that if you take any whole number (e.g., 1, 2, 3, 7, 21, 118, 8675309), multiply it by 9, and then sum the individual digits of that resulting product, that the sum itself will be a multiple of 9 
+
+``` 
+Example: 
+7 * 9 = 63; 6 + 3 = 9.
+21 * 9 = 189; 1 + 8 + 9 = 18. 
+
+```
+
+An elegant and simple proof can be constructed (hint: by induction), but if you try it out yourself enough times, you won't *need* the proof to be convinced. 
+
+Now problems like these are often used to teach proof technique rather than to encode cute number-facts in memory. And indeed, for training statisticians, a rigorous mathematical presentation is important. But for most users of this book, intuition and understanding is the priority, and the ability to derive formulas is not necessary.
+
+
 
 
 ```{r include=FALSE}
