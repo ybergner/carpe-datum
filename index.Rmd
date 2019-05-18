@@ -43,6 +43,9 @@ Now problems like these are often used to teach proof technique rather than to e
 
 
 
+```{r global_options, R.options=knitr::opts_chunk$set(warning=FALSE, message=FALSE)}
+```   
+
 
 ```{r include=FALSE}
 

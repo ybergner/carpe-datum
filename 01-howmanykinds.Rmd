@@ -1,54 +1,47 @@
-
-
 # How Many Kinds of People Are There?
 
-```
-There are 10 kinds of people in this world. 
-Those who understand binary code and those who don't.
----seen on a T-shirt
-```
+
+> There are 10 kinds of people in this world. 
+> Those who understand binary code and those who don't.
+> 
+> --- seen on a T-shirt
 
 ## Things are about to get meta right from the start
 
 I'm going to start off this book about data science and statistics with an unsubstantiated claim. My claim is this: People love to categorize themselves and others. They love to take quizzes online that tell you "what kind of person you are" in some way or another. They love to make statements that begin with, "there are two kinds of people in this world..." and so on. Ok? That's my claim. It's a bit of a mouthful.
 
 
-Now, I just made a claim in support of which data *can absolutely* be brought to bear. But I won't use data to support it. What? Why not, for cyring out loud?! This is a book about data science!!! The reason is this: this book encourages you to think critically and skeptically about all kinds of ideas, claims, and questions. It tries to show you how to talk about these ideas precisely and not succumb to fallacies and bad intuition. But while trying to develop these skills, it is important to know when we are in turbo critical thinking mode (that's a technical term^[It's not really a technical term.]) and when we're not. Sometimes, we need to be able to say common-sense things and not have to support them.
+Now, I just made a claim in support of which data *can absolutely* be brought to bear. But I won't use data to support it. What? Why not, for cyring out loud?! This is a book about data science!!! The reason is this: this book encourages you to think critically and skeptically about all kinds of ideas, claims, and questions. It tries to show you how to talk about these ideas precisely and not succumb to fallacies and bad intuition. But while trying to develop these skills, it is important to know when we are in turbo critical thinking mode (that's a technical term^[Just kidding; it's not really a technical term.]) and when we're not. Sometimes, we need to be able to say common-sense things and not have to support them.
 
 What *exactly* am I even saying in my claim, you might be thinking? What do you mean by, "people love to" do X, where X, like ______ ["blank"], is a stand-in for some of the specific things I mentioned. That everybody does X? Most people? That people who do X derive pleasure above some pleasure threshold, thus designating "love" as opposed to "like?" You see, I could have tried to make my claim more precise. And I could have found polls and published reports that estimate just how many people have, by choice, taken some kind of person-category-test-thing, or posted funny jokes about "two kinds of people." But I'm just letting my claim stand as a common-sense claim. Just like if I said, people love going to the movies with friends. I wouldn't feel the need to cite a scientific study to support that claim.
 
 Now, if someone is making what to *them* appears to be a common-sense claim but to you appears false or at least non-obvious, you have a few options. You can challenge the assumption and ask for evidence. Or you can accept the assumption, *for argument's sake*, to see where this is going. Hopefully, my claim feels common-sense to you too (we have that in common). If not, I'll just ask you to follow along to see where this is all going...
 
-## Categories that count
+## Categories and counts
 
-Particulary when represented graphically or pictorially, "two kinds of people" questions have become something of an internet meme. There is a whole [blog devoted to them by João Rocha](https://2kindsofpeople.tumblr.com/). The images in Figure \@ref(fig:tp-fig) probably need no explanation, as they concerns the great [toilet paper orientation](https://en.wikipedia.org/wiki/Toilet_paper_orientation) debate.
+"Two kinds of people...which one are you?" questions have become something of an internet meme, particulary when the categorizations are represented graphically or pictorially. There is a whole [blog devoted to them by João Rocha](https://2kindsofpeople.tumblr.com/). The images in Figure \@ref(fig:tp-fig) probably need no explanation, as they concern the great [toilet paper orientation](https://en.wikipedia.org/wiki/Toilet_paper_orientation) debate.
 
 
-
-```{r echo=FALSE, out.width='30%'}
-include_graphics("images/Toilet_paper_orientation_over.jpg")
-```
-
-```{r echo=FALSE, out.width='30%'}
-include_graphics("images/Toilet_paper_orientation_under.jpg")
-```
-
-```{r tp-fig, echo=FALSE, fig.cap='The greate debate'}
+```{r tp-fig, echo=FALSE, out.width='90%', fig.show='hold', fig.cap='The greate debate'}
+include_graphics("images/Toilet_paper_orientation_overunder.png")
+#include_graphics("images/Toilet_paper_orientation_under.jpg")
 ```
 source [Wikimedia Commons User:Elya](https://commons.wikimedia.org/wiki/File:Toilet_paper_orientation_over.jpg)
 
-Toilet paper orientation is a distinguishing "test question" that separates people into one of two kinds. You choose one way or the other. Let's call this roll choice over_hang (shown on left) or under_hang (shown on right). Perhaps you have debated which is better with a friend or family member. Or perhaps you are lucky enough to have never thought about it at all. In any case, armed with this particular test question, we can go out an collect some data. 
+Toilet paper orientation is a distinguishing **test question** that separates people into one of two "kinds" (or "types" or "categories"; sometimes English has several words that are used interchangeably). A fancy word for this "splitting into two" is dichotomy (die-COT-uh-mee), from the Greek.  A **dichotomous question** has two possible answers. Here, you choose one way to orient the roll or the other. Let's call this roll choice "over" (shown on left) or "under" (shown on right). Perhaps you have debated which is better with a friend or family member. Or perhaps you are lucky enough to have never thought about it at all. In any case, armed with this particular test question, we can go out and collect some data. 
 
 ```{r echo=FALSE}
-set.seed(20190507)
-binomial_draw <- rbinom(50,1, prob=0.58)
-theWayIRoll <- ifelse(binomial_draw==1, "over_hang", "under_hang")
-TPcounts <- as.data.frame(table(binomial_draw), row.names=c("under_hang", "over_hang"))
+set.seed(201905071)
+nump <- 40
+probTP = 0.70
+binomial_draw <- rbinom(nump,1, prob=probTP)
+theWayIRoll <- ifelse(binomial_draw==1, "over", "under")
+TPcounts <- as.data.frame(table(binomial_draw), row.names=c("under", "over"))
 ```
 
 ```{r tp-table, echo=FALSE}
 ### NOT LATEX COMPATIBLE
-kable(table(theWayIRoll), col.names = c("", "counts"), caption="How my friends roll", booktabs = TRUE) %>%
+kable(table(theWayIRoll), col.names = c("", "counts"), caption="How people roll", booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "striped", full_width = T)
 
 # TPcounts %>% select(counts=Freq) %>%
@@ -57,31 +50,45 @@ kable(table(theWayIRoll), col.names = c("", "counts"), caption="How my friends r
 
 ```
 
-I went ahead and asked 50 of my closest friends which kind of person they were, and the results are shown in Table \@ref(tab:tp-table). This being a book about data science, you might think we're going to start calculating proportions right away, for example that `r 100*round(prop.table(table(theWayIRoll))["over_hang"],2)`% of my closest friends are over-hangers. 
-Nope. Although you should be able to figure out that proportion conversion, it is not the point we want to focus on right now. That point is that, based on our data, there *are* indeed two kinds of people among my friends. If, for example, everyone in the world were an under-hanger (heaven forbid), then we couldn't very well say that there were two kinds of people in this world. It would be like if I presented you with the data in Table \@ref(tab:dumb-table). I can't very well convince you that there are two kinds of people based on these data.
+I went ahead and asked `r nump` people in Washington Square Park in New York City which kind of person they were, and the results are shown in Table \@ref(tab:tp-table). This being a book about data science, you might think we're going to start calculating proportions right away, for example that `r 100*round(prop.table(table(theWayIRoll))["over"],2)`% of New Yorkers are over-hangers. 
+Nope. Although you should be able to figure out that proportion conversion, it is not the point we want to focus on right now. 
+
+That point we want to focus on is that, based on our data, there *are* indeed two kinds of people here. If, for example, everyone in the world were an under-hanger (heaven forbid), then we couldn't very well say that there were two kinds of people in this world. At least not with regard to toilet paper orientation. It would be like if I presented you with the data in Table \@ref(tab:dumb-table). Looking at that, I can't very well convince you that there are two kinds of people.
 
 
 ```{r dumb-table, echo=FALSE}
 ### NOT LATEX COMPATIBLE
-iamaperson <- data.frame(count = c(50,0), row.names = c("person","not a person"))
-kable(iamaperson, caption="My closest friends are one kind", booktabs = TRUE) %>%
+iamaperson <- data.frame(count = c(nump,0), row.names = c("person","not a person"))
+kable(iamaperson, caption="People in Washington Square", booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "striped", full_width = T)
 
 ```
 
-That all seems pretty obvious, in part because I made up a *tautology* in the second example there. Being a person is automatically associated with everyone who can be a *kind of person*. But what if I had gotten exactly the same results for the toilet paper question? What if the data looked like Table \@ref(tab:tp-redux) and everyone was an over_hanger? Does that mean that there is only one kind of person when it comes to toilet paper orientation? Not necessarily. While it may hold among my friends, that they are all of a kind in this respect, this **sample** is not the entire **population**. 
+That all seems pretty obvious, in part because I made up a *tautology* in the second example there. Being a person is automatically associated with everyone who can be a *kind of person*. 
 
-It was important to put a pin in that idea, which we'll come back to later. For example, we will definitely want to know how confident we can be about a larger population of people from a sample.
+But what if I had gotten exactly the same results for the toilet paper question? What if the data looked like Table \@ref(tab:tp-redux). In this **alternate universe**, everyone I ask in Washington Square is an under_hanger. Yes, it's one of those scary alternate universes. Anyway, does that mean that there is only one kind of person when it comes to toilet paper orientation? Not necessarily. After all, this was just a **sample** of people in Washington Square. It was not the whole **population** of Washington Square, even, let alone New York City or the world.
+
+Go ahead and put a pin in that idea. We'll come back to it later. For example, we might want to know how confident we can be about a larger population from a sample. That's kind of a big thing in statistics.
 
 
 ```{r tp-redux, echo=FALSE}
 ### NOT LATEX COMPATIBLE
-iamaperson <- data.frame(count = c(50,0), row.names = c("over_hang","under_hang"))
-kable(iamaperson, caption="How my friends roll", booktabs = TRUE) %>%
+iamaperson <- data.frame(count = c(nump,0), row.names = c("under", "over"))
+kable(iamaperson, caption="How people roll (alternate universe)", booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "striped", full_width = T)
 
 ```
 
+
+### Checkpoint
+
+While focusing on the great toilet paper debate, we've managed to establish some important fundamental ideas. 
+
+- Dichotomous questions split people into two kinds, but only as long as it is actually possible for both answers to occur. 
+
+- In an alternate universe, people might give different answers than they do in this one. (Seriously, this is an important idea).
+
+- Clearly, we can ask people questions that prompt them to choose between more than two categories. But "two types of people" questions are more fun.^[That was another unsubstantiated claim] I mean there are so many of them! So... does that mean that there really are two types of people? To answer this, we will need to get into another great debate.
 
 
 
@@ -89,4 +96,92 @@ kable(iamaperson, caption="How my friends roll", booktabs = TRUE) %>%
 ## Dimensions
 
 
-Coming soon!
+> "I always said if I had one breakfast to eat before I die, it would be Wonder Bread toasted, with Skippy Super Chunky melted on it, slices of overripe banana and fresh crisp bacon."
+>
+> --- [Michael Bloomberg](https://nypost.com/2008/07/26/mayors-last-meal-is-a-killer/)
+
+
+Former NYC mayor Michael Bloomberg is a chunky peanut butter kind of person. Are you? As peanut butter comes in "smooth" and "chunky" varieties (also known as creamy and crunchy), this question is also a dichotomous one. However, if we add this test question to our arsenal, in addition to the one about toilet paper orientation, we will soon find that two two-types-of-people questions begins to imply more than two kinds of people. Wait, what?
+
+See, back when we went to talk to the people in Washington Square, we also asked them about the great peanut butter debate. As you can see from Table \@ref(tab:pb-counts), smooth came out ahead. 
+
+```{r, include=FALSE}
+
+set.seed(201905072)
+probPB = 0.66
+binomial_draw <- rbinom(nump,1, prob=probPB)
+theWayISpread <- ifelse(binomial_draw==1, "smooth", "chunky")
+wsq_peeps <- data.frame(roll=theWayIRoll, spread=theWayISpread)
+```
+
+```{r, 'pb-counts', echo=FALSE}
+kable(table(theWayISpread), col.names = c("", "counts"), caption="How people spread", booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "striped", full_width = T)
+```
+But this second question did not erase the first question. In fact the first few rows of our data from Washington Square look like this: 
+
+```{r, echo=FALSE}
+head(wsq_peeps)
+```
+
+If we count each combination as it occurs--that is, under-chunky, over-chunky, under-smooth, and over-smooth--we get the results shown in Table \@ref(tab:tpxpb). There are four combinations, because we have two questions with two possibilities (dichotomies) for each. Before you read on, it's a good time to ask yourself if you can answer the following questions (answers in the footnote): (a) if there were two questions with three categories each, how many combinations could be observed? (b) if there were three dichotmous questions, how many combinations could be observed?^[(a) 9, (b) 8]
+
+
+```{r, 'tpxpb', echo=FALSE}
+kable(table(wsq_peeps$roll, wsq_peeps$spread), caption="Two questions", booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "bordered", full_width = F) %>%
+  column_spec(1, bold = T, border_right = T)
+
+
+```
+
+
+Table \@ref(tab:tpxpb) is an example of a table that is so common in data science, it has its own name. Three of them, in fact. It is sometimes called cross tabulation (crosstab; makes sense) or a **two-way table** (makes sense), but most commonly it is known as a **contingency table** (wha? I'll explain later in Section \@ref(#sec:indep).) I'm sorry that there are three names for the same thing. Really I am.
+
+Ok, now things are about to get deep. The title of this chapter is "How Many Kinds of People are There?" And we've now explored how using two two-kinds questions leads to four types. You've probably figured out yourself that you multiply the number of questions by the number of categories, and that tells you how many total "buckets" you can have. But still, there are different ways to arrive at different bucket numbers.
+
+```{r, 'newpb', echo=FALSE}
+
+fourWaySpread <- theWayISpread
+fourWaySpread[sample(nump, 4)] <- "hate all"
+fourWaySpread[sample(nump, 3)] <- "don't care"
+
+kable(table(fourWaySpread), col.names = c("", "counts"), caption="PB preference", booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F, position="float_right")
+```
+ Consider Table \@ref(tab:newpb) in contrast to \@ref(tab:tpxpb). We've now given people four choices to express their peanut butter preference. In addition to chunky and smooth, they can also choose to say that they hate all peanut butter or don't care. We now have four kinds of people. But since we make the determination of what kind of person you are using just one (kind of) question, we say that there is one **dimension** (in this case, peanut butter preference) along which people can be divided into four groups. In Table \@ref(tab:tpxpb), there were two dimensions, a dimension of peanut butter and a dimension of toilet paper. Notice that this word, dimension, is used in much the same way as when we refer to geometric space as being two-dimensional (e.g., a drawing on flat sheet) or three-dimensional (e.g., a solid object, or sometimes a drawing that creates the illusion of looking at a solid object.) The three dimensions of space are often labeled something like (x, y, z). Here, our two dimensions could be labeled (pb, tp). The order doesn't matter. To summarize, in Table \@ref(tab:tpxpb), we have two dimensions and four kinds. In Table \@ref(tab:newpb), we have *one* dimension and four kinds.
+ 
+So far so good: two question, two dimension, right? Well... maybe. We already saw that if a question does not actually divide people into kinds, because only one answer appears, then it doesn't really count. It is not a dimension. In our contingency table representation, this might look like the left side of Table \@ref(tab:tpxpb-alt). In an alternate universe, no one prefers smooth to chunky. Another way to say it is that the question is not **informative**. 
+
+
+
+
+```{r, 'tpxpb-alt', echo=FALSE, results='asis'}
+
+orig_xtab <- table(wsq_peeps$roll, wsq_peeps$spread)
+alt_xtab1 <- orig_xtab
+alt_xtab1[1,1] <- alt_xtab1[1,1] + alt_xtab1[1,2]
+alt_xtab1[2,1] <- alt_xtab1[2,1] + alt_xtab1[2,2]
+alt_xtab1[1,2] <- alt_xtab1[2,2] <-0
+  
+alt_xtab2 <- orig_xtab
+alt_xtab2[1,2] <- alt_xtab2[1,1] + alt_xtab2[1,2]
+alt_xtab2[2,1] <- alt_xtab2[2,1] + alt_xtab2[2,2]
+alt_xtab2[1,1] <- alt_xtab2[2,2] <-0
+
+kable(list(alt_xtab1, alt_xtab2), caption="Two questions (alternate universes)", booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "bordered", full_width = F) %>%
+  column_spec(1, bold = T, border_right = T)
+
+
+```
+But now consider the alternate universe on the right of Table \@ref(tab:tpxpb-alt). In that case, everyone who is an over-hanger of toilet paper prefers smooth peanut butter, and everyone who is an under-hanger prefers chunky. If this is the case, there are only two kinds of people, at least in our sample. But does it make sense to say there are two dimensions? We did ask two different questions!
+
+If you think about it, you may reason the following way: in our sample, if I ask anyone just one of the two questions--about either toilet paper or peanut butter--then I immediately know the answer they would give to the other one. I don't actually have to ask two questions, other than to find out in the first place that I didn't have to.
+
+Along
+
+
+## Independence, Association, and Contingency {#sec:indep}
+
+This section title sounds like a philosophy book by the late Richard Rorty. 
