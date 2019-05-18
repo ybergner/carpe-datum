@@ -196,6 +196,7 @@ html_tag_audio <- function(file, type = "wav")
 ```
 
 `r html_tag_audio("media/chinese-gong-daniel_simon.mp3", type="mp3")`
+[source](http://soundbible.com/2148-Chinese-Gong.html)
 
 ## Independence, Association, and Contingency {#sec:indep}
 
