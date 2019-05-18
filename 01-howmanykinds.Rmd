@@ -143,8 +143,10 @@ Ok, now things are about to get deep. The title of this chapter is "How Many Kin
 ```{r, 'newpb', echo=FALSE}
 
 fourWaySpread <- theWayISpread
-fourWaySpread[sample(nump, 4)] <- "hate all"
-fourWaySpread[sample(nump, 3)] <- "don't care"
+dontcare <- sample(nump, 7)
+haters <- sample(dontcare, 4)
+fourWaySpread[dontcare] <- "don't care"
+fourWaySpread[haters] <- "hate all"
 
 kable(table(fourWaySpread), col.names = c("", "counts"), caption="PB preference", booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "striped", full_width = F, position="float_right")
@@ -177,11 +179,28 @@ kable(list(alt_xtab1, alt_xtab2), caption="Two questions (alternate universes)",
 ```
 But now consider the alternate universe on the right of Table \@ref(tab:tpxpb-alt). In that case, everyone who is an over-hanger of toilet paper prefers smooth peanut butter, and everyone who is an under-hanger prefers chunky. If this is the case, there are only two kinds of people, at least in our sample. But does it make sense to say there are two dimensions? We did ask two different questions!
 
-If you think about it, you may reason the following way: in our sample, if I ask anyone just one of the two questions--about either toilet paper or peanut butter--then I immediately know the answer they would give to the other one. I don't actually have to ask two questions, other than to find out in the first place that I didn't have to.
+If you think about it, you may reason the following way: in our sample, if I ask anyone just one of the two questions--about either toilet paper or peanut butter--then I immediately know the answer they would give to the other one. I don't actually have to ask two questions, other than to find out in the first place that I didn't have to. Since I only get information from one question, there is only one dimenion.
 
-Along
+If I could play a gong sound right now, I would. Wait a minute. Maybe I can play a gong sound, or at least you can if you are reading this book in digital form:
+  
+```{r include = FALSE}
+html_tag_audio <- function(file, type = "wav")
+{
+  htmltools::tags$audio(controls = NA,
+                        htmltools::tags$source(src = file,
+                                               type = glue::glue("audio/{type}",
+                                                                 type = type)))
+}
 
+
+```
+
+`r html_tag_audio("media/chinese-gong-daniel_simon.mp3", type="mp3")`
 
 ## Independence, Association, and Contingency {#sec:indep}
 
-This section title sounds like a philosophy book by the late Richard Rorty. 
+> This section title sounds like a philosophy book by the late Richard Rorty. 
+> --- inner voice
+
+
+
