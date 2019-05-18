@@ -11,6 +11,8 @@ biblio-style: apalike
 link-citations: yes
 github-repo: ybergner/bigquestions-book
 description: "A coursebook."
+always_allow_html: yes
+
 ---
 # Preface {-}
 
@@ -45,6 +47,6 @@ Now problems like these are often used to teach proof technique rather than to e
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'kableExtra', 'dplyr'
 ), 'packages.bib')
 ```

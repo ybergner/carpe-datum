@@ -1,3 +1,9 @@
+```{r message=FALSE}
+require(knitr)
+require(kableExtra)
+require(dplyr)
+```
+
 # How Many Kinds of People Are There?
 
 ```
@@ -19,19 +25,62 @@ Now, if someone is making what to *them* appears to be a common-sense claim but 
 
 ## Categories that count
 
-Particulary when represented graphically or pictorially, "two kinds of people" questions have become something of an internet meme. There is even a whole [blog devoted to them by João Rocha](https://2kindsofpeople.tumblr.com/). The images below probably needs no explanation. 
+Particulary when represented graphically or pictorially, "two kinds of people" questions have become something of an internet meme. There is a whole [blog devoted to them by João Rocha](https://2kindsofpeople.tumblr.com/). The images in Figure \@ref(fig:tp-fig) probably need no explanation, as they concerns the great [toilet paper orientation](https://en.wikipedia.org/wiki/Toilet_paper_orientation) debate.
 
-```{r out.width='90%', echo=FALSE}
-knitr::include_graphics("images/Toilet_paper_orientation_over.jpg")
-knitr::include_graphics("images/Toilet_paper_orientation_under.jpg")
+
+```{r tp-fig, echo=FALSE, fig.cap='The greate debate', out.width='10%', fig.show='hold'}
+include_graphics(c("images/Toilet_paper_orientation_over.jpg",
+                   "images/Toilet_paper_orientation_under.jpg"))
+include_graphics("images/Toilet_paper_orientation_over.jpg")
+include_graphics("images/Toilet_paper_orientation_under.jpg")
 ```
-sources [Wikimedia Commons User:Elya](https://commons.wikimedia.org/wiki/File:Toilet_paper_orientation_over.jpg), [Wikimedia Commons User:Elya](https://commons.wikimedia.org/wiki/File:Toilet_paper_orientation_under.jpg)
 
-The [toilet paper orientation](https://en.wikipedia.org/wiki/Toilet_paper_orientation) is a distinguishing "test question" that separates people into one of two kinds. You choose one way or the other. Let's call this roll choice over_hang (shown on left) or under_hang (shown on right). Perhaps you have debated which is better with a friend or family member. Or perhaps you are lucky enough to have never thought about it at all. In any case, armed with this particular test question, we can go out an collect some data.
+source [Wikimedia Commons User:Elya](https://commons.wikimedia.org/wiki/File:Toilet_paper_orientation_over.jpg)
+
+Toilet paper orientation is a distinguishing "test question" that separates people into one of two kinds. You choose one way or the other. Let's call this roll choice over_hang (shown on left) or under_hang (shown on right). Perhaps you have debated which is better with a friend or family member. Or perhaps you are lucky enough to have never thought about it at all. In any case, armed with this particular test question, we can go out an collect some data. 
+
+```{r echo=FALSE}
+set.seed(20190507)
+binomial_draw <- rbinom(50,1, prob=0.58)
+theWayIRoll <- ifelse(binomial_draw==1, "over_hang", "under_hang")
+TPcounts <- as.data.frame(table(binomial_draw), row.names=c("under_hang", "over_hang"))
+```
+
+```{r tp-table, echo=FALSE}
+### NOT LATEX COMPATIBLE
+kable(table(theWayIRoll), col.names = c("", "counts"), caption="How my friends roll", booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "striped", full_width = T)
+
+# TPcounts %>% select(counts=Freq) %>%
+#   kable(., caption="How I Roll", booktabs = TRUE) %>%
+#   kable_styling(bootstrap_options = "striped", full_width = F, position = "float_right")
+
+```
+
+I went ahead and asked 50 of my closest friends which kind of person they were, and the results are shown in Table \@ref(tab:tp-table). This being a book about data science, you might think we're going to start calculating proportions right away, for example that `r 100*round(prop.table(table(theWayIRoll))["over_hang"],2)`% of my closest friends are over-hangers. 
+Nope. Although you should be able to figure out that proportion conversion, it is not the point we want to focus on right now. That point is that, based on our data, there *are* indeed two kinds of people among my friends. If, for example, everyone in the world were an under-hanger (heaven forbid), then we couldn't very well say that there were two kinds of people in this world. It would be like if I presented you with the data in Table \@ref(tab:dumb-table). I can't very well convince you that there are two kinds of people based on these data.
 
 
+```{r dumb-table, echo=FALSE}
+### NOT LATEX COMPATIBLE
+iamaperson <- data.frame(count = c(50,0), row.names = c("person","not a person"))
+kable(iamaperson, caption="My closest friends are one kind", booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "striped", full_width = T)
+
+```
+
+That all seems pretty obvious, in part because I made up a *tautology* in the second example there. Being a person is automatically associated with everyone who can be a *kind of person*. But what if I had gotten exactly the same results for the toilet paper question? What if the data looked like Table \@ref(tab:tp-redux) and everyone was an over_hanger? Does that mean that there is only one kind of person when it comes to toilet paper orientation? Not necessarily. While it may hold among my friends, that they are all of a kind in this respect, this **sample** is not the entire **population**. 
+
+It was important to put a pin in that idea, which we'll come back to later. For example, we will definitely want to know how confident we can be about a larger population of people from a sample.
 
 
+```{r tp-redux, echo=FALSE}
+### NOT LATEX COMPATIBLE
+iamaperson <- data.frame(count = c(50,0), row.names = c("over_hang","under_hang"))
+kable(iamaperson, caption="How my friends roll", booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "striped", full_width = T)
+
+```
 ## Dimensions
 
 
