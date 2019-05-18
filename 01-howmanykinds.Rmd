@@ -1,8 +1,4 @@
-```{r message=FALSE}
-require(knitr)
-require(kableExtra)
-require(dplyr)
-```
+
 
 # How Many Kinds of People Are There?
 
