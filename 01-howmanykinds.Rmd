@@ -6,20 +6,22 @@
 > 
 > --- seen on a T-shirt
 
-## Things are about to get meta right from the start
+## Things are about to get meta right from the start {-}
 
-I'm going to start off this book about data science and statistics with an unsubstantiated claim. My claim is this: People love to categorize themselves and others. They love to take quizzes online that tell you "what kind of person you are" in some way or another. They love to make statements that begin with, "there are two kinds of people in this world..." and so on. Ok? That's my claim. It's a bit of a mouthful.
+I'm going to start off this first chapter in a book about data science with an unsubstantiated claim. My claim is this: People love to categorize themselves and others. They love to take quizzes online that tell you "what kind of person you are" in some way or another. They love to make statements that begin with, "there are two kinds of people in this world..." and so on. Ok? That's my claim. It's a bit of a mouthful.
 
 
 Now, I just made a claim in support of which data *can absolutely* be brought to bear. But I won't use data to support it. What? Why not, for cyring out loud?! This is a book about data science!!! The reason is this: this book encourages you to think critically and skeptically about all kinds of ideas, claims, and questions. It tries to show you how to talk about these ideas precisely and not succumb to fallacies and bad intuition. But while trying to develop these skills, it is important to know when we are in turbo critical thinking mode (that's a technical term^[Just kidding; it's not really a technical term.]) and when we're not. Sometimes, we need to be able to say common-sense things and not have to support them.
 
-What *exactly* am I even saying in my claim, you might be thinking? What do you mean by, "people love to" do X, where X, like ______ ["blank"], is a stand-in for some of the specific things I mentioned. That everybody does X? Most people? That people who do X derive pleasure above some pleasure threshold, thus designating "love" as opposed to "like?" You see, I could have tried to make my claim more precise. And I could have found polls and published reports that estimate just how many people have, by choice, taken some kind of person-category-test-thing, or posted funny jokes about "two kinds of people." But I'm just letting my claim stand as a common-sense claim. Just like if I said, people love going to the movies with friends. I wouldn't feel the need to cite a scientific study to support that claim.
+What *exactly* am I even saying in my claim, you might be thinking? What do you mean by, "people love to" do X, where X, like ______ ["blank"], is a stand-in for some of the specific things I mentioned. That everybody does X? Most people? That people who do X derive pleasure above some pleasure threshold, thus designating "love" as opposed to "like?" You see, I could have tried to make my claim more precise. And I could have found polls and published reports that estimate just how many people have, by choice, taken some kind of person-category-test-thing, or posted funny jokes about "two kinds of people." But I'm just letting my claim stand as a common-sense claim. Just like if I said, people love going to the movies. I wouldn't feel the need to cite a scientific study to support that claim.
 
-Now, if someone is making what to *them* appears to be a common-sense claim but to you appears false or at least non-obvious, you have a few options. You can challenge the assumption and ask for evidence. Or you can accept the assumption, *for argument's sake*, to see where this is going. Hopefully, my claim feels common-sense to you too (we have that in common). If not, I'll just ask you to follow along to see where this is all going...
+Now, if someone is making what to *them* appears to be a common-sense claim but to you appears false or at least non-obvious, you have a few options. You can challenge the assumption and ask for evidence. Or you can accept the assumption, *for argument's sake*, to see where this is going. Hopefully, my claim feels common-sense to you too (i.e., we have that in common). If not, I'll just ask you to follow along to see where this is all going...
 
-## Categories and counts
+## Two Kinds of People 
 
-"Two kinds of people...which one are you?" questions have become something of an internet meme, particulary when the categorizations are represented graphically or pictorially. There is a whole [blog devoted to them by João Rocha](https://2kindsofpeople.tumblr.com/). The images in Figure \@ref(fig:tp-fig) probably need no explanation, as they concern the great [toilet paper orientation](https://en.wikipedia.org/wiki/Toilet_paper_orientation) debate.
+### Categories, counts, and kinds
+
+"Two kinds of people...which one are you?" questions have become something of an internet meme, particulary with the categorizations represented graphically or pictorially. There is a whole [blog devoted to them by João Rocha](https://2kindsofpeople.tumblr.com/). The images in Figure \@ref(fig:tp-fig) probably need no explanation, as they concern the great [toilet paper orientation](https://en.wikipedia.org/wiki/Toilet_paper_orientation) debate.
 
 
 ```{r tp-fig, echo=FALSE, out.width='90%', fig.show='hold', fig.cap='The greate debate'}
@@ -50,10 +52,10 @@ kable(table(theWayIRoll), col.names = c("", "counts"), caption="How people roll"
 
 ```
 
-I went ahead and asked `r nump` people in Washington Square Park in New York City which kind of person they were, and the results are shown in Table \@ref(tab:tp-table). This being a book about data science, you might think we're going to start calculating proportions right away, for example that `r 100*round(prop.table(table(theWayIRoll))["over"],2)`% of New Yorkers are over-hangers. 
-Nope. Although you should be able to figure out that proportion conversion, it is not the point we want to focus on right now. 
+I went ahead and asked `r nump` people in Washington Square Park in New York City which kind of person they were, and the results are shown in Table \@ref(tab:tp-table). This being a book about data science, you might think I'm going to start calculating proportions right away, for example by saying that `r 100*round(prop.table(table(theWayIRoll))["over"],2)`% of New Yorkers are over-hangers. 
+Nope. Although you should be able to figure out that proportion conversion, it is not the point I want to focus on right now. 
 
-That point we want to focus on is that, based on our data, there *are* indeed two kinds of people here. If, for example, everyone in the world were an under-hanger (heaven forbid), then we couldn't very well say that there were two kinds of people in this world. At least not with regard to toilet paper orientation. It would be like if I presented you with the data in Table \@ref(tab:dumb-table). Looking at that, I can't very well convince you that there are two kinds of people.
+That point I want to focus on is that, based on our data, there *are* indeed two kinds of people here. If, for example, everyone in the world were an under-hanger (heaven forbid), then I couldn't very well say that there were two kinds of people in this world. At least not with regard to toilet paper orientation. It would be like if I presented you with the data in Table \@ref(tab:dumb-table). Looking at that, I can't very well convince you that there are two kinds of people.
 
 
 ```{r dumb-table, echo=FALSE}
@@ -66,7 +68,7 @@ kable(iamaperson, caption="People in Washington Square", booktabs = TRUE) %>%
 
 That all seems pretty obvious, in part because I made up a *tautology* in the second example there. Being a person is automatically associated with everyone who can be a *kind of person*. 
 
-But what if I had gotten exactly the same results for the toilet paper question? What if the data looked like Table \@ref(tab:tp-redux). In this **alternate universe**, everyone I ask in Washington Square is an under_hanger. Yes, it's one of those scary alternate universes. Anyway, does that mean that there is only one kind of person when it comes to toilet paper orientation? Not necessarily. After all, this was just a **sample** of people in Washington Square. It was not the whole **population** of Washington Square, even, let alone New York City or the world.
+But what if I had gotten exactly the same results for the toilet paper question? What if the data looked like Table \@ref(tab:tp-redux). In this **alternate universe**, everyone I ask in Washington Square is an under_hanger. Yes, it's one of those scary alternate universes, like the Twilight Zone. Anyway, does that mean that there is only one kind of person when it comes to toilet paper orientation? Well...not necessarily. After all, this was just a **sample** of people in Washington Square. It was not the whole **population** of Washington Square, even, let alone New York City, let alone the world.
 
 Go ahead and put a pin in that idea. We'll come back to it later. For example, we might want to know how confident we can be about a larger population from a sample. That's kind of a big thing in statistics.
 
@@ -80,7 +82,7 @@ kable(iamaperson, caption="How people roll (alternate universe)", booktabs = TRU
 ```
 
 
-### Checkpoint
+#### Checkpoint
 
 While focusing on the great toilet paper debate, we've managed to establish some important fundamental ideas. 
 
@@ -93,7 +95,7 @@ While focusing on the great toilet paper debate, we've managed to establish some
 
 
 
-## Dimensions
+### Dimensions
 
 
 > "I always said if I had one breakfast to eat before I die, it would be Wonder Bread toasted, with Skippy Super Chunky melted on it, slices of overripe banana and fresh crisp bacon."
@@ -101,9 +103,9 @@ While focusing on the great toilet paper debate, we've managed to establish some
 > --- [Michael Bloomberg](https://nypost.com/2008/07/26/mayors-last-meal-is-a-killer/)
 
 
-Former NYC mayor Michael Bloomberg is a chunky peanut butter kind of person. Are you? As peanut butter comes in "smooth" and "chunky" varieties (also known as creamy and crunchy), this question is also a dichotomous one. However, if we add this test question to our arsenal, in addition to the one about toilet paper orientation, we will soon find that two two-types-of-people questions begins to imply more than two kinds of people. Wait, what?
+Former NYC mayor Michael Bloomberg is a chunky peanut butter kind of person. Are you? As peanut butter comes in "smooth" and "chunky" varieties (also known as creamy and crunchy, respectively), this question is also a dichotomous one. However, if we add this test question to our question pool, in addition to the one about toilet paper orientation, we will soon find that having two two-kinds-of-people questions begins to imply more than two kinds of people. Wait, what?
 
-See, back when we went to talk to the people in Washington Square, we also asked them about the great peanut butter debate. As you can see from Table \@ref(tab:pb-counts), smooth came out ahead. 
+See, back when I went to talk to the people in Washington Square, I also asked them about the great peanut butter debate. As you can see from Table \@ref(tab:pb-counts), smooth came out slightly ahead. 
 
 ```{r, include=FALSE}
 
@@ -129,16 +131,14 @@ If we count each combination as it occurs--that is, under-chunky, over-chunky, u
 
 ```{r, 'tpxpb', echo=FALSE}
 kable(table(wsq_peeps$roll, wsq_peeps$spread), caption="Two questions", booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "bordered", full_width = F) %>%
-  column_spec(1, bold = T, border_right = T)
-
+  kable_styling(bootstrap_options = "bordered", full_width = F)
 
 ```
 
 
-Table \@ref(tab:tpxpb) is an example of a table that is so common in data science, it has its own name. Three of them, in fact. It is sometimes called cross tabulation (crosstab; makes sense) or a **two-way table** (makes sense), but most commonly it is known as a **contingency table** (wha? I'll explain later in Section \@ref(#sec:indep).) I'm sorry that there are three names for the same thing. Really I am.
+Table \@ref(tab:tpxpb) is an example of a kind of table that is so common in data science, it has its own name. Three of them, in fact. It is sometimes called a cross table (or crosstab), or a **two-way table** (makes sense), but most commonly it is known as a **contingency table** (wha? I'll explain later in Section \@ref(sec:indep).) I'm sorry that there are three names for the same thing. Really I am.
 
-Ok, now things are about to get deep. The title of this chapter is "How Many Kinds of People are There?" And we've now explored how using two two-kinds questions leads to four types. You've probably figured out yourself that you multiply the number of questions by the number of categories, and that tells you how many total "buckets" you can have. But still, there are different ways to arrive at different bucket numbers.
+Ok, now things are about to get deep. The title of this chapter is "How Many Kinds of People are There?" And we've now explored how using two two-kinds questions leads to four types. You've probably figured out yourself that you take the product (i.e., multiply) of the number of categories in each of the questions, and that tells you how many "buckets" you can have overall. But still, there are different ways to arrive at different bucket numbers.
 
 ```{r, 'newpb', echo=FALSE}
 
@@ -153,9 +153,7 @@ kable(table(fourWaySpread), col.names = c("", "counts"), caption="PB preference"
 ```
  Consider Table \@ref(tab:newpb) in contrast to \@ref(tab:tpxpb). We've now given people four choices to express their peanut butter preference. In addition to chunky and smooth, they can also choose to say that they hate all peanut butter or don't care. We now have four kinds of people. But since we make the determination of what kind of person you are using just one (kind of) question, we say that there is one **dimension** (in this case, peanut butter preference) along which people can be divided into four groups. In Table \@ref(tab:tpxpb), there were two dimensions, a dimension of peanut butter and a dimension of toilet paper. Notice that this word, dimension, is used in much the same way as when we refer to geometric space as being two-dimensional (e.g., a drawing on flat sheet) or three-dimensional (e.g., a solid object, or sometimes a drawing that creates the illusion of looking at a solid object.) The three dimensions of space are often labeled something like (x, y, z). Here, our two dimensions could be labeled (pb, tp). The order doesn't matter. To summarize, in Table \@ref(tab:tpxpb), we have two dimensions and four kinds. In Table \@ref(tab:newpb), we have *one* dimension and four kinds.
  
-So far so good: two question, two dimension, right? Well... maybe. We already saw that if a question does not actually divide people into kinds, because only one answer appears, then it doesn't really count. It is not a dimension. In our contingency table representation, this might look like the left side of Table \@ref(tab:tpxpb-alt). In an alternate universe, no one prefers smooth to chunky. Another way to say it is that the question is not **informative**. 
-
-
+So far so good: two questions, two dimension, right? Well... maybe. We already saw that if a question does not actually divide people into kinds, because only one answer appears, then it doesn't really count. It is not a dimension. In our contingency table representation, this might look like the left side of Table \@ref(tab:tpxpb-alt). In an alternate universe, no one prefers smooth to chunky. Another way to say it is that the peanut butter question is not **informative**. 
 
 
 ```{r, 'tpxpb-alt', echo=FALSE, results='asis'}
@@ -172,16 +170,14 @@ alt_xtab2[2,1] <- alt_xtab2[2,1] + alt_xtab2[2,2]
 alt_xtab2[1,1] <- alt_xtab2[2,2] <-0
 
 kable(list(alt_xtab1, alt_xtab2), caption="Two questions (alternate universes)", booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "bordered", full_width = F) %>%
-  column_spec(1, bold = T, border_right = T)
-
+  kable_styling(bootstrap_options = "bordered", full_width = F)
 
 ```
-But now consider the alternate universe on the right of Table \@ref(tab:tpxpb-alt). In that case, everyone who is an over-hanger of toilet paper prefers smooth peanut butter, and everyone who is an under-hanger prefers chunky. If this is the case, there are only two kinds of people, at least in our sample. But does it make sense to say there are two dimensions? We did ask two different questions!
+But now consider the alternate universe on the right of Table \@ref(tab:tpxpb-alt). In that case, everyone who is an over-hanger of toilet paper prefers smooth peanut butter, and everyone who is an under-hanger prefers chunky. If this is the case, there are only two kinds of people, at least in our sample. Those who over-hang _and_ prefer smooth and those who under-hang *and* prefer chunky. But does it make sense to say there are two dimensions? We did ask two different questions!
 
-If you think about it, you may reason the following way: in our sample, if I ask anyone just one of the two questions--about either toilet paper or peanut butter--then I immediately know the answer they would give to the other one. I don't actually have to ask two questions, other than to find out in the first place that I didn't have to. Since I only get information from one question, there is only one dimenion.
+You might reason about it the following way: in our sample, if I ask anyone just one of the two questions--about either toilet paper or peanut butter--then I immediately know the answer they would give to the other one. I don't actually have to ask two questions, other than to establish in the first place that I didn't have to. Since I only get information from one question, there is only one dimenion.
 
-If I could play a gong sound right now, I would. Wait a minute. Maybe I can play a gong sound, or at least you can if you are reading this book in digital form:
+If I could play a gong sound right now, I would. Wait a minute. At least _you_ can if you are reading this book in a web browser. Go for it:
   
 ```{r include = FALSE}
 html_tag_audio <- function(file, type = "wav")
@@ -198,10 +194,59 @@ html_tag_audio <- function(file, type = "wav")
 `r html_tag_audio("media/chinese-gong-daniel_simon.mp3", type="mp3")`
 [source](http://soundbible.com/2148-Chinese-Gong.html)
 
-## Independence, Association, and Contingency {#sec:indep}
+### Independence, Association, and Contingency {#sec:indep}
 
 > This section title sounds like a philosophy book by the late Richard Rorty. 
 > --- inner voice
+
+
+We just spent a little bit of time in an alternate universe, a bizarro world in which knowing how someone prefers to orient their toilet paper tells you what style of peanut butter they like, and *vice versa*. Notice that this knowing-about relationship is symmetric, and that in fact, the two representations as shown in Table \@ref(tab:tpxpb-alt2way) are informationally equivalent.
+
+
+```{r, 'tpxpb-alt2way', echo=FALSE, results='asis'}
+
+kable(list(alt_xtab2, t(alt_xtab2)), caption="Alternate universe (two equivalent ways)", booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "bordered", full_width = F)
+
+```
+
+In our regular universe, however, this relationship was not observed. In Table \@ref(tab:tpxpb), all four possible combinations occur. When knowledge about a person's answer to one question provides information about their answer to another question, we say that the two answers are **contingent** upon one another. This is the reason we called the two-way table a contingency table in the first place, although it is still called that even when two answers are not contingent. Go figure. Contingent is another word for **dependent**. To make matters worse, we *also* often say that the two responses are **associated**. 
+
+In our bizarro world scenario, one answer completely determines the other. This **deterministic** relationship is one extreme in the spectrum of association/dependence/contingency. At the other extreme, if the two responses are not at all associated/dependent/contingent, then we say that they are **independent**. To say that two responses are independent is to assert that knowing one of them does not give you any information about what the other one might be. This would have been my intuition, at least, about toilet paper and peanut butter. But whether they are independent or mildly associated with one another is an empirical question, which means we should try to answer it with data. In bizarro world, where they were deterministically related, we might reasonably want to know why. Could there a gene that turns on toilet paper orientation and peanut butter preference at the same time? 
+
+
+### Factors
+
+```{r apps-windows, echo=FALSE, fig.show='hold', fig.cap='Two more two-kinds questions'}
+include_graphics("images/two-two-kinds.jpg")
+```
+[source](https://2kindsofpeople.tumblr.com/)
+
+Figure \@ref(fig:apps-windows) shows two more two-kinds of people graphics from João Rocha's blog. I bet that you can identify yourself with one of the two images in each pair. I certainly can. But ask yourself, given our discussion above, do you think the choices a person would identify in each case above are independent or not independent (e.g., contingent, associated, dependent)?
+
+In contrast to the toilet paper and peanut butter questions, which at least appear to be about totally different things, these two dichotomies have something similar going on in each of them. The choice on the left is about organizing your desktop browser, either in tabs or as separate windows. The choice on the right is about organizing apps in your smartphone. We might say that both of them get at a tendency to organize your digital environment. This tendency might even carry over into non-digital environments, like your actual desk, bookshelf, or filing cabinet.
+
+What we've done here is to try to explain the association between responses to the two questions (assuming that there is, i.e. that they are not independent) by appeal to some underlying **factor**. We could call it tidyness, for example. Or perhaps you can think of another idea. Notice that a **factor** is a dimension, in the sense we used before. We tend to use the word factor when we are drawing attention to the specific nature of the dimension rather than just counting them. In fact, when the the factor takes on a particularly psychological flavor, we also use the word **trait**. In this case, tidyness could be considered a trait (and a factor and a dimension). 
+
+
+
+
+
+### (An Infinite Number of) Shades of Gray
+
+
+### Summary
+
+#### Vocabulary
+
+- kind, type, category
+- crosstab, two-way table, contingency table
+- association, contingency, dependence
+- factor, dimension, trait
+
+
+## The MBTI and Personality Testing
+
 
 
 
