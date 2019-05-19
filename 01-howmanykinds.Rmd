@@ -262,21 +262,145 @@ It might be gong time again: `r html_tag_audio("media/chinese-gong-daniel_simon.
 **What do you think?**
 
 
-### (An Infinite Number of) Shades of Gray
+### (An Infinite Number of) Shades of Gray (or Brown)
 
 We've taken the two-kinds-of-people idea pretty far in this chapter already. But it's time to acknowledge the elephant in the room. Not every question about attributes, preferences, or behaviors  can be answered in such an either/or manner. Consider the following dialogue:
 
 > Stacy: "There are liberal and conservative kinds of people, Trang. Which one are you?"
-> Trang: "Well, you know I’m more sure I’m exactly one or the other. I think I'm somewhere in the middle."
+> Trang: "Well, you know I’m not sure I’m exactly one or the other. I think I'm somewhere in the middle."
 
-Although we often use them as **discrete categories**, liberal and conservative might be better thought of as endpoints of **continuous scale**. In fact, they might even apply to different *dimensions* of political thought with respect to social issues or economic issues. If you think about it, it's not hard to come up with other examples of "categories" that really just describe one end or another of a continuous scale. Yes, there are short people and tall people, but everyone has a height, and a lot of people are "about average." So it wouldn’t really make sense to put them into the category of tall or short, would it?
+Although we often use them as **discrete categories**, the words liberal and conservative might be better thought of as endpoints of **continuous scale**. In fact, they might even apply to different *dimensions* of political thought with respect to social issues or economic issues. If you think about it, it's not hard to come up with other examples of "categories" that really just describe one end or another of a continuous scale. Yes, there are short people and tall people, but everyone has a height, and a lot of people are "about average." Height is just a number on some scale. So it wouldn’t necessarily make sense to put people into the categories of tall or short.
 
-In the great toilet paper debate, we were able to identify two kinds of people based on two possible responses to the question of roll orientation. If instead of discrete categories, we have a continuous scale, does that mean that there can't be "kinds" of people anymore? To answer this question, we'll need to understand what we're talking about when we characterize people using a continuous scale.
+In the great toilet paper debate, we were able to identify two kinds of people based on two possible responses to the question of roll orientation. Two answers; two kinds. If instead of discrete categories, we have a number on a continuous scale, does that mean that there can't be "kinds" of people anymore? To answer this question, we'll need to understand what exactly we're talking about when we characterize people using a continuous scale.
 
-Consider poopiness. Some people are really poopy (close to poopiness = 1), some aren't poopy at all (close to 0), and most are somewhere in the middle   
+Consider poopiness. Some people are really poopy (close to poopiness = 1), some aren't poopy at all (close to 0), and most are somewhere near the middle of the scale. That's not a very quantitative description. I used the words "some" and "most", but I didn't give you counts like I did in Table \@ref(tab:tp-table) about toilet roll orientation. If I showed you the poopiness data for sample of people, the list would look something like this:
+
+```{r, echo=FALSE}
+set.seed(101010)
+poopycrappy <- read.csv("data/poopycrappy.csv")
+poopycrappy <- poopycrappy[sample(nrow(poopycrappy)),]
+poopycrappy %>% select(poopiness) %>% round(.,3) %>% head()
+```
+
+Poopiness is a number, and these data are called **numerical** or **quantitative** as opposed to **categorical**. It's not as easy to make sense of a bunch of decimal values like this as it is to look at simple counts of categories. However, this problem has been solved by using dot plots, stacked dot plots, and histograms, which you can read all about in any standard textbook, for example OpenIntro Statistics, Chapter 2. I'm going to go straight into the histogram, which most likely you've seen before. It's the most commonly used representation for data of this kind. 
+
+```{r poopy-hist, echo=FALSE, fig.cap='Histogram of Poopiness'}
+h <- hist(poopycrappy$poopiness, main="", breaks=seq(0,1.01,0.05), xlab="poopiness")
+```
+
+A histogram is a bar plot of counts for poopiness values that fall into certain numerical ranges.
+Consider the range of poopiness values from 0.4-0.45. Our data set has 9 values in this range, so the height of the bar above this range on the x-axis is 9.^[Technically, this range is a semi-open interval, (0.4,0.45\], so that any values exactly equal to 0.45 can only be included in one bin and not the ones on either side.] The y-axis in Figure \@ref(fig:poopy-hist) is labeled "frequency", which is just another word for counts. Some more jargon: the ranges are called "bins" and the numerical values that separate the bins are called "breaks." In Figure \@ref(fig:poopy-hist), the breaks are at increments of 0.05 (e.g., `r head(h$breaks) %>% paste(., collapse =", ")`, ...).
+
+
+> Question: Given that there are 20 possible bins in the histogram in Figure \@ref(fig:poopy-hist), but only `r length(which(h$counts > 0))` of them have non-zero counts, are there 20 kinds of people (in terms of poopiness) or 15 kinds of people?
+
+
+Trick question? You bet. The breaks (and thus bins) in a histogram are arbitrary. I can choose any breaks I want, as long as all of the data points fall into exactly one bin. (I can't just exclude some bins, though. That would be cheating.) The histograms in Figure \@ref(fig:poopy-hist-alt) are both perfectly valid histograms. One of them has four bins, and one of them has only two bins.
+
+
+```{r poopy-hist-alt, echo=FALSE, fig.cap='Other Histograms of Poopiness'}
+par(mfrow=c(1,2))
+hist(poopycrappy$poopiness, main="", breaks=seq(0,1.01,0.25), xlab="poopiness")
+hist(poopycrappy$poopiness, main="", breaks=seq(0,1.01,0.5), xlab="poopiness")
+```
+
+
+It's tempting to take the counts on the right of Figure \@ref(fig:poopy-hist-alt) and declare that there are two kinds of people. After all, this gets us back to familiar territory. Ta-dah!
+
+```{r poopy-two-kinds, echo=FALSE, fig.cap='This is terrible, horrible, no-good, very-bad thing to do.'}
+h2 <- hist(poopycrappy$poopiness,  breaks=seq(0,1.01,0.5), plot = FALSE)
+barplot(h2$counts, main="Two kinds of people", names.arg=c("not poopy", "poopy"))
+```
+
+As you can tell, because it says so right in the figure caption, this is terrible, horrible, no-good, very-bad thing to do. Why is it a bad thing to do?
+
+a) The split was made at 0.5 on the poopiness scale, but that is not the average value of poopiness in the data set, which  is closer to 0.57, as can be seen is Figure \@ref(fig:poopy-hist) (or from the "raw" data themselves).
+b) You should always use at least 5 bins when you have numerical data
+c) Representations of data should communicate honestly about the nature of the data themselves. In this case, poopiness is not a category.
+
+
+What I did here was take a numerical/quantitative value (poopiness) and mis-represent it as a categorical value. I did it by *dichotomizing* it, i.e., by splitting off everyone above 0.5 and labeling them as "poopy". I could have alternately split at the mean or median value and labeled the resulting two groups as "low poopiness" and "high poopiness." But this would still have been a mis-representation. It would hide the fact that poopiness comes in a continuous range of values. 
+
+> ASIDE (*delivered in a hushed voice*): I won't be able to convince you of this now, but it turns out that if you do this---if you dichotomize numerical data---you will BREAK STATISTICS! Ok, that sounds a bit dramatic. But in all seriousness, one of the jobs of statistics is to understand associations between different variables, such as poopiness and, say, earning potential. If you treat poopiness (or other variables) as discrete when they are really continuous, you may very well get the wrong answers. As the man down the street from where I used to live often muttered to himself while waving his arms in the air, THAT IS AN ABSOLUTE IRONCLAD MATHEMATICAL FACT. No, but in all seriousness, there is a terrific paper on exactly this subject [@maccallum2002]. 
+
+Dang it! you say. You've taken me down this rabbit hole of poopiness for too long. How many kinds of people are there? Are you saying that if one looks at properties that are described by numbers instead of categories, that there is only one kind of person. Is it all just shades of gray (or brown)?
+
+### Mixtures
+
+Remember Figure \@ref(fig:poopy-hist)? (Don't click it!) Here it is again so you don't have to scroll back. Data scientists like to say this picture shows you the **distribution** of poopiness in our sample. Statisticians use the word distribution in a more formal way that is best put off until we actually need it. We don't need it yet.
+
+
+```{r poopy-hist2, echo=FALSE}
+h <- hist(poopycrappy$poopiness, main="", breaks=seq(0,1.01,0.05), xlab="poopiness")
+```
+
+What if I told you that there ARE two kinds of people; you just can't see them unless I give you special glasses (or more information). If I gave you special glasses (or information), you would see this:
 
 
 
+```{r poopy-hist-mixture, echo=FALSE, fig.cap='A mixture of poopiness'}
+
+p1 <- poopycrappy %>% filter(.,class=="C1") %>% select(poopiness) 
+p2 <- poopycrappy %>% filter(.,class=="C2") %>% select(poopiness) 
+hist(p1$poopiness, main="", breaks=seq(0,1.01,0.05), col=rgb(1,0,0,0.3), xlab="poopiness")
+hist(p2$poopiness, col=rgb(0,1,0,0.3), add=T)
+
+```
+
+
+*By what dark magic have colorized the data!* you say. Or, perhaps you just said, hm, interesting. 
+In Figure \@ref(fig:poopy-hist-mixture), I've made a histogram with bars in two different colors, light green and pink. The colors are slightly transparent so that you can see both the green and pink distributions in their entirety even though they overlap. That's what the brownish bars mean. You're looking at the overlap of the green and pink bars, not another set of bars. Now, if you compare this histogram closely with the original, colorless histogram above, you'll see that the bin ranges are the same (width=0.05), and the the counts of green and pink bars add up to the total values that we had before. If there are green people and pink people, or in any case two different kinds of people, and if their poopiness is distributed as shown in Figure \@ref(fig:poopy-hist-mixture), then the poopiness of the mixture of these two groups of people will look just like Figure \@ref(fig:poopy-hist).
+
+Ok, but that doesn't explain how you would know that there are two groups. If I didn't tell you. That's because *you wouldn't necessarily know. You would need to have more information*. Now you might suspect it if you saw something like this:
+
+
+```{r poopy-hist-mixture-suspicious, echo=FALSE, fig.cap='A suspicious mixture of poopiness'}
+
+hist(c(p1$poopiness, p2$poopiness-0.12), main="", breaks=seq(0,1.05,0.06), xlab="poopiness")
+
+```
+
+In Figure \@ref(fig:poopy-hist-mixture-suspicious), the distribution has a double-hump like a Bactrian camel. In spite of that, it is not called a Bactrian distribution--which would make me happy--but a **bimodal** distribution. The point that I'm trying to make here is that a bimodal distribution makes you suspect that there could actually be two groups mixed together in our data. 
+
+But the original data for poopiness did not look bimodal. I suggested to you that you would need more information to determine if there are two groups. And so, I present you with... Crappiness! For each of the subjects in our poopiness data set, we have also collected data on crappiness. Crappiness is also a numerical value ranging from [0,1]. It's sort of like poopiness, but different. Here are some values:
+
+
+```{r, echo=FALSE}
+set.seed(101010)
+poopycrappy <- read.csv("data/poopycrappy.csv")
+poopycrappy <- poopycrappy[sample(nrow(poopycrappy)),]
+poopycrappy %>% select(poopiness, crappiness) %>% round(.,3) %>% head()
+```
+
+And here... is a histogram of crappiness!
+
+
+```{r crappy-hist, echo=FALSE, fig.cap='Histogram of Crappiness'}
+h <- hist(poopycrappy$crappiness, main="", breaks=seq(0,1.01,0.05), xlab="crappiness")
+```
+
+Hmm. I bet you were hoping that the crappiness data would look obviously bimodal, but it's not obvious. Nevertheless, hopefully you trust that I wouldn't lead you on a wild goose chase for no reason. Perhaps you can even see it coming. If we look at poopiness and crappiness separately, there is no clue that there might be distinct groups of people in our data set. But if we look at them together... there is. 
+
+When we looked at categorical data for two two-kinds-of-people questions, we made 2x2 contingency tables. We also used the word "dimension", for example to say that we were describing people along two dimensions (toilet paper and peanut butter). Now that we are looking at numerical data (poopiness and crappiness), we can also use two dimensions, as in a two-dimensional scatterplot, to examine both variables at once. This scatterplot is shown in Figure \@ref(fig:poopy-crappy). Each point represents that data from one person, with their poopiness value on the x-axis and crappiness on the y-axis.
+
+
+```{r poopy-crappy, echo=FALSE, fig.cap='Scatterplot of Crappiness vs Poopiness'}
+
+plot(poopycrappy[,c(1,2)], xlim=c(0,1), ylim=c(0,1))
+
+```
+
+
+<div class="rejoice"> Alas, oh data! Your bimodal nature has revealed itself in the higher-dimensional plane! </div>
+
+How many kinds of people are there? When it comes to poopiness and crappiness, people exhibit a continuous range of values, so we can't neatly put them into buckets. Neither poopiness nor crappiness appear to be bimodally distributed on their own. However, when examined together, as in the scatterplot in Figure \@ref(fig:poopy-crappy), a pretty suggestive pattern emerges in the data. There are two **clusters** of points, one group of which is lower in poopiness but higher in crappiness than the other. Interestingly, though, in both groups poopiness and crappiness tend to increase together. That is, they appear to be associated, not independent.
+
+I do not mean to imply that clusters of points can always be found if we have data along many dimensions. That is certainly not always the case. The present example was concocted (I admit it!) to show that groups *can* emerge, even in numerical data. Clustering [@kaufman2009] refers to set of data-science methods all about looking for the existence of groups in multidimensional data. 
+
+### Further reading
+
+MacCallum 2002
+Clustering book
 
 
 ### Summary {-}
@@ -288,8 +412,11 @@ Consider poopiness. Some people are really poopy (close to poopiness = 1), some 
 - association, contingency, dependence
 - factor, dimension, trait
 
+To answer the big question, how many kinds of people are there?, we have examined both categorical values, such as two-kinds of people questions, and numerical values. The toilet paper and peanut butter orientation questions may seem silly and inconsequential to you. I can only imagine what you might think of the poopiness and crappiness dimensions that I completely made up (I admit it!). However, in the next section, we will see that when it comes to personality psychology, there is a real-world analogue of the discrete/categorical and continous/numerical multi-dimensional 
 
-## The MBTI and Personality Testing
+
+
+## The MBTI and The Five Factor Model of Personality
 
 
 

@@ -16,7 +16,7 @@ always_allow_html: yes
 ---
 # Preface {-}
 
-This book is an incomplete draft of a work in progress being developed as lecture notes for an online course. It is provision, contingent, and possibly wrong.  
+This book is an incomplete draft of a work in progress being developed as lecture notes for an online course. Content is provisional, contingent, and possibly wrong.  
 
 ## Guiding principles in this book {-}
 

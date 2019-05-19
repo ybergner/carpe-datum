@@ -74,7 +74,10 @@ h1.title {
     border: 3px solid;
 
 }
-
+.rejoice {
+    font-size: 125%;
+    font-style: italic;
+}
 .col3 {
     columns: 3 100px;
     -webkit-columns: 3 100px;
