@@ -215,7 +215,7 @@ In our regular universe, however, this relationship was not observed. In Table \
 In our bizarro world scenario, one answer completely determines the other. This **deterministic** relationship is one extreme in the spectrum of association/dependence/contingency. At the other extreme, if the two responses are not at all associated/dependent/contingent, then we say that they are **independent**. To say that two responses are independent is to assert that knowing one of them does not give you any information about what the other one might be. This would have been my intuition, at least, about toilet paper and peanut butter. But whether they are independent or mildly associated with one another is an empirical question, which means we should try to answer it with data. In bizarro world, where they were deterministically related, we might reasonably want to know why. Could there a gene that turns on toilet paper orientation and peanut butter preference at the same time? 
 
 
-### Factors
+### Latent Factors and Measurement
 
 ```{r apps-windows, echo=FALSE, fig.show='hold', fig.cap='Two more two-kinds questions'}
 include_graphics("images/two-two-kinds.jpg")
@@ -224,9 +224,13 @@ include_graphics("images/two-two-kinds.jpg")
 
 Figure \@ref(fig:apps-windows) shows two more two-kinds of people graphics from João Rocha's blog. I bet that you can identify yourself with one of the two images in each pair. I certainly can. But ask yourself, given our discussion above, do you think the choices a person would identify in each case above are independent or not independent (e.g., contingent, associated, dependent)?
 
-In contrast to the toilet paper and peanut butter questions, which at least appear to be about totally different things, these two dichotomies have something similar going on in each of them. The choice on the left is about organizing your desktop browser, either in tabs or as separate windows. The choice on the right is about organizing apps in your smartphone, either loose or in folders. We might say that both of them get at a tendency to organize your digital environment. This tendency might even carry over into non-digital environments, like your actual desk, bookshelf, or filing cabinet.
+In contrast to the toilet paper and peanut butter questions, which at least appear to be about totally different things, these two dichotomies have something similar going on in each of them. The choice on the left is about organizing your desktop browser, either in tabs or as separate windows. The choice on the right is about organizing apps in your smartphone, either loose or in folders. We might say that both of them get at a tendency to organize your digital environment. Call it digitidness (short for digital tidiness). This tendency, we may imagine, might even carry over into non-digital environments, like your actual desk, bookshelf, or filing cabinet.
 
-What we've done here is to try to explain the association between responses to the two questions (assuming that there is, i.e. that they are not independent) by appeal to some underlying **factor**. We could call it digital tidiness, for example, if we're being really specific. Or perhaps you can think of another idea. Notice that a **factor** is also a dimension, in the sense we used before. We tend to use the word factor when we are drawing attention to the specific nature of the dimension rather than just counting them. And when the the factor takes on a particularly psychological flavor, we also use the word **trait**. In this case, digital tidiness could be considered a trait (and a factor and a dimension). 
+What we've done here is to try to explain the association between responses to the two questions (assuming that there is, i.e. that they are not independent) by appeal to some underlying **latent factor**. We say a factor is latent (meaning hidden) because we don't observe digitidiness itself directly, but we only observe tidy browsers or smartphone app folders. Perhaps you can think of another candidate factor besides digitidiness. In any case, we might propose that each of the two two-kinds questions in Figure \@ref(fig:apps-windows) are in fact indirect **measurements** of the same factor. If so, this could explain why the two answers woudl be associated.
+
+> Notice that a **factor** is also a dimension, in the sense we used before. We could have said "latent dimension", but we tend to use the word factor when we are drawing attention to the specific nature of the dimension rather than just counting. We also sometimes use the word **trait**. At least in psychology, trait tends to be reserved for stable psychological factors. Thus "stress" can be a factor but not a trait, whereas "social anxiety" may be a trait, if it is persistent. In this case, digitidiness might be considered a trait (and thus also a factor and a dimension). 
+
+Contrast this with toilet roll orientation, which we can observe directly just by looking in someone's bathroom. (We assume that they are telling the truth when they answered our questions, but we could in principle verify it.) It was only in the bizarro world when toilet roll orientation and peanut butter preference were perfectly related that we started to wonder if there maybe *was* an underlying genetic factor. Genetic factors were once not directly observable either, but we assumed them for explanatory value. Today we can of course observe specific genetic variation, although there are still many gaps in our understanding of the relationship between genes and observed behaviors.
 
 Consider some data again, in two possible worlds, shown in Table \@ref(tab:tabsxapps). On the left, we have the deterministic scenario we saw before. As before, we identified this situation as having two kinds of people and really just one dimension. In contrast to before, where we had no real explanation for this coincidence, we attribute it now to some factor, like digital tidiness.
 
@@ -253,18 +257,18 @@ It might be gong time again: `r html_tag_audio("media/chinese-gong-daniel_simon.
 
 
 <div class="col2">
-**Golda says**: Although digital tidiness explains a lot of what we see in our data, it doesn't explain it all. I believe that desktop tidiness and mobile tidiness are different, if related, things. For example, when we use mobile phones, we're typically on-the-go and have less time. If we knew more about the people in our sample, we might see that these discrepancies in the organization of apps and tabs actually relate to other aspects of their lives. So, I say there are two dimensions.
+**Golda says**: Although digitidiness explains a lot of what we see in our data, it doesn't explain it all. I believe that desktop tidiness and mobile tidiness are different, if related, tendencies For example, when we use mobile phones, we're typically on-the-go and have less time. If we knew more about the people in our sample, we might see that these discrepancies in the organization of apps and tabs actually relate to other aspects of their lives. So, I say there are two dimensions.
 
-**Sidney says**: Digital tidiness is the only real factor here, but people may not always be consistent in their behaviors. Also some people are only sort-of-tidy, and apply this tidiness unevenly but randomly. These two-kinds of people choices don't leave room for shades of gray, so that's what we're seeing in the mixed categories where people are tidy in one environment and not in another. But ultimately there is really just one dimension here.
+**Sidney says**: Digitidiness is the only real factor here, but people may not always be consistent in these particular behaviors. Also some people are only sort-of-tidy, and apply this tidiness unevenly but randomly. These two-kinds of people choices don't leave room for shades of gray, so that's what we're seeing in the mixed categories where people are tidy in one environment and not in another. But ultimately there is really just one dimension here.
 </div>
 
 
 **What do you think?**
 
 
-### (An Infinite Number of) Shades of Gray (or Brown)
+### (An Infinite Number of) Shades of Gray (or Brown) {#shades}
 
-We've taken the two-kinds-of-people idea pretty far in this chapter already. But it's time to acknowledge the elephant in the room. Not every question about attributes, preferences, or behaviors  can be answered in such an either/or manner. Consider the following dialogue:
+We've taken the two-kinds-of-people idea pretty far in this chapter already. But it's time to acknowledge the elephant in the room. Not every question about attributes, preferences, or behaviors  can be answered in such an either/or manner. Digitidiness might be one of those things. Consider the following dialogue:
 
 > Stacy: "There are liberal and conservative kinds of people, Trang. Which one are you?"
 > Trang: "Well, you know I’m not sure I’m exactly one or the other. I think I'm somewhere in the middle."
@@ -273,13 +277,15 @@ Although we often use them as **discrete categories**, the words liberal and con
 
 In the great toilet paper debate, we were able to identify two kinds of people based on two possible responses to the question of roll orientation. Two answers; two kinds. If instead of discrete categories, we have a number on a continuous scale, does that mean that there can't be "kinds" of people anymore? To answer this question, we'll need to understand what exactly we're talking about when we characterize people using a continuous scale.
 
-Consider poopiness. Some people are really poopy (close to poopiness = 1), some aren't poopy at all (close to 0), and most are somewhere near the middle of the scale. That's not a very quantitative description. I used the words "some" and "most", but I didn't give you counts like I did in Table \@ref(tab:tp-table) about toilet roll orientation. If I showed you the poopiness data for sample of people, the list would look something like this:
+Consider poopiness. Some people are really poopy (close to poopiness = 1), some aren't poopy at all (close to 0), and most are somewhere near the middle of the scale. That's not a very quantitative description. I used the words "some" and "most", but I didn't give you counts like I did in Table \@ref(tab:tp-table) about toilet roll orientation. If I showed you the poopiness data for sample of people, the list would look something like this. 
 
 ```{r, echo=FALSE}
 set.seed(101010)
 poopycrappy <- read.csv("data/poopycrappy.csv")
 poopycrappy <- poopycrappy[sample(nrow(poopycrappy)),]
-poopycrappy %>% select(poopiness) %>% round(.,3) %>% head()
+row.names(poopycrappy) <- sprintf("%04d", as.integer(row.names(poopycrappy)))
+poopycrappy %>% select(poopiness) %>% round(.,3) %>% head() %>% kable(., booktabs = TRUE, caption = "Don't ask me how I got these numbers.")
+
 ```
 
 Poopiness is a number, and these data are called **numerical** or **quantitative** as opposed to **categorical**. It's not as easy to make sense of a bunch of decimal values like this as it is to look at simple counts of categories. However, this problem has been solved by using dot plots, stacked dot plots, and histograms, which you can read all about in any standard textbook, for example OpenIntro Statistics, Chapter 2. I'm going to go straight into the histogram, which most likely you've seen before. It's the most commonly used representation for data of this kind. 
@@ -323,7 +329,7 @@ What I did here was take a numerical/quantitative value (poopiness) and mis-repr
 
 > ASIDE (*delivered in a hushed voice*): I won't be able to convince you of this now, but it turns out that if you do this---if you dichotomize numerical data---you will BREAK STATISTICS! Ok, that sounds a bit dramatic. But in all seriousness, one of the jobs of statistics is to understand associations between different variables, such as poopiness and, say, earning potential. If you treat poopiness (or other variables) as discrete when they are really continuous, you may very well get the wrong answers. As the man down the street from where I used to live often muttered to himself while waving his arms in the air, THAT IS AN ABSOLUTE IRONCLAD MATHEMATICAL FACT. No, but in all seriousness, there is a terrific paper on exactly this subject [@maccallum2002]. 
 
-Dang it! you say. You've taken me down this rabbit hole of poopiness for too long. How many kinds of people are there? Are you saying that if one looks at properties that are described by numbers instead of categories, that there is only one kind of person. Is it all just shades of gray (or brown)?
+Dang it! you say. You've taken me down this rabbit hole of poopiness for too long. How many kinds of people are there? Are you saying that if one looks at properties that are described by numbers instead of categories, that there is only one kind of person? Is it all just shades of gray (or brown)?
 
 ### Mixtures
 
@@ -348,10 +354,10 @@ hist(p2$poopiness, col=rgb(0,1,0,0.3), add=T)
 ```
 
 
-*By what dark magic have colorized the data!* you say. Or, perhaps you just said, hm, interesting. 
+*By what dark magic have you colorized the data!* you say. Or, perhaps you just said, hm, interesting. 
 In Figure \@ref(fig:poopy-hist-mixture), I've made a histogram with bars in two different colors, light green and pink. The colors are slightly transparent so that you can see both the green and pink distributions in their entirety even though they overlap. That's what the brownish bars mean. You're looking at the overlap of the green and pink bars, not another set of bars. Now, if you compare this histogram closely with the original, colorless histogram above, you'll see that the bin ranges are the same (width=0.05), and the the counts of green and pink bars add up to the total values that we had before. If there are green people and pink people, or in any case two different kinds of people, and if their poopiness is distributed as shown in Figure \@ref(fig:poopy-hist-mixture), then the poopiness of the mixture of these two groups of people will look just like Figure \@ref(fig:poopy-hist).
 
-Ok, but that doesn't explain how you would know that there are two groups. If I didn't tell you. That's because *you wouldn't necessarily know. You would need to have more information*. Now you might suspect it if you saw something like this:
+Ok, but that doesn't explain how you would know that there are two groups. If I didn't tell you. That's because *you wouldn't necessarily know. You would need to have more information*. Now you might suspect something if you saw a distribution that looked like this:
 
 
 ```{r poopy-hist-mixture-suspicious, echo=FALSE, fig.cap='A suspicious mixture of poopiness'}
@@ -362,17 +368,17 @@ hist(c(p1$poopiness, p2$poopiness-0.12), main="", breaks=seq(0,1.05,0.06), xlab=
 
 In Figure \@ref(fig:poopy-hist-mixture-suspicious), the distribution has a double-hump like a Bactrian camel. In spite of that, it is not called a Bactrian distribution--which would make me happy--but a **bimodal** distribution. The point that I'm trying to make here is that a bimodal distribution makes you suspect that there could actually be two groups mixed together in our data. 
 
-But the original data for poopiness did not look bimodal. I suggested to you that you would need more information to determine if there are two groups. And so, I present you with... Crappiness! For each of the subjects in our poopiness data set, we have also collected data on crappiness. Crappiness is also a numerical value ranging from [0,1]. It's sort of like poopiness, but different. Here are some values:
+But the original data for poopiness did not look bimodal. I suggested to you that you would need more information to determine if there are two groups. And so, I present you with... Crappiness! For each of the subjects in our poopiness data set, we have also collected data on their crappiness. Crappiness is also a numerical value ranging from [0,1]. It's sort of like poopiness, but different. Here are some values:
 
 
 ```{r, echo=FALSE}
-set.seed(101010)
-poopycrappy <- read.csv("data/poopycrappy.csv")
-poopycrappy <- poopycrappy[sample(nrow(poopycrappy)),]
+# set.seed(101010)
+# poopycrappy <- read.csv("data/poopycrappy.csv")
+# poopycrappy <- poopycrappy[sample(nrow(poopycrappy)),]
 poopycrappy %>% select(poopiness, crappiness) %>% round(.,3) %>% head()
 ```
 
-And here... is a histogram of crappiness!
+And here...(drum roll please)... is a histogram of crappiness!
 
 
 ```{r crappy-hist, echo=FALSE, fig.cap='Histogram of Crappiness'}
@@ -381,7 +387,7 @@ h <- hist(poopycrappy$crappiness, main="", breaks=seq(0,1.01,0.05), xlab="crappi
 
 Hmm. I bet you were hoping that the crappiness data would look obviously bimodal, but it's not obvious. Nevertheless, hopefully you trust that I wouldn't lead you on a wild goose chase for no reason. Perhaps you can even see it coming. If we look at poopiness and crappiness separately, there is no clue that there might be distinct groups of people in our data set. But if we look at them together... there is. 
 
-When we looked at categorical data for two two-kinds-of-people questions, we made 2x2 contingency tables. We also used the word "dimension", for example to say that we were describing people along two dimensions (toilet paper and peanut butter). Now that we are looking at numerical data (poopiness and crappiness), we can also use two dimensions, as in a two-dimensional scatterplot, to examine both variables at once. This scatterplot is shown in Figure \@ref(fig:poopy-crappy). Each point represents that data from one person, with their poopiness value on the x-axis and crappiness on the y-axis.
+When we looked at categorical data for two two-kinds-of-people questions, we made 2x2 contingency tables. We also used the word "dimension", for example to say that we were describing people along two dimensions (recall: toilet paper and peanut butter). Now that we are looking at numerical data (poopiness and crappiness), we can also use two dimensions, as in a two-dimensional scatterplot, to examine both variables at once. This scatterplot is shown in Figure \@ref(fig:poopy-crappy). Each point represents data from one person, with their poopiness value on the x-axis and crappiness on the y-axis.
 
 
 ```{r poopy-crappy, echo=FALSE, fig.cap='Scatterplot of Crappiness vs Poopiness'}
@@ -393,14 +399,30 @@ plot(poopycrappy[,c(1,2)], xlim=c(0,1), ylim=c(0,1))
 
 <div class="rejoice"> Alas, oh data! Your bimodal nature has revealed itself in the higher-dimensional plane! </div>
 
+`r html_tag_audio("media/chinese-gong-daniel_simon.mp3", type="mp3")`
+
 How many kinds of people are there? When it comes to poopiness and crappiness, people exhibit a continuous range of values, so we can't neatly put them into buckets. Neither poopiness nor crappiness appear to be bimodally distributed on their own. However, when examined together, as in the scatterplot in Figure \@ref(fig:poopy-crappy), a pretty suggestive pattern emerges in the data. There are two **clusters** of points, one group of which is lower in poopiness but higher in crappiness than the other. Interestingly, though, in both groups poopiness and crappiness tend to increase together. That is, they appear to be associated, not independent.
 
-I do not mean to imply that clusters of points can always be found if we have data along many dimensions. That is certainly not always the case. The present example was concocted (I admit it!) to show that groups *can* emerge, even in numerical data. Clustering [@kaufman2009] refers to set of data-science methods all about looking for the existence of groups in multidimensional data. 
+I do not mean to imply that clusters of points can always be found if we have data along many dimensions. That is certainly not always the case. The present example was concocted (I admit it!) to show that groups *can* emerge, even in numerical data. Cluster analysis [@kaufman2009] refers to set of data-science methods all about looking for the existence of groups in multidimensional data. 
 
-### Further reading
 
-MacCallum 2002
-Clustering book
+### Cut Scores and Abnormality
+
+> Because that's not what normal people do.
+> --- things my spouse says
+
+If you read the aside in Section \@ref{sec:shades}, you'll recall that I warned against possible negative consequences of setting arbitrary cut points to dichotomize a data set---that is, turning numerical data on a continuous scale into  two categories by using a cutoff value. But now consider the following scenarios:
+
+1) To pass the written test for your a driving learner's permit in California, you must answer at least 38 questions correctly out of 46. That's 82.6% correct. At 80.4% (37/46) or below, you fail and have to retake the test on another day.
+
+2) A patient's blood test shows levels of ALT (alanine aminotransferase) at 77 units per liter. The lab report labels this as abnormally high, and the physician is concerned about possible liver damage or disease.
+
+These two examples involve just the kind of dichotomization that I cautioned against, and yet they occur very commonly in practice. So what gives? Is it wrong to use cutoffs this way? Why do people do it?
+
+The short answer is that we often find ourselves in need of a classification (pass or fail; diagnose liver disease or not) but without a perfect classification device. Rather we have only indirect measurements (of knowledge or liver function) in some quantitative measure. Perhaps you once found yourself on the "border" between letter grades for a course and were particularly perturbed (or relieved) by the imperfections of such a system. Or you may have found yourself with "slightly" abnormal levels in a blood test and wondered whether you should seek further tests. 
+
+Both the California department of motor vehicles and the physician in our scenarios need to make a decision based on imperfect evidence. They want to be able to say that the person's test results show that they are ready to get behind the wheel of a car, in one scenario, or suffering from liver problems in the other. But all they can really do is express this belief using a **probability**.  This probabilistic judgement is based on a mathematical **model** that relates traits like readiness-to-drive or liver-disease to certain test results. Understanding how these models come into existence is one of the learning objectives of this course. 
+
 
 
 ### Summary {-}
@@ -408,12 +430,14 @@ Clustering book
 #### Vocabulary {-}
 
 - kind, type, category
+- dichotomous
 - crosstab, two-way table, contingency table
 - association, contingency, dependence
-- factor, dimension, trait
+- latent factor, dimension, trait
+- measurement, model, bimodal, cluster
 
-To answer the big question, how many kinds of people are there?, we have examined both categorical values, such as two-kinds of people questions, and numerical values. The toilet paper and peanut butter orientation questions may seem silly and inconsequential to you. I can only imagine what you might think of the poopiness and crappiness dimensions that I completely made up (I admit it!). However, in the next section, we will see that when it comes to personality psychology, there is a real-world analogue of the discrete/categorical and continous/numerical multi-dimensional 
 
+We started out this chapter on a quest to answer our first big question: How many kinds of people are there? En route, we have examined both categorical data, such as from two-kinds-of-people questions, and numerical values like poopiness. The toilet paper and peanut butter orientation questions may seem silly and inconsequential to you. I can only imagine what you might think of the poopiness and crappiness dimensions that I completely made up (I admitted it!). However, in the next section, we will see that when it comes to personality psychology, there are real-world analogues of the discrete/categorical and continous/numerical multi-dimensional descriptions of people that we just saw.
 
 
 ## The MBTI and The Five Factor Model of Personality
