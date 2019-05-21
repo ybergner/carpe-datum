@@ -428,12 +428,12 @@ Both the California department of motor vehicles and the physician in our scenar
 
 The term **normal distribution** arose in statistics because the particular bell-shaped distribution occurs so frequently. If poopiness were normally distributed in our sample from before it might like this. 
 
-```{r normal-poopy fig.caption="Normal poopiness"}
+```{r normal-poopy, echo=FALSE,  fig.cap='Normal poopiness'}
 set.seed(303030)
 normal_poopy <- rnorm(148, mean=0.56, sd=0.175)
 hist(normal_poopy, main="Normal Poopiness", breaks=seq(0,1.1,0.05), xlab="poopiness")
 ```
-Technically speaking, all of the values, including the maximal value of `r round(max(normal_poopy),3)` that we observe in Figure\@ref(fig:normal-poopy) are normal. Poopiness varies in the population. It is impossible to be abnormally poopy, under the circumstances. By definition. some values at the extreme ends of a normal distibution are less likely to occur than values in the middle. But still they may occur rarely. It is only when extreme values (large or small) are associated with other conditions of interest, such as the relationship between elevated ALT and liver disease, that it makes sense to "flag" these extreme values. 
+Technically speaking, all of the values, including the maximal value of `r round(max(normal_poopy),3)` that we observe in Figure \@ref(fig:normal-poopy) are normal. Poopiness varies in the population. It is impossible to be abnormally poopy, under the circumstances. By definition. some values at the extreme ends of a normal distibution are less likely to occur than values in the middle. But still they may occur rarely. It is only when extreme values (large or small) are associated with other conditions of interest, such as the relationship between elevated ALT and liver disease, that it makes sense to "flag" these extreme values. 
 
 
 

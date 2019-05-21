@@ -1,3 +1,74 @@
 # When and How Will You Die?
 
-Coming soon!
+In our first Big Question, we began to look at individual differences between people or what statisticians call variation within a population. There is considerable variation in health outcomes and human lifespan. In our next Big Question, we ask “when and how will you die?” and “what, if anything, can you do about it?”
+
+What kind of question is, “when and how will you die?” Well, according to some of my colleagues, it’s a morbid question. Feelings aside, we might say that it sounds like a prediction question, since it’s about the future. So to explore this big question, we will need to understand what it means in general to make a forecast about some future event. We’ll also find it useful to distinguish between predictions that are or are not explanatory. Most efforts in health sciences attempt to explain relationships between behavioral and genetic factors and health outcomes. In particular, they try to understand causal effects. So in this module, we will try to understand causal explanations more generally.
+
+What does it mean to say there’s a 30% chance of rain tomorrow in New York? Does it mean that it will definitely rain in 30% of the city (say, Brooklyn), but not in the other 30%? Or that it will rain for 30% of the day (say, from 8am-3pm). Here are some possibilities to consider:
+
+a) It will definitely rain in some parts of the city but not in all of them
+b) It will definitely rain for some part of the day in all of the city
+c) It will definitely rain for some part of the day in some of the city
+d) It may or may not rain anywhere in the city at any point in the day.
+
+
+Read here for an (explanation of what meteorologists PROBABLY mean)[http://wxbrad.com/why-a-50-chance-of-rain-usually-means-a-100-chance-of-confusion/]
+
+
+## Stochastic vs Deterministic variables
+
+Sometimes when I say definitely, I mean probably. Like if I say, I'm definitely going to do something about all of this clutter on my desk. But when I really mean business, I say deterministically. It definitely sounds more serious.
+
+Meteorologists---scientists who model the weather---cannot tell us deterministically about weather events. A **deterministic** description of an event would be something like, if I let go of the umbrella I am holding in my hand, it will fall to the ground. If A then B. No exceptions. Weather events are **stochastic**. They have an element of randomness, like tossing a coin or rolling a die. So, just as we can say that a coin has a 50% chance of coming up heads---assuming it is a fair coin---we can make statements like there is a 30% chance that it will rain tomorrow. 
+
+
+### Ensembles
+
+One way to think about the 30% chance of rain is to imagine that our experience in the world is one possibility in a multiplicity of possible worlds. See, I told you this idea of multiple universes was going to be important!  Imagine that there are 10 possible worlds indistinguishable from ours, and that tomorrow it will in fact rain in 3 of them. The key idea is that we don’t know which one of these possible worlds is the one we are actually experiencing...
+
+There is another way to think of 30%. Suppose a meteorologist told you, I’m 30% sure it is going to rain tomorrow. This time, 30% represents a degree of belief. Importantly, the degree of belief is subjective. Here it is attributed to a meteorologist, which might make you take it more seriously than if your Uncle Bob said the same thing (unless Uncle Bob is actually a meteorologist). Anyway, degree of belief is subjective. Which doesn’t mean it’s arbitrary or just a matter of opinion. When it comes to forecasts, some people or some forecasting models are going to be right more often than others. More on that later.
+
+In the meantime, if we take this forecast of rain seriously, we have decisions to make. It could be whether or not to take an umbrella with us when we leave the house tomorrow, or whether to cancel our plans to have a barbecue outside. These decisions may not seem very high stakes. The worst case scenario is that we get wet. But other decisions we have to make on a daily basis can have more serious consequences for our health or even our life. We often have to make those decisions based on [partial, subjective, probabilistic] information...
+
+
+## Causality
+
+Does eating meat cause heart disease? Does smoking cause lung cancer? What does it mean to say A causes B? First of all, this may sound like a philosophical question, and indeed the philosopher David Hume shed some important light on the question of how we conceive of causation. But this is a course on probabilistic thinking, not philosophy. So we are going to take a more pragmatic approach and focus on how we use the concept of causation in everyday life. Nevertheless, it helps to first recall our distinction between deterministic and stochastic processes. If I hit a porcelain tea cup hard with hammer and the tea cup breaks, we can safely say that hitting the teacup with a hammer caused the cup to break. We don’t really feel the need to say that if you hit a teacup hard with a hammer, there is a 99.9997% chance that it will break. Even if that’s actually true. And we don’t feel the need to define “hard” in this case either. We use an example like a teacup and hammer when we want to focus on the big picture and not the details. And the big picture here says that hitting a teacup with a hammer deterministically causes the teacup to break. If we don’t hit In the case of the physics of hammers and teacups, we feel that we know this much is true. 
+
+What about buying a lottery ticket? Does buying a lottery ticket cause one to win the lottery? Well, you certainly are not guaranteed to win the lottery if you buy a ticket. In fact, your chances will be very low. But you can’t possibly win if you don’t buy a ticket. So, strictly speaking, buying a ticket or not does influence the probability of buying a ticket.
+
+We’ve now seen two examples
+
+In the first case (hammer and teacup):
+If A (hammer hits teacup) then definitely B (teacup breaks)
+If not A (hammer does not hit teacup) then definitely not B (teacup does not breaks)
+
+
+
+
+Teacup breaks
+Teacup doesn’t break
+Hammer hits teacup
+Always*
+Never
+Hammer does not hit teacup
+Never*
+Always
+*pretty much; we’re not splitting hairs here.
+
+In the second case (lottery ticket):
+If A (buy lottery ticket) then maybe B (win lottery) and maybe not B (do not win lottery)
+If not A (do not buy lottery ticket) then definitely not B (do not win lottery)
+
+Now, let’s pause for a moment and think about the question we started with: does smoking cause cancer? Does it fit either of these two cases?
+
+Unfortunately the question about smoking does not. It belongs to a yet another case. 
+
+In the third case (smoking):
+If A (smoke) then maybe B (cancer) and maybe not B (no cancer)
+If not A (do not smoke) then maybe B (cancer) and maybe not B (no cancer)
+
+Now we’re not saying that the chances of cancer are the same whether you smoke or not. That remains an open question so far as our present argument goes. But even thus far, we can see that the smoking causality question, posed this way, invites some more questions.
+How big a difference does there have to be between the cancer rates for smokers and non-smokers for us to be convinced that there is an association between smoking and cancer?
+After all, there are a lot of other factors including behavior and genetic factors
+Why do we believe that the association between smoking and cancer is a causal relationship (specifically, smoking causes cancer)?
