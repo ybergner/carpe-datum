@@ -1,3 +1,68 @@
+--- 
+title: "Big Questions and Probabilistic Answers"
+subtitle: "Data Science You Can Use for Stuff You Care About"
+author: "Yoav Bergner"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: ybergner/bigquestions-book
+description: "A coursebook."
+always_allow_html: yes
+
+---
+# Preface {-}
+
+This book is an incomplete draft of a work in progress being developed as lecture notes for an online course. Content is provisional, contingent, and possibly wrong, but always well intended.
+
+## Guiding principles in this book {-}
+
+### Question-driven {-}
+
+Because the presentation of topics in this book is question-driven rather than method-driven, this book has some idiosyncracies. Some topics that might be considered rather basic may be omitted, while some topics that are typically considered as advanced will get (a simplified) treatment.
+
+### Statistical properties will be demonstrated, rather than derived {-}
+
+As a mathematical subject, statistics is often taught with derivation and proof using definitions, simple assumptions, and the logic of algebra and calculus. Mathematical formulas are the standard languge of statistics. This approach to learning is powerful if the math supports rather than gets in the way of understanding. However, for many learners, the math obscures rather than clarifies, and another way--using demonstrations and simulations--might enable understanding, as Johnson & Johnson once said, without tears.
+
+Now, a demonstration is not a proof. That said, repeated experiments can be convincing even in the absence of proof. For example, I can prove to you that if you take any whole number (e.g., 1, 2, 3, 7, 21, 118, 8675309), multiply it by 9, and then sum the individual digits of that resulting product, that the sum itself will be a multiple of 9 
+
+``` 
+Example: 
+7 * 9 = 63; 6 + 3 = 9.
+21 * 9 = 189; 1 + 8 + 9 = 18. 
+
+```
+
+An elegant and simple proof can be constructed (hint: by induction), but if you try it out yourself enough times, you won't *need* the proof to be convinced. 
+
+Now problems like these are often used to teach proof technique rather than to encode cute number-facts in memory. And indeed, for training statisticians, a rigorous mathematical presentation is important. But for most users of this book, intuition and understanding is the priority, and the ability to derive formulas is not necessary.
+
+
+
+```{r global_options, R.options=knitr::opts_chunk$set(warning=FALSE, message=FALSE)}
+require(knitr)
+require(kableExtra)
+require(dplyr)
+require(ggplot2)
+require(rpart)
+require(rpart.plot)
+```   
+
+
+```{r include=FALSE}
+
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'kableExtra', 'dplyr', 'ggplot2', 'rpart', 'rpart.plot'
+), 'packages.bib')
+```
+
+<!--chapter:end:index.Rmd-->
+
 # How Many Kinds of People Are There?
 
 
@@ -484,3 +549,236 @@ I'd like to point out that we still haven't even once asked a question of the fo
 
 
 ## Exercises {-}
+
+<!--chapter:end:01-howmanykinds.Rmd-->
+
+# When and How Will You Die?
+
+> It is difficult to make predictions, especially about the future. 
+>
+> --- Niels Bohr (probably)
+
+In our first Big Question, we began to look at individual differences between people or what statisticians call variation within a population. If there is no variation---like in the bizarro world where everyone orients their toilet paper in the "under" orientation---then there is nothing to talk about, at least not statistically speaking. There is, however, considerable variation in health outcomes and human lifespan. Lots to talk about there. In our next Big Question, we ask “when and how will you die?” and “what, if anything, can you do about it?”
+
+What kind of question is, “when and how will you die?” Well, according to some of my colleagues, it’s a morbid question. Feelings aside, we might say that it sounds like a prediction question, since it’s about the future. So to explore this big question, we will need to understand what it means in general to make a forecast about some future event. We’ll also find it useful to distinguish between predictions that are or are not explanatory. Most efforts in health sciences attempt to explain relationships between behavioral and genetic factors and health outcomes. In particular, they try to understand causal effects. So in this module, we will try to understand causal explanations more generally.
+
+What does it mean to say there’s a 30% chance of rain tomorrow in New York? Does it mean that it will definitely rain in 30% of the city (say, Brooklyn), but not in the other 30%? Or that it will rain for 30% of the day (say, from 8am-3pm). Here are some possibilities to consider:
+
+a) It will definitely rain in some parts of the city but not in all of them
+b) It will definitely rain for some part of the day in all of the city
+c) It will definitely rain for some part of the day in some of the city
+d) It may or may not rain anywhere in the city at any point in the day.
+
+
+Read here for an [explanation of what meteorologists *probably* mean](http://wxbrad.com/why-a-50-chance-of-rain-usually-means-a-100-chance-of-confusion/)
+
+
+## Stochastic vs Deterministic variables
+
+Sometimes when I say definitely, I mean probably. Like if I say, I'm definitely going to do something about all of this clutter on my desk. But when I really mean business, I say deterministically. It definitely sounds more serious.
+
+Meteorologists---scientists who model the weather---cannot tell us deterministically about weather events. A **deterministic** description of an event would be something like, if I let go of the umbrella I am holding in my hand, it will fall to the ground. If A then B. No exceptions. Weather events are **stochastic**. They have an element of randomness, like tossing a coin or rolling a die. So, just as we can say that a coin has a 50% chance of coming up heads---assuming it is a fair coin---we can make statements like there is a 30% chance that it will rain tomorrow. 
+
+
+### Ensembles
+
+One way to think about the 30% chance of rain is to imagine that our experience in the world is one possibility in a multiplicity of possible worlds. See, I told you this idea of multiple universes was going to be important!  Imagine that there are 10 possible worlds indistinguishable from ours, and that tomorrow it will in fact rain in 3 of them. The key idea is that we don’t know which one of these possible worlds is the one we are actually experiencing...
+
+There is another way to think of 30%. Suppose a meteorologist told you, I’m 30% sure it is going to rain tomorrow. This time, 30% represents a degree of belief. Importantly, the degree of belief is subjective. Here it is attributed to a meteorologist, which might make you take it more seriously than if your Uncle Bob said the same thing (unless Uncle Bob is actually a meteorologist). Anyway, degree of belief is subjective. Which doesn’t mean it’s arbitrary or just a matter of opinion. When it comes to forecasts, some people or some forecasting models are going to be right more often than others. More on that later.
+
+In the meantime, if we take this forecast of rain seriously, we have decisions to make. It could be whether or not to take an umbrella with us when we leave the house tomorrow, or whether to cancel our plans to have a barbecue outside. These decisions may not seem very high stakes. The worst case scenario is that we get wet. But other decisions we have to make on a daily basis can have more serious consequences for our health or even our life. We often have to make those decisions based on [partial, subjective, probabilistic] information...
+
+
+## Causality
+
+Does eating meat cause heart disease? Does smoking cause lung cancer? What does it mean to say A causes B? First of all, this may sound like a philosophical question, and indeed the philosopher David Hume shed some important light on the question of how we conceive of causation. But this is a course on probabilistic thinking, not philosophy. So we are going to take a more pragmatic approach and focus on how we use the concept of causation in everyday life. Nevertheless, it helps to first recall our distinction between deterministic and stochastic processes. If I hit a porcelain tea cup hard with hammer and the tea cup breaks, we can safely say that hitting the teacup with a hammer caused the cup to break. We don’t really feel the need to say that if you hit a teacup hard with a hammer, there is a 99.9997% chance that it will break. Even if that’s actually true. And we don’t feel the need to define “hard” in this case either. We use an example like a teacup and hammer when we want to focus on the big picture and not the details. And the big picture here says that hitting a teacup with a hammer deterministically causes the teacup to break. If we don’t hit In the case of the physics of hammers and teacups, we feel that we know this much is true. 
+
+What about buying a lottery ticket? Does buying a lottery ticket cause one to win the lottery? Well, you certainly are not guaranteed to win the lottery if you buy a ticket. In fact, your chances will be very low. But you can’t possibly win if you don’t buy a ticket. So, strictly speaking, buying a ticket or not does influence the probability of buying a ticket.
+
+We’ve now seen two examples
+
+In the first case (hammer and teacup):
+If A (hammer hits teacup) then definitely B (teacup breaks)
+If not A (hammer does not hit teacup) then definitely not B (teacup does not breaks)
+
+
+
+
+Teacup breaks
+Teacup doesn’t break
+Hammer hits teacup
+Always*
+Never
+Hammer does not hit teacup
+Never*
+Always
+*pretty much; we’re not splitting hairs here.
+
+In the second case (lottery ticket):
+If A (buy lottery ticket) then maybe B (win lottery) and maybe not B (do not win lottery)
+If not A (do not buy lottery ticket) then definitely not B (do not win lottery)
+
+Now, let’s pause for a moment and think about the question we started with: does smoking cause cancer? Does it fit either of these two cases?
+
+Unfortunately the question about smoking does not. It belongs to a yet another case. 
+
+In the third case (smoking):
+If A (smoke) then maybe B (cancer) and maybe not B (no cancer)
+If not A (do not smoke) then maybe B (cancer) and maybe not B (no cancer)
+
+Now we’re not saying that the chances of cancer are the same whether you smoke or not. That remains an open question so far as our present argument goes. But even thus far, we can see that the smoking causality question, posed this way, invites some more questions.
+How big a difference does there have to be between the cancer rates for smokers and non-smokers for us to be convinced that there is an association between smoking and cancer?
+After all, there are a lot of other factors including behavior and genetic factors
+Why do we believe that the association between smoking and cancer is a causal relationship (specifically, smoking causes cancer)?
+
+<!--chapter:end:02-whenandhow.Rmd-->
+
+# Will You Make Money?
+
+> No one can win at roulette unless he steals money from the table while the croupier isn’t looking.
+>
+> --- Albert Einstein (possibly)
+
+The development of probability theory is historically linked to attempts to understand games of chance, especially ones in which money was involved (see for example, [here}(http://sites.math.rutgers.edu/~cherlin/History/Papers2000/cheng.html)]. Sometimes betting money on an uncertain outcome falls under the name of gambling; other times it’s dignified with the name investment or "smart business decision." But regardless of the label, there are smarter and less smart ways to play money games. 
+
+## Battle of the Bills {-}
+
+Let’s recall a distinction we made earlier in this course about deterministic and stochastic or random processes. This time, we’ll think about two different bets you make with your friend. In the first bet, you and your friend are debating whether it was Bill Paxton or Bill Pullman in the movie Apollo 13. To make the game interesting, you bet two dollars. You look it up on the internet, and find that it was indeed Paxton. One of you wins. Do you feel the need to check again? Probably not. This particular question, although you may not have known the answer for sure, has only one possible answer.
+
+Now consider another bet, this time for three bucks! You and your friend are walking down the street debating the “merits” of mint chocolate chip vs. cookies and cream as ice cream flavors. You claim that mint chocolate chip is the more popular flavor, and decide to ask the first passer-by which flavor they think is better. Suppose they don’t just ignore you, thinking you’re a nutcase, and they answer cookies and cream. Are you satisfied with this one answer? Or do you feel the need to ask another pedestrian? And how many?
+
+We might say that the variable “BPA”, which stands for “which Bill P. starred in Apollo 13?” has a deterministic answer, but the variable “MCCoCAC,” which stands for “mint chocolate chip > cookies and cream?” can take on one of two answers (no ties allowed) depending on whom we ask. Because it is a random or stochastic variable, we have to talk about it using different terms. We might say something like, what proportion of people (in this neighborhood, say) prefer cookies and cream? Or what are the chances that the first person we ask will express that particular preference.
+
+This may all sound like silly bets that are really just games between friends. But people make small and large money bets all the time, in everything from business and life decisions, to recreational games. In this chapter, we explore probability calculations that inform things like advertising, airplane booking, the job market, and march madness.
+
+
+```{r, echo=FALSE}
+
+cure_prob <- c(0.7,0.3)
+approved_prob <- c(0.4, 0.6)
+market_prob <- c(0.1, 0.9)
+
+
+wheelan_cancer <- data.frame(
+   Cure = c(rep("No",700), rep("Yes",300)),
+   Approved = c(rep(NA,700), rep("No",120), rep("Yes",180)),
+   First2Market = c(rep(NA,820), rep("No", 18), rep("Yes",162)),
+   Payout = c(rep(250000,700), rep(0,120), rep(0, 18), rep(25000000,162))
+)
+
+wheelan_tree <- rpart(
+  Payout ~ ., 
+  data = wheelan_cancer, 
+  method = "anova"
+)
+```
+
+```{r, echo=FALSE}
+rpart.plot(wheelan_tree, type = 5)
+```
+
+Consider the diagram on page 83 of the Naked Statistics chapter that you read at the beginning of this module. This diagram shows the drug approval process from investment to pay off. At each node of the graph, there are two possibilities: first, you may or may not develop a drug that cures a particular disease. Next, even if the drug works, it may or may not get approved. And even if it gets approved, it may or may not make it to the market. At each branch, there are two possibilities with estimated probabilities (note: how do we estimate these probabilities in practice?). All of the branches lead to 5 possible outcomes, with different pay-offs. Using what we know about all of the possibilities, all of their probabilities, and the potential payoffs, we can estimate what is called “expected value”. [walk through expected value calculation]. This value represents the average amount of money we would expect to make, if we invested in a lot of drugs, that all went through this same process independently. 
+
+Question to think about: even though the expected average pay-off is $4,225,000, which is more than 4 times the original investment, would you want to make this investment for any single drug? Why or why not?
+
+Now that we’ve made this calculation empirically, it might be helpful to simulate it in R! https://a3sr.shinyapps.io/Drug 
+
+Week 9 Video 1
+Let’s now return to the example that you read about last week (Wheelan, chapter 5):
+In 1981, Schlitz brewing company, now defunct but at one time the largest beer producer in the US, ran a bold advertising campaign. During the Super Bowl, Schlitz ran a live blind taste test against one of its competitors, Michelob. 100 Michelob drinkers participated in the taste test, which aired LIVE. The advertisement slot itself cost a lot of money. Schlitz could have just run a funny ad involving puppies on the beach, so why take a risk with a taste test that could conceivably have gone badly. How could Schlitz have been so confident that their beer would be preferred? 
+
+THINK ABOUT IT QUESTION: What information would you need to know to advise the Schlitz brewing company about running such an ad? (please take a few minutes before continuing on, to try to list this information on your own).
+
+As discussed in the book, some things we would need to know are:
+Intended sample size for taste test
+Actual proportion of Michelob drinkers who would prefer Schlitz in a blind taste test
+Acceptable outcome of live taste test for promoting Schlitz beer
+Rules of mathematical probability
+
+Run and discuss simulation in Shiny: https://a3sr.shinyapps.io/Schlitz/
+Week 10 Reading 1
+In the last two weeks, we’ve explored the concept of expected value. As you may have noticed, expected value can be very useful for making decisions, but it does not tell the whole story. In the college majors example, expected career earnings for each possible major were only useful in describing what happens on average, for a lot of people going through the job market. However, we still had a lot of uncertainty about what would happen to any single individual who pursued a career in acting or accounting. Similarly, we would not have been as confident running the Schlitz commercial with a sample of 10.
+
+This brings us to one of the most important concepts in probability and statistics: the “law of large numbers”. Random variables are by definition, random, so we cannot predict any single outcome -- we can only say how often we expect a particular outcome to occur if we observe a lot of data. Thus, you might see how expected value is particularly useful in situations where the same process gets repeated many times. In the airplane overbooking example, there may be a reasonable probability that airlines will lose money on any given flight. But airlines can make probability calculations to ensure that they earn money than they lose overall. 
+
+The usefulness of the law of large numbers is particularly evident in gambling. Many people go to casinos and play the same games over and over again, which each (theoretically) have consistent probabilities of winning or losing. One person may win and another may lose, but if a lot of people play a game of roulette (for example), casinos can estimate approximately what proportion will win and how many will lose. And, the more games that are played, the more confident the casino can be about their predicted proportion of wins/losses.
+
+As you’ve probably heard, casinos are designed such that the house always has the advantage. In other words, every casino game is designed such that the casino always has a slightly better chance at winning than the player. That doesn’t mean that players can’t win individual games, it just means that, assuming enough people play the game, the casino will almost surely win more games than all the individual players. 
+
+This construct tempts us to believe that we can cheat the system. There is a long and interesting history of people trying to figure out betting strategies that will give them back the advantage. The Martingale betting strategy is one example. Please read the following article to learn more about it! https://www.roulettesites.org/strategies/martingale/ 
+
+Week 10 Reading 2
+As a final example of how we can use probabilistic thinking to inform betting decisions, let’s consider March Madness. March Madness is a basketball tournament, where 64 teams compete. In the first round, 32 games are played. The winners of those games then play each other in the 16 second round games. This continues until a single team is named victorious. Every year, people make bets on which teams they think will win each match-up. Data from regular season games can be used to estimate the probability of any team winning a particular match-up, and this information is readily available to fans. Yet, despite the wealth of data that is available to make game predictions, no one has ever correctly predicted all of the sequential game winners in the tournament. In fact, only one person has ever predicted the first two rounds perfectly (this happened in 2019!). How is this possible? In order to learn more about the complexities of choosing a March Madness bracket, please read the following article: https://www.scientificamerican.com/article/how-much-math-do-you-need-to-win-your-march-madness-pool/ 
+
+Week 10 Video 1
+Now that you know a little more about March Madness, let’s just consider the probability of predicting the entire first round correctly. To start, we will (incorrectly) assume that every team has a 50% chance of winning their first round game. In this case, we have a 50% chance of guessing the correct winning team. Given that there are 32 games in the first round, how could we calculate the probability of predicting them all correctly? [walk through calculation, drawing a tree diagram, similar to those in the first two weeks of the module]
+
+<!--chapter:end:03-makemoney.Rmd-->
+
+# Is the System Stacked Against You?
+
+At this point in the course, you’ve seen how variance in outcomes can be understood in terms of random, or noisy, statistical processes. If you bet on red at the roulette table five times in a row, and if you lose five times, that doesn’t mean the roulette wheel isn’t fair. That just could be bad luck (for you; possibly good luck for someone else who betted on black). Of course, the casino odds are stacked against you in the long run, since the casino always has an edge. For example, bets on red or black have even odds, but there are two out of 38 possible roulette outcomes in which neither black nor red will win. Now, in principle everyone knows that this is how casinos work, and indeed why they are able to stay in business. So if you end up losing more often than you win in a casino, you can only blame yourself.
+
+Sometimes, though, outcomes are distributed in a certain way that causes us to question whether everything is indeed working as it is supposed to be, at least according to the rules of probability. In particular, when outcomes differ for some group or groups of people, we sometimes worry if the system is fair. You may have heard people say, the system isn’t fair.
+Well, sometimes it isn’t, we might be able to identify an issue problem and even fix it. For this to work, though, we need to understand what outcomes are fair outcomes, and this turns out to be a complicated issue!
+
+Let’s start with a simple example, though, to remind ourselves about sampling and differences. We’ll walk through this example very naively on purposes. Suppose we take 100 NBA basketball players as a sample and a 100 NYU graduate students as another sample, and now we look at the distribution of heights in each of our samples. We’ll look at male graduate students, since the NBA players are also males [show actual data here]. I don’t think any of you are surprised to see that there is a big difference here; that NBA players are, on average, 10 inches taller in fact. If someone asked you, what are the chances of a difference in samples like this occuring by chance, you can actually calculate an answer to that question. Food for thought: What would you need to know as inputs to that estimation?
+
+Pause the video to think about the question and pick an answer: 
+Which of the following would you need to estimate the chances of the difference in height occuring by chance?
+Group sample means
+Group sample variances
+Sample size of groups
+1 & 2 only
+2 & 3 only
+1 & 3 only
+1, 2, & 3
+
+Now, suppose we accept that NBA players are systematically taller. Could it be that the NBA makes people taller? Perhaps there is special practice or vitamin supplements that NBA players use that causes them to grow 10 inches? Well, we could rule this out if, for example, we examined the heights of NBA players just BEFORE they became NBA players. If we did that, we would see that they were already tall. Now, of course we knew this, but again, it’s informative to reason through this simple example as though we didn’t necessarily know. Another possibility, then, is that NBA players are selected for their being tall. Okay, let’s suppose we convince ourselves that it is true. The question we might now ask, though, is: is that fair? We’re saying that short people have a low likelihood of being hired as NBA players. (Note that we’re not suggesting that being tall is sufficient to become an NBA player, but it does seem to be necessary). What do you think? Pause the video again to respond to the following:
+
+Which of these statements do you most agree with?
+It is not fair; everyone should have an equal chance to play in the NBA
+It is not fair; shorter people, who are otherwise talented in basketball, should have an equal chance to play in the NBA
+It is fair; tall players perform better because their height provides an advantage in the game of basketball 
+It is fair; tall players look better on the court than short players
+It is neither fair nor unfair; it just is.
+
+While I’m not saying it isn’t possible to defend different answers to this particular question of fairness, most of us agree that professional sports are by design selective on performance. In a game like basketball, height provides an advantage which, along with athleticism, makes a player perform better. We might even draw this set of claims this way:
+
+Athleticism → 
+Height → Performance →  NBA
+
+Week 11 Video 2
+It makes sense that players in the NBA would be selected for height, since height impacts performance in basketball. So professional basketball players are more likely to be tall. What if I told you that professional hockey players are more likely to be….born in the first three months of the calendar year. What? Yes, you heard that right. 
+
+Okay, let’s work through this idea similarly to the way we did when sampling from the NBA.
+But first, we need to know: in which months are babies born…
+https://www.cdc.gov/nchs/fastats/births.htm
+
+Let’s take a look at this table of births by month in the United States from 2017. Let’s concentrate on the number of births alone and in particular on the first four months of the year, January, Feb, March, and April. Pause the video to consider the following question: 
+
+What do you think is the most plausible explanation for the variation in the the number of births in each of these four months
+There is chance variation is any random process, such as childbirth
+Odd numbered months are more likely to have higher birth numbers
+Births are likely to go up and down in month-long cycles 
+The number of days in each of the first four months of 2017* is 31, 28, 31, 30
+(*) Not a leap year
+Answer key:
+While true, the size of the variation between these months is much too large to be explained by chance alone. Sample size is key here! Indeed if January and February were each equally likely, and we observed only 600 births in total instead of 600,000, then the chance of observing 313 or more births in one month or the other is actually about 27%. That is, there’s about a 13.5% chance or January having more than 313 births and a 13.5% chance of it having fewer than 287 births (the rest going to February). However, even if we just up the sample to 6000, the chance of observing more than 3130 births in one month or the other goes down to about 0.05%, while for 600,000 births, the chances of a discrepancy this large is a number so small it has no meaningful interpretation. So, in short, chance alone can’t explain it.
+
+No, you probably guessed that the length of each month explains most of this effect. But not ALL of it. If every day of the year were equally likely, we can estimate the number of expected births using 3855500/365 = 10563. How many births would we expect in a month that had 30 days? [pause] Well, for months with 31 days, we would expect 31*10563 = 327453 births (rounding), for months with 28 days, 295764. Notice that the difference is large. Notice also, though, that it’s larger than the observed difference, and that each of the observed monthly birth counts are lower than expected. That must mean that some months get MORE births. And indeed this is true. Just look at July-October
+
+
+
+So, we’ve established that there are more births in the third quarter of the year (July-Sep) than in the first quarter (Jan-Mar). Now that we’ve had a chance to think about what we might expect if there is no bias in birthday months of professional hockey players, it’s time to investigate this in a little more detail.  
+
+Resource: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0057753
+
+<!--chapter:end:04-isthesystemstacked.Rmd-->
+
+`r if (knitr:::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:06-references.Rmd-->
+

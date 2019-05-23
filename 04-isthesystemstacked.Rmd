@@ -7,7 +7,8 @@ Well, sometimes it isn’t, we might be able to identify an issue problem and ev
 
 Let’s start with a simple example, though, to remind ourselves about sampling and differences. We’ll walk through this example very naively on purposes. Suppose we take 100 NBA basketball players as a sample and a 100 NYU graduate students as another sample, and now we look at the distribution of heights in each of our samples. We’ll look at male graduate students, since the NBA players are also males [show actual data here]. I don’t think any of you are surprised to see that there is a big difference here; that NBA players are, on average, 10 inches taller in fact. If someone asked you, what are the chances of a difference in samples like this occuring by chance, you can actually calculate an answer to that question. Food for thought: What would you need to know as inputs to that estimation?
 
-Pause the video to think about the question and pick an answer: Which of the following would you need to estimate the chances of the difference in height occuring by chance?
+Pause the video to think about the question and pick an answer: 
+Which of the following would you need to estimate the chances of the difference in height occuring by chance?
 Group sample means
 Group sample variances
 Sample size of groups

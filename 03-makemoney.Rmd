@@ -1,6 +1,12 @@
 # Will You Make Money?
 
-The development of probability theory is historically linked to attempts to understand games of chance, especially ones in which money was involved (see for example, the optional reading). Sometimes betting money on an uncertain outcome falls under the name of gambling; other times it’s dignified with the name investment.  But regardless of the label, there are smarter and less smart ways to play money games. 
+> No one can win at roulette unless he steals money from the table while the croupier isn’t looking.
+>
+> --- Albert Einstein (possibly)
+
+The development of probability theory is historically linked to attempts to understand games of chance, especially ones in which money was involved (see for example, [here}(http://sites.math.rutgers.edu/~cherlin/History/Papers2000/cheng.html)]. Sometimes betting money on an uncertain outcome falls under the name of gambling; other times it’s dignified with the name investment or "smart business decision." But regardless of the label, there are smarter and less smart ways to play money games. 
+
+## Battle of the Bills {-}
 
 Let’s recall a distinction we made earlier in this course about deterministic and stochastic or random processes. This time, we’ll think about two different bets you make with your friend. In the first bet, you and your friend are debating whether it was Bill Paxton or Bill Pullman in the movie Apollo 13. To make the game interesting, you bet two dollars. You look it up on the internet, and find that it was indeed Paxton. One of you wins. Do you feel the need to check again? Probably not. This particular question, although you may not have known the answer for sure, has only one possible answer.
 
@@ -8,10 +14,34 @@ Now consider another bet, this time for three bucks! You and your friend are wal
 
 We might say that the variable “BPA”, which stands for “which Bill P. starred in Apollo 13?” has a deterministic answer, but the variable “MCCoCAC,” which stands for “mint chocolate chip > cookies and cream?” can take on one of two answers (no ties allowed) depending on whom we ask. Because it is a random or stochastic variable, we have to talk about it using different terms. We might say something like, what proportion of people (in this neighborhood, say) prefer cookies and cream? Or what are the chances that the first person we ask will express that particular preference.
 
-This may all sound like silly bets that are really just games between friends. But people make small and large money bets all the time, in everything from business and life decisions, to recreational games. In this module, we explore probability calculations that inform things like advertising, airplane booking, the job market, and march madness.
+This may all sound like silly bets that are really just games between friends. But people make small and large money bets all the time, in everything from business and life decisions, to recreational games. In this chapter, we explore probability calculations that inform things like advertising, airplane booking, the job market, and march madness.
 
-OPTIONAL READING: http://sites.math.rutgers.edu/~cherlin/History/Papers2000/cheng.html
-Week 7 Video 2
+
+```{r, echo=FALSE}
+
+cure_prob <- c(0.7,0.3)
+approved_prob <- c(0.4, 0.6)
+market_prob <- c(0.1, 0.9)
+
+
+wheelan_cancer <- data.frame(
+   Cure = c(rep("No",700), rep("Yes",300)),
+   Approved = c(rep(NA,700), rep("No",120), rep("Yes",180)),
+   First2Market = c(rep(NA,820), rep("No", 18), rep("Yes",162)),
+   Payout = c(rep(250000,700), rep(0,120), rep(0, 18), rep(25000000,162))
+)
+
+wheelan_tree <- rpart(
+  Payout ~ ., 
+  data = wheelan_cancer, 
+  method = "anova"
+)
+```
+
+```{r, echo=FALSE}
+rpart.plot(wheelan_tree, type = 5)
+```
+
 Consider the diagram on page 83 of the Naked Statistics chapter that you read at the beginning of this module. This diagram shows the drug approval process from investment to pay off. At each node of the graph, there are two possibilities: first, you may or may not develop a drug that cures a particular disease. Next, even if the drug works, it may or may not get approved. And even if it gets approved, it may or may not make it to the market. At each branch, there are two possibilities with estimated probabilities (note: how do we estimate these probabilities in practice?). All of the branches lead to 5 possible outcomes, with different pay-offs. Using what we know about all of the possibilities, all of their probabilities, and the potential payoffs, we can estimate what is called “expected value”. [walk through expected value calculation]. This value represents the average amount of money we would expect to make, if we invested in a lot of drugs, that all went through this same process independently. 
 
 Question to think about: even though the expected average pay-off is $4,225,000, which is more than 4 times the original investment, would you want to make this investment for any single drug? Why or why not?

@@ -1,6 +1,6 @@
 Package: placeholder
 Type: Book
 Title: Does not matter.
-Version: 0.0.1
-Imports: bookdown, dplyr, kableExtra
+Version: 0.0.42
+Imports: bookdown, dplyr, kableExtra, ggplot2, rpart, rpart.plot
 Remotes: rstudio/bookdown

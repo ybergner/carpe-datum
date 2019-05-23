@@ -16,7 +16,7 @@ always_allow_html: yes
 ---
 # Preface {-}
 
-This book is an incomplete draft of a work in progress being developed as lecture notes for an online course. Content is provisional, contingent, and possibly wrong.  
+This book is an incomplete draft of a work in progress being developed as lecture notes for an online course. Content is provisional, contingent, and possibly wrong, but always well intended.
 
 ## Guiding principles in this book {-}
 
@@ -44,17 +44,19 @@ Now problems like these are often used to teach proof technique rather than to e
 
 
 ```{r global_options, R.options=knitr::opts_chunk$set(warning=FALSE, message=FALSE)}
+require(knitr)
+require(kableExtra)
+require(dplyr)
+require(ggplot2)
+require(rpart)
+require(rpart.plot)
 ```   
 
 
 ```{r include=FALSE}
 
-require(knitr)
-require(kableExtra)
-require(dplyr)
-
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'kableExtra', 'dplyr'
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'kableExtra', 'dplyr', 'ggplot2', 'rpart', 'rpart.plot'
 ), 'packages.bib')
 ```

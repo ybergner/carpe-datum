@@ -1,6 +1,10 @@
 # When and How Will You Die?
 
-In our first Big Question, we began to look at individual differences between people or what statisticians call variation within a population. There is considerable variation in health outcomes and human lifespan. In our next Big Question, we ask “when and how will you die?” and “what, if anything, can you do about it?”
+> It is difficult to make predictions, especially about the future. 
+>
+> --- Niels Bohr (probably)
+
+In our first Big Question, we began to look at individual differences between people or what statisticians call variation within a population. If there is no variation---like in the bizarro world where everyone orients their toilet paper in the "under" orientation---then there is nothing to talk about, at least not statistically speaking. There is, however, considerable variation in health outcomes and human lifespan. Lots to talk about there. In our next Big Question, we ask “when and how will you die?” and “what, if anything, can you do about it?”
 
 What kind of question is, “when and how will you die?” Well, according to some of my colleagues, it’s a morbid question. Feelings aside, we might say that it sounds like a prediction question, since it’s about the future. So to explore this big question, we will need to understand what it means in general to make a forecast about some future event. We’ll also find it useful to distinguish between predictions that are or are not explanatory. Most efforts in health sciences attempt to explain relationships between behavioral and genetic factors and health outcomes. In particular, they try to understand causal effects. So in this module, we will try to understand causal explanations more generally.
 
@@ -12,7 +16,7 @@ c) It will definitely rain for some part of the day in some of the city
 d) It may or may not rain anywhere in the city at any point in the day.
 
 
-Read here for an (explanation of what meteorologists PROBABLY mean)[http://wxbrad.com/why-a-50-chance-of-rain-usually-means-a-100-chance-of-confusion/]
+Read here for an [explanation of what meteorologists *probably* mean](http://wxbrad.com/why-a-50-chance-of-rain-usually-means-a-100-chance-of-confusion/)
 
 
 ## Stochastic vs Deterministic variables
