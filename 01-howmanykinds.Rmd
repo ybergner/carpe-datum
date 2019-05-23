@@ -18,7 +18,7 @@ Now, if someone is making what to *them* appears to be a common-sense claim but 
 
 ## Two Kinds of People 
 
-### Categories, counts, and kinds
+### Categories, counts, and kinds {#sec:categories}
 
 "There are two kinds of people... which one are you?" questions have become something of an internet meme, particulary with the categorizations represented graphically or pictorially. There is a whole [blog devoted to them by João Rocha](https://2kindsofpeople.tumblr.com/). The images in Figure \@ref(fig:tp-fig) probably need no explanation, as they concern the great [toilet paper orientation](https://en.wikipedia.org/wiki/Toilet_paper_orientation) debate.
 
@@ -214,7 +214,7 @@ In our regular universe, however, this relationship was not observed. In Table \
 In our bizarro world scenario, one answer completely determines the other. This **deterministic** relationship is one extreme in the spectrum of association/dependence/contingency. At the other extreme, if the two responses are not at all associated/dependent/contingent, then we say that they are **independent**. To say that two responses are independent is to assert that knowing one of them does not give you any information about what the other one might be. This would have been my intuition, at least, about toilet paper and peanut butter. But whether they are independent or mildly associated with one another is an empirical question, which means we should try to answer it with data. In bizarro world, where they were deterministically related, we might reasonably want to know why. Could there a gene that turns on toilet paper orientation and peanut butter preference at the same time? 
 
 
-### Latent Factors and Measurement
+### Latent Factors and Measurement {#sec:factors}
 
 ```{r apps-windows, echo=FALSE, fig.show='hold', fig.cap='Two more two-kinds questions'}
 include_graphics("images/two-two-kinds.jpg")
@@ -451,30 +451,66 @@ Technically speaking, all of the values, including the maximal value of `r round
 We started out this chapter on a quest to answer our first big question: How many kinds of people are there? En route, we have examined both categorical data, such as from two-kinds-of-people questions, and numerical values like poopiness. The toilet paper and peanut butter orientation questions may seem silly and inconsequential to you. I can only imagine what you might think of the poopiness and crappiness dimensions that I completely made up (I admitted it!). However, in the next section, we will see that when it comes to personality psychology, there are real-world analogues of the discrete/categorical and continous/numerical multi-dimensional descriptions of people that we just saw.
 
 
-## Sixteen Personalities (of the MBTI) or Five Factors ?
+## Sixteen Personalities or Five Factors ?
 
 Before you read this section, you might want to go ahead and take one of the personality tests based on 
-the Meyers-Briggs Type Indicator (MBTI) categories and/or the five-factor model of personality. While the MBTI is a commercial product, there are several free alternatives online which will give you the general idea. 
+the Meyers-Briggs Type Indicator (MBTI) categories and/or the five-factor model of personality (also called the Big Five). There is only one "official" MBTI, which is a commercial product. However, there are several free alternatives online which use the same typology classification. There are also several variations of  
 
 > Test yourself:
+>
 > - MBTI-style at [16personalities.com](16personalities.com) or [here](https://openpsychometrics.org/tests/OEJTS/)
 > 
 > - Big Five [here](http://www.personal.psu.edu/~j5j/IPIP/) or [here](https://bigfive-test.com/) or [here](https://openpsychometrics.org/tests/IPIP-BFFM/). [General information about these test items.](https://ipip.ori.org/)
 
+I will only minimially describe the MBTI and the Five Factor Model (FFM, or Big Five) here, in terms of the topics we have been discussing. There are many resources for learning more about these personality tests. Some are referenced under further reading.
 
+### MBTI
 
+The MBTI will categorize people, based on their responses, dichotomously along each of four dimensions, also called "scales." These are:
 
+- Extraversion-Introversion (E-I)
+- Sensation-Intutition (S-N)
+- Thinking-Feeling (T-F)
+- Judging-Perceiving (J-P)
 
-Neuroticism refers to the tendency to experience negative feelings.
-Extraversion is marked by pronounced engagement with the external world.
-Openness to Experience describes a dimension of cognitive style that distinguishes imaginative, creative people from down-to-earth, conventional people.
-Agreeableness reflects individual differences in concern with cooperation and social harmony. Agreeable individuals value getting along with others.
-Conscientiousness concerns the way in which we control, regulate, and direct our impulses.
+Thus there are sixteen possible combinations, for example "INTP". Each person is assigned to one of these sixteen personalities. Many online tests will provide you with a report to help interpret your classification. That is, the four dimensions are understood to come together in some holistic picture of your "type."
 
+### Big Five
 
+The term "Big Five" is a commonly used term for the five-factor model of personality. Based on responses to questionnaires, people are assigned a numerical score along five dimensions (also called scales or factors!)
+
+- Neuroticism refers to the tendency to experience negative feelings.
+- Extraversion is marked by pronounced engagement with the external world.
+- Openness to Experience describes a dimension of cognitive style that distinguishes imaginative, creative people from down-to-earth, conventional people.
+- Agreeableness reflects individual differences in concern with cooperation and social harmony. Agreeable individuals value getting along with others.
+- Conscientiousness concerns the way in which we control, regulate, and direct our impulses.
+
+> Fun fact: both OCEAN and CANOE are mnemonic devices that can help you recall the names of the Big Five dimensions.
+
+Since the results of a Big Five test, such as the IPIP-NEO, are five numbers, you don't get assigned a personality "type" by these tests. Rather, you may be provided with an explanation of what it means to score high (or low) on, say, Extraversion. You may have noticed that extraversion (occasionally spelled "extroversion") appears on both the MBTI and the Big Five.
 
 ### Twenty Questions (about Extraversion)
 
+Suppose, for whatever reason, we want to identify a person's extraversion. We may want either (a) to classify them as extraverted or not (i.e., introverted), or (b) to quantify a degree of extraversion, say on a scale of 0-100. Why not then just pose the question in the following way. In the first case:
+
+A) Choose the one that describes you: Extraverted \ \ \ \ | \ \ \ \ Introverted
+
+or, in the second case, 
+
+B) Identify yourself on the following scale: Extraversion  0 -- + -- + -- + -- + -- 50 -- + -- + -- + -- + -- 100    
+
+Personality tests, such as those linked above, do not use questions like these. Rather, they include many different questions, sometimes twenty or even more, about things like going to parties, making friends, and drawing attention to oneself. 
+
+Why ask twenty questions instead of just one? Recall from the great toilet paper debate (Section \@ref(sec:categories)) that no one ever felt it was necessary to ask twenty questions to know whether you were an over-hanger or an under-hanger. However, when we discussed digitidiness (Section \@ref(sec:factors)), we suspected that two different questions may have both been getting at the same latent factor. The situation here, in the real-life domain of personality testing, is similar. Psychologists believe that extraversion is an underlying factor. Although it may be hard to observe or self-reported directly on extraversion, nevertheless it is an idea that supposedly explains many other kinds of feelings and behaviors that are easier to express. Such as enjoyment or lack thereof in being the center of attention.
+
+The use of indirect evidence such as questionnaire responses to make inferences about psychological traits is the main task of **psychological measurement** or psychometrics. The main challenge of psychometrics is that human responses are "noisy," meaning that you cannot expect a deterministic relationship between how a person feels or acts and how that person will answer a particular question. Another word for this noise is **error**, which comes from the idea that there is a right answer, but we don't always observe it. However you don't have to believe that there is a right answer. You could believe that people are "moving targets" in terms of the space of personality. Or you could believe that answers are sensitive to many other external factors, such as interpretation of the particular choice of words. 
+
+
+
+
+
+
+### What's the point?
 
 
 
