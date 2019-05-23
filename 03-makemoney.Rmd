@@ -4,7 +4,7 @@
 >
 > --- Albert Einstein (possibly)
 
-The development of probability theory is historically linked to attempts to understand games of chance, especially ones in which money was involved (see for example, [here}(http://sites.math.rutgers.edu/~cherlin/History/Papers2000/cheng.html)]. Sometimes betting money on an uncertain outcome falls under the name of gambling; other times it’s dignified with the name investment or "smart business decision." But regardless of the label, there are smarter and less smart ways to play money games. 
+The development of probability theory is historically linked to attempts to understand games of chance, especially ones in which money was involved (see for example, [here](http://sites.math.rutgers.edu/~cherlin/History/Papers2000/cheng.html). Sometimes betting money on an uncertain outcome falls under the name of gambling; other times it’s dignified with the name investment or "smart business decision." But regardless of the label, there are smarter and less smart ways to play money games. 
 
 ## Battle of the Bills {-}
 

@@ -14,7 +14,14 @@ description: "A coursebook."
 always_allow_html: yes
 
 ---
+
 # Preface {-}
+
+
+> "...the most important questions of life, which are for the most part only problems of probability. It may even be said, strictly speaking, that almost all our knowledge is only probabilistic."
+>
+> --- Pierre Simon, Marquis de Laplace
+
 
 This book is an incomplete draft of a work in progress being developed as lecture notes for an online course. Content is provisional, contingent, and possibly wrong, but always well intended.
 
