@@ -94,9 +94,9 @@ Notice that by the time this screenshot was taken, 93 balls had dropped. The vis
 
 Another thing that you will notice if you play around a bit is that as the balls drop, the probabilities change. In the beginning, when the number of samples (balls dropped) is small, the numbers change rapidly and sometimes by a large amount. However, after a couple of hundred samples, the changes are much smaller.
 
-By watching the balls drop on this simulation (which I, for one, find mesmerizing), you may actually be meditating on some profound ideas in statistics. Every time you restart the simulation, you begin the sampling process. Each sample is a **draw** from some distribution of possible life outcomes. Your future life bounces around in this distribution from sample to sample. And in the beginning, at small samples, the distribution seems unstable. For example, if you put in 24 as the current age, the estimated probability of living 40-49 more years fluctuates a lot. However, as you accumulate samples, the shape of the distribution literally comes into view. Moreover as the sample size increases, the distribution becomes more stable. Eventually, if you let it run long enough, it also ends up with the same values.
+By watching the balls drop on this simulation (which I, for one, find mesmerizing), you may actually be meditating on some profound ideas in statistics. Every time you restart the simulation, you begin the sampling process. Each sample is a **draw** from some distribution of possible life outcomes. Your future life bounces around in this distribution from sample to sample. And in the beginning, at small samples, the distribution itself seems unstable. For example, if you put in 24 as the current age and start the simulation in slow mode, the estimated probability of living 40-49 more years fluctuates a lot. However, as you accumulate samples, the shape of the distribution literally comes into view as a pattern among the bars just below the x-axis. Moreover as the sample size increases, the distribution becomes more stable. Eventually, if you let it run long enough, it ends up with the same values, regardless of how it started out.
 
-The Flowing Data visualization is based on data collected in "life tables", which can be found online from the National Center for Health Statistics and also from the Social Security Administration. Different life tables are produced every year, as life expectancy continues to evolve with improvements in health science and nutrition. Figure \@ref(fig:life-duration) plots data for length of life (data for Americans) as of 2010. There is a bar for each age from 0 to 120, and the height of each bar represents a count of deaths at that age per 100,000 people.
+The Flowing Data visualization is based on data collected in "life tables", which can be found online from sources like the National Center for Health Statistics and the Social Security Administration. Different life tables are produced every year, as life expectancy continues to evolve with changes in health science and nutrition. Figure \@ref(fig:life-duration) plots data for length of life (for Americans) as of 2010. There is a bar for each age from 0 to 120, and the height of each bar represents a count of deaths at that age per 100,000 people.
 
 
 ```{r life-duration, echo=FALSE, fig.cap='How long Americans were living in 2010'}
@@ -115,7 +115,11 @@ barplot((lifetableFemale$dx+ lifetableMale$dx)/2, ylab="count / 100000", xlab="a
 ```
 
 
+If you're like me, the first think you notice in Figure \@ref(fig:life-duration) is that little spike at age 0, like a rattle sticking up at the end of a rattle snake's tail. It shows us that roughly 5 out of 1000 babies don't make it to their first birthday. After that, your odds get considerably better.
 
+Another feature that you may detect is that the distribution of age-of-death is not symmetric. It has more of a tail to the left, which is also called a left-skewed distribution. As is well covered in standard texts (e.g., Chapter 2 of OpenIntro Statistics), this means that certain measures of center, such as mean and median age-at-death, may give different answers.
+
+compute mean and median?
 
 
 
