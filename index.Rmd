@@ -18,6 +18,11 @@ always_allow_html: yes
 # Preface {-}
 
 
+
+```{r global_options, R.options=knitr::opts_chunk$set(warning=FALSE, echo=FALSE, message=FALSE)}
+```   
+
+
 > "...the most important questions of life, which are for the most part only problems of probability. It may even be said, strictly speaking, that almost all our knowledge is only probabilistic."
 >
 > --- Pierre Simon, Marquis de Laplace
@@ -49,21 +54,27 @@ An elegant and simple proof can be constructed (hint: by induction), but if you 
 Now problems like these are often used to teach proof technique rather than to encode cute number-facts in memory. And indeed, for training statisticians, a rigorous mathematical presentation is important. But for most users of this book, intuition and understanding is the priority, and the ability to derive formulas is not necessary.
 
 
-
-```{r global_options, R.options=knitr::opts_chunk$set(warning=FALSE, echo=FALSE, message=FALSE)}
-
-```   
-
-
 ```{r include=FALSE}
+
 require(knitr)
 require(kableExtra)
 require(dplyr)
 require(ggplot2)
 require(rpart)
 require(rpart.plot)
+
 # automatically create a bib database for R packages
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'kableExtra', 'dplyr', 'ggplot2', 'rpart', 'rpart.plot'
 ), 'packages.bib')
+```
+
+
+
+```{r xkcd-preamble, echo=FALSE, fig.cap='Hopefully you are in the right place. Credit XKCD  [permalink](https://xkcd.com/1856/)'}
+include_graphics("images/existence_proof_2x.png")
+```
+
+```{r, include=FALSE}
+options(tinytex.verbose = TRUE)
 ```

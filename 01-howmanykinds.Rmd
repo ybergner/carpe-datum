@@ -493,30 +493,31 @@ Since the results of a Big Five test, such as the IPIP-NEO, are five numbers, yo
 
 Suppose, for whatever reason, we want to identify a person's extraversion. We may want either (a) to classify them as extraverted or not (i.e., introverted), or (b) to quantify a degree of extraversion, say on a scale of 0-100. Why not then just pose the question in the following way. In the first case:
 
-A) Choose the one that describes you: Extraverted \ \ \ \ | \ \ \ \ Introverted
+a) Choose the one that describes you: Extraverted \ \ \ \ | \ \ \ \ Introverted
 
 or, in the second case, 
 
-B) Identify yourself on the following scale: Extraversion  0 -- + -- + -- + -- + -- 50 -- + -- + -- + -- + -- 100    
+b) Identify yourself on the following scale: Extraversion  0 -- + -- + -- + -- + -- 50 -- + -- + -- + -- + -- 100    
 
-Personality tests, such as those linked above, do not use questions like these. Rather, they include many different questions, sometimes twenty or even more, about things like going to parties, making friends, and drawing attention to oneself. 
+Personality tests, such as those we've discussed above, do not ask questions like these. Rather, they include many different questions, sometimes twenty or even more, about things like going to parties, making friends, and drawing attention to oneself. 
 
-Why ask twenty questions instead of just one? Recall from the great toilet paper debate (Section \@ref(sec:categories)) that no one ever felt it was necessary to ask twenty questions to know whether you were an over-hanger or an under-hanger. However, when we discussed digitidiness (Section \@ref(sec:factors)), we suspected that two different questions may have both been getting at the same latent factor. The situation here, in the real-life domain of personality testing, is similar. Psychologists believe that extraversion is an underlying factor. Although it may be hard to observe or self-reported directly on extraversion, nevertheless it is an idea that supposedly explains many other kinds of feelings and behaviors that are easier to express. Such as enjoyment or lack thereof in being the center of attention.
+Why ask twenty questions instead of just one? Recall from the great toilet paper debate (Section \@ref(sec:categories)) that no one ever felt it was necessary to ask twenty questions to know whether you were an over-hanger or an under-hanger. However, when we discussed digitidiness (Section \@ref(sec:factors)), we suspected that two different questions may have both been getting at the same latent factor. The situation here, in the real-life domain of personality testing, is similar. 
 
-The use of indirect evidence such as questionnaire responses to make inferences about psychological traits is the main task of **psychological measurement** or psychometrics. The main challenge of psychometrics is that human responses are "noisy," meaning that you cannot expect a deterministic relationship between how a person feels or acts and how that person will answer a particular question. Another word for this noise is **error**, which comes from the idea that there is a right answer, but we don't always observe it. However you don't have to believe that there is a right answer. You could believe that people are "moving targets" in terms of the space of personality. Or you could believe that answers are sensitive to many other external factors, such as interpretation of the particular choice of words. 
+Psychologists ~~believe that extraversion is an underlying factor~~ invented the idea of extraversion to explain patterns of behavior, including patterns of responses to questions about how people feel in various situations. Such as enjoyment or lack thereof in being the center of attention. The use of indirect evidence such as questionnaire responses to make inferences about psychological traits is the main task of **psychological measurement** or psychometrics. The main challenge of psychometrics, perhaps even the reason for its existence, is that human beings are noisy. 
 
-
-
-
+Put another way, you cannot expect a deterministic relationships between how a person feels or acts in one situation and how they act in another. An extraverted person is not *always* extraverted. And an extraverted person might not always answer questions about their feelings in the same way. It is hard to observe or even self-report on extraversion directly, because extraversions manifests itself differently at different times and in different contexts. Whether this noise is due to some mysterious internal process, like a coin flip in your brain, or due to many unnaccountable external factors, like whether you slept poorly that day, we can't say. What we can say is that human noisiness manifests itself as **measurement error**.^[The word **error** makes it sounds like there is a right answer, and that tests get it wrong. This is, indeed, one view. However, you don't have to believe that there is a right answer. For example, you can believe that human beings have some amount of inherent unpredictability.] We can also say that, in spite of measurement error, some patterns do remain.
 
 
-### What's the point?
+### But what's the point?
 
+Trying to describe people in terms of kinds or numerical scales is complicated. Why do we even bother? It's tempting to say that we just want to understand ourselves better, and that is certainly a  reasonable answer. Sometimes, though, we want to predict how someone will act in the future, perhaps in a situation that differs from one that they have faced in the past. In that case, we can't exactly use the past to predict the future, unless we do so by making inferences about underlying traits from past behaviors and then predicting how someone with those particular traits would act in a new context. This purpose drives some uses of tests based on the MBTI and the Big Five, for example by employers or career counselors. However, although the MBTI is oftern used for these purposes, one should exercise caution in doing so [@pittenger1993]. You should certainly not assume that all personality tests do an equally good job of providing information for the desired inferences.
+
+According to the standards of the American Psychological Association [@american1999], whenever psychological tests are used for some specific purpose (e.g., employment, admission to a school or hospital, or even in court) there must be a valid argument for the intended purpose of the test scores. This **validation argument** will usually involve many facets, including how consistent the results of the test are, whether it is a fair test for all groups of people, whether test scores really are associated with relevant outcomes in the domain of use, and so on. These arguments, and challenges to them, are all part of validity.
 
 
 ## Still meta after all these pages {-}
 
-I'd like to point out that we still haven't even once asked a question of the form "what proportion of people..." or "what is the probability that a person...?" There's nothing wrong with these questions, and we will have plenty of time to investigate questions of this kind in the remaining chapters about other Big Questions. But to be true to our question about how many kinds of people are there, we didn't need to know all of the specifics. Our discussion has been rather metaphysical, in the sense that we have tried to understand how differences that we observe among people can be expressed in terms of kinds (categories) or numbers.
+I'd like to point out that we still haven't even once asked a question of the form "what proportion of people..." or "what is the probability that a person...?" There's nothing wrong with these questions, and we will have plenty of time to investigate questions of this kind in the remaining chapters about other Big Questions. But to be true to our question about how many kinds of people are there, we didn't need to know all of the specifics. Our discussion has been rather *metaphysical*, in the sense that we have tried to understand how differences that we observe among people can be expressed in terms of kinds (categories) or numbers, which are different *kinds* of data. Whoa.
 
 
 ## Exercises {-}

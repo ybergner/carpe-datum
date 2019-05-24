@@ -4,11 +4,13 @@
 >
 > --- Niels Bohr (probably)
 
-In our first Big Question, we began to look at individual differences between people or what statisticians call variation within a population. If there is no variation---like in the bizarro world where everyone orients their toilet paper in the "under" orientation---then there is nothing to talk about, at least not statistically speaking. There is, however, considerable variation in health outcomes and human lifespan. Lots to talk about there. In our next Big Question, we ask “when and how will you die?” and “what, if anything, can you do about it?”
+In our first Big Question, we began to look at individual differences between people or what statisticians call variation within a population. If there is no variation---like in the bizarro world where everyone orients their toilet paper in the "under" orientation---then there is nothing to talk about, at least not statistically speaking. There is, however, considerable variation in health outcomes and human lifespan. Lots to talk about there. In our next Big Question, we ask "when and how will you die?" and "what, if anything, can you do about it?"
 
-What kind of question is, “when and how will you die?” Well, according to some of my colleagues, it’s a morbid question. Feelings aside, we might say that it sounds like a prediction question, since it’s about the future. So to explore this big question, we will need to understand what it means in general to make a forecast about some future event. We’ll also find it useful to distinguish between predictions that are or are not explanatory. Most efforts in health sciences attempt to explain relationships between behavioral and genetic factors and health outcomes. In particular, they try to understand causal effects. So in this module, we will try to understand causal explanations more generally.
+What kind of question is, "when and how will you die?" Well, according to some of my colleagues, it’s a morbid question. Feelings aside, we might say that it sounds like a prediction question, since it’s about the future. So to explore this big question, we will need to understand what it means in general to make a forecast about some future event. We’ll also find it useful to distinguish between predictions that are or are not explanatory. Most efforts in health sciences attempt to explain relationships between behavioral and genetic factors and health outcomes. In particular, they try to understand causal effects. So in this chpater, we will also try to understand causal explanations more generally.
 
-What does it mean to say there’s a 30% chance of rain tomorrow in New York? Does it mean that it will definitely rain in 30% of the city (say, Brooklyn), but not in the other 30%? Or that it will rain for 30% of the day (say, from 8am-3pm). Here are some possibilities to consider:
+## Not Quite Death, but, um... Rain?
+
+Perhaps its a good idea to warm up, before we face the grim reaper. What does it mean to say there’s a 30% chance of rain tomorrow in New York? Does it mean that it will definitely rain in 30% of the city (say, Brooklyn), but not in the other 30%? Or that it will rain for 30% of the day (say, from 8am-3pm). Here are some possibilities to consider:
 
 a) It will definitely rain in some parts of the city but not in all of them
 b) It will definitely rain for some part of the day in all of the city
@@ -19,7 +21,7 @@ d) It may or may not rain anywhere in the city at any point in the day.
 Read here for an [explanation of what meteorologists *probably* mean](http://wxbrad.com/why-a-50-chance-of-rain-usually-means-a-100-chance-of-confusion/)
 
 
-## Stochastic vs Deterministic variables
+### Stochastic vs Deterministic variables
 
 Sometimes when I say definitely, I mean probably. Like if I say, I'm definitely going to do something about all of this clutter on my desk. But when I really mean business, I say deterministically. It definitely sounds more serious.
 
@@ -28,16 +30,94 @@ Meteorologists---scientists who model the weather---cannot tell us deterministic
 
 ### Ensembles
 
-One way to think about the 30% chance of rain is to imagine that our experience in the world is one possibility in a multiplicity of possible worlds. See, I told you this idea of multiple universes was going to be important!  Imagine that there are 10 possible worlds indistinguishable from ours, and that tomorrow it will in fact rain in 3 of them. The key idea is that we don’t know which one of these possible worlds is the one we are actually experiencing...
+One way to think about the 30% chance of rain is to imagine that our experience in the world is one possibility in a multiplicity of possible worlds. See, I told you this idea of multiple alternate universes was going to be important!  Imagine that there are 10 possible worlds, indistinguishable from ours in terms of the laws of physics, and that tomorrow it will in fact rain in 3 of them. To the great being-who-knows-all-things, which 3 may well be known. However, to us mortals who merely live in the world, we don’t know which one of these possible worlds is the one we live in. Nevertheless we are capable of imagining these different potential outcomes. As you just did.
 
-There is another way to think of 30%. Suppose a meteorologist told you, I’m 30% sure it is going to rain tomorrow. This time, 30% represents a degree of belief. Importantly, the degree of belief is subjective. Here it is attributed to a meteorologist, which might make you take it more seriously than if your Uncle Bob said the same thing (unless Uncle Bob is actually a meteorologist). Anyway, degree of belief is subjective. Which doesn’t mean it’s arbitrary or just a matter of opinion. When it comes to forecasts, some people or some forecasting models are going to be right more often than others. More on that later.
+It didn't have to be 10 worlds, of course. That was arbitrary. If we imagined thirty worlds, it could rain in nine of them, as I've represented in Figure \@ref(fig:thirty-worlds). I did this by making thirty circles and coloring in 9 of them at random. Since I like to pull back the curtain every once in a while, I will even show you the code I use to generate this simple figure.
 
-In the meantime, if we take this forecast of rain seriously, we have decisions to make. It could be whether or not to take an umbrella with us when we leave the house tomorrow, or whether to cancel our plans to have a barbecue outside. These decisions may not seem very high stakes. The worst case scenario is that we get wet. But other decisions we have to make on a daily basis can have more serious consequences for our health or even our life. We often have to make those decisions based on [partial, subjective, probabilistic] information...
+```{r thirty-worlds, echo=TRUE, fig.cap='Rain (filled, blue dots) in 9 out of 30 possible worlds. It does not rain (hollow circles) in the other worlds.', fig.height=3}
+
+norain <- cbind(rep(1:10,3), rep(1:3, each=10))  # start with a 10 x 3 grid of points
+rainworlds <- norain[sample(1:nrow(norain), 9),]  # choose (sample) nine at random, using the sample() function in R
+plot(norain, xlab="", ylab="", ylim = c(1,3), axes = FALSE, asp = 1) # plot the points
+points(rainworlds, pch=19, col="lightblue") # color in the nine
+```
+
+
+### Degree of belief
+
+There is another way to think about 30% as a probability. Suppose a meteorologist said to you, I’m 30% sure it is going to rain tomorrow. And you say back, "Oh, you mean that, say there are really 1000 alternate universes out there, that in roughly 300 of them, it will rain tomorrow?" And the meteorologist says, "I have no idea what you're talking about. There is only one universe, and I'm not totally sure what will happen tomorrow, but I put the chances of rain at 30% *[walks away slowly towards the door]*."
+
+For your meteorologist friend, 30% represents a degree of belief. Importantly, the degree of belief is subjective. Here it is attributed to a meteorologist, which might make you take it more seriously than if your Uncle Bob said the same thing (unless Uncle Bob is actually a meteorologist). Anyway, degree of belief is subjective. Which doesn’t mean it’s arbitrary or just a matter of opinion. When it comes to forecasts, some people or some forecasting models are going to be right more often than others. More on that later.
+
+
+### Decisions
+
+
+Aside from subjectivity, which is a thorny topic among statisticians, there is really no *practical* difference between the interpretation of 30% probability as a frequency of occurrence in an ensemble of possible worlds or as a degree of belief about this world. It won't change what you do about it.
+
+If you take this forecast of rain seriously, you have decisions to make. It could be whether or not to take an umbrella with you when you leave the house tomorrow, or whether to cancel your plans to have a barbecue outside. These decisions may not seem very high stakes. The worst case scenario is that you (and others at your barbecue) get wet. But other decisions you have to make on a daily basis can have more serious consequences for your health or even your life. You often have to make those decisions based on probabilistic and maybe subjective information.
+
+
+## Death
+
+End of warm-up. It's time to talk about when you will die.
+
+I highly recommend this data visualization called [Years You Have Left to Live, Probably](https://flowingdata.com/2015/09/23/years-you-have-left-to-live-probably/). Here is a screenshot, although it's not nearly as interesting when you can't interact with the simulation and watch the little balls drop.
+
+```{r years-screen, out.width='90%', fig.cap='Screenshot of interactive data visualization'}
+include_graphics("images/YYHLTLScreenshot1.png")
+```
+
+
+**REMOVE BEFORE FINAL I've attempted to embed the actual javascript widget here, but it isn't working.**
+```{r years-frame, fig.cap='Interactive data visualization', screenshot.opts=list(delay=20,zoom=2), dev='png', cache=TRUE, fig.align='center', fig.height=6}
+include_url("https://flowingdata.com/projects/2015/life/")
+```
+
+```{r years-frame2, fig.cap='Interactive data visualization 2', fig.align='center', fig.height=6}
+include_app("https://flowingdata.com/projects/2015/life/")
+```
+
+This visualization does a number of things. The most salient feature is probably the dropping balls. Each one represents a possible future outcome. This is exactly like an ensemble of alternate universes. As you watch the balls drop, you think to yourself, "ah, nice, I lived to be 92" and then moments later "ooh, harsh! I died at 39!" 
+
+As the simulation runs, it also accumulates data in bins at the bottom, labeled "0 to 9", "10 to 19", and so on. Remember that these bins represent ranges of years-you-have-left-to-live, not age-at-death. This may be confusing, because age-at-death is indeed what is shown along the x-axis of the figure. In the screenshot, the simulation has been running for a little while, so that the following counts have been accumulated.
+
+```{r}
+bins <- c("0 to 9", "10 to 19", "20 to 29", "30 to 39", "40 to 49", "50 or more")
+counts <- c(1,1,3,3,13,72)
+kable(data.frame(bin=bins, counts=counts), booktabs=TRUE) %>%  kable_styling(bootstrap_options = "striped", full_width = F)
+
+
+```
+Notice that 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Conditional Probabilities
+
+## Bayes Rule with disease
 
 
 ## Causality
 
-Does eating meat cause heart disease? Does smoking cause lung cancer? What does it mean to say A causes B? First of all, this may sound like a philosophical question, and indeed the philosopher David Hume shed some important light on the question of how we conceive of causation. But this is a course on probabilistic thinking, not philosophy. So we are going to take a more pragmatic approach and focus on how we use the concept of causation in everyday life. Nevertheless, it helps to first recall our distinction between deterministic and stochastic processes. If I hit a porcelain tea cup hard with hammer and the tea cup breaks, we can safely say that hitting the teacup with a hammer caused the cup to break. We don’t really feel the need to say that if you hit a teacup hard with a hammer, there is a 99.9997% chance that it will break. Even if that’s actually true. And we don’t feel the need to define “hard” in this case either. We use an example like a teacup and hammer when we want to focus on the big picture and not the details. And the big picture here says that hitting a teacup with a hammer deterministically causes the teacup to break. If we don’t hit In the case of the physics of hammers and teacups, we feel that we know this much is true. 
+Does eating meat cause heart disease? Does smoking cause lung cancer? What does it mean to say A causes B? First of all, this may sound like a philosophical question, and indeed the philosopher David Hume shed some important light on the question of how we conceive of causation. But this is a course on probabilistic thinking, not philosophy. So we are going to take a more pragmatic approach and focus on how we use the concept of causation in everyday life. Nevertheless, it helps to first recall our distinction between deterministic and stochastic processes. If I hit a porcelain tea cup hard with hammer and the tea cup breaks, we can safely say that hitting the teacup with a hammer caused the cup to break. We don’t really feel the need to say that if you hit a teacup hard with a hammer, there is a 99.9997% chance that it will break. Even if that’s actually true. And we don’t feel the need to define "hard" in this case either. We use an example like a teacup and hammer when we want to focus on the big picture and not the details. And the big picture here says that hitting a teacup with a hammer deterministically causes the teacup to break. If we don’t hit In the case of the physics of hammers and teacups, we feel that we know this much is true. 
 
 What about buying a lottery ticket? Does buying a lottery ticket cause one to win the lottery? Well, you certainly are not guaranteed to win the lottery if you buy a ticket. In fact, your chances will be very low. But you can’t possibly win if you don’t buy a ticket. So, strictly speaking, buying a ticket or not does influence the probability of buying a ticket.
 
