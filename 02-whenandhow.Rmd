@@ -69,14 +69,15 @@ include_graphics("images/YYHLTLScreenshot1.png")
 ```
 
 
-**REMOVE BEFORE FINAL I've attempted to embed the actual javascript widget here, but it isn't working.**
-```{r years-frame, fig.cap='Interactive data visualization', screenshot.opts=list(delay=20,zoom=2), dev='png', cache=TRUE, fig.align='center', fig.height=6}
-include_url("https://flowingdata.com/projects/2015/life/")
-```
+<!-- **REMOVE BEFORE FINAL I've attempted to embed the actual javascript widget here, but it isn't working.** -->
+<!-- ```{r years-frame, fig.cap='Interactive data visualization', screenshot.opts=list(delay=20,zoom=2), dev='png', cache=TRUE, fig.align='center', fig.height=6} -->
+<!-- include_url("https://flowingdata.com/projects/2015/life/") -->
+<!-- ``` -->
 
-```{r years-frame2, fig.cap='Interactive data visualization 2', fig.align='center', fig.height=6}
-include_app("https://flowingdata.com/projects/2015/life/")
-```
+<!-- ```{r years-frame2, fig.cap='Interactive data visualization 2', fig.align='center', fig.height=6} -->
+<!-- include_app("https://flowingdata.com/projects/2015/life/") -->
+<!-- ``` -->
+
 
 This visualization does a number of things. The most salient feature is probably the dropping balls. Each one represents a possible future outcome. This is exactly like an ensemble of alternate universes. As you watch the balls drop, you think to yourself, "ah, nice, I lived to be 92" and then moments later "ooh, harsh! I died at 39!" 
 
@@ -89,7 +90,23 @@ kable(data.frame(bin=bins, counts=counts), booktabs=TRUE) %>%  kable_styling(boo
 
 
 ```
-Notice that 
+Notice that by the time this screenshot was taken, 93 balls had dropped. The visualization took the counts, converted them into proportions of total counts (e.g., 72/93 = 0.774; 3/93 = 0.33), and represented each of these proportions as a probability, expressed as a percent (e.g., 77%; 3%).
+
+Another thing that you will notice if you play around a bit is that as the balls drop, the probabilities change. In the beginning, when the number of samples (balls dropped) is small, the numbers change rapidly and sometimes by a large amount. However, after a couple of hundred samples, the changes are much smaller.
+
+By watching the balls drop on this simulation (which I, for one, find mesmerizing), you may actually be meditating on some profound ideas in statistics. Every time you restart the simulation, you begin the sampling process. Each sample is a **draw** from some distribution of possible life outcomes. Your future life bounces around in this distribution from sample to sample. And in the beginning, at small samples, the distribution seems unstable. For example, if you put in 24 as the current age, the estimated probability of living 40-49 more years fluctuates a lot. However, as you accumulate samples, the shape of the distribution literally comes into view. Moreover as the sample size increases, the distribution becomes more stable. Eventually, if you let it run long enough, it also ends up with the same values.
+
+The Flowing Data visualization is based on data collected in "life tables", which can be found online from the National Center for Health Statistics and also from the Social Security Administration.
+
+
+```{r}
+
+lifetableNCHS <- read.csv("data/lifetable.csv")
+lifetableMale <- read.csv("data/lifetable-male-2010.csv")
+lifetableFemale <- read.csv("data/lifetable-female-2010.csv")
+barplot((lifetableFemale$dx+ lifetableMale$dx)/2)
+```
+
 
 
 
