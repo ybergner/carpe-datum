@@ -36,9 +36,9 @@ This book is an incomplete draft of a work in progress being developed as lectur
 
 Because the presentation of topics in this book is question-driven rather than method-driven, this book has some idiosyncracies. Some topics that might be considered rather basic may be omitted, while some topics that are typically considered as advanced will get (a simplified) treatment.
 
-### Statistical properties will be demonstrated, rather than derived {-}
+### No proofs {-}
 
-As a mathematical subject, statistics is often taught with derivation and proof using definitions, simple assumptions, and the logic of algebra and calculus. Mathematical formulas are the standard languge of statistics. This approach to learning is powerful if the math supports rather than gets in the way of understanding. However, for many learners, the math obscures rather than clarifies, and another way--using demonstrations and simulations--might enable understanding, as Johnson & Johnson once said, without tears.
+As a mathematical subject, statistics is often taught with derivation and proof using definitions, simple assumptions, and the logic of algebra and calculus. Mathematical formulas are the standard language of statistics. This approach to learning is powerful if the math supports rather than gets in the way of understanding. However, for many learners, the math obscures rather than clarifies, and another way--using demonstrations and simulations--might enable understanding, as Johnson & Johnson once said, without tears.
 
 Now, a demonstration is not a proof. That said, repeated experiments can be convincing even in the absence of proof. For example, I can prove to you that if you take any whole number (e.g., 1, 2, 3, 7, 21, 118, 8675309), multiply it by 9, and then sum the individual digits of that resulting product, that the sum itself will be a multiple of 9 
 
@@ -71,7 +71,7 @@ knitr::write_bib(c(
 
 
 
-```{r xkcd-preamble, echo=FALSE, fig.cap='Hopefully you are in the right place. Credit XKCD  [permalink](https://xkcd.com/1856/)'}
+```{r xkcd-preamble, echo=FALSE, fig.cap='Hopefully you are in the right place. Credit   [xkcd.com](https://xkcd.com/1856/)'}
 include_graphics("images/existence_proof_2x.png")
 ```
 
