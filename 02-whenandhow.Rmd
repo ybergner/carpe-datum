@@ -21,11 +21,11 @@ d) It may or may not rain anywhere in the city at any point in the day.
 Read here for an [explanation of what meteorologists *probably* mean](http://wxbrad.com/why-a-50-chance-of-rain-usually-means-a-100-chance-of-confusion/)
 
 
-### Stochastic vs Deterministic variables
+### Stochastic vs Deterministic relationships
 
-Sometimes when I say definitely, I mean probably. Like if I say, I'm definitely going to do something about all of this clutter on my desk. But when I really mean business, I say deterministically. It definitely sounds more serious.
+> Sometimes when I say definitely, I mean probably. Like if I say, I'm definitely going to do something about all of this clutter on my desk. But when I really mean business, I say deterministically. It definitely sounds more serious.
 
-Meteorologists---scientists who model the weather---cannot tell us deterministically about weather events. A **deterministic** description of an event would be something like, if I let go of the umbrella I am holding in my hand, it will fall to the ground. If A then B. No exceptions. Weather events are **stochastic**. They have an element of randomness, like tossing a coin or rolling a die. So, just as we can say that a coin has a 50% chance of coming up heads---assuming it is a fair coin---we can make statements like there is a 30% chance that it will rain tomorrow. 
+Meteorologists---scientists who model the weather---cannot tell us deterministically about weather events. A **deterministic** description of an event would be something like, if I let go of the umbrella I am holding in my hand, it will fall to the ground. If A then B. No exceptions. Weather events are **stochastic**. They have an element of randomness, like tossing a coin or rolling a die. So, just as we can say that a coin has a 50% chance of coming up heads---assuming it is a fair coin---we can make statements like there is a 30% chance that it will rain tomorrow. Stochastic is another word for random, but I prefer it because the word "random" is often used casually to mean weird or unusual (as in, "that's random!") Although we can make only probabilistic statements about random, or stochastic, events, that doesn't mean we can't speak usefully about them. 
 
 
 ### Ensembles
@@ -79,9 +79,9 @@ include_graphics("images/YYHLTLScreenshot1.png")
 <!-- ``` -->
 
 
-This visualization does a number of things. The most salient feature is probably the dropping balls. Each one represents a possible future outcome. This is exactly like an ensemble of alternate universes. As you watch the balls drop, you think to yourself, "ah, nice, I lived to be 92" and then moments later "ooh, harsh! I died at 39!" 
+This visualization does a number of things. The most salient feature is probably the dropping balls. Each one represents a possible future outcome. This is exactly like an ensemble of alternate universes. As you watch the balls drop, you think to yourself, "ah, nice, I lived to be 92" and then moments later, "ooh, harsh! I died at 39!" 
 
-As the simulation runs, it also accumulates data in bins at the bottom, labeled "0 to 9", "10 to 19", and so on. Remember that these bins represent ranges of years-you-have-left-to-live, not age-at-death. This may be confusing, because age-at-death is indeed what is shown along the x-axis of the figure. Also, right below the x-axis, and corresponding to age-at-death is a set of gray bars that grow as the balls drop. In the screenshot, the simulation has been running for a little while, so that the following counts have been accumulated.
+As the simulation runs, it also accumulates data in bins at the bottom, labeled "0 to 9", "10 to 19", and so on. (Recall the discussion of bins, frequency tables, and histograms in Section \@ref(sec:shades).) Note that these bins represent ranges of years-you-have-left-to-live, not age-at-death. This may be confusing, because age-at-death is what is shown along the horizonatal, or x-axis, of the figure. Also, right below the x-axis, and corresponding to age-at-death is a set of gray bars that grow as the balls drop. In the screenshot, the simulation has been running for a little while, so that the following counts have been accumulated.
 
 ```{r}
 bins <- c("0 to 9", "10 to 19", "20 to 29", "30 to 39", "40 to 49", "50 or more")
@@ -94,11 +94,15 @@ Notice that by the time this screenshot was taken, 93 balls had dropped. The vis
 
 Another thing that you will notice if you play around a bit is that as the balls drop, the probabilities change. In the beginning, when the number of samples (balls dropped) is small, the numbers change rapidly and sometimes by a large amount. However, after a couple of hundred samples, the changes are much smaller.
 
-By watching the balls drop on this simulation (which I, for one, find mesmerizing), you may actually be meditating on some profound ideas in statistics. Every time you restart the simulation, you begin the sampling process. Each sample is a **draw** from some distribution of possible life outcomes. Your future life bounces around in this distribution from sample to sample. And in the beginning, at small samples, the distribution itself seems unstable. For example, if you put in 24 as the current age and start the simulation in slow mode, the estimated probability of living 40-49 more years fluctuates a lot. However, as you accumulate samples, the shape of the distribution literally comes into view as a pattern among the gray bars just below the x-axis. As the sample size increases, the probabilities becomes more stable. Eventually, if you let it run long enough, you end up with the same values, regardless of how things started out.
+By watching the balls drop on this simulation (which I, for one, find mesmerizing), you may actually be meditating on some profound ideas in statistics. Every time you restart the simulation, you begin the sampling process. Each sample is a **draw** from some distribution of possible life outcomes. Your future life bounces around in this distribution from sample to sample. And in the beginning, when you have only collected a small number of samples, the distribution itself seems unstable. For example, if you put in 24 as the current age and start the simulation in slow mode, the estimated probability of living 40-49 more years fluctuates a lot. However, as you accumulate samples, the shape of the distribution literally comes into view as a pattern among the gray bars just below the x-axis. As the sample size increases, the probabilities becomes more stable. Eventually, if you let it run long enough, you end up with the same values, regardless of how things started out.
+
+Although we are now talking about probabilities about your remaining years left to live, the interpretation of probabilities is similar to that in our discussion of rain predictions. In the case of rain, there were only two possibilities, rain or no-rain. (A dichotomy!) In the death simulation, there are six bins, each of which represents a range of years. In the case of rain, we understood the meaning of a 30% chance (i.e., probability) of rain by imagining a large number of possible worlds, where it rains in 30% of them. Thus the probability was associated directly with a frequency of something occurring. This is known is as the **frequentist** interpretation of probability. In the case of death, we say you have a 77% chance of living 50+ more years if, in a large number of possible worlds, you live 50+ more years in 77% of them.
+
+You probably realize that we don't get to see all of these alternate universes, even though we can imagine them. Therefore our probability estimates in many cases are based on things that we have observed happen to *other* people. For example, among 100,000 people that we do observe from the moment of birth, suppose 78% of them lived into or past their 70s. We convert that observed frequency into a probability for you. You could say that we treat the other people we observed as alternate-universe versions of you.
 
 ### How does the death (simulation) work?
 
-The Flowing Data visualization is based on data collected in "life tables", which can be found online from sources like the National Center for Health Statistics and the Social Security Administration. Different life tables are produced every year, as life expectancy continues to evolve with changes in health science and nutrition. Figure \@ref(fig:life-duration) plots data for age-at-death (for Americans) as of 2010. There is a bar for each age from 0 to 120, and the height of each bar represents a count of deaths at that age per 100,000 people.
+The Flowing Data animated visualization is based on data collected in "life tables", which can be found online from sources like the National Center for Health Statistics (NCHS) and the Social Security Administration (SSA). Different life tables are produced every year, as life expectancy continues to evolve along with changes in health science and nutrition. Figure \@ref(fig:life-duration) plots data for age-at-death (for Americans) as of 2010. There is a bar for each age from 0 to 120, and the height of each bar represents a count of deaths at that age per 100,000 people.
 
 
 ```{r life-duration, echo=FALSE, fig.cap='How long Americans were living in 2010'}
@@ -124,19 +128,19 @@ Another feature that you may detect is that the distribution of age-at-death is 
 
 So how does age-at-death relate exactly to the years you have left to live? Life tables are a bit of a strange thing. First of all, they are not tables of "raw data" for a sample of 100,000 people. Rather, they represent a summary of data from many more deaths. According to the SSA [source](https://www.ssa.gov/OACT/HistEst/PerLifeTables/LifeTableDefinitions.pdf), "the life table represents a hypothetical cohort of 100,000 persons born at the same instant who experience the rate of mortality represented by qx, the probability that a person age x will die within one year, for each age x throughout their lives."
  
-Most of us don't think about our lives in terms of questions like, are we going to die this year? But that is kind of how the life table works. The life table is a set of numbers---including deaths-at-age-x and expected-years-left-to-live-at-age-x---that are all derived from one initial set of numbers which represent *the probability that a person age x will die within one year*. If you're curious what that initial set of numbers looks like, I've plotted it in Figure \@ref(fig:die-this-year).
+Most of us don't think about our lives in terms of questions like, are we going to die this year? But that is technically how the life table works. The life table is a set of numbers---including deaths-at-age-x and expected-years-left-to-live-at-age-x---that are all derived from one initial set of numbers which represent *the probability that a person age x will die within one year*. If you're curious what that initial set of numbers looks like, I've plotted them in Figure \@ref(fig:die-this-year).
 
-```{r die-this-year, echo=FALSE, fig.cap='stuff'}
+```{r die-this-year, out.width='90%', echo=FALSE, fig.cap='Mortality rate per year of age'}
 
-plot(lifetableFemale$qx, ylab="probability of dying within one year", xlab="age")
+plot(lifetableFemale$qx, ylab="qx = probability of dying within one year", xlab="age")
 
 
 ```
 
 
-Looking at Figure \@ref(fig:die-this-year), you can say that the probability of dying within one year gets higher as you grow older, which comes as a surprise to no one. If you're under 65, say, that probability doesn't even feel that high. It's less than 0.01 or 1%. The probability that you will die *this year* only passes 50% after age 100. That sounds fine!
+Looking at Figure \@ref(fig:die-this-year), you can say that the probability of dying within one year gets higher as you grow older, which comes as a surprise to no one. If you're under 65, say, that probability doesn't even feel that high. It's less than 0.01 or 1%. The probability that you will die *this year* only passes 50% after age 100. That's reassuring, right?
 
-Well, don't get too optimistic. Your chances of dying every year may be small, but every year is another draw. If your chances of dying were 1 out of 2000, then in 2000 universes, you died in one of them.  In the other 1999, you live on to another year, but then you have to press your luck again. This happens every year, and the chances slowly get worse.
+Well, don't get too optimistic. Your chances of dying every year may be small, but every year is another draw from this morbid lottery. If your chances of dying were 1 out of 2000, then in 2000 universes, you died in one of them.  In the other 1999, you live on to another year, but then you have to press your luck again. This happens every year, and the chances slowly get worse.
 
 But what if you wanted to know your chances, at birth, of dying in your 60s, that is between 60-69. For now, we will try to answer this question using only the life table and assuming that we know nothing else about you. The rows of the life table corresponding to this age range are these
 
@@ -146,11 +150,15 @@ kable(lifetableNCHS[61:70,], booktabs=TRUE, row.names = FALSE, caption='Life Tab
 
 ```
 
-This is a lot of numbers. Recall that each qx is the mortality rate for age x, the probability of dying within one year of age x. So should you add up the qx-values for each age in the interval 60 to 69? Maybe pause here to think about this question for a momemnt before reading on.
+This is a lot of numbers. Recall that each qx is the mortality rate for age x, the probability of dying within one year of age x. So should you add up the qx-values for each age in the interval 60 to 69? Maybe pause here to think about this question for a moment before reading on. Here's 30 seconds of thinking music.
 
-You can die at 62 and you can die at 64, but you can't die at both ages. In that sense, it was okay to add the probabilities of these events because they are **disjoint**, i.e., they can't both happen and you are interested in whether any one of them does happen. However, if you add up these probabilities, you will still over-estimate the probability for a different reason. Can you guess what you've left out? You've left out the fact that these probabilities assume that you have already made it to 60, and there's a chance (at birth) that you won't.  
+`r html_tag_audio("media/Jeopardy-theme-song.mp3", type="mp3")`
 
-You want to add up the following probabilities: 
+Here is a partial answer. You can die at 62 and you can die at 64, but you can't die at both ages. In that sense, it was okay to add the probabilities of these events because they are **disjoint**, i.e., they can't both happen and you are interested in whether any one of them does happen. However, if you add up these probabilities, you will still over-estimate the probability for a different reason. Can you guess what you've left out? 
+
+Here is the rest of the answer. You've left out the fact that these probabilities assume that you have already made it to 60, and there's a chance (at birth) that you won't.  
+
+To answer the original question, you want to add up the following probabilities: 
 
 ```
 (Probability of making it to 60 and then dying at 60) + 
@@ -159,12 +167,15 @@ You want to add up the following probabilities:
 (Probability of making it to 69 and then dying at 69) + 
 ```
 
-How do you figure out the probability of making it to 60 without dying? One year at a time... 
+How do you figure out the probability of making it to 60 without dying? It sounds a little bit like a riddle whose answer is "one year at a time." Indeed, to make it to 60 without dying, you need to not die every year for the first 59 years of your life.
 
-Note that in this case you need ALL of the following to be true: NOT dying at 0 AND NOT dying at 1 AND ... NOT dying at 59. The probability of each event (not dying in each year) is independent, and the probability that all of them happen is the product of the individual probabilities.
+Note that, while death can occur in only one year of your life, to survive into your sixties you need ALL of the following to be true: NOT dying at 0 AND NOT dying at 1 AND ... NOT dying at 59. The probability of each event (not dying in each year) is independent, and the probability that all of them happen is the product of the individual probabilities.
 
 ```
-Probability of NOT dying at 0 * Probability of NOT dying at 1 * ... * Probability of NOT dying at 59
+Probability of NOT dying at 0 * 
+Probability of NOT dying at 1 having made it to 1 * 
+... * 
+Probability of NOT dying at 59 having made it to 59
 ```
 
 Since in any given year, you either die or don't die, these two probabilities must add up to 1, so having gotten to any age x, the probability of surviving it is (1-qx). Now we can take the product of (that is, multiply) all of the survival probabilities (1 - qx) for each x from 0 up to age 59. (I will include the code here. The data table I have loaded from the National Center for Health Statistics is called "lifetableNCHS").
@@ -175,7 +186,7 @@ prod(1-lifetableNCHS[1:60,"qx"])
 
 ```
 
-You may notice that this probability had already been calculated for you in the life table, but it had been presented slightly differently as column lx, which is the number of persons (in a cohort of 100,000) surviving to exact age x. If we multiply our rate by 100000, we get 887458.8, which (up to a rounding error) is the same as the number in Table \@ref(tab:survival). 
+You may notice that this probability had already been calculated for you in the life table, but it had been presented slightly differently as column lx, which is the number of persons (in a cohort of 100,000) surviving to exact age x. If we multiply our rate by 100000, we get 88745.8, which (up to a rounding error) is the same as the number in Table \@ref(tab:survival). 
 
 Okay, so now we are ready to complete the probability calculation. Recall we wanted to add up ten things: Probability of making it to 60 and then dying at 60, etc. We know that the probability of making it to age x is the same as the value of column lx in the table divided by 100,000. And the probability of dying is qx. So we need to multiply these two numbers in each row and add them up.
 
@@ -183,7 +194,7 @@ The result is `r round(sum(lifetableNCHS[61:70,"lx"]/100000 * lifetableNCHS[61:7
 
 So, we've figured out how to do that. And we're almost ready to move on, but it is worth noticing something. The product of the value qx and lx in each row of the life table is the value dx, which is the number of deaths at age x (or between x and x+1). So when we multiplied and added before, we were really just adding up the number of deaths (dx) at ages 60-69 and dividing by 100,000. 
 
-Now hopefully that makes sense to you that this should give us the answer we were originally looking for, namely what are the chances, at birth, of dying in your 60s. We could have looked at our hypothetical cohort of 100,000 people all born at the same time and asked: how many of them will die in their 60s. Well, that would be the sum of the dx-values, namely `r sum(lifetableNCHS[61:70,"lx"])`. It wouldn't be a probability, though, unless we divided it by the total number of people (100,000).
+Now hopefully that makes sense to you that this should give us the answer we were originally looking for, namely what are the chances, at birth, of dying in your 60s. We could have looked at our hypothetical cohort of 100,000 people all born at the same time and asked: how many of them will die in their 60s. Well, that would be the sum of the dx-values, namely `r as.integer(sum(lifetableNCHS[61:70,"dx"]))`. It wouldn't be a probability, though, unless we divided it by the total number of people (100,000).
 
 So we've shown that we can answer our particular question two different ways:
 
@@ -194,11 +205,11 @@ or
 B) Computing the overall proportion, out of 100,000 people, who die in their 60s.
 
 
-A = B in this case. An important property of mathematical sciences is that you can arrive at the same answer in different ways. Maybe that sounds like a waste of time, but I view it as one of the most reassuring things about math. If you try something two different ways, and you do *not* get the same answer, then something is probably up. 
+A = B in this case. An important property of mathematical sciences is that you can arrive at the same answer in different ways. Maybe that sounds like a waste of time, but I view it as one of the most reassuring things about math. If you try something two different ways, and you do *not* get the same answer, then something is probably wrong. 
 
 ## Some facts about Probabilities
 
-A lot of books will try to get a lot of basic facts about probability out of the way up front. (See, for example, OpenIntro Stats, chapter 3). There is a sound logic to setting up foundations like that. But in this book, I've taken the strong position that ideas should be driven by questions. So I've tried to reason through the example above without setting up any foundations. Nevertheless it's a good time to recap some of what we established about probabilities.
+A lot of books would have tried to establish some basic facts about probability up front. (See, for example, OpenIntro Stats, chapter 3). There is a sound logic to setting up foundations like that. But in this book, I've taken the strong position that ideas should be driven by questions. So I've tried to reason through the example above without setting up any foundations. Nevertheless it's a good time to recap some of what we established about probabilities. We will also introduce the most basic notation `P(A)` for the probability that event A happens. For example, event A can stand for "you die at age 64" or "it rains in New York tomorrow."
 
 - When possibilities are disjoint, or mutually exclusive, the probability that either one of them happens is the sum
 
@@ -216,22 +227,32 @@ P(A) + P(not A) = 1
 P(not A) = 1 - P(A)
 ```
 
-An example of this was the probability that you do not die at age 0. The last fact we used is 
+An example of this was the probability that you do not die at age 0. We found it by subtracting out the probability that you will die from 1.
 
-- The probability rule for **independent** processes the BOTH occur is the product of the individual probabilities.
+The last fact we used is 
+
+- The probability rule for **independent** events that BOTH occur is the product of the individual probabilities of each event occurring.
 
 ```
 P(A and B) = P(A) * P(B)
 ```
 
-We used that to figure out how you survive by not dying every year. Notice that I've snuck in the word independent (well, I snuck it in boldy, so it wasn't that sneaky). There is an intuitive reason why this is important. 
+We used that to figure out how you survive by not dying every year. Notice that I've snuck in the word independent (well, I snuck it in boldy, so it wasn't that sneaky). There is an intuitive reason why it is important to make a distinction about independent events.
 
-Remember bizarro world where the toilet paper orientation and peanut butter preference were deterministically related, and specifically everyone is either under-chunky or over-smooth? If I told you that 60% of the total population prefers smooth, then what proportion of the total population prefers smooth AND likes to over-hang? Also 60%. What proportion prefers smooth AND under-hangs? 0! 
+In the last chapter, we said that two events (we were talking about responses to questions) are independent if knowing about one of them does not give you any information about what the other one might be. But remember bizarro world where the toilet paper orientation and peanut butter preference were deterministically related, and specifically everyone is either under-chunky or over-smooth? I've reproduced this result in Table \@ref(tab:tpxpb-reprise). If I told you that 53% of the total population prefers smooth, then what proportion of the total population prefers smooth AND likes to over-hang? Also 53%. What proportion prefers smooth AND under-hangs? 0! 
 
-Since, in bizarro world, toilet paper orientation and peanut butter preference are NOT independent,
+
+```{r, 'tpxpb-reprise', echo=FALSE, results='asis'}
+
+kable(alt_xtab2, caption="Bizarro world", booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "bordered", full_width = F)
 
 ```
-P(tp = over and pb = smooth) does NOT equal to P(tp = over) * P(pb = smooth)
+
+In bizarro world, toilet paper orientation and peanut butter preference are NOT independent, because knowing one of them DOES give you information about the other.
+
+```
+P(tp = over AND pb = smooth) does NOT equal to P(tp = over) * P(pb = smooth)
 ```
 
 This will become even more clear in the next section.
@@ -239,82 +260,201 @@ This will become even more clear in the next section.
 
 ## Conditional Probabilities
 
-Recall that we would NOT have gotten the right answer to the probability of dying in your 60s if we added up the mortality rates qx for all ages x in [60-69]. Rather, we had to multiply these numbers first by the probability of living to age x. Another way to say this is that the mortality rate qx was actually a **conditional probability.**
+Recall that we would NOT have gotten the right answer to the probability of dying in your 60s if we added up the mortality rates qx for all ages x in [60-69]. (Exercise: verify this.) Rather, we had to multiply these numbers first by the probability of living to age x. Another way to say this is that the mortality rate qx was actually a **conditional probability.** It was the probability of dying at age x  *on condition that* you have survived to age x. To be absolutely clear, we are measuring x in whole numbers, like birthdays, but we don't mean dying on your xth birthday. Rather, we mean dying anytime between turning age x and turning x+1. We need a special notation to distinguish conditional probabilities. We write,
+
+```
+qx = P(You die at age x | You survived to age x)
+```
+
+and we read this as "qx is the probability that you die at age x given that you survived to age x" or as "qx is the probability that you die at age x conditional on your surviving to age x." These are equivalent, but they differ from
+
+```
+P(You die at age x)
+```
+
+which is the **unconditional** probability that you die at age x. This is also different from 
+
+```
+P(You die at age x AND You survived to age x)
+```
+
+which is called the **joint probablity** of the two events. We calculated exactly this joint probability above when we wanted to add up the probabilities that you die at some point in your 60s. The way we computed the joint probability for each year was by application of this general rule for conditional probabilities
+
+```
+P(A and B) = P(A|B) P(B) 
+```
+
+which we read as "the probability of both A and B happening is equal to the probability of A conditional on B multiplied by the probability of B." Note that this rule *always* holds. That's because what I've called the general rule is equivalently just the definition of conditional probability. For example, I could have written it this way:
+
+```
+P(A|B) = P(A and B) / P(B) 
+```
+
+This is just a rearrangement of the formula, but we have a tendency of seeing whatever is on the left side of an equation as being defined by what is on the right.
+
+As far as death is concerned, the following are all true:
+
+```
+P(die at x AND survived to x) = P(die at x | survived to x) * P(survived to x)
+P(die at x AND survived to x) = qx * P(survived to x)
+
+qx = P(die at x AND survived to x) / P(survived to x)
+```
+
+where in the second line I substituted the mortality rate qx for the conditional probability that defines it. In the last line, you can see how the mortality rate could be estimated from data if you actually observed a whole bunch of people. You would count how many of the die at age, say, 62, and divide that number by the number who survived to age 62. You can also probably see why the following is true:
+
+```
+P(survived to x | die at x) = 1
+```
+
+That is, if you died at 62 then you must have survived to that age. That may seem too obvious for words, but it helps to show clearly that for conditional probabilities, it is not generally true that P(A|B) = P(B|A).
+
+Considering toilet paper in bizarro world, we can see explicitly why the rule for joint probabilities of independent events `P(A and B) = P(A) * P(B)` did not hold. The conditional probability relationship always holds, but independence is a special case. We can see what it is now:
+
+```
+P(A and B) = P(A|B) P(B) = {only in special cases} = P(A) * P(B)
+```
+
+This, when A and B are independent, it must be true that 
+
+```
+P(A|B) = P(A)
+```
+
+which reads as "the probability of A conditional on B is equal to the probability of A (regardless of B)." Another way to say this is the no matter what we know about B, it doesn't tell us anything informative about A. But that was NOT true in bizarro world, where knowing peanut butter preference told us EVERYTHING about toilet paper orientation. If A is the probability that a person is an over-hanger, and B is the probability that they prefer smooth peanut butter, then it is not true that 
+
+```
+P(tp = over | pb = smooth) = P(tp = over) ## NOT TRUE in bizzaro world
+```
+
+which would be the case if these observations were independent. Rather,
+
+```
+P(tp = over | pb = smooth) = 1
+P(tp = over | pb = chunky) = 0
+
+P(tp = over AND pb = smooth) =  P(tp = over | pb = smooth) * P(pb = smooth) = P(pb = smooth)
+
+```
+
+
+## Conditional Death
+
+Earlier I said we would use the life table to answer questions about when you will die assuming nothing else about you. Now, you might be aware that life expectancy is not the same for males and females. Indeed, there are separate life tables for each sex. I've plotted the death column dx from both tables in Figure \@ref(fig:life-durationMF). Females are shown in light green bars, and males using pink. Unfortunately for the males, their mortality rate is higher not only in their later years, but even in their late teens and twenties.
+
+
+```{r life-durationMF, echo=FALSE, fig.cap='Deaths by age for male and female (2010)'}
+
+barplot(lifetableFemale$dx, ylab="death count / 100000", xlab="age", col=rgb(0,1,0,0.2), names.arg=lifetableFemale$x)
+barplot(lifetableMale$dx, col=rgb(1,0,0,0.2), add=T)
+legend("top", c("Female","Male"), fill=c(rgb(0,1,0,0.2),rgb(1,0,0,0.2)))
+
+```
+
+
+Suppose I 
+
+
+### Check your understanding {-}
+
+P(tp = under | pb = smooth) = ?
+P(tp = under | pb = chunky) = ?
+
+Using the 
+
+
 
 
 
 
 ```{r}
 
-sum(lifetableNCHS[61:70,"qx"])
+sum(lifetableNCHS[61:70,"dx"])
 
 ```
 
 
 
+## Bayes Rule
 
-```{r life-durationMF, echo=FALSE, fig.cap='How long Americans were living in 2010'}
+Conditional probabilities may be easy to define, but they are probably not intuitive to most people. Even experts make mistakes when reasoning with conditional probabilities. Consider the following scenario:
 
-barplot(lifetableFemale$dx, ylab="death count / 100000", xlab="age", col=rgb(0,1,0,0.2), names.arg=lifetableFemale$x)
-barplot(lifetableMale$dx, col=rgb(1,0,0,0.2), add=T)
+1% of women at age forty who participate in routine screening have breast cancer. 80% of women with breast cancer will get positive mammograms. 9.6% of women without breast cancer will also get positive mammograms. A woman in this age group had a positive mammography in a routine screening. What is the probability that she actually has breast cancer?
+
+A) 90.1%        
+B) 70.4%        
+C) 28.2%        
+D) 7.8%        
+E) 1.6%
+
+
 
 
 ```
+P(A and B) = P(A|B) P(B) 
+P(A and B) = P(B|A) P(A) 
+
+```
+
+## Bayesian Networks
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-## Bayes Rule with disease
+A whole computational framework known as Bayesian networks has been established to make it easier for computers to help us with these problems. Bayesian networks are named for Thomas Bayes, who also put his stamp on Bayes' rule. 
 
 
 ## Causality
 
-Does eating meat cause heart disease? Does smoking cause lung cancer? What does it mean to say A causes B? First of all, this may sound like a philosophical question, and indeed the philosopher David Hume shed some important light on the question of how we conceive of causation. But this is a course on probabilistic thinking, not philosophy. So we are going to take a more pragmatic approach and focus on how we use the concept of causation in everyday life. Nevertheless, it helps to first recall our distinction between deterministic and stochastic processes. If I hit a porcelain tea cup hard with hammer and the tea cup breaks, we can safely say that hitting the teacup with a hammer caused the cup to break. We don’t really feel the need to say that if you hit a teacup hard with a hammer, there is a 99.9997% chance that it will break. Even if that’s actually true. And we don’t feel the need to define "hard" in this case either. We use an example like a teacup and hammer when we want to focus on the big picture and not the details. And the big picture here says that hitting a teacup with a hammer deterministically causes the teacup to break. If we don’t hit In the case of the physics of hammers and teacups, we feel that we know this much is true. 
+Does eating meat cause heart disease? Does smoking cause lung cancer? What does it mean to say A causes B? First of all, this may sound like a philosophical question, and indeed the philosopher David Hume shed some important light on the question of how we conceive of causation. But this is a book on probabilistic thinking, not philosophy. So we are going to take a more pragmatic approach and focus on how we use the concept of causation in everyday life. Nevertheless, it helps to first recall our distinction between deterministic and stochastic processes. 
 
-What about buying a lottery ticket? Does buying a lottery ticket cause one to win the lottery? Well, you certainly are not guaranteed to win the lottery if you buy a ticket. In fact, your chances will be very low. But you can’t possibly win if you don’t buy a ticket. So, strictly speaking, buying a ticket or not does influence the probability of buying a ticket.
+If I hit a porcelain tea cup hard with hammer and the tea cup breaks, we can safely say that hitting the teacup with a hammer caused the cup to break. We don’t really feel the need to say that if you hit a teacup hard with a hammer, there is a 99.9997% chance that it will break. Even if that’s actually true. And we don’t feel the need to define "hard" in this case either. We use an example like a teacup and hammer when we want to focus on the common-sense big picture and not the details. And the big picture here says that hitting a teacup with a hammer deterministically causes the teacup to break. Let us also assert that if we do not hit the teacup, and it just sits there, then it will not spontaneously break. In the case of the physics of hammers and teacups, we feel that we know this much is true. 
 
-We’ve now seen two examples
+What about buying a lottery ticket? Does buying a lottery ticket cause one to win the lottery? Well, you certainly are not guaranteed to win the lottery if you buy a ticket. (In fact, your chances will be very low. The subject of making money is the next Big Question). But you can’t possibly win if you don’t buy a ticket. So, strictly speaking, buying a ticket does influence the probability of winning.
 
-In the first case (hammer and teacup):
-If A (hammer hits teacup) then definitely B (teacup breaks)
-If not A (hammer does not hit teacup) then definitely not B (teacup does not breaks)
+We’ve now dicussed two examples. In the first case (hammer and teacup):
 
+- If A (hammer hits teacup) then definitely B (teacup breaks)
+- If not A (hammer does not hit teacup) then definitely not B (teacup does not breaks)
 
+In table form:
 
+|   | Teacup breaks | Teacup doesn’t break |
+|---|:-:|:-:|
+| Hammer hits teacup | Always* | Never |
+| Hammer does not hit teacup | Never | Always |
 
-Teacup breaks
-Teacup doesn’t break
-Hammer hits teacup
-Always*
-Never
-Hammer does not hit teacup
-Never*
-Always
-*pretty much; we’re not splitting hairs here.
+\*pretty much; we’re not splitting hairs here.
 
 In the second case (lottery ticket):
-If A (buy lottery ticket) then maybe B (win lottery) and maybe not B (do not win lottery)
-If not A (do not buy lottery ticket) then definitely not B (do not win lottery)
 
-Now, let’s pause for a moment and think about the question we started with: does smoking cause cancer? Does it fit either of these two cases?
+- If A (buy lottery ticket) then maybe B (win lottery) and maybe not B (do not win lottery)
+- If not A (do not buy lottery ticket) then definitely not B (do not win lottery)
+
+|   | Win lottery | Do not win lottery |
+|---|:-:|:-:|
+| Buy lottery ticket | Rarely | Probably |
+| Do not buy ticket | Never | Always |
+
+Now, let’s pause for a moment and think about one of the questions we started with: does smoking cause cancer? Does it fit either of these two cases?
 
 Unfortunately the question about smoking does not. It belongs to a yet another case. 
 
 In the third case (smoking):
-If A (smoke) then maybe B (cancer) and maybe not B (no cancer)
-If not A (do not smoke) then maybe B (cancer) and maybe not B (no cancer)
 
-Now we’re not saying that the chances of cancer are the same whether you smoke or not. That remains an open question so far as our present argument goes. But even thus far, we can see that the smoking causality question, posed this way, invites some more questions.
-How big a difference does there have to be between the cancer rates for smokers and non-smokers for us to be convinced that there is an association between smoking and cancer?
-After all, there are a lot of other factors including behavior and genetic factors
-Why do we believe that the association between smoking and cancer is a causal relationship (specifically, smoking causes cancer)?
+- If A (smoke) then maybe B (cancer) and maybe not B (no cancer)
+- If not A (do not smoke) then maybe B (cancer) and maybe not B (no cancer)
+
+|   | Get cancer | Do not get cancer |
+|---|:-:|:-:|
+| Smoke | Maybe | Maybe |
+| Do not smoke | Maybe | Maybe |
+
+
+Now I’m not saying that the chances of cancer are the same whether you smoke or not. That remains an open question so far as our present argument goes. But even thus far, we can see that the smoking causality question, posed this way, invites some more questions.
+
+How big a difference does there have to be between the cancer rates for smokers and non-smokers for us to be convinced that there is an association between smoking and cancer? And if there is an association between smoking and cancer, what would drive us to call this a causal relationship, to say that smoking causes cancer? Could causality go the other way?
+
+### Things that are not causation
+
+You may have heard the expression, "correlation is not causation." 
+
+

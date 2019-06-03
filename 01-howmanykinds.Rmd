@@ -42,7 +42,7 @@ TPcounts <- as.data.frame(table(binomial_draw), row.names=c("under", "over"))
 
 ```{r tp-table, echo=FALSE}
 ### NOT LATEX COMPATIBLE
-kable(table(theWayIRoll), col.names = c("", "counts"), caption="How people roll", booktabs = TRUE) %>%
+kable(table(theWayIRoll), col.names = c("", "count"), caption="How people roll", booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "striped", full_width = T)
 
 # TPcounts %>% select(counts=Freq) %>%
@@ -51,7 +51,7 @@ kable(table(theWayIRoll), col.names = c("", "counts"), caption="How people roll"
 
 ```
 
-I went ahead and asked `r nump` people in Washington Square Park in New York City which kind of person they were, and the results are shown in Table \@ref(tab:tp-table). This being a book about data science, you might think I'm going to start calculating proportions right away, for example by saying that `r 100*round(prop.table(table(theWayIRoll))["over"],2)`% of New Yorkers are over-hangers. 
+I went ahead and asked `r nump` people in Washington Square Park in New York City which kind of person they were, and the results are shown in Table \@ref(tab:tp-table). This being a book about data science, you might think I'm going to start calculating proportions right away, for example by saying that `r 100*round(prop.table(table(theWayIRoll))["over"],3)`% of New Yorkers are over-hangers. 
 Nope. Although you should be able to figure out that proportion conversion, it is not the point I want to focus on right now. 
 
 That point I want to focus on is that, based on our data, there *are* indeed two kinds of people here. If, for example, everyone in the world were an under-hanger (heaven forbid), then I couldn't very well say that there were two kinds of people in this world. At least not with regard to toilet paper orientation. It would be like if I presented you with the data in Table \@ref(tab:dumb-table). Looking at that, I can't very well convince you that there are two kinds of people.
@@ -59,15 +59,15 @@ That point I want to focus on is that, based on our data, there *are* indeed two
 
 ```{r dumb-table, echo=FALSE}
 ### NOT LATEX COMPATIBLE
-iamaperson <- data.frame(count = c(nump,0), row.names = c("person","not a person"))
-kable(iamaperson, caption="People in Washington Square", booktabs = TRUE) %>%
+iamaperson <- data.frame(count = c(nump,0), row.names = c("human","not human"))
+kable(iamaperson, caption="Kinds of people in Washington Square", booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "striped", full_width = T)
 
 ```
 
-That all seems pretty obvious, in part because I made up a *tautology* in the second example there. Being a person is automatically associated with everyone who can be a *kind of person*. 
+That all seems pretty obvious, in part because I made up a *tautology* in the second example there. Being a human being is automatically associated with everyone who can be a *kind of person*. 
 
-But what if I had gotten exactly the same results for the toilet paper question? What if the data looked like Table \@ref(tab:tp-redux). In this **alternate universe**, everyone I ask in Washington Square is an under_hanger. Yes, it's one of those scary alternate universes, like the Twilight Zone. Anyway, does that mean that there is only one kind of person when it comes to toilet paper orientation? Well...not necessarily. After all, this was just a **sample** of people in Washington Square. It was not the whole **population** of Washington Square, even, let alone New York City, let alone the world.
+But what if I had gotten exactly the same results for the toilet paper question? What if the data looked like Table \@ref(tab:tp-redux). In this **alternate universe**, everyone I ask in Washington Square is an under-hanger. Yes, it's one of those scary alternate universes, like the Twilight Zone. Anyway, does that mean that there is only one kind of person when it comes to toilet paper orientation? Well...not necessarily. After all, this was just a **sample** of people in Washington Square. It was not the whole **population** of Washington Square, even, let alone New York City, let alone the world.
 
 Go ahead and put a pin in that idea. We'll come back to it later. For example, we might want to know how confident we can be about a larger population from a sample. That's kind of a big thing in statistics.
 
@@ -119,13 +119,13 @@ wsq_peeps <- data.frame(roll=theWayIRoll, spread=theWayISpread)
 kable(table(theWayISpread), col.names = c("", "counts"), caption="How people spread", booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "striped", full_width = T)
 ```
-But this second question did not erase the first question. In fact the first few rows of our data from Washington Square look like this. Each row represents one person.
+But this second question did not erase the first question. In fact the first few rows of our data from Washington Square look like this (each row represents one person):
 
 ```{r, echo=FALSE}
 head(wsq_peeps)
 ```
 
-If we count each combination as it occurs--that is, under-chunky, over-chunky, under-smooth, and over-smooth--we get the results shown in Table \@ref(tab:tpxpb). There are four combinations, because we have two questions with two possibilities (dichotomies) for each. Before you read on, it's a good time to ask yourself if you can answer the following questions (answers in the footnote): (a) if there were two questions with three categories each, how many combinations could be observed? (b) if there were three dichotmous questions, how many combinations could be observed?^[(a) 9, (b) 8]
+You may have noticed that among the first six people for whom I have shown data, none of them were both over and smooth. But they exist. In fact, if we count each combination as it occurs--that is, under-chunky, over-chunky, under-smooth, and over-smooth--we get the results shown in Table \@ref(tab:tpxpb). There are four combinations, because we have two questions with two possibilities (dichotomies) for each. Before you read on, it's a good time to ask yourself if you can answer the following questions (answers in the footnote): (a) if there were two questions with three categories each, how many combinations could be observed? (b) if there were three dichotmous questions, how many combinations could be observed?^[(a) 9, (b) 8]
 
 
 ```{r, 'tpxpb', echo=FALSE}
@@ -152,7 +152,7 @@ kable(table(fourWaySpread), col.names = c("", "counts"), caption="PB preference"
 ```
  Consider Table \@ref(tab:newpb) in contrast to \@ref(tab:tpxpb). We've now given people four choices to express their peanut butter preference. In addition to chunky and smooth, they can also choose to say that they hate all peanut butter or don't care. We now have four kinds of people. But since we make the determination of what kind of person you are using just one question, we say that there is one **dimension** (in this case, peanut butter preference) along which people can be divided into four groups. In Table \@ref(tab:tpxpb), there were two dimensions, a dimension of peanut butter and a dimension of toilet paper. Notice that this word, dimension, is used in much the same way as when we refer to geometric space as being two-dimensional (e.g., a drawing on flat sheet) or three-dimensional (e.g., a solid object, or sometimes a drawing that creates the illusion of looking at a solid object.) The three dimensions of space are often labeled something like (x, y, z). Here, our two dimensions could be labeled (pb, tp). The order doesn't matter. To summarize, in Table \@ref(tab:tpxpb), we have two dimensions and four kinds. In Table \@ref(tab:newpb), we have *one* dimension and four kinds.
  
-So far so good: two questions, two dimension, right? Well... maybe. We already saw that if a question does not actually divide people into kinds, because only one answer appears, then it doesn't really count. It is not a dimension. In our contingency table representation, this might look like the left side of Table \@ref(tab:tpxpb-alt). In an alternate universe, no one prefers smooth to chunky. Another way to say it is that the peanut butter question is not **informative**. 
+So far so good: two questions, two dimension, right? Well... maybe. We already saw that if a question does not actually divide people into kinds, because only one answer appears, then it doesn't really count. It is not a dimension. In our contingency table representation, this might look like the left side of Table \@ref(tab:tpxpb-alt). In an alternate universe, no one prefers smooth to chunky. Another way to say it is that the peanut butter question is not **informative** because it has no **variance**. Everyone in our sample is the same.
 
 
 ```{r, 'tpxpb-alt', echo=FALSE, results='asis'}
@@ -211,7 +211,7 @@ kable(list(alt_xtab2, t(alt_xtab2)), caption="Alternate universe (two equivalent
 
 In our regular universe, however, this relationship was not observed. In Table \@ref(tab:tpxpb), all four possible combinations occur. When knowledge about a person's answer to one question provides information about their answer to another question, we say that the two answers are **contingent** upon one another. This is the reason we called the two-way table a contingency table in the first place, although it is still called that even when two answers are not contingent. Go figure. Contingent is another word for **dependent**. To make matters worse, we *also* often say that the two responses are **associated**. 
 
-In our bizarro world scenario, one answer completely determines the other. This **deterministic** relationship is one extreme in the spectrum of association/dependence/contingency. At the other extreme, if the two responses are not at all associated/dependent/contingent, then we say that they are **independent**. To say that two responses are independent is to assert that knowing one of them does not give you any information about what the other one might be. This would have been my intuition, at least, about toilet paper and peanut butter. But whether they are independent or mildly associated with one another is an empirical question, which means we should try to answer it with data. In bizarro world, where they were deterministically related, we might reasonably want to know why. Could there a gene that turns on toilet paper orientation and peanut butter preference at the same time? 
+In our bizarro world scenario, one answer completely determines the other. This **deterministic** relationship is one extreme in the spectrum of association/dependence/contingency. At the other extreme, if the two responses are not at all associated/dependent/contingent, then we say that they are **independent**. To say that two responses are independent is to assert that knowing one of them does not give you any information about what the other one might be. This would have been my intuition, at least, about toilet paper and peanut butter. But whether they are independent or mildly associated with one another is an empirical question, which means we should try to answer it with data. In bizarro world, where they were deterministically related, we might reasonably want to know why. Could there be a gene that turns on toilet paper orientation and peanut butter preference at the same time? 
 
 
 ### Latent Factors and Measurement {#sec:factors}
@@ -239,8 +239,8 @@ Consider some data again, in two possible worlds, shown in Table \@ref(tab:tabsx
 
 tabsxapps <- as.data.frame(matrix(c(21,0,0,19), nrow=2))
 tabsxapps2 <- as.data.frame(matrix(c(16,5,6,13), nrow=2))
-row.names(tabsxapps2) <- row.names(tabsxapps) <- c("tabs","windows")
-colnames(tabsxapps2) <- colnames(tabsxapps) <- c("folders","loose")
+row.names(tabsxapps2) <- row.names(tabsxapps) <- c("tabs","browser")
+colnames(tabsxapps2) <- colnames(tabsxapps) <- c("folders","apps")
 
 kable(list(tabsxapps, tabsxapps2), caption="Possible data for digital tidiness", booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "bordered", full_width = F)
@@ -256,7 +256,7 @@ It might be gong time again: `r html_tag_audio("media/chinese-gong-daniel_simon.
 
 
 <div class="col2">
-**Golda says**: Although digitidiness explains a lot of what we see in our data, it doesn't explain it all. I believe that desktop tidiness and mobile tidiness are different, if related, tendencies For example, when we use mobile phones, we're typically on-the-go and have less time. If we knew more about the people in our sample, we might see that these discrepancies in the organization of apps and tabs actually relate to other aspects of their lives. So, I say there are two dimensions.
+**Golda says**: Although digitidiness explains a lot of what we see in our data, it doesn't explain it all. I believe that desktop tidiness and mobile tidiness are different, if related, tendencies. For example, when we use mobile phones, we're typically on-the-go and have less time. If we knew more about the people in our sample, we might see that these discrepancies in the organization of apps and tabs actually relate to other aspects of their lives. So, I say there are two dimensions.
 
 **Sidney says**: Digitidiness is the only real factor here, but people may not always be consistent in these particular behaviors. Also some people are only sort-of-tidy, and apply this tidiness unevenly but randomly. These two-kinds of people choices don't leave room for shades of gray, so that's what we're seeing in the mixed categories where people are tidy in one environment and not in another. But ultimately there is really just one dimension here.
 </div>
@@ -276,9 +276,11 @@ Although we often use them as **discrete categories**, the words liberal and con
 
 In the great toilet paper debate, we were able to identify two kinds of people based on two possible responses to the question of roll orientation. Two answers; two kinds. If instead of discrete categories, we have a number on a continuous scale, does that mean that there can't be "kinds" of people anymore? To answer this question, we'll need to understand what exactly we're talking about when we characterize people using a continuous scale.
 
-Consider poopiness. Some people are really poopy (close to poopiness = 1), some aren't poopy at all (close to 0), and most are somewhere near the middle of the scale. That's not a very quantitative description. I used the words "some" and "most", but I didn't give you counts like I did in Table \@ref(tab:tp-table) about toilet roll orientation. If I showed you the poopiness data for sample of people, the list would look something like this. 
+Consider poopiness. On a scale where some people are really poopy (close to poopiness = 1), some aren't poopy at all (close to 0), and many are somewhere near the middle. That's not a very quantitative description. I used the words "some" and "most", but I didn't give you counts like I did in Table \@ref(tab:tp-table) about toilet roll orientation. I will try to do that in just a minute. Meanwhile, notice that scale here runs from 0 to 1, which I will also sometimes write as [0,1]. When it comes to height, we have established scales, like inches or centimeters. But when it comes to liberalism or poopiness, the scale does not necessarily refer to something we can see directly. Nevertheless we can use the scale to compare people and to see how a whole bunch of people "measure up." I've set the scale to [0,1], because it is a common scale, but it could have run from 1 to 10, for example, without significantly changing anything in what I'm about to say. 
 
-```{r, echo=FALSE}
+If I showed you the poopiness data for a sample of people, the list would look something like Table \@ref(tab:poopy-counts). As before, in this table each row stands for one person. To protect their identities, everyone is identified only by a number (e.g., 0083), which is shown in the first column. In the second column is each person's poopiness value. 
+
+```{r poopy-counts, echo=FALSE}
 set.seed(101010)
 poopycrappy <- read.csv("data/poopycrappy.csv")
 poopycrappy <- poopycrappy[sample(nrow(poopycrappy)),]
@@ -287,14 +289,34 @@ poopycrappy %>% select(poopiness) %>% round(.,3) %>% head() %>% kable(., booktab
 
 ```
 
-Poopiness is a number, and these data are called **numerical** or **quantitative** as opposed to **categorical**. It's not as easy to make sense of a bunch of decimal values like this as it is to look at simple counts of categories. However, this problem has been solved by using dot plots, stacked dot plots, and histograms, which you can read all about in any standard textbook, for example OpenIntro Statistics, Chapter 2. I'm going to go straight into the histogram, which most likely you've seen before. It's the most commonly used representation for data of this kind. 
+Poopiness is shown as a decimal number. Part of the reason I've used this scale, instead of 1-100, is to emphasize that the data values can be arbitrarily close to one another. Two values may be different by 0.1 or 0.03, or even 0.000027, if we have enough precision in our data to say such a thing. These data are called **numerical** or **quantitative** as opposed to **categorical**. There are actually 148 values in the data set, but I've only shown the first six in Table \@ref(tab:poopy-counts). 
 
-```{r poopy-hist, echo=FALSE, fig.cap='Histogram of Poopiness'}
-h <- hist(poopycrappy$poopiness, main="", breaks=seq(0,1.01,0.05), xlab="poopiness")
+It's not as easy to make sense of a bunch of decimal values like this as it is to look at simple counts of categories (like 17 for chunky, 23 for smooth). However, this sense-making problem has been solved by representing the same data using dot plots, stacked dot plots, frequency tables, and histograms, which you can read all about in any standard textbook (for example OpenIntro Statistics, Chapter 2). I'm going to go straight into the **frequency table** and **histogram**, which you've probably seen before. These are the most commonly used representation for data of this kind. 
+
+Again, it is a bit awkward to count how many people have poopiness value of exactly 0.473. Maybe there is one, maybe none. How would we interpret that answer, anyway? Instead, we can group values into ranges, or "bins", e.g. 0-0.05, 0.05-0.1, 0.1-0.15, etc. and then count how many of our data fall into each bin.^[Technically, each range is a semi-open interval, e.g. (0.1,0.15\], so that any values exactly equal to 0.1 can only be included in one bin and not the ones on either side.] This table of counts is typically called a frequency table. Frequency is just another word for counts.
+
+
+
+```{r poopy-freq, echo=FALSE}
+br = seq(0,1,by=0.05)
+ranges = paste(head(br,-1), br[-1], sep=" - ")
+freq   = hist(poopycrappy$poopiness, breaks=br, plot=FALSE)
+
+tmp <- data.frame(Range = ranges, Frequency = freq$counts)
+kable(tmp, caption="Frequency Table for Poopiness", booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F, position="float_right")
+
 ```
 
-A histogram is a bar plot of counts for poopiness values that fall into certain numerical ranges.
-Consider the range of poopiness values from 0.4-0.45. Our data set has 9 values in this range, so the height of the bar above this range on the x-axis is 9.^[Technically, this range is a semi-open interval, (0.4,0.45\], so that any values exactly equal to 0.45 can only be included in one bin and not the ones on either side.] The y-axis in Figure \@ref(fig:poopy-hist) is labeled "frequency", which is just another word for counts. Some more jargon: the ranges are called "bins" and the numerical values that separate the bins are called "breaks." In Figure \@ref(fig:poopy-hist), the breaks are at increments of 0.05 (e.g., `r head(h$breaks) %>% paste(., collapse =", ")`, ...).
+```{r poopy-hist, echo=FALSE, fig.cap='Histogram of Poopiness'}
+col = c(0,0,0,0,0,0,0,0,rgb(1,0,0,0.2),0,0,0,0,0,0,0,0,0,0,0)
+h <- hist(poopycrappy$poopiness, main="", breaks=seq(0,1.01,0.05), col=col, xlab="poopiness")
+axis(1, at=0.45, labels="")
+```
+
+A histogram is a bar plot of counts for poopiness values that fall into certain numerical ranges. So it's a bar plot of the data in Table \@ref(tab:poopy-freq). But oftentimes you'll just see the histogram without the frequency table.
+
+Consider the range of poopiness values from 0.40-0.45. Our data set has 9 values in this range, as you can see in Table \@ref(tab:poopy-freq), so the height of the bar above this range of values on the x-axis (horizontal axis) is 9. I've colored it in pink only to help you see what I'm referring to. The y-axis in Figure \@ref(fig:poopy-hist) is labeled "Frequency", as in the table. Some more jargon: the numerical values that separate the bins are called "breaks." In Figure \@ref(fig:poopy-hist), the breaks are at increments of 0.05 (e.g., `r head(h$breaks) %>% paste(., collapse =", ")`, ...).
 
 
 > Question: Given that there are 20 possible bins in the histogram in Figure \@ref(fig:poopy-hist), but only `r length(which(h$counts > 0))` of them have non-zero counts, are there 20 kinds of people (in terms of poopiness) or 15 kinds of people?
@@ -312,14 +334,14 @@ hist(poopycrappy$poopiness, main="", breaks=seq(0,1.01,0.5), xlab="poopiness")
 
 It's tempting to take the counts on the right of Figure \@ref(fig:poopy-hist-alt) and declare that there are two kinds of people. After all, this gets us back to familiar territory. Ta-dah!
 
-```{r poopy-two-kinds, echo=FALSE, fig.cap='This is terrible, horrible, no-good, very-bad thing to do.'}
+```{r poopy-two-kinds, echo=FALSE, fig.cap='This is a terrible, horrible, no-good, very-bad thing to do.'}
 h2 <- hist(poopycrappy$poopiness,  breaks=seq(0,1.01,0.5), plot = FALSE)
 barplot(h2$counts, main="Two kinds of people", names.arg=c("not poopy", "poopy"))
 ```
 
 As you can tell, because it says so right in the figure caption, this is terrible, horrible, no-good, very-bad thing to do. Why is it a bad thing to do?
 
-a) The split was made at 0.5 on the poopiness scale, but that is not the average value of poopiness in the data set, which  is closer to 0.57, as can be seen is Figure \@ref(fig:poopy-hist) (or from the "raw" data themselves).
+a) The split was made at 0.5 on the poopiness scale, but that is not the average value of poopiness in the data set, which  is closer to 0.57, as can be seen in Figure \@ref(fig:poopy-hist) (or from the "raw" data themselves).
 b) You should always use at least 5 bins when you have numerical data
 c) Representations of data should communicate honestly about the nature of the data themselves. In this case, poopiness is not a category.
 
@@ -425,7 +447,7 @@ The short answer is that we often find ourselves in need of a classification (pa
 
 Both the California department of motor vehicles and the physician in our scenarios need to make a decision based on imperfect evidence. They want to be able to say that the person's test results show that they are ready to get behind the wheel of a car, in one scenario, or suffering from liver problems in the other. But all they can really do is express this belief using a **probability**.  This probabilistic judgement is based on a mathematical **model** that relates traits like readiness-to-drive or liver-disease to certain test results. Understanding how these models come into existence is one of the learning objectives of this course. 
 
-The term **normal distribution** arose in statistics because the particular bell-shaped distribution occurs so frequently. If poopiness were normally distributed in our sample from before it might like this. 
+The term **normal distribution** arose in statistics because the particular bell-shaped distribution occurs so frequently. If poopiness were normally distributed in our sample from before it might look like this. 
 
 ```{r normal-poopy, echo=FALSE,  fig.cap='Normal poopiness'}
 set.seed(303030)
@@ -469,7 +491,7 @@ I will only minimially describe the MBTI and the Five Factor Model (FFM, or Big 
 The MBTI will categorize people, based on their responses, dichotomously along each of four dimensions, also called "scales." These are:
 
 - Extraversion-Introversion (E-I)
-- Sensation-Intutition (S-N)
+- Sensation-Intuition (S-N)
 - Thinking-Feeling (T-F)
 - Judging-Perceiving (J-P)
 
