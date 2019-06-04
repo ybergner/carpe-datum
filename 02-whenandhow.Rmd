@@ -351,6 +351,14 @@ legend("top", c("Female","Male"), fill=c(rgb(0,1,0,0.2),rgb(1,0,0,0.2)))
 
 ```
 
+```{r}
+
+sum(lifetableNCHS[81:101,"dx"])/sum(lifetableNCHS[,"dx"], na.rm=T)
+
+sum(lifetableFemale[81:120,"dx"])/sum(lifetableFemale[,"dx"])
+sum(lifetableMale[81:120,"dx"])/sum(lifetableMale[,"dx"])
+
+```
 
 Suppose I 
 
