@@ -345,6 +345,7 @@ Earlier I said we would use the life table to answer questions about when you wi
 
 ```{r life-durationMF, echo=FALSE, fig.cap='Deaths by age for male and female (2010)'}
 
+source("cbColors.R")
 col1 <- t_col(cbPalette[3],60)
 col2 <- t_col(cbPalette[2],60)
 
