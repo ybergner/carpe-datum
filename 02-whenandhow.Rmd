@@ -345,9 +345,15 @@ Earlier I said we would use the life table to answer questions about when you wi
 
 ```{r life-durationMF, echo=FALSE, fig.cap='Deaths by age for male and female (2010)'}
 
-barplot(lifetableFemale$dx, ylab="death count / 100000", xlab="age", col=rgb(0,1,0,0.2), names.arg=lifetableFemale$x)
-barplot(lifetableMale$dx, col=rgb(1,0,0,0.2), add=T)
-legend("top", c("Female","Male"), fill=c(rgb(0,1,0,0.2),rgb(1,0,0,0.2)))
+col1 <- t_col(cbPalette[3],60)
+col2 <- t_col(cbPalette[2],60)
+
+# col1 <- t_col(rgb(1,0,0),80)
+# col2 <- t_col(rgb(0,1,0),80)
+
+barplot(lifetableFemale$dx, ylab="death count / 100000", xlab="age", col=col1, names.arg=lifetableFemale$x)
+barplot(lifetableMale$dx, col=col2, add=T)
+legend("top", c("Female","Male"), fill=c(col1,col2))
 
 ```
 
