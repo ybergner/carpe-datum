@@ -40,23 +40,87 @@ Can you confirm Wheelan's claims (a) that for 10 blind tast testers, the probabi
 
 The Schlitz example feels a bit contrived, at least to me, because in the scenario, the Schlitz executives don't seem to really care about the truth. They just care about what will play well to Super Bowl audiences. Nevertheless, the beer taste test is just one example of a procedure in which we sample from a population to make inferences about the whole population.
 
-You saw--using the simulation---that whenever you collect data from a sample, you get slightly different results. In this case, you observe a **sampling distribution** in the observed proportions. It had that bell-shaped normal curve. I want to show you that the same simulation can be used to help you resolve your bet with your friend about whether most people prefer mint chocolate chip or cookies and cream as flavors of ice cream.
+You saw--using the simulation---that whenever you collect data from a sample, you get slightly different results. In this case, you observe a **sampling distribution** in the observed proportion of Schlitz-preference. It had that bell-shaped curve . I want to show you that the same simulation can be used to help you resolve your bet with your friend about whether most people prefer mint chocolate chip or cookies and cream as flavors of ice cream.
 
-In the ice cream case, you don't believe that the flavors are equally preferred. You believe that the *true* value is greater than 50% in favor of mint chocolate chip. By true value, I mean the answer you would get if you could literally ask everyone in the world this question or, to save time, if you could consult the all-knowing-one and just ask them.  This is important, because if both you and your friend believe the proportion really is 50/50, then you are just betting on a coin toss.
+In the ice cream case, you don't believe that the flavors are equally preferred. You believe that the *true* value is greater than 50% in favor of mint chocolate chip. By true value, I mean the answer you would get if you could literally ask everyone in the world this question or, to save time, if you could consult the all-knowing-one and just ask them. This conviction is important, because if both you and your friend believe the proportion really is 50/50, then you are just betting on a coin toss. Which is cool, if you want to do that. 
 
-Suppose you believe that the true value is 65%. Just about two out of three people prefer mint chocolate chip. Your friend thinks ice cream is ice cream, and what is the point of betting on a coin toss? You want to make a point, so you're willing to go out on a limb. You say, "Friend, I will give you 3 to 1 odds on this bet. If you lose, you pay me \$3, and if you win, I will pay you \$9." Suddenly, your friend is interested.
+Suppose you believe that the true value is 65%. Just about two out of three people prefer mint chocolate chip. Your friend thinks the edge goes slightly to cookies and cream, but not enough to notice, and what's the point of betting on a coin toss. You want to make a point, though, so you're willing to go out on a limb. You say, "Friend, I will give you 3 to 1 odds on this bet. If you lose, you pay me \$3, and if you win, I will pay you \$9." It works. Your friend becomes interested.
 
-Now that the stakes have been raised, you and your friend start negotiating terms. You both agree that people in Washington Square, for the purposes of this bet, represent an **unbiased sample**. You are not, for example, offering to poll people at the I-heart-Mint festival. You have limited time, but you agree to ask 10 people (you can each pick 5, just to make it fair). If at least 6 out of 10 prefer mint chocolate chip over cookies and cream you win; 5 or fewer and your friend wins.
+Now that the stakes have been raised, you and your friend start negotiating terms. You both agree that people in Washington Square, for the purposes of this bet, represent an **unbiased sample**. You are not, for example, offering to poll people at the I-heart-Mint festival. You have limited time, but you agree to ask 10 people (you can each pick 5, just to make it fair), and everyone has to pick one preference (no ties). If at least 6 out of 10 prefer mint chocolate chip over cookies and cream you win; 5 or fewer and your friend wins. These are the terms.
 
-Assuming you're right about the truth, will you make money?
+Assuming you're right about the true proportion, will you make money?
 
-By now you know that you are still not guaranteed to observe proportions of 6.5/10 because (a) you can only observe 6 or 7, not 6.5, in this sample size and (b) because there is variance in the sampling distribution. You want to know the probability of winning the bet, so you can decide whether you gave your friend good odds or not.
+By now you know that you are still not guaranteed to observe proportions of 6.5/10 because (a) you can only observe 6 or 7, not 6.5, in a sample size of 10 (no ties!) and (b) because there is variance in the sampling distribution. You want to know the probability of winning the bet, so you can decide whether you gave your friend good odds or maybe you were too impulsive.
+
+If you use the simulation tool and take 10-person samples one-at-a-time, you might find something like this: 6, 6, 7, ... so far so good!... 5, 8, 5, ... uh oh, you would have lost 2 out of 6. If you use the Run 100 times feature of the simulation, you might get 70%, 72%, 78%, 75%, 80%,  ... so it looks like your chances are maybe around 75%. You reason as follows: I have a 75% chance of winning \$3 and a 25% chance of losing \$9. 
+
+The weighted average of these two outcomes is called the **expected value** of the bet. That is, each outcome has a probability and a return (including possible loss) in dollars. You "weigh" each return by the probability of it occurring. This is done by multiplication.
+
+```
+Expected Value = P(outcome 1) * Return(outcome 1) + P(outcome 2) * Return(outcome 2)
+                 = 0.75 * 3 - 0.25 * 9 = 0
+
+```
+
+What does it mean that your expected return for your ice cream bet is 0? It means that you are just as likely to win money as to lose money. In other words, you have proposed a fair bet. Which is the nice thing to do, since after all this is a friendly bet. Your friend originally thought that the two flavors were equally preferred. Given the odds you offered, what was the expected value from your friend's point of view? (Answer in the footnote).^[0.5 \* 9 - 0.5 \* 3 = 3, so three dollars].
+
+Exercise: What would the expected value from your and your friend's perspective have been if the odds given were 2 to 1 instead of 3 to 1 on a $3 bet?
+
+If the bet described above took place, there would be one outcome. Either you win $3 from your friend or they win \$9 from you. The expected value of 0 will never actually occur. But, as we often like to do, we can imagine 100 alternative universes to ours. Assuming the probability calculations above, you win the bet in roughly 75% of them and lost the bet in 25% of them. This is what we meant by the probability in the first place.
+
+You should have noticed that the range of observed proportions is the true value "plus or minus" some amount of variation due to sampling. Furthermore, the variation in proportion got smaller as the sample size got larger. The result of this is that you had a 75% of observing a majority when the sample size was 10. But if the sample size had been larger, say 100, then the chance was much higher. This reduction in the error due to increased sample size is related to a statistical concept called **power.** For the example above, your test was "more than half prefer mint chocolate chip." Your assumed true value for the proportion was 0.65. With a sample of 10, your power was 0.75. Note that your power came from two sources. One was (a belief) that the difference you wanted to detect, the **effect** of mint chocolate chip preference, was reasonably large. 0.65 is not the same as 0.52 or 0.91. It would be easier to detect a majority in the latter case (high power) and harder in the former case (low power). But for small and large effects, a large enough sample size can increase your power.
+
+### How do statisticians solve problems like this? {-}
+
+In this book, I have tried to emphasize conceptual understanding through simulation and discussion. In the example above, you can, for example, try to experiment with the Schlitz simulation to get a feel for the outcome. But "roughly 75%" based on a few experiments is not a precise statement of confidence. If this bothers you, read on.
+
+Mathematical statistics does have precise answers that depend on properties of continuous distributions like the normal distribution and the binomial distribution. The ice cream test is exactly the kind of scenario that is explained using a binomial distribution. If we ran the simulation (always with samples of 10), taking more and more observations (i.e., 10 samples of 10, 100 samples of 10, etc.) and checked our success rate (defined by more than 5 prefering mint chocolate chip), we would see that indeed this proportion does converge. This is plotted in Figure \@ref(fig:converge-binom). The x-axis is the number of samples, but **the x-axis is shown using logarithmic scales**. We need to use this scale, or else all of the points at smaller values would be bunched together.
+
+```{r converge-binom, fig.cap="Convergence of winning bet proportions"}
+
+set.seed(1234567)
+sample_size <- 10
+min_success <- 6
+prob_success <- 0.65
+
+lognobs <- seq(2,12,by=0.25)
+n_obs <- exp(lognobs)
+obs_prop <- c()
+for (n in n_obs) {
+   tmp <- rbinom(n, sample_size, prob_success)
+   obs_prop <- c(obs_prop, length(which(tmp > 5))/length(tmp))
+}
+plot(n_obs, obs_prop, 
+     xlab="number of observations",
+     ylab="proportion of successes",
+     log="x", type="l")
+abline(h=sum(dbinom(min_success:sample_size,sample_size,0.65)), col=2, lty=2, lwd=2)
+# 
+# plot(n_obs, obs_prop, 
+#      xlab="number of observations",
+#      ylab="proportion of successes", type="l")
+# abline(h=sum(dbinom(min_success:sample_size,sample_size,0.65)), col=2, lty=2, lwd=2)
+
+```
 
 
-If you use the simulation tool and take 10-person samples one-at-a-time, you might find something like this: 6, 6, 7, 5, 8 , 5, ... uh oh, you would have lost 2 out of 6. If you use the Run 100 times feature of the simulation, you might get 91%, 70%, 72%, 78%, 75%, 80%,  ... so it looks like your chances are maybe around 75%. You reason as follows: I have a 75% chance of winning \$3 and a 25% chance of losing \$9. 
+
+We say that the distribution of sample proportions is binomial in the limit of large numbers of samples. It's not going to be perfect for 5 samples or 20, but if we had an infinite number... we say that it asymptotically approaches the binomial distribution. The abstraction to continuous distributions makes it possible to compute "exact" probabilities. For example the horizontal dashed-line in Figure \@ref(fig:converge-binom) occurs at this value:
 
 
 
+```{r echo=TRUE}
+
+sample_size <- 10
+min_success <- 6
+prob_success <- 0.65
+
+sum(dbinom(min_success:sample_size,sample_size,prob_success))
+
+```
+The one line of R code was all that was necessary to calculate this asymptotic value. The function `dbinom()` returns the **probability density function** of the binomial distribution. The density has a value for each of the discrete possibilities, between 0 and 10 in this case, of "how many people prefer mint chocolate chip." I've also specified that the assumed probability for any one person is 0.65. Finally, I was interested in all of the outcomes in {6,7,8,9,10} for which you win the bet. 
+
+> 2 cent bonus: As a reward for having read to this point, you may now see that actually your asymptotic probability of winning the bet is a little better than 0.75 or 75%. It's actually 0.7514955! That means, your expected value is actually not 0, but 0.018.
 
 
 ## Betting on your Future
