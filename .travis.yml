@@ -1,4 +1,6 @@
 language: r
+r:
+  - oldrel
 sudo: false
 cache:
   packages: yes
