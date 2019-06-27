@@ -36,7 +36,30 @@ Wheelan adds a lot of context to this particular story, which is part of the fun
 
 Wheelan invokes the "law of large numbers" to argue that for a given sample size, and if the actual proportion is 50%, that the results of the live taste test can be almost guaranteed to be satisfactory for Schlitz (at least 40% preferred). The larger the sample size, the greater the probability that the taste test will be a success. We have created a [Schlitz simulation](https://a3sr.shinyapps.io/Schlitz/) for you to explore this for yourself.
 
-Can you confirm Wheelan's claims (a) that for 10 blind tast testers, the probability of a happy outcome is 0.83 and (b) for 100 blind taste testers, the probability is 0.98?
+In his book, Wheelan claims that (a) for 10 blind tast testers, the probability of a happy outcome is 0.83 and (b) for 100 blind taste testers, the probability is 0.98. If you don't want to take this assertion at face value, you have two options. One is to use the simulation tool to run 100 simulated experiments of sample size 10 or 100 and inspect the proportion of those experiments that led to a favorable outcome. You should see values around .83 and .98 for sample sizes of 10 and 100, respectively. Your second option is to do the probability calculation by hand.   
+
+To find the empirical (i.e., exact) answer, instead of using a simulation to estimate it, it might be helpful to consider a smaller sample size, say 2. Now that we've reduced our scope, we have some hope of writing all possible outcomes of this experiment and their probabilities.  
+
+Ok. So what are all of the possible outcomes of 2 independent taste tests?  There are two possibilities for each taste tester (they can choose either Schlitz or Michelob), so if we represent each possible outcome as (taste-tester 1's choice, taste-tester 2's choice), we get 4 possibilities (in many probability textbooks, possible outcomes of a random experiment are represented as sets, which are enclosed in curly brackets): {(Michelob, Michelob), (Michelob, Schlitz), (Schlitz, Michelob), (Schlitz, Schlitz)}. This is also called the **sample space** of the random experiment.    
+
+At this point, it might be useful to look back at the "Facts About Probabilities" from Chapter 2. If we run this experiment with two taste-testers, the outcomes listed above are both disjoint (only one can occur) and complete (one of them *MUST* occur). Therefore, we know that their probabilities must add up to 1. And, because each taste test is independent from all other taste tests (the first person's beer choice does not have any impact on the second person's beer choice), we already know how to calculate the probability of any outcome! For example, the probability of (Michelob, Schlitz) is:  
+
+```
+Prob(Michelob, Schlitz) = Prob(taster 1 prefers Michelob) * Prob(taster 2 prefers Schlitz)
+
+```
+   
+If we assume that every taste tester is equally likely to prefer either beer, then this is simply (.5)*(.5)=.25. In other words, there is a 25% chance that the outcome of the experiment is that the first taste-tester prefers Michelob and the second taste-tester prefers Schlitz. In fact, assuming a 50% chance of preferring either beer, we'll get the same probability for any of the four outcomes.   
+
+Now we can ask: which of the four possible outcomes will meet our requirement that at least 40% of respondents prefer Schlitz? Again, probability textbooks often use the word **event** to describe some subset of the sample space for a random experiment. In this case, we could describe the event that at least 40% of respondents prefer Schlitz as the set: Acceptable = {(Michelob, Schlitz), (Schlitz, Michelob), (Schlitz, Schlitz)}. If the probability of each outcome is 0.25, then because the outcomes are disjoint, the probability of "Acceptable_Outcomes" is 
+
+```
+Prob(Acceptable) = Prob(Michelob, Schlitz) + Prob(Schlitz, Michelob) + Prob(Schlitz, Schlitz) 
+                 =0.25 + 0.25 + 0.25 = 0.75
+```
+  
+> Excercise: How would the probability of an acceptable outcome change if we believed that each test-taster only had a 40% chance of preferring Schlitz?
+
 
 The Schlitz example feels a bit contrived, at least to me, because in the scenario, the Schlitz executives don't seem to really care about the truth. They just care about what will play well to Super Bowl audiences. Nevertheless, the beer taste test is just one example of a procedure in which we sample from a population to make inferences about the whole population.
 
