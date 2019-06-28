@@ -43,7 +43,7 @@ Wheelan invokes the "law of large numbers" to argue that for a given sample size
 
 In his book, Wheelan claims that (a) for 10 blind tast testers, the probability of a happy outcome is 0.83 and (b) for 100 blind taste testers, the probability is 0.98. If you don't want to take this assertion at face value, you might try convincing yourself by opening the simulation, running 100 simulated experiments of sample size 10 or 100, and inspecting the proportion of those experiments that led to a favorable outcome. You should see values around .83 and .98 for sample sizes of 10 and 100, respectively.      
 
-For a moment, let's pull back the curtain on the Schlitz simulation and see how it works. The following code walks through the process of repeatedly surveying 10 people, recording the proportion who preferred Schlitz (under the assumption that each person has a 50% chance of preferring Schlitz), and calculating the proportion of those 10-person surveys that led to an acceptable outcome. If we collect 10,000 samples of 10 people and calculate the proportion of those 10,000 "samples" that led to acceptable outcomes (i.e., the proportion of 10 person samples where at least 4/10 people preferred Schlitz), we can estimate the probability of an acceptable outcome very accurately:      
+For a moment, let's pull back the curtain on the Schlitz simulation and see how it works. The following code walks through the process of repeatedly surveying 10 people, recording the proportion who preferred Schlitz (under the assumption that each person has a 50% chance of preferring Schlitz), and calculating the proportion of those 10-person surveys that led to an acceptable outcome. If we collect 10,000 samples of 10 people and calculate the proportion of those 10 person samples where at least 4/10 people preferred Schlitz, we can estimate the probability of an acceptable outcome very accurately:      
 
 ```{r, echo=TRUE}
 nIter = 10000 #set some number of repeated experiments to run
@@ -75,7 +75,7 @@ In this book, I have tried to emphasize conceptual understanding through simulat
 
 Mathematical statistics does have precise answers that depend on properties of continuous distributions like the normal distribution and the binomial distribution. The Schlitz commercial is exactly the kind of scenario that is explained using a binomial distribution (more on that later). If we ran the simulation (always with samples of 10), taking more and more observations (i.e., 10 samples of 10, 100 samples of 10, etc.) and checked our success rate (defined by at least 4/10 preferring Schlitz), we would see that indeed this proportion does converge. This is plotted in Figure \@ref(fig:converge-binom). The x-axis is the number of samples, but **the x-axis is shown using logarithmic scales**. We need to use this scale, or else all of the points at smaller values would be bunched together.
 
-```{r converge-binom, fig.cap="Convergence of winning bet proportions"}
+```{r converge-binom, fig.cap="Convergence of successful tasting proportions"}
 
 set.seed(1234567)
 sample_size <- 10
@@ -141,7 +141,7 @@ sum(choose(n=10, k=4:10))/2^10
   
 > Excercise: Can you modify the above code to calculate the empirical probability of an acceptable outcome for a sample size of 100 (again assuming preference for Schlitz and Michelob are equally likely)?  
 
-Finally, if we want to account for different probabilities of preferring Schlitz or Michelob, it's helpful to add one more tool to the toolbox: the binomial probability distribution. By definition, the **probability density function** of the binomial distribution (which can be calculated in R using: dbinom(x,n,p)) gives the probability of x "successes" in n independent random trials, where each random trial has probability of success=p. For example, dbinom(4,10,.5) could be thought of as the probability that exactly 4 out of 10 people prefer Schlitz if the probability of any individual preferring Schlitz is .5. Using this function, we can now repeat the calculation above using some slightly different code:  
+Finally, if we want to account for different probabilities of preferring Schlitz or Michelob, it's helpful to add one more tool to the toolbox: the binomial probability distribution. The **probability mass function** of the binomial distribution (which can be calculated in R using: dbinom(x,n,p)) gives the probability of x "successes" in n independent random trials, where each random trial has probability of success=p. For example, dbinom(4,10,.5) could be thought of as the probability that exactly 4 out of 10 people prefer Schlitz if the probability of any individual preferring Schlitz is .5. Using this function, we can now repeat the calculation above using some slightly different code:  
 
 ```{r, echo=TRUE}
 #calculate dbinom(4,10,.5)
@@ -153,9 +153,9 @@ sum(dbinom(4:10,10,.5))
   
 > Excercise 1: Can you explain why choose(n=10, k=4)/2^k is equal to dbinom(4,10,.5)?   
 
-> Excercise 2: Can you modify the code above to calculate the probability of an acceptable outcome if each taste-tester only had a 40% chance of preferring Schlitz?     
+> Excercise 2: Can you modify the code above to calculate the probability of an acceptable outcome if each taste-tester only has a 40% chance of preferring Schlitz?     
 
-All of these calculations might feel a little overwhelming and confusing at this point. If that's the case, don't fear! Instead, revel in the fact that you just got the same number using 3 very different conceptualizations of the same problem. The point is: there are many ways to answer probabilistic questions, and simulation can be a powerful tool to side-step advanced probability calculations.  
+All of these calculations might feel a little overwhelming and confusing at this point. If that's the case, don't fear! Instead, revel in the fact that you just got (approximately) the same number using three different conceptualizations of the same problem. The point is: there are many ways to answer probabilistic questions, and simulation can be a powerful tool to side-step advanced probability calculations.  
   
 ### Using probability to make a "good" bet {-}
   
@@ -163,7 +163,7 @@ The Schlitz example feels a bit contrived, at least to me, because in the scenar
 
 You saw--using the simulation---that whenever you collect data from a sample, you get slightly different results. In this case, you observe a **sampling distribution** in the observed proportion of Schlitz-preference. It had that bell-shaped curve . I want to show you that the same simulation can be used to help you resolve your bet with your friend about whether most people prefer mint chocolate chip or cookies and cream as flavors of ice cream.
 
-Let's now return to the ice cream bet that you made with your friend. You don't believe that the flavors are equally preferred. You believe that the *true* value is greater than 50% in favor of mint chocolate chip. By true value, I mean the answer you would get if you could literally ask everyone in the world this question or, to save time, if you could consult the all-knowing-one and just ask them. This conviction is important, because if both you and your friend believe the proportion really is 50/50, then you are just betting on a coin toss. Which is cool, if you want to do that. 
+Let's now return to the ice cream bet that you made with your friend. If you're willing to make a bet, that probably means don't believe that the flavors are equally preferred. You believe that the *true* value is greater than 50% in favor of mint chocolate chip. By true value, I mean the answer you would get if you could literally ask everyone in the world this question or, to save time, if you could consult the all-knowing-one and just ask them. This conviction is important, because if both you and your friend believe the proportion really is 50/50, then you are just betting on a coin toss. Which is cool, if you want to do that. 
 
 Suppose you believe that the true value is 65%. Just about two out of three people prefer mint chocolate chip. Your friend thinks the edge goes slightly to cookies and cream, but not enough to notice, and what's the point of betting on a coin toss. You want to make a point, though, so you're willing to go out on a limb. You say, "Friend, I will give you 3 to 1 odds on this bet. If you lose, you pay me \$3, and if you win, I will pay you \$9." It works. Your friend becomes interested.
 
