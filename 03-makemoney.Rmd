@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Will You Make Money?
 
 > No one can win at roulette unless he steals money from the table while the croupier isn’t looking.
@@ -42,25 +47,81 @@ To find the empirical (i.e., exact) answer, instead of using a simulation to est
 
 Ok. So what are all of the possible outcomes of 2 independent taste tests?  There are two possibilities for each taste tester (they can choose either Schlitz or Michelob), so if we represent each possible outcome as (taste-tester 1's choice, taste-tester 2's choice), we get 4 possibilities (in many probability textbooks, possible outcomes of a random experiment are represented as sets, which are enclosed in curly brackets): {(Michelob, Michelob), (Michelob, Schlitz), (Schlitz, Michelob), (Schlitz, Schlitz)}. This is also called the **sample space** of the random experiment.    
 
-At this point, it might be useful to look back at the "Facts About Probabilities" from Chapter 2. If we run this experiment with two taste-testers, the outcomes listed above are both disjoint (only one can occur) and complete (one of them *MUST* occur). Therefore, we know that their probabilities must add up to 1. And, because each taste test is independent from all other taste tests (the first person's beer choice does not have any impact on the second person's beer choice), we already know how to calculate the probability of any outcome! For example, the probability of (Michelob, Schlitz) is:  
+At this point, it might be useful to look back at Section \@ref(sec:probfacts). If we run this experiment with two taste-testers, the outcomes listed above are both disjoint (only one can occur) and complete (one of them *MUST* occur). Therefore, we know that their probabilities must add up to 1. And, because each taste test is independent from all other taste tests (the first person's beer choice does not have any impact on the second person's beer choice), we already know how to calculate the probability of any outcome! For example, the probability of (Michelob, Schlitz) is:  
 
 ```
-Prob(Michelob, Schlitz) = Prob(taster 1 prefers Michelob) * Prob(taster 2 prefers Schlitz)
+P(Michelob, Schlitz) = P(taster 1 prefers Michelob) * P(taster 2 prefers Schlitz)
 
 ```
    
 If we assume that every taste tester is equally likely to prefer either beer, then this is simply (.5)*(.5)=.25. In other words, there is a 25% chance that the outcome of the experiment is that the first taste-tester prefers Michelob and the second taste-tester prefers Schlitz. In fact, assuming a 50% chance of preferring either beer, we'll get the same probability for any of the four outcomes.   
 
-Now we can ask: which of the four possible outcomes will meet our requirement that at least 40% of respondents prefer Schlitz? Again, probability textbooks often use the word **event** to describe some subset of the sample space for a random experiment. In this case, we could describe the event that at least 40% of respondents prefer Schlitz as the set: Acceptable = {(Michelob, Schlitz), (Schlitz, Michelob), (Schlitz, Schlitz)}. If the probability of each outcome is 0.25, then because the outcomes are disjoint, the probability of "Acceptable_Outcomes" is 
+Now we can ask: which of the four possible outcomes will meet our requirement that at least 40% of respondents prefer Schlitz? Again, probability textbooks often use the word **event** to describe some subset of the sample space for a random experiment. In this case, we could describe the event that at least 40% of respondents prefer Schlitz as the set: Acceptable = {(Michelob, Schlitz), (Schlitz, Michelob), (Schlitz, Schlitz)}. If the probability of each outcome is 0.25, then because the outcomes are disjoint, the probability of "Acceptable" is 
 
 ```
-Prob(Acceptable) = Prob(Michelob, Schlitz) + Prob(Schlitz, Michelob) + Prob(Schlitz, Schlitz) 
+P(Acceptable) = P(Michelob, Schlitz) + P(Schlitz, Michelob) + P(Schlitz, Schlitz) 
                  =0.25 + 0.25 + 0.25 = 0.75
 ```
   
 > Excercise: How would the probability of an acceptable outcome change if we believed that each test-taster only had a 40% chance of preferring Schlitz?
 
+After all this work, you might still be thinking: well that's all fine and good, but it's a lot of work to write out the sample space and list of acceptable outcomes for a sample size of 10 or even 100. The truth is: you're right. For larger sample sizes, we need to employ some new techniques and R functions (which are only briefly covered in this text). But, for the sake of completeness, let's briefly examine two ways to conceptualize the problem and calculate the empirical probabilities in R. Don't worry if it doesn't make perfect sense yet; we won't make you do this by hand! 
 
+First, if taste-testers are equally likely to prefer Schlitz or Michelob, we can calculate the probability of an acceptable outcome (i.e., at least 40% preferring Schlitz) among 10 taste-testers as follows: Since taste-testers are equally likely to choose either beer, we know that all possible outcomes of this experiment are equally likely. Therefore, the probability of an acceptable outcome reduces down to the number of acceptable outcomes divided by the total number of possible outcomes. The total number of possible outcomes is $2^{10}$ for a 10 person sample size (to convince yourself: think about how many "types of people" you would observe by asking $10$ independent, dichotomous questions). To figure out the number of acceptable outcomes, we can utilize the choose() function. If you've never seen it before: choose(n,k) (often written $n\choose{k}$) is the number of possible ways to choose k items out of a group of n total items. In this context, choose(n=10,k=4) can be thought of as the number of unique groups of 4 taste-testers among a total pool of 10 taste-testers (i.e., number of ways that exactly 4/10 taste-testers could prefer Schlitz). Take a look at how we might compute this in R:     
+
+```{r, echo=TRUE}
+#calculate choose(n=10,k=4) in R
+choose(n=10, k=4)
+
+#calculate choose(n=10,k= all the numbers between 4 and 10)
+choose(n=10, k=4:10)
+
+#add up all of the values above using sum() and then divide by 2^10
+sum(choose(n=10, k=4:10))/2^10
+```
+  
+> Excercise: Can you modify the above code to calculate the empirical probability of an acceptable outcome for a sample size of 100 (again assuming preference for Schlitz and Michelob are equally likely)?  
+
+Finally, if we want to account for different probabilities of preferring Schlitz or Michelob, it's helpful to add one more tool to the toolbox: the binomial probability distribution. By definition, dbinom(x,n,p) gives the probability of x "successes" in n independent random trials, where each random trial has probability of success=p. For example, dbinom(4,10,.5) could be thought of as the probability of exactly 4 out of 10 people preferring Schlitz if the probability of any individual preferring Schlitz is .5. Using this function, we can now repeat the calculation above using some slightly different code:  
+
+```{r, echo=TRUE}
+#calculate dbinom(4,10,.5)
+dbinom(4,10,.5)
+
+#add up the probabilities of 4,5,6,7,8,9, or 10 people preferring Schlitz
+sum(dbinom(4:10,10,.5))
+```
+  
+> Excercise 1: Can you explain why choose(n=10, k=4)/2^k is equal to dbinom(4,10,.5)?   
+
+> Excercise 2: Can you modify the code above to calculate the probability of an acceptable outcome if each taste-tester only had a 40% chance of preferring Schlitz?     
+
+All of these calculations might feel a little overwhelming and confusing at this point. If that's the case, don't fear! We have another option. For a moment, let's pull back the curtain on the Schlitz simulation and see what's going on under the hood. The following code walks you through the process of repeatedly randomly surveying some number of people and calculating the proportion of those surveys that led to acceptable outcomes. To start, we can assume that the sample size is 10, the probability of preferring Schlitz is .5, and we want the probability of at least 40% of taste-testers preferring Schlitz. Note that, if we take a lot (i.e., 10,000) random samples of 10 people, we end up with almost the same probability calculation as we did before. We could be even more confident if we took 100,000 or even 1,000,000 random samples, and this takes less than a second on most computers.:    
+
+```{r, echo=TRUE}
+nIter = 10000 #set some number of repeated experiments to run
+SampSize = 10 #set the sample size  
+Prob = .5 #set the probability of preferring Schlitz
+Acceptable = .4 #set an acceptable proportion of Schlitz preferrers
+
+results = vector(length=nIter) #create a vector of length nIter
+
+for(i in 1:nIter){ #repeat the following process nIter times
+   #Choose SampSize values from the set (0,1) with replacement
+   #where the probability of drawing a 1 is equal to Prob
+   #save the results in a vector called Samp
+   Samp = sample(c(0,1), size=SampSize, prob=c(1-Prob, Prob), replace=TRUE)
+   
+   #In the ith location of "results", calculate the proportion of 1s in Samp
+   results[i] = sum(Samp)/SampSize 
+}
+
+#Calculate the proportion of random experiments that were "acceptable"
+sum(results>=Acceptable)/nIter
+```
+  
+Feel free to copy this code over into your own R Studio window, and play with the parameters to see what happens. If nothing else, I hope you feel some satisfaction at the idea that we were able to answer the same question in 3 different ways. Simulation is a powerful tool that allows us to side-step some pretty advanced probability calculations!   
+  
 The Schlitz example feels a bit contrived, at least to me, because in the scenario, the Schlitz executives don't seem to really care about the truth. They just care about what will play well to Super Bowl audiences. Nevertheless, the beer taste test is just one example of a procedure in which we sample from a population to make inferences about the whole population.
 
 You saw--using the simulation---that whenever you collect data from a sample, you get slightly different results. In this case, you observe a **sampling distribution** in the observed proportion of Schlitz-preference. It had that bell-shaped curve . I want to show you that the same simulation can be used to help you resolve your bet with your friend about whether most people prefer mint chocolate chip or cookies and cream as flavors of ice cream.
