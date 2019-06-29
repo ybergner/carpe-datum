@@ -481,14 +481,14 @@ Suppose that we go out and find a random sample of 1000 people for whom the foll
 | Person 4 | No | No |
 | Person 5 | Yes | No |  
   
-The first thing you might do is tabulate the data to get the following contingency table:    
+As a first step, you tabulate the data and get the following contingency table:    
   
 |   | Cancer: Yes| Cancer: No |
 |---|:-:|:-:|
 | Smoke: Yes | 46 | 204 |
 | Smoke: No | 93 | 657 |  
   
-As a first step toward understanding whether there is an association between smoking and cancer, you could then estimate the following:  
+Then, you use the table to estimate the following:  
 $$P(\text{Cancer}|\text{Smoke})=\frac{46}{46+204}=0.184$$
 $$P(\text{Cancer}|\text{Not Smoke})=\frac{93}{93+657}=0.124$$
   
@@ -496,9 +496,9 @@ You might say that these numbers suggest an association (i.e., dependence) betwe
 
 One way to *start* trying to answer this question is to consider the following thought experiment: imagine that, among all people in the world, there is NOT a higher incidence of cancer among smokers (as compared to non-smokers). If that were the case, you would expect to see $P(\text{Cancer}|\text{Smoke})=P(\text{Cancer}|\text{Not Smoke})=.5$. Or, written slightly differently:  $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0$. In comparison, you observed the following in your initial sample: $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0.184-0.124=0.06$.   
 
-So, you could pose the following question: what is the probability that, among the whole population, smokers do not have increased risk of cancer; but, among the random sample of 1000 people that you observed, there is a 6% (or greater) increased incidence of cancer among smokers as compared to non-smokers? This type of question is the basis for **hypothesis testing**. If you are interested in learning more about how statisticians use probability distributions to answer these types of questions, there are plenty of resources online. In this book, however, we will attempt to answer this question using a simulation in R.  
+So, you could pose the following question: what is the probability that, among the whole population, smokers do not have higher risk of cancer; but, among the random sample of 1000 people that you observed, there is a 6% (or greater) increased incidence of cancer among smokers as compared to non-smokers? This type of question is the basis for **hypothesis testing**. Often, in hypothesis testing, we form a **null hypothesis** (in this case, the null hypothesis might be that smokers and non-smokers have equal cancer incidence among the full population) and **alternative hypothesis** (in this case, the alternative hypothesis might be that smokers have at least 6% higher risk of cancer than non-smokers). If you are interested in learning more about how statisticians use probability distributions to answer these types of questions, there are plenty of resources online. In this book, however, we will attempt to answer this question using a simulation.  
 
-Based on the sample we observed, we could estimate that approximately $\frac{46+204}{1000}*100=25$ percent of the population smokes and approximately $\frac{46+93}{1000}*100=13.9$ percent of the population has been diagnosed with cancer. Therefore, we could create some fake datasets in R where each person has a 25% chance of smoking and, independently, a 13.9% chance of getting diagnosed with cancer. Then, for each of these fake datasets, we could calculate $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$ and calculate the proportion of these differences that are greater than or equal to $0.06$:  
+Based on the sample you observed, you could estimate that approximately $\frac{46+204}{1000}*100=25$ percent of the population smokes and approximately $\frac{46+93}{1000}*100=13.9$ percent of the population has been diagnosed with cancer. If there is no real difference in cancer incidence among smokers and non-smokers, then these two variables are independent: 25% of your sample randomly decided to smoke, and 13.9% were randomly diagnosed with cancer. It turns out that it's very easy to simulate datasets under this assumption. All we have to do is, in two completely separate steps, randomly assign 25% of people to be smokers and randomly assign 13.9% of people to get cancer. Then, for each of these simulated datasets (of 1000 people each), we can calculate $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$ and observe what types of differential proportions could be observed by random chance. Then we can calculate the proportion of these differences that are greater than or equal to $0.06$ in order to understand the chances that we observe a difference of that size when it doesn't actually exist:  
   
 ```{r}
 set.seed(513)
@@ -533,9 +533,11 @@ hist(differences, main="Histogram of P(cancer|smoke) - P(cancer|not smoke)")
 abline(v=.06, lwd=2, col=2)
 ```
   
-You might notice that a very small proportion of the simulated values of $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$ were greater than or equal to .06. (about .03 or 3%). This might help convince you that there was a relatively low probability of observing  $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})\ge .06$ among your sample of 1000 people if the reality was that $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0$ among the full population.  
+As you might expect, the histogram of simulated differences ($P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$) are centered around zero. If there's no real difference, then you should expect to observe (close to) zero differences among any random sample of 1000 people. That said, you'll see from the histogram that it is still possible, by random chance, to observe a difference as large as 8%.
 
-That said, there are still two problems: 1) there is always some risk that there is no real difference in cancer incidence among these two groups, but we observed a large difference nonetheless and 2) even if there is a real difference, there are a lot of possible reasons that this difference could exist without a direct causal relationship.   
+But let's get back to our original question: You might notice that a very small proportion of the simulated values of were greater than or equal to .06. (about .03 or 3%). This might help convince you that there was a relatively low probability of observing  $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})\ge .06$ among your sample of 1000 people if the reality was that $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0$ among the full population.    
+
+We've made some good progress, but you might still have some concerns: 1) there is always some risk that there is no real difference in cancer incidence among these two groups, but you observed a large difference in your sample nonetheless and 2) even if there is a real difference, there are a lot of possible reasons that this difference could exist without a direct causal relationship. That said, if you can convince yourself that there is a very small probability that the association you observed could have occurred randomly, then you might want to move on to a new question: can you explain why is there an association?    
 
 
 ### Things that are not causation
