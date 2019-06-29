@@ -315,13 +315,13 @@ Considering toilet paper in bizarro world, we can see explicitly why the rule fo
 P(A and B) = P(A|B) P(B) = {only in special cases} = P(A) * P(B)
 ```
 
-This, when A and B are independent, it must be true that 
+Thus, when A and B are independent, it must be true that 
 
 ```
 P(A|B) = P(A)
 ```
 
-which reads as "the probability of A conditional on B is equal to the probability of A (regardless of B)." Another way to say this is the no matter what we know about B, it doesn't tell us anything informative about A. But that was NOT true in bizarro world, where knowing peanut butter preference told us EVERYTHING about toilet paper orientation. If A is the probability that a person is an over-hanger, and B is the probability that they prefer smooth peanut butter, then it is not true that 
+which reads as "the probability of A conditional on B is equal to the probability of A (regardless of B)." Another way to say this is that no matter what we know about B, it doesn't tell us anything informative about A. But that was NOT true in bizarro world, where knowing peanut butter preference told us EVERYTHING about toilet paper orientation. If A is the probability that a person is an over-hanger, and B is the probability that they prefer smooth peanut butter, then it is not true that 
 
 ```
 P(tp = over | pb = smooth) = P(tp = over) ## NOT TRUE in bizzaro world
@@ -466,7 +466,76 @@ In the third case (smoking):
 
 Now I’m not saying that the chances of cancer are the same whether you smoke or not. That remains an open question so far as our present argument goes. But even thus far, we can see that the smoking causality question, posed this way, invites some more questions.
 
-How big a difference does there have to be between the cancer rates for smokers and non-smokers for us to be convinced that there is an association between smoking and cancer? And if there is an association between smoking and cancer, what would drive us to call this a causal relationship, to say that smoking causes cancer? Could causality go the other way?
+How big a difference does there have to be between the cancer rates for smokers and non-smokers for us to be convinced that there is an association between smoking and cancer? And if there is an association between smoking and cancer, what would drive us to call this a causal relationship, to say that smoking causes cancer? Could causality go the other way?   
+
+### Testing for an association between two variables {-}  
+For a moment, let's focus on the first question: How big a difference does there have to be between the cancer rates for smokers and non-smokers for us to be convinced that there is an association between smoking and cancer?  
+
+Suppose that we go out and find a random sample of 1000 people for whom the following information is available: a) whether the person smokes (or has smoked in the past) and b) whether the person has ever been diagnosed with cancer. The beginning of our dataset looks something like this:  
+
+|   | Cancer? | Smoke? |
+|---|:-:|:-:|
+| Person 1 | Yes | Yes |
+| Person 2 | No | Yes |
+| Person 3 | No | Yes |
+| Person 4 | No | No |
+| Person 5 | Yes | No |  
+  
+The first thing you might do is tabulate the data to get the following contingency table:  
+|   | Cancer: Yes| Cancer: No |
+|---|:-:|:-:|
+| Smoke: Yes | 46 | 204 |
+| Smoke: No | 93 | 657 |  
+
+As a first step toward understanding whether there is an association between smoking and cancer, you could then estimate the following:  
+$$P(\text{Cancer}|\text{Smoke})=\frac{46}{46+204}=0.184$$
+$$P(\text{Cancer}|\text{Not Smoke})=\frac{93}{93+657}=0.124$$
+  
+You might say that these numbers suggest an association (i.e., dependence) between smoking and cancer: Within this sample, a higher proportion of smokers were diagnosed with cancer than non-smokers. But is this enough of a difference to convince you that, if you went out and found 1000 new (random) people, you would still observe a difference of this magnitude?  
+
+One way to *start* trying to answer this question is to consider the following thought experiment: imagine that, among all people in the world, there is NOT a higher incidence of cancer among smokers (as compared to non-smokers). If that were the case, you would expect to see $P(\text{Cancer}|\text{Smoke})=P(\text{Cancer}|\text{Not Smoke})=.5$. Or, written slightly differently:  $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0$. In comparison, you observed the following in your initial sample: $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0.184-0.124=0.06$.   
+
+So, you could pose the following question: what is the probability that, among the whole population, smokers do not have increased risk of cancer; but, among the random sample of 1000 people that you observed, there is a 6% (or greater) increased incidence of cancer among smokers as compared to non-smokers? This type of question is the basis for **hypothesis testing**. If you are interested in learning more about how statisticians use probability distributions to answer these types of questions, there are plenty of resources online. In this book, however, we will attempt to answer this question using a simulation in R.  
+
+Based on the sample we observed, we could estimate that approximately $\frac{46+204}{1000}*100=25$ percent of the population smokes and approximately $\frac{46+93}{1000}*100=13.9$ percent of the population has been diagnosed with cancer. Therefore, we could create some fake datasets in R where each person has a 25% chance of smoking and, independently, a 13.9% chance of getting diagnosed with cancer. Then, for each of these fake datasets, we could calculate $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$ and calculate the proportion of these differences that are greater than or equal to $0.06$:  
+  
+```{r}
+set.seed(513)
+```  
+
+```{r, echo=TRUE}
+nIter = 100 #set some number of iterations
+differences = vector(length = nIter) #create vector to save differences in proportions
+
+for(i in 1:nIter){ #repeat the following process nIter times
+  
+  #create some fake data and save it as "fakedata"
+  fakedata = data.frame(Smoke = sample(c("Y", "N"), size=1000, prob=c(.25, .75), replace = T),
+                         Cancer = sample(c("Y", "N"), size=1000, prob=c(.139, .861), replace = T))
+  
+  #use the fake data to calculate P(cancer|smoke)
+  CgivenS = table(fakedata)[2,2]/sum(table(fakedata)[2,])
+  
+  #use the fake data to calculate P(cancer|not smoke)
+  CgivenNS = table(fakedata)[1,2]/sum(table(fakedata)[1,])
+  
+  #save P(cancer|smoke) - P(cancer|not smoke) in the ith location of differences
+  differences[i] <- CgivenS - CgivenNS
+  
+}
+
+#calculate proportion of differences greater than or equal to .06
+sum(differences >= .06)/nIter
+
+#plot a histogram of the differences with a red vertical line at .06
+hist(differences, main="Histogram of P(cancer|smoke) - P(cancer|not smoke)")  
+abline(v=.06, lwd=2, col=2)
+```
+  
+You might notice that a very small proportion of the simulated values of $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$ were greater than or equal to .06. (about .03 or 3%). This might help convince you that there was a relatively low probability of observing such an extreme value of $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$ among your sample of 1000 people if the reality was that $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0$ among the full population.  
+
+That said, there are two problems: 1) there is still some risk that there is no real difference in cancer risk among these two groups, but we observed one nonetheless and 2) even if there is a real difference, there are a lot of possible reasons that this different could exist without a direct causal relationship.  
+
 
 ### Things that are not causation
 
