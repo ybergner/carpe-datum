@@ -533,7 +533,7 @@ hist(differences, main="Histogram of P(cancer|smoke) - P(cancer|not smoke)")
 abline(v=.06, lwd=2, col=2)
 ```
   
-As you might expect, the histogram of simulated differences ($P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$) are centered around zero. If there's no real difference, then you should expect to observe (close to) zero differences among any random sample of 1000 people. That said, you'll see from the histogram that it is still possible, by random chance, to observe a difference as large as 8%.
+As you might expect, the histogram of simulated differences ($P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$) is centered around zero. If there's no real difference, then you should expect to observe (close to) zero differences among any random sample of 1000 people. That said, you'll see from the histogram that it is still possible, by random chance, to observe a difference as large as 8%.
 
 But let's get back to our original question: You might notice that a very small proportion of the simulated values of were greater than or equal to .06. (about .03 or 3%). This might help convince you that there was a relatively low probability of observing  $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})\ge .06$ among your sample of 1000 people if the reality was that $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0$ among the full population.    
 
