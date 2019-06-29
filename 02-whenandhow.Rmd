@@ -481,12 +481,13 @@ Suppose that we go out and find a random sample of 1000 people for whom the foll
 | Person 4 | No | No |
 | Person 5 | Yes | No |  
   
-The first thing you might do is tabulate the data to get the following contingency table:  
+The first thing you might do is tabulate the data to get the following contingency table:    
+  
 |   | Cancer: Yes| Cancer: No |
 |---|:-:|:-:|
 | Smoke: Yes | 46 | 204 |
 | Smoke: No | 93 | 657 |  
-
+  
 As a first step toward understanding whether there is an association between smoking and cancer, you could then estimate the following:  
 $$P(\text{Cancer}|\text{Smoke})=\frac{46}{46+204}=0.184$$
 $$P(\text{Cancer}|\text{Not Smoke})=\frac{93}{93+657}=0.124$$
@@ -532,9 +533,9 @@ hist(differences, main="Histogram of P(cancer|smoke) - P(cancer|not smoke)")
 abline(v=.06, lwd=2, col=2)
 ```
   
-You might notice that a very small proportion of the simulated values of $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$ were greater than or equal to .06. (about .03 or 3%). This might help convince you that there was a relatively low probability of observing such an extreme value of $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$ among your sample of 1000 people if the reality was that $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0$ among the full population.  
+You might notice that a very small proportion of the simulated values of $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$ were greater than or equal to .06. (about .03 or 3%). This might help convince you that there was a relatively low probability of observing  $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})\ge .06$ among your sample of 1000 people if the reality was that $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0$ among the full population.  
 
-That said, there are two problems: 1) there is still some risk that there is no real difference in cancer risk among these two groups, but we observed one nonetheless and 2) even if there is a real difference, there are a lot of possible reasons that this different could exist without a direct causal relationship.  
+That said, there are still two problems: 1) there is always some risk that there is no real difference in cancer incidence among these two groups, but we observed a large difference nonetheless and 2) even if there is a real difference, there are a lot of possible reasons that this difference could exist without a direct causal relationship.   
 
 
 ### Things that are not causation
