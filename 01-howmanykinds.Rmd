@@ -10,7 +10,7 @@
 
 I'm going to start off this first chapter in a book about data science with an unsubstantiated claim. My claim is this: People love to categorize themselves and others. They love to take quizzes online that tell you "what kind of person you are" in some way or another. They love to make statements that begin with, "there are two kinds of people in this world..." and so on. Ok? That's my claim. It's a bit of a mouthful.
 
-Now, I just made a claim in support of which data *can absolutely* be brought to bear. But I won't use data to support it. What? Why not, for cyring out loud?! This is a book about data science!!! The reason is this: this book encourages you to think critically and skeptically about all kinds of ideas, claims, and questions. It tries to show you how to talk about these ideas precisely and not succumb to fallacies and bad intuition. But while trying to develop these skills, it is important to know when we are in turbo critical thinking mode (that's a technical term^[Just kidding; it's not really a technical term.]) and when we're not. Sometimes, we need to be able to say common-sense things and not have to support them.
+Now, I just made a claim in support of which data *can absolutely* be brought to bear. But I won't use data to support it. What? Why not, for crying out loud?! This is a book about data science!!! The reason is this: this book encourages you to think critically and skeptically about all kinds of ideas, claims, and questions. It tries to show you how to talk about these ideas precisely and not succumb to fallacies and bad intuition. But while trying to develop these skills, it is important to know when we are in turbo critical thinking mode (that's a technical term^[Just kidding; it's not really a technical term.]) and when we're not. Sometimes, we need to be able to say common-sense things and not have to support them.
 
 What *exactly* am I even saying in my claim, you might be thinking? What do you mean by, "people love to" do X, where X, like ______ ["blank"], is a stand-in for some of the specific things I mentioned. That everybody does X? Most people? That people who do X derive pleasure above some pleasure threshold, thus designating "love" as opposed to "like?" You see, I could have tried to make my claim more precise. And I could have found polls and published reports that estimate just how many people have, by choice, taken some kind of person-category-test-thing, or posted funny jokes about "two kinds of people." But I'm just letting my claim stand as a common-sense claim. Just like if I said, people love going to the movies. I wouldn't feel the need to cite a scientific study to support that claim.
 
@@ -80,6 +80,36 @@ kable(iamaperson, caption="How people roll (alternate universe)", booktabs = TRU
 
 ```
 
+### Summarizing data
+
+When I presented my survey results to you in Table \@ref(tab:tp-table), notice that I did not present you with the raw data, but rather with a summary of the data. The particular summary I used was called "counts", that is, a total count of how many people responded "over" or "under." The raw data, in contrast, would have contained each individual response I collected, labled either with a name of the individual, or perhaps with some other unique identifier (such as a random number), or---if I don't need to keep track of particular individuals---with just a row number. Something like this, if we examine at the first six responses rather than all 40 of them. Raw data:
+
+```{r}
+
+rawdata <- data.frame(randomID = round(runif(length(theWayIRoll), min=1000, max=9999)), response=theWayIRoll)
+head(rawdata)
+```
+
+Counts is an example of a **summary statistic**, which is a fancy term for a number that is derived from the raw data. The count summary is as simple as it gets. It is literally the number of times that each response appears. We might note as well that, 
+
+```
+count(under) + count(over) = total number of responses.
+```
+
+This mathematical statement is true because there are only two possible responses. If there were more than two responses, then I would need to add the counts for each possible response. 
+
+Note that the *proportion* of "over" responses is also a summary statistic (which is just the counts of "over" divided by the total number of responses). Another summary statistic could be the ratio of "over" responses (counts) to "under" responses. For example, one way people use summary statistics in reporting data is through statements like, "twice as many people prefer chunky peanut butter to smooth." 
+
+<div class="rmdtip">
+**No mean feat.**
+
+Whenever someone reports a mean (another word for average) value of some set of data, that is also a summary statistic. Does it make sense to construct an average from responses that are either "over" or "under"? No, it doesn't. That's because {over, under} is a categorical response, and you can't average over categories. Unless you're trying to make fun of statistics with a puerile joke. Different versions of this joke appear: "the average American has one tit and one testicle." At the risk of explaining the joke too much, here goes: Tits and testicles can certainly be treated as numerical data, and hence can be averaged. This joke hinges on the fact that the existence of testicles (or tits) is associated with a person's sex, which is categorical and not numerical. Assuming that half of American's are female (roughly true), we can't say that the average American is half male and half female. The real "punch" of this joke is to suggest that summary statistics about averages are just a bunch of nonsense. What do you think?
+
+</div>
+
+
+
+This is about as much as we need to say about summary statistics for the time being. But they'll be back. 
 
 #### Checkpoint
 
@@ -265,7 +295,7 @@ It might be gong time again: `r html_tag_audio("media/chinese-gong-daniel_simon.
 **What do you think?**
 
 
-### (An Infinite Number of) Shades of Gray (or Brown) {#shades}
+### (An Infinite Number of) Shades of Gray (or Brown) {#sec:shades}
 
 We've taken the two-kinds-of-people idea pretty far in this chapter already. But it's time to acknowledge the elephant in the room. Not every question about attributes, preferences, or behaviors  can be answered in such an either/or manner. Digitidiness might be one of those things. Consider the following dialogue:
 

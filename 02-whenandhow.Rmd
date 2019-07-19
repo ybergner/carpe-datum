@@ -494,7 +494,17 @@ $$P(\text{Cancer}|\text{Not Smoke})=\frac{93}{93+657}=0.124$$
   
 You might say that these numbers suggest an association (i.e., dependence) between smoking and cancer: Within this sample, a higher proportion of smokers were diagnosed with cancer than non-smokers. But is this enough of a difference to convince you that, if you went out and found 1000 new (random) people, you would still observe a difference of this magnitude?  
 
-One way to *start* trying to answer this question is to consider the following thought experiment: imagine that, among all people in the world, there is NOT a higher incidence of cancer among smokers (as compared to non-smokers). If that were the case, you would expect to see $P(\text{Cancer}|\text{Smoke})=P(\text{Cancer}|\text{Not Smoke})=.5$. Or, written slightly differently:  $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0$. In comparison, you observed the following in your initial sample: $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0.184-0.124=0.06$.   
+One way to *start* trying to answer this question is to consider the following thought experiment: imagine that, among all people in the world, there is NOT a higher incidence of cancer among smokers (as compared to non-smokers). If that were the case, you would expect to see 
+
+$$P(\text{Cancer}|\text{Smoke})=P(\text{Cancer}|\text{Not Smoke}).$$
+
+Or, written slightly differently: 
+
+$$P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0.$$
+
+In comparison, you observed the following in your initial sample:
+
+$$P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0.184-0.124=0.06.$$   
 
 So, you could pose the following question: what is the probability that, among the whole population, smokers do not have higher risk of cancer; but, among the random sample of 1000 people that you observed, there is a 6% (or greater) increased incidence of cancer among smokers as compared to non-smokers? This type of question is the basis for **hypothesis testing**. Often, in hypothesis testing, we form a **null hypothesis** (in this case, the null hypothesis might be that smokers and non-smokers have equal cancer incidence among the full population) and **alternative hypothesis** (in this case, the alternative hypothesis might be that smokers have at least 6% higher risk of cancer than non-smokers). If you are interested in learning more about how statisticians use probability distributions to answer these types of questions, there are plenty of resources online. In this book, however, we will attempt to answer this question using a simulation.  
 
