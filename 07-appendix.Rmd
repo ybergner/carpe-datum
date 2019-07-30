@@ -1,0 +1,100 @@
+# Appendix
+
+This chapter is a placeholder for important ideas that require a bit more time and would thus break the flow in the text.
+
+## Randomness {-}
+
+Randomness is an idea, like straightness, that may be hard to observe in perfect form. Consider straightness first. A straight line made using a ruler and a pencil is easily distinguished from a wiggly line or a very curvy one. However, if we examine the pencil markings under a magnifying glass, we can observe tiny wiggles at the edge. These wiggles may be due to the texture of the paper or the imperfections in the graphite (the pencil's "lead") or both. Nevertheless, we are able to hold in our minds a mathematical idea of a straight line. For example, we can define a line algebraically in the $(x,y)$ Euclidean plane by the equation 
+
+$$ y = 2 x + 3.$$
+
+This formula, which expresses a linear relationship, assumes a fair amount of prior knowledge, which most of use learn in school. For example, that $x$ and $y$ can take on real-number valuess, that the $y$ axis is perpendicular to the x-axis, etc. The line expressed in the formula is perfectly straight. Even if we draw it using only an approximately straight line.
+
+YouTuber [Vsauce's video on "What is Random?"](https://www.youtube.com/watch?v=9rIy0xY99a0) explores whether things that we take for granted as being random (e.g., coin flips) really are.  If you watch this video, you may come away convinced the outcome of tossing a coin or rolling a die is not truly random, and that quantum mechanics is the only truly random mechanism in nature. Alternately you may be satisfied that the fact of having limited information is sufficient to justify the treatment of a coin toss as a random event. On this argument, as long as you can't tell the difference between a coin and a truly random coin, you can, for all intents and purposes, treat is as perfectly random.
+
+
+As with straightness, we can define an ideal random process. For example, we can define an ideal fair coin toss using mathematical notation, although this notation is less commonly learned in school. Here's one way:
+
+$$ x \in \{H, T\} \qquad P(x=H) = p$$
+
+Now $x$ is not a real number but rather the outcome of a coin toss. The first part of the formula specifies that $x$ can take on two possible values, heads (H) or tails (T). The second part defines the probability of H as $p$. For a fair coin $p=0.5$. Although it is not written out explicitly, the probability of a coin coming up tails must be $1-p$ due to the axioms of probability and fact that there are only two possible outcomes.
+
+For a fair six-sided die, we can write
+
+$$ x \in \{1, 2, \dots, 6\} \qquad P(x=n) = 1/6 \quad \forall n \in \{1, 2, \dots, 6\}. $$
+
+The "forall" symbol (an upside down A) is a shorthand we use to indicate that all outcomes are equally probable, with probability of 1/6. 
+
+
+### Generating Random Numbers {-}
+
+How do we simulate a random event or a series of random events? If you want to simulate an event that has a 50% chance (or probability of 0.5), you can toss a coin. If we want to randomly assign 10 people to one of two groups, say the Sharks and the Jets, we can do the following. First, decide that Heads we choose Sharks (this is of course arbitrary). Then, for each person, flip a coin. If heads, then assign them to Sharks. If tails, assign them to Jets. If we wanted to automate this process, we can imagine building a mechanical device that flips coins and then drops marbles into the Shark jar or the Jets jar. 
+
+We can do this on the computer in R. In fact we can do it several different ways. Here, first, is a more or less direct translation of what our mechanical process would do. The key enabling function here is called `sample()`, which we'll soon see is a little bit different from a coin toss.
+
+```{r}
+
+set.seed(8675309) # I'll explain this later 
+
+coinstates <- c("H","T")
+numPeople <- 10
+
+# start a blank list to hold my team assignments
+teamassignments <- c()
+
+# now, go one by one
+for (i in 1:numPeople) {
+  ## toss coin and observe
+  coinresult <- sample(coinstates, 1) # the 1 means sample once
+  # associate outcome with team assignemnt
+  if (coinresult == "H") {
+    team <- "Sharks"
+  } else if (coinresult == "T") {
+    team <- "Jets"
+  }
+  # record team assignment
+  teamassignments <- c(teamassignments, team)
+}
+
+teamassignments
+
+```
+
+
+Voila. The `sample` function did the apparent work of the coin flip. What it actually did was more like pick a "Heads" or "Tails" out of a hat containing both. Just as good, right? Notice that (a) we only got four Sharks, not five, and (b) sometimes we got four Jets in a row. That's randomness for you. 
+
+> Technically, it is pseudo-randomness. Notice the first line of the code where I set the "seed" for the random number generator. What this does is make sure that every time I run this code I get the same results. If that seems not random to you, I don't blame you. But here are some important things to keep in mind. First, even though using this random seed makes my experiment repeatable, I still have no idea what the results are going to be until I run it the first time. Second, if I change the seed, even by a tiny amount, then I will once again have no idea. Try it yourself. Note that if you do not declare a random seed, then the computer will effectively choose one for you, perhaps by using the exact computer time in milliseconds. 
+
+
+If you're thinking we could have removed the coin from this process, you're right. Even our imaginary mechanical device could have just dropped marbles into jars directly, provided that we believed the marble dropping process was equivalent to the coin flip in terms of 50/50 probabilities. In R, here is a faster way. We just sample out of a "hat" containing each of the team names. 
+
+```{r}
+set.seed(8675309) # Wait for it!
+
+teamnames <- c("Sharks","Jets")
+numPeople <- 10
+
+teamassignments <- sample(teamnames, numPeople, replace=TRUE)
+teamassignments
+
+```
+
+Well, that was simpler. Notice also that by using the same random seed, I got the same team assignments, even though the code was completely different.
+
+There's another difference here, which is that instead of going one by one for each person, I made the selection all at once by passing the number of people to the sample function instead of asking for one sample. Because I'm sampling `numPeople` times and there are only two outcomes ("in the hat"), I have to add the argument `replace = TRUE` when I call the `sample()` function. This means that after I look at the result, I put it back in the hat (I replace it), and then draw again. Otherwise, I could only sample as many times as I have choices. This would be suitable if, for example, all I wanted was to put a set of choices in random order. 
+
+
+
+
+
+
+
+
+There’s a good chance you have at least once in your life flipped a coin and also thrown a six-sided game die. For all intents and purposes, we can treat the coin as a two-sided die, and then we can generalize from these two examples as follows. 
+
+
+
+
+
+
+
