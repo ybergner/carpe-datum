@@ -8,7 +8,7 @@ Randomness is an idea, like straightness, that may be hard to observe in perfect
 
 $$ y = 2 x + 3.$$
 
-This formula, which expresses a linear relationship, assumes a fair amount of prior knowledge, which most of use learn in school. For example, that $x$ and $y$ can take on real-number valuess, that the $y$ axis is perpendicular to the x-axis, etc. The line expressed in the formula is perfectly straight. Even if we draw it using only an approximately straight line.
+This formula, which expresses a linear relationship, assumes a fair amount of prior knowledge, which most of us learn in school. For example, that $x$ and $y$ can take on real-number values, that the $y$ axis is perpendicular to the x-axis, etc. The line expressed in the formula is perfectly straight. Even if we draw it using only an approximately straight line.
 
 YouTuber [Vsauce's video on "What is Random?"](https://www.youtube.com/watch?v=9rIy0xY99a0) explores whether things that we take for granted as being random (e.g., coin flips) really are.  If you watch this video, you may come away convinced the outcome of tossing a coin or rolling a die is not truly random, and that quantum mechanics is the only truly random mechanism in nature. Alternately you may be satisfied that the fact of having limited information is sufficient to justify the treatment of a coin toss as a random event. On this argument, as long as you can't tell the difference between a coin and a truly random coin, you can, for all intents and purposes, treat is as perfectly random.
 
@@ -17,13 +17,13 @@ As with straightness, we can define an ideal random process. For example, we can
 
 $$ x \in \{H, T\} \qquad P(x=H) = p$$
 
-Now $x$ is not a real number but rather the outcome of a coin toss. The first part of the formula specifies that $x$ can take on two possible values, heads (H) or tails (T). The second part defines the probability of H as $p$. For a fair coin $p=0.5$. Although it is not written out explicitly, the probability of a coin coming up tails must be $1-p$ due to the axioms of probability and fact that there are only two possible outcomes.
+Now $x$ is not a real number but rather the outcome of a coin toss. The first part of the formula specifies that $x$ can take on two possible values, heads (H) or tails (T). This is abbreviated here in set notation. We can read it as "$x$ is an element of the set containing H and T." The second part defines the probability that $x$ is observed to have a value of H. The probability os $p$, which is a *parameter* that stands in for some number between 0 and 1. For a fair coin $p=0.5$. Although it is not written out explicitly, the probability of a coin coming up tails must be $1-p$ due to the axioms of probability and fact that there are only two possible outcomes.
 
 For a fair six-sided die, we can write
 
 $$ x \in \{1, 2, \dots, 6\} \qquad P(x=n) = 1/6 \quad \forall n \in \{1, 2, \dots, 6\}. $$
 
-The "forall" symbol (an upside down A) is a shorthand we use to indicate that all outcomes are equally probable, with probability of 1/6. 
+The "forall" symbol (an upside down A) is a shorthand we use to indicate that all outcomes are equally probable, with probability of 1/6. We can read this part as, "the probability that $x$ is observed to take the value $n$ is equal to 1/6 for all $n$ in the set containing the values 1, 2, 3, 4, 5, and 6."
 
 
 ### Generating Random Numbers {-}
@@ -32,7 +32,7 @@ How do we simulate a random event or a series of random events? If you want to s
 
 We can do this on the computer in R. In fact we can do it several different ways. Here, first, is a more or less direct translation of what our mechanical process would do. The key enabling function here is called `sample()`, which we'll soon see is a little bit different from a coin toss.
 
-```{r}
+```{r echo =TRUE}
 
 set.seed(8675309) # I'll explain this later 
 
@@ -68,7 +68,7 @@ Voila. The `sample` function did the apparent work of the coin flip. What it act
 
 If you're thinking we could have removed the coin from this process, you're right. Even our imaginary mechanical device could have just dropped marbles into jars directly, provided that we believed the marble dropping process was equivalent to the coin flip in terms of 50/50 probabilities. In R, here is a faster way. We just sample out of a "hat" containing each of the team names. 
 
-```{r}
+```{r echo = TRUE}
 set.seed(8675309) # Wait for it!
 
 teamnames <- c("Sharks","Jets")
