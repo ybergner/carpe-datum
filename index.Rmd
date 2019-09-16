@@ -1,6 +1,6 @@
 --- 
-title: "Big Questions and Probabilistic Answers"
-subtitle: "Data Science You Can Use for Stuff You Care About"
+title: "Carpe Datum"
+subtitle: "Data Science for Life's Big Questions"
 author: "Yoav Bergner"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site

@@ -3,7 +3,7 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">Big Questions and Probabilistic Answers</a></li>
+        <li><a href="./">Carpe Datum: Data Science for Life's Big Questions</a></li>
       after: |
     edit:
     download: ["pdf", "epub"]
