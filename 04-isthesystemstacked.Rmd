@@ -1,4 +1,4 @@
-# Is the System Stacked Against You (or in your Favor)?
+# Is the System Fair?
 
 At this point in the course, you’ve seen how variance in outcomes can be understood in terms of random, or noisy, statistical processes. If you bet on red at the roulette table five times in a row, and if you lose five times, that doesn’t mean the roulette wheel isn’t fair. That just could be bad luck (for you; possibly good luck for someone else who betted on black). Of course, the casino odds are stacked against you in the long run, since the casino always has an edge. For example, bets on red or black have even odds, but there are two out of 38 possible roulette outcomes in which neither black nor red will win. Now, in principle everyone knows that this is how casinos work, and indeed why they are able to stay in business. So if you end up losing more often than you win in a casino, you can only blame yourself.
 
