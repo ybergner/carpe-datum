@@ -25,7 +25,7 @@ Now, if someone is making what to *them* appears to be a common-sense claim but 
 
 ```{r tp-fig, echo=FALSE, out.width='90%', fig.show='hold', fig.cap='The greate debate'}
 include_graphics("images/Toilet_paper_orientation_overunder.png")
-#include_graphics("images/Toilet_paper_orientation_under.jpg")
+include_graphics("images/Toilet_paper_orientation_under.jpg")
 ```
 source [Wikimedia Commons User:Elya](https://commons.wikimedia.org/wiki/File:Toilet_paper_orientation_over.jpg)
 
@@ -34,7 +34,7 @@ Toilet paper orientation is a distinguishing **test question** that separates pe
 ```{r echo=FALSE}
 set.seed(201905071)
 nump <- 40
-probTP = 0.70
+probTP = 0.75
 binomial_draw <- rbinom(nump,1, prob=probTP)
 theWayIRoll <- ifelse(binomial_draw==1, "over", "under")
 TPcounts <- as.data.frame(table(binomial_draw), row.names=c("under", "over"))
@@ -69,8 +69,6 @@ That all seems pretty obvious, in part because I made up a *tautology* in the se
 
 But what if I had gotten exactly the same results for the toilet paper question? What if the data looked like Table \@ref(tab:tp-redux). In this **alternate universe**, everyone I ask in Washington Square is an under-hanger. Yes, it's one of those scary alternate universes, like the Twilight Zone. Anyway, does that mean that there is only one kind of person when it comes to toilet paper orientation? Well...not necessarily. After all, this was just a **sample** of people in Washington Square. It was not the whole **population** of Washington Square, even, let alone New York City, let alone the world.
 
-Go ahead and put a pin in that idea. We'll come back to it later. For example, we might want to know how confident we can be about a larger population from a sample. That's kind of a big thing in statistics.
-
 
 ```{r tp-redux, echo=FALSE}
 ### NOT LATEX COMPATIBLE
@@ -79,6 +77,34 @@ kable(iamaperson, caption="How people roll (alternate universe)", booktabs = TRU
   kable_styling(bootstrap_options = "striped", full_width = T)
 
 ```
+
+Samples and populations are sort of a big deal in statistics, and these words have more specialized meanings. 
+
+```
+The population of New York City is 8.6 million
+The population of New York City is ethnically diverse
+Therefore, 8.6 million is ethnically diverse
+```
+
+In common usage, population often refers to the number or count of people, in a town, area, or country. Among statisticians and data scientists, population refers to a set or collection of people under consideration. The number of those people is just one summary about the population. The proportion of over-hangers is another summary of the population. 
+
+If we always had access to all of the members in a population, the field of statistics wouldn't exist. We would just know a bunch of facts about the whole world. However, don't start betting about the demis e
+
+
+
+
+
+For example, we might want to know how confident we can be about a larger population of interest from a smaller sample. 
+
+
+Wittgenstein began his Tractatus with the statement, "the world is all that is the case." That's deep (probably). But when someone says "there are two kinds of people in the world," they probably mean something else. At their most expansive, they may be thinking of all of the people alive on Earth right now. In that case, there is a population that includes all of the people alive 
+
+
+For now, though, we should at l
+
+
+
+
 
 ### Summarizing data
 
@@ -118,6 +144,8 @@ While focusing on the great toilet paper debate, we've managed to establish some
 - Dichotomous questions split people into two kinds, but only as long as it is actually possible for both answers to occur. 
 
 - In an alternate universe, people might give different answers than they do in this one. (Seriously, this is an important idea).
+
+
 
 - Clearly, we can ask people questions that prompt them to choose between more than two categories. But "two types of people" questions are more fun.^[That was another unsubstantiated claim.] I mean there are so many of them! So... does that mean that there really are two types of people? To answer this, we will need to get into another great debate.
 
