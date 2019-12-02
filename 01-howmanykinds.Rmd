@@ -16,16 +16,25 @@ What *exactly* am I even saying in my claim, you might be thinking? What do you 
 
 Now, if someone is making what to *them* appears to be a common-sense claim but to you appears false or at least non-obvious, you have a few options. You can challenge the assumption and ask for evidence. Or you can accept the assumption, *for argument's sake*, to see where this is going. Hopefully, my claim feels common-sense enough to you too (i.e., we have that in common). If not, I'll just ask you to follow along to see where this is all going...
 
-## Two Kinds of People 
 
-### Categories, counts, and kinds {#sec:categories}
+## Categories, counts, and kinds {#sec:categories}
+
+### Two Kinds of People 
 
 "There are two kinds of people... which one are you?" questions have become something of an internet meme, particulary with the categorizations represented graphically or pictorially. There is a whole [blog devoted to them by João Rocha](https://2kindsofpeople.tumblr.com/). The images in Figure \@ref(fig:tp-fig) probably need no explanation, as they concern the great [toilet paper orientation](https://en.wikipedia.org/wiki/Toilet_paper_orientation) debate.
 
 
+```{r include=FALSE}
+
+require(knitr)
+require(kableExtra)
+require(dplyr)
+require(ggplot2)
+```
+
 ```{r tp-fig, echo=FALSE, out.width='90%', fig.show='hold', fig.cap='The greate debate'}
 include_graphics("images/Toilet_paper_orientation_overunder.png")
-include_graphics("images/Toilet_paper_orientation_under.jpg")
+#include_graphics("images/Toilet_paper_orientation_under.jpg")
 ```
 source [Wikimedia Commons User:Elya](https://commons.wikimedia.org/wiki/File:Toilet_paper_orientation_over.jpg)
 
@@ -78,32 +87,22 @@ kable(iamaperson, caption="How people roll (alternate universe)", booktabs = TRU
 
 ```
 
-Samples and populations are sort of a big deal in statistics, and these words have more specialized meanings. 
+### Samples and Populations
+
+Samples and populations are sort of a big deal in statistics and data science, where these words have somewhat specialized meanings. Consider the following utterances, both of which make sense:
 
 ```
 The population of New York City is 8.6 million
 The population of New York City is ethnically diverse
-Therefore, 8.6 million is ethnically diverse
 ```
 
-In common usage, population often refers to the number or count of people, in a town, area, or country. Among statisticians and data scientists, population refers to a set or collection of people under consideration. The number of those people is just one summary about the population. The proportion of over-hangers is another summary of the population. 
+Which is the population of New York City? In common usage, population often refers to the number or count of people, in a town, area, or country. Among statisticians and data scientists, population refers to a set or collection under consideration.  It doesn't have to be a set of people. It could be a set of rats, non-governmental organizations, or domestic flights originating Chicago. But let's suppose the population does refer to a set of people. The number of those people is just one summary about the population, also known as the total *count*. The proportion of over-hangers is another summary of the population, as is the most-common birth-month. 
 
-If we always had access to all of the members in a population, the field of statistics wouldn't exist. We would just know a bunch of facts about the whole world. However, don't start betting about the demis e
+If we always had access to all of the members in a population (the set or collection under consideration), the field of statistics wouldn't exist. We would just know a bunch of facts about, say, everyone in the whole world. And that would be that. While it is true that data are becoming more and ubiquitous, don't start betting on the demise of statistics. Even if we did have complete data for everyone in the world today, our population of interest might extend to the world as it will be next month, next year, or ten years from now. That is, we might want to make predictions about the future. In which case, we would want to draw *inferences* and to generalize from the data we have on hand---our sample---to data we don't have---the rest of the population. Making inferences from samples to populations will always be a compelling and challenging problem.
 
+Since Washington Square is the center of my universe, that's where I sample. Even if we agreed that our population of interest were confined to Washington Square, we would still find it difficult to collect data on everyone there. There are a lot of them, many of them are on skateboards, and new people keep leaving and entering the park. It turns out, that's okay. We don't actually have to reach everybody to be able to do data science. However, we need to understand that when we sample 40 particular people in Washington Square, we might not get the same exact answers as if we had sampled 40 *different* people. The sampling process introduces an element of **uncertainty** into our process.
 
-
-
-
-For example, we might want to know how confident we can be about a larger population of interest from a smaller sample. 
-
-
-Wittgenstein began his Tractatus with the statement, "the world is all that is the case." That's deep (probably). But when someone says "there are two kinds of people in the world," they probably mean something else. At their most expansive, they may be thinking of all of the people alive on Earth right now. In that case, there is a population that includes all of the people alive 
-
-
-For now, though, we should at l
-
-
-
+Coming back to our toilet paper debate, if we did find zero over-hangers in one sample, it doesn't guarantee that the number of over-hangers will also be zero in the next. The number may vary from sample to sample. Uncertainty does not, however, mean that the information derived from one sample is useless. In fact, soon we'll see that we can actually learn a lot from a sample simply by recognizing that sample values will vary. We can simulate samples on a computer to see how much they will vary. And then, using our simulations, we will be able to give probabilistic answers to questions like, "what are the chances that there really are no over-hangers in Washington Square?"
 
 
 ### Summarizing data
@@ -133,9 +132,10 @@ Whenever someone reports a mean (another word for average) value of some set of 
 
 </div>
 
-
-
 This is about as much as we need to say about summary statistics for the time being. But they'll be back. 
+
+
+
 
 #### Checkpoint
 
@@ -145,11 +145,9 @@ While focusing on the great toilet paper debate, we've managed to establish some
 
 - In an alternate universe, people might give different answers than they do in this one. (Seriously, this is an important idea).
 
-
+- Even when we casually refer to *people*, we may have a particular set of people, a population, in mind. Data about this population are likely to come from a sample, rather than from the whole population, and this fact introduces some uncertainty into claims about the whole population. Data science to the rescue!
 
 - Clearly, we can ask people questions that prompt them to choose between more than two categories. But "two types of people" questions are more fun.^[That was another unsubstantiated claim.] I mean there are so many of them! So... does that mean that there really are two types of people? To answer this, we will need to get into another great debate.
-
-
 
 
 ### Dimensions
@@ -183,7 +181,9 @@ But this second question did not erase the first question about toilet paper. In
 head(wsq_peeps)
 ```
 
-You may have noticed that among the first six people for whom I have shown data, none of them answered both over and smooth. But such response pairs exist. In fact, if we count each combination as it occurs--that is, under-chunky, over-chunky, under-smooth, and over-smooth--we get the results shown in Table \@ref(tab:tpxpb). There are four combinations, because we have two questions with two possibilities (dichotomies) for each. Before you read on, it's a good time to ask yourself if you can answer the following questions (answers in the footnote): (a) if there were two questions with three categories each, how many combinations could be observed? (b) if there were three dichotmous questions, how many combinations could be observed?^[(a) If the categories for each question are A, B, and C, we can get AA, AB, AC, BA, BB, ... etc. We multiply the number of categories as many times as we have questions. So 3\*3 = 9. (b) This time we have three questions, and for each one we have two options, so there are 2\*2\*2=8 possible combinations.]
+You may have noticed that among the first six people for whom I have shown data, none of them answered both over and smooth. But such response pairs exist. In fact, if we count each combination as it occurs--that is, under-chunky, over-chunky, under-smooth, and over-smooth--we get the results shown in Table \@ref(tab:tpxpb). There are four combinations, because we have two questions with two possibilities (dichotomies) for each. 
+
+Before you read on, it's a good time to ask yourself if you can answer the following questions (answers in the footnote): (a) if there were two questions with three categories each, how many combinations could be observed? (b) if there were three dichotmous questions, how many combinations could be observed?^[(a) If the categories for each question are A, B, and C, we can get AA, AB, AC, BA, BB, ... etc. We multiply the number of categories as many times as we have questions. So 3\*3 = 9. (b) This time we have three questions, and for each one we have two options, so there are 2\*2\*2=8 possible combinations.]
 
 
 ```{r, 'tpxpb', echo=FALSE}
@@ -229,6 +229,7 @@ alt_xtab2[1,1] <- alt_xtab2[2,2] <-0
 kable(list(alt_xtab1, alt_xtab2), caption="Two questions (alternate universes)", booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "bordered", full_width = F)
 
+#saveRDS(alt_xtab2, file="alt_xtab2.rds")
 ```
 But now consider the alternate universe on the right of Table \@ref(tab:tpxpb-alt). In that case, everyone who is an over-hanger of toilet paper prefers smooth peanut butter, and everyone who is an under-hanger prefers chunky. If this is the case, there are only two kinds of people, at least in our sample. Those who over-hang _and_ prefer smooth and those who under-hang *and* prefer chunky. But does it make sense to say there are two dimensions? We did ask two different questions!
 
@@ -241,8 +242,8 @@ html_tag_audio <- function(file, type = "wav")
 {
   htmltools::tags$audio(controls = NA,
                         htmltools::tags$source(src = file,
-                                               type = glue::glue("audio/{type}",
-                                                                 type = type)))
+                         type = glue::glue("audio/{type}",
+                          type = type)))
 }
 
 
@@ -251,7 +252,7 @@ html_tag_audio <- function(file, type = "wav")
 `r html_tag_audio("media/chinese-gong-daniel_simon.mp3", type="mp3")`
 [source](http://soundbible.com/2148-Chinese-Gong.html)
 
-### Independence, Association, and Contingency {#sec:indep}
+## Independence, Association, and Contingency {#sec:indep}
 
 > This section title sounds like a philosophy book by the late Richard Rorty. 
 > --- inner voice
@@ -374,7 +375,7 @@ It might be gong time again: `r html_tag_audio("media/chinese-gong-daniel_simon.
 **What do you think?**
 
 
-### (An Infinite Number of) Shades of Gray (or Brown) {#sec:shades}
+## (An Infinite Number of) Shades of Gray (or Brown) {#sec:shades}
 
 We've taken the two-kinds-of-people idea pretty far in this chapter already. But it's time to acknowledge the elephant in the room. Not every question about attributes, preferences, or behaviors  can be answered in such an either/or manner. Digitidiness might be one of those things. Consider the following dialogue:
 
@@ -539,7 +540,7 @@ I do not mean to imply that clusters of points can always be found if we have da
 1) Based on the scatterplot in Figure \@ref(fig:poopy-crappy) and the grouped-by-color histogram for poopiness in Figure \@ref(fig:poopy-hist-mixture), describe what the equivalent grouped-by-color histogram for crappiness would look like. Would it look the same or different? Explain.
 
 
-### Cut Scores and Abnormality
+## Cut Scores and Abnormality
 
 > Because that's not what normal people do.
 > --- things my spouse says
@@ -653,4 +654,4 @@ I'd like to point out that we still haven't even once asked a question of the fo
 
 ## Exercises {-}
 
-edit
++ Come up with a population (the members do not have to be human beings) and three *creative* summary statistics that can be derived about it (i.e., go beyond average weight). 

@@ -2,7 +2,7 @@
 title: "Carpe Datum"
 subtitle: "Data Science for Life's Big Questions"
 author: "Yoav Bergner"
-date: "`r Sys.Date()`"
+date: "2019-12-01"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -19,8 +19,7 @@ always_allow_html: yes
 
 
 
-```{r global_options, R.options=knitr::opts_chunk$set(warning=FALSE, echo=FALSE, message=FALSE)}
-```   
+
 
 
 > "[T]he most important questions of life are for the most part only problems of probability. It may even be said, strictly speaking, that almost all our knowledge is only probabilistic."
@@ -54,30 +53,13 @@ An elegant and simple proof can be constructed (hint: by induction), but if you 
 Now problems like these are often used to teach proof technique rather than to encode cute number-facts in memory. And indeed, for training statisticians, a rigorous mathematical presentation is important. But for most users of this book, intuition and understanding is the priority, and the ability to derive formulas is not necessary.
 
 
-```{r include=FALSE}
-
-require(knitr)
-require(kableExtra)
-require(dplyr)
-require(ggplot2)
-require(rpart)
-require(rpart.plot)
-
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'kableExtra', 'dplyr', 'ggplot2', 'rpart', 'rpart.plot'
-), 'packages.bib')
-```
 
 
 
-```{r xkcd-preamble, echo=FALSE, fig.cap='Hopefully you are in the right place. Credit   [xkcd.com](https://xkcd.com/1856/)'}
-include_graphics("images/existence_proof_2x.png")
-```
 
-```{r, include=FALSE}
-options(tinytex.verbose = TRUE)
-```
+![(\#fig:xkcd-preamble)Hopefully you are in the right place. Credit   [xkcd.com](https://xkcd.com/1856/)](images/existence_proof_2x.png) 
+
+
 
 <!--chapter:end:index.Rmd-->
 
@@ -99,67 +81,78 @@ What *exactly* am I even saying in my claim, you might be thinking? What do you 
 
 Now, if someone is making what to *them* appears to be a common-sense claim but to you appears false or at least non-obvious, you have a few options. You can challenge the assumption and ask for evidence. Or you can accept the assumption, *for argument's sake*, to see where this is going. Hopefully, my claim feels common-sense enough to you too (i.e., we have that in common). If not, I'll just ask you to follow along to see where this is all going...
 
-## Two Kinds of People 
 
-### Categories, counts, and kinds {#sec:categories}
+## Categories, counts, and kinds {#sec:categories}
+
+### Two Kinds of People 
 
 "There are two kinds of people... which one are you?" questions have become something of an internet meme, particulary with the categorizations represented graphically or pictorially. There is a whole [blog devoted to them by João Rocha](https://2kindsofpeople.tumblr.com/). The images in Figure \@ref(fig:tp-fig) probably need no explanation, as they concern the great [toilet paper orientation](https://en.wikipedia.org/wiki/Toilet_paper_orientation) debate.
 
 
-```{r tp-fig, echo=FALSE, out.width='90%', fig.show='hold', fig.cap='The greate debate'}
-include_graphics("images/Toilet_paper_orientation_overunder.png")
-include_graphics("images/Toilet_paper_orientation_under.jpg")
-```
+
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{images/Toilet_paper_orientation_overunder} \caption{The greate debate}(\#fig:tp-fig)
+\end{figure}
+\includegraphics[width=0.9\linewidth]{images/Toilet_paper_orientation_under} 
 source [Wikimedia Commons User:Elya](https://commons.wikimedia.org/wiki/File:Toilet_paper_orientation_over.jpg)
 
 Toilet paper orientation is a distinguishing **test question** that separates people into one of two "kinds" (or "types" or "categories"; sometimes English has several words that are used interchangeably). A fancy word for this "splitting into two" is dichotomy (die-COT-uh-mee), from the Greek.  A **dichotomous question** has two possible answers. Here, you choose one way to orient the roll or the other. Let's call this roll choice "over" (shown on left) or "under" (shown on right). Perhaps you have debated which is better with a friend or family member. Or perhaps you are lucky enough to have never thought about it at all. In any case, armed with this particular test question, we can go out and collect some data. 
 
-```{r echo=FALSE}
-set.seed(201905071)
-nump <- 40
-probTP = 0.75
-binomial_draw <- rbinom(nump,1, prob=probTP)
-theWayIRoll <- ifelse(binomial_draw==1, "over", "under")
-TPcounts <- as.data.frame(table(binomial_draw), row.names=c("under", "over"))
-```
 
-```{r tp-table, echo=FALSE}
-### NOT LATEX COMPATIBLE
-kable(table(theWayIRoll), col.names = c("", "count"), caption="How people roll", booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "striped", full_width = T)
 
-# TPcounts %>% select(counts=Freq) %>%
-#   kable(., caption="How I Roll", booktabs = TRUE) %>%
-#   kable_styling(bootstrap_options = "striped", full_width = F, position = "float_right")
+\begin{table}
 
-```
+\caption{(\#tab:tp-table)How people roll}
+\centering
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedleft}X}
+\toprule
+ & count\\
+\midrule
+over & 23\\
+under & 17\\
+\bottomrule
+\end{tabu}
+\end{table}
 
-I went ahead and asked `r nump` people in Washington Square Park in New York City which kind of person they were, and the results are shown in Table \@ref(tab:tp-table). This being a book about data science, you might think I'm going to start calculating proportions right away, for example by saying that `r 100*round(prop.table(table(theWayIRoll))["over"],3)`% of New Yorkers are over-hangers. 
+I went ahead and asked 40 people in Washington Square Park in New York City which kind of person they were, and the results are shown in Table \@ref(tab:tp-table). This being a book about data science, you might think I'm going to start calculating proportions right away, for example by saying that 57.5% of New Yorkers are over-hangers. 
 Nope. Although you should be able to figure out that proportion conversion, it is not the point I want to focus on right now. 
 
 That point I want to focus on is that, based on our data, there *are* indeed two kinds of people here. If, for example, everyone in the world were an under-hanger (heaven forbid), then I couldn't very well say that there were two kinds of people in this world. At least not with regard to toilet paper orientation. It would be like if I presented you with the data in Table \@ref(tab:dumb-table). Looking at that, I can't very well convince you that there are two kinds of people.
 
 
-```{r dumb-table, echo=FALSE}
-### NOT LATEX COMPATIBLE
-iamaperson <- data.frame(count = c(nump,0), row.names = c("human","not human"))
-kable(iamaperson, caption="Kinds of people in Washington Square", booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "striped", full_width = T)
+\begin{table}
 
-```
+\caption{(\#tab:dumb-table)Kinds of people in Washington Square}
+\centering
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedleft}X}
+\toprule
+  & count\\
+\midrule
+human & 40\\
+not human & 0\\
+\bottomrule
+\end{tabu}
+\end{table}
 
 That all seems pretty obvious, in part because I made up a *tautology* in the second example there. Being a human being is automatically associated with everyone who can be a *kind of person*. 
 
 But what if I had gotten exactly the same results for the toilet paper question? What if the data looked like Table \@ref(tab:tp-redux). In this **alternate universe**, everyone I ask in Washington Square is an under-hanger. Yes, it's one of those scary alternate universes, like the Twilight Zone. Anyway, does that mean that there is only one kind of person when it comes to toilet paper orientation? Well...not necessarily. After all, this was just a **sample** of people in Washington Square. It was not the whole **population** of Washington Square, even, let alone New York City, let alone the world.
 
 
-```{r tp-redux, echo=FALSE}
-### NOT LATEX COMPATIBLE
-iamaperson <- data.frame(count = c(nump,0), row.names = c("under", "over"))
-kable(iamaperson, caption="How people roll (alternate universe)", booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "striped", full_width = T)
+\begin{table}
 
-```
+\caption{(\#tab:tp-redux)How people roll (alternate universe)}
+\centering
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedleft}X}
+\toprule
+  & count\\
+\midrule
+under & 40\\
+over & 0\\
+\bottomrule
+\end{tabu}
+\end{table}
 
 Samples and populations are sort of a big deal in statistics, and these words have more specialized meanings. 
 
@@ -169,9 +162,9 @@ The population of New York City is ethnically diverse
 Therefore, 8.6 million is ethnically diverse
 ```
 
-In common usage, population often refers to the number or count of people, in a town, area, or country. Among statisticians and data scientists, population refers to a set or collection of people under consideration. The number of those people is just one summary about the population. The proportion of over-hangers is another. 
+In common usage, population often refers to the number or count of people, in a town, area, or country. Among statisticians and data scientists, population refers to a set or collection of people under consideration. The number of those people is just one summary about the population, namely the total *count*. The proportion of over-hangers is another summary of the population, as is the most-common-birthday. 
 
-If we always had access to all of the
+If we always had access to all of the members in a population (the set or collection of people under consideration), the field of statistics wouldn't exist. We would just know a bunch of facts about, say, everyone in the whole world. While it is true that data are becoming more and ubiquitous, don't start betting on the demise of statistics. Even if we did have complete data for everyone in New York City today, our population of interest might extend to residents of New York City next year or ten years from now. We might want to make predictions about the future. In which case, the need to draw *inferences* and to generalize from the data we have on hand will always be a compelling and challenging problem.
 
 
 
@@ -193,10 +186,20 @@ For now, though, we should at l
 
 When I presented my survey results to you in Table \@ref(tab:tp-table), notice that I did not present you with the raw data, but rather with a summary of the data. The particular summary I used was called "counts", that is, a total count of how many people responded "over" or "under." The raw data, in contrast, would have contained each individual response I collected, labled either with a name of the individual, or perhaps with some other unique identifier (such as a random number), or---if I don't need to keep track of particular individuals---with just a row number. Something like this, if we examine at the first six responses rather than all 40 of them. Raw data:
 
-```{r}
 
+```r
 rawdata <- data.frame(randomID = round(runif(length(theWayIRoll), min=1000, max=9999)), response=theWayIRoll)
 head(rawdata)
+```
+
+```
+##   randomID response
+## 1     9246    under
+## 2     1478     over
+## 3     8831    under
+## 4     8194     over
+## 5     4178    under
+## 6     4243    under
 ```
 
 Counts is an example of a **summary statistic**, which is a fancy term for a number that is derived from the raw data. The count summary is as simple as it gets. It is literally the number of times that each response appears. We might note as well that, 
@@ -235,7 +238,7 @@ While focusing on the great toilet paper debate, we've managed to establish some
 
 
 
-### Dimensions
+## Dimensions
 
 
 > "I always said if I had one breakfast to eat before I die, it would be Wonder Bread toasted, with Skippy Super Chunky melted on it, slices of overripe banana and fresh crisp bacon."
@@ -247,94 +250,112 @@ Former NYC mayor Michael Bloomberg is a chunky peanut butter kind of person. Are
 
 See, back when I went to talk to the people in Washington Square, I also asked them about the great peanut butter debate. As you can see from Table \@ref(tab:pb-counts), smooth came out slightly ahead. 
 
-```{r, include=FALSE}
 
-set.seed(201905072)
-probPB = 0.66
-binomial_draw <- rbinom(nump,1, prob=probPB)
-theWayISpread <- ifelse(binomial_draw==1, "smooth", "chunky")
-wsq_peeps <- data.frame(roll=theWayIRoll, spread=theWayISpread)
-```
 
-```{r, 'pb-counts', echo=FALSE}
-kable(table(theWayISpread), col.names = c("", "counts"), caption="How people spread", booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "striped", full_width = T)
-```
+\begin{table}
+
+\caption{(\#tab:pb-counts)How people spread}
+\centering
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedleft}X}
+\toprule
+ & counts\\
+\midrule
+chunky & 17\\
+smooth & 23\\
+\bottomrule
+\end{tabu}
+\end{table}
 But this second question did not erase the first question about toilet paper. In fact the first few rows of our data from Washington Square are displayed below. Each row, representing one person, now has two columns, labeled "roll" (for toilet paper) and "spread" (for peanut butter): 
 
-```{r, echo=FALSE}
-head(wsq_peeps)
+
+```
+##    roll spread
+## 1 under chunky
+## 2  over chunky
+## 3 under smooth
+## 4  over chunky
+## 5 under smooth
+## 6 under chunky
 ```
 
 You may have noticed that among the first six people for whom I have shown data, none of them answered both over and smooth. But such response pairs exist. In fact, if we count each combination as it occurs--that is, under-chunky, over-chunky, under-smooth, and over-smooth--we get the results shown in Table \@ref(tab:tpxpb). There are four combinations, because we have two questions with two possibilities (dichotomies) for each. Before you read on, it's a good time to ask yourself if you can answer the following questions (answers in the footnote): (a) if there were two questions with three categories each, how many combinations could be observed? (b) if there were three dichotmous questions, how many combinations could be observed?^[(a) If the categories for each question are A, B, and C, we can get AA, AB, AC, BA, BB, ... etc. We multiply the number of categories as many times as we have questions. So 3\*3 = 9. (b) This time we have three questions, and for each one we have two options, so there are 2\*2\*2=8 possible combinations.]
 
 
-```{r, 'tpxpb', echo=FALSE}
-kable(table(wsq_peeps$roll, wsq_peeps$spread), caption="Two questions", booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "bordered", full_width = F)
+\begin{table}
 
-```
+\caption{(\#tab:tpxpb)Two questions}
+\centering
+\begin{tabular}[t]{lrr}
+\toprule
+  & chunky & smooth\\
+\midrule
+over & 10 & 13\\
+under & 7 & 10\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 
 Table \@ref(tab:tpxpb) is an example of a kind of table that is so common in data science, it has its own name. Three of them, in fact. It is sometimes called a cross table (or crosstab), or a **two-way table** (makes sense), but most commonly it is known as a **contingency table** (wha? I'll explain later in Section \@ref(sec:indep).) I'm sorry that there are three names for the same thing. Really I am.
 
 Ok, now things are about to get deep. The title of this chapter is "How Many Kinds of People are There?" And we've now explored how using two two-kinds questions leads to four types. You've probably figured out yourself that you take the product (i.e., multiply) of the number of categories in each of the questions, and that tells you how many "buckets" you can have overall. But still, there are different ways to arrive at different bucket numbers.
 
-```{r, 'newpb', echo=FALSE}
+\begin{wraptable}{r}{0pt}
 
-fourWaySpread <- theWayISpread
-dontcare <- sample(nump, 7)
-haters <- sample(dontcare, 4)
-fourWaySpread[dontcare] <- "don't care"
-fourWaySpread[haters] <- "hate all"
-
-kable(table(fourWaySpread), col.names = c("", "counts"), caption="PB preference", booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "striped", full_width = F, position="float_right")
-```
+\caption{(\#tab:newpb)PB preference}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+ & counts\\
+\midrule
+chunky & 13\\
+don't care & 3\\
+hate all & 4\\
+smooth & 20\\
+\bottomrule
+\end{tabular}
+\end{wraptable}
  Consider Table \@ref(tab:newpb) in contrast to \@ref(tab:tpxpb). We've now given people four choices to express their peanut butter preference. In addition to chunky and smooth, they can also choose to say that they hate all peanut butter or don't care. We now have four kinds of people. But since we make the determination of what kind of person you are using just one question, we say that there is one **dimension** (in this case, peanut butter preference) along which people can be divided into four groups. In Table \@ref(tab:tpxpb), there were two dimensions, a dimension of peanut butter and a dimension of toilet paper. Notice that this word, dimension, is used in much the same way as when we refer to geometric space as being two-dimensional (e.g., a drawing on flat sheet) or three-dimensional (e.g., a solid object, or sometimes a drawing that creates the illusion of looking at a solid object.) The three dimensions of space are often labeled something like (x, y, z). Here, our two dimensions could be labeled (pb, tp). The order doesn't matter. To summarize, in Table \@ref(tab:tpxpb), we have two dimensions and four kinds. In Table \@ref(tab:newpb), we have *one* dimension and four kinds.
  
 So far so good: two questions, two dimension, right? Well... maybe. We already saw that if a question does not actually divide people into kinds, because only one answer appears, then it doesn't really count. It is not a dimension. In our contingency table representation, this might look like the left side of Table \@ref(tab:tpxpb-alt). In an alternate universe, no one prefers smooth to chunky. Another way to say it is that the peanut butter question is not **informative** because it has no **variance**. Everyone in our sample is the same.
 
 
-```{r, 'tpxpb-alt', echo=FALSE, results='asis'}
+\begin{table}
+\caption{(\#tab:tpxpb-alt)Two questions (alternate universes)}
 
-orig_xtab <- table(wsq_peeps$roll, wsq_peeps$spread)
-alt_xtab1 <- orig_xtab
-alt_xtab1[1,1] <- alt_xtab1[1,1] + alt_xtab1[1,2]
-alt_xtab1[2,1] <- alt_xtab1[2,1] + alt_xtab1[2,2]
-alt_xtab1[1,2] <- alt_xtab1[2,2] <-0
-  
-alt_xtab2 <- orig_xtab
-alt_xtab2[1,2] <- alt_xtab2[1,1] + alt_xtab2[1,2]
-alt_xtab2[2,1] <- alt_xtab2[2,1] + alt_xtab2[2,2]
-alt_xtab2[1,1] <- alt_xtab2[2,2] <-0
-
-kable(list(alt_xtab1, alt_xtab2), caption="Two questions (alternate universes)", booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "bordered", full_width = F)
-
-```
+\centering
+\begin{tabular}[t]{lrr}
+\toprule
+  & chunky & smooth\\
+\midrule
+over & 23 & 0\\
+under & 17 & 0\\
+\bottomrule
+\end{tabular}
+\centering
+\begin{tabular}[t]{lrr}
+\toprule
+  & chunky & smooth\\
+\midrule
+over & 0 & 23\\
+under & 17 & 0\\
+\bottomrule
+\end{tabular}
+\end{table}
 But now consider the alternate universe on the right of Table \@ref(tab:tpxpb-alt). In that case, everyone who is an over-hanger of toilet paper prefers smooth peanut butter, and everyone who is an under-hanger prefers chunky. If this is the case, there are only two kinds of people, at least in our sample. Those who over-hang _and_ prefer smooth and those who under-hang *and* prefer chunky. But does it make sense to say there are two dimensions? We did ask two different questions!
 
 You might reason about it the following way: in our sample, if I ask anyone just one of the two questions--about either toilet paper or peanut butter--then I immediately know the answer they would give to the other one. I don't actually have to ask two questions, other than to establish in the first place that I didn't have to. Since I only get information from one question, there is only one dimenion.
 
 If I could play a gong sound right now, I would. Wait a minute. At least _you_ can if you are reading this book in a web browser. Go for it:
   
-```{r include = FALSE}
-html_tag_audio <- function(file, type = "wav")
-{
-  htmltools::tags$audio(controls = NA,
-                        htmltools::tags$source(src = file,
-                                               type = glue::glue("audio/{type}",
-                                                                 type = type)))
-}
 
 
-```
-
-`r html_tag_audio("media/chinese-gong-daniel_simon.mp3", type="mp3")`
+<!--html_preserve--><audio controls>
+<source src="media/chinese-gong-daniel_simon.mp3" type="audio/mp3"/>
+</audio><!--/html_preserve-->
 [source](http://soundbible.com/2148-Chinese-Gong.html)
 
-### Independence, Association, and Contingency {#sec:indep}
+## Independence, Association, and Contingency {#sec:indep}
 
 > This section title sounds like a philosophy book by the late Richard Rorty. 
 > --- inner voice
@@ -343,23 +364,98 @@ html_tag_audio <- function(file, type = "wav")
 We just spent a little bit of time in an alternate universe, a bizarro world in which knowing how someone prefers to orient their toilet paper tells you what style of peanut butter they like, and *vice versa*. Notice that this knowing-about relationship is symmetric, and that in fact, the two representations as shown in Table \@ref(tab:tpxpb-alt2way) are informationally equivalent.
 
 
-```{r, 'tpxpb-alt2way', echo=FALSE, results='asis'}
+\begin{table}
+\caption{(\#tab:tpxpb-alt2way)Alternate universe (two equivalent ways)}
 
-kable(list(alt_xtab2, t(alt_xtab2)), caption="Alternate universe (two equivalent ways)", booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "bordered", full_width = F)
-
-```
+\centering
+\begin{tabular}[t]{lrr}
+\toprule
+  & chunky & smooth\\
+\midrule
+over & 0 & 23\\
+under & 17 & 0\\
+\bottomrule
+\end{tabular}
+\centering
+\begin{tabular}[t]{lrr}
+\toprule
+  & over & under\\
+\midrule
+chunky & 0 & 17\\
+smooth & 23 & 0\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 In our regular universe, however, this relationship was not observed. In Table \@ref(tab:tpxpb), all four possible combinations occur. When knowledge about a person's answer to one question provides information about their answer to another question, we say that the two answers are **contingent** upon one another. This is the reason we called the two-way table a contingency table in the first place, although it is still called that even when two answers are not contingent. Go figure. Contingent is another word for **dependent**. To make matters worse, we *also* often say that the two responses are **associated**. 
 
-In our bizarro world scenario, one answer completely determines the other. This **deterministic** relationship is one extreme in the spectrum of association/dependence/contingency. At the other extreme, if the two responses are not at all associated/dependent/contingent, then we say that they are **independent**. To say that two responses are independent is to assert that knowing one of them does not give you any information about what the other one might be. This would have been my intuition, at least, about toilet paper and peanut butter. But whether they are independent or mildly associated with one another is an empirical question, which means we should try to answer it with data. In bizarro world, where they were deterministically related, we might reasonably want to know why. Could there be a gene that turns on toilet paper orientation and peanut butter preference at the same time? 
+In our bizarro world scenario, one answer completely determines the other. This **deterministic** relationship is one extreme in the spectrum of association/dependence/contingency. At the other extreme, if the two responses are not at all associated/dependent/contingent, then we say that they are **independent**. To say that two responses are independent is to assert that knowing one of them does not give you any information about what the other one might be. This would have been my intuition, at least, about toilet paper and peanut butter. But whether they are independent or mildly associated with one another is an empirical question, which means we should try to answer it with data. In bizarro world, where they were deterministically related, we might reasonably want to know why. Could there be a gene that turns on toilet paper orientation and peanut butter preference at the same time?  
 
+It is worth noting that a single dataset often can't tell us for sure whether two variables are independent, associated/dependent/contingent, or deterministic. Suppose for a moment that we saw this contingency table:  
+\begin{table}
+
+\caption{(\#tab:unnamed-chunk-7)Two questions}
+\centering
+\begin{tabular}[t]{lrr}
+\toprule
+  & chunky & smooth\\
+\midrule
+over & 17 & 4\\
+under & 3 & 16\\
+\bottomrule
+\end{tabular}
+\end{table}
+  
+You might think, wow! It looks like toilet paper preference is associated with peanut butter preference: People who prefer chunky peanut butter also seem more likely to be over-rollers, and people who prefer smooth peanut butter are more likely to be under rollers. How weird!  
+
+Now, you intuitively know that if you go back out onto Washington Square and you find 40 different people, these numbers probably won't be exactly the same. There is some element of randomness, and it's basically impossible to know what the data would look like if you could ask every single person in the world.  
+
+Instead, statisticians like to use something called **hypothesis testing**. This often involves coming up with a **null hypothesis** (in this case, the null hypothesis might be that peanut butter choice and toilet paper rolling are independent) and an **alternative hypothesis** (in this case, the alternative hypothesis might be that peanut butter choice and toilet paper rolling preference are dependent). Then, it is often possible to simulate what might happen by random chance under the null hypothesis and check if our observations are consistent with the null or not. This can lead us to either accept the null hypothesis, or "reject the null" in favor of the alternative.  
+
+Let's first take a look at what this dataset looked like before we tabulated it. There were 40 people sampled, and they each asked two questions. Let's look at the first five rows of data:  
+
+\begin{tabular}{l|l}
+\hline
+Peanutbutter & Toiletpaper\\
+\hline
+Smooth & Under\\
+\hline
+Chunky & Over\\
+\hline
+Smooth & Under\\
+\hline
+Chunky & Over\\
+\hline
+Smooth & Under\\
+\hline
+\end{tabular}
+  
+One way to think about the situation where toilet paper and peanut butter choices are independent is this: We keep the same proportions of answers to each question, but we randomly shuffle them separately. This is akin to writing every person's response to the peanutbutter question on an index card, shuffling them randomly, and then re-distributing them; then, doing the same for the toiletpaper question. If we shuffle responses to each question separately, there is no way for someone's randomly assigned answer to one question to influence their randomly assigned answer to another. 
+
+In the initial dataset, we found that $17/20$ or $85%$ of people who preferred chunky peanutbutter also rolled their toilet paper "over". If we randomly re-shuffle people's answers 1000 times, then we can calculate the percentage of chunky peanutbutter people who roll their toilet paper "over" for each shuffled dataset. This will give us a sense for what kinds of values we might expect to see by random chance if the null were true (i.e., if these questions were actually independent). The code to do this is below (you do not need to perfectly understand it yet - we will come back to this later!).  
+
+```r
+simulated_proportions = vector()
+for(i in 1:1000){
+  data_example$Peanutbutter = sample(data_example$Peanutbutter)
+  data_example$Toiletpaper = sample(data_example$Toiletpaper)
+  simulated_proportions[i] = table(data_example)[1,1]/20
+}
+
+hist(simulated_proportions, 
+     main = "Proportion 'over' given chunky PB",
+     xlab = "Proportion 'over' given chunky PB under null",
+     xlim = c(0,1))
+abline(v=0.85, lwd=2, col=3, lty=2)
+```
+
+![](01-howmanykinds_files/figure-latex/unnamed-chunk-9-1.pdf)<!-- --> 
+  
+We will cover histograms later in this chapter, so don't worry too much if this picture doesn't make sense to you yet. For now, the main takeaway is this: Even if we randomly reshuffle everyone's answers 1000 times (akin to going out on the street and asking 40 new people these questions 1000 different times, but assuming that the overall proportions of over vs. under rollers and chunky vs. smooth PB people will be the same as in our original dataset), we would not expect to see values as high as 85% (green dotted line) if the questions were truly independent.  
 
 ### Latent Factors and Measurement {#sec:factors}
 
-```{r apps-windows, echo=FALSE, fig.show='hold', fig.cap='Two more two-kinds questions'}
-include_graphics("images/two-two-kinds.jpg")
-```
+![(\#fig:apps-windows)Two more two-kinds questions](images/two-two-kinds.jpg) 
 [source](https://2kindsofpeople.tumblr.com/)
 
 Figure \@ref(fig:apps-windows) shows two more two-kinds of people graphics from João Rocha's blog. I bet that you can identify yourself with one of the two images in each pair. I certainly can. But ask yourself, given our discussion above, do you think the choices a person would identify in each case above are independent or not independent (e.g., contingent, associated, dependent)?
@@ -376,24 +472,37 @@ Consider some data again, in two possible worlds, shown in Table \@ref(tab:tabsx
 
 
 
-```{r, 'tabsxapps', echo=FALSE, results='asis'}
+\begin{table}
+\caption{(\#tab:tabsxapps)Possible data for digital tidiness}
 
-tabsxapps <- matrix(c(21,0,0,19), nrow=2)
-tabsxapps2 <- matrix(c(16,5,6,13), nrow=2)
-rownames(tabsxapps2) <- rownames(tabsxapps) <- c("tabs","browser")
-colnames(tabsxapps2) <- colnames(tabsxapps) <- c("folders","apps")
-
-kable(list(tabsxapps, tabsxapps2), caption="Possible data for digital tidiness", booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "bordered", full_width = F)
-
-```
+\centering
+\begin{tabular}[t]{lrr}
+\toprule
+  & folders & apps\\
+\midrule
+tabs & 21 & 0\\
+browser & 0 & 19\\
+\bottomrule
+\end{tabular}
+\centering
+\begin{tabular}[t]{lrr}
+\toprule
+  & folders & apps\\
+\midrule
+tabs & 16 & 6\\
+browser & 5 & 13\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 But now consider the possible results in the table on the right. Since all four possible quadrants have non-zero counts, we see that knowing whether someone organizes their browser using tabs does not completely (i.e., *deterministically*) specify whether or not they put their apps into folders. On the other hand, one answer *does seem to be associated* with the other. Notice that the values are still much higher in the "buckets" that we think of as indicating the presence or absence of digitial tidiness. These are the tabs-folders bucket (tidy) or the windows-loose bucket (not tidy). We say that the tidiness factor appears to explain much of the observed range, or **variance**, in responses to the two questions. But it doesn't explain all of it, since there are people (11 out of 40, in this case) who don't fall into one of these buckets. 
 
 This situation on the right is probably more realistic. After all, very few things in this world are absolute (unlike in bizarro world). So now the big question re-emerges: are there two kinds of people or four? One dimension, or two? It's sort of...like...in between...?
 
 
-It might be gong time again: `r html_tag_audio("media/chinese-gong-daniel_simon.mp3", type="mp3")`
+It might be gong time again: <!--html_preserve--><audio controls>
+<source src="media/chinese-gong-daniel_simon.mp3" type="audio/mp3"/>
+</audio><!--/html_preserve-->
 
 
 <div class="col2">
@@ -406,7 +515,7 @@ It might be gong time again: `r html_tag_audio("media/chinese-gong-daniel_simon.
 **What do you think?**
 
 
-### (An Infinite Number of) Shades of Gray (or Brown) {#sec:shades}
+## (An Infinite Number of) Shades of Gray (or Brown) {#sec:shades}
 
 We've taken the two-kinds-of-people idea pretty far in this chapter already. But it's time to acknowledge the elephant in the room. Not every question about attributes, preferences, or behaviors  can be answered in such an either/or manner. Digitidiness might be one of those things. Consider the following dialogue:
 
@@ -421,14 +530,24 @@ Consider poopiness. On a scale where some people are really poopy (close to poop
 
 If I showed you the poopiness data for a sample of people, the list would look something like Table \@ref(tab:poopy-counts). As before, in this table each row stands for one person. To protect their identities, everyone is identified only by a number (e.g., 0083), which is shown in the first column. In the second column is each person's poopiness value. 
 
-```{r poopy-counts, echo=FALSE}
-set.seed(101010)
-poopycrappy <- read.csv("data/poopycrappy.csv")
-poopycrappy <- poopycrappy[sample(nrow(poopycrappy)),]
-row.names(poopycrappy) <- sprintf("%04d", as.integer(row.names(poopycrappy)))
-poopycrappy %>% select(poopiness) %>% round(.,3) %>% head() %>% kable(., booktabs = TRUE, caption = "Don't ask me how I got these numbers.")
+\begin{table}
 
-```
+\caption{(\#tab:poopy-counts)Don't ask me how I got these numbers.}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+  & poopiness\\
+\midrule
+0040 & 0.319\\
+0140 & 0.703\\
+0033 & 0.401\\
+0107 & 0.544\\
+0031 & 0.538\\
+\addlinespace
+0100 & 0.657\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 Poopiness is shown as a decimal number. Part of the reason I've used this scale, instead of 1-100, is to emphasize that the data values can be arbitrarily close to one another. Two values may be different by 0.1 or 0.03, or even 0.000027, if we have enough precision in our data to say such a thing. These data are called **numerical** or **quantitative** as opposed to **categorical**. There are actually 148 values in the data set, but I've only shown the first six in Table \@ref(tab:poopy-counts). 
 
@@ -438,47 +557,60 @@ Again, it is a bit awkward to count how many people have poopiness value of exac
 
 
 
-```{r poopy-freq, echo=FALSE}
-br = seq(0,1,by=0.05)
-ranges = paste(head(br,-1), br[-1], sep=" - ")
-freq   = hist(poopycrappy$poopiness, breaks=br, plot=FALSE)
+\begin{wraptable}{r}{0pt}
 
-tmp <- data.frame(Range = ranges, Frequency = freq$counts)
-kable(tmp, caption="Frequency Table for Poopiness", booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "striped", full_width = F, position="float_right")
+\caption{(\#tab:poopy-freq)Frequency Table for Poopiness}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+Range & Frequency\\
+\midrule
+0 - 0.05 & 0\\
+0.05 - 0.1 & 0\\
+0.1 - 0.15 & 0\\
+0.15 - 0.2 & 0\\
+0.2 - 0.25 & 2\\
+\addlinespace
+0.25 - 0.3 & 9\\
+0.3 - 0.35 & 12\\
+0.35 - 0.4 & 9\\
+0.4 - 0.45 & 9\\
+0.45 - 0.5 & 14\\
+\addlinespace
+0.5 - 0.55 & 14\\
+0.55 - 0.6 & 9\\
+0.6 - 0.65 & 19\\
+0.65 - 0.7 & 9\\
+0.7 - 0.75 & 13\\
+\addlinespace
+0.75 - 0.8 & 16\\
+0.8 - 0.85 & 7\\
+0.85 - 0.9 & 5\\
+0.9 - 0.95 & 1\\
+0.95 - 1 & 0\\
+\bottomrule
+\end{tabular}
+\end{wraptable}
 
-```
-
-```{r poopy-hist, echo=FALSE, fig.cap='Histogram of Poopiness'}
-col = c(0,0,0,0,0,0,0,0,rgb(1,0,0,0.2),0,0,0,0,0,0,0,0,0,0,0)
-h <- hist(poopycrappy$poopiness, main="", breaks=seq(0,1.01,0.05), col=col, xlab="poopiness")
-axis(1, at=0.45, labels="")
-```
+![(\#fig:poopy-hist)Histogram of Poopiness](01-howmanykinds_files/figure-latex/poopy-hist-1.pdf) 
 
 A histogram is a bar plot of counts for poopiness values that fall into certain numerical ranges. So it's a bar plot of the data in Table \@ref(tab:poopy-freq). But oftentimes you'll just see the histogram without the frequency table.
 
-Consider the range of poopiness values from 0.40-0.45. Our data set has 9 values in this range, as you can see in Table \@ref(tab:poopy-freq), so the height of the bar above this range of values on the x-axis (horizontal axis) is 9. I've colored it in pink only to help you see what I'm referring to. The y-axis in Figure \@ref(fig:poopy-hist) is labeled "Frequency", as in the table. Some more jargon: the numerical values that separate the bins are called "breaks." In Figure \@ref(fig:poopy-hist), the breaks are at increments of 0.05 (e.g., `r head(h$breaks) %>% paste(., collapse =", ")`, ...).
+Consider the range of poopiness values from 0.40-0.45. Our data set has 9 values in this range, as you can see in Table \@ref(tab:poopy-freq), so the height of the bar above this range of values on the x-axis (horizontal axis) is 9. I've colored it in pink only to help you see what I'm referring to. The y-axis in Figure \@ref(fig:poopy-hist) is labeled "Frequency", as in the table. Some more jargon: the numerical values that separate the bins are called "breaks." In Figure \@ref(fig:poopy-hist), the breaks are at increments of 0.05 (e.g., 0, 0.05, 0.1, 0.15, 0.2, 0.25, ...).
 
 
-> Question: Given that there are 20 possible bins in the histogram in Figure \@ref(fig:poopy-hist), but only `r length(which(h$counts > 0))` of them have non-zero counts, are there 20 kinds of people (in terms of poopiness) or 15 kinds of people?
+> Question: Given that there are 20 possible bins in the histogram in Figure \@ref(fig:poopy-hist), but only 15 of them have non-zero counts, are there 20 kinds of people (in terms of poopiness) or 15 kinds of people?
 
 
 Trick question? You bet. The breaks (and thus bins) in a histogram are arbitrary. I can choose any breaks I want, as long as all of the data points fall into exactly one bin. (I can't just exclude some bins, though. That would be cheating.) The histograms in Figure \@ref(fig:poopy-hist-alt) are both perfectly valid histograms. One of them has four bins, and one of them has only two bins.
 
 
-```{r poopy-hist-alt, echo=FALSE, fig.cap='Other Histograms of Poopiness'}
-par(mfrow=c(1,2))
-hist(poopycrappy$poopiness, main="", breaks=seq(0,1.01,0.25), xlab="poopiness")
-hist(poopycrappy$poopiness, main="", breaks=seq(0,1.01,0.5), xlab="poopiness")
-```
+![(\#fig:poopy-hist-alt)Other Histograms of Poopiness](01-howmanykinds_files/figure-latex/poopy-hist-alt-1.pdf) 
 
 
 It's tempting to take the counts on the right of Figure \@ref(fig:poopy-hist-alt) and declare that there are two kinds of people. After all, this gets us back to familiar territory. Ta-dah!
 
-```{r poopy-two-kinds, echo=FALSE, fig.cap='This is a terrible, horrible, no-good, very-bad thing to do.'}
-h2 <- hist(poopycrappy$poopiness,  breaks=seq(0,1.01,0.5), plot = FALSE)
-barplot(h2$counts, main="Two kinds of people", names.arg=c("not poopy", "poopy"))
-```
+![(\#fig:poopy-two-kinds)This is a terrible, horrible, no-good, very-bad thing to do.](01-howmanykinds_files/figure-latex/poopy-two-kinds-1.pdf) 
 
 As you can tell, because it says so right in the figure caption, this is terrible, horrible, no-good, very-bad thing to do. Why is it a bad thing to do?
 
@@ -498,22 +630,13 @@ Dang it! you say. You've taken me down this rabbit hole of poopiness for too lon
 Remember Figure \@ref(fig:poopy-hist)? (Don't click it!) Here it is again so you don't have to scroll back. Data scientists like to say this picture shows you the **distribution** of poopiness in our sample. Statisticians use the word distribution in a more formal way that is best put off until we actually need it. We don't need it yet.
 
 
-```{r poopy-hist2, echo=FALSE}
-h <- hist(poopycrappy$poopiness, main="", breaks=seq(0,1.01,0.05), xlab="poopiness")
-```
+![](01-howmanykinds_files/figure-latex/poopy-hist2-1.pdf)<!-- --> 
 
 What if I told you that there ARE two kinds of people; you just can't see them unless I give you special glasses (or more information). If I gave you special glasses (or information), you would see this:
 
 
 
-```{r poopy-hist-mixture, echo=FALSE, fig.cap='A mixture of poopiness'}
-
-p1 <- poopycrappy %>% filter(.,class=="C1") %>% select(poopiness) 
-p2 <- poopycrappy %>% filter(.,class=="C2") %>% select(poopiness) 
-hist(p1$poopiness, main="", breaks=seq(0,1.01,0.05), col=rgb(1,0,0,0.3), xlab="poopiness")
-hist(p2$poopiness, col=rgb(0,1,0,0.3), add=T)
-
-```
+![(\#fig:poopy-hist-mixture)A mixture of poopiness](01-howmanykinds_files/figure-latex/poopy-hist-mixture-1.pdf) 
 
 
 *By what dark magic have you colorized the data!* you say. Or, perhaps you just said, hm, interesting. 
@@ -522,46 +645,42 @@ In Figure \@ref(fig:poopy-hist-mixture), I've made a histogram with bars in two 
 Ok, but that doesn't explain how you would know that there are two groups. If I didn't tell you. That's because *you wouldn't necessarily know. You would need to have more information*. Now you might suspect something if you saw a distribution that looked like this:
 
 
-```{r poopy-hist-mixture-suspicious, echo=FALSE, fig.cap='A suspicious mixture of poopiness'}
-
-hist(c(p1$poopiness, p2$poopiness-0.12), main="", breaks=seq(0,1.05,0.06), xlab="poopiness")
-
-```
+![(\#fig:poopy-hist-mixture-suspicious)A suspicious mixture of poopiness](01-howmanykinds_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf) 
 
 In Figure \@ref(fig:poopy-hist-mixture-suspicious), the distribution has a double-hump like a Bactrian camel. In spite of that, it is not called a Bactrian distribution--which would make me happy--but a **bimodal** distribution. The point that I'm trying to make here is that a bimodal distribution makes you suspect that there could actually be two groups mixed together in our data. 
 
 But the original data for poopiness did not look bimodal. I suggested to you that you would need more information to determine if there are two groups. And so, I present you with... Crappiness! For each of the subjects in our poopiness data set, we have also collected data on their crappiness. Crappiness is also a numerical value ranging from [0,1]. It's sort of like poopiness, but different. Here are some values:
 
 
-```{r, echo=FALSE}
-# set.seed(101010)
-# poopycrappy <- read.csv("data/poopycrappy.csv")
-# poopycrappy <- poopycrappy[sample(nrow(poopycrappy)),]
-poopycrappy %>% select(poopiness, crappiness) %>% round(.,3) %>% head()
+
+```
+##      poopiness crappiness
+## 0040     0.319      0.564
+## 0140     0.703      0.415
+## 0033     0.401      0.729
+## 0107     0.544      0.374
+## 0031     0.538      0.853
+## 0100     0.657      0.316
 ```
 
 And here...(drum roll please)... is a histogram of crappiness!
 
 
-```{r crappy-hist, echo=FALSE, fig.cap='Histogram of Crappiness'}
-h <- hist(poopycrappy$crappiness, main="", breaks=seq(0,1.01,0.05), xlab="crappiness")
-```
+![(\#fig:crappy-hist)Histogram of Crappiness](01-howmanykinds_files/figure-latex/crappy-hist-1.pdf) 
 
 Hmm. I bet you were hoping that the crappiness data would look obviously bimodal, but it's not obvious. Nevertheless, hopefully you trust that I wouldn't lead you on a wild goose chase for no reason. Perhaps you can even see it coming. If we look at poopiness and crappiness separately, there is no clue that there might be distinct groups of people in our data set. But if we look at them together... there is. 
 
 When we looked at categorical data for two two-kinds-of-people questions, we made 2x2 contingency tables. We also used the word "dimension", for example to say that we were describing people along two dimensions (recall: toilet paper and peanut butter). Now that we are looking at numerical data (poopiness and crappiness), we can also use two dimensions, as in a two-dimensional scatterplot, to examine both variables at once. This scatterplot is shown in Figure \@ref(fig:poopy-crappy). Each point represents data from one person, with their poopiness value on the x-axis and crappiness on the y-axis.
 
 
-```{r poopy-crappy, echo=FALSE, fig.cap='Scatterplot of Crappiness vs Poopiness'}
-
-plot(poopycrappy[,c(1,2)], xlim=c(0,1), ylim=c(0,1))
-
-```
+![(\#fig:poopy-crappy)Scatterplot of Crappiness vs Poopiness](01-howmanykinds_files/figure-latex/poopy-crappy-1.pdf) 
 
 
 <div class="rejoice"> Alas, oh data! Your bimodal nature has revealed itself in the higher-dimensional plane! </div>
 
-`r html_tag_audio("media/chinese-gong-daniel_simon.mp3", type="mp3")`
+<!--html_preserve--><audio controls>
+<source src="media/chinese-gong-daniel_simon.mp3" type="audio/mp3"/>
+</audio><!--/html_preserve-->
 
 How many kinds of people are there? When it comes to poopiness and crappiness, people exhibit a continuous range of values, so we can't neatly put them into buckets. Neither poopiness nor crappiness appear to be bimodally distributed on their own. However, when examined together, as in the scatterplot in Figure \@ref(fig:poopy-crappy), a pretty suggestive pattern emerges in the data. There are two **clusters** of points, one group of which is lower in poopiness but higher in crappiness than the other. Interestingly, though, in both groups poopiness and crappiness tend to increase together. That is, they appear to be associated, not independent.
 
@@ -571,7 +690,7 @@ I do not mean to imply that clusters of points can always be found if we have da
 1) Based on the scatterplot in Figure \@ref(fig:poopy-crappy) and the grouped-by-color histogram for poopiness in Figure \@ref(fig:poopy-hist-mixture), describe what the equivalent grouped-by-color histogram for crappiness would look like. Would it look the same or different? Explain.
 
 
-### Cut Scores and Abnormality
+## Cut Scores and Abnormality
 
 > Because that's not what normal people do.
 > --- things my spouse says
@@ -590,12 +709,8 @@ Both the California department of motor vehicles and the physician in our scenar
 
 The term **normal distribution** arose in statistics because the particular bell-shaped distribution occurs so frequently. If poopiness were normally distributed in our sample from before it might look like this. 
 
-```{r normal-poopy, echo=FALSE,  fig.cap='Normal poopiness'}
-set.seed(303030)
-normal_poopy <- rnorm(148, mean=0.56, sd=0.175)
-hist(normal_poopy, main="Normal Poopiness", breaks=seq(0,1.1,0.05), xlab="poopiness")
-```
-Technically speaking, all of the values, including the maximal value of `r round(max(normal_poopy),3)` that we observe in Figure \@ref(fig:normal-poopy) are normal. Poopiness varies in the population. It is impossible to be abnormally poopy, under the circumstances. By definition. some values at the extreme ends of a normal distibution are less likely to occur than values in the middle. But still they may occur rarely. It is only when extreme values (large or small) are associated with other conditions of interest, such as the relationship between elevated ALT and liver disease, that it makes sense to "flag" these extreme values. 
+![(\#fig:normal-poopy)Normal poopiness](01-howmanykinds_files/figure-latex/normal-poopy-1.pdf) 
+Technically speaking, all of the values, including the maximal value of 0.962 that we observe in Figure \@ref(fig:normal-poopy) are normal. Poopiness varies in the population. It is impossible to be abnormally poopy, under the circumstances. By definition. some values at the extreme ends of a normal distibution are less likely to occur than values in the middle. But still they may occur rarely. It is only when extreme values (large or small) are associated with other conditions of interest, such as the relationship between elevated ALT and liver disease, that it makes sense to "flag" these extreme values. 
 
 
 
@@ -685,7 +800,7 @@ I'd like to point out that we still haven't even once asked a question of the fo
 
 ## Exercises {-}
 
-edit
++ Come up with a population (the members do not have to be human beings) and three *creative* summary statistics that can be derived about it (i.e., go beyond average weight). 
 
 <!--chapter:end:01-howmanykinds.Rmd-->
 
@@ -694,6 +809,8 @@ edit
 > It is difficult to make predictions, especially about the future. 
 >
 > --- Niels Bohr (probably)
+
+
 
 In our first Big Question, we began to look at individual differences between people or what statisticians call variation within a population. If there is no variation---like in the bizarro world where everyone orients their toilet paper in the "under" orientation---then there is nothing to talk about, at least not statistically speaking. There is, however, considerable variation in health outcomes and human lifespan. Lots to talk about there. In our next Big Question, we ask "when and how will you die?" and "what, if anything, can you do about it?"
 
@@ -725,13 +842,15 @@ One way to think about the 30% chance of rain is to imagine that our experience 
 
 It didn't have to be 10 worlds, of course. That was arbitrary. If we imagined thirty worlds, it could rain in nine of them, as I've represented in Figure \@ref(fig:thirty-worlds). I did this by making thirty circles and coloring in 9 of them at random. Since I like to pull back the curtain every once in a while, I will even show you the code I use to generate this simple figure.
 
-```{r thirty-worlds, echo=TRUE, fig.cap='Rain (filled, blue dots) in 9 out of 30 possible worlds. It does not rain (hollow circles) in the other worlds.', fig.height=3}
 
+```r
 norain <- cbind(rep(1:10,3), rep(1:3, each=10))  # start with a 10 x 3 grid of points
 rainworlds <- norain[sample(1:nrow(norain), 9),]  # choose (sample) nine at random, using the sample() function in R
 plot(norain, xlab="", ylab="", ylim = c(1,3), axes = FALSE, asp = 1) # plot the points
 points(rainworlds, pch=19, col="lightblue") # color in the nine
 ```
+
+![(\#fig:thirty-worlds)Rain (filled, blue dots) in 9 out of 30 possible worlds. It does not rain (hollow circles) in the other worlds.](02-whenandhow_files/figure-latex/thirty-worlds-1.pdf) 
 
 
 ### Degree of belief
@@ -755,9 +874,14 @@ End of warm-up. It's time to talk about when you will die.
 
 I highly recommend this data visualization called [Years You Have Left to Live, Probably](https://flowingdata.com/2015/09/23/years-you-have-left-to-live-probably/). Here is a screenshot, although it's not nearly as interesting when you can't interact with the simulation and watch the little balls drop.
 
-```{r years-screen, out.width='90%', fig.cap='Screenshot of interactive data visualization'}
+
+```r
 include_graphics("images/YYHLTLScreenshot1.png")
 ```
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{images/YYHLTLScreenshot1} \caption{Screenshot of interactive data visualization}(\#fig:years-screen)
+\end{figure}
 
 
 <!-- **REMOVE BEFORE FINAL I've attempted to embed the actual javascript widget here, but it isn't working.** -->
@@ -774,13 +898,29 @@ This visualization does a number of things. The most salient feature is probably
 
 As the simulation runs, it also accumulates data in bins at the bottom, labeled "0 to 9", "10 to 19", and so on. (Recall the discussion of bins, frequency tables, and histograms in Section \@ref(sec:shades).) Note that these bins represent ranges of years-you-have-left-to-live, not age-at-death. This may be confusing, because age-at-death is what is shown along the horizonatal, or x-axis, of the figure. Also, right below the x-axis, and corresponding to age-at-death is a set of gray bars that grow as the balls drop. In the screenshot, the simulation has been running for a little while, so that the following counts have been accumulated.
 
-```{r}
+
+```r
 bins <- c("0 to 9", "10 to 19", "20 to 29", "30 to 39", "40 to 49", "50 or more")
 counts <- c(1,1,3,3,13,72)
 kable(data.frame(bin=bins, counts=counts), booktabs=TRUE) %>%  kable_styling(bootstrap_options = "striped", full_width = F)
-
-
 ```
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lr}
+\toprule
+bin & counts\\
+\midrule
+0 to 9 & 1\\
+10 to 19 & 1\\
+20 to 29 & 3\\
+30 to 39 & 3\\
+40 to 49 & 13\\
+\addlinespace
+50 or more & 72\\
+\bottomrule
+\end{tabular}
+\end{table}
 Notice that by the time this screenshot was taken, 93 balls had dropped. The visualization took the counts, converted them into proportions of total counts (e.g., 72/93 = 0.774; 3/93 = 0.33), and represented each of these proportions as a probability, expressed as a percent (e.g., 77%; 3%).
 
 Another thing that you will notice if you play around a bit is that as the balls drop, the probabilities change. In the beginning, when the number of samples (balls dropped) is small, the numbers change rapidly and sometimes by a large amount. However, after a couple of hundred samples, the changes are much smaller.
@@ -796,20 +936,7 @@ You probably realize that we don't get to see all of these alternate universes, 
 The Flowing Data animated visualization is based on data collected in "life tables", which can be found online from sources like the National Center for Health Statistics (NCHS) and the Social Security Administration (SSA). Different life tables are produced every year, as life expectancy continues to evolve along with changes in health science and nutrition. Figure \@ref(fig:life-duration) plots data for age-at-death (for Americans) as of 2010. There is a bar for each age from 0 to 120, and the height of each bar represents a count of deaths at that age per 100,000 people.
 
 
-```{r life-duration, echo=FALSE, fig.cap='How long Americans were living in 2010'}
-
-lifetableNCHS <- read.csv("data/lifetable.csv")
-lifetableMale <- read.csv("data/lifetable-male-2010.csv")
-lifetableFemale <- read.csv("data/lifetable-female-2010.csv")
-barplot((lifetableFemale$dx+ lifetableMale$dx)/2, ylab="death count / 100000", xlab="age", names.arg=lifetableFemale$x)
-# 
-# dt <- (lifetableFemale$dx+ lifetableMale$dx)/2
-# lab <- rep("", length(dt))
-# lab[seq(1, length(dt), by=5)] <- lifetableMale$x[seq(1, length(dt), by=5)]
-# barplot(dt, names.arg=lab)
-
-
-```
+![(\#fig:life-duration)How long Americans were living in 2010](02-whenandhow_files/figure-latex/life-duration-1.pdf) 
 
 
 If you're like me, the first thing you notice in Figure \@ref(fig:life-duration) is that little spike at age 0, like a rattle sticking up at the end of a rattle snake's tail. It shows us that roughly 5 out of 1000 babies don't make it to their first birthday. After that, your odds get considerably better for a while.
@@ -821,12 +948,9 @@ So how does age-at-death relate exactly to the years you have left to live? Life
  
 Most of us don't think about our lives in terms of questions like, are we going to die this year? But that is technically how the life table works. The life table is a set of numbers---including deaths-at-age-x and expected-years-left-to-live-at-age-x---that are all derived from one initial set of numbers which represent *the probability that a person age x will die within one year*. If you're curious what that initial set of numbers looks like, I've plotted them in Figure \@ref(fig:die-this-year).
 
-```{r die-this-year, out.width='90%', echo=FALSE, fig.cap='Mortality rate per year of age'}
-
-plot(lifetableFemale$qx, ylab="qx = probability of dying within one year", xlab="age")
-
-
-```
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{02-whenandhow_files/figure-latex/die-this-year-1} \caption{Mortality rate per year of age}(\#fig:die-this-year)
+\end{figure}
 
 
 Looking at Figure \@ref(fig:die-this-year), you can say that the probability of dying within one year gets higher as you grow older, which comes as a surprise to no one. If you're under 65, say, that probability doesn't even feel that high. It's less than 0.01 or 1%. The probability that you will die *this year* only passes 50% after age 100. That's reassuring, right?
@@ -835,15 +959,34 @@ Well, don't get too optimistic. Your chances of dying every year may be small, b
 
 But what if you wanted to know your chances, at birth, of dying in your 60s, that is between 60-69. For now, we will try to answer this question using only the life table and assuming that we know nothing else about you. The rows of the life table corresponding to this age range are these
 
-```{r survival, echo=FALSE}
+\begin{table}
 
-kable(lifetableNCHS[61:70,], booktabs=TRUE, row.names = FALSE, caption='Life Table')
-
-```
+\caption{(\#tab:survival)Life Table}
+\centering
+\begin{tabular}[t]{lrrrrrr}
+\toprule
+Age & qx & lx & dx & L & Tx & ex\\
+\midrule
+60-61 & 0.008732 & 88745.98 & 774.97 & 88358.50 & 2051875 & 23.1\\
+61-62 & 0.009335 & 87971.02 & 821.18 & 87560.42 & 1963516 & 22.3\\
+62-63 & 0.009983 & 87149.84 & 870.00 & 86714.84 & 1875956 & 21.5\\
+63-64 & 0.010715 & 86279.84 & 924.46 & 85817.61 & 1789241 & 20.7\\
+64-65 & 0.011568 & 85355.38 & 987.39 & 84861.68 & 1703423 & 20.0\\
+\addlinespace
+65-66 & 0.012586 & 84367.98 & 1061.84 & 83837.06 & 1618562 & 19.2\\
+66-67 & 0.013763 & 83306.15 & 1146.57 & 82732.86 & 1534724 & 18.4\\
+67-68 & 0.015057 & 82159.58 & 1237.07 & 81541.05 & 1451992 & 17.7\\
+68-69 & 0.016380 & 80922.51 & 1325.52 & 80259.75 & 1370451 & 16.9\\
+69-70 & 0.017756 & 79596.98 & 1413.34 & 78890.31 & 1290191 & 16.2\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 This is a lot of numbers. Recall that each qx is the mortality rate for age x, the probability of dying within one year of age x. So should you add up the qx-values for each age in the interval 60 to 69? Maybe pause here to think about this question for a moment before reading on. Here's 30 seconds of thinking music.
 
-`r html_tag_audio("media/Jeopardy-theme-song.mp3", type="mp3")`
+<!--html_preserve--><audio controls>
+<source src="media/Jeopardy-theme-song.mp3" type="audio/mp3"/>
+</audio><!--/html_preserve-->
 
 Here is a partial answer. You can die at 62 and you can die at 64, but you can't die at both ages. In that sense, it was okay to add the probabilities of these events because they are **disjoint**, i.e., they can't both happen and you are interested in whether any one of them does happen. However, if you add up these probabilities, you will still over-estimate the probability for a different reason. Can you guess what you've left out? 
 
@@ -872,20 +1015,24 @@ Probability of NOT dying at 59 having made it to 59
 Since in any given year, you either die or don't die, these two probabilities must add up to 1, so having gotten to any age x, the probability of surviving it is (1-qx). Now we can take the product of (that is, multiply) all of the survival probabilities (1 - qx) for each x from 0 up to age 59. (I will include the code here. The data table I have loaded from the National Center for Health Statistics is called "lifetableNCHS").
 
 
-```{r, echo=TRUE}
-prod(1-lifetableNCHS[1:60,"qx"])
 
+```r
+prod(1-lifetableNCHS[1:60,"qx"])
+```
+
+```
+## [1] 0.887458
 ```
 
 You may notice that this probability had already been calculated for you in the life table, but it had been presented slightly differently as column lx, which is the number of persons (in a cohort of 100,000) surviving to exact age x. If we multiply our rate by 100000, we get 88745.8, which (up to a rounding error) is the same as the number in Table \@ref(tab:survival). 
 
 Okay, so now we are ready to complete the probability calculation. Recall we wanted to add up ten things: Probability of making it to 60 and then dying at 60, etc. We know that the probability of making it to age x is the same as the value of column lx in the table divided by 100,000. And the probability of dying is qx. So we need to multiply these two numbers in each row and add them up.
 
-The result is `r round(sum(lifetableNCHS[61:70,"lx"]/100000 * lifetableNCHS[61:70,"qx"]),4)`. An American child born in 2010 has a 10.5% chance of dying in their 60s (and a 20.7% chance of dying in their 70s). 
+The result is 0.1056. An American child born in 2010 has a 10.5% chance of dying in their 60s (and a 20.7% chance of dying in their 70s). 
 
 So, we've figured out how to do that. And we're almost ready to move on, but it is worth noticing something. The product of the value qx and lx in each row of the life table is the value dx, which is the number of deaths at age x (or between x and x+1). So when we multiplied and added before, we were really just adding up the number of deaths (dx) at ages 60-69 and dividing by 100,000. 
 
-Now hopefully that makes sense to you that this should give us the answer we were originally looking for, namely what are the chances, at birth, of dying in your 60s. We could have looked at our hypothetical cohort of 100,000 people all born at the same time and asked: how many of them will die in their 60s. Well, that would be the sum of the dx-values, namely `r as.integer(sum(lifetableNCHS[61:70,"dx"]))`. It wouldn't be a probability, though, unless we divided it by the total number of people (100,000).
+Now hopefully that makes sense to you that this should give us the answer we were originally looking for, namely what are the chances, at birth, of dying in your 60s. We could have looked at our hypothetical cohort of 100,000 people all born at the same time and asked: how many of them will die in their 60s. Well, that would be the sum of the dx-values, namely 10562. It wouldn't be a probability, though, unless we divided it by the total number of people (100,000).
 
 So we've shown that we can answer our particular question two different ways:
 
@@ -933,12 +1080,19 @@ We used that to figure out how you survive by not dying every year. Notice that 
 In the last chapter, we said that two events (we were talking about responses to questions) are independent if knowing about one of them does not give you any information about what the other one might be. But remember bizarro world where the toilet paper orientation and peanut butter preference were deterministically related, and specifically everyone is either under-chunky or over-smooth? I've reproduced this result in Table \@ref(tab:tpxpb-reprise). If I told you that 53% of the total population prefers smooth, then what proportion of the total population prefers smooth AND likes to over-hang? Also 53%. What proportion prefers smooth AND under-hangs? 0! 
 
 
-```{r, 'tpxpb-reprise', echo=FALSE, results='asis'}
+\begin{table}
 
-kable(alt_xtab2, caption="Bizarro world", booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "bordered", full_width = F)
-
-```
+\caption{(\#tab:tpxpb-reprise)Bizarro world}
+\centering
+\begin{tabular}[t]{lrr}
+\toprule
+  & chunky & smooth\\
+\midrule
+over & 0 & 23\\
+under & 17 & 0\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 In bizarro world, toilet paper orientation and peanut butter preference are NOT independent, because knowing one of them DOES give you information about the other.
 
@@ -1034,28 +1188,31 @@ P(tp = over AND pb = smooth) =  P(tp = over | pb = smooth) * P(pb = smooth) = P(
 Earlier I said we would use the life table to answer questions about when you will die assuming nothing else about you. Now, you might be aware that life expectancy is not the same for males and females. Indeed, there are separate life tables for each sex. I've plotted the death column dx from both tables in Figure \@ref(fig:life-durationMF). Females are shown in light green bars, and males using pink. Unfortunately for the males, their mortality rate is higher not only in their later years, but even in their late teens and twenties.
 
 
-```{r life-durationMF, echo=FALSE, fig.cap='Deaths by age for male and female (2010)'}
+![(\#fig:life-durationMF)Deaths by age for male and female (2010)](02-whenandhow_files/figure-latex/life-durationMF-1.pdf) 
 
-source("cbColors.R")
-col1 <- t_col(cbPalette[3],60)
-col2 <- t_col(cbPalette[2],60)
 
-# col1 <- t_col(rgb(1,0,0),80)
-# col2 <- t_col(rgb(0,1,0),80)
-
-barplot(lifetableFemale$dx, ylab="death count / 100000", xlab="age", col=col1, names.arg=lifetableFemale$x)
-barplot(lifetableMale$dx, col=col2, add=T)
-legend("top", c("Female","Male"), fill=c(col1,col2))
-
+```r
+sum(lifetableNCHS[81:101,"dx"])/sum(lifetableNCHS[,"dx"], na.rm=T)
 ```
 
-```{r}
+```
+## [1] 0.5749251
+```
 
-sum(lifetableNCHS[81:101,"dx"])/sum(lifetableNCHS[,"dx"], na.rm=T)
-
+```r
 sum(lifetableFemale[81:120,"dx"])/sum(lifetableFemale[,"dx"])
-sum(lifetableMale[81:120,"dx"])/sum(lifetableMale[,"dx"])
+```
 
+```
+## [1] 0.59967
+```
+
+```r
+sum(lifetableMale[81:120,"dx"])/sum(lifetableMale[,"dx"])
+```
+
+```
+## [1] 0.4680319
 ```
 
 Suppose I 
@@ -1073,10 +1230,13 @@ Using the
 
 
 
-```{r}
 
+```r
 sum(lifetableNCHS[61:70,"dx"])
+```
 
+```
+## [1] 10562.34
 ```
 
 
@@ -1201,11 +1361,13 @@ So, you could pose the following question: what is the probability that, among t
 
 Based on the sample you observed, you could estimate that approximately $\frac{46+204}{1000}*100=25$ percent of the population smokes and approximately $\frac{46+93}{1000}*100=13.9$ percent of the population has been diagnosed with cancer. If there is no real difference in cancer incidence among smokers and non-smokers, then these two variables are independent: 25% of your sample randomly decided to smoke, and 13.9% were randomly diagnosed with cancer. It turns out that it's very easy to simulate datasets under this assumption. All we have to do is, in two completely separate steps, randomly assign 25% of people to be smokers and randomly assign 13.9% of people to get cancer. Then, for each of these simulated datasets (of 1000 people each), we can calculate $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$ and observe what types of differential proportions could be observed by random chance. Then we can calculate the proportion of these differences that are greater than or equal to $0.06$ in order to understand the chances that we observe a difference of that size when it doesn't actually exist:  
   
-```{r}
-set.seed(513)
-```  
 
-```{r, echo=TRUE}
+```r
+set.seed(513)
+```
+
+
+```r
 nIter = 100 #set some number of iterations
 differences = vector(length = nIter) #create vector to save differences in proportions
 
@@ -1228,11 +1390,19 @@ for(i in 1:nIter){ #repeat the following process nIter times
 
 #calculate proportion of differences greater than or equal to .06
 sum(differences >= .06)/nIter
+```
 
+```
+## [1] 0.03
+```
+
+```r
 #plot a histogram of the differences with a red vertical line at .06
 hist(differences, main="Histogram of P(cancer|smoke) - P(cancer|not smoke)")  
 abline(v=.06, lwd=2, col=2)
 ```
+
+![](02-whenandhow_files/figure-latex/unnamed-chunk-7-1.pdf)<!-- --> 
   
 As you might expect, the histogram of simulated differences ($P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$) is centered around zero. If there's no real difference, then you should expect to observe (close to) zero differences among any random sample of 1000 people. That said, you'll see from the histogram that it is still possible, by random chance, to observe a difference as large as 8%.
 
@@ -1259,6 +1429,8 @@ output:
 > No one can win at roulette unless he steals money from the table while the croupier isn’t looking.
 >
 > --- Albert Einstein (possibly)
+
+
 
 The development of probability theory is historically linked to attempts to understand games of chance, especially ones in which money was involved (see for example, [here](http://sites.math.rutgers.edu/~cherlin/History/Papers2000/cheng.html). Sometimes betting money on an uncertain outcome falls under the name of gambling; other times it’s dignified with the name investment or "smart business decision." But regardless of the label, there are smarter and less smart ways to play money games. 
 
@@ -1296,7 +1468,8 @@ In his book, Wheelan claims that (a) for 10 blind tast testers, the probability 
 
 For a moment, let's pull back the curtain on the Schlitz simulation and see how it works. The following code walks through the process of repeatedly surveying 10 people, recording the proportion who preferred Schlitz (under the assumption that each person has a 50% chance of preferring Schlitz), and calculating the proportion of those 10-person surveys that led to an acceptable outcome. If we collect 10,000 samples of 10 people and calculate the proportion of those 10 person samples where at least 4/10 people preferred Schlitz, we can estimate the probability of an acceptable outcome very accurately:      
 
-```{r, echo=TRUE}
+
+```r
 nIter = 10000 #set some number of repeated experiments to run
 SampSize = 10 #set the sample size  
 Prob = .5 #set the probability of preferring Schlitz
@@ -1317,6 +1490,10 @@ for(i in 1:nIter){ #repeat the following process nIter times
 #Calculate the proportion of random experiments that were "acceptable"
 sum(results>=Acceptable)/nIter
 ```
+
+```
+## [1] 0.83
+```
   
 Feel free to copy this code over into your own script in R Studio and play with the parameters to see what happens. If you decrease nIter to 1000 and re-run the simulation a few times, you might see that there is more variation in the estimated probability; however, if you increase nIter to 100000, you are more likely to observe values very close to .83 every time.  
 
@@ -1326,8 +1503,8 @@ In this book, I have tried to emphasize conceptual understanding through simulat
 
 Mathematical statistics does have precise answers that depend on properties of continuous distributions like the normal distribution and the binomial distribution. The Schlitz commercial is exactly the kind of scenario that is explained using a binomial distribution (more on that later). If we ran the simulation (always with samples of 10), taking more and more observations (i.e., 10 samples of 10, 100 samples of 10, etc.) and checked our success rate (defined by at least 4/10 preferring Schlitz), we would see that indeed this proportion does converge. This is plotted in Figure \@ref(fig:converge-binom). The x-axis is the number of samples, but **the x-axis is shown using logarithmic scales**. We need to use this scale, or else all of the points at smaller values would be bunched together.
 
-```{r converge-binom, fig.cap="Convergence of successful tasting proportions"}
 
+```r
 set.seed(1234567)
 sample_size <- 10
 min_success <- 4
@@ -1345,12 +1522,16 @@ plot(n_obs, obs_prop,
      ylab="proportion of successes",
      log="x", type="l")
 abline(h=sum(dbinom(min_success:sample_size,sample_size,prob_success)), col=2, lty=2, lwd=2)
+```
+
+![(\#fig:converge-binom)Convergence of successful tasting proportions](03-makemoney_files/figure-latex/converge-binom-1.pdf) 
+
+```r
 # 
 # plot(n_obs, obs_prop, 
 #      xlab="number of observations",
 #      ylab="proportion of successes", type="l")
 # abline(h=sum(dbinom(min_success:sample_size,sample_size,0.65)), col=2, lty=2, lwd=2)
-
 ```
    
 So we see that there's some convergence: If we run more and more experiments, we find that the proportion of "successful" experiments converges to a stable value. But how can you calculate that value precisely? To find the empirical (i.e., exact) answer, instead of using a simulation to estimate it, it might be helpful to consider a smaller sample size, say 2. Now that we've reduced our scope, we have some hope of writing all possible outcomes of this experiment and their probabilities.  
@@ -1379,27 +1560,55 @@ After all this work, you might still be thinking: well that's all fine and good,
 
 First, if taste-testers are equally likely to prefer Schlitz or Michelob, we can calculate the probability of an acceptable outcome (i.e., at least 40% preferring Schlitz) among 10 taste-testers as follows: Since taste-testers are equally likely to choose either beer, we know that all possible outcomes of this experiment are equally likely. Therefore, the probability of an acceptable outcome reduces down to the number of acceptable outcomes divided by the total number of possible outcomes. The total number of possible outcomes is $2^{10}$ for a 10 person sample size (to convince yourself: think about how many "types of people" you would observe by asking $10$ independent, dichotomous questions). To figure out the number of acceptable outcomes, we can utilize the choose() function. If you've never seen it before: choose(n,k) (often written $n\choose{k}$) is the number of possible ways to choose k items out of a group of n total items. In this context, choose(n=10,k=4) can be thought of as the number of unique groups of 4 taste-testers among a total pool of 10 taste-testers (i.e., number of ways that exactly 4/10 taste-testers could prefer Schlitz). Take a look at how we might compute this in R:     
 
-```{r, echo=TRUE}
+
+```r
 #calculate choose(n=10,k=4) in R
 choose(n=10, k=4)
+```
 
+```
+## [1] 210
+```
+
+```r
 #calculate choose(n=10,k= all the numbers between 4 and 10)
 choose(n=10, k=4:10)
+```
 
+```
+## [1] 210 252 210 120  45  10   1
+```
+
+```r
 #add up all of the values above using sum() and then divide by 2^10
 sum(choose(n=10, k=4:10))/2^10
+```
+
+```
+## [1] 0.828125
 ```
   
 > Excercise: Can you modify the above code to calculate the empirical probability of an acceptable outcome for a sample size of 100 (again assuming preference for Schlitz and Michelob are equally likely)?  
 
 Finally, if we want to account for different probabilities of preferring Schlitz or Michelob, it's helpful to add one more tool to the toolbox: the binomial probability distribution. The **probability mass function** of the binomial distribution (which can be calculated in R using: dbinom(x,n,p)) gives the probability of x "successes" in n independent random trials, where each random trial has probability of success=p. For example, dbinom(4,10,.5) could be thought of as the probability that exactly 4 out of 10 people prefer Schlitz if the probability of any individual preferring Schlitz is .5. Using this function, we can now repeat the calculation above using some slightly different code:  
 
-```{r, echo=TRUE}
+
+```r
 #calculate dbinom(4,10,.5)
 dbinom(4,10,.5)
+```
 
+```
+## [1] 0.2050781
+```
+
+```r
 #add up the probabilities of 4,5,6,7,8,9, or 10 people preferring Schlitz
 sum(dbinom(4:10,10,.5))
+```
+
+```
+## [1] 0.828125
 ```
   
 > Excercise 1: Can you explain why choose(n=10, k=4)/2^k is equal to dbinom(4,10,.5)?   
@@ -1463,30 +1672,9 @@ Question to think about: even though the expected average pay-off is $4,225,000,
 Now that we’ve made this calculation empirically, it might be helpful to simulate it in R! https://a3sr.shinyapps.io/Drug 
 
 
-```{r, echo=FALSE}
-
-cure_prob <- c(0.7,0.3)
-approved_prob <- c(0.4, 0.6)
-market_prob <- c(0.1, 0.9)
 
 
-wheelan_cancer <- data.frame(
-   Cure = c(rep("No",700), rep("Yes",300)),
-   Approved = c(rep(NA,700), rep("No",120), rep("Yes",180)),
-   First2Market = c(rep(NA,820), rep("No", 18), rep("Yes",162)),
-   Payout = c(rep(250000,700), rep(0,120), rep(0, 18), rep(25000000,162))
-)
-
-wheelan_tree <- rpart(
-  Payout ~ ., 
-  data = wheelan_cancer, 
-  method = "anova"
-)
-```
-
-```{r, echo=FALSE}
-rpart.plot(wheelan_tree, type = 5)
-```
+![](03-makemoney_files/figure-latex/unnamed-chunk-6-1.pdf)<!-- --> 
 
 
 
@@ -1655,8 +1843,8 @@ Pulling a chip out of a hat or tossing a coin are equivalent manifestations of t
 
 We can in fact simulate this sampling process this on the computer in R. In fact we can do it several different ways. Here, first, is a more or less direct translation of what our mechanical process would do. The key enabling function here is called `sample()`, which works just like pulling chips out of a hat. Just to close the loop here, we were 
 
-```{r echo =TRUE}
 
+```r
 set.seed(8675309) # I'll explain this later 
 
 coinstates <- c("H","T")
@@ -1680,7 +1868,11 @@ for (i in 1:numPeople) {
 }
 
 teamassignments
+```
 
+```
+##  [1] "Jets"   "Sharks" "Jets"   "Sharks" "Jets"   "Sharks" "Sharks" "Sharks"
+##  [9] "Jets"   "Sharks"
 ```
 
 
@@ -1691,7 +1883,8 @@ Voila. The `sample` function did the apparent work of the coin flip or, equivale
 
 If you're thinking we could have removed the coin from this process, you're right. Even our imaginary mechanical device could have just dropped marbles into jars directly, provided that we believed the marble dropping process was equivalent to the coin flip in terms of 50/50 probabilities. In R, here is a faster way. We just sample out of a "hat" containing each of the team names. 
 
-```{r echo = TRUE}
+
+```r
 set.seed(8675309) # Wait for it!
 
 teamnames <- c("Sharks","Jets")
@@ -1699,7 +1892,11 @@ numPeople <- 10
 
 teamassignments <- sample(teamnames, numPeople, replace=TRUE)
 teamassignments
+```
 
+```
+##  [1] "Jets"   "Sharks" "Jets"   "Sharks" "Jets"   "Sharks" "Sharks" "Sharks"
+##  [9] "Jets"   "Sharks"
 ```
 
 Well, that was simpler. Notice also that by using the same random seed, I got the same team assignments, even though the code was completely different.
@@ -1719,9 +1916,7 @@ I'm not sure if I can embed a shiny app here.
 
 <!--chapter:end:11-Shiny.Rmd-->
 
-`r if (knitr:::is_html_output()) '
-# References {-}
-'`
+
 
 <!--chapter:end:99-references.Rmd-->
 

@@ -4,6 +4,24 @@
 >
 > --- Niels Bohr (probably)
 
+```{r include=FALSE}
+
+require(knitr)
+require(kableExtra)
+require(dplyr)
+require(ggplot2)
+# require(rpart)
+# require(rpart.plot)
+
+html_tag_audio <- function(file, type = "wav")
+{
+  htmltools::tags$audio(controls = NA,
+                        htmltools::tags$source(src = file,
+                         type = glue::glue("audio/{type}",
+                          type = type)))
+}
+```
+
 In our first Big Question, we began to look at individual differences between people or what statisticians call variation within a population. If there is no variation---like in the bizarro world where everyone orients their toilet paper in the "under" orientation---then there is nothing to talk about, at least not statistically speaking. There is, however, considerable variation in health outcomes and human lifespan. Lots to talk about there. In our next Big Question, we ask "when and how will you die?" and "what, if anything, can you do about it?"
 
 What kind of question is, "when and how will you die?" Well, according to some of my colleagues, it’s a morbid question. Feelings aside, we might say that it sounds like a prediction question, since it’s about the future. So to explore this big question, we will need to understand what it means in general to make a forecast about some future event. We’ll also find it useful to distinguish between predictions that are or are not explanatory. Most efforts in health sciences attempt to explain relationships between behavioral and genetic factors and health outcomes. In particular, they try to understand causal effects. So in this chpater, we will also try to understand causal explanations more generally.
@@ -243,6 +261,8 @@ In the last chapter, we said that two events (we were talking about responses to
 
 
 ```{r, 'tpxpb-reprise', echo=FALSE, results='asis'}
+
+alt_xtab2 <- readRDS(file="alt_xtab2.rds")
 
 kable(alt_xtab2, caption="Bizarro world", booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "bordered", full_width = F)
