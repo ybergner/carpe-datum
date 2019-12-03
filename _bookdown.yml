@@ -3,5 +3,5 @@ language:
   ui:
     chapter_name: "Chapter "
 delete_merged_file: true
-# new_session: true
+# new_session: true # default is Merge-Knit, this sets Knit-Merge
 # output_dir: "docs"
