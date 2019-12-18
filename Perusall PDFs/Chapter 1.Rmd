@@ -1,14 +1,14 @@
 ---
 output: 
-  bookdown::pdf_document2
+  bookdown::pdf_document2:
+    toc: False
 ---
 
-# How Many Kinds of People Are There?
+# How Many Kinds of People Are There? {-}
 
 
 > There are 10 kinds of people in this world. 
 > Those who understand binary code and those who don't.
-> 
 > --- seen on a T-shirt
 
 ## Things are about to get meta right from the start {-}
@@ -22,9 +22,9 @@ What *exactly* am I even saying in my claim, you might be thinking? What do you 
 Now, if someone is making what to *them* appears to be a common-sense claim but to you appears false or at least non-obvious, you have a few options. You can challenge the assumption and ask for evidence. Or you can accept the assumption, *for argument's sake*, to see where this is going. Hopefully, my claim feels common-sense enough to you too (i.e., we have that in common). If not, I'll just ask you to follow along to see where this is all going...
 
 
-## Categories, counts, and kinds {#sec:categories}
+## Categories, counts, and kinds {-}
 
-### Two Kinds of People 
+### Two Kinds of People {-}
 
 "There are two kinds of people... which one are you?" questions have become something of an internet meme, particulary with the categorizations represented graphically or pictorially. There is a whole [blog devoted to them by João Rocha](https://2kindsofpeople.tumblr.com/). The images in Figure \@ref(fig:tp-fig) probably need no explanation, as they concern the great [toilet paper orientation](https://en.wikipedia.org/wiki/Toilet_paper_orientation) debate.
 
@@ -101,7 +101,7 @@ kable(iamaperson,
 
 ```
 
-### Samples and Populations
+### Samples and Populations {-}  
 
 Samples and populations are sort of a big deal in statistics and data science, where these words have somewhat specialized meanings. Consider the following utterances, both of which make sense:
 
@@ -119,7 +119,7 @@ Since Washington Square is the center of my universe, that's where I sample. Eve
 Coming back to our toilet paper debate, if we did find zero over-hangers in one sample, it doesn't guarantee that the number of over-hangers will also be zero in the next. The number may vary from sample to sample. Uncertainty does not, however, mean that the information derived from one sample is useless. In fact, soon we'll see that we can actually learn a lot from a sample simply by recognizing that sample values will vary. We can simulate samples on a computer to see how much they will vary. And then, using our simulations, we will be able to give probabilistic answers to questions like, "what are the chances that there really are no over-hangers in Washington Square?"
 
 
-### Summarizing data
+### Summarizing data {-}
 
 When I presented my survey results to you in Table \@ref(tab:tp-table), notice that I did not present you with the raw data, but rather with a summary of the data. The particular summary I used was called "counts", that is, a total count of how many people responded "over" or "under." The raw data, in contrast, would have contained each individual response I collected, labled either with a name of the individual, or perhaps with some other unique identifier (such as a random number), or---if I don't need to keep track of particular individuals---with just a row number. Something like this, if we examine at the first six responses rather than all 40 of them. Raw data:
 
@@ -153,7 +153,7 @@ This is about as much as we need to say about summary statistics for the time be
 
 
 
-#### Checkpoint
+#### Checkpoint {-}  
 
 While focusing on the great toilet paper debate, we've managed to establish some important fundamental ideas. 
 
@@ -165,7 +165,7 @@ While focusing on the great toilet paper debate, we've managed to establish some
 
 - Clearly, we can ask people questions that prompt them to choose between more than two categories. But "two types of people" questions are more fun.^[That was another unsubstantiated claim.] I mean there are so many of them! So... does that mean that there really are two types of people? To answer this, we will need to get into another great debate.
 
-### Dimensions
+### Dimensions {-}
 
 
 > "I always said if I had one breakfast to eat before I die, it would be Wonder Bread toasted, with Skippy Super Chunky melted on it, slices of overripe banana and fresh crisp bacon."
@@ -209,7 +209,7 @@ kable(table(wsq_peeps$roll, wsq_peeps$spread), caption="Two questions", booktabs
 ```
 
 
-Table \@ref(tab:tpxpb) is an example of a kind of table that is so common in data science, it has its own name. Three of them, in fact. It is sometimes called a cross table (or crosstab), or a **two-way table** (makes sense), but most commonly it is known as a **contingency table** (wha? I'll explain later in Section \@ref(sec:indep).) I'm sorry that there are three names for the same thing. Really I am.
+Table \@ref(tab:tpxpb) is an example of a kind of table that is so common in data science, it has its own name. Three of them, in fact. It is sometimes called a cross table (or crosstab), or a **two-way table** (makes sense), but most commonly it is known as a **contingency table** (wha? I'll explain later) I'm sorry that there are three names for the same thing. Really I am.
 
 Ok, now things are about to get deep. The title of this chapter is "How Many Kinds of People are There?" And we've now explored how using two two-kinds questions leads to four types. You've probably figured out yourself that you take the product (i.e., multiply) of the number of categories in each of the questions, and that tells you how many "buckets" you can have overall. But still, there are different ways to arrive at different bucket numbers.
 
@@ -252,7 +252,9 @@ But now consider the alternate universe on the right of Table \@ref(tab:tpxpb-al
 
 You might reason about it the following way: in our sample, if I ask anyone just one of the two questions--about either toilet paper or peanut butter--then I immediately know the answer they would give to the other one. I don't actually have to ask two questions, other than to establish in the first place that I didn't have to. Since I only get information from one question, there is only one dimenion.  
 
-## Independence, Association, and Contingency {#sec:indep}
+\pagebreak  
+
+## Independence, Association, and Contingency {-}
 
 > This section title sounds like a philosophy book by the late Richard Rorty. 
 > --- inner voice
@@ -330,7 +332,7 @@ abline(v=0.85, lwd=2, col=3, lty=2)
   
 We will cover histograms later in this chapter, so don't worry too much if this picture doesn't make sense to you yet. For now, the main takeaway is this: Even if we randomly reshuffle everyone's answers 1000 times (akin to going out on the street and asking 40 new people these questions 1000 different times, but assuming that the overall proportions of over vs. under rollers and chunky vs. smooth PB people will be the same as in our original dataset), we would not expect to see values as high as 85% (green dotted line) if the questions were truly independent.  
 
-### Latent Factors and Measurement {#sec:factors}
+### Latent Factors and Measurement {-}
 
 ```{r apps-windows, echo=FALSE, fig.show='hold', fig.cap='Two more two-kinds questions'}
 include_graphics("../images/two-two-kinds.jpg")
@@ -376,10 +378,11 @@ This situation on the right is probably more realistic. After all, very few thin
 </div>
 
 
-**What do you think?**
+**What do you think?**  
 
+\pagebreak  
 
-## (An Infinite Number of) Shades of Gray (or Brown) {#sec:shades}
+## (An Infinite Number of) Shades of Gray (or Brown) {-}
 
 We've taken the two-kinds-of-people idea pretty far in this chapter already. But it's time to acknowledge the elephant in the room. Not every question about attributes, preferences, or behaviors  can be answered in such an either/or manner. Digitidiness might be one of those things. Consider the following dialogue:
 
@@ -471,7 +474,7 @@ What I did here was take a numerical/quantitative value (poopiness) and mis-repr
 
 Dang it! you say. You've taken me down this rabbit hole of poopiness for too long. How many kinds of people are there? Are you saying that if one looks at properties that are described by numbers instead of categories, that there is only one kind of person? Is it all just shades of gray (or brown)?
 
-### Mixtures
+### Mixtures {-}
 
 Remember Figure \@ref(fig:poopy-hist)? (Don't click it!) Here it is again so you don't have to scroll back. Data scientists like to say this picture shows you the **distribution** of poopiness in our sample. Statisticians use the word distribution in a more formal way that is best put off until we actually need it. We don't need it yet.
 
@@ -545,15 +548,16 @@ How many kinds of people are there? When it comes to poopiness and crappiness, p
 I do not mean to imply that clusters of points can always be found if we have data along many dimensions. That is certainly not always the case. The present example was concocted (I admit it!) to show that groups *can* emerge, even in numerical data. Cluster analysis [@kaufman2009] refers to set of data-science methods all about looking for the existence of groups in multidimensional data. 
 
 #### Check your understanding {-}
-1) Based on the scatterplot in Figure \@ref(fig:poopy-crappy) and the grouped-by-color histogram for poopiness in Figure \@ref(fig:poopy-hist-mixture), describe what the equivalent grouped-by-color histogram for crappiness would look like. Would it look the same or different? Explain.
+1) Based on the scatterplot in Figure \@ref(fig:poopy-crappy) and the grouped-by-color histogram for poopiness in Figure \@ref(fig:poopy-hist-mixture), describe what the equivalent grouped-by-color histogram for crappiness would look like. Would it look the same or different? Explain.  
 
+\pagebreak  
 
-## Cut Scores and Abnormality
+## Cut Scores and Abnormality {-}
 
 > Because that's not what normal people do.
 > --- things my spouse says
 
-If you read the aside in Section \@ref{sec:shades}, you'll recall that I warned against possible negative consequences of setting arbitrary cut points to dichotomize a data set---that is, turning numerical data on a continuous scale into  two categories by using a cutoff value. But now consider the following scenarios:
+You'll recall that I previously warned against possible negative consequences of setting arbitrary cut points to dichotomize a data set---that is, turning numerical data on a continuous scale into  two categories by using a cutoff value. But now consider the following scenarios:
 
 1) To pass the written test for your a driving learner's permit in California, you must answer at least 38 questions correctly out of 46. That's 82.6% correct. At 80.4% (37/46) or below, you fail and have to retake the test on another day.
 
@@ -574,7 +578,8 @@ hist(normal_poopy, main="Normal Poopiness", breaks=seq(0,1.1,0.05), xlab="poopin
 ```
 Technically speaking, all of the values, including the maximal value of `r round(max(normal_poopy),3)` that we observe in Figure \@ref(fig:normal-poopy) are normal. Poopiness varies in the population. It is impossible to be abnormally poopy, under the circumstances. By definition. some values at the extreme ends of a normal distibution are less likely to occur than values in the middle. But still they may occur rarely. It is only when extreme values (large or small) are associated with other conditions of interest, such as the relationship between elevated ALT and liver disease, that it makes sense to "flag" these extreme values. 
 
-
+  
+\pagebreak  
 
 ### Summary {-}
 
@@ -588,10 +593,10 @@ Technically speaking, all of the values, including the maximal value of `r round
 - measurement, model, bimodal, cluster
 
 
-We started out this chapter on a quest to answer our first big question: How many kinds of people are there? En route, we have examined both categorical data, such as from two-kinds-of-people questions, and numerical values like poopiness. The toilet paper and peanut butter orientation questions may seem silly and inconsequential to you. I can only imagine what you might think of the poopiness and crappiness dimensions that I completely made up (I admitted it!). However, in the next section, we will see that when it comes to personality psychology, there are real-world analogues of the discrete/categorical and continous/numerical multi-dimensional descriptions of people that we just saw.
+We started out this chapter on a quest to answer our first big question: How many kinds of people are there? En route, we have examined both categorical data, such as from two-kinds-of-people questions, and numerical values like poopiness. The toilet paper and peanut butter orientation questions may seem silly and inconsequential to you. I can only imagine what you might think of the poopiness and crappiness dimensions that I completely made up (I admitted it!). However, in the next section, we will see that when it comes to personality psychology, there are real-world analogues of the discrete/categorical and continous/numerical multi-dimensional descriptions of people that we just saw.  
 
-
-## Sixteen Personalities or Five Factors ?
+\pagebreak  
+## Sixteen Personalities or Five Factors ? {-}
 
 Before you read this section, you might want to go ahead and take one of the personality tests based on 
 the Meyers-Briggs Type Indicator (MBTI) categories and/or the five-factor model of personality (also called the Big Five). There is only one "official" MBTI, which is a commercial product. However, there are several free alternatives online which use the same typology classification. There are also several variations of  
@@ -604,7 +609,7 @@ the Meyers-Briggs Type Indicator (MBTI) categories and/or the five-factor model 
 
 I will only minimially describe the MBTI and the Five Factor Model (FFM, or Big Five) here, in terms of the topics we have been discussing. There are many resources for learning more about these personality tests. Some are referenced under further reading.
 
-### MBTI
+### MBTI {-}
 
 The MBTI will categorize people, based on their responses, dichotomously along each of four dimensions, also called "scales." These are:
 
@@ -629,7 +634,7 @@ The term "Big Five" is a commonly used term for the five-factor model of persona
 
 Since the results of a Big Five test, such as the IPIP-NEO, are five numbers, you don't get assigned a personality "type" by these tests. Rather, you may be provided with an explanation of what it means to score high (or low) on, say, Extraversion. You may have noticed that extraversion (occasionally spelled "extroversion") appears on both the MBTI and the Big Five.
 
-### Twenty Questions (about Extraversion)
+### Twenty Questions (about Extraversion) {-}
 
 Suppose, for whatever reason, we want to identify a person's extraversion. We may want either (a) to classify them as extraverted or not (i.e., introverted), or (b) to quantify a degree of extraversion, say on a scale of 0-100. Why not then just pose the question in the following way. In the first case:
 
@@ -641,14 +646,14 @@ b) Identify yourself on the following scale: Extraversion  0 -- + -- + -- + -- +
 
 Personality tests, such as those we've discussed above, do not ask questions like these. Rather, they include many different questions, sometimes twenty or even more, about things like going to parties, making friends, and drawing attention to oneself. 
 
-Why ask twenty questions instead of just one? Recall from the great toilet paper debate (Section \@ref(sec:categories)) that no one ever felt it was necessary to ask twenty questions to know whether you were an over-hanger or an under-hanger. However, when we discussed digitidiness (Section \@ref(sec:factors)), we suspected that two different questions may have both been getting at the same latent factor. The situation here, in the real-life domain of personality testing, is similar. 
+Why ask twenty questions instead of just one? Recall from the great toilet paper debate that no one ever felt it was necessary to ask twenty questions to know whether you were an over-hanger or an under-hanger. However, when we discussed digitidiness, we suspected that two different questions may have both been getting at the same latent factor. The situation here, in the real-life domain of personality testing, is similar. 
 
 Psychologists ~~believe that extraversion is an underlying factor~~ invented the idea of extraversion to explain patterns of behavior, including patterns of responses to questions about how people feel in various situations. Such as enjoyment or lack thereof in being the center of attention. The use of indirect evidence such as questionnaire responses to make inferences about psychological traits is the main task of **psychological measurement** or psychometrics. The main challenge of psychometrics, perhaps even the reason for its existence, is that human beings are noisy. 
 
 Put another way, you cannot expect a deterministic relationships between how a person feels or acts in one situation and how they act in another. An extraverted person is not *always* extraverted. And an extraverted person might not always answer questions about their feelings in the same way. It is hard to observe or even self-report on extraversion directly, because extraversions manifests itself differently at different times and in different contexts. Whether this noise is due to some mysterious internal process, like a coin flip in your brain, or due to many unnaccountable external factors, like whether you slept poorly that day, we can't say. What we can say is that human noisiness manifests itself as **measurement error**.^[The word **error** makes it sounds like there is a right answer, and that tests get it wrong. This is, indeed, one view. However, you don't have to believe that there is a right answer. For example, you can believe that human beings have some amount of inherent unpredictability.] We can also say that, in spite of measurement error, some patterns do remain.
 
 
-### But what's the point?
+### But what's the point? {-}
 
 Trying to describe people in terms of kinds or numerical scales is complicated. Why do we even bother? It's tempting to say that we just want to understand ourselves better, and that is certainly a  reasonable answer. Sometimes, though, we want to predict how someone will act in the future, perhaps in a situation that differs from one that they have faced in the past. In that case, we can't exactly use the past to predict the future, unless we do so by making inferences about underlying traits from past behaviors and then predicting how someone with those particular traits would act in a new context. This purpose drives some uses of tests based on the MBTI and the Big Five, for example by employers or career counselors. However, although the MBTI is oftern used for these purposes, one should exercise caution in doing so [@pittenger1993]. You should certainly not assume that all personality tests do an equally good job of providing information for the desired inferences.
 
@@ -660,7 +665,7 @@ According to the standards of the American Psychological Association [@american1
 I'd like to point out that we still haven't even once asked a question of the form "what proportion of people..." or "what is the probability that a person...?" There's nothing wrong with these questions, and we will have plenty of time to investigate questions of this kind in the remaining chapters about other Big Questions. But to be true to our question about how many kinds of people are there, we didn't need to know all of the specifics. Our discussion has been rather *metaphysical*, in the sense that we have tried to understand how differences that we observe among people can be expressed in terms of kinds (categories) or numbers, which are different *kinds* of data. Whoa.
 
 
-## Exercises {-}
+## Exercise {-}
 
 + Come up with a population (the members do not have to be human beings) and three *creative* summary statistics that can be derived about it (i.e., go beyond average weight). 
 

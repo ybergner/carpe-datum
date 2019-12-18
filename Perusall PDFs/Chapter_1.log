@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  18 DEC 2019 16:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  18 DEC 2019 17:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -773,342 +773,341 @@ G,.JBIG2,.JB2,.eps]
 (/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
-)) (./Chapter_1.toc
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 2.
+))
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 160.
+
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 2.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 160.
+
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 2.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 160
+.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 2.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 160
+.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 2.
+(Font)              <10> on input line 160.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 2.
+(Font)              <7> on input line 160.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 2.
-LaTeX Font Info:    Try loading font information for U+msa on input line 2.
+(Font)              <5> on input line 160.
+LaTeX Font Info:    Try loading font information for U+msa on input line 160.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 2.
+LaTeX Font Info:    Try loading font information for U+msb on input line 160.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-))
-\tf@toc=\write5
-\openout5 = `Chapter_1.toc'.
-
+)
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 164.
+(Font)              <8> on input line 160.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 164.
-[1
-
-{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<../images/Toilet_paper_orientation_overunder.png, id=70, 819.06pt x 376.40625p
+(Font)              <6> on input line 160.
+<../images/Toilet_paper_orientation_overunder.png, id=88, 819.06pt x 376.40625p
 t>
 File: ../images/Toilet_paper_orientation_overunder.png Graphic file (type png)
 <use ../images/Toilet_paper_orientation_overunder.png>
 Package pdftex.def Info: ../images/Toilet_paper_orientation_overunder.png  used
- on input line 179.
+ on input line 177.
 (pdftex.def)             Requested size: 422.7892pt x 194.2965pt.
-[2pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) 
-has been already used, duplicate ignored
+[1
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.217 \end{table}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{table.1}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.217 \end{table}
-                  <../images/Toilet_paper_orientation_overunder.png>]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 242.
+{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 241.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [3pdfTeX warning (ext4): destination with the same identifier (name{table.2})
- has been already used, duplicate ignored
+) [2pdfTeX warning (ext4): destination with the same identifier (name{figure.1}
+) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.252 
-      pdfTeX warning (ext4): destination with the same identifier (name{table.3
+l.247 
+      pdfTeX warning (ext4): destination with the same identifier (name{table.1
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.252 
-      ] [4]
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 301.
+l.247 
+       <../images/Toilet_paper_orientation_overunder.png>] [3pdfTeX warning (ex
+t4): destination with the same identifier (name{table.2}) has been already used
+, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.260 \begin{tabular}
+                     {r|l}pdfTeX warning (ext4): destination with the same iden
+tifier (name{table.3}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.260 \begin{tabular}
+                     {r|l}]
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 302.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [5pdfTeX warning (ext4): destination with the same identifier (name{table.4})
- has been already used, duplicate ignored
+) [4] [5pdfTeX warning (ext4): destination with the same identifier (name{table
+.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.350 
-      ] [6pdfTeX warning (ext4): destination with the same identifier (name{tab
-le.5}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.415 
-      pdfTeX warning (ext4): destination with the same identifier (name{table.6
+l.370 
+      pdfTeX warning (ext4): destination with the same identifier (name{table.5
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.415 
-      ] [7pdfTeX warning (ext4): destination with the same identifier (name{tab
-le.7}) has been already used, duplicate ignored
+l.370 
+      ] [6pdfTeX warning (ext4): destination with the same identifier (name{tab
+le.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.473 N
-       ow, you intuitively know that if you go back out onto Washington Squa...
-pdfTeX warning (ext4): destination with the same identifier (name{table.8}) has
+l.421 
+      pdfTeX warning (ext4): destination with the same identifier (name{table.7
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.421 
+      ] [7pdfTeX warning (ext4): destination with the same identifier (name{tab
+le.8}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.482 L
+       et's first take a look at what this dataset looked like before we tab...
+pdfTeX warning (ext4): destination with the same identifier (name{table.9}) has
  been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.473 N
-       ow, you intuitively know that if you go back out onto Washington Squa...
+l.482 L
+       et's first take a look at what this dataset looked like before we tab...
 ]
 
-Package xcolor Warning: Incompatible color definition on input line 499.
+Package xcolor Warning: Incompatible color definition on input line 504.
 
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 501.
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 509
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 506.
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 514
 .
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 
-Package xcolor Warning: Incompatible color definition on input line 514.
+Package xcolor Warning: Incompatible color definition on input line 519.
 
 
-Package xcolor Warning: Incompatible color definition on input line 514.
+Package xcolor Warning: Incompatible color definition on input line 519.
 
-<Chapter_1_files/figure-latex/unnamed-chunk-8-1.pdf, id=146, 429.605pt x 286.06
+<Chapter_1_files/figure-latex/unnamed-chunk-8-1.pdf, id=176, 429.605pt x 286.06
 876pt>
 File: Chapter_1_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type pdf
 )
 <use Chapter_1_files/figure-latex/unnamed-chunk-8-1.pdf>
 Package pdftex.def Info: Chapter_1_files/figure-latex/unnamed-chunk-8-1.pdf  us
-ed on input line 516.
+ed on input line 521.
 (pdftex.def)             Requested size: 429.61049pt x 286.07242pt.
-[8pdfTeX warning (ext4): destination with the same identifier (name{table.9}) h
-as been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.518 W
-       e will cover histograms later in this chapter, so don't worry too muc...
-]
-<../images/two-two-kinds.jpg, id=154, 1904.11375pt x 511.9125pt>
+[8]
+<../images/two-two-kinds.jpg, id=183, 1904.11375pt x 511.9125pt>
 File: ../images/two-two-kinds.jpg Graphic file (type jpg)
 <use ../images/two-two-kinds.jpg>
-Package pdftex.def Info: ../images/two-two-kinds.jpg  used on input line 523.
+Package pdftex.def Info: ../images/two-two-kinds.jpg  used on input line 529.
 (pdftex.def)             Requested size: 469.75153pt x 126.2906pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--525
+Underfull \hbox (badness 10000) in paragraph at lines 529--531
 []
  []
 
 
 LaTeX Warning: Reference `fig:apps-windows' on page 9 undefined on input line 5
-26.
+32.
 
 [9 <./Chapter_1_files/figure-latex/unnamed-chunk-8-1.pdf> <../images/two-two-ki
 nds.jpg>]
 
 LaTeX Warning: Reference `fig:apps-windows' on page 10 undefined on input line 
-530.
+536.
 
 [10pdfTeX warning (ext4): destination with the same identifier (name{table.10})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.570 
-      ] [11]
-<Chapter_1_files/figure-latex/poopy-hist-1.pdf, id=186, 429.605pt x 243.91125pt
+l.576 
+      ] [11] [12pdfTeX warning (ext4): destination with the same identifier (na
+me{table.11}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.622 
+      ]
+<Chapter_1_files/figure-latex/poopy-hist-1.pdf, id=218, 429.605pt x 243.91125pt
 >
 File: Chapter_1_files/figure-latex/poopy-hist-1.pdf Graphic file (type pdf)
 <use Chapter_1_files/figure-latex/poopy-hist-1.pdf>
 Package pdftex.def Info: Chapter_1_files/figure-latex/poopy-hist-1.pdf  used on
- input line 653.
+ input line 662.
 (pdftex.def)             Requested size: 429.61049pt x 243.91435pt.
-[12pdfTeX warning (ext4): destination with the same identifier (name{table.11})
- has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.663 \end{quote}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{table.12}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.663 \end{quote}
-                 ]
-<Chapter_1_files/figure-latex/poopy-hist-alt-1.pdf, id=200, 438.63875pt x 243.9
+<Chapter_1_files/figure-latex/poopy-hist-alt-1.pdf, id=225, 438.63875pt x 243.9
 1125pt>
 File: Chapter_1_files/figure-latex/poopy-hist-alt-1.pdf Graphic file (type pdf)
 
 <use Chapter_1_files/figure-latex/poopy-hist-alt-1.pdf>
 Package pdftex.def Info: Chapter_1_files/figure-latex/poopy-hist-alt-1.pdf  use
-d on input line 669.
+d on input line 678.
 (pdftex.def)             Requested size: 438.64435pt x 243.91435pt.
-<Chapter_1_files/figure-latex/poopy-two-kinds-1.pdf, id=202, 393.47pt x 257.963
+[13pdfTeX warning (ext4): destination with the same identifier (name{table.12})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.683 
+      ] [14pdfTeX warning (ext4): destination with the same identifier (name{fi
+gure.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.683 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+3}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.683 
+       <./Chapter_1_files/figure-latex/poopy-hist-1.pdf> <./Chapter_1_files/fig
+ure-latex/poopy-hist-alt-1.pdf>]
+<Chapter_1_files/figure-latex/poopy-two-kinds-1.pdf, id=256, 393.47pt x 257.963
 75pt>
 File: Chapter_1_files/figure-latex/poopy-two-kinds-1.pdf Graphic file (type pdf
 )
 <use Chapter_1_files/figure-latex/poopy-two-kinds-1.pdf>
 Package pdftex.def Info: Chapter_1_files/figure-latex/poopy-two-kinds-1.pdf  us
-ed on input line 677.
+ed on input line 686.
 (pdftex.def)             Requested size: 393.46902pt x 257.9631pt.
-[13pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
+[15pdfTeX warning (ext4): destination with the same identifier (name{figure.4})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.698 \end{quote}
-                  <./Chapter_1_files/figure-latex/poopy-hist-1.pdf>] [14pdfTeX 
-warning (ext4): destination with the same identifier (name{figure.3}) has been 
-already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.698 \end{quote}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{figure.4}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.698 \end{quote}
-                  <./Chapter_1_files/figure-latex/poopy-hist-alt-1.pdf> <./Chap
-ter_1_files/figure-latex/poopy-two-kinds-1.pdf>]
-<Chapter_1_files/figure-latex/poopy-hist2-1.pdf, id=243, 429.605pt x 243.91125p
+l.716 
+       <./Chapter_1_files/figure-latex/poopy-two-kinds-1.pdf>]
+<Chapter_1_files/figure-latex/poopy-hist2-1.pdf, id=276, 429.605pt x 243.91125p
 t>
 File: Chapter_1_files/figure-latex/poopy-hist2-1.pdf Graphic file (type pdf)
 <use Chapter_1_files/figure-latex/poopy-hist2-1.pdf>
 Package pdftex.def Info: Chapter_1_files/figure-latex/poopy-hist2-1.pdf  used o
-n input line 707.
+n input line 717.
 (pdftex.def)             Requested size: 429.61049pt x 243.91435pt.
-<Chapter_1_files/figure-latex/poopy-hist-mixture-1.pdf, id=244, 429.605pt x 243
+<Chapter_1_files/figure-latex/poopy-hist-mixture-1.pdf, id=277, 429.605pt x 243
 .91125pt>
 File: Chapter_1_files/figure-latex/poopy-hist-mixture-1.pdf Graphic file (type 
 pdf)
 <use Chapter_1_files/figure-latex/poopy-hist-mixture-1.pdf>
 Package pdftex.def Info: Chapter_1_files/figure-latex/poopy-hist-mixture-1.pdf 
- used on input line 713.
+ used on input line 723.
 (pdftex.def)             Requested size: 429.61049pt x 243.91435pt.
-<Chapter_1_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf, id=248, 422.
+[16pdfTeX warning (ext4): destination with the same identifier (name{figure.5})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.729 
+       <./Chapter_1_files/figure-latex/poopy-hist-mixture-1.pdf> <./Chapter_1_f
+iles/figure-latex/poopy-hist2-1.pdf>]
+<Chapter_1_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf, id=303, 422.
 57875pt x 243.91125pt>
 File: Chapter_1_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf Graphic 
 file (type pdf)
 <use Chapter_1_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf>
 Package pdftex.def Info: Chapter_1_files/figure-latex/poopy-hist-mixture-suspic
-ious-1.pdf  used on input line 724.
+ious-1.pdf  used on input line 734.
 (pdftex.def)             Requested size: 422.58415pt x 243.91435pt.
-[15 <./Chapter_1_files/figure-latex/poopy-hist2-1.pdf>] [16pdfTeX warning (ext4
-): destination with the same identifier (name{figure.5}) has been already used,
- duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.731 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-6}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.731 
-       <./Chapter_1_files/figure-latex/poopy-hist-mixture-1.pdf> <./Chapter_1_f
-iles/figure-latex/poopy-hist-mixture-suspicious-1.pdf>]
-<Chapter_1_files/figure-latex/crappy-hist-1.pdf, id=286, 429.605pt x 249.93375p
+<Chapter_1_files/figure-latex/crappy-hist-1.pdf, id=305, 429.605pt x 249.93375p
 t>
 File: Chapter_1_files/figure-latex/crappy-hist-1.pdf Graphic file (type pdf)
 <use Chapter_1_files/figure-latex/crappy-hist-1.pdf>
 Package pdftex.def Info: Chapter_1_files/figure-latex/crappy-hist-1.pdf  used o
-n input line 746.
+n input line 756.
 (pdftex.def)             Requested size: 429.61049pt x 249.93694pt.
-<Chapter_1_files/figure-latex/poopy-crappy-1.pdf, id=288, 436.63126pt x 250.937
-5pt>
-File: Chapter_1_files/figure-latex/poopy-crappy-1.pdf Graphic file (type pdf)
-<use Chapter_1_files/figure-latex/poopy-crappy-1.pdf>
-Package pdftex.def Info: Chapter_1_files/figure-latex/poopy-crappy-1.pdf  used 
-on input line 756.
-(pdftex.def)             Requested size: 436.63019pt x 250.93687pt.
-[17pdfTeX warning (ext4): destination with the same identifier (name{figure.7})
+[17pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.763 
-       <./Chapter_1_files/figure-latex/crappy-hist-1.pdf>] [18pdfTeX warning (e
+l.761 
+       <./Chapter_1_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf>]
+<Chapter_1_files/figure-latex/poopy-crappy-1.pdf, id=319, 436.63126pt x 250.937
+5pt>
+File: Chapter_1_files/figure-latex/poopy-crappy-1.pdf Graphic file (type pdf)
+<use Chapter_1_files/figure-latex/poopy-crappy-1.pdf>
+Package pdftex.def Info: Chapter_1_files/figure-latex/poopy-crappy-1.pdf  used 
+on input line 766.
+(pdftex.def)             Requested size: 436.63019pt x 250.93687pt.
+[18pdfTeX warning (ext4): destination with the same identifier (name{figure.7})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.788 
+       <./Chapter_1_files/figure-latex/crappy-hist-1.pdf>] [19pdfTeX warning (e
 xt4): destination with the same identifier (name{figure.8}) has been already us
 ed, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.796 
+l.815 
        <./Chapter_1_files/figure-latex/poopy-crappy-1.pdf>]
-<Chapter_1_files/figure-latex/normal-poopy-1.pdf, id=322, 422.57875pt x 285.065
+<Chapter_1_files/figure-latex/normal-poopy-1.pdf, id=354, 422.57875pt x 285.065
 pt>
 File: Chapter_1_files/figure-latex/normal-poopy-1.pdf Graphic file (type pdf)
 <use Chapter_1_files/figure-latex/normal-poopy-1.pdf>
 Package pdftex.def Info: Chapter_1_files/figure-latex/normal-poopy-1.pdf  used 
-on input line 803.
+on input line 816.
 (pdftex.def)             Requested size: 422.57771pt x 285.0643pt.
 
-LaTeX Warning: Reference `fig:normal-poopy' on page 19 undefined on input line 
-804.
+LaTeX Warning: Reference `fig:normal-poopy' on page 20 undefined on input line 
+817.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 803--805
+Underfull \hbox (badness 10000) in paragraph at lines 816--818
 [][] \T1/lmr/m/n/10 (+20) Tech-ni-
  []
 
-[19 <./Chapter_1_files/figure-latex/normal-poopy-1.pdf>] [20] [21]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 949.
-[22]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 949.
+[20 <./Chapter_1_files/figure-latex/normal-poopy-1.pdf>] [21] [22] [23]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 970.
+[24]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 970.
 (./Chapter_1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 949.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 949.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 970.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 970.
 Package rerunfilecheck Info: File `Chapter_1.out' has not changed.
-(rerunfilecheck)             Checksum: E7F684BA08071DBDA1ED9A4E7E6EDA9A;2175.
+(rerunfilecheck)             Checksum: D94A3807F915C7FBE2B150D55086B93E;3758.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 949.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 970.
  ) 
 Here is how much of TeX's memory you used:
- 14757 strings out of 492649
- 216388 string characters out of 6129622
- 335323 words of memory out of 5000000
- 18148 multiletter control sequences out of 15000+600000
+ 14765 strings out of 492649
+ 216590 string characters out of 6129622
+ 334255 words of memory out of 5000000
+ 18158 multiletter control sequences out of 15000+600000
  66713 words of font info for 125 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  34i,16n,38p,1251b,486s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1123,10 +1122,10 @@ texlive/2018/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2018
 /texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
 pe1/public/lm/lmtt10.pfb>
-Output written on Chapter_1.pdf (22 pages, 2450777 bytes).
+Output written on Chapter_1.pdf (24 pages, 2449493 bytes).
 PDF statistics:
- 438 PDF objects out of 1000 (max. 8388607)
- 367 compressed objects within 4 object streams
- 103 named destinations out of 1000 (max. 500000)
- 12421 words of extra memory for PDF output out of 14400 (max. 10000000)
+ 466 PDF objects out of 1000 (max. 8388607)
+ 393 compressed objects within 4 object streams
+ 104 named destinations out of 1000 (max. 500000)
+ 12509 words of extra memory for PDF output out of 14400 (max. 10000000)
 
