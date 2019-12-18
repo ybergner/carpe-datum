@@ -1,8 +1,8 @@
 ---
-output:
-  pdf_document: default
-  html_document: default
+output: 
+  bookdown::pdf_document2
 ---
+
 # How Many Kinds of People Are There?
 
 
@@ -36,8 +36,8 @@ require(kableExtra)
 require(dplyr)
 require(ggplot2)
 ```
-
-```{r tp-fig, echo=FALSE, out.width='90%', fig.show='hold', fig.cap='The greate debate'}
+  
+```{r tp-fig, echo=FALSE, out.width='90%', fig.show='hold', fig.cap="The great debate"}
 include_graphics("../images/Toilet_paper_orientation_overunder.png")
 #include_graphics("../images/Toilet_paper_orientation_under.jpg")
 ```
