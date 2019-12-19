@@ -3,7 +3,7 @@ output:
   bookdown::pdf_document2:
     toc: False
 ---
-
+  
 # How Many Kinds of People Are There? {-}
 
 
@@ -58,7 +58,9 @@ TPcounts <- as.data.frame(table(binomial_draw), row.names=c("under", "over"))
 ### NOT LATEX COMPATIBLE
 kable(table(theWayIRoll), col.names = c("", "count"), caption="How people roll", booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "striped", 
-                full_width = T)
+                full_width = T) %>%
+  kable_styling(latex_options = c("hold_position"))
+
 
 # TPcounts %>% select(counts=Freq) %>%
 #   kable(., caption="How I Roll", booktabs = TRUE) %>%
@@ -80,7 +82,8 @@ kable(iamaperson,
       caption="Kinds of people in Washington Square",
       booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "striped", 
-                full_width = T)
+                full_width = T) %>%
+  kable_styling(latex_options = c("hold_position"))
 
 ```
 
@@ -97,7 +100,8 @@ kable(iamaperson,
       caption="How people roll (alternate universe)",
       booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "striped", 
-                full_width = T)
+                full_width = T) %>%
+  kable_styling(latex_options = c("hold_position"))
 
 ```
 
@@ -128,7 +132,8 @@ rawdata <- data.frame(randomID =
                         round(runif(length(theWayIRoll),
                         min=1000, max=9999)),
                         response=theWayIRoll)
-kable(head(rawdata))
+kable(head(rawdata)) %>%
+  kable_styling(latex_options = c("hold_position"))
 ```
 
 Counts is an example of a **summary statistic**, which is a fancy term for a number that is derived from the raw data. The count summary is as simple as it gets. It is literally the number of times that each response appears. We might note as well that, 
@@ -153,7 +158,7 @@ This is about as much as we need to say about summary statistics for the time be
 
 
 
-#### Checkpoint {-}  
+### Checkpoint {-}  
 
 While focusing on the great toilet paper debate, we've managed to establish some important fundamental ideas. 
 
@@ -188,7 +193,8 @@ wsq_peeps <- data.frame(roll=theWayIRoll, spread=theWayISpread)
 
 ```{r, 'pb-counts', echo=FALSE}
 kable(table(theWayISpread), col.names = c("", "counts"), caption="How people spread", booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "striped", full_width = T)
+  kable_styling(bootstrap_options = "striped", full_width = T)%>%
+  kable_styling(latex_options = c("hold_position"))
 ```
 But this second question did not erase the first question about toilet paper. In fact the first few rows of our data from Washington Square are displayed below. Each row, representing one person, now has two columns, labeled "roll" (for toilet paper) and "spread" (for peanut butter): 
 
@@ -204,7 +210,8 @@ Before you read on, it's a good time to ask yourself if you can answer the follo
 ```{r, 'tpxpb', echo=FALSE}
 kable(table(wsq_peeps$roll, wsq_peeps$spread), caption="Two questions", booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "bordered", 
-                full_width = F)
+                full_width = F)%>%
+  kable_styling(latex_options = c("hold_position"))
 
 ```
 
@@ -223,7 +230,8 @@ fourWaySpread[haters] <- "hate all"
 
 kable(table(fourWaySpread), col.names = c("", "counts"), caption="PB preference", booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "striped", 
-                full_width = F)
+                full_width = F)%>%
+  kable_styling(latex_options = c("hold_position"))
 ```
  Consider Table \@ref(tab:newpb) in contrast to \@ref(tab:tpxpb). We've now given people four choices to express their peanut butter preference. In addition to chunky and smooth, they can also choose to say that they hate all peanut butter or don't care. We now have four kinds of people. But since we make the determination of what kind of person you are using just one question, we say that there is one **dimension** (in this case, peanut butter preference) along which people can be divided into four groups. In Table \@ref(tab:tpxpb), there were two dimensions, a dimension of peanut butter and a dimension of toilet paper. Notice that this word, dimension, is used in much the same way as when we refer to geometric space as being two-dimensional (e.g., a drawing on flat sheet) or three-dimensional (e.g., a solid object, or sometimes a drawing that creates the illusion of looking at a solid object.) The three dimensions of space are often labeled something like (x, y, z). Here, our two dimensions could be labeled (pb, tp). The order doesn't matter. To summarize, in Table \@ref(tab:tpxpb), we have two dimensions and four kinds. In Table \@ref(tab:newpb), we have *one* dimension and four kinds.
  
@@ -244,7 +252,8 @@ alt_xtab2[2,1] <- alt_xtab2[2,1] + alt_xtab2[2,2]
 alt_xtab2[1,1] <- alt_xtab2[2,2] <-0
 
 kable(list(alt_xtab1, alt_xtab2), caption="Two questions (alternate universes)", booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "bordered", full_width = F)
+  kable_styling(bootstrap_options = "bordered", full_width = F)%>%
+  kable_styling(latex_options = c("hold_position"))
 
 #saveRDS(alt_xtab2, file="alt_xtab2.rds")
 ```
@@ -269,7 +278,8 @@ kable(list(alt_xtab2, t(alt_xtab2)),
       caption="Alternate universe (two equivalent ways)",
       booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "bordered", 
-                full_width = F)
+                full_width = F)%>%
+  kable_styling(latex_options = c("hold_position"))
 
 ```
 
@@ -288,7 +298,8 @@ alt_xtab3[2,1] <- 3
 alt_xtab3[2,2] <- 16
 kable(alt_xtab3, caption="Two questions", booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "bordered", 
-                full_width = F)
+                full_width = F)%>%
+  kable_styling(latex_options = c("hold_position"))
 
 ```
   
@@ -308,7 +319,8 @@ data_example = data.frame(Peanutbutter =
 rownums = sample(1:40)
 data_example = data_example[rownums,]
 rownames(data_example) = NULL
-kable(data_example[1:5,])
+kable(data_example[1:5,])%>%
+  kable_styling(latex_options = c("hold_position"))
 ```
   
 One way to think about the situation where toilet paper and peanut butter choices are independent is this: We keep the same proportions of answers to each question, but we randomly shuffle them separately. This is akin to writing every person's response to the peanutbutter question on an index card, shuffling them randomly, and then re-distributing them; then, doing the same for the toiletpaper question. If we shuffle responses to each question separately, there is no way for someone's randomly assigned answer to one question to influence their randomly assigned answer to another. 
@@ -363,7 +375,8 @@ colnames(tabsxapps2) <- colnames(tabsxapps) <- c("folders","apps")
 kable(list(tabsxapps, tabsxapps2), 
       caption="Possible data for digital tidiness", 
       booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "bordered", full_width = F)
+  kable_styling(bootstrap_options = "bordered", full_width = F)%>%
+  kable_styling(latex_options = c("hold_position"))
 
 ```
 
@@ -406,7 +419,8 @@ poopycrappy %>% select(poopiness) %>%
   round(.,3) %>% 
   head() %>% 
   kable(., booktabs = TRUE, 
-        caption = "Don't ask me how I got these numbers.")
+        caption = "Don't ask me how I got these numbers.")%>%
+  kable_styling(latex_options = c("hold_position"))
 
 ```
 
@@ -426,7 +440,8 @@ freq   = hist(poopycrappy$poopiness, breaks=br, plot=FALSE)
 tmp <- data.frame(Range = ranges, Frequency = freq$counts)
 kable(tmp, caption="Frequency Table for Poopiness", booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "striped", 
-                full_width = F)
+                full_width = F)%>%
+  kable_styling(latex_options = c("hold_position"))
 
 ```
 
