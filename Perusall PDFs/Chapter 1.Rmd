@@ -168,7 +168,9 @@ While focusing on the great toilet paper debate, we've managed to establish some
 
 - Even when we casually refer to *people*, we may have a particular set of people, a population, in mind. Data about this population are likely to come from a sample, rather than from the whole population, and this fact introduces some uncertainty into claims about the whole population. Data science to the rescue!
 
-- Clearly, we can ask people questions that prompt them to choose between more than two categories. But "two types of people" questions are more fun.^[That was another unsubstantiated claim.] I mean there are so many of them! So... does that mean that there really are two types of people? To answer this, we will need to get into another great debate.
+- Clearly, we can ask people questions that prompt them to choose between more than two categories. But "two types of people" questions are more fun.^[That was another unsubstantiated claim.] I mean there are so many of them! So... does that mean that there really are two types of people? To answer this, we will need to get into another great debate.  
+
+\pagebreak   
 
 ### Dimensions {-}
 
@@ -260,9 +262,9 @@ kable(list(alt_xtab1, alt_xtab2), caption="Two questions (alternate universes)",
 But now consider the alternate universe on the right of Table \@ref(tab:tpxpb-alt). In that case, everyone who is an over-hanger of toilet paper prefers smooth peanut butter, and everyone who is an under-hanger prefers chunky. If this is the case, there are only two kinds of people, at least in our sample. Those who over-hang _and_ prefer smooth and those who under-hang *and* prefer chunky. But does it make sense to say there are two dimensions? We did ask two different questions!
 
 You might reason about it the following way: in our sample, if I ask anyone just one of the two questions--about either toilet paper or peanut butter--then I immediately know the answer they would give to the other one. I don't actually have to ask two questions, other than to establish in the first place that I didn't have to. Since I only get information from one question, there is only one dimenion.  
-
-\pagebreak  
-
+  
+\pagebreak   
+  
 ## Independence, Association, and Contingency {-}
 
 > This section title sounds like a philosophy book by the late Richard Rorty. 
@@ -342,16 +344,20 @@ hist(simulated_proportions,
 abline(v=0.85, lwd=2, col=3, lty=2)
 ```
   
-We will cover histograms later in this chapter, so don't worry too much if this picture doesn't make sense to you yet. For now, the main takeaway is this: Even if we randomly reshuffle everyone's answers 1000 times (akin to going out on the street and asking 40 new people these questions 1000 different times, but assuming that the overall proportions of over vs. under rollers and chunky vs. smooth PB people will be the same as in our original dataset), we would not expect to see values as high as 85% (green dotted line) if the questions were truly independent.  
+We will cover histograms later in this chapter, so don't worry too much if this picture doesn't make sense to you yet. For now, the main takeaway is this: Even if we randomly reshuffle everyone's answers 1000 times (akin to going out on the street and asking 40 new people these questions 1000 different times, but assuming that the overall proportions of over vs. under rollers and chunky vs. smooth PB people will be the same as in our original dataset), we would not expect to see values as high as 85% (green dotted line) if the questions were truly independent.   
 
-### Latent Factors and Measurement {-}
+\pagebreak  
 
-```{r apps-windows, echo=FALSE, fig.show='hold', fig.cap='Two more two-kinds questions'}
-include_graphics("../images/two-two-kinds.jpg")
-```
-[source](https://2kindsofpeople.tumblr.com/)
+### Latent Factors and Measurement {-}  
+     
+```{r apps-windows, echo=FALSE, fig.show='hold', fig.cap="Two more two-kinds questions"}  
 
-Figure \@ref(fig:apps-windows) shows two more two-kinds of people graphics from João Rocha's blog. I bet that you can identify yourself with one of the two images in each pair. I certainly can. But ask yourself, given our discussion above, do you think the choices a person would identify in each case above are independent or not independent (e.g., contingent, associated, dependent)?
+include_graphics("../images/two-two-kinds.jpg")  
+
+```    
+  
+  
+Figure \@ref(fig:apps-windows) ([source](https://2kindsofpeople.tumblr.com/)) shows two more two-kinds of people graphics from João Rocha's blog. I bet that you can identify yourself with one of the two images in each pair. I certainly can. But ask yourself, given our discussion above, do you think the choices a person would identify in each case above are independent or not independent (e.g., contingent, associated, dependent)?
 
 In contrast to the toilet paper and peanut butter questions, which at least appear to be about totally different things, these two dichotomies have something similar going on in each of them. The choice on the left is about organizing your desktop browser, either in tabs or as separate windows. The choice on the right is about organizing apps in your smartphone, either loose or in folders. We might say that both of them get at a tendency to organize your digital environment. Call it digitidness (short for digital tidiness). This tendency, we may imagine, might even carry over into non-digital environments, like your actual desk, bookshelf, or filing cabinet.
 
@@ -393,7 +399,7 @@ This situation on the right is probably more realistic. After all, very few thin
 
 **What do you think?**  
 
-\pagebreak  
+\pagebreak   
 
 ## (An Infinite Number of) Shades of Gray (or Brown) {-}
 
@@ -562,7 +568,7 @@ How many kinds of people are there? When it comes to poopiness and crappiness, p
 
 I do not mean to imply that clusters of points can always be found if we have data along many dimensions. That is certainly not always the case. The present example was concocted (I admit it!) to show that groups *can* emerge, even in numerical data. Cluster analysis [@kaufman2009] refers to set of data-science methods all about looking for the existence of groups in multidimensional data. 
 
-#### Check your understanding {-}
+### Check your understanding {-}
 1) Based on the scatterplot in Figure \@ref(fig:poopy-crappy) and the grouped-by-color histogram for poopiness in Figure \@ref(fig:poopy-hist-mixture), describe what the equivalent grouped-by-color histogram for crappiness would look like. Would it look the same or different? Explain.  
 
 \pagebreak  
@@ -598,7 +604,7 @@ Technically speaking, all of the values, including the maximal value of `r round
 
 ### Summary {-}
 
-#### Vocabulary {-}
+### Vocabulary {-}
 
 - kind, type, category
 - dichotomous
