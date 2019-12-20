@@ -644,7 +644,7 @@ The MBTI will categorize people, based on their responses, dichotomously along e
 
 Thus there are sixteen possible combinations, for example "INTP". Each person is assigned to one of these sixteen personalities. Many online tests will provide you with a report to help interpret your classification. That is, the four dimensions are understood to come together in some holistic picture of your "type."
 
-### Big Five
+### Big Five {-}  
 
 The term "Big Five" is a commonly used term for the five-factor model of personality. Based on responses to questionnaires, people are assigned a numerical score along five dimensions (also called scales or factors!)
 
@@ -741,7 +741,7 @@ One way to think about the 30% chance of rain is to imagine that our experience 
 
 It didn't have to be 10 worlds, of course. That was arbitrary. If we imagined thirty worlds, it could rain in nine of them, as I've represented in Figure \@ref(fig:thirty-worlds). I did this by making thirty circles and coloring in 9 of them at random. Since I like to pull back the curtain every once in a while, I will even show you the code I use to generate this simple figure.
 
-```{r thirty-worlds, echo=TRUE, fig.cap='Rain (filled, blue dots) in 9 out of 30 possible worlds. It does not rain (hollow circles) in the other worlds.', fig.height=3}
+```{r thirty-worlds, echo=TRUE, fig.cap='Rain (filled, blue dots) in 9 out of 30 possible worlds. It does not rain (hollow circles) in the other worlds.', fig.height=3, fig.pos='H', out.extra=''}
 
 norain <- cbind(rep(1:10,3), rep(1:3, each=10))  # start with a 10 x 3 grid of points
 rainworlds <- norain[sample(1:nrow(norain), 9),]  # choose (sample) nine at random, using the sample() function in R
@@ -762,7 +762,8 @@ For your meteorologist friend, 30% represents a degree of belief. Importantly, t
 
 Aside from subjectivity, which is a thorny topic among statisticians, there is really no *practical* difference between the interpretation of 30% probability as a frequency of occurrence in an ensemble of possible worlds or as a degree of belief about this world. It won't change what you do about it.
 
-If you take this forecast of rain seriously, you have decisions to make. It could be whether or not to take an umbrella with you when you leave the house tomorrow, or whether to cancel your plans to have a barbecue outside. These decisions may not seem very high stakes. The worst case scenario is that you (and others at your barbecue) get wet. But other decisions you have to make on a daily basis can have more serious consequences for your health or even your life. You often have to make those decisions based on probabilistic and maybe subjective information.
+If you take this forecast of rain seriously, you have decisions to make. It could be whether or not to take an umbrella with you when you leave the house tomorrow, or whether to cancel your plans to have a barbecue outside. These decisions may not seem very high stakes. The worst case scenario is that you (and others at your barbecue) get wet. But other decisions you have to make on a daily basis can have more serious consequences for your health or even your life. You often have to make those decisions based on probabilistic and maybe subjective information.  
+\pagebreak  
 
 
 ## Death {-}  
@@ -771,7 +772,7 @@ End of warm-up. It's time to talk about when you will die.
 
 I highly recommend this data visualization called [Years You Have Left to Live, Probably](https://flowingdata.com/2015/09/23/years-you-have-left-to-live-probably/). Here is a screenshot, although it's not nearly as interesting when you can't interact with the simulation and watch the little balls drop.
 
-```{r years-screen, out.width='90%', fig.cap='Screenshot of interactive data visualization'}
+```{r years-screen, out.width='90%', fig.cap='Screenshot of interactive data visualization', fig.pos='H', out.extra=''}
 include_graphics("../images/YYHLTLScreenshot1.png")
 ```
 
@@ -793,7 +794,8 @@ As the simulation runs, it also accumulates data in bins at the bottom, labeled 
 ```{r, echo=FALSE}
 bins <- c("0 to 9", "10 to 19", "20 to 29", "30 to 39", "40 to 49", "50 or more")
 counts <- c(1,1,3,3,13,72)
-kable(data.frame(bin=bins, counts=counts), booktabs=TRUE) %>%  kable_styling(bootstrap_options = "striped", full_width = F)
+kable(data.frame(bin=bins, counts=counts), booktabs=TRUE) %>%  kable_styling(bootstrap_options = "striped", full_width = F)%>%
+  kable_styling(latex_options = c("hold_position"))
 
 
 ```
@@ -812,7 +814,7 @@ You probably realize that we don't get to see all of these alternate universes, 
 The Flowing Data animated visualization is based on data collected in "life tables", which can be found online from sources like the National Center for Health Statistics (NCHS) and the Social Security Administration (SSA). Different life tables are produced every year, as life expectancy continues to evolve along with changes in health science and nutrition. Figure \@ref(fig:life-duration) plots data for age-at-death (for Americans) as of 2010. There is a bar for each age from 0 to 120, and the height of each bar represents a count of deaths at that age per 100,000 people.
 
 
-```{r life-duration, echo=FALSE, fig.cap='How long Americans were living in 2010'}
+```{r life-duration, echo=FALSE, fig.cap='How long Americans were living in 2010', fig.pos='H', out.extra=''}
 
 lifetableNCHS <- read.csv("../data/lifetable.csv")
 lifetableMale <- read.csv("../data/lifetable-male-2010.csv")
@@ -837,7 +839,7 @@ So how does age-at-death relate exactly to the years you have left to live? Life
  
 Most of us don't think about our lives in terms of questions like, are we going to die this year? But that is technically how the life table works. The life table is a set of numbers---including deaths-at-age-x and expected-years-left-to-live-at-age-x---that are all derived from one initial set of numbers which represent *the probability that a person age x will die within one year*. If you're curious what that initial set of numbers looks like, I've plotted them in Figure \@ref(fig:die-this-year).  
 
-```{r die-this-year, out.width='90%', echo=FALSE, fig.cap='Mortality rate per year of age'}
+```{r die-this-year, out.width='90%', echo=FALSE, fig.cap='Mortality rate per year of age', fig.pos='H', out.extra = ''}
 
 plot(lifetableFemale$qx, ylab="qx = probability of dying within one year", xlab="age")
 
@@ -853,7 +855,8 @@ But what if you wanted to know your chances, at birth, of dying in your 60s, tha
 
 ```{r survival, echo=FALSE}
 
-kable(lifetableNCHS[61:70,], booktabs=TRUE, row.names = FALSE, caption='Life Table')
+kable(lifetableNCHS[61:70,], booktabs=TRUE, row.names = FALSE, caption='Life Table')%>%
+  kable_styling(latex_options = c("hold_position"))
 
 ```
   
@@ -911,7 +914,8 @@ B) Computing the overall proportion, out of 100,000 people, who die in their 60s
 
 
 A = B in this case. An important property of mathematical sciences is that you can arrive at the same answer in different ways. Maybe that sounds like a waste of time, but I view it as one of the most reassuring things about math. If you try something two different ways, and you do *not* get the same answer, then something is probably wrong. 
-
+  
+\pagebreak  
 ## Some facts about Probabilities {-}  
 
 A lot of books would have tried to establish some basic facts about probability up front. (See, for example, OpenIntro Stats, chapter 3). There is a sound logic to setting up foundations like that. But in this book, I've taken the strong position that ideas should be driven by questions. So I've tried to reason through the example above without setting up any foundations. Nevertheless it's a good time to recap some of what we established about probabilities. We will also introduce the most basic notation `P(A)` for the probability that event A happens. For example, event A can stand for "you die at age 64" or "it rains in New York tomorrow."
@@ -952,7 +956,8 @@ In the last chapter, we said that two events (we were talking about responses to
 alt_xtab2 <- readRDS(file="../alt_xtab2.rds")
 
 kable(alt_xtab2, caption="Bizarro world", booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "bordered", full_width = F)
+  kable_styling(bootstrap_options = "bordered", full_width = F)%>%
+  kable_styling(latex_options = c("hold_position"))
 
 ```
   
@@ -962,9 +967,9 @@ In bizarro world, toilet paper orientation and peanut butter preference are NOT 
 P(tp = over AND pb = smooth) does NOT equal to P(tp = over) * P(pb = smooth)
 ```
   
-This will become even more clear in the next section.
+This will become even more clear in the next section.  
 
-
+\pagebreak  
 ## Conditional Probabilities {-}  
 
 Recall that we would NOT have gotten the right answer to the probability of dying in your 60s if we added up the mortality rates qx for all ages x in [60-69]. (Exercise: verify this.) Rather, we had to multiply these numbers first by the probability of living to age x. Another way to say this is that the mortality rate qx was actually a **conditional probability.** It was the probability of dying at age x  *on condition that* you have survived to age x. To be absolutely clear, we are measuring x in whole numbers, like birthdays, but we don't mean dying on your xth birthday. Rather, we mean dying anytime between turning age x and turning x+1. We need a special notation to distinguish conditional probabilities. We write,
@@ -1043,14 +1048,15 @@ P(tp = over | pb = chunky) = 0
 P(tp = over AND pb = smooth) =  P(tp = over | pb = smooth) * P(pb = smooth) = P(pb = smooth)
 
 ```
-  
-
+    
+   
+\pagebreak  
 ## Conditional Death {-}  
 
 Earlier I said we would use the life table to answer questions about when you will die assuming nothing else about you. Now, you might be aware that life expectancy is not the same for males and females. Indeed, there are separate life tables for each sex. I've plotted the death column dx from both tables in Figure \@ref(fig:life-durationMF). Females are shown in light green bars, and males using pink. Unfortunately for the males, their mortality rate is higher not only in their later years, but even in their late teens and twenties.
   
   
-```{r life-durationMF, echo=FALSE, fig.cap='Deaths by age for male and female (2010)'}
+```{r life-durationMF, echo=FALSE, fig.cap='Deaths by age for male and female (2010)', fig.pos='H', out.extra=''}
 
 source("../cbColors.R")
 col1 <- t_col(cbPalette[3],60)
@@ -1064,39 +1070,32 @@ barplot(lifetableMale$dx, col=col2, add=T)
 legend("top", c("Female","Male"), fill=c(col1,col2))
 
 ```  
-  
+   
 ```{r}
-
-sum(lifetableNCHS[81:101,"dx"])/sum(lifetableNCHS[,"dx"], na.rm=T)
-
+#proportion of women dying from at ages 81-120
 sum(lifetableFemale[81:120,"dx"])/sum(lifetableFemale[,"dx"])
+
+#proportion of men dying from at ages 81-120
 sum(lifetableMale[81:120,"dx"])/sum(lifetableMale[,"dx"])
 
 ```   
-  
-
-  
+    
 ### Check your understanding {-}
 
-P(tp = under | pb = smooth) = ?
+P(tp = under | pb = smooth) = ?  
 P(tp = under | pb = chunky) = ?
 
   
 
-
-
-
-
-
-```{r}
+```{r, echo=FALSE, include=FALSE}
 
 sum(lifetableNCHS[61:70,"dx"])
 
 ```
-
-
   
-## Bayes Rule
+\pagebreak   
+   
+## Bayes Rule {-}  
 
 Conditional probabilities may be easy to define, but they are probably not intuitive to most people. Even experts make mistakes when reasoning with conditional probabilities. Consider the following scenario:
 
@@ -1117,13 +1116,13 @@ P(A and B) = P(B|A) P(A)
 
 ```
   
-## Bayesian Networks {-}  
+## Bayesian Networks {-}    
 
 
 A whole computational framework known as Bayesian networks has been established to make it easier for computers to help us with these problems. Bayesian networks are named for Thomas Bayes, who also put his stamp on Bayes' rule. 
-
-
-## Causality {-}  
+  
+\pagebreak   
+## Causality {-}    
 
 Does eating meat cause heart disease? Does smoking cause lung cancer? What does it mean to say A causes B? First of all, this may sound like a philosophical question, and indeed the philosopher David Hume shed some important light on the question of how we conceive of causation. But this is a book on probabilistic thinking, not philosophy. So we are going to take a more pragmatic approach and focus on how we use the concept of causation in everyday life. Nevertheless, it helps to first recall our distinction between deterministic and stochastic processes. 
 
@@ -1172,9 +1171,11 @@ In the third case (smoking):
 
 Now I’m not saying that the chances of cancer are the same whether you smoke or not. That remains an open question so far as our present argument goes. But even thus far, we can see that the smoking causality question, posed this way, invites some more questions.
 
-How big a difference does there have to be between the cancer rates for smokers and non-smokers for us to be convinced that there is an association between smoking and cancer? And if there is an association between smoking and cancer, what would drive us to call this a causal relationship, to say that smoking causes cancer? Could causality go the other way?   
+How big a difference does there have to be between the cancer rates for smokers and non-smokers for us to be convinced that there is an association between smoking and cancer? And if there is an association between smoking and cancer, what would drive us to call this a causal relationship, to say that smoking causes cancer? Could causality go the other way?    
 
-### Testing for an association between two variables {-}  
+\pagebreak  
+
+## Testing for an association between two variables {-}  
 For a moment, let's focus on the first question: How big a difference does there have to be between the cancer rates for smokers and non-smokers for us to be convinced that there is an association between smoking and cancer?  
 
 Suppose that we go out and find a random sample of 1000 people for whom the following information is available: a) whether the person smokes (or has smoked in the past) and b) whether the person has ever been diagnosed with cancer. The beginning of our dataset looks something like this:  
@@ -1195,7 +1196,74 @@ As a first step, you tabulate the data and get the following contingency table:
 | Smoke: No | 93 | 657 |  
   
 Then, you use the table to estimate the following:  
-$$P(\text{Cancer}|\text{Smoke})=\frac{46}{46+204}=0.184$$  
+$$P(\text{Cancer}|\text{Smoke})=\frac{46}{46+204}=0.184$$   
+
+$$P(\text{Cancer}|\text{Not Smoke})=\frac{93}{93+657}=0.124$$
+  
+You might say that these numbers suggest an association (i.e., dependence) between smoking and cancer: Within this sample, a higher proportion of smokers were diagnosed with cancer than non-smokers. But is this enough of a difference to convince you that, if you went out and found 1000 new (random) people, you would still observe a difference of this magnitude?  
+
+One way to *start* trying to answer this question is to consider the following thought experiment: imagine that, among all people in the world, there is NOT a higher incidence of cancer among smokers (as compared to non-smokers). If that were the case, you would expect to see 
+
+$$P(\text{Cancer}|\text{Smoke})=P(\text{Cancer}|\text{Not Smoke}).$$
+
+Or, written slightly differently: 
+
+$$P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0.$$
+
+In comparison, you observed the following in your initial sample:
+
+$$P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0.184-0.124=0.06.$$   
+
+So, you could pose the following question: what is the probability that, among the whole population, smokers do not have higher risk of cancer; but, among the random sample of 1000 people that you observed, there is a 6% (or greater) increased incidence of cancer among smokers as compared to non-smokers? This type of question is the basis for **hypothesis testing**. Often, in hypothesis testing, we form a **null hypothesis** (in this case, the null hypothesis might be that smokers and non-smokers have equal cancer incidence among the full population) and **alternative hypothesis** (in this case, the alternative hypothesis might be that smokers have at least 6% higher risk of cancer than non-smokers). If you are interested in learning more about how statisticians use probability distributions to answer these types of questions, there are plenty of resources online. In this book, however, we will attempt to answer this question using a simulation.  
+
+Based on the sample you observed, you could estimate that approximately $\frac{46+204}{1000}*100=25$ percent of the population smokes and approximately $\frac{46+93}{1000}*100=13.9$ percent of the population has been diagnosed with cancer. If there is no real difference in cancer incidence among smokers and non-smokers, then these two variables are independent: 25% of your sample randomly decided to smoke, and 13.9% were randomly diagnosed with cancer. It turns out that it's very easy to simulate datasets under this assumption. All we have to do is, in two completely separate steps, randomly assign 25% of people to be smokers and randomly assign 13.9% of people to get cancer. Then, for each of these simulated datasets (of 1000 people each), we can calculate $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$ and observe what types of differential proportions could be observed by random chance. Then we can calculate the proportion of these differences that are greater than or equal to $0.06$ in order to understand the chances that we observe a difference of that size when it doesn't actually exist:  
+  
+```{r}
+set.seed(513)
+```  
+
+```{r, echo=TRUE}
+nIter = 100 #set some number of iterations
+differences = vector(length = nIter) #create vector to save differences in proportions
+
+for(i in 1:nIter){ #repeat the following process nIter times
+  
+  #create some fake data and save it as "fakedata"
+  fakedata = data.frame(Smoke = sample(c("Y", "N"), size=1000, prob=c(.25, .75), replace = T),
+                         Cancer = sample(c("Y", "N"), size=1000, prob=c(.139, .861), replace = T))
+  
+  #use the fake data to calculate P(cancer|smoke)
+  CgivenS = table(fakedata)[2,2]/sum(table(fakedata)[2,])
+  
+  #use the fake data to calculate P(cancer|not smoke)
+  CgivenNS = table(fakedata)[1,2]/sum(table(fakedata)[1,])
+  
+  #save P(cancer|smoke) - P(cancer|not smoke) in the ith location of differences
+  differences[i] <- CgivenS - CgivenNS
+  
+}
+
+#calculate proportion of differences greater than or equal to .06
+sum(differences >= .06)/nIter
+
+#plot a histogram of the differences with a red vertical line at .06
+hist(differences, main="Histogram of P(cancer|smoke) - P(cancer|not smoke)")  
+abline(v=.06, lwd=2, col=2)
+```
+  
+As you might expect, the histogram of simulated differences ($P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$) is centered around zero. If there's no real difference, then you should expect to observe (close to) zero differences among any random sample of 1000 people. That said, you'll see from the histogram that it is still possible, by random chance, to observe a difference as large as 8%.
+
+But let's get back to our original question: You might notice that a very small proportion of the simulated values of were greater than or equal to .06. (about .03 or 3%). This might help convince you that there was a relatively low probability of observing  $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})\ge .06$ among your sample of 1000 people if the reality was that $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0$ among the full population.    
+
+We've made some good progress, but you might still have some concerns: 1) there is always some risk that there is no real difference in cancer incidence among these two groups, but you observed a large difference in your sample nonetheless and 2) even if there is a real difference, there are a lot of possible reasons that this difference could exist without a direct causal relationship. That said, if you can convince yourself that there is a very small probability that the association you observed could have occurred randomly, then you might want to move on to a new question: can you explain why is there an association?    
+
+\pagebreak  
+### Things that are not causation
+
+You may have heard the expression, "correlation is not causation." 
+
+   
+\pagebreak  
   
 # Will You Make Money? {-}  
 
@@ -1273,14 +1341,15 @@ sum(results>=Acceptable)/nIter
 ```
   
 Feel free to copy this code over into your own script in R Studio and play with the parameters to see what happens. If you decrease nIter to 1000 and re-run the simulation a few times, you might see that there is more variation in the estimated probability; however, if you increase nIter to 100000, you are more likely to observe values very close to .83 every time.  
-
-### How do statisticians solve problems like this? {-}
+  
+\pagebreak  
+## How do statisticians solve problems like this? {-}
 
 In this book, I have tried to emphasize conceptual understanding through simulation and discussion. In the example above, you can, for example, run a bunch of simulations of the experiment and (very accurately) estimate the probability of an acceptable outcome. But, you'll get slightly different answers each time you run the simulation. If this bothers you, read on.
 
 Mathematical statistics does have precise answers that depend on properties of continuous distributions like the normal distribution and the binomial distribution. The Schlitz commercial is exactly the kind of scenario that is explained using a binomial distribution (more on that later). If we ran the simulation (always with samples of 10), taking more and more observations (i.e., 10 samples of 10, 100 samples of 10, etc.) and checked our success rate (defined by at least 4/10 preferring Schlitz), we would see that indeed this proportion does converge. This is plotted in Figure \@ref(fig:converge-binom). The x-axis is the number of samples, but **the x-axis is shown using logarithmic scales**. We need to use this scale, or else all of the points at smaller values would be bunched together.
 
-```{r converge-binom, fig.cap="Convergence of successful tasting proportions"}
+```{r converge-binom, fig.cap="Convergence of successful tasting proportions", echo=FALSE}
 
 set.seed(1234567)
 sample_size <- 10
@@ -1361,8 +1430,9 @@ sum(dbinom(4:10,10,.5))
 > Excercise 2: Can you modify the code above to calculate the probability of an acceptable outcome if each taste-tester only has a 40% chance of preferring Schlitz?     
 
 All of these calculations might feel a little overwhelming and confusing at this point. If that's the case, don't fear! Instead, revel in the fact that you just got (approximately) the same number using three different conceptualizations of the same problem. The point is: there are many ways to answer probabilistic questions, and simulation can be a powerful tool to side-step advanced probability calculations.  
-  
-### Using probability to make a "good" bet {-}  
+   
+\pagebreak  
+## Using probability to make a "good" bet {-}  
   
 The Schlitz example feels a bit contrived, at least to me, because in the scenario, the Schlitz executives don't seem to really care about the truth. They just care about what will play well to Super Bowl audiences. Nevertheless, the beer taste test is just one example of a procedure in which we sample from a population to make inferences about the whole population.  
 
@@ -1396,9 +1466,9 @@ What does it mean that your expected return for your ice cream bet is 0? For one
 
 If the bet described above took place, there would be one outcome. Either you win $3 from your friend or they win \$9 from you. The expected value of 0 will never actually occur. But, as we often like to do, we can imagine 100 (or one million) alternative universes to ours. Assuming the probability calculations above, you win the bet in roughly 75% of them and lost the bet in 25% of them. This is what we meant by the probability in the first place. The expected value can be thought of as your average earning across all of these multiple universes.
 
-You should have noticed that the range of observed proportions is the true value "plus or minus" some amount of variation due to sampling. Furthermore, the variation in proportion got smaller as the sample size got larger. The result of this is that you had a 75% of observing a majority when the sample size was 10. But if the sample size had been larger, say 100, then the chance was much higher. This reduction in the error due to increased sample size is related to a statistical concept called **power.** For the example above, your test was "more than half prefer mint chocolate chip." Your assumed true value for the proportion was 0.65. With a sample of 10, your power was 0.75. Note that your power came from two sources. One was (a belief) that the difference you wanted to detect, the **effect** of mint chocolate chip preference, was reasonably large. 0.65 is not the same as 0.52 or 0.91. It would be easier to detect a majority in the latter case (high power) and harder in the former case (low power). But for small and large effects, a large enough sample size can increase your power.
+You should have noticed that the range of observed proportions is the true value "plus or minus" some amount of variation due to sampling. Furthermore, the variation in proportion got smaller as the sample size got larger. The result of this is that you had a 75% of observing a majority when the sample size was 10. But if the sample size had been larger, say 100, then the chance was much higher. This reduction in the error due to increased sample size is related to a statistical concept called **power.** For the example above, your test was "more than half prefer mint chocolate chip." Your assumed true value for the proportion was 0.65. With a sample of 10, your power was 0.75. Note that your power came from two sources. One was (a belief) that the difference you wanted to detect, the **effect** of mint chocolate chip preference, was reasonably large. 0.65 is not the same as 0.52 or 0.91. It would be easier to detect a majority in the latter case (high power) and harder in the former case (low power). But for small and large effects, a large enough sample size can increase your power.  
 
-  
+\pagebreak    
 ## Betting on your Future {-}  
 
 Consider the diagram on page 83 of the Naked Statistics chapter that you read at the beginning of this module. This diagram shows the drug approval process from investment to pay off. At each node of the graph, there are two possibilities: first, you may or may not develop a drug that cures a particular disease. Next, even if the drug works, it may or may not get approved. And even if it gets approved, it may or may not make it to the market. At each branch, there are two possibilities with estimated probabilities (note: how do we estimate these probabilities in practice?). All of the branches lead to 5 possible outcomes, with different pay-offs. Using what we know about all of the possibilities, all of their probabilities, and the potential payoffs, we can estimate the expected value of the investment. 
@@ -1438,7 +1508,7 @@ wheelan_tree <- rpart(
 )
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.pos="H", out.extra = ''}
 rpart.plot(wheelan_tree, type = 5)
 ```
 
@@ -1460,7 +1530,7 @@ This construct tempts us to believe that we can cheat the system. There is a lon
 
 
 
-
+\pagebreak  
 
 ## Betting on Basketball {-}  
 
