@@ -1,0 +1,25 @@
+\usepackage[most]{tcolorbox}
+\usepackage{environ}
+\newtcolorbox{mybox}[1][]{%
+  %
+  enhanced jigsaw,
+  width=33em, % Width of the box
+  boxsep=0pt, % No extra spacing
+  top=15pt, % top spacing
+  bottom=15pt, % bottom spacing
+  sharp corners,
+  colframe={black},
+  colback={gray!30},
+  #1
+}
+\NewEnviron{graybox}%
+  {\begin{center}%
+   \noindent\fcolorbox{black}{gray!30}%
+     {\parbox{33em}%
+       {\vspace{15pt}\par
+        \BODY
+        \vspace{15pt}\par
+       }%
+     }%
+   \end{center}%
+  }

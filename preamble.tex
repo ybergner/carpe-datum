@@ -1,5 +1,4 @@
 \usepackage{booktabs}
-\usepackage{amsthm}
 \usepackage{longtable}
 \usepackage{array}
 \usepackage{multirow}
@@ -12,10 +11,28 @@
 \usepackage{threeparttablex}
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
-%\usepackage{xcolor}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage[vmargin=3cm,rmargin=3.5cm,lmargin=3cm]{geometry}
+\usepackage{xcolor}
+\usepackage{amsthm}
+\usepackage[most]{tcolorbox}
+\usepackage{environ}
 \makeatletter
 \def\thm@space@setup{%
   \thm@preskip=8pt plus 2pt minus 4pt
   \thm@postskip=\thm@preskip
 }
 \makeatother
+\newtcolorbox{rmdtip}[1][]{%
+  %
+  enhanced jigsaw,
+  width=33em, % Width of the box
+  boxsep=0pt, % No extra spacing
+  top=15pt, % top spacing
+  bottom=15pt, % bottom spacing
+  sharp corners,
+  colframe={black},
+  colback={gray!30},
+  #1
+}

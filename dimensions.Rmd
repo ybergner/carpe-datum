@@ -1,0 +1,100 @@
+# Dimensions
+
+
+> "I always said if I had one breakfast to eat before I die, it would be Wonder Bread toasted, with Skippy Super Chunky melted on it, slices of overripe banana and fresh crisp bacon."
+>
+> --- [Michael Bloomberg](https://nypost.com/2008/07/26/mayors-last-meal-is-a-killer/)
+
+
+Former NYC mayor Michael Bloomberg is a chunky peanut butter kind of person. Are you? As peanut butter comes in "smooth" and "chunky" varieties (also known as creamy and crunchy, respectively), this question is also a dichotomous one. However, if we add this test question to our question pool, in addition to the one about toilet paper orientation, we will soon find that having two two-kinds-of-people questions begins to imply more than two kinds of people. Wait, what?
+
+See, back when I went to talk to the people in Washington Square, I also asked them about the great peanut butter debate. As you can see from Table \@ref(tab:pb-counts), smooth came out slightly ahead. 
+
+```{r, include=FALSE}
+set.seed(201905072)
+probPB = 0.66
+binomial_draw <- rbinom(nump,1, prob=probPB)
+theWayISpread <- ifelse(binomial_draw==1, 
+                        "smooth", "chunky")
+wsq_peeps <- data.frame(roll=theWayIRoll, spread=theWayISpread)
+```
+
+```{r, 'pb-counts', echo=FALSE}
+kable(table(theWayISpread), col.names = c("", "counts"), caption="How people spread", booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "striped", full_width = T)%>%
+  kable_styling(latex_options = c("hold_position"))
+```
+But this second question did not erase the first question about toilet paper. In fact the first few rows of our data from Washington Square are displayed below. Each row, representing one person, now has two columns, labeled "roll" (for toilet paper) and "spread" (for peanut butter): 
+
+```{r, echo=FALSE}
+head(wsq_peeps)
+```
+
+You may have noticed that among the first six people for whom I have shown data, none of them answered both over and smooth. But such response pairs exist. In fact, if we count each combination as it occurs--that is, under-chunky, over-chunky, under-smooth, and over-smooth--we get the results shown in Table \@ref(tab:tpxpb). There are four combinations, because we have two questions with two possibilities (dichotomies) for each. 
+
+Before you read on, it's a good time to ask yourself if you can answer the following questions (answers in the footnote): (a) if there were two questions with three categories each, how many combinations could be observed? (b) if there were three dichotmous questions, how many combinations could be observed?^[(a) If the categories for each question are A, B, and C, we can get AA, AB, AC, BA, BB, ... etc. We multiply the number of categories as many times as we have questions. So 3\*3 = 9. (b) This time we have three questions, and for each one we have two options, so there are 2\*2\*2=8 possible combinations.]
+
+
+```{r, 'tpxpb', echo=FALSE}
+kable(table(wsq_peeps$roll, wsq_peeps$spread), caption="Two questions", booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "bordered", 
+                full_width = F)%>%
+  kable_styling(latex_options = c("hold_position"))
+
+```
+
+
+Table \@ref(tab:tpxpb) is an example of a kind of table that is so common in data science, it has its own name. Three of them, in fact. It is sometimes called a cross table (or crosstab), or a **two-way table** (makes sense), but most commonly it is known as a **contingency table** (wha? I'll explain later) I'm sorry that there are three names for the same thing. Really I am.
+
+> If you're like me, you can't resist paying some attention to the values in the Table \@ref(tab:tpxpb). For example, you might notice that one of the cells of the table (over AND smooth) has the highest number of people in it. We can say that this is the **modal** category, referring to the **mode**, which is the most common value in a distribution of values. We have four possible values in this example.
+
+Ok, now things are about to get deep. This first module is "How Many Kinds of People are There?" And we've now explored how using two two-kinds questions leads to four types. You've probably figured out yourself that you have to multiply the number of categories in each of the questions, and that tells you how many "buckets" you can have overall. But still, there are different ways to arrive at a certain number of buckets.
+
+```{r, 'newpb', echo=FALSE}
+
+fourWaySpread <- theWayISpread
+dontcare <- sample(nump, 7)
+haters <- sample(dontcare, 4)
+fourWaySpread[dontcare] <- "don't care"
+fourWaySpread[haters] <- "hate all"
+
+kable(table(fourWaySpread), col.names = c("", "counts"), caption="PB preference", booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "striped", 
+                full_width = F)%>%
+  kable_styling(latex_options = c("hold_position"))
+```
+ Consider Table \@ref(tab:newpb) in contrast to \@ref(tab:tpxpb). We've now given people four choices to express their peanut butter preference. In addition to chunky and smooth, they can also choose to say that they hate all peanut butter or don't care. We now have four kinds of people. But since we make the determination of what kind of person you are using just one question, we say that there is one **dimension** (in this case, peanut butter preference) along which people can be divided into four groups. In Table \@ref(tab:tpxpb), there were two dimensions, a dimension of peanut butter and a dimension of toilet paper. Notice that this word, dimension, is used in much the same way as when we refer to geometric space as being two-dimensional (e.g., a drawing on flat sheet) or three-dimensional (e.g., a solid object, or sometimes a drawing that creates the illusion of looking at a solid object.) The three dimensions of space are often labeled something like (x, y, z). Here, our two dimensions could be labeled (pb, tp). The order doesn't matter. We are merely indicating that there are two different variables used in categorizing our data (people, in this case). To summarize, in Table \@ref(tab:tpxpb), we have two dimensions and four kinds. In Table \@ref(tab:newpb), we have *one* dimension and four kinds.
+ 
+So far so good: two questions, two dimensions, right? Well... maybe. We already saw that if a question does not actually divide people into kinds, because only one answer appears, then it doesn't really count. It is not a dimension, because it is not really a variable. It does not vary; it is constant. In our contingency table representation, this might look like the left side of Table \@ref(tab:tpxpb-alt). In an alternate universe, no one prefers smooth to chunky. Another way to say it is that the peanut butter question is not **informative** because it has no **variance**. Everyone in our sample is the same.
+
+
+```{r, 'tpxpb-alt', echo=FALSE, results='asis'}
+
+orig_xtab <- table(wsq_peeps$roll, wsq_peeps$spread)
+alt_xtab1 <- orig_xtab
+alt_xtab1[1,1] <- alt_xtab1[1,1] + alt_xtab1[1,2]
+alt_xtab1[2,1] <- alt_xtab1[2,1] + alt_xtab1[2,2]
+alt_xtab1[1,2] <- alt_xtab1[2,2] <-0
+  
+alt_xtab2 <- orig_xtab
+alt_xtab2[1,2] <- alt_xtab2[1,1] + alt_xtab2[1,2]
+alt_xtab2[2,1] <- alt_xtab2[2,1] + alt_xtab2[2,2]
+alt_xtab2[1,1] <- alt_xtab2[2,2] <-0
+
+kable(list(alt_xtab1, alt_xtab2), caption="Two questions (alternate universes)", booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "bordered", full_width = F)%>%
+  kable_styling(latex_options = c("hold_position"))
+
+#saveRDS(alt_xtab2, file="alt_xtab2.rds")
+```
+
+But now consider the alternate universe on the right of Table \@ref(tab:tpxpb-alt). In that case, everyone who is an over-hanger of toilet paper prefers smooth peanut butter, and everyone who is an under-hanger prefers chunky. If this is the case, there are only two kinds of people, at least in our sample. Those who over-hang _and_ prefer smooth and those who under-hang *and* prefer chunky. But does it make sense to say there are two dimensions? We did ask two different questions!
+
+You might reason about it the following way: in our sample, if I ask anyone just one of the two questions--about either toilet paper or peanut butter--then I immediately know the answer they would give to the other one. Another way to say this is that the answer to one question completely *determines* the answer to the other, and thus the relationship between these questions (really, the answers) is **deterministic**. I don't actually have to ask two questions, other than to establish in the first place that I didn't have to. And since I only get information from one question, there is only one dimenion. 
+
+```{r child="independence.Rmd", echo=FALSE}
+```
+  
+
+```{r child="latentfactors.Rmd", echo=FALSE}
+```

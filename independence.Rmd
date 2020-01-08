@@ -1,0 +1,26 @@
+## Independence, Association, and Contingency {-}
+
+> This section title sounds like a philosophy book by the late Richard Rorty. 
+> --- inner voice
+
+
+We just spent a little bit of time in an alternate universe, a bizarro world in which knowing how someone prefers to orient their toilet paper tells you what style of peanut butter they like, and *vice versa*. Notice that this knowing-about relationship is symmetric, and that in fact, the two representations as shown in Table \@ref(tab:tpxpb-alt2way) are informationally equivalent.
+
+
+```{r, 'tpxpb-alt2way', echo=FALSE, results='asis'}
+
+kable(list(alt_xtab2, t(alt_xtab2)), 
+      caption="Alternate universe (two equivalent ways)",
+      booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "bordered", 
+                full_width = F)%>%
+  kable_styling(latex_options = c("hold_position"))
+
+```
+
+In our regular universe, however, this relationship was not observed. In Table \@ref(tab:tpxpb), all four possible combinations occur. When knowledge about a person's answer to one question provides information about their answer to another question, we say that the two answers are **contingent** upon one another. This is the reason we called the two-way table a contingency table in the first place, although it is still called that even when two answers are not contingent. Go figure. Contingent is another word for **dependent**. To make matters worse, we *also* often say that the two responses are **associated**. 
+
+In our bizarro world scenario, one answer completely determines the other. This **deterministic** relationship is one extreme in the spectrum of association/dependence/contingency. At the other extreme, if the two responses are not at all associated/dependent/contingent, then we say that they are **independent**. To say that two responses are independent is to assert that knowing one of them does not give you any information about what the other one might be. This would have been my intuition, at least, about toilet paper and peanut butter. But whether they are independent or mildly associated with one another is an empirical question, which means we should try to answer it with data. In bizarro world, where they were deterministically related, we might reasonably want to know why. Could there be a gene that controls both toilet paper orientation and peanut butter preference at the same time?  
+
+
+

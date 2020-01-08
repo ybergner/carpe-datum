@@ -6,11 +6,10 @@ bookdown::gitbook:
         <li><a href="./">Carpe Datum: Data Science for Life's Big Questions</a></li>
       after: |
     edit:
-    download: ["pdf", "epub"]
+    download: ["pdf"]
 bookdown::pdf_book:
- includes:
-   in_header: preamble.tex
- latex_engine: xelatex
- citation_package: natbib
- keep_tex: yes
-bookdown::epub_book: default
+  includes:
+    in_header: preamble.tex
+  latex_engine: pdflatex
+  citation_package: natbib
+  keep_tex: yes

@@ -1,0 +1,41 @@
+# Cut Scores and Abnormality
+
+> Because that's not what normal people do.
+> --- things my spouse says
+
+You'll recall that I previously warned against possible negative consequences of setting arbitrary cut points to dichotomize a data set---that is, turning numerical data on a continuous scale into  two categories by using a cutoff value. But now consider the following scenarios:
+
+1) To pass the written test for your a driving learner's permit in California, you must answer at least 38 questions correctly out of 46. That's 82.6% correct. At 80.4% (37/46) or below, you fail and have to retake the test on another day.
+
+2) A patient's blood test shows levels of ALT (alanine aminotransferase) at 77 units per liter. The lab report labels this as "abnormally" high, and the physician is concerned about possible liver damage or disease.
+
+These two examples involve just the kind of dichotomization that I cautioned against, and yet they occur very commonly in practice. So what gives? Is it wrong to use cutoffs this way? Why do people do it?
+
+The short answer is that we often find ourselves in need of a classification (pass or fail; diagnose liver disease or not) but without a perfect classification device. Rather we have only indirect measurements (of knowledge or liver function) in some quantitative measure. Perhaps you once found yourself on the "border" between letter grades for a course and were particularly perturbed (or relieved) by the imperfections of such a system. Or you may have found yourself with "slightly" abnormal levels in a blood test and wondered whether you should seek further tests. 
+
+Both the California department of motor vehicles and the physician in our scenarios need to make a decision based on imperfect evidence. They want to be able to say that the person's test results show that they are ready to get behind the wheel of a car, in one scenario, or suffering from liver problems in the other. But all they can really do is express this belief using a **probability**.  This probabilistic judgement is based on a mathematical **model** that relates traits like readiness-to-drive or liver-disease to certain test results. Understanding how these models come into existence is one of the learning objectives of this course. 
+
+The term **normal distribution** arose in statistics because the particular bell-shaped distribution occurs so frequently. If poopiness were normally distributed in our sample from before it might look like this. 
+  
+```{r normal-poopy, echo=FALSE,  out.width='90%', fig.cap='Normal poopiness', fig.pos='H', out.extra = ''}
+set.seed(303030)
+normal_poopy <- rnorm(148, mean=0.56, sd=0.175)
+hist(normal_poopy, main="Normal Poopiness", breaks=seq(0,1.1,0.05), xlab="poopiness")
+```  
+
+Technically speaking, all of the values, including the maximal value of `r round(max(normal_poopy),3)` that we observe in Figure \@ref(fig:normal-poopy) are normal. Poopiness varies in the population. It is impossible to be abnormally poopy, under the circumstances. By definition. some values at the extreme ends of a normal distibution are less likely to occur than values in the middle. But still they may occur rarely. It is only when extreme values (large or small) are associated with other conditions of interest, such as the relationship between elevated ALT and liver disease, that it makes sense to "flag" these extreme values. 
+
+
+### Summary {-}
+
+### Vocabulary {-}
+
+- kind, type, category
+- dichotomous
+- crosstab, two-way table, contingency table
+- association, contingency, dependence
+- latent factor, dimension, trait
+- measurement, model, bimodal, cluster
+
+
+We started out this chapter on a quest to answer our first big question: How many kinds of people are there? En route, we have examined both categorical data, such as from two-kinds-of-people questions, and numerical values like poopiness. The toilet paper and peanut butter orientation questions may seem silly and inconsequential to you. I can only imagine what you might think of the poopiness and crappiness dimensions that I completely made up (I admitted it!). However, in the next section, we will see that when it comes to personality psychology, there are real-world analogues of the discrete/categorical and continous/numerical multi-dimensional descriptions of people that we just saw.  
