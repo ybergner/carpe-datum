@@ -1,66 +1,104 @@
-# Tests of independence: A First look starring alternate universes
+# Tests of independence: A first look starring alternate universes
 
-So far, we have looked at some data in two-way tables and judged them by inspection. That is, we looked at them and said, these two reponses *appear* to be deterministically related. Or they appear to be associated but not deterministally, or they appear to be independent. But we acknowledged that our data come from a sample, and that on another day (on in another universe with rules the same as this one), we might have observed slightly different data. 
+So far, we have looked at some data in two-way tables and judged them by inspection. That is, we looked at them and said, these two reponses *appear* to be deterministically related, or they appear to be associated but not deterministally, or they appear to be independent. But we acknowledged that our data come from a sample, and that on another day (on in another universe with rules the same as this one), we might have observed slightly different data. 
 
 It is worth noting that a single dataset often can't tell us for sure whether two variables are independent or associated (aka dependent/contingent), and whether or not an association is a deterministic one. (Two variables cannot be deterministically independent; that would be a self-contradiction.) 
 
-
-Suppose for a moment that we observe the data summarized here:  
+In this chapter, we'll take a first look at how a particular two-way table *might* have come about, and thus how it might have come out differently. Let's suppose that we observe the data summarized here:  
 
 ```{r, echo=FALSE, results='asis'}
 orig_xtab <- table(wsq_peeps$roll, wsq_peeps$spread)
 alt_xtab3 <- orig_xtab
 alt_xtab3[1,1] <- 17
-alt_xtab3[1,2] <- 4
-alt_xtab3[2,1] <- 3
-alt_xtab3[2,2] <- 16
-kable(alt_xtab3, caption="Two questions", booktabs = TRUE) %>%
+alt_xtab3[1,2] <- 6
+alt_xtab3[2,1] <- 5
+alt_xtab3[2,2] <- 12
+kable(alt_xtab3, caption="Another alternate univers", booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "bordered", 
                 full_width = F)%>%
   kable_styling(latex_options = c("hold_position"))
 
 ```
   
-You might think, wow! It looks like toilet paper preference is associated with peanut butter preference: People who prefer chunky peanut butter also seem more likely to be over-rollers, and people who prefer smooth peanut butter are more likely to be under rollers. How weird!  
+It certainly looks like there is an association between these variables, but let's investigate further. Let's take the cell with the largest number of people in it, or the modal value. In this case, the mode occurs for people who answer over and chunky. Which was 17 out of 40.
 
-Now, you intuitively know that if you go back out onto Washington Square and you find 40 different people, these numbers probably won't be exactly the same. There is some element of randomness, and it's basically impossible to know what the data would look like if you could ask every single person in the world.  
+Now consider what contributes to making this particular value what it is. For example, what would make it bigger? Well, if there were more over-hangers than under-hangers, that would tend to increase the number of people who could be *both* over-hangers and chunky-spreaders. Similarly, if there were more chunky-spreaders. Also, if there were just more people in our sample, then of course we could have more people in this cell of the table. And all of the above arguments could work in reverse, if we lowered any of those particular numbers.
 
+What if, however, we fixed the total number of people, the number over-hangers among them, and the number of chunky-spreaders among them. The technical term for this, by the way, is fixing the **marginal** values. This is because the sums of the columns (22 and 18) and the sums of the rows (23 and 17), when written at the bottom and side of the table, are called margins (just like the margins of a page). We could still have fixed the marginal values and have different values in the table. For example,
 
-
-
-Instead, statisticians like to use something called **hypothesis testing**. This often involves coming up with a **null hypothesis** (in this case, the null hypothesis might be that peanut butter choice and toilet paper rolling are independent) and an **alternative hypothesis** (in this case, the alternative hypothesis might be that peanut butter choice and toilet paper rolling preference are dependent). Then, it is often possible to simulate what might happen by random chance under the null hypothesis and check if our observations are consistent with the null or not. This can lead us to either accept the null hypothesis, or "reject the null" in favor of the alternative.  
-
-Let's first take a look at what this dataset looked like before we tabulated it. There were 40 people sampled, and they each asked two questions. Let's look at the first five rows of data:  
 ```{r, echo=FALSE, results='asis'}
-data_example = data.frame(Peanutbutter = 
-                            c(rep("Chunky", 17), rep("Smooth", 4),
-                              rep("Chunky", 3), rep("Smooth", 16)),
-                          Toiletpaper = 
-                            c(rep("Over", 21), rep("Under", 19)))
-rownums = sample(1:40)
-data_example = data_example[rownums,]
-rownames(data_example) = NULL
-kable(data_example[1:5,])%>%
+alt_xtab5 <- alt_xtab4 <- alt_xtab3
+alt_xtab4[] <- c(19,3,4,14)
+alt_xtab5[] <- c(13,9,10,8)
+
+kable(list(alt_xtab4, alt_xtab5), caption="Yet more alternate universes!", booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "bordered", 
+                full_width = F)%>%
   kable_styling(latex_options = c("hold_position"))
+
+```
+
+Notice that the row and column sums are the same. But on the left we would say an association between the variables appears even clearer, whereas on the right, it appears less obvious.
+
+Recall that the actual data summarized in a two-way table originally came from some observation sample. There were 40 people sampled, and they each asked two questions. Before we tabulated it, the data might have looked something like this:
+
+```{r, echo=FALSE, results='asis'}
+shuffle_data = data.frame(Peanutbutter = 
+                            c(rep("Chunky", 17), rep("Smooth", 6),
+                              rep("Chunky", 5), rep("Smooth", 12)),
+                          Toiletpaper = 
+                            c(rep("Over", 23), rep("Under", 17)))
+rownums = sample(1:40)
+shuffle_data = shuffle_data[rownums,]
+rownames(shuffle_data) = NULL
+kable(shuffle_data[1:5,])%>%
+  kable_styling(full_width = F, latex_options = c("hold_position"))
 ```
   
-One way to think about the situation where toilet paper and peanut butter choices are independent is this: We keep the same proportions of answers to each question, but we randomly shuffle them separately. This is akin to writing every person's response to the peanutbutter question on an index card, shuffling them randomly, and then re-distributing them; then, doing the same for the toiletpaper question. If we shuffle responses to each question separately, there is no way for someone's randomly assigned answer to one question to influence their randomly assigned answer to another. 
+Now suppose we wrote every person's response to the peanut butter question on an index card, shuffled them randomly, and then re-distributed them. We then did the same for the toilet paper question. We did this one question at a time, separately. Finally, we ask our sample to show us their cards, and we treat these paired observations as a new data set. We generate a new two-way table from the results. If we do all this, then we will have kept the total number of people the same, as well as the total number of "over" answers and "chunky" answers. Moreover, since we shuffled responses to each question separately, there is absolutely no way for someone's randomly assigned answer to one question (the index card they got for peanut butter) to influence their randomly assigned answer to the other (the index card for toilet paper). The answers should, by definition, be independent.
 
-In the initial dataset, we found that 17/20 or 85% of people who preferred chunky peanutbutter also rolled their toilet paper "over". If we randomly re-shuffle people's answers 1000 times, then we can calculate the percentage of chunky peanutbutter people who roll their toilet paper "over" for each shuffled dataset. This will give us a sense for what kinds of values we might expect to see by random chance if the null were true (i.e., if these questions were actually independent). The code to do this is below (you do not need to perfectly understand it yet - we will come back to this later!).  
+## Rise of the machines {-}
 
-```{r}
-simulated_proportions = vector()
+Well, we can do this shuffling experiment very easily on a computer. And we can very easily repeat it 1000 times. So, the question we might then ask is, how many times out of 1000 such **simulations** do we get a value for over and chunky that is as large as (or bigger even) than 17?
+
+The code to do this, and to visualize the outcome, is below. (You do not need to understand this code yet, but some of it might make sense to you).  
+
+```{r shuffle-test, echo=TRUE, fig.cap="Counts of 'over and chunky' after 1000 shuffling simulations"}
+
+simulated_overchunky = c() #initialize empty vector
 for(i in 1:1000){
-  data_example$Peanutbutter = sample(data_example$Peanutbutter)
-  data_example$Toiletpaper = sample(data_example$Toiletpaper)
-  simulated_proportions[i] = table(data_example)[1,1]/20
+  # the sample() function does the shuffling
+  shuffle_data$Peanutbutter = sample(shuffle_data$Peanutbutter) 
+  shuffle_data$Toiletpaper = sample(shuffle_data$Toiletpaper)
+  # the table() function does the tabulating
+  simulated_overchunky[i] = table(shuffle_data)["Chunky","Over"]
 }
 
-hist(simulated_proportions, 
-     main = "Proportion 'over' given chunky PB",
-     xlab = "Proportion 'over' given chunky PB under null",
-     xlim = c(0,1))
-abline(v=0.85, lwd=2, col=3, lty=2)
+# plot the results using a histogram
+hist(simulated_overchunky, 
+     main = "",
+     xlab = "Count", 
+     breaks = seq(0,20,1))
+abline(v=17, lwd=2, col=3, lty=2)
 ```
   
-We will cover histograms later in this chapter, so don't worry too much if this picture doesn't make sense to you yet. For now, the main takeaway is this: Even if we randomly reshuffle everyone's answers 1000 times (akin to going out on the street and asking 40 new people these questions 1000 different times, but assuming that the overall proportions of over vs. under rollers and chunky vs. smooth PB people will be the same as in our original dataset), we would not expect to see values as high as 85% (green dotted line) if the questions were truly independent.   
+Figure \@ref(fig:shuffle-test) is histogram, or a bar plot of count data. We will cover histograms in detail the next chapter, so don't worry too much if some of this is still confusing. The main thing to notice is that green dotted line at 17, and this: in our 1000 shuffling experiments, we only got values greater than or equal to 17 `r length(which(simulated_overchunky >= 17))` times. The rest of the time, the values were smaller, and typical values were around 13.
+
+This simulation we just carried out is a way of validating our intuition, from inspection of the two-way table, that 17 was a high value *if toilet paper orientation and peanut butter preference* were indeed independent. What we showed is that, if indeed the two variables were independent, that such values would be observed only rarely. Since this value was observed on our first day out in the park (in this scenario), we begin to doubt independence. If on the other hand, we had observed 13 over-chunky people (out of 40, and with the same marginal values as before), then we would say that this observation seems quite consistent with independence. Because values near 13 occur very often in our shuffling simulation. 
+
+## Hypothesis testing just happened {-}
+
+What we just did is in fact an example of a **hypothesis test**. In the statistical framework of hypothesis testing, we have a **null hypothesis** (usually, a skeptical position) and an **alternative hypothesis**. Here our null hypothesis was that the two variables represented in our response data are independent. Our alternative hypothesis was that people who are over-hangers are truly more likely to be chunky-spreaders. We didn't state this hypothesis at the outset. But it was implied by the fact that we were investigating this "high" value in the contingency table. If you take a regular statistics class, however, you will see that, when it comes to *inference*, it is quite important to take care in constructing your null and alternative hypotheses. For now, we just want to get the main idea. 
+
+The main idea was that we simulated what data might look like under the null hypothesis (independence) and checked if our observations were consistent with that or not. Consistent results would mean that we cannot "reject" the null hypothesis, while highly inconsisent results give us justification to "reject the null" in favor of the alternative. 
+
+## Caveats {-}
+
+**Rare events still do happen, rarely.** What our simulation showed us is that high values do still happen by chance. Even if the variables were independent, if we sent 1000 people out in the world to collect data from samples of 40 people each, *some* of those people would observe large values that *look* associated. This is to be expected. This is why it is important, if we are seeking the truth, that we not game the system by checking over and over again until we get an answer that we like. This would be like rolling double-sixes on the fourteenth try and then saying "ha! see, I told you I was lucky." 
+
+**What about the other cells in the table?** You might be wondering how we can do this whole simulation just for the one cell in the table that corresponded to over-chunky. You're right to wonder this (if you are). In time, we will see that we can do independence-tests (or other hypothesis tests) more democratically by examining all of the cells in the table and how they differ from what we would expect under the independence (null) hypothesis. For now, though, note the following. Each of our variables is dichotomous, and we fixed the row and column marginals (totals). So if over-chunky is high, and total count of chunky is held fixed, that means that under-chunky must be low. Our test would have gone the same way if we sought to explain that cell. So, too, must over-smooth be low (lower than it would be under independence assumptions).  
+
+
+
+
+

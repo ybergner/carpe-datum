@@ -1,11 +1,11 @@
 book_filename: "carpedatum"
 rmd_files:
   html: ["index.Rmd", "book1intro.Rmd", "categoriescounts.Rmd",
-  "dimensions.Rmd",
+  "dimensions.Rmd", "testindependence.Rmd", "appendix.Rmd",
   "shadesofgrey.Rmd", "cutscores.Rmd", "personality.Rmd",
   "references.Rmd"]
   latex: ["index.Rmd", "book1intro.Rmd", "categoriescounts.Rmd",
-  "dimensions.Rmd",
+  "dimensions.Rmd", "testindependence.Rmd", "appendix.Rmd",
   "shadesofgrey.Rmd", "cutscores.Rmd", "personality.Rmd"]
 language:
   ui:
