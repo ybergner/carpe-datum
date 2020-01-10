@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  9 JAN 2020 00:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  9 JAN 2020 23:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1221,34 +1221,34 @@ LaTeX Info: Redefining \cite on input line 694.
 ) (./carpedatum.aux)
 \openout1 = `carpedatum.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 184.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 184.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 170.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 170.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 184.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 170.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \microtypecontext on input line 184.
+LaTeX Info: Redefining \microtypecontext on input line 170.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
@@ -1290,7 +1290,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box94
-Package hyperref Info: Link coloring ON on input line 184.
+Package hyperref Info: Link coloring ON on input line 170.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -1298,9 +1298,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count342
 )
-LaTeX Info: Redefining \ref on input line 184.
-LaTeX Info: Redefining \pageref on input line 184.
-LaTeX Info: Redefining \nameref on input line 184.
+LaTeX Info: Redefining \ref on input line 170.
+LaTeX Info: Redefining \pageref on input line 170.
+LaTeX Info: Redefining \nameref on input line 170.
 (./carpedatum.out) (./carpedatum.out)
 \@outlinefile=\write7
 \openout7 = `carpedatum.out'.
@@ -1341,39 +1341,39 @@ LaTeX Info: Redefining \nameref on input line 184.
 
 ABD: EveryShipout initializing macros
 \c@lstlisting=\count343
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 186.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 172.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 186.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 172.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 186
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 172
 .
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 186
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 172
 .
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 186.
+(Font)              <12> on input line 172.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 186.
+(Font)              <8> on input line 172.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 186.
-LaTeX Font Info:    Try loading font information for U+msa on input line 186.
+(Font)              <6> on input line 172.
+LaTeX Font Info:    Try loading font information for U+msa on input line 172.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 186.
+LaTeX Font Info:    Try loading font information for U+msb on input line 172.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -1382,17 +1382,17 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 221.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 207.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [2
 
 ]
-<images/existence_proof_2x.png, id=216, 1239.63126pt x 486.81876pt>
+<images/existence_proof_2x.png, id=224, 1239.63126pt x 486.81876pt>
 File: images/existence_proof_2x.png Graphic file (type png)
 <use images/existence_proof_2x.png>
-Package pdftex.def Info: images/existence_proof_2x.png  used on input line 233.
+Package pdftex.def Info: images/existence_proof_2x.png  used on input line 219.
 
 (pdftex.def)             Requested size: 386.40022pt x 151.74422pt.
 [3pdfTeX warning (ext4): destination with the same identifier (name{figure.0.1}
@@ -1400,32 +1400,32 @@ Package pdftex.def Info: images/existence_proof_2x.png  used on input line 233.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.241 ...abel{how-many-kinds-of-people-are-there}}
+l.227 ...abel{how-many-kinds-of-people-are-there}}
                                                    <./images/existence_proof_2x
 .png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 256.
+(Font)              <10> on input line 242.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 256.
+(Font)              <7> on input line 242.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 256.
+(Font)              <5> on input line 242.
 [4
 
 ]
 Chapter 1.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 267.
+(hyperref)                than one, level fixed on input line 253.
 
-<images/Toilet_paper_orientation_overunder.png, id=241, 819.06pt x 376.40625pt>
+<images/Toilet_paper_orientation_overunder.png, id=249, 819.06pt x 376.40625pt>
 
 File: images/Toilet_paper_orientation_overunder.png Graphic file (type png)
 <use images/Toilet_paper_orientation_overunder.png>
 Package pdftex.def Info: images/Toilet_paper_orientation_overunder.png  used on
- input line 275.
+ input line 261.
 (pdftex.def)             Requested size: 386.4205pt x 177.58295pt.
 
-Overfull \hbox (0.71269pt too wide) in paragraph at lines 282--283
+Overfull \hbox (0.71269pt too wide) in paragraph at lines 268--269
 []\T1/lmr/m/n/10 (-20) Toilet paper orientation is a distinguishing \T1/lmr/bx/
 n/10 test question \T1/lmr/m/n/10 (-20) that separates people into one of two `
 `kinds''
@@ -1441,7 +1441,7 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.301 T
+l.287 T
        hat point I want to focus on is that, based on our data, there \emph{...
  <./images/Toilet_paper_orientation_overunder.png>] [6pdfTeX warning (ext4): de
 stination with the same identifier (name{table.1.1}) has been already used, dup
@@ -1449,25 +1449,25 @@ licate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.347 
+l.333 
       pdfTeX warning (ext4): destination with the same identifier (name{table.1
 .2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.347 
+l.333 
       pdfTeX warning (ext4): destination with the same identifier (name{table.1
 .3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.347 
+l.333 
       ]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [7]
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 408.
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 397.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1480,52 +1480,52 @@ as been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.461 
+l.450 
       ] [11pdfTeX warning (ext4): destination with the same identifier (name{ta
 ble.2.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.502 S
+l.491 S
        o far so good: two questions, two dimensions, right? Well\ldots{} may...
 pdfTeX warning (ext4): destination with the same identifier (name{table.2.3}) h
 as been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.502 S
+l.491 S
        o far so good: two questions, two dimensions, right? Well\ldots{} may...
 ] [12pdfTeX warning (ext4): destination with the same identifier (name{table.2.
 4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.566 
+l.555 
       pdfTeX warning (ext4): destination with the same identifier (name{table.2
 .5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.566 
+l.555 
       ]
-<images/two-two-kinds.jpg, id=319, 1904.11375pt x 511.9125pt>
+<images/two-two-kinds.jpg, id=330, 1904.11375pt x 511.9125pt>
 File: images/two-two-kinds.jpg Graphic file (type jpg)
 <use images/two-two-kinds.jpg>
-Package pdftex.def Info: images/two-two-kinds.jpg  used on input line 575.
+Package pdftex.def Info: images/two-two-kinds.jpg  used on input line 564.
 (pdftex.def)             Requested size: 386.39445pt x 103.88042pt.
 [13pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.590 \end{quote}
+l.579 \end{quote}
                   <./images/two-two-kinds.jpg>] [14pdfTeX warning (ext4): desti
 nation with the same identifier (name{table.2.6}) has been already used, duplic
 ate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.630 ...first-look-starring-alternate-universes}}
+l.619 ...first-look-starring-alternate-universes}}
                                                   ]
 Chapter 3.
 [15
@@ -1535,10 +1535,10 @@ as been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.657 
+l.646 
       ]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 716.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 705.
 
 Overfull \hbox (38.3917pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10 16 \T1/lmr/m/sl/10 CHAPTER 3.  TESTS OF INDEPENDENCE: A FIRST LO
@@ -1550,21 +1550,21 @@ OK STARRING ALTERNATE UNIVERSES
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.730 \end{Shaded}
+l.721 \end{Shaded}
                   ]
-<carpedatum_files/figure-latex/shuffle-test-1.pdf, id=351, 427.5975pt x 241.903
+<carpedatum_files/figure-latex/shuffle-test-1.pdf, id=361, 427.5975pt x 241.903
 75pt>
 File: carpedatum_files/figure-latex/shuffle-test-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/shuffle-test-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/shuffle-test-1.pdf  used
- on input line 734.
+ on input line 725.
 (pdftex.def)             Requested size: 386.41315pt x 218.60461pt.
 [17pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.750 
+l.741 
        <./carpedatum_files/figure-latex/shuffle-test-1.pdf>]
 Overfull \hbox (38.3917pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10 18 \T1/lmr/m/sl/10 CHAPTER 3.  TESTS OF INDEPENDENCE: A FIRST LO
@@ -1572,229 +1572,239 @@ OK STARRING ALTERNATE UNIVERSES
  []
 
 [18]
-Chapter 4.
-[19
-
-]
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 804
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 775
 .
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [20] [21] [22]
-Chapter 5.
-[23
+) [19]
+Overfull \hbox (38.3917pt too wide) has occurred while \output is active
+\T1/lmr/m/n/10 20 \T1/lmr/m/sl/10 CHAPTER 3.  TESTS OF INDEPENDENCE: A FIRST LO
+OK STARRING ALTERNATE UNIVERSES
+ []
+
+[20] [21]
+Chapter 4.
+[22
 
 ]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<carpedatum_files/figure-latex/poopy-hist-1.pdf, id=406, 429.605pt x 243.91125p
+<carpedatum_files/figure-latex/poopy-hist-1.pdf, id=409, 429.605pt x 243.91125p
 t>
 File: carpedatum_files/figure-latex/poopy-hist-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/poopy-hist-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/poopy-hist-1.pdf  used o
-n input line 947.
+n input line 987.
 (pdftex.def)             Requested size: 386.41805pt x 219.39154pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[24pdfTeX warning (ext4): destination with the same identifier (name{table.5.1}
+[23pdfTeX warning (ext4): destination with the same identifier (name{table.4.1}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.953 
-      ] [25pdfTeX warning (ext4): destination with the same identifier (name{ta
-ble.5.2}) has been already used, duplicate ignored
+l.993 
+      ] [24pdfTeX warning (ext4): destination with the same identifier (name{ta
+ble.4.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.955 
+l.995 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
-5.1}) has been already used, duplicate ignored
+4.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.955 
+l.995 
        <./carpedatum_files/figure-latex/poopy-hist-1.pdf>]
-<carpedatum_files/figure-latex/poopy-hist-alt-1.pdf, id=435, 438.63875pt x 243.
+<carpedatum_files/figure-latex/poopy-hist-alt-1.pdf, id=437, 438.63875pt x 243.
 91125pt>
 File: carpedatum_files/figure-latex/poopy-hist-alt-1.pdf Graphic file (type pdf
 )
 <use carpedatum_files/figure-latex/poopy-hist-alt-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/poopy-hist-alt-1.pdf  us
-ed on input line 966.
+ed on input line 1006.
 (pdftex.def)             Requested size: 386.42494pt x 214.87703pt.
-<carpedatum_files/figure-latex/poopy-two-kinds-1.pdf, id=437, 393.47pt x 257.96
+<carpedatum_files/figure-latex/poopy-two-kinds-1.pdf, id=439, 393.47pt x 257.96
 375pt>
 File: carpedatum_files/figure-latex/poopy-two-kinds-1.pdf Graphic file (type pd
 f)
 <use carpedatum_files/figure-latex/poopy-two-kinds-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/poopy-two-kinds-1.pdf  u
-sed on input line 977.
+sed on input line 1017.
 (pdftex.def)             Requested size: 386.41447pt x 253.33806pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[26pdfTeX warning (ext4): destination with the same identifier (name{figure.5.2
+[25pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.983 
-       <./carpedatum_files/figure-latex/poopy-hist-alt-1.pdf>] [27pdfTeX warnin
-g (ext4): destination with the same identifier (name{figure.5.3}) has been alre
-ady used, duplicate ignored
+l.1023 
+        <./carpedatum_files/figure-latex/poopy-hist-alt-1.pdf>] [26pdfTeX warni
+ng (ext4): destination with the same identifier (name{figure.4.3}) has been alr
+eady used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1006 \subsection*{Mixtures}\label{mixtures}}
+l.1046 \subsection*{Mixtures}\label{mixtures}}
                                                <./carpedatum_files/figure-latex
 /poopy-two-kinds-1.pdf>]
-<carpedatum_files/figure-latex/poopy-hist2-1.pdf, id=472, 429.605pt x 243.91125
+<carpedatum_files/figure-latex/poopy-hist2-1.pdf, id=475, 429.605pt x 243.91125
 pt>
 File: carpedatum_files/figure-latex/poopy-hist2-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/poopy-hist2-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/poopy-hist2-1.pdf  used 
-on input line 1011.
+on input line 1051.
 (pdftex.def)             Requested size: 386.41805pt x 219.39154pt.
-<carpedatum_files/figure-latex/poopy-hist-mixture-1.pdf, id=473, 429.605pt x 24
+<carpedatum_files/figure-latex/poopy-hist-mixture-1.pdf, id=476, 429.605pt x 24
 3.91125pt>
 File: carpedatum_files/figure-latex/poopy-hist-mixture-1.pdf Graphic file (type
  pdf)
 <use carpedatum_files/figure-latex/poopy-hist-mixture-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/poopy-hist-mixture-1.pdf
-  used on input line 1017.
+  used on input line 1057.
 (pdftex.def)             Requested size: 386.41805pt x 219.39154pt.
-[28pdfTeX warning (ext4): destination with the same identifier (name{figure.5.4
+[27pdfTeX warning (ext4): destination with the same identifier (name{figure.4.4
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1026 
+l.1066 
         <./carpedatum_files/figure-latex/poopy-hist2-1.pdf> <./carpedatum_files
 /figure-latex/poopy-hist-mixture-1.pdf>]
-<carpedatum_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf, id=499, 422
+<carpedatum_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf, id=502, 422
 .57875pt x 243.91125pt>
 File: carpedatum_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf Graphic
  file (type pdf)
 <use carpedatum_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/poopy-hist-mixture-suspi
-cious-1.pdf  used on input line 1031.
+cious-1.pdf  used on input line 1071.
 (pdftex.def)             Requested size: 386.42363pt x 223.04262pt.
-[29pdfTeX warning (ext4): destination with the same identifier (name{figure.5.5
+[28pdfTeX warning (ext4): destination with the same identifier (name{figure.4.5
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1050 ## 0140     0.703      0.415
+l.1091 ## 0140     0.703      0.415
                                     <./carpedatum_files/figure-latex/poopy-hist
 -mixture-suspicious-1.pdf>]
-<carpedatum_files/figure-latex/crappy-hist-1.pdf, id=514, 429.605pt x 249.93375
+<carpedatum_files/figure-latex/crappy-hist-1.pdf, id=517, 429.605pt x 249.93375
 pt>
 File: carpedatum_files/figure-latex/crappy-hist-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/crappy-hist-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/crappy-hist-1.pdf  used 
-on input line 1061.
+on input line 1102.
 (pdftex.def)             Requested size: 386.41805pt x 224.80862pt.
-<carpedatum_files/figure-latex/poopy-crappy-1.pdf, id=516, 436.63126pt x 250.93
+<carpedatum_files/figure-latex/poopy-crappy-1.pdf, id=519, 436.63126pt x 250.93
 75pt>
 File: carpedatum_files/figure-latex/poopy-crappy-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/poopy-crappy-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/poopy-crappy-1.pdf  used
- on input line 1076.
+ on input line 1117.
 (pdftex.def)             Requested size: 386.41531pt x 222.07774pt.
 
 Underfull \vbox (badness 7221) has occurred while \output is active []
 
-[30pdfTeX warning (ext4): destination with the same identifier (name{figure.5.6
+[29pdfTeX warning (ext4): destination with the same identifier (name{figure.4.6
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1082 
-        <./carpedatum_files/figure-latex/crappy-hist-1.pdf>] [31pdfTeX warning 
-(ext4): destination with the same identifier (name{figure.5.7}) has been alread
+l.1123 
+        <./carpedatum_files/figure-latex/crappy-hist-1.pdf>] [30pdfTeX warning 
+(ext4): destination with the same identifier (name{figure.4.7}) has been alread
 y used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1101 ...lity}\label{cut-scores-and-abnormality}}
+l.1142 ...lity}\label{cut-scores-and-abnormality}}
                                                    <./carpedatum_files/figure-l
 atex/poopy-crappy-1.pdf>]
-Chapter 6.
-<carpedatum_files/figure-latex/normal-poopy-1.pdf, id=552, 422.57875pt x 285.06
+Chapter 5.
+<carpedatum_files/figure-latex/normal-poopy-1.pdf, id=554, 422.57875pt x 285.06
 5pt>
 File: carpedatum_files/figure-latex/normal-poopy-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/normal-poopy-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/normal-poopy-1.pdf  used
- on input line 1128.
+ on input line 1169.
 (pdftex.def)             Requested size: 386.42363pt x 260.67532pt.
-[32
+[31
 
 ]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 1139.
+(hyperref)                than one, level fixed on input line 1180.
 
-[33pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1
+[32pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1164 ...{sixteen-personalities-or-five-factors}}
+l.1205 ...dal American}\label{the-modal-american}}
                                                    <./carpedatum_files/figure-l
 atex/normal-poopy-1.pdf>]
+Chapter 6.
+[33
+
+] [34]
 Chapter 7.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 1184.
+(hyperref)                than one, level fixed on input line 1250.
 
-[34
+[35
 
-] [35] (./carpedatum.bbl [36]) [37
+] [36] [37]
+Appendix A.
+[38
+
+] (./carpedatum.bbl [39]) [40
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1285.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1285.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1378.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1378.
 (./carpedatum.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1285.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1285.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1378.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1378.
 
 Package rerunfilecheck Info: File `carpedatum.out' has not changed.
-(rerunfilecheck)             Checksum: F3D5B28E4AAAD7E1E774FC2819AEB68E;6428.
+(rerunfilecheck)             Checksum: 1D26DD681AA9115F278F5A400725D124;7037.
  ) 
 Here is how much of TeX's memory you used:
- 40749 strings out of 492616
- 775808 string characters out of 6129482
- 882180 words of memory out of 5000000
- 43773 multiletter control sequences out of 15000+600000
- 618530 words of font info for 153 fonts, out of 8000000 for 9000
+ 40766 strings out of 492616
+ 776122 string characters out of 6129482
+ 882410 words of memory out of 5000000
+ 43780 multiletter control sequences out of 15000+600000
+ 622671 words of font info for 153 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,15n,101p,1370b,484s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/
-texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2019/
-texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2019/texmf-dist
-/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc
-/dvips/lm/lm-rm.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/l
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/lo
+cal/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texliv
+e/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2019/texmf-d
+ist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/
+dvips/lm/lm-ts1.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/l
 mbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmbx12.pfb>
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmbx8.pfb></usr/local
-/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2
-019/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2019/texmf-d
-ist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
-ype1/public/lm/lmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
-/lm/lmr6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr7.pfb
-></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local
-/texlive/2019/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2
-019/texmf-dist/fonts/type1/public/lm/lmro10.pfb></usr/local/texlive/2019/texmf-
-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts
-/type1/public/lm/lmtk10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pub
-lic/lm/lmtt10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmt
-ti10.pfb>
-Output written on carpedatum.pdf (37 pages, 2647469 bytes).
+/texlive/2019/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/
+2019/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2019/texmf
+-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts
+/type1/public/lm/lmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publ
+ic/lm/lmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr6.
+pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/lo
+cal/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/
+2019/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2019/texmf
+-dist/fonts/type1/public/lm/lmro10.pfb></usr/local/texlive/2019/texmf-dist/font
+s/type1/public/lm/lmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pu
+blic/lm/lmtk10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lm
+tt10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmtti10.pfb>
+Output written on carpedatum.pdf (40 pages, 2667366 bytes).
 PDF statistics:
- 717 PDF objects out of 1000 (max. 8388607)
- 597 compressed objects within 6 object streams
- 158 named destinations out of 1000 (max. 500000)
- 16910 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 755 PDF objects out of 1000 (max. 8388607)
+ 630 compressed objects within 7 object streams
+ 169 named destinations out of 1000 (max. 500000)
+ 16926 words of extra memory for PDF output out of 17280 (max. 10000000)
 
