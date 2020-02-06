@@ -23,19 +23,18 @@ normal_poopy <- rnorm(148, mean=0.56, sd=0.175)
 hist(normal_poopy, main="Normal Poopiness", breaks=seq(0,1.1,0.05), xlab="poopiness")
 ```  
 
-Technically speaking, all of the values, including the maximal value of `r round(max(normal_poopy),3)` that we observe in Figure \@ref(fig:normal-poopy) are normal. Poopiness varies in the population. It is impossible to be abnormally poopy, under the circumstances. By definition. some values at the extreme ends of a normal distibution are less likely to occur than values in the middle. But still they may occur rarely. It is only when extreme values (large or small) are associated with other conditions of interest, such as the relationship between elevated ALT and liver disease, that it makes sense to "flag" these extreme values. 
+Technically speaking, all of the values, including the maximal value of `r round(max(normal_poopy),3)` that we observe in Figure \@ref(fig:normal-poopy) are normal. Poopiness varies in the population. It is impossible to be abnormally poopy, under the circumstances. By definition, some values at the extreme ends of a normal distibution are less likely to occur than values in the middle. But still they may occur rarely. It is only when extreme values (large or small) are associated with other conditions of interest, such as the relationship between elevated ALT and liver disease, that it makes sense to "flag" these extreme values. 
+
+We say that we **discretize** continuous variables (i.e., turn them into discrete categorical variables) by using thresholds or cut scores. Passing a test or being flagged for liver disease is usually based on a single cut score. The cut score is a numerical value, and data that fall above or below that value are categorized differently. It is possible to use more than one threshold. For example, in the next chapter we will see that people can be classified as belonging to different generations based on their age, and neighborhoods can be categorized based on their population density.
+
+We started out this course on a quest to answer our first big question: How many kinds of people are there? En route, we have examined both categorical data, such as from two-kinds-of-people questions, and numerical values like poopiness. The toilet paper and peanut butter orientation questions may seem silly and inconsequential to you. I can only imagine what you might think of the poopiness and crappiness dimensions that I completely made up (I admitted it!). However, in the next chapter we will see how some more standard variables are used to profile American people. Next week, we will see more issues of discrete/categorical and continous/numerical multi-dimensional descriptions of people that arise when it comes to personality psychology.  
 
 
-### Summary {-}
-
-### Vocabulary {-}
+#### Remember these terms? {-}
 
 - kind, type, category
-- dichotomous
+- discrete, continuous, numerical, dichotomous
 - crosstab, two-way table, contingency table
 - association, contingency, dependence
 - latent factor, dimension, trait
-- measurement, model, bimodal, cluster
-
-
-We started out this chapter on a quest to answer our first big question: How many kinds of people are there? En route, we have examined both categorical data, such as from two-kinds-of-people questions, and numerical values like poopiness. The toilet paper and peanut butter orientation questions may seem silly and inconsequential to you. I can only imagine what you might think of the poopiness and crappiness dimensions that I completely made up (I admitted it!). However, in the next section, we will see that when it comes to personality psychology, there are real-world analogues of the discrete/categorical and continous/numerical multi-dimensional descriptions of people that we just saw.  
+- measurement, model, histogram, bimodal, cluster

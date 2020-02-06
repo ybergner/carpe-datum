@@ -6,14 +6,14 @@ It is worth noting that a single dataset often can't tell us for sure whether tw
 
 In this chapter, we'll take a first look at how a particular two-way table *might* have come about, and thus how it might have come out differently. Let's suppose that we observe the data summarized here:  
 
-```{r, echo=FALSE, results='asis'}
+```{r indep-sim, echo=FALSE, results='asis'}
 orig_xtab <- table(wsq_peeps$roll, wsq_peeps$spread)
 alt_xtab3 <- orig_xtab
 alt_xtab3[1,1] <- 17
 alt_xtab3[1,2] <- 6
 alt_xtab3[2,1] <- 5
 alt_xtab3[2,2] <- 12
-kable(alt_xtab3, caption="Another alternate univers", booktabs = TRUE) %>%
+kable(alt_xtab3, caption="Another alternate universe", booktabs = TRUE) %>%
   kable_styling(bootstrap_options = "bordered", 
                 full_width = F)%>%
   kable_styling(latex_options = c("hold_position"))
@@ -40,7 +40,7 @@ kable(list(alt_xtab4, alt_xtab5), caption="Yet more alternate universes!", bookt
 
 Notice that the row and column sums are the same. But on the left we would say an association between the variables appears even clearer, whereas on the right, it appears less obvious.
 
-Recall that the actual data summarized in a two-way table originally came from some observation sample. There were 40 people sampled, and they each asked two questions. Before we tabulated it, the data might have looked something like this:
+Recall that the actual data summarized in a two-way table originally came from some observation sample. There were 40 people sampled, and they were each asked two questions. Before we tabulated them, the data might have looked something like this:
 
 ```{r, echo=FALSE, results='asis'}
 shuffle_data = data.frame(Peanutbutter = 
@@ -82,15 +82,15 @@ hist(simulated_overchunky,
 abline(v=17, lwd=2, col=3, lty=2)
 ```
   
-Figure \@ref(fig:shuffle-test) is histogram, or a bar plot of count data. We will cover histograms in detail the next chapter, so don't worry too much if some of this is still confusing. The main thing to notice is that green dotted line at 17, and this: in our 1000 shuffling experiments, we only got values greater than or equal to 17 `r length(which(simulated_overchunky >= 17))` times. The rest of the time, the values were smaller, and typical values were around 13.
+Figure \@ref(fig:shuffle-test) is histogram, or a bar plot of count data. We will cover histograms in detail the next chapter, so don't worry too much if some of this is still confusing. The main thing to notice is that green dotted line at 17, and this: in our 1000 shuffling experiments, we got values greater than or equal to 17 only `r length(which(simulated_overchunky >= 17))` times. The rest of the time, the values were smaller, and typical values were around 13.
 
-This simulation we just carried out is a way of validating our intuition, from inspection of the two-way table, that 17 was a high value *if toilet paper orientation and peanut butter preference* were indeed independent. What we showed is that, if indeed the two variables were independent, that such values would be observed only rarely. Since this value was observed on our first day out in the park (in this scenario), we begin to doubt independence. If on the other hand, we had observed 13 over-chunky people (out of 40, and with the same marginal values as before), then we would say that this observation seems quite consistent with independence. Because values near 13 occur very often in our shuffling simulation. 
+This simulation we just carried out is a way of validating our intuition, from inspection of Table \@ref(tab:indep-sim), that 17 was a high value *if toilet paper orientation and peanut butter preference* were indeed independent. What we showed is that, if indeed the two variables were independent, that such values would be observed only rarely. Since this value was observed on our first day out in the park (in this scenario), we begin to doubt independence. If on the other hand, we had observed 13 over-chunky people (out of 40, and with the same marginal values as before), then we would say that this observation seems quite consistent with independence. Because values near 13 occur very often in our shuffling simulation. 
 
 ## Hypothesis testing just happened {-}
 
 What we just did is in fact an example of a **hypothesis test**. In the statistical framework of hypothesis testing, we have a **null hypothesis** (usually, a skeptical position) and an **alternative hypothesis**. Here our null hypothesis was that the two variables represented in our response data are independent. Our alternative hypothesis was that people who are over-hangers are truly more likely to be chunky-spreaders. We didn't state this hypothesis at the outset. But it was implied by the fact that we were investigating this "high" value in the contingency table. If you take a regular statistics class, however, you will see that, when it comes to *inference*, it is quite important to take care in constructing your null and alternative hypotheses. For now, we just want to get the main idea. 
 
-The main idea was that we simulated what data might look like under the null hypothesis (independence) and checked if our observations were consistent with that or not. Consistent results would mean that we cannot "reject" the null hypothesis, while highly inconsisent results give us justification to "reject the null" in favor of the alternative. 
+The main idea was that we simulated what data might look like under the null hypothesis (independence) and checked if our observations were consistent with that or not. Consistent results would mean that we cannot "reject" the null hypothesis, while highly inconsisent results give us justification to "reject the null" in favor of the alternative. In this example, we would probably reject the independence assumption (null) in favor of the alternative.
 
 ## Caveats {-}
 
@@ -191,7 +191,7 @@ Hopefully this code seems pretty straightforward. Why did I use `replace=TRUE`? 
 
 Suppose that I did not replace the samples each time. And suppose that, by dumb luck, I drew five "unders" in a row on my first five draws (this sequence did actually happen on draws 3-7 above). The sixth draw is now coming from a hat with 23 overs and 12 unders. That draw definitely has different chances of coming up under, and, importantly, it is not independent of what happened before. In real-world sampling, I do not expect the answer from the sixth person I ask to depend on the answers given by the previous five. So it is essential that my simulation have this same property. (Of course, it is true that the proportions in the hat changed even after the very first draw, assuming I don't replace the cards, but I used the sixth draw to make it more obvious.)
 
-> Think about this: Now that we have added replacement to the sampling process, if we sample 40 times, are we guaranteed to get 23 overs and 17 unders?
+> Think about this: Now that we have added replacement to the sampling process, if we change the sample size to 40 (`numPeople  <- 40`), are we guaranteed to get 23 overs and 17 unders?
 
 Now for the second way. I don't really need to produce 40 cards at all. I just need to recognize that 23/40 or 0.575 is my target probability of "over" on every single sample. (17/40 or 0.425 is the probability of "under" automatically). I can still do everything with the good old `sample()` function.
 
