@@ -5,9 +5,14 @@ the Meyers-Briggs Type Indicator (MBTI) categories and/or the five-factor model 
 
 > Test yourself:
 >
-> - MBTI-style at [16personalities.com](16personalities.com) or [here](https://openpsychometrics.org/tests/OEJTS/)
+> - MBTI-style at [16personalities.com](16personalities.com) or 
+>   - https://openpsychometrics.org/tests/OEJTS/
 > 
-> - Big Five [here](http://www.personal.psu.edu/~j5j/IPIP/) or [here](https://bigfive-test.com/) or [here](https://openpsychometrics.org/tests/IPIP-BFFM/). [General information about these test items.](https://ipip.ori.org/)
+> - Big Five
+>   - http://www.personal.psu.edu/~j5j/IPIP/
+>   - https://bigfive-test.com/
+>   - https://openpsychometrics.org/tests/IPIP-BFFM/
+>   - General information about these test items: https://ipip.ori.org/
 
 I will only minimially describe the MBTI and the Five Factor Model (FFM, or Big Five) here, in terms of the topics we have been discussing. There are many resources for learning more about these personality tests. Some are referenced under further reading.
 
