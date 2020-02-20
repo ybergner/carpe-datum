@@ -1,0 +1,348 @@
+# Some facts about Probabilities
+
+A lot of books would have tried to establish some basic facts about probability up front. (See, for example, OpenIntro Stats, chapter 3). There is a sound logic to setting up foundations like that. But in this book, I've taken the strong position that ideas should be driven by questions. So I've tried to reason through the example above without setting up any foundations. Nevertheless it's a good time to recap some of what we established about probabilities. We will also introduce the most basic notation `P(A)` for the probability that event A happens. For example, event A can stand for "you die at age 64" or "it rains in New York tomorrow."
+
+- When possibilities are disjoint, or mutually exclusive, the probability that either one of them happens is the sum
+
+<!-- $$P(A \mbox{ or } B) = P(A) + P(B)$$ -->
+```
+P(A or B) = P(A) + P(B)
+```
+
+An example of this was dying at age 62 or dying at age 64.
+
+- A special case of this addition rule applies when one or the other MUST happen. For example, in logic, either something happens or it doesn't happen. Either A or NOT A. Since these possibilities are disjoint:
+
+  ```
+P(A) + P(not A) = 1
+P(not A) = 1 - P(A)
+```
+
+An example of this was the probability that you do not die at age 0. We found it by subtracting out the probability that you will die from 1.
+
+The last fact we used is
+
+- The probability rule for **independent** events that BOTH occur is the product of the individual probabilities of each event occurring.
+
+```
+P(A and B) = P(A) * P(B)
+```
+
+We used that to figure out how you survive by not dying every year. Notice that I've snuck in the word independent (well, I snuck it in boldy, so it wasn't that sneaky). There is an intuitive reason why it is important to make a distinction about independent events.
+
+In the last chapter, we said that two events (we were talking about responses to questions) are independent if knowing about one of them does not give you any information about what the other one might be. But remember bizarro world where the toilet paper orientation and peanut butter preference were deterministically related, and specifically everyone is either under-chunky or over-smooth? I've reproduced this result in Table \@ref(tab:tpxpb-reprise). If I told you that 53% of the total population prefers smooth, then what proportion of the total population prefers smooth AND likes to over-hang? Also 53%. What proportion prefers smooth AND under-hangs? 0!
+
+
+```{r, 'tpxpb-reprise', echo=FALSE, results='asis'}
+
+alt_xtab2 <- readRDS(file="supportfiles/alt_xtab2.rds")
+
+kable(alt_xtab2, caption="Bizarro world", booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "bordered", full_width = F)%>%
+  kable_styling(latex_options = c("hold_position"))
+
+```
+
+In bizarro world, toilet paper orientation and peanut butter preference are NOT independent, because knowing one of them DOES give you information about the other.
+
+```
+P(tp = over AND pb = smooth) does NOT equal to P(tp = over) * P(pb = smooth)
+```
+
+This will become even more clear in the next section.
+
+\pagebreak
+## Conditional Probabilities {-}
+
+Recall that we would NOT have gotten the right answer to the probability of dying in your 60s if we added up the mortality rates qx for all ages x in [60-69]. (Exercise: verify this.) Rather, we had to multiply these numbers first by the probability of living to age x. Another way to say this is that the mortality rate qx was actually a **conditional probability.** It was the probability of dying at age x  *on condition that* you have survived to age x. To be absolutely clear, we are measuring x in whole numbers, like birthdays, but we don't mean dying on your xth birthday. Rather, we mean dying anytime between turning age x and turning x+1. We need a special notation to distinguish conditional probabilities. We write,
+
+```
+qx = P(You die at age x | You survived to age x)
+```
+
+and we read this as "qx is the probability that you die at age x given that you survived to age x" or as "qx is the probability that you die at age x conditional on your surviving to age x." These are equivalent, but they differ from
+
+```
+P(You die at age x)
+```
+
+which is the **unconditional** probability that you die at age x. This is also different from
+
+```
+P(You die at age x AND You survived to age x)
+```
+
+which is called the **joint probablity** of the two events. We calculated exactly this joint probability above when we wanted to add up the probabilities that you die at some point in your 60s. The way we computed the joint probability for each year was by application of this general rule for conditional probabilities
+
+```
+P(A and B) = P(A|B) P(B)
+```
+
+which we read as "the probability of both A and B happening is equal to the probability of A conditional on B multiplied by the probability of B." Note that this rule *always* holds. That's because what I've called the general rule is equivalently just the definition of conditional probability. For example, I could have written it this way:
+
+  ```
+P(A|B) = P(A and B) / P(B)
+```
+
+This is just a rearrangement of the formula, but we have a tendency of seeing whatever is on the left side of an equation as being defined by what is on the right.
+
+As far as death is concerned, the following are all true:
+
+  ```
+P(die at x AND survived to x) = P(die at x | survived to x) * P(survived to x)
+P(die at x AND survived to x) = qx * P(survived to x)
+
+qx = P(die at x AND survived to x) / P(survived to x)
+```
+
+where in the second line I substituted the mortality rate qx for the conditional probability that defines it. In the last line, you can see how the mortality rate could be estimated from data if you actually observed a whole bunch of people. You would count how many of the die at age, say, 62, and divide that number by the number who survived to age 62. You can also probably see why the following is true:
+
+  ```
+P(survived to x | die at x) = 1
+```
+
+That is, if you died at 62 then you must have survived to that age. That may seem too obvious for words, but it helps to show clearly that for conditional probabilities, it is not generally true that P(A|B) = P(B|A).
+
+Considering toilet paper in bizarro world, we can see explicitly why the rule for joint probabilities of independent events `P(A and B) = P(A) * P(B)` did not hold. The conditional probability relationship always holds, but independence is a special case. We can see what it is now:
+
+  ```
+P(A and B) = P(A|B) P(B) = {only in special cases} = P(A) * P(B)
+```
+
+Thus, when A and B are independent, it must be true that
+
+```
+P(A|B) = P(A)
+```
+
+which reads as "the probability of A conditional on B is equal to the probability of A (regardless of B)." Another way to say this is that no matter what we know about B, it doesn't tell us anything informative about A. But that was NOT true in bizarro world, where knowing peanut butter preference told us EVERYTHING about toilet paper orientation. If A is the probability that a person is an over-hanger, and B is the probability that they prefer smooth peanut butter, then it is not true that
+
+```
+P(tp = over | pb = smooth) = P(tp = over) ## NOT TRUE in bizzaro world
+```
+
+which would be the case if these observations were independent. Rather,
+
+```
+P(tp = over | pb = smooth) = 1
+P(tp = over | pb = chunky) = 0
+
+P(tp = over AND pb = smooth) =  P(tp = over | pb = smooth) * P(pb = smooth) = P(pb = smooth)
+
+```
+
+
+\pagebreak
+## Conditional Death {-}
+
+Earlier I said we would use the life table to answer questions about when you will die assuming nothing else about you. Now, you might be aware that life expectancy is not the same for males and females. Indeed, there are separate life tables for each sex. I've plotted the death column dx from both tables in Figure \@ref(fig:life-durationMF). Females are shown in light green bars, and males using pink. Unfortunately for the males, their mortality rate is higher not only in their later years, but even in their late teens and twenties.
+
+
+```{r life-durationMF, echo=FALSE, out.width='90%', fig.cap='Deaths by age for male and female (2010)', fig.pos='H', out.extra=''}
+
+source("supportfiles/cbColors.R")
+col1 <- t_col(cbPalette[3],60)
+col2 <- t_col(cbPalette[2],60)
+
+# col1 <- t_col(rgb(1,0,0),80)
+# col2 <- t_col(rgb(0,1,0),80)
+
+barplot(lifetableFemale$dx, ylab="death count / 100000", xlab="age", col=col1, names.arg=lifetableFemale$x)
+barplot(lifetableMale$dx, col=col2, add=T)
+legend("top", c("Female","Male"), fill=c(col1,col2))
+
+```
+
+```{r}
+#proportion of women dying from at ages 81-120
+sum(lifetableFemale[81:120,"dx"])/sum(lifetableFemale[,"dx"])
+
+#proportion of men dying from at ages 81-120
+sum(lifetableMale[81:120,"dx"])/sum(lifetableMale[,"dx"])
+
+```
+
+### Check your understanding {-}
+
+P(tp = under | pb = smooth) = ?
+  P(tp = under | pb = chunky) = ?
+
+
+
+  ```{r, echo=FALSE, include=FALSE}
+
+sum(lifetableNCHS[61:70,"dx"])
+
+```
+
+\pagebreak
+
+## Bayes Rule {-}
+
+Conditional probabilities may be easy to define, but they are probably not intuitive to most people. Even experts make mistakes when reasoning with conditional probabilities. Consider the following scenario:
+
+  1% of women at age forty who participate in routine screening have breast cancer. 80% of women with breast cancer will get positive mammograms. 9.6% of women without breast cancer will also get positive mammograms. A woman in this age group had a positive mammography in a routine screening. What is the probability that she actually has breast cancer?
+
+  A) 90.1%
+B) 70.4%
+C) 28.2%
+D) 7.8%
+E) 1.6%
+
+
+
+
+```
+P(A and B) = P(A|B) P(B)
+P(A and B) = P(B|A) P(A)
+
+```
+
+## Bayesian Networks {-}
+
+
+A whole computational framework known as Bayesian networks has been established to make it easier for computers to help us with these problems. Bayesian networks are named for Thomas Bayes, who also put his stamp on Bayes' rule.
+
+\pagebreak
+## Causality {-}
+
+Does eating meat cause heart disease? Does smoking cause lung cancer? What does it mean to say A causes B? First of all, this may sound like a philosophical question, and indeed the philosopher David Hume shed some important light on the question of how we conceive of causation. But this is a book on probabilistic thinking, not philosophy. So we are going to take a more pragmatic approach and focus on how we use the concept of causation in everyday life. Nevertheless, it helps to first recall our distinction between deterministic and stochastic processes.
+
+If I hit a porcelain tea cup hard with hammer and the tea cup breaks, we can safely say that hitting the teacup with a hammer caused the cup to break. We don’t really feel the need to say that if you hit a teacup hard with a hammer, there is a 99.9997% chance that it will break. Even if that’s actually true. And we don’t feel the need to define "hard" in this case either. We use an example like a teacup and hammer when we want to focus on the common-sense big picture and not the details. And the big picture here says that hitting a teacup with a hammer deterministically causes the teacup to break. Let us also assert that if we do not hit the teacup, and it just sits there, then it will not spontaneously break. In the case of the physics of hammers and teacups, we feel that we know this much is true.
+
+What about buying a lottery ticket? Does buying a lottery ticket cause one to win the lottery? Well, you certainly are not guaranteed to win the lottery if you buy a ticket. (In fact, your chances will be very low. The subject of making money is the next Big Question). But you can’t possibly win if you don’t buy a ticket. So, strictly speaking, buying a ticket does influence the probability of winning.
+
+We’ve now dicussed two examples. In the first case (hammer and teacup):
+
+- If A (hammer hits teacup) then definitely B (teacup breaks)
+- If not A (hammer does not hit teacup) then definitely not B (teacup does not breaks)
+
+In table form:
+
+|   | Teacup breaks | Teacup doesn’t break |
+|---|:-:|:-:|
+| Hammer hits teacup | Always* | Never |
+| Hammer does not hit teacup | Never | Always |
+
+\*pretty much; we’re not splitting hairs here.
+
+In the second case (lottery ticket):
+
+- If A (buy lottery ticket) then maybe B (win lottery) and maybe not B (do not win lottery)
+- If not A (do not buy lottery ticket) then definitely not B (do not win lottery)
+
+|   | Win lottery | Do not win lottery |
+|---|:-:|:-:|
+| Buy lottery ticket | Rarely | Probably |
+| Do not buy ticket | Never | Always |
+
+Now, let’s pause for a moment and think about one of the questions we started with: does smoking cause cancer? Does it fit either of these two cases?
+
+Unfortunately the question about smoking does not. It belongs to a yet another case.
+
+In the third case (smoking):
+
+- If A (smoke) then maybe B (cancer) and maybe not B (no cancer)
+- If not A (do not smoke) then maybe B (cancer) and maybe not B (no cancer)
+
+|   | Get cancer | Do not get cancer |
+|---|:-:|:-:|
+| Smoke | Maybe | Maybe |
+| Do not smoke | Maybe | Maybe |
+
+
+Now I’m not saying that the chances of cancer are the same whether you smoke or not. That remains an open question so far as our present argument goes. But even thus far, we can see that the smoking causality question, posed this way, invites some more questions.
+
+How big a difference does there have to be between the cancer rates for smokers and non-smokers for us to be convinced that there is an association between smoking and cancer? And if there is an association between smoking and cancer, what would drive us to call this a causal relationship, to say that smoking causes cancer? Could causality go the other way?
+
+\pagebreak
+
+## Testing for an association between two variables {-}
+For a moment, let's focus on the first question: How big a difference does there have to be between the cancer rates for smokers and non-smokers for us to be convinced that there is an association between smoking and cancer?
+
+  Suppose that we go out and find a random sample of 1000 people for whom the following information is available: a) whether the person smokes (or has smoked in the past) and b) whether the person has ever been diagnosed with cancer. The beginning of our dataset looks something like this:
+
+  |   | Cancer? | Smoke? |
+  |---|:-:|:-:|
+  | Person 1 | Yes | Yes |
+  | Person 2 | No | Yes |
+  | Person 3 | No | Yes |
+  | Person 4 | No | No |
+  | Person 5 | Yes | No |
+
+  As a first step, you tabulate the data and get the following contingency table:
+
+  |   | Cancer: Yes| Cancer: No |
+  |---|:-:|:-:|
+  | Smoke: Yes | 46 | 204 |
+  | Smoke: No | 93 | 657 |
+
+  Then, you use the table to estimate the following:
+  $$P(\text{Cancer}|\text{Smoke})=\frac{46}{46+204}=0.184$$
+
+    $$P(\text{Cancer}|\text{Not Smoke})=\frac{93}{93+657}=0.124$$
+
+      You might say that these numbers suggest an association (i.e., dependence) between smoking and cancer: Within this sample, a higher proportion of smokers were diagnosed with cancer than non-smokers. But is this enough of a difference to convince you that, if you went out and found 1000 new (random) people, you would still observe a difference of this magnitude?
+
+      One way to *start* trying to answer this question is to consider the following thought experiment: imagine that, among all people in the world, there is NOT a higher incidence of cancer among smokers (as compared to non-smokers). If that were the case, you would expect to see
+
+    $$P(\text{Cancer}|\text{Smoke})=P(\text{Cancer}|\text{Not Smoke}).$$
+
+      Or, written slightly differently:
+
+      $$P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0.$$
+
+        In comparison, you observed the following in your initial sample:
+
+        $$P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0.184-0.124=0.06.$$
+
+          So, you could pose the following question: what is the probability that, among the whole population, smokers do not have higher risk of cancer; but, among the random sample of 1000 people that you observed, there is a 6% (or greater) increased incidence of cancer among smokers as compared to non-smokers? This type of question is the basis for **hypothesis testing**. Often, in hypothesis testing, we form a **null hypothesis** (in this case, the null hypothesis might be that smokers and non-smokers have equal cancer incidence among the full population) and **alternative hypothesis** (in this case, the alternative hypothesis might be that smokers have at least 6% higher risk of cancer than non-smokers). If you are interested in learning more about how statisticians use probability distributions to answer these types of questions, there are plenty of resources online. In this book, however, we will attempt to answer this question using a simulation.
+
+Based on the sample you observed, you could estimate that approximately $\frac{46+204}{1000}*100=25$ percent of the population smokes and approximately $\frac{46+93}{1000}*100=13.9$ percent of the population has been diagnosed with cancer. If there is no real difference in cancer incidence among smokers and non-smokers, then these two variables are independent: 25% of your sample randomly decided to smoke, and 13.9% were randomly diagnosed with cancer. It turns out that it's very easy to simulate datasets under this assumption. All we have to do is, in two completely separate steps, randomly assign 25% of people to be smokers and randomly assign 13.9% of people to get cancer. Then, for each of these simulated datasets (of 1000 people each), we can calculate $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$ and observe what types of differential proportions could be observed by random chance. Then we can calculate the proportion of these differences that are greater than or equal to $0.06$ in order to understand the chances that we observe a difference of that size when it doesn't actually exist:
+
+  ```{r}
+set.seed(513)
+```
+
+```{r, echo=TRUE}
+nIter = 100 #set some number of iterations
+differences = vector(length = nIter) #create vector to save differences in proportions
+
+for(i in 1:nIter){ #repeat the following process nIter times
+
+  #create some fake data and save it as "fakedata"
+  fakedata = data.frame(Smoke = sample(c("Y", "N"), size=1000, prob=c(.25, .75), replace = T),
+                        Cancer = sample(c("Y", "N"), size=1000, prob=c(.139, .861), replace = T))
+
+  #use the fake data to calculate P(cancer|smoke)
+  CgivenS = table(fakedata)[2,2]/sum(table(fakedata)[2,])
+
+  #use the fake data to calculate P(cancer|not smoke)
+  CgivenNS = table(fakedata)[1,2]/sum(table(fakedata)[1,])
+
+  #save P(cancer|smoke) - P(cancer|not smoke) in the ith location of differences
+  differences[i] <- CgivenS - CgivenNS
+
+}
+
+#calculate proportion of differences greater than or equal to .06
+sum(differences >= .06)/nIter
+
+#plot a histogram of the differences with a red vertical line at .06
+hist(differences, main="Histogram of P(cancer|smoke) - P(cancer|not smoke)")
+abline(v=.06, lwd=2, col=2)
+```
+
+As you might expect, the histogram of simulated differences ($P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$) is centered around zero. If there's no real difference, then you should expect to observe (close to) zero differences among any random sample of 1000 people. That said, you'll see from the histogram that it is still possible, by random chance, to observe a difference as large as 8%.
+
+But let's get back to our original question: You might notice that a very small proportion of the simulated values of were greater than or equal to .06. (about .03 or 3%). This might help convince you that there was a relatively low probability of observing  $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})\ge .06$ among your sample of 1000 people if the reality was that $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0$ among the full population.
+
+We've made some good progress, but you might still have some concerns: 1) there is always some risk that there is no real difference in cancer incidence among these two groups, but you observed a large difference in your sample nonetheless and 2) even if there is a real difference, there are a lot of possible reasons that this difference could exist without a direct causal relationship. That said, if you can convince yourself that there is a very small probability that the association you observed could have occurred randomly, then you might want to move on to a new question: can you explain why is there an association?
+
+  \pagebreak
+### Things that are not causation
+
+You may have heard the expression, "correlation is not causation."
+
+
+\pagebreak

@@ -1,0 +1,108 @@
+# Conditional Death
+
+### How does the death (simulation) work? {-} 
+
+The Flowing Data animated visualization is based on data collected in "life tables", which can be found online from sources like the National Center for Health Statistics (NCHS) and the Social Security Administration (SSA). Different life tables are produced every year, as life expectancy continues to evolve along with changes in health science and nutrition. Figure \@ref(fig:life-duration) plots data for age-at-death (for Americans) as of 2010. There is a bar for each age from 0 to 120, and the height of each bar represents a count of deaths at that age per 100,000 people.
+
+
+```{r life-duration, echo=FALSE, out.width='90%', fig.cap='How long Americans were living in 2010', fig.pos='H', out.extra=''}
+
+lifetableNCHS <- read.csv("data/lifetable.csv")
+lifetableMale <- read.csv("data/lifetable-male-2010.csv")
+lifetableFemale <- read.csv("data/lifetable-female-2010.csv")
+barplot((lifetableFemale$dx+ lifetableMale$dx)/2, ylab="death count / 100000", xlab="age", names.arg=lifetableFemale$x)
+# 
+# dt <- (lifetableFemale$dx+ lifetableMale$dx)/2
+# lab <- rep("", length(dt))
+# lab[seq(1, length(dt), by=5)] <- lifetableMale$x[seq(1, length(dt), by=5)]
+# barplot(dt, names.arg=lab)
+
+
+```  
+
+
+If you're like me, the first thing you notice in Figure \@ref(fig:life-duration) is that little spike at age 0, like a rattle sticking up at the end of a rattle snake's tail. It shows us that roughly 5 out of 1000 babies don't make it to their first birthday. After that, your odds get considerably better for a while.
+
+Another feature that you may detect is that the distribution of age-at-death is not symmetric. It has a long tail to the left. Distributions like this are also called left-skewed. 
+<!-- As is well covered in standard texts (e.g., Chapter 2 of OpenIntro Statistics), this means that certain measures of center, such as mean and median age-at-death, may give different answers. -->
+
+So how does age-at-death relate exactly to the years you have left to live? Life tables are a bit of a strange thing. First of all, they are not tables of "raw data" for a sample of 100,000 people. Rather, they represent a summary of data from many more deaths. According to the SSA [source](https://www.ssa.gov/OACT/HistEst/PerLifeTables/LifeTableDefinitions.pdf), "the life table represents a hypothetical cohort of 100,000 persons born at the same instant who experience the rate of mortality represented by qx, the probability that a person age x will die within one year, for each age x throughout their lives."
+ 
+Most of us don't think about our lives in terms of questions like, are we going to die this year? But that is technically how the life table works. The life table is a set of numbers---including deaths-at-age-x and expected-years-left-to-live-at-age-x---that are all derived from one initial set of numbers which represent *the probability that a person age x will die within one year*. If you're curious what that initial set of numbers looks like, I've plotted them in Figure \@ref(fig:die-this-year).  
+
+```{r die-this-year, out.width='90%', echo=FALSE, fig.cap='Mortality rate per year of age', fig.pos='H', out.extra = ''}
+
+plot(lifetableFemale$qx, ylab="qx = probability of dying within one year", xlab="age")
+
+
+```
+
+  
+Looking at Figure \@ref(fig:die-this-year), you can say that the probability of dying within one year gets higher as you grow older, which comes as a surprise to no one. If you're under 65, say, that probability doesn't even feel that high. It's less than 0.01 or 1%. The probability that you will die *this year* only passes 50% after age 100. That's reassuring, right?
+
+Well, don't get too optimistic. Your chances of dying every year may be small, but every year is another draw from this morbid lottery. If your chances of dying were 1 out of 2000, then in 2000 universes, you died in one of them.  In the other 1999, you live on to another year, but then you have to press your luck again. This happens every year, and the chances slowly get worse.
+
+But what if you wanted to know your chances, at birth, of dying in your 60s, that is between 60-69. For now, we will try to answer this question using only the life table and assuming that we know nothing else about you. The rows of the life table corresponding to this age range are these  
+
+```{r survival, echo=FALSE}
+
+kable(lifetableNCHS[61:70,], booktabs=TRUE, row.names = FALSE, caption='Life Table')%>%
+  kable_styling(latex_options = c("hold_position"))
+
+```
+  
+This is a lot of numbers. Recall that each qx is the mortality rate for age x, the probability of dying within one year of age x. So should you add up the qx-values for each age in the interval 60 to 69? Maybe pause here to think about this question for a moment before reading on.   
+
+Here is a partial answer. You can die at 62 and you can die at 64, but you can't die at both ages. In that sense, it was okay to add the probabilities of these events because they are **disjoint**, i.e., they can't both happen and you are interested in whether any one of them does happen. However, if you add up these probabilities, you will still over-estimate the probability for a different reason. Can you guess what you've left out? 
+
+Here is the rest of the answer. You've left out the fact that these probabilities assume that you have already made it to 60, and there's a chance (at birth) that you won't.  
+
+To answer the original question, you want to add up the following probabilities: 
+  
+```
+(Probability of making it to 60 and then dying at 60) + 
+(Probability of making it to 61 and then dying at 61) + 
+... +
+(Probability of making it to 69 and then dying at 69) + 
+```
+  
+How do you figure out the probability of making it to 60 without dying? It sounds a little bit like a riddle whose answer is "one year at a time." Indeed, to make it to 60 without dying, you need to not die every year for the first 59 years of your life.
+
+Note that, while death can occur in only one year of your life, to survive into your sixties you need ALL of the following to be true: NOT dying at 0 AND NOT dying at 1 AND ... NOT dying at 59. The probability of each event (not dying in each year) is independent, and the probability that all of them happen is the product of the individual probabilities.
+  
+```
+Probability of NOT dying at 0 * 
+Probability of NOT dying at 1 having made it to 1 * 
+... * 
+Probability of NOT dying at 59 having made it to 59
+```
+  
+Since in any given year, you either die or don't die, these two probabilities must add up to 1, so having gotten to any age x, the probability of surviving it is (1-qx). Now we can take the product of (that is, multiply) all of the survival probabilities (1 - qx) for each x from 0 up to age 59. (I will include the code here. The data table I have loaded from the National Center for Health Statistics is called "lifetableNCHS").
+
+  
+```{r, echo=TRUE}
+prod(1-lifetableNCHS[1:60,"qx"])
+
+```
+  
+You may notice that this probability had already been calculated for you in the life table, but it had been presented slightly differently as column lx, which is the number of persons (in a cohort of 100,000) surviving to exact age x. If we multiply our rate by 100000, we get 88745.8, which (up to a rounding error) is the same as the number in Table \@ref(tab:survival). 
+
+Okay, so now we are ready to complete the probability calculation. Recall we wanted to add up ten things: Probability of making it to 60 and then dying at 60, etc. We know that the probability of making it to age x is the same as the value of column lx in the table divided by 100,000. And the probability of dying is qx. So we need to multiply these two numbers in each row and add them up.
+
+The result is `r round(sum(lifetableNCHS[61:70,"lx"]/100000 * lifetableNCHS[61:70,"qx"]),4)`. An American child born in 2010 has a 10.5% chance of dying in their 60s (and a 20.7% chance of dying in their 70s). 
+
+So, we've figured out how to do that. And we're almost ready to move on, but it is worth noticing something. The product of the value qx and lx in each row of the life table is the value dx, which is the number of deaths at age x (or between x and x+1). So when we multiplied and added before, we were really just adding up the number of deaths (dx) at ages 60-69 and dividing by 100,000. 
+
+Now hopefully that makes sense to you that this should give us the answer we were originally looking for, namely what are the chances, at birth, of dying in your 60s. We could have looked at our hypothetical cohort of 100,000 people all born at the same time and asked: how many of them will die in their 60s. Well, that would be the sum of the dx-values, namely `r as.integer(sum(lifetableNCHS[61:70,"dx"]))`. It wouldn't be a probability, though, unless we divided it by the total number of people (100,000).
+
+So we've shown that we can answer our particular question two different ways:
+
+A) Computing the total probability of your making it to 60 and then dying at 60 *or* making it to 61 and dying at 61 *or* making it to 62 and dying at 62 etc. up to age 69.
+
+or
+ 
+B) Computing the overall proportion, out of 100,000 people, who die in their 60s.
+
+
+A = B in this case. An important property of mathematical sciences is that you can arrive at the same answer in different ways. Maybe that sounds like a waste of time, but I view it as one of the most reassuring things about math. If you try something two different ways, and you do *not* get the same answer, then something is probably wrong. 
+  

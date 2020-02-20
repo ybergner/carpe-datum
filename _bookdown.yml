@@ -3,7 +3,8 @@ rmd_files:
   ["index.Rmd", "book1intro.Rmd", "categoriescounts.Rmd", "dimensions.Rmd",
   "testindependence.Rmd", "shadesofgrey.Rmd", "cutscores.Rmd",
   "themodalamerican.Rmd", "personality.Rmd",
-#  "whenandhowdie.Rmd", "willyoumakemoney.Rmd", "isthesystemfair.Rmd",
+  "whenandhowdie.Rmd", "conditionaldeath.Rmd", "somefactsaboutprob.Rmd",
+  # "willyoumakemoney.Rmd", "isthesystemfair.Rmd",
   "appendix.Rmd",
   "references.Rmd"]
 #  latex: ["index.Rmd", "book1intro.Rmd", "categoriescounts.Rmd",
