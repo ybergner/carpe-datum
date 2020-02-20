@@ -1,8 +1,10 @@
 # Some facts about Probabilities
 
-A lot of books would have tried to establish some basic facts about probability up front. (See, for example, OpenIntro Stats, chapter 3). There is a sound logic to setting up foundations like that. But in this book, I've taken the strong position that ideas should be driven by questions. So I've tried to reason through the example above without setting up any foundations. Nevertheless it's a good time to recap some of what we established about probabilities. We will also introduce the most basic notation `P(A)` for the probability that event A happens. For example, event A can stand for "you die at age 64" or "it rains in New York tomorrow."
+In this course, I have taken the strong position that ideas should be driven by questions. So I've tried to reason through the example above before setting up any foundations on the basic rules of probability. A standard introduction to these topics can be found in many books, for example OpenIntro Stats, Chapter 3. 
 
-- When possibilities are disjoint, or mutually exclusive, the probability that either one of them happens is the sum
+Now is probably a good time to recap some of what we have established about probabilities. We will also introduce the most basic notation `P(A)` for the probability that event A happens. For example, event A can stand for "you die at age 64" or "it rains in New York tomorrow."
+
+- When possibilities are disjoint, or mutually exclusive, the probability that either one of them happens is the sum of the individual probabilities
 
 <!-- $$P(A \mbox{ or } B) = P(A) + P(B)$$ -->
 ```
@@ -22,7 +24,7 @@ An example of this was the probability that you do not die at age 0. We found it
 
 The last fact we used is
 
-- The probability rule for **independent** events that BOTH occur is the product of the individual probabilities of each event occurring.
+- The joint probability rule for **independent** events that BOTH occur is the product of the individual probabilities of each event occurring.
 
 ```
 P(A and B) = P(A) * P(B)
@@ -51,7 +53,6 @@ P(tp = over AND pb = smooth) does NOT equal to P(tp = over) * P(pb = smooth)
 
 This will become even more clear in the next section.
 
-\pagebreak
 ## Conditional Probabilities {-}
 
 Recall that we would NOT have gotten the right answer to the probability of dying in your 60s if we added up the mortality rates qx for all ages x in [60-69]. (Exercise: verify this.) Rather, we had to multiply these numbers first by the probability of living to age x. Another way to say this is that the mortality rate qx was actually a **conditional probability.** It was the probability of dying at age x  *on condition that* you have survived to age x. To be absolutely clear, we are measuring x in whole numbers, like birthdays, but we don't mean dying on your xth birthday. Rather, we mean dying anytime between turning age x and turning x+1. We need a special notation to distinguish conditional probabilities. We write,
@@ -132,7 +133,6 @@ P(tp = over AND pb = smooth) =  P(tp = over | pb = smooth) * P(pb = smooth) = P(
 ```
 
 
-\pagebreak
 ## Conditional Death {-}
 
 Earlier I said we would use the life table to answer questions about when you will die assuming nothing else about you. Now, you might be aware that life expectancy is not the same for males and females. Indeed, there are separate life tables for each sex. I've plotted the death column dx from both tables in Figure \@ref(fig:life-durationMF). Females are shown in light green bars, and males using pink. Unfortunately for the males, their mortality rate is higher not only in their later years, but even in their late teens and twenties.
