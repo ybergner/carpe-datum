@@ -377,7 +377,8 @@ barplot(lifetableMale$dx, col=col2, add=T)
 legend("top", c("Female","Male"), fill=c(col1,col2))
 
 ```
-
+  
+\pagebreak  
 ```{r}
 
 sum(lifetableNCHS[81:101,"dx"])/sum(lifetableNCHS[,"dx"], na.rm=T)

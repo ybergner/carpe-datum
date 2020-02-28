@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Some facts about Probabilities
 
 In this course, I have taken the strong position that ideas should be driven by questions. So I've tried to reason through the example above before setting up any foundations on the basic rules of probability. A standard introduction to these topics can be found in many books, for example OpenIntro Stats, Chapter 3. 
@@ -152,7 +157,8 @@ barplot(lifetableMale$dx, col=col2, add=T)
 legend("top", c("Female","Male"), fill=c(col1,col2))
 
 ```
-
+  
+\pagebreak  
 ```{r}
 #proportion of women dying from at ages 81-120
 sum(lifetableFemale[81:120,"dx"])/sum(lifetableFemale[,"dx"])
