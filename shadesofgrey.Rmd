@@ -1,4 +1,4 @@
-# (An Infinite Number of) Shades of Gray (or Brown)
+# (An Infinite Number of) Shades of Gray (or Brown) {#shades}
 
 We've taken the two-kinds-of-people idea pretty far already. But it's time to acknowledge the elephant in the room. Not every question about attributes, preferences, or behaviors  can be answered in such an either/or manner. Digitidiness might be one of those things. Consider the following dialogue:
 

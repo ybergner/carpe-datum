@@ -1,0 +1,41 @@
+
+## Deja Vu: revisiting conditional death {-}
+
+
+We have spent some time thinking probabilistically about when you will die. To recap, during this jovial inquiry, we looked at some data regarding age-at-death in the United States. We followed a (reasonable) assumption that when YOU die is informed by the past history of when other people have died. This use of prior counts (i.e., frequencies) to estimate current probabilities is consistent with the frequentist interpretation of probability. 
+
+Within this view, we saw that age-at-death probabilities can be conditioned on information we have, such as your current age and your sex. With respect to sex, for example, we saw that life expectancy is higher for females. Perhaps you already knew that. Would it surprise you to know that life expectancy is higher for old people?
+
+Consider this. What is the probability of living past 80 for a 20-year-old, and what is the same probability for a 60-year old. Using the flowing data simulation, you can play this game, but you won't get to see the actual numbers. We are asking a question of the form
+
+```
+P(age-at-death >= 80 | current-age = 20) = ?
+P(age-at-death >= 80 | current-age = 60) = ?
+```
+
+Equipped with a life table, our jobs is then to understand how this question becomes a conditional probability and ultimately a number. As before, there is more than one way to do the math. 
+
+One way. For you to make it past your 80th birthday, you have to NOT die in any of the years between your current age and 80. Note that this is a joint probability of many events, namely not dying in each of the next 60 years (if you are 20) or 20 years (if you are 60). Note that you also have to not die before your 20th birthday, but this is a *given*, so it has probability equal to 1.
+
+Second way. We can add up all of the deaths (per 100,000) that occur after age 80. However, since we are conditioning on reaching a certain age (20 or 60), we do not want to use all 100,000 people as our denominator. We want to include only those people who die at an age greater than 20 (or 60).
+
+In math:
+
+```{r echo=TRUE}
+# first way
+# joint probability of not dying between 20-80
+# note that we are using the qx values, which are conditioned on reaching each age
+prod(1-lifetableNCHS[21:80,"qx"])
+
+# second way
+# conditional probability as the fraction of 80+ deaths divided by 20+ deaths
+# note that we are using the dx values, which are expected counts for each year of age
+sum(lifetableNCHS[81:101,"dx"])/sum(lifetableNCHS[21:101,"dx"])
+
+# same as above for age 60, two ways
+prod(1-lifetableNCHS[61:80,"qx"])
+sum(lifetableNCHS[81:101,"dx"])/sum(lifetableNCHS[61:101,"dx"])
+```
+
+Math works, the two ways give the same number. And the probability of living past 80 is indeed higher for a 60-year-old (64.8%) than it is for a 20-year old (58.1%). 
+

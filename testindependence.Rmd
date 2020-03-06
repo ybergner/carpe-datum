@@ -1,4 +1,4 @@
-# Tests of independence: A first look starring alternate universes
+# Tests of independence: A first look starring alternate universes {#test-indep}
 
 So far, we have looked at some data in two-way tables and judged them by inspection. That is, we looked at them and said, these two reponses *appear* to be deterministically related, or they appear to be associated but not deterministally, or they appear to be independent. But we acknowledged that our data come from a sample, and that on another day (on in another universe with rules the same as this one), we might have observed slightly different data. 
 
