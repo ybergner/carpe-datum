@@ -1,0 +1,138 @@
+## Causality {-}
+
+Does eating meat cause heart disease? Does smoking cause lung cancer? What does it mean to say A causes B? First of all, this may sound like a philosophical question, and indeed the philosopher David Hume shed some important light on the question of how we conceive of causation. But this is a book on probabilistic thinking, not philosophy. So we are going to take a more pragmatic approach and focus on how we use the concept of causation in everyday life. Nevertheless, it helps to first recall our distinction between deterministic and stochastic processes.
+
+If I hit a porcelain tea cup hard with hammer and the tea cup breaks, we can safely say that hitting the teacup with a hammer caused the cup to break. We don’t really feel the need to say that if you hit a teacup hard with a hammer, there is a 99.9997% chance that it will break. Even if that’s actually true. And we don’t feel the need to define "hard" in this case either. We use an example like a teacup and hammer when we want to focus on the common-sense big picture and not the details. And the big picture here says that hitting a teacup with a hammer deterministically causes the teacup to break. Let us also assert that if we do not hit the teacup, and it just sits there, then it will not spontaneously break. In the case of the physics of hammers and teacups, we feel that we know this much is true.
+
+What about buying a lottery ticket? Does buying a lottery ticket cause one to win the lottery? Well, you certainly are not guaranteed to win the lottery if you buy a ticket. (In fact, your chances will be very low. The subject of making money is the next Big Question). But you can’t possibly win if you don’t buy a ticket. So, strictly speaking, buying a ticket does influence the probability of winning.
+
+We’ve now dicussed two examples. In the first case (hammer and teacup):
+
+- If A (hammer hits teacup) then definitely B (teacup breaks)
+- If not A (hammer does not hit teacup) then definitely not B (teacup does not breaks)
+
+In table form:
+
+|   | Teacup breaks | Teacup doesn’t break |
+|---|:-:|:-:|
+| Hammer hits teacup | Always* | Never |
+| Hammer does not hit teacup | Never | Always |
+
+\*pretty much; we’re not splitting hairs here.
+
+In the second case (lottery ticket):
+
+- If A (buy lottery ticket) then maybe B (win lottery) and maybe not B (do not win lottery)
+- If not A (do not buy lottery ticket) then definitely not B (do not win lottery)
+
+|   | Win lottery | Do not win lottery |
+|---|:-:|:-:|
+| Buy lottery ticket | Rarely | Probably |
+| Do not buy ticket | Never | Always |
+
+Now, let’s pause for a moment and think about one of the questions we started with: does smoking cause cancer? Does it fit either of these two cases?
+
+Unfortunately the question about smoking does not. It belongs to a yet another case.
+
+In the third case (smoking):
+
+- If A (smoke) then maybe B (cancer) and maybe not B (no cancer)
+- If not A (do not smoke) then maybe B (cancer) and maybe not B (no cancer)
+
+|   | Get cancer | Do not get cancer |
+|---|:-:|:-:|
+| Smoke | Maybe | Maybe |
+| Do not smoke | Maybe | Maybe |
+
+
+Now I’m not saying that the chances of cancer are the same whether you smoke or not. That remains an open question so far as our present argument goes. But even thus far, we can see that the smoking causality question, posed this way, invites some more questions.
+
+How big a difference does there have to be between the cancer rates for smokers and non-smokers for us to be convinced that there is an association between smoking and cancer? And if there is an association between smoking and cancer, what would drive us to call this a causal relationship, to say that smoking causes cancer? Could causality go the other way?
+
+\pagebreak
+
+## Testing for an association between two variables {-}
+For a moment, let's focus on the first question: How big a difference does there have to be between the cancer rates for smokers and non-smokers for us to be convinced that there is an association between smoking and cancer?
+
+  Suppose that we go out and find a random sample of 1000 people for whom the following information is available: a) whether the person smokes (or has smoked in the past) and b) whether the person has ever been diagnosed with cancer. The beginning of our dataset looks something like this:
+
+  |   | Cancer? | Smoke? |
+  |---|:-:|:-:|
+  | Person 1 | Yes | Yes |
+  | Person 2 | No | Yes |
+  | Person 3 | No | Yes |
+  | Person 4 | No | No |
+  | Person 5 | Yes | No |
+
+  As a first step, you tabulate the data and get the following contingency table:
+
+  |   | Cancer: Yes| Cancer: No |
+  |---|:-:|:-:|
+  | Smoke: Yes | 46 | 204 |
+  | Smoke: No | 93 | 657 |
+
+  Then, you use the table to estimate the following:
+  $$P(\text{Cancer}|\text{Smoke})=\frac{46}{46+204}=0.184$$
+
+    $$P(\text{Cancer}|\text{Not Smoke})=\frac{93}{93+657}=0.124$$
+
+      You might say that these numbers suggest an association (i.e., dependence) between smoking and cancer: Within this sample, a higher proportion of smokers were diagnosed with cancer than non-smokers. But is this enough of a difference to convince you that, if you went out and found 1000 new (random) people, you would still observe a difference of this magnitude?
+
+      One way to *start* trying to answer this question is to consider the following thought experiment: imagine that, among all people in the world, there is NOT a higher incidence of cancer among smokers (as compared to non-smokers). If that were the case, you would expect to see
+
+    $$P(\text{Cancer}|\text{Smoke})=P(\text{Cancer}|\text{Not Smoke}).$$
+
+      Or, written slightly differently:
+
+      $$P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0.$$
+
+        In comparison, you observed the following in your initial sample:
+
+        $$P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0.184-0.124=0.06.$$
+
+          So, you could pose the following question: what is the probability that, among the whole population, smokers do not have higher risk of cancer; but, among the random sample of 1000 people that you observed, there is a 6% (or greater) increased incidence of cancer among smokers as compared to non-smokers? This type of question is the basis for **hypothesis testing**. Often, in hypothesis testing, we form a **null hypothesis** (in this case, the null hypothesis might be that smokers and non-smokers have equal cancer incidence among the full population) and **alternative hypothesis** (in this case, the alternative hypothesis might be that smokers have at least 6% higher risk of cancer than non-smokers). If you are interested in learning more about how statisticians use probability distributions to answer these types of questions, there are plenty of resources online. In this book, however, we will attempt to answer this question using a simulation.
+
+Based on the sample you observed, you could estimate that approximately $\frac{46+204}{1000}*100=25$ percent of the population smokes and approximately $\frac{46+93}{1000}*100=13.9$ percent of the population has been diagnosed with cancer. If there is no real difference in cancer incidence among smokers and non-smokers, then these two variables are independent: 25% of your sample randomly decided to smoke, and 13.9% were randomly diagnosed with cancer. It turns out that it's very easy to simulate datasets under this assumption. All we have to do is, in two completely separate steps, randomly assign 25% of people to be smokers and randomly assign 13.9% of people to get cancer. Then, for each of these simulated datasets (of 1000 people each), we can calculate $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$ and observe what types of differential proportions could be observed by random chance. Then we can calculate the proportion of these differences that are greater than or equal to $0.06$ in order to understand the chances that we observe a difference of that size when it doesn't actually exist:
+
+  ```{r}
+set.seed(513)
+```
+
+```{r, echo=TRUE}
+nIter = 100 #set some number of iterations
+differences = vector(length = nIter) #create vector to save differences in proportions
+
+for(i in 1:nIter){ #repeat the following process nIter times
+
+  #create some fake data and save it as "fakedata"
+  fakedata = data.frame(Smoke = sample(c("Y", "N"), size=1000, prob=c(.25, .75), replace = T),
+                        Cancer = sample(c("Y", "N"), size=1000, prob=c(.139, .861), replace = T))
+
+  #use the fake data to calculate P(cancer|smoke)
+  CgivenS = table(fakedata)[2,2]/sum(table(fakedata)[2,])
+
+  #use the fake data to calculate P(cancer|not smoke)
+  CgivenNS = table(fakedata)[1,2]/sum(table(fakedata)[1,])
+
+  #save P(cancer|smoke) - P(cancer|not smoke) in the ith location of differences
+  differences[i] <- CgivenS - CgivenNS
+
+}
+
+#calculate proportion of differences greater than or equal to .06
+sum(differences >= .06)/nIter
+
+#plot a histogram of the differences with a red vertical line at .06
+hist(differences, main="Histogram of P(cancer|smoke) - P(cancer|not smoke)")
+abline(v=.06, lwd=2, col=2)
+```
+
+As you might expect, the histogram of simulated differences ($P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$) is centered around zero. If there's no real difference, then you should expect to observe (close to) zero differences among any random sample of 1000 people. That said, you'll see from the histogram that it is still possible, by random chance, to observe a difference as large as 8%.
+
+But let's get back to our original question: You might notice that a very small proportion of the simulated values of were greater than or equal to .06. (about .03 or 3%). This might help convince you that there was a relatively low probability of observing  $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})\ge .06$ among your sample of 1000 people if the reality was that $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0$ among the full population.
+
+We've made some good progress, but you might still have some concerns: 1) there is always some risk that there is no real difference in cancer incidence among these two groups, but you observed a large difference in your sample nonetheless and 2) even if there is a real difference, there are a lot of possible reasons that this difference could exist without a direct causal relationship. That said, if you can convince yourself that there is a very small probability that the association you observed could have occurred randomly, then you might want to move on to a new question: can you explain why is there an association?
+
+### Things that are not causation
+
+You may have heard the expression, "correlation is not causation."

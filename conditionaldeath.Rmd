@@ -1,4 +1,4 @@
-# Conditional Death
+# Conditional Death {conditional-death}
 
 ### How does the death (simulation) work? {-} 
 

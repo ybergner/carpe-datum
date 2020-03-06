@@ -1,0 +1,247 @@
+# How You Will Die: Causes or Conditions?
+
+## Causes of death, colloquially {-}
+
+Ok, let us pause our inquiry into when you will die and concentrate for some time on how. Let's go back to Nathan Yau's (interactive) visualizations for Flowing Data. One of them is called [Causes of Death](https://flowingdata.com/2016/01/05/causes-of-death/) and the other [How you will die](https://flowingdata.com/2016/01/19/how-you-will-die/) (links work if you download the PDF but do not work within Perusall).
+
+These visualizations are really a treasure trove. So much going on. I've reproduced an image from the website below, but you really should interact with it on the web.
+
+```{r causes-viz, out.width='90%', fig.cap='Screenshot of Causes of Death visualization'}
+include_graphics("images/CausesOfDeath.png")
+```
+
+Look at the image in Figure \@ref(fig:causes-viz). How many variables are represented here? (Pause and think this over.) There are fifteen color bands representing causes of death, but these are not each variables. Rather, they are categories of a single variable cause-of-death, as defined by the Centers for Disease Control and Prevention. These include cancer, congenital defects, and external causes (e.g., pianos falling on your head), among others. Along the bottom of the image we see age, which is another variable. Indeed, the most salient aspect of this visualization is how much the relative importance of different causes of death changes over the course of one's life span.
+
+If you die in your 20s, it is likely that you died from external causes. While if you died in your 80s, it is more likely because of a circulatory or respiratory disease. This intuitive sense-making is an example of conditional probabilities. It may not be a two-way table, but Figure \@ref(fig:causes-viz) is in many ways analogous to a two-way table. The two variables are age-at-death and cause-of-death.  Although we are not putting numbers to the probabilities we can read this image as indicating that
+
+```
+P(cause = external | age in 20s) > P(cause = circ or resp | age in 20s)
+```
+
+(read, the probability that cause of death is external *given* that age of death is in ones 20s...).
+While the opposite is true in your 80s:
+
+```
+P(cause = external | age in 20s) < P(cause = circ or resp | age in 20s)
+```
+
+There is an important difference between this particular figure and a two-way table of counts. This figure shows *relative* proportions of death for each age, not absolute numbers. As we know, and even visualized explicitlty in Chapter \@ref(sec:conditional-death), the count of deaths is much higher among adults in their 70s and 80s than among those in their 20s. Figure \@ref(fig:causes-viz) does not communicate that. Instead, by ignoring the overall scale, the figure allows us to focus on the shifting importance of different causes.
+
+A two dimensional figure is used here to represent relationships between two variables (age-at-death and cause-of-death), but there are more than two variables here. The additional variables require using the tabs at the top. Sex is here, as well as race. Note that although sex and race categories are all switched between by using tabs, they are not, of course, categories belonging to a single variable. This is something that I slightly dislike about this visualization. The way it is designed, it feels as though one cannot observe, or condition on, sex and race at the same time.
+
+So there are four variables (did you get it right?). We can, in principle, imagine conditioning on any or all of them. For example, we could ask what is the probability of death by endocrine disease for (i.e., given, conditioned on) an African-American male aged 65-70. We might write something like this in probability notation as,
+
+```
+P(cause = endocrine | race = African-American, sex= male, age = 65-70) = ?
+```
+
+Yau also draws your attention to another feature of this visualization: "When you select races, you might notice that the smaller groups, American Indian and Asian, appear to be more jagged, whereas cause of death for the larger groups, black and white, appear to be smoother. This is likely due to population size more than anything else. It’s a smaller sample, and there’s higher variance." 
+
+The sample size factors in here, because CDC data are being used to estimate a proportion. For example, what proportion of 65-year-old deaths are the result of circulatory disease. Suppose we knew the true proportion in the total population. If we took only a sample from this population, we will not always find exactly the same proportion. For small samples, the proportion in each sample will appear to vary a lot. While for large samples, the proportion will vary but in a smaller range. We will revisit this idea again when we discuss making bets.
+
+Yau's final visualization in the trio, How You Will Die, combines elements of causes-of-death and years-you-have-left-to-live. The visualization is dynamic, and the passing of time is like a sped up version of your life. In Figure \@ref(fig:how-die-21) I've reproduced a still snapshot at three different ages, starting with an Asian female, age 21.
+
+
+```{r how-die-21, out.width='80%', fig.cap='Screenshots of How You Will Die visualization'}
+include_graphics("images/HowYouWillDie21-61.png")
+include_graphics("images/HowYouWillDie21-85.png")
+include_graphics("images/HowYouWillDie21-97.png")
+```
+
+
+In this visualization, you can tell that death becomes more probable (and eventually certain) as you get older. The dots fill up slowly (except at the very beginning, when early childhood disease can play a role) and then more quickly. The colors represent causes. In the two-dimensional plane of dots, we get a sense of the randomness of the draw. But we also perceive the relative importance of causes by the areas taken up by purple and red. These are collected into a bar plot on the right side. At the base of each bar, the proportion is reported as a percentage of all deaths by this age.
+
+
+## Hold my beer {-}
+
+So far, we have conditioned on things that you can't change, like your age, race, or sex-at-birth. But what if I tell you that I'm about to do something really ~~stupid~~ risky. Like suppose I told you I was going to eat a bunch of Pop Rocks and drink a lot of Coke, which we all know killed Little Mikey, the child star from the Life cereal commercials?^[Okay, yeah, this is an urban legend: https://www.snopes.com/fact-check/pop-rocks-soda/] 
+
+If I am about to engage in highly risky behavior, you might not want to put the probability that I die this year at the 1% or 2% base rate from the life tables. You might think I have a 37% chance of dying from an exploded stomach. Which, by the way, is an external cause. So you might think that the conditional probability of death *by external causes* should go up, but not the probability of death by respiratory disease.
+
+<!-- By the way, in the foregoing example, you may not be operating on a data set of past cases. You may be using your subjective judgement about my risky behavior in coming up with the numebr 37% -->
+
+
+
+
+## Causes of death, causally {-}
+
+
+
+
+We have spent some time thinking probabilistically about when you will die. To recap, during this jovial inquiry, we looked at some data regarding age-at-death in the United States. We followed a (reasonable) assumption that when YOU die is informed by the past history of when other people have died. This use of prior counts (i.e., frequencies) to estimate current probabilities is consistent with the frequentist interpretation of probability. 
+
+Within this view, we saw that age-at-death probabilities can be conditioned on information we have, such as your current age and your sex. With respect to sex, for example, we saw that life expectancy is higher for females. Perhaps you already knew that. Would it surprise you to know that life expectancy is higher for old people?
+
+Consider this. What is the probability of living past 80 for a 20-year-old, and what is the same probability for a 60-year old. Using the flowing data simulation, you can play this game, but you won't get to see the actual numbers. We are asking a question of the form
+
+```
+P(age-at-death >= 80 | current-age = 20) = ?
+P(age-at-death >= 80 | current-age = 60) = ?
+```
+
+Equipped with a life table, our jobs is then to understand how this question becomes a conditional probability and ultimately a number. As before, there is more than one way to do the math. 
+
+One way. For you to make it past your 80th birthday, you have to NOT die in any of the years between your current age and 80. Note that this is a joint probability of many events, namely not dying in each of the next 60 years (if you are 20) or 20 years (if you are 60). Note that you also have to not die before your 20th birthday, but this is a *given*, so it has probability equal to 1.
+
+Second way. We can add up all of the deaths (per 100,000) that occur after age 80. However, since we are conditioning on reaching a certain age (20 or 60), we do not want to use all 100,000 people as our denominator. We want to include only those people who die at an age greater than 20 (or 60).
+
+In math:
+
+```{r echo=TRUE}
+# first way
+# joint probability of not dying between 20-80
+# note that we are using the qx values, which are conditioned on reaching each age
+prod(1-lifetableNCHS[21:80,"qx"])
+
+# second way
+# conditional probability as the fraction of 80+ deaths divided by 20+ deaths
+# note that we are using the dx values, which are expected counts for each year of age
+sum(lifetableNCHS[81:101,"dx"])/sum(lifetableNCHS[21:101,"dx"])
+
+# same as above for age 60, two ways
+prod(1-lifetableNCHS[61:80,"qx"])
+sum(lifetableNCHS[81:101,"dx"])/sum(lifetableNCHS[61:101,"dx"])
+```
+
+Math works, the two ways give the same number. And the probability of living past 80 is indeed higher for a 60-year-old (64.8%) than it is for a 20-year old (58.1%). 
+
+
+
+## Causality {-}
+
+Does eating meat cause heart disease? Does smoking cause lung cancer? What does it mean to say A causes B? First of all, this may sound like a philosophical question, and indeed the philosopher David Hume shed some important light on the question of how we conceive of causation. But this is a book on probabilistic thinking, not philosophy. So we are going to take a more pragmatic approach and focus on how we use the concept of causation in everyday life. Nevertheless, it helps to first recall our distinction between deterministic and stochastic processes.
+
+If I hit a porcelain tea cup hard with hammer and the tea cup breaks, we can safely say that hitting the teacup with a hammer caused the cup to break. We don’t really feel the need to say that if you hit a teacup hard with a hammer, there is a 99.9997% chance that it will break. Even if that’s actually true. And we don’t feel the need to define "hard" in this case either. We use an example like a teacup and hammer when we want to focus on the common-sense big picture and not the details. And the big picture here says that hitting a teacup with a hammer deterministically causes the teacup to break. Let us also assert that if we do not hit the teacup, and it just sits there, then it will not spontaneously break. In the case of the physics of hammers and teacups, we feel that we know this much is true.
+
+What about buying a lottery ticket? Does buying a lottery ticket cause one to win the lottery? Well, you certainly are not guaranteed to win the lottery if you buy a ticket. (In fact, your chances will be very low. The subject of making money is the next Big Question). But you can’t possibly win if you don’t buy a ticket. So, strictly speaking, buying a ticket does influence the probability of winning.
+
+We’ve now dicussed two examples. In the first case (hammer and teacup):
+
+- If A (hammer hits teacup) then definitely B (teacup breaks)
+- If not A (hammer does not hit teacup) then definitely not B (teacup does not breaks)
+
+In table form:
+
+|   | Teacup breaks | Teacup doesn’t break |
+|---|:-:|:-:|
+| Hammer hits teacup | Always* | Never |
+| Hammer does not hit teacup | Never | Always |
+
+\*pretty much; we’re not splitting hairs here.
+
+In the second case (lottery ticket):
+
+- If A (buy lottery ticket) then maybe B (win lottery) and maybe not B (do not win lottery)
+- If not A (do not buy lottery ticket) then definitely not B (do not win lottery)
+
+|   | Win lottery | Do not win lottery |
+|---|:-:|:-:|
+| Buy lottery ticket | Rarely | Probably |
+| Do not buy ticket | Never | Always |
+
+Now, let’s pause for a moment and think about one of the questions we started with: does smoking cause cancer? Does it fit either of these two cases?
+
+Unfortunately the question about smoking does not. It belongs to a yet another case.
+
+In the third case (smoking):
+
+- If A (smoke) then maybe B (cancer) and maybe not B (no cancer)
+- If not A (do not smoke) then maybe B (cancer) and maybe not B (no cancer)
+
+|   | Get cancer | Do not get cancer |
+|---|:-:|:-:|
+| Smoke | Maybe | Maybe |
+| Do not smoke | Maybe | Maybe |
+
+
+Now I’m not saying that the chances of cancer are the same whether you smoke or not. That remains an open question so far as our present argument goes. But even thus far, we can see that the smoking causality question, posed this way, invites some more questions.
+
+How big a difference does there have to be between the cancer rates for smokers and non-smokers for us to be convinced that there is an association between smoking and cancer? And if there is an association between smoking and cancer, what would drive us to call this a causal relationship, to say that smoking causes cancer? Could causality go the other way?
+
+\pagebreak
+
+## Testing for an association between two variables {-}
+For a moment, let's focus on the first question: How big a difference does there have to be between the cancer rates for smokers and non-smokers for us to be convinced that there is an association between smoking and cancer?
+
+  Suppose that we go out and find a random sample of 1000 people for whom the following information is available: a) whether the person smokes (or has smoked in the past) and b) whether the person has ever been diagnosed with cancer. The beginning of our dataset looks something like this:
+
+  |   | Cancer? | Smoke? |
+  |---|:-:|:-:|
+  | Person 1 | Yes | Yes |
+  | Person 2 | No | Yes |
+  | Person 3 | No | Yes |
+  | Person 4 | No | No |
+  | Person 5 | Yes | No |
+
+  As a first step, you tabulate the data and get the following contingency table:
+
+  |   | Cancer: Yes| Cancer: No |
+  |---|:-:|:-:|
+  | Smoke: Yes | 46 | 204 |
+  | Smoke: No | 93 | 657 |
+
+  Then, you use the table to estimate the following:
+  $$P(\text{Cancer}|\text{Smoke})=\frac{46}{46+204}=0.184$$
+
+    $$P(\text{Cancer}|\text{Not Smoke})=\frac{93}{93+657}=0.124$$
+
+      You might say that these numbers suggest an association (i.e., dependence) between smoking and cancer: Within this sample, a higher proportion of smokers were diagnosed with cancer than non-smokers. But is this enough of a difference to convince you that, if you went out and found 1000 new (random) people, you would still observe a difference of this magnitude?
+
+      One way to *start* trying to answer this question is to consider the following thought experiment: imagine that, among all people in the world, there is NOT a higher incidence of cancer among smokers (as compared to non-smokers). If that were the case, you would expect to see
+
+    $$P(\text{Cancer}|\text{Smoke})=P(\text{Cancer}|\text{Not Smoke}).$$
+
+      Or, written slightly differently:
+
+      $$P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0.$$
+
+        In comparison, you observed the following in your initial sample:
+
+        $$P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0.184-0.124=0.06.$$
+
+          So, you could pose the following question: what is the probability that, among the whole population, smokers do not have higher risk of cancer; but, among the random sample of 1000 people that you observed, there is a 6% (or greater) increased incidence of cancer among smokers as compared to non-smokers? This type of question is the basis for **hypothesis testing**. Often, in hypothesis testing, we form a **null hypothesis** (in this case, the null hypothesis might be that smokers and non-smokers have equal cancer incidence among the full population) and **alternative hypothesis** (in this case, the alternative hypothesis might be that smokers have at least 6% higher risk of cancer than non-smokers). If you are interested in learning more about how statisticians use probability distributions to answer these types of questions, there are plenty of resources online. In this book, however, we will attempt to answer this question using a simulation.
+
+Based on the sample you observed, you could estimate that approximately $\frac{46+204}{1000}*100=25$ percent of the population smokes and approximately $\frac{46+93}{1000}*100=13.9$ percent of the population has been diagnosed with cancer. If there is no real difference in cancer incidence among smokers and non-smokers, then these two variables are independent: 25% of your sample randomly decided to smoke, and 13.9% were randomly diagnosed with cancer. It turns out that it's very easy to simulate datasets under this assumption. All we have to do is, in two completely separate steps, randomly assign 25% of people to be smokers and randomly assign 13.9% of people to get cancer. Then, for each of these simulated datasets (of 1000 people each), we can calculate $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$ and observe what types of differential proportions could be observed by random chance. Then we can calculate the proportion of these differences that are greater than or equal to $0.06$ in order to understand the chances that we observe a difference of that size when it doesn't actually exist:
+
+  ```{r}
+set.seed(513)
+```
+
+```{r, echo=TRUE}
+nIter = 100 #set some number of iterations
+differences = vector(length = nIter) #create vector to save differences in proportions
+
+for(i in 1:nIter){ #repeat the following process nIter times
+
+  #create some fake data and save it as "fakedata"
+  fakedata = data.frame(Smoke = sample(c("Y", "N"), size=1000, prob=c(.25, .75), replace = T),
+                        Cancer = sample(c("Y", "N"), size=1000, prob=c(.139, .861), replace = T))
+
+  #use the fake data to calculate P(cancer|smoke)
+  CgivenS = table(fakedata)[2,2]/sum(table(fakedata)[2,])
+
+  #use the fake data to calculate P(cancer|not smoke)
+  CgivenNS = table(fakedata)[1,2]/sum(table(fakedata)[1,])
+
+  #save P(cancer|smoke) - P(cancer|not smoke) in the ith location of differences
+  differences[i] <- CgivenS - CgivenNS
+
+}
+
+#calculate proportion of differences greater than or equal to .06
+sum(differences >= .06)/nIter
+
+#plot a histogram of the differences with a red vertical line at .06
+hist(differences, main="Histogram of P(cancer|smoke) - P(cancer|not smoke)")
+abline(v=.06, lwd=2, col=2)
+```
+
+As you might expect, the histogram of simulated differences ($P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})$) is centered around zero. If there's no real difference, then you should expect to observe (close to) zero differences among any random sample of 1000 people. That said, you'll see from the histogram that it is still possible, by random chance, to observe a difference as large as 8%.
+
+But let's get back to our original question: You might notice that a very small proportion of the simulated values of were greater than or equal to .06. (about .03 or 3%). This might help convince you that there was a relatively low probability of observing  $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})\ge .06$ among your sample of 1000 people if the reality was that $P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})=0$ among the full population.
+
+We've made some good progress, but you might still have some concerns: 1) there is always some risk that there is no real difference in cancer incidence among these two groups, but you observed a large difference in your sample nonetheless and 2) even if there is a real difference, there are a lot of possible reasons that this difference could exist without a direct causal relationship. That said, if you can convince yourself that there is a very small probability that the association you observed could have occurred randomly, then you might want to move on to a new question: can you explain why is there an association?
+
+### Things that are not causation
+
+You may have heard the expression, "correlation is not causation."

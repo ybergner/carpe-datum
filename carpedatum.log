@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  18 FEB 2020 17:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  5 MAR 2020 22:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1218,7 +1218,14 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip71
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count335
-) (./carpedatum.aux)
+) (./carpedatum.aux
+
+LaTeX Warning: Label `fig:how-die-21' multiply defined.
+
+
+LaTeX Warning: Label `fig:how-die-21' multiply defined.
+
+)
 \openout1 = `carpedatum.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 170.
@@ -1389,7 +1396,7 @@ File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [2
 
 ]
-<images/existence_proof_2x.png, id=296, 1239.63126pt x 486.81876pt>
+<images/existence_proof_2x.png, id=308, 1239.63126pt x 486.81876pt>
 File: images/existence_proof_2x.png Graphic file (type png)
 <use images/existence_proof_2x.png>
 Package pdftex.def Info: images/existence_proof_2x.png  used on input line 219.
@@ -1417,7 +1424,7 @@ Chapter 1.
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 253.
 
-<images/Toilet_paper_orientation_overunder.png, id=321, 819.06pt x 376.40625pt>
+<images/Toilet_paper_orientation_overunder.png, id=333, 819.06pt x 376.40625pt>
 
 File: images/Toilet_paper_orientation_overunder.png Graphic file (type png)
 <use images/Toilet_paper_orientation_overunder.png>
@@ -1508,7 +1515,7 @@ l.555
                                                   \fi \fi 
 l.555 
       ]
-<images/two-two-kinds.jpg, id=402, 1904.11375pt x 511.9125pt>
+<images/two-two-kinds.jpg, id=414, 1904.11375pt x 511.9125pt>
 File: images/two-two-kinds.jpg Graphic file (type jpg)
 <use images/two-two-kinds.jpg>
 Package pdftex.def Info: images/two-two-kinds.jpg  used on input line 564.
@@ -1552,7 +1559,7 @@ OK STARRING ALTERNATE UNIVERSES
                                                   \fi \fi 
 l.721 \end{Shaded}
                   ]
-<carpedatum_files/figure-latex/shuffle-test-1.pdf, id=433, 427.5975pt x 241.903
+<carpedatum_files/figure-latex/shuffle-test-1.pdf, id=445, 427.5975pt x 241.903
 75pt>
 File: carpedatum_files/figure-latex/shuffle-test-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/shuffle-test-1.pdf>
@@ -1596,7 +1603,7 @@ Chapter 4.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<carpedatum_files/figure-latex/poopy-hist-1.pdf, id=487, 429.605pt x 243.91125p
+<carpedatum_files/figure-latex/poopy-hist-1.pdf, id=499, 429.605pt x 243.91125p
 t>
 File: carpedatum_files/figure-latex/poopy-hist-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/poopy-hist-1.pdf>
@@ -1625,7 +1632,7 @@ l.995
                                                   \fi \fi 
 l.995 
        <./carpedatum_files/figure-latex/poopy-hist-1.pdf>]
-<carpedatum_files/figure-latex/poopy-hist-alt-1.pdf, id=516, 438.63875pt x 243.
+<carpedatum_files/figure-latex/poopy-hist-alt-1.pdf, id=528, 438.63875pt x 243.
 91125pt>
 File: carpedatum_files/figure-latex/poopy-hist-alt-1.pdf Graphic file (type pdf
 )
@@ -1633,7 +1640,7 @@ File: carpedatum_files/figure-latex/poopy-hist-alt-1.pdf Graphic file (type pdf
 Package pdftex.def Info: carpedatum_files/figure-latex/poopy-hist-alt-1.pdf  us
 ed on input line 1006.
 (pdftex.def)             Requested size: 386.42494pt x 214.87703pt.
-<carpedatum_files/figure-latex/poopy-two-kinds-1.pdf, id=518, 393.47pt x 257.96
+<carpedatum_files/figure-latex/poopy-two-kinds-1.pdf, id=530, 393.47pt x 257.96
 375pt>
 File: carpedatum_files/figure-latex/poopy-two-kinds-1.pdf Graphic file (type pd
 f)
@@ -1659,14 +1666,14 @@ eady used, duplicate ignored
 l.1046 \subsection*{Mixtures}\label{mixtures}}
                                                <./carpedatum_files/figure-latex
 /poopy-two-kinds-1.pdf>]
-<carpedatum_files/figure-latex/poopy-hist2-1.pdf, id=552, 429.605pt x 243.91125
+<carpedatum_files/figure-latex/poopy-hist2-1.pdf, id=564, 429.605pt x 243.91125
 pt>
 File: carpedatum_files/figure-latex/poopy-hist2-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/poopy-hist2-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/poopy-hist2-1.pdf  used 
 on input line 1051.
 (pdftex.def)             Requested size: 386.41805pt x 219.39154pt.
-<carpedatum_files/figure-latex/poopy-hist-mixture-1.pdf, id=553, 429.605pt x 24
+<carpedatum_files/figure-latex/poopy-hist-mixture-1.pdf, id=565, 429.605pt x 24
 3.91125pt>
 File: carpedatum_files/figure-latex/poopy-hist-mixture-1.pdf Graphic file (type
  pdf)
@@ -1682,7 +1689,7 @@ Package pdftex.def Info: carpedatum_files/figure-latex/poopy-hist-mixture-1.pdf
 l.1066 
         <./carpedatum_files/figure-latex/poopy-hist2-1.pdf> <./carpedatum_files
 /figure-latex/poopy-hist-mixture-1.pdf>]
-<carpedatum_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf, id=579, 422
+<carpedatum_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf, id=591, 422
 .57875pt x 243.91125pt>
 File: carpedatum_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf Graphic
  file (type pdf)
@@ -1698,14 +1705,14 @@ cious-1.pdf  used on input line 1071.
 l.1091 ## 0140     0.703      0.415
                                     <./carpedatum_files/figure-latex/poopy-hist
 -mixture-suspicious-1.pdf>]
-<carpedatum_files/figure-latex/crappy-hist-1.pdf, id=594, 429.605pt x 249.93375
+<carpedatum_files/figure-latex/crappy-hist-1.pdf, id=607, 429.605pt x 249.93375
 pt>
 File: carpedatum_files/figure-latex/crappy-hist-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/crappy-hist-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/crappy-hist-1.pdf  used 
 on input line 1102.
 (pdftex.def)             Requested size: 386.41805pt x 224.80862pt.
-<carpedatum_files/figure-latex/poopy-crappy-1.pdf, id=596, 436.63126pt x 250.93
+<carpedatum_files/figure-latex/poopy-crappy-1.pdf, id=609, 436.63126pt x 250.93
 75pt>
 File: carpedatum_files/figure-latex/poopy-crappy-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/poopy-crappy-1.pdf>
@@ -1731,7 +1738,7 @@ l.1142 ...lity}\label{cut-scores-and-abnormality}}
                                                    <./carpedatum_files/figure-l
 atex/poopy-crappy-1.pdf>]
 Chapter 5.
-<carpedatum_files/figure-latex/normal-poopy-1.pdf, id=633, 422.57875pt x 285.06
+<carpedatum_files/figure-latex/normal-poopy-1.pdf, id=645, 422.57875pt x 285.06
 5pt>
 File: carpedatum_files/figure-latex/normal-poopy-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/normal-poopy-1.pdf>
@@ -1768,137 +1775,192 @@ Chapter 8.
 [41
 
 ]
-<carpedatum_files/figure-latex/thirty-worlds-1.pdf, id=735, 356.33125pt x 84.31
+<carpedatum_files/figure-latex/thirty-worlds-1.pdf, id=747, 356.33125pt x 84.31
 5pt>
 File: carpedatum_files/figure-latex/thirty-worlds-1.pdf Graphic file (type pdf)
 
 <use carpedatum_files/figure-latex/thirty-worlds-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/thirty-worlds-1.pdf  use
-d on input line 1463.
+d on input line 1464.
 (pdftex.def)             Requested size: 356.3358pt x 84.31606pt.
 
 Underfull \vbox (badness 4686) has occurred while \output is active []
 
-[42]
-<images/YYHLTLScreenshot1.png, id=744, 1121.18875pt x 626.34pt>
-File: images/YYHLTLScreenshot1.png Graphic file (type png)
-<use images/YYHLTLScreenshot1.png>
-Package pdftex.def Info: images/YYHLTLScreenshot1.png  used on input line 1498.
-
-(pdftex.def)             Requested size: 386.41705pt x 215.8677pt.
-[43pdfTeX warning (ext4): destination with the same identifier (name{figure.8.1
-}) has been already used, duplicate ignored
+[42] [43pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.8.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1504 
+l.1490 
         <./carpedatum_files/figure-latex/thirty-worlds-1.pdf>]
+<images/YYHLTLScreenshot1.png, id=767, 1121.18875pt x 626.34pt>
+File: images/YYHLTLScreenshot1.png Graphic file (type png)
+<use images/YYHLTLScreenshot1.png>
+Package pdftex.def Info: images/YYHLTLScreenshot1.png  used on input line 1509.
 
-LaTeX Warning: Reference `sec:shades' on page 44 undefined on input line 1507.
+(pdftex.def)             Requested size: 386.41705pt x 215.8677pt.
+
+LaTeX Warning: Reference `sec:shades' on page 44 undefined on input line 1518.
 
 [44pdfTeX warning (ext4): destination with the same identifier (name{figure.8.2
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1532 B
-        y watching the balls drop on this simulation (which I, for one, find...
- <./images/YYHLTLScreenshot1.png>] [45]
+l.1519 
+        <./images/YYHLTLScreenshot1.png>] [45] [46]
 Chapter 9.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 1543.
+(hyperref)                than one, level fixed on input line 1554.
 
-<carpedatum_files/figure-latex/life-duration-1.pdf, id=770, 426.59375pt x 256.9
+<carpedatum_files/figure-latex/life-duration-1.pdf, id=786, 426.59375pt x 256.9
 6pt>
 File: carpedatum_files/figure-latex/life-duration-1.pdf Graphic file (type pdf)
 
 <use carpedatum_files/figure-latex/life-duration-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/life-duration-1.pdf  use
-d on input line 1549.
+d on input line 1560.
 (pdftex.def)             Requested size: 386.43689pt x 232.7714pt.
-[46
+[47
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.9.1}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1559 
+l.1568 
         <./carpedatum_files/figure-latex/life-duration-1.pdf>]
-<carpedatum_files/figure-latex/die-this-year-1.pdf, id=787, 440.64626pt x 259.9
+<carpedatum_files/figure-latex/die-this-year-1.pdf, id=803, 440.64626pt x 259.9
 7125pt>
 File: carpedatum_files/figure-latex/die-this-year-1.pdf Graphic file (type pdf)
 
 <use carpedatum_files/figure-latex/die-this-year-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/die-this-year-1.pdf  use
-d on input line 1566.
+d on input line 1577.
 (pdftex.def)             Requested size: 386.43187pt x 227.986pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[47pdfTeX warning (ext4): destination with the same identifier (name{figure.9.2
+[48pdfTeX warning (ext4): destination with the same identifier (name{figure.9.2
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1604 H
-        ere is a partial answer. You can die at 62 and you can die at 64, bu...
- <./carpedatum_files/figure-latex/die-this-year-1.pdf>] [48pdfTeX warning (ext4
-): destination with the same identifier (name{table.9.1}) has been already used
-, duplicate ignored
+l.1614 
+        <./carpedatum_files/figure-latex/die-this-year-1.pdf>] [49pdfTeX warnin
+g (ext4): destination with the same identifier (name{table.9.1}) has been alrea
+dy used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1637 ## [1] 0.887458
-                      ] [49]
+l.1641 \begin{Shaded}
+                     ] [50]
 Chapter 10.
-[50
 
-]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[51pdfTeX warning (ext4): destination with the same identifier (name{table.10.1
-}) has been already used, duplicate ignored
+[51
+
+] [52pdfTeX warning (ext4): destination with the same identifier (name{table.10
+.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1739 
-       ] [52]
-Overfull \hbox (53.6465pt too wide) in paragraph at lines 1817--1817
-[]\T1/lmtt/m/n/10 P(tp = over AND pb = smooth) =  P(tp = over | pb = smooth) * 
-P(pb = smooth) = P(pb = smooth)[] 
+l.1786 ...at x | survived to x) * P(survived to x)
+                                                  ]
+Overfull \hbox (37.89655pt too wide) in paragraph at lines 1844--1844
+[]\T1/lmtt/m/n/10 P(tp = over | pb = smooth) * P(pb = smooth) =  P(pb = smooth 
+| tp = over) * P(tp = over). 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 [53]
-<carpedatum_files/figure-latex/life-durationMF-1.pdf, id=836, 426.59375pt x 250
+<carpedatum_files/figure-latex/life-durationMF-1.pdf, id=848, 426.59375pt x 250
 .9375pt>
 File: carpedatum_files/figure-latex/life-durationMF-1.pdf Graphic file (type pd
 f)
 <use carpedatum_files/figure-latex/life-durationMF-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/life-durationMF-1.pdf  u
-sed on input line 1830.
+sed on input line 1863.
 (pdftex.def)             Requested size: 386.43689pt x 227.31581pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 [54pdfTeX warning (ext4): destination with the same identifier (name{figure.10.
 1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1853 
-        <./carpedatum_files/figure-latex/life-durationMF-1.pdf>]
+l.1891 ## [1] 0.1347719
+                        <./carpedatum_files/figure-latex/life-durationMF-1.pdf>
+] [55pdfTeX warning (ext4): destination with the same identifier (name{table.10
+.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1932 ...{how-you-will-die-causes-or-conditions}}
+                                                  ]
+Chapter 11.
+<images/CausesOfDeath.png, id=875, 1116.17pt x 772.8875pt>
+File: images/CausesOfDeath.png Graphic file (type png)
+<use images/CausesOfDeath.png>
+Package pdftex.def Info: images/CausesOfDeath.png  used on input line 1944.
+(pdftex.def)             Requested size: 386.40752pt x 267.56635pt.
+
+LaTeX Warning: Reference `sec:conditional-death' on page 56 undefined on input 
+line 1966.
+
+[56
+
+] [57pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+1.1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1981 
+        <./images/CausesOfDeath.png>]
+<images/HowYouWillDie21-61.png, id=892, 981.6675pt x 599.23875pt>
+File: images/HowYouWillDie21-61.png Graphic file (type png)
+<use images/HowYouWillDie21-61.png>
+Package pdftex.def Info: images/HowYouWillDie21-61.png  used on input line 1984
+.
+(pdftex.def)             Requested size: 343.48392pt x 209.6727pt.
+<images/HowYouWillDie21-85.png, id=893, 1018.80624pt x 607.26875pt>
+File: images/HowYouWillDie21-85.png Graphic file (type png)
+<use images/HowYouWillDie21-85.png>
+Package pdftex.def Info: images/HowYouWillDie21-85.png  used on input line 1992
+.
+(pdftex.def)             Requested size: 343.4825pt x 204.73587pt.
+<images/HowYouWillDie21-97.png, id=894, 990.70125pt x 593.21625pt>
+File: images/HowYouWillDie21-97.png Graphic file (type png)
+<use images/HowYouWillDie21-97.png>
+Package pdftex.def Info: images/HowYouWillDie21-97.png  used on input line 2000
+.
+(pdftex.def)             Requested size: 343.48538pt x 205.67361pt.
+
+Underfull \vbox (badness 8075) has occurred while \output is active []
+
+[58pdfTeX warning (ext4): destination with the same identifier (name{figure.11.
+2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2014 
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.11.3}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2014 
+        <./images/HowYouWillDie21-61.png> <./images/HowYouWillDie21-85.png>] [5
+9pdfTeX warning (ext4): destination with the same identifier (name{figure.11.4}
+) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2032 \begin{Shaded}
+                      <./images/HowYouWillDie21-97.png>] [60] [61]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[55] [56]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[57]
-Overfull \hbox (1486.89233pt too wide) in paragraph at lines 2013--2013
+[62]
+Overfull \hbox (1486.89233pt too wide) in paragraph at lines 2214--2214
 []  \T1/lmtt/m/n/10 You might say that these numbers suggest an association (i.
 e., dependence) between smoking and cancer: Within this sample, a higher propor
 tion of smokers were diagnosed with cancer than non-smokers. But is this enough
@@ -1907,7 +1969,7 @@ om) people, you would still observe a difference of this magnitude?[]
  []
 
 
-Overfull \hbox (1030.14366pt too wide) in paragraph at lines 2015--2015
+Overfull \hbox (1030.14366pt too wide) in paragraph at lines 2216--2216
 []  \T1/lmtt/m/n/10 One way to *start* trying to answer this question is to con
 sider the following thought experiment: imagine that, among all people in the w
 orld, there is NOT a higher incidence of cancer among smokers (as compared to n
@@ -1915,13 +1977,13 @@ on-smokers). If that were the case, you would expect to see[]
  []
 
 
-Overfull \hbox (37.89655pt too wide) in paragraph at lines 2025--2025
+Overfull \hbox (37.89655pt too wide) in paragraph at lines 2226--2226
 []    \T1/lmtt/m/n/10 $$P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not
  Smoke})=0.184-0.124=0.06.$$[] 
  []
 
 
-Overfull \hbox (4636.88318pt too wide) in paragraph at lines 2027--2027
+Overfull \hbox (4636.88318pt too wide) in paragraph at lines 2228--2228
 []      \T1/lmtt/m/n/10 So, you could pose the following question: what is the 
 probability that, among the whole population, smokers do not have higher risk o
 f cancer; but, among the random sample of 1000 people that you observed, there 
@@ -1937,56 +1999,53 @@ are plenty of resources online. In this book, however, we will attempt to answe
 r this question using a simulation.[] 
  []
 
-[58]
-<carpedatum_files/figure-latex/unnamed-chunk-20-1.pdf, id=889, 432.61626pt x 28
+[63]
+<carpedatum_files/figure-latex/unnamed-chunk-22-1.pdf, id=942, 432.61626pt x 28
 3.0575pt>
-File: carpedatum_files/figure-latex/unnamed-chunk-20-1.pdf Graphic file (type p
+File: carpedatum_files/figure-latex/unnamed-chunk-22-1.pdf Graphic file (type p
 df)
-<use carpedatum_files/figure-latex/unnamed-chunk-20-1.pdf>
-Package pdftex.def Info: carpedatum_files/figure-latex/unnamed-chunk-20-1.pdf  
-used on input line 2071.
+<use carpedatum_files/figure-latex/unnamed-chunk-22-1.pdf>
+Package pdftex.def Info: carpedatum_files/figure-latex/unnamed-chunk-22-1.pdf  
+used on input line 2272.
 (pdftex.def)             Requested size: 386.43332pt x 252.84033pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[59]
-Overfull \hbox (10.0714pt too wide) in paragraph at lines 2073--2074
+[64]
+Overfull \hbox (10.0714pt too wide) in paragraph at lines 2274--2275
 []\T1/lmr/m/n/10 (-20) As you might ex-pect, the his-togram of sim-u-lated dif-
 fer-ences ($\OML/lmm/m/it/10 P\OT1/lmr/m/n/10 (-20) ([]\OMS/lmsy/m/n/10 j[]\OT1
 /lmr/m/n/10 (-20) ) \OMS/lmsy/m/n/10 ^^@ \OML/lmm/m/it/10 P\OT1/lmr/m/n/10 (-20
 ) ([]\OMS/lmsy/m/n/10 j[]\OT1/lmr/m/n/10 (-20) )$\T1/lmr/m/n/10 (-20) )
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[60 <./carpedatum_files/figure-latex/unnamed-chunk-20-1.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[61]
+[65 <./carpedatum_files/figure-latex/unnamed-chunk-22-1.pdf>]
 Appendix A.
-[62
+[66
 
-] (./carpedatum.bbl [63]) [64
+] (./carpedatum.bbl [67]) [68
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2115.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2115.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2314.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2314.
 (./carpedatum.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2115.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2115.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2314.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2314.
 
 Package rerunfilecheck Info: File `carpedatum.out' has not changed.
-(rerunfilecheck)             Checksum: A9446DE200F226FB00804BC3277011BE;10405.
+(rerunfilecheck)             Checksum: 77369E8699AF09BB14B37EBA830DAFD9;11305.
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 40936 strings out of 492616
- 779516 string characters out of 6129482
- 885114 words of memory out of 5000000
- 43855 multiletter control sequences out of 15000+600000
+ 40973 strings out of 492616
+ 780521 string characters out of 6129482
+ 885569 words of memory out of 5000000
+ 43881 multiletter control sequences out of 15000+600000
  623083 words of font info for 157 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,15n,101p,1370b,484s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2009,10 +2068,10 @@ f-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2019/texmf-dist/fon
 ts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/p
 ublic/lm/lmtt10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/l
 mtti10.pfb>
-Output written on carpedatum.pdf (64 pages, 2845218 bytes).
+Output written on carpedatum.pdf (68 pages, 3573177 bytes).
 PDF statistics:
- 1047 PDF objects out of 1200 (max. 8388607)
- 880 compressed objects within 9 object streams
- 256 named destinations out of 1000 (max. 500000)
- 17100 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 1100 PDF objects out of 1200 (max. 8388607)
+ 920 compressed objects within 10 object streams
+ 267 named destinations out of 1000 (max. 500000)
+ 17144 words of extra memory for PDF output out of 17280 (max. 10000000)
 
