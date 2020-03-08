@@ -22,7 +22,7 @@ P(cause = external | age in 20s) > P(cause = circ or resp | age in 20s)
 While the opposite is true in your 80s:
 
 ```
-P(cause = external | age in 20s) < P(cause = circ or resp | age in 20s)
+P(cause = external | age in 80s) < P(cause = circ or resp | age in 80s)
 ```
 
 There is an important difference between this particular figure and a two-way table of counts. This figure shows *relative* proportions of death for each age, not absolute numbers. As we know, and even visualized explicitly in Chapter \@ref(conditional-death), the count of deaths is much higher among adults in their 70s and 80s than among those in their 20s. Figure \@ref(fig:causes-viz) does not communicate that. Instead, by ignoring the overall scale, the figure allows us to focus on the shifting importance of different causes.
@@ -107,7 +107,7 @@ In the second case (lottery ticket):
 | Buy lottery ticket | Rarely | Probably |
 | Do not buy ticket | Never | Always |
 
-Waht about this question: does smoking cause cancer? Does it fit either of these two cases? Unfortunately the question about smoking does not. It belongs to a yet another case.
+What about this question: does smoking cause cancer? Does it fit either of these two cases? Unfortunately the question about smoking does not. It belongs to a yet another case.
 
 In the third case (smoking):
 
@@ -173,7 +173,7 @@ So, you could pose the following question: what is the probability that, among t
 
 <!-- If you are interested in learning more about how statisticians use probability distributions to answer these types of questions, there are plenty of resources online. In this book, however, we will attempt to answer this question using a simulation. -->
 
-Based on the sample you observed, you could estimate that approximately $\frac{46+204}{1000}*100=25$ percent of the population smokes and approximately $\frac{46+93}{1000}*100=13.9$ percent of the population has been diagnosed with cancer. If there is no real difference in cancer incidence among smokers and non-smokers, then these two variables are independent: 25% of your sample randomly decided to smoke, and 13.9% were randomly diagnosed with cancer. 
+Based on the sample you observed, you could estimate that approximately $\frac{46+204}{1000}*100=25$ percent of the population smokes and approximately $\frac{46+93}{1000}*100=13.9$ percent of the population has been diagnosed with cancer. If there is no real difference in cancer incidence among smokers and non-smokers, then these two variables are independent: as though 25% of your sample randomly decided to smoke, and 13.9% were randomly diagnosed with cancer. 
 
 It is easy to simulate datasets under this assumption. In two completely separate (independent) steps, we will randomly assign to each of our 1000 people, a 25% chance of being a heavy smoker and a 13.9% chance of getting cancer. In Chapter \@ref(test-indep), we imagined  starting with a fixed number of responses (e.g., smoker/non-smoker), shuffling those responses, and then redistributing the values among our virtual subjects. The code below actually does something different. It will draw values with replacement for each of the two variables. This means that in each replication, we will not actually have exactly 250 smokers and 139 cancers. The numbers will fluctuate somewhat in each simulated dataset.
 
