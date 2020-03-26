@@ -4,8 +4,8 @@ rmd_files:
   "testindependence.Rmd", "shadesofgrey.Rmd", "cutscores.Rmd",
   "themodalamerican.Rmd", "personality.Rmd",
   "whenandhowdie.Rmd", "conditionaldeath.Rmd", "somefactsaboutprob.Rmd",
-  "howyouwilldie.Rmd",
-  # "willyoumakemoney.Rmd", "isthesystemfair.Rmd",
+  "howyouwilldie.Rmd",  "willyoumakemoney.Rmd",
+  # "isthesystemfair.Rmd",
   "appendix.Rmd",
   "references.Rmd"]
 #  latex: ["index.Rmd", "book1intro.Rmd", "categoriescounts.Rmd",

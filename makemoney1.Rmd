@@ -4,33 +4,22 @@
 >
 > --- Albert Einstein (possibly)
 
-```{r include=FALSE}
-
-require(knitr)
-require(kableExtra)
-require(dplyr)
-require(ggplot2)
-require(rpart)
-require(rpart.plot)
-
-```
-
-The development of probability theory is historically linked to attempts to understand games of chance, especially ones in which money was involved (see for example, [here](http://sites.math.rutgers.edu/~cherlin/History/Papers2000/cheng.html)). Sometimes betting money on an uncertain outcome falls under the name of gambling; other times it’s dignified with the name investment or "smart business decision." But regardless of the label, there are smarter and less smart ways to play money games. 
+The development of probability theory is historically linked to attempts to understand games of chance, especially ones in which money was involved (see for example, [here](http://sites.math.rutgers.edu/~cherlin/History/Papers2000/cheng.html). Sometimes betting money on an uncertain outcome falls under the name of gambling; other times it’s dignified with the name investment or "smart business decision." But regardless of the label, there are smarter and less smart ways to play money games. 
 
 ## Battle of the Bills {-}
 
-Let’s recall a distinction we made earlier in this course about deterministic and stochastic, or random, processes. This time, we’ll think about two different bets you make with your friend. In the first bet, you and your friend are debating whether it was Bill Paxton or Bill Pullman in the movie Apollo 13. To make the game interesting, you bet two dollars. You look it up on the internet, and find that it was indeed Paxton. One of you wins. Do you feel the need to check again? Probably not. This particular question, although you may not have known the answer for sure, has only one possible answer, no matter how many times you check.
+Let’s recall a distinction we made earlier in this course about deterministic and stochastic, or random, processes. This time, we’ll think about two different bets you make with your friend. In the first bet, you and your friend are debating whether it was Bill Paxton or Bill Pullman in the movie Apollo 13. To make the game interesting, you bet two dollars. You look it up on the internet, and find that it was indeed Paxton. One of you wins. Do you feel the need to check again? Probably not. This particular question, although you may not have known the answer for sure, has only one possible answer.
 
 Now consider another bet, this time for three bucks! You and your friend are walking down the street debating the “merits” of mint chocolate chip vs. cookies and cream as ice cream flavors. You claim that mint chocolate chip is the more popular flavor, and decide to ask the first passer-by which flavor they think is better. Suppose they don’t just ignore you, thinking you’re a nutcase, and they answer cookies and cream. Are you satisfied with this one answer? Or do you feel the need to ask another pedestrian? And how many?
 
-We might say that the variable “BPA”, which stands for “which Bill P. starred in Apollo 13?” has a deterministic answer. It is always the same. But the variable “MCCoCAC” which stands for “mint chocolate chip > cookies and cream?” can take on different answer (one of two; no ties allowed) depending on whom we ask. Because it is a random or stochastic variable, we have to talk about it using different terms. We might say something like, what proportion of people (in this neighborhood, say) prefer cookies and cream? Or what are the chances that the first person we ask will express that particular preference.
+We might say that the variable “BPA”, which stands for “which Bill P. starred in Apollo 13?” has a deterministic answer, but the variable “MCCoCAC,” which stands for “mint chocolate chip > cookies and cream?” can take on one of two answers (no ties allowed) depending on whom we ask. Because it is a random or stochastic variable, we have to talk about it using different terms. We might say something like, what proportion of people (in this neighborhood, say) prefer cookies and cream? Or what are the chances that the first person we ask will express that particular preference.
 
-This may all sound like silly bets that are really just games between friends. But people make small and large money bets all the time, in everything from business and life decisions, to recreational games. In this module, we explore probability calculations that inform things like advertising, airplane booking, the job market, and march madness.
+This may all sound like silly bets that are really just games between friends. But people make small and large money bets all the time, in everything from business and life decisions, to recreational games. In this chapter, we explore probability calculations that inform things like advertising, airplane booking, the job market, and march madness.
 
 
-## Betting on Beer (or Ice Cream) {-}  
+## Betting on Beer (or Ice Cream)
 
-This section makes reference to Chapter 5 of Naked Statistics by Charles Wheelan.
+This section makes reference to Chapter 5 of Naked Statistics by Charles Wheelan
 
 In 1981, Schlitz brewing company, now defunct but at one time the largest beer producer in the US, ran a bold advertising campaign. During the Super Bowl, Schlitz ran a live blind taste test against one of its competitors, Michelob. 100 Michelob drinkers participated in the taste test, which aired LIVE. The advertisement slot itself cost a lot of money. Schlitz could have just run a funny ad involving puppies on the beach, so why take a risk with a taste test that could conceivably have gone badly. How could Schlitz have been so confident that their beer would be preferred? 
 
@@ -43,9 +32,9 @@ As discussed in Wheelan's chapter, some things we would need to know are:
 - Intended sample size for taste test
 - Rules of mathematical probability
 
-Wheelan adds a lot of context to this particular story, which is part of the fun. In particular, he asserts that Schlitz and Michelob are probably indistinguishable to most beer drinkers. This puts the chances of anyone prefering one beer over the other at 50%. He also points out that the marketing campaign works well for a range of outcomes, because the taste test is conducted with Michelob drinkers. Schlitz executives will be quite happy to be able to say that even 40% of Michelob drinkers prefer Schlitz, which sounds (and is) very different from saying that 40% of all beer drinkers prefer Schlitz over Michelob.
+Wheelan adds a lot of context to this particular story, which is part of the fun. In particular, he asserts that Schlitz and Michelob are probably indistinguishable to most beer drinkers. This puts the chances of anyone prefering one beer over the other at 50%. He also points out that the marketing campaign works well even if that is not the observed outcome, because the taste test is conducted with Michelob drinkers. Schlitz executives will be quite happy to be able to say that 40% of Michelob drinkers prefer Schlitz, which sounds (and is) very different from saying 40% of all beer drinkers prefer Schlitz over Michelob.
 
-Wheelan invokes the "law of large numbers" to argue that for a given sample size, and if the actual proportion is 50%, that the results of the live taste test can be almost guaranteed to be satisfactory for Schlitz (we define satisfactory, for now, as at least 40% preferred). The larger the sample size, the greater the probability that the taste test will be a success. We have created a [Schlitz simulation](https://ybergner.shinyapps.io/Schlitz/) for you to explore this for yourself.
+Wheelan invokes the "law of large numbers" to argue that for a given sample size, and if the actual proportion is 50%, that the results of the live taste test can be almost guaranteed to be satisfactory for Schlitz (at least 40% preferred). The larger the sample size, the greater the probability that the taste test will be a success. We have created a [Schlitz simulation](https://a3sr.shinyapps.io/Schlitz/) for you to explore this for yourself.
 
 In his book, Wheelan claims that (a) for 10 blind tast testers, the probability of a happy outcome is 0.83 and (b) for 100 blind taste testers, the probability is 0.98. If you don't want to take this assertion at face value, you might try convincing yourself by opening the simulation, running 100 simulated experiments of sample size 10 or 100, and inspecting the proportion of those experiments that led to a favorable outcome. You should see values around .83 and .98 for sample sizes of 10 and 100, respectively.      
 
@@ -74,14 +63,14 @@ sum(results>=Acceptable)/nIter
 ```
   
 Feel free to copy this code over into your own script in R Studio and play with the parameters to see what happens. If you decrease nIter to 1000 and re-run the simulation a few times, you might see that there is more variation in the estimated probability; however, if you increase nIter to 100000, you are more likely to observe values very close to .83 every time.  
-  
-## How do statisticians solve problems like this? {-}
+
+### How do statisticians solve problems like this? {-}
 
 In this book, I have tried to emphasize conceptual understanding through simulation and discussion. In the example above, you can, for example, run a bunch of simulations of the experiment and (very accurately) estimate the probability of an acceptable outcome. But, you'll get slightly different answers each time you run the simulation. If this bothers you, read on.
 
-Mathematical statistics does have precise answers that depend on properties of continuous distributions like the normal distribution and the binomial distribution. The Schlitz commercial is exactly the kind of scenario that is explained using a binomial distribution (more on that later). If we ran the simulation (always with samples of 10), taking more and more observations (i.e., 100 samples of 10, 1000 samples of 10, etc.) and checked our success rate (defined by at least 4/10 preferring Schlitz), we would see that indeed this proportion does converge. This is plotted in Figure \@ref(fig:converge-binom). The x-axis is the number of samples, but **the x-axis is shown using logarithmic scales**. We need to use this scale, or else all of the points at smaller values would be bunched together.
+Mathematical statistics does have precise answers that depend on properties of continuous distributions like the normal distribution and the binomial distribution. The Schlitz commercial is exactly the kind of scenario that is explained using a binomial distribution (more on that later). If we ran the simulation (always with samples of 10), taking more and more observations (i.e., 10 samples of 10, 100 samples of 10, etc.) and checked our success rate (defined by at least 4/10 preferring Schlitz), we would see that indeed this proportion does converge. This is plotted in Figure \@ref(fig:converge-binom). The x-axis is the number of samples, but **the x-axis is shown using logarithmic scales**. We need to use this scale, or else all of the points at smaller values would be bunched together.
 
-```{r converge-binom, out.width='90%', fig.cap="Convergence of successful tasting proportions", echo=FALSE}
+```{r converge-binom, fig.cap="Convergence of successful tasting proportions"}
 
 set.seed(1234567)
 sample_size <- 10
@@ -108,14 +97,9 @@ abline(h=sum(dbinom(min_success:sample_size,sample_size,prob_success)), col=2, l
 
 ```
    
-So we see that there's some convergence: If we run more and more experiments, we find that the proportion of "successful" experiments converges to a stable value. But how can you calculate that value precisely? To find the analytical (i.e., exact) answer, instead of using a simulation to estimate it (empirically), it helps to start with a small sample size, say 2. Now that we've reduced our scope, we have some hope of writing all possible outcomes of this experiment and their probabilities.  
+So we see that there's some convergence: If we run more and more experiments, we find that the proportion of "successful" experiments converges to a stable value. But how can you calculate that value precisely? To find the empirical (i.e., exact) answer, instead of using a simulation to estimate it, it might be helpful to consider a smaller sample size, say 2. Now that we've reduced our scope, we have some hope of writing all possible outcomes of this experiment and their probabilities.  
 
-What are all of the possible outcomes of 2 independent taste tests? We are using the word independent here, because we believe that one person's preference in a blind taste test does not influence the preference expressed by another person. If the same person were asked to do the taste test on two occasions, it might not be appropriate to treat the two answers as independent. Unless the beers are truly indistinguishable. In any case, we are assuming that we have two strangers.
-
->Aside: To be more precise, we should say that the two strangers' answers are *conditionally independent*, because their preference does, in principle, reflect the quality of the beer. Suppose I told you that I had two beers, a horrible one and a delicious one. And that I was going to put them to a blind taste test.  I don't tell you which is labeled beer A and whcih is beer B. I tell you that one person preferred beer A. Now another person comes to take the test. Which do you think they will pick? Probably beer A, because that one is probably the delicious one. So it looks like knowing what one person chose provides information about what the other one will choose. Which seems to violate the definition of independence. We can condition this association away. The answers are not causally associated, but rather indirectly associated by the fact that they are both explained by the "true" taste of the beer. That is our third, or lurking, variable here. I didn't tell you whether beer A or B was the delicious one. You tried guess which it is, based on the one observation of preference for beer A. However, if I told you that in fact beer B is the delicious one, but one out of twenty people seem to prefer beer A anyway, then this would change things. Knowing that one person came along and picked A would not make you predict that the next person will do the same. You will still, if you take my word for it, predict that the next person (and almost all of the people to come) will choose beer B. The formal way to put all of this together is that conditioning on the known desirability of the beer, each individual taste test is independent of the others. In the example above, we assumed that the chances are 50/50, but they didn't have to be for the conditional independence of trials to hold.
-
-
-There are two possibilities for each taste tester (they can choose either Schlitz or Michelob), so if we represent each possible outcome as (taste-tester 1's choice, taste-tester 2's choice), we get 4 possibilities (in many probability textbooks, possible outcomes of a random experiment are represented as sets, which are enclosed in curly brackets): {(Michelob, Michelob), (Michelob, Schlitz), (Schlitz, Michelob), (Schlitz, Schlitz)}. This is also called the **sample space** of the random experiment.    
+So what are all of the possible outcomes of 2 independent taste tests?  There are two possibilities for each taste tester (they can choose either Schlitz or Michelob), so if we represent each possible outcome as (taste-tester 1's choice, taste-tester 2's choice), we get 4 possibilities (in many probability textbooks, possible outcomes of a random experiment are represented as sets, which are enclosed in curly brackets): {(Michelob, Michelob), (Michelob, Schlitz), (Schlitz, Michelob), (Schlitz, Schlitz)}. This is also called the **sample space** of the random experiment.    
 
 At this point, it might be useful to look back at Section \@ref(sec:probfacts). If we run this experiment with two taste-testers, the outcomes listed above are both disjoint (only one can occur) and complete (one of them *MUST* occur). Therefore, we know that their probabilities must add up to 1. And, because each taste test is independent from all other taste tests (the first person's beer choice does not have any impact on the second person's beer choice), we already know how to calculate the probability of any outcome! For example, the probability of (Michelob, Schlitz) is:  
 
@@ -167,9 +151,8 @@ sum(dbinom(4:10,10,.5))
 > Excercise 2: Can you modify the code above to calculate the probability of an acceptable outcome if each taste-tester only has a 40% chance of preferring Schlitz?     
 
 All of these calculations might feel a little overwhelming and confusing at this point. If that's the case, don't fear! Instead, revel in the fact that you just got (approximately) the same number using three different conceptualizations of the same problem. The point is: there are many ways to answer probabilistic questions, and simulation can be a powerful tool to side-step advanced probability calculations.  
-   
-\pagebreak  
-## Using probability to make a "good" bet {-}  
+  
+### Using probability to make a "good" bet {-}
   
 The Schlitz example feels a bit contrived, at least to me, because in the scenario, the Schlitz executives don't seem to really care about the truth. They just care about what will play well to Super Bowl audiences. Nevertheless, the beer taste test is just one example of a procedure in which we sample from a population to make inferences about the whole population.  
 
@@ -203,10 +186,10 @@ What does it mean that your expected return for your ice cream bet is 0? For one
 
 If the bet described above took place, there would be one outcome. Either you win $3 from your friend or they win \$9 from you. The expected value of 0 will never actually occur. But, as we often like to do, we can imagine 100 (or one million) alternative universes to ours. Assuming the probability calculations above, you win the bet in roughly 75% of them and lost the bet in 25% of them. This is what we meant by the probability in the first place. The expected value can be thought of as your average earning across all of these multiple universes.
 
-You should have noticed that the range of observed proportions is the true value "plus or minus" some amount of variation due to sampling. Furthermore, the variation in proportion got smaller as the sample size got larger. The result of this is that you had a 75% of observing a majority when the sample size was 10. But if the sample size had been larger, say 100, then the chance was much higher. This reduction in the error due to increased sample size is related to a statistical concept called **power.** For the example above, your test was "more than half prefer mint chocolate chip." Your assumed true value for the proportion was 0.65. With a sample of 10, your power was 0.75. Note that your power came from two sources. One was (a belief) that the difference you wanted to detect, the **effect** of mint chocolate chip preference, was reasonably large. 0.65 is not the same as 0.52 or 0.91. It would be easier to detect a majority in the latter case (high power) and harder in the former case (low power). But for small and large effects, a large enough sample size can increase your power.  
+You should have noticed that the range of observed proportions is the true value "plus or minus" some amount of variation due to sampling. Furthermore, the variation in proportion got smaller as the sample size got larger. The result of this is that you had a 75% of observing a majority when the sample size was 10. But if the sample size had been larger, say 100, then the chance was much higher. This reduction in the error due to increased sample size is related to a statistical concept called **power.** For the example above, your test was "more than half prefer mint chocolate chip." Your assumed true value for the proportion was 0.65. With a sample of 10, your power was 0.75. Note that your power came from two sources. One was (a belief) that the difference you wanted to detect, the **effect** of mint chocolate chip preference, was reasonably large. 0.65 is not the same as 0.52 or 0.91. It would be easier to detect a majority in the latter case (high power) and harder in the former case (low power). But for small and large effects, a large enough sample size can increase your power.
 
-\pagebreak    
-## Betting on your Future {-}  
+  
+## Betting on your Future
 
 Consider the diagram on page 83 of the Naked Statistics chapter that you read at the beginning of this module. This diagram shows the drug approval process from investment to pay off. At each node of the graph, there are two possibilities: first, you may or may not develop a drug that cures a particular disease. Next, even if the drug works, it may or may not get approved. And even if it gets approved, it may or may not make it to the market. At each branch, there are two possibilities with estimated probabilities (note: how do we estimate these probabilities in practice?). All of the branches lead to 5 possible outcomes, with different pay-offs. Using what we know about all of the possibilities, all of their probabilities, and the potential payoffs, we can estimate the expected value of the investment. 
 
@@ -245,7 +228,7 @@ wheelan_tree <- rpart(
 )
 ```
 
-```{r, echo=FALSE, fig.pos="H", out.extra = ''}
+```{r, echo=FALSE}
 rpart.plot(wheelan_tree, type = 5)
 ```
 
@@ -267,10 +250,10 @@ This construct tempts us to believe that we can cheat the system. There is a lon
 
 
 
-\pagebreak  
 
-## Betting on Basketball {-}  
+
+## Betting on Basketball
 
 As a final example of how we can use probabilistic thinking to inform betting decisions, let’s consider March Madness. March Madness is a basketball tournament, where 64 teams compete. In the first round, 32 games are played. The winners of those games then play each other in the 16 second round games. This continues until a single team is named victorious. Every year, people make bets on which teams they think will win each match-up. Data from regular season games can be used to estimate the probability of any team winning a particular match-up, and this information is readily available to fans. Yet, despite the wealth of data that is available to make game predictions, no one has ever correctly predicted all of the sequential game winners in the tournament. In fact, only one person has ever predicted the first two rounds perfectly (this happened in 2019!). How is this possible? In order to learn more about the complexities of choosing a March Madness bracket, please read the following article: https://www.scientificamerican.com/article/how-much-math-do-you-need-to-win-your-march-madness-pool/ 
 
-Now that you know a little more about March Madness, let’s just consider the probability of predicting the entire first round correctly. To start, we will (incorrectly) assume that every team has a 50% chance of winning their first round game. In this case, we have a 50% chance of guessing the correct winning team. Given that there are 32 games in the first round, how could we calculate the probability of predicting them all correctly? [walk through calculation, drawing a tree diagram, similar to those in the first two weeks of the module]  
+Now that you know a little more about March Madness, let’s just consider the probability of predicting the entire first round correctly. To start, we will (incorrectly) assume that every team has a 50% chance of winning their first round game. In this case, we have a 50% chance of guessing the correct winning team. Given that there are 32 games in the first round, how could we calculate the probability of predicting them all correctly? [walk through calculation, drawing a tree diagram, similar to those in the first two weeks of the module]
