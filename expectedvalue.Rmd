@@ -1,0 +1,101 @@
+# Expected Value {-}  
+  
+The Schlitz example feels a bit contrived, at least to me, because in the scenario, the Schlitz executives don't seem to really care about the truth. They just care about what will play well to Super Bowl audiences. Nevertheless, the beer taste test is just one example of a procedure in which we sample from a population to make inferences about the whole population.  
+
+You saw---using the simulation---that whenever you collect data from a sample, you get slightly different results. In this case, you observe a **sampling distribution** in the observed proportion of Schlitz-preference. It had that bell-shaped curve . I want to show you that the same simulation can be used to help you resolve your bet with your friend about whether most people prefer mint chocolate chip or cookies and cream as flavors of ice cream.
+
+Let's now return to the ice cream bet that you made with your friend. If you're willing to make a bet, that probably means don't believe that the flavors are equally preferred. You believe that the *true* value is greater than 50% in favor of mint chocolate chip. By true value, I mean the answer you would get if you could literally ask everyone in the world this question or, to save time, if you could consult the all-knowing-one and just ask them. This conviction is important, because if both you and your friend believe the proportion really is 50/50, then you are just betting on a coin toss. Which is cool, if you want to do that. 
+
+Suppose you believe that the true value is 65%. Just about two out of three people prefer mint chocolate chip. Your friend thinks the edge goes slightly to cookies and cream, but not enough to notice, and what's the point of betting on a coin toss. You want to make a point, though, so you're willing to go out on a limb. You say, "Friend, I will give you 3 to 1 odds on this bet. If you lose, you pay me \$3, and if you win, I will pay you \$9." It works. Your friend becomes interested.
+
+Now that the stakes have been raised, you and your friend start negotiating terms. You both agree that people in Washington Square, for the purposes of this bet, represent an **unbiased sample**. You are not, for example, offering to poll people at the I-heart-Mint festival. You have limited time, but you agree to ask 10 people (you can each pick 5, just to make it fair), and everyone has to pick one preference (no ties). If at least 6 out of 10 prefer mint chocolate chip over cookies and cream you win; 5 or fewer and your friend wins. These are the terms.
+
+Assuming you're right about the true proportion, will you make money?
+
+By now you know that you are still not guaranteed to observe proportions of 6.5/10 because (a) you can only observe 6 or 7, not 6.5, in a sample size of 10 (no ties!) and (b) because there is variance in the sampling distribution. You want to know the probability of winning the bet, so you can decide whether you gave your friend good odds or maybe you were too impulsive.
+
+If you use the simulation tool and take 10-person samples one-at-a-time, you might find something like this: 6, 6, 7, ... so far so good!... 5, 8, 5, ... uh oh, you would have lost 2 out of 6. If you use the Run 100 times feature of the simulation, you might get 70%, 72%, 78%, 75%, 80%,  ... so it looks like your chances are maybe around 75%. You reason as follows: I have a 75% chance of winning \$3 and a 25% chance of losing \$9.   
+
+> Excercise: Can you calculate the exact probability using dbinom() in R?   
+
+The weighted average of these two outcomes is called the **expected value** of the bet. That is, each outcome has a probability and a return (including possible loss) in dollars. You "weigh" each return by the probability of it occurring. This is done by multiplication.
+
+```
+Expected Value = P(outcome 1) * Return(outcome 1) + P(outcome 2) * Return(outcome 2)
+                 = 0.75 * 3 - 0.25 * 9 = 0
+
+```
+
+What does it mean that your expected return for your ice cream bet is 0? For one, it means that you are just as likely to win money as to lose money. In other words, you have proposed a fair bet. Which is the nice thing to do, since after all this is a friendly bet. Your friend originally thought that the two flavors were equally preferred. Given the odds you offered, what was the expected value from your friend's point of view? (Answer in the footnote).^[0.5 \* 9 - 0.5 \* 3 = 3, so three dollars].
+
+> Exercise: What would the expected value from your and your friend's perspective have been if the odds given were 2 to 1 instead of 3 to 1 on a $3 bet?
+
+If the bet described above took place, there would be one outcome. Either you win $3 from your friend or they win \$9 from you. The expected value of 0 will never actually occur. But, as we often like to do, we can imagine 100 (or one million) alternative universes to ours. Assuming the probability calculations above, you win the bet in roughly 75% of them and lost the bet in 25% of them. This is what we meant by the probability in the first place. The expected value can be thought of as your average earning across all of these multiple universes.
+
+You should have noticed that the range of observed proportions is the true value "plus or minus" some amount of variation due to sampling. Furthermore, the variation in proportion got smaller as the sample size got larger. The result of this is that you had a 75% of observing a majority when the sample size was 10. But if the sample size had been larger, say 100, then the chance was much higher. This reduction in the error due to increased sample size is related to a statistical concept called **power.** For the example above, your test was "more than half prefer mint chocolate chip." Your assumed true value for the proportion was 0.65. With a sample of 10, your power was 0.75. Note that your power came from two sources. One was (a belief) that the difference you wanted to detect, the **effect** of mint chocolate chip preference, was reasonably large. 0.65 is not the same as 0.52 or 0.91. It would be easier to detect a majority in the latter case (high power) and harder in the former case (low power). But for small and large effects, a large enough sample size can increase your power.  
+
+## Betting on your Future {-}  
+
+Consider the diagram on page 83 of the Naked Statistics chapter that you read at the beginning of this module. This diagram shows the drug approval process from investment to pay off. At each node of the graph, there are two possibilities: first, you may or may not develop a drug that cures a particular disease. Next, even if the drug works, it may or may not get approved. And even if it gets approved, it may or may not make it to the market. At each branch, there are two possibilities with estimated probabilities (note: how do we estimate these probabilities in practice?). All of the branches lead to 5 possible outcomes, with different pay-offs. Using what we know about all of the possibilities, all of their probabilities, and the potential payoffs, we can estimate the expected value of the investment. 
+
+As before, we can think of expected value as a weighted average of all of the possible pay-offs, where the weights are precisely the probabilities of each. (Weighted averages are not always weighted by probabilities. For example, a course grade may be determined as 50% exams, 30% papers, and 20% homework. But weights, and probabilities, must always add up to 100%, or probability = 1, if you include all of the components.)
+
+Since the five possibilities are....
+... the expected value is.
+
+
+
+This value represents the average amount of money we would expect to make, if we invested in a lot of drugs, that all went through this same process independently. 
+
+Question to think about: even though the expected average pay-off is $4,225,000, which is more than 4 times the original investment, would you want to make this investment for any single drug? Why or why not?
+
+Now that we’ve made this calculation empirically, it might be helpful to simulate it in R! https://a3sr.shinyapps.io/Drug 
+
+
+```{r, echo=FALSE}
+
+cure_prob <- c(0.7,0.3)
+approved_prob <- c(0.4, 0.6)
+market_prob <- c(0.1, 0.9)
+
+
+wheelan_cancer <- data.frame(
+   Cure = c(rep("No",700), rep("Yes",300)),
+   Approved = c(rep(NA,700), rep("No",120), rep("Yes",180)),
+   First2Market = c(rep(NA,820), rep("No", 18), rep("Yes",162)),
+   Payout = c(rep(250000,700), rep(0,120), rep(0, 18), rep(25000000,162))
+)
+
+wheelan_tree <- rpart(
+  Payout ~ ., 
+  data = wheelan_cancer, 
+  method = "anova"
+)
+```
+
+```{r, echo=FALSE, fig.pos="H", out.extra = ''}
+rpart.plot(wheelan_tree, type = 5)
+```
+
+
+
+
+
+
+In the last two weeks, we’ve explored the concept of expected value. As you may have noticed, expected value can be very useful for making decisions, but it does not tell the whole story. In the college majors example, expected career earnings for each possible major were only useful in describing what happens on average, for a lot of people going through the job market. However, we still had a lot of uncertainty about what would happen to any single individual who pursued a career in acting or accounting. Similarly, we would not have been as confident running the Schlitz commercial with a sample of 10.
+
+This brings us to one of the most important concepts in probability and statistics: the “law of large numbers”. Random variables are by definition, random, so we cannot predict any single outcome -- we can only say how often we expect a particular outcome to occur if we observe a lot of data. Thus, you might see how expected value is particularly useful in situations where the same process gets repeated many times. In the airplane overbooking example, there may be a reasonable probability that airlines will lose money on any given flight. But airlines can make probability calculations to ensure that they earn money than they lose overall. 
+
+The usefulness of the law of large numbers is particularly evident in gambling. Many people go to casinos and play the same games over and over again, which each (theoretically) have consistent probabilities of winning or losing. One person may win and another may lose, but if a lot of people play a game of roulette (for example), casinos can estimate approximately what proportion will win and how many will lose. And, the more games that are played, the more confident the casino can be about their predicted proportion of wins/losses.
+
+As you’ve probably heard, casinos are designed such that the house always has the advantage. In other words, every casino game is designed such that the casino always has a slightly better chance at winning than the player. That doesn’t mean that players can’t win individual games, it just means that, assuming enough people play the game, the casino will almost surely win more games than all the individual players. 
+
+This construct tempts us to believe that we can cheat the system. There is a long and interesting history of people trying to figure out betting strategies that will give them back the advantage. The Martingale betting strategy is one example. Please read the following article to learn more about it! https://www.roulettesites.org/strategies/martingale/ 
+
+
+
+## Betting on Basketball {-}  
+
+As a final example of how we can use probabilistic thinking to inform betting decisions, let’s consider March Madness. March Madness is a basketball tournament, where 64 teams compete. In the first round, 32 games are played. The winners of those games then play each other in the 16 second round games. This continues until a single team is named victorious. Every year, people make bets on which teams they think will win each match-up. Data from regular season games can be used to estimate the probability of any team winning a particular match-up, and this information is readily available to fans. Yet, despite the wealth of data that is available to make game predictions, no one has ever correctly predicted all of the sequential game winners in the tournament. In fact, only one person has ever predicted the first two rounds perfectly (this happened in 2019!). How is this possible? In order to learn more about the complexities of choosing a March Madness bracket, please read the following article: https://www.scientificamerican.com/article/how-much-math-do-you-need-to-win-your-march-madness-pool/ 
+
+Now that you know a little more about March Madness, let’s just consider the probability of predicting the entire first round correctly. To start, we will (incorrectly) assume that every team has a 50% chance of winning their first round game. In this case, we have a 50% chance of guessing the correct winning team. Given that there are 32 games in the first round, how could we calculate the probability of predicting them all correctly? [walk through calculation, drawing a tree diagram, similar to those in the first two weeks of the module]  

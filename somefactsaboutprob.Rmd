@@ -1,8 +1,4 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
+
 # Some facts about Probabilities
 
 In this course, I have taken the strong position that ideas should be driven by questions. So I've tried to reason through the example above before setting up any foundations on the basic rules of probability. A standard introduction to these topics can be found in many books, for example OpenIntro Stats, Chapter 3. 

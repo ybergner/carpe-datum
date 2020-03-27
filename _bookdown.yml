@@ -4,7 +4,7 @@ rmd_files:
   "testindependence.Rmd", "shadesofgrey.Rmd", "cutscores.Rmd",
   "themodalamerican.Rmd", "personality.Rmd",
   "whenandhowdie.Rmd", "conditionaldeath.Rmd", "somefactsaboutprob.Rmd",
-  "howyouwilldie.Rmd",  "willyoumakemoney.Rmd",
+  "howyouwilldie.Rmd",  "willyoumakemoney.Rmd", "bettingonbeer.Rmd",
   # "isthesystemfair.Rmd",
   "appendix.Rmd",
   "references.Rmd"]
