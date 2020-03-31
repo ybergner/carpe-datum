@@ -1,24 +1,38 @@
-# Expected Value {-}  
+# Expected Value  
   
-The Schlitz example feels a bit contrived, at least to me, because in the scenario, the Schlitz executives don't seem to really care about the truth. They just care about what will play well to Super Bowl audiences. Nevertheless, the beer taste test is just one example of a procedure in which we sample from a population to make inferences about the whole population.  
+## Betting on ice cream {-}
 
-You saw---using the simulation---that whenever you collect data from a sample, you get slightly different results. In this case, you observe a **sampling distribution** in the observed proportion of Schlitz-preference. It had that bell-shaped curve . I want to show you that the same simulation can be used to help you resolve your bet with your friend about whether most people prefer mint chocolate chip or cookies and cream as flavors of ice cream.
+The Schlitz example feels a bit contrived, at least to me, because in the scenario, the Schlitz executives don't  really care about the truth. They just care about what will play well to Super Bowl audiences. Nevertheless, we can see the beer taste test as an example of a sampling procedure. We sample from a population (e.g., 100 beer drinkers) to make inferences about the whole population (100 beer drinkers).  
 
-Let's now return to the ice cream bet that you made with your friend. If you're willing to make a bet, that probably means don't believe that the flavors are equally preferred. You believe that the *true* value is greater than 50% in favor of mint chocolate chip. By true value, I mean the answer you would get if you could literally ask everyone in the world this question or, to save time, if you could consult the all-knowing-one and just ask them. This conviction is important, because if both you and your friend believe the proportion really is 50/50, then you are just betting on a coin toss. Which is cool, if you want to do that. 
+You saw---using the simulation---that whenever you collect data from a sample, you get slightly different results. In this case, you observe a **sampling distribution** in the observed proportion of Schlitz-preference. It had that bell-shaped curve. I want to show you that the same simulation can be used to help you resolve your bet with your friend about whether most people prefer mint chocolate chip or cookies and cream as flavors of ice cream.
+
+Let's now return to the ice cream bet that you made with your friend. Now some people just like to bet on any random event like dice rolls and wheel spins; we'll come back to gambling later. But when you bet your friend, it's often because you think you are right, but you acknowledge that you are uncertain. Your hunch is that the *true* value of ice cream preference is greater than 50% in favor of mint chocolate chip. By true value, I mean the answer you would get if you could literally ask everyone in the world this question or, to save time, if you could consult the all-knowing-one and just ask them. This conviction is important, because if both you and your friend believe the proportion really is 50/50, then you are just betting on a coin toss. Which is cool, if you want to do that. 
 
 Suppose you believe that the true value is 65%. Just about two out of three people prefer mint chocolate chip. Your friend thinks the edge goes slightly to cookies and cream, but not enough to notice, and what's the point of betting on a coin toss. You want to make a point, though, so you're willing to go out on a limb. You say, "Friend, I will give you 3 to 1 odds on this bet. If you lose, you pay me \$3, and if you win, I will pay you \$9." It works. Your friend becomes interested.
 
-Now that the stakes have been raised, you and your friend start negotiating terms. You both agree that people in Washington Square, for the purposes of this bet, represent an **unbiased sample**. You are not, for example, offering to poll people at the I-heart-Mint festival. You have limited time, but you agree to ask 10 people (you can each pick 5, just to make it fair), and everyone has to pick one preference (no ties). If at least 6 out of 10 prefer mint chocolate chip over cookies and cream you win; 5 or fewer and your friend wins. These are the terms.
+Now that the stakes have been raised, you and your friend start negotiating terms. You both agree that people in Washington Square, for the purposes of this bet, represent an **unbiased sample**. You are not, for example, offering to poll people at the I-heart-Mint festival. You have limited time, but you agree to ask 10 people (you can each pick 5, just to make it fair), and everyone polled has to pick one preference (no ties). If at least 6 out of 10 prefer mint chocolate chip over cookies and cream you win; 5 or fewer and your friend wins. These are the terms.
 
-Assuming you're right about the true proportion, will you make money?
+Assuming you're right about the true proportion, *will you make money?*
 
 By now you know that you are still not guaranteed to observe proportions of 6.5/10 because (a) you can only observe 6 or 7, not 6.5, in a sample size of 10 (no ties!) and (b) because there is variance in the sampling distribution. You want to know the probability of winning the bet, so you can decide whether you gave your friend good odds or maybe you were too impulsive.
 
-If you use the simulation tool and take 10-person samples one-at-a-time, you might find something like this: 6, 6, 7, ... so far so good!... 5, 8, 5, ... uh oh, you would have lost 2 out of 6. If you use the Run 100 times feature of the simulation, you might get 70%, 72%, 78%, 75%, 80%,  ... so it looks like your chances are maybe around 75%. You reason as follows: I have a 75% chance of winning \$3 and a 25% chance of losing \$9.   
+You can use the Schlitz simulation tool even though this is a bet about ice cream. If you use the simulation tool and take 10-person samples one-at-a-time and setting the true probability to 0.65, you might find something like this: 6, 6, 7, ... so far so good!... 5, 8, 5, ... uh oh, you would have lost 2 out of 6. If you use the Run 100 times feature of the simulation, you might get 70%, 72%, 78%, 75%, 80%,  ... so it looks like your chances are maybe around 75%. You reason as follows: I have a 75% chance of winning \$3 and a 25% chance of losing \$9.   
 
-> Excercise: Can you calculate the exact probability using dbinom() in R?   
+> Worked example: Calculate the exact probability using dbinom() in R.
+> We can work out the solution in these steps:
+> 1. We assume that the true probability in the population for preferring one flavor is 0.65
+> 2. A "successful" outcome, if we ask 10 people, would be confirmation from 6, 7, 8, 9, OR 10 of them.
+> 3. Since these are disjoint outcomes, the probability of getting any one of them is the sum of the individual probabilities.
+> 4. `dbinom(x, size, prob)` will tell us the probability of `x` "positive" results in a sample of `size`, when individual probability is `prob`, so
+> 5. We want to sum up this expression with `size = 10`, `prob = 0.65`, and `x` ranging from 6 to 10
+> 6. `sum(dbinom(6:10, 10, prob=0.65))` = 0.7515
+>
+> By the way, the probability of 5 or lower success is known as the *complement* event, and by definition it must be equal to 1 minus the probability of 6 or higher. Similarly P(6 or higher) = 1 - P(5 or lower), and indeed
+> `1 - sum(dbinom(1:5, 10, prob=0.65))` also works.
 
-The weighted average of these two outcomes is called the **expected value** of the bet. That is, each outcome has a probability and a return (including possible loss) in dollars. You "weigh" each return by the probability of it occurring. This is done by multiplication.
+> Exercise: If we changed planned to ask only 5 people, how would you compute the probability of a winning bet using dbinom() in R? 
+
+The weighted average of these two outcomes is called the **expected value** of the bet. That is, each outcome has a probability and a dollar-valued return, including possible loss. You "weigh" each return by the probability of it occurring. This is done by multiplying each outcome in dollars by the probability of that outcome and adding up the terms. We need to consider losses of money as negative dollar-returns, so
 
 ```
 Expected Value = P(outcome 1) * Return(outcome 1) + P(outcome 2) * Return(outcome 2)
@@ -26,13 +40,21 @@ Expected Value = P(outcome 1) * Return(outcome 1) + P(outcome 2) * Return(outcom
 
 ```
 
-What does it mean that your expected return for your ice cream bet is 0? For one, it means that you are just as likely to win money as to lose money. In other words, you have proposed a fair bet. Which is the nice thing to do, since after all this is a friendly bet. Your friend originally thought that the two flavors were equally preferred. Given the odds you offered, what was the expected value from your friend's point of view? (Answer in the footnote).^[0.5 \* 9 - 0.5 \* 3 = 3, so three dollars].
+What does it mean that your expected value (or expected return) for your ice cream bet is 0? For one, it means that you are just as likely to win money as to lose money. In other words, you have proposed a fair bet. Which is the nice thing to do, since after all this is a friendly bet. Your friend originally thought that the two flavors were equally preferred. Given the odds you offered, what was the expected value from your friend's point of view? (Answer in the footnote).^[0.5 \* 9 - 0.5 \* 3 = 3, so three dollars].
 
-> Exercise: What would the expected value from your and your friend's perspective have been if the odds given were 2 to 1 instead of 3 to 1 on a $3 bet?
+You might now see the relationship between "odds" language and probability language. In the example, we refered to 3 to 1 (or 3:1) odds for the bet. The probability of winning (assuming you were right about the true preference rate) was 0.75. This is three times as high as the probability of losing, which was 0.25. So you made the bet fair by making the payout proportional to this ratio. In fact, the formal definition of odds in mathematical probability is exactly this ratio of the probability of an event divided by the probability of its complement, or `p/(1-p)`. When the probability is 0.5, this ratio is 1. We say that odds are 1:1 (1 to 1) or use the funny-by-coincidence term "even odds."
 
-If the bet described above took place, there would be one outcome. Either you win $3 from your friend or they win \$9 from you. The expected value of 0 will never actually occur. But, as we often like to do, we can imagine 100 (or one million) alternative universes to ours. Assuming the probability calculations above, you win the bet in roughly 75% of them and lost the bet in 25% of them. This is what we meant by the probability in the first place. The expected value can be thought of as your average earning across all of these multiple universes.
+> Worked example: What would the expected value from your and your friend's perspective have been if the odds given were 2 to 1 instead of 3 to 1 on a $3 bet?
+> Solution: 2 to 1 odds means you are willing to lose $6 
 
-You should have noticed that the range of observed proportions is the true value "plus or minus" some amount of variation due to sampling. Furthermore, the variation in proportion got smaller as the sample size got larger. The result of this is that you had a 75% of observing a majority when the sample size was 10. But if the sample size had been larger, say 100, then the chance was much higher. This reduction in the error due to increased sample size is related to a statistical concept called **power.** For the example above, your test was "more than half prefer mint chocolate chip." Your assumed true value for the proportion was 0.65. With a sample of 10, your power was 0.75. Note that your power came from two sources. One was (a belief) that the difference you wanted to detect, the **effect** of mint chocolate chip preference, was reasonably large. 0.65 is not the same as 0.52 or 0.91. It would be easier to detect a majority in the latter case (high power) and harder in the former case (low power). But for small and large effects, a large enough sample size can increase your power.  
+If the bet described above took place, there would be one outcome. Either you win $3 from your friend or they win \$9 from you. The expected value of 0 will never actually occur. But, as we often like to do, we can imagine 100 (or one million) alternative universes to ours. Assuming the probability calculations above, you win the bet in roughly 75% of them and lose the bet in 25% of them. This is what we meant by the probability in the first place. The expected value can be thought of as your average earning across all of these multiple universes.
+
+### By the (Statistical) Power of Grayskull {-}
+
+> Sidney says: From playing with the simulations, I have noticed that the range of observed proportions is the true value (say, 0.65) "plus or minus" some amount of variation due to sampling. Furthermore, the variation became smaller as the sample size got larger. I had a 75% of observing a majority when the sample size was 10. But by increasing the sample size to 100 or 1000, then the chance was much higher. 
+
+This narrowing of the distribution, or the reduction in "error variance" due to increased sample size, is related to a statistical concept called **power.** This term often comes up in relation to hypothesis testing. When researchers do a study, they want to make sure the sample size is large enough. Even if the alternative hypothesis is correct, small samples may mean that the data are still consistent with null hypothesis. For the example above, the alternative hypothesis test was "more than half prefer mint chocolate chip" and the assumed true value for the proportion was 0.65. With a sample of 10, your power was 0.75. Note that your power came from two sources. One was the size of the difference you wanted to detect, i.e., the **effect** of mint chocolate chip preference. You believed that this effect was reasonably large at 0.65. A preference of 0.52 would be harder to detect in a sample of 10, while a preference rate of 0.91 should be easier. Thus in the latter case, your sample study would have higher power than in the former case (low power). You can't control the size of the effect, but you can sometimes control the size of the sample. Increasing the sample size increases your power to detect effects, even small ones. If the effects are really small, you might need a very large sample. But then again, maybe small 
+
 
 ## Betting on your Future {-}  
 
@@ -49,7 +71,7 @@ This value represents the average amount of money we would expect to make, if we
 
 Question to think about: even though the expected average pay-off is $4,225,000, which is more than 4 times the original investment, would you want to make this investment for any single drug? Why or why not?
 
-Now that we’ve made this calculation empirically, it might be helpful to simulate it in R! https://a3sr.shinyapps.io/Drug 
+Now that we’ve made this calculation empirically, it might be helpful to simulate it in R! https://ybergner.shinyapps.io/Drug 
 
 
 ```{r, echo=FALSE}
