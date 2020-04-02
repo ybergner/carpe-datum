@@ -1,5 +1,4 @@
-
-# Some facts about Probabilities
+# Some facts about Probabilities {#somefacts}
 
 In this course, I have taken the strong position that ideas should be driven by questions. So I've tried to reason through the example above before setting up any foundations on the basic rules of probability. A standard introduction to these topics can be found in many books, for example OpenIntro Stats, Chapter 3. 
 
@@ -104,7 +103,7 @@ That is, if you died at 62 then you must have survived to that age. That may see
 
 Considering toilet paper in bizarro world, we can see explicitly why the rule for joint probabilities of independent events `P(A and B) = P(A) * P(B)` did not hold. The conditional probability relationship always holds, but independence is a special case. We can see what it is now:
 
-  ```
+```
 P(A and B) = P(A|B) P(B) = {only in special cases} = P(A) * P(B)
 ```
 

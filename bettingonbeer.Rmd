@@ -96,7 +96,7 @@ There are two possibilities for each taster (either Schlitz or Michelob), so if 
 {(Michelob, Michelob), (Michelob, Schlitz), (Schlitz, Michelob), (Schlitz, Schlitz)}
 ```
 
-The possible outcomes of a random experiment form a set, which is called the **sample space**. As per convention, we use curly brackets to indicate the set. The elements of the set are the outcomes, and we use ordinary parentheses to indicate the ordered pair of (Taster1, Taster2). At this point, you might find it helpful to look back at Chapter \@ref(somefactsaboutprob) to refresh your memory. 
+The possible outcomes of a random experiment form a set, which is called the **sample space**. As per convention, we use curly brackets to indicate the set. The elements of the set are the outcomes, and we use ordinary parentheses to indicate the ordered pair of (Taster1, Taster2). At this point, you might find it helpful to look back at Chapter \@ref(somefacts) to refresh your memory. 
 
 Because each individual taste test is independent, we already know how to express the (joint) probability of an outcome involving multiple tasters in terms of the individual probabilities.
 For example, the probability of (Michelob, Schlitz) is:  
