@@ -1,0 +1,13 @@
+month, count
+January, 313786
+February,289054
+March, 319625
+April, 300116
+May, 322456
+June, 323920
+July, 334924
+August, 352151
+September, 337175
+October, 329869
+November, 316511
+December, 315913

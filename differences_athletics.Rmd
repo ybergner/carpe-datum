@@ -4,7 +4,7 @@
 
 ## Are professional basketball players taller? {-}
 
-Let’s start with an example to refresh your memory about sampling and differences. We’ll walk through this example very naively on purposes. Suppose we take 100 NBA basketball players as a sample (of all basketball players) and 100 NYU students as another sample (of NYU students), and now we look at the distribution of heights in each of our samples. We’ll consider male students, since the NBA players are also males. Actually, I don't have any data on NYU student heights. But, conveniently, the `openintro` R package has a data set called male.heights and another data set called `nba.heights`. You can load them as follows
+Let’s start with an example to refresh your memory about sampling and differences. We’ll walk through this example very naively on purposes. Suppose we take 100 NBA basketball players as a sample (of all basketball players) and 100 NYU students as another sample (of NYU students), and now we look at the distribution of heights in each of our samples. We’ll consider male students, since the NBA players are also males. Actually, I don't have any data on NYU student heights. So we'll just consider all adult males. Conveniently, the `openintro` R package has a data set called male.heights and another data set called `nba.heights`. You can load them as follows
 
 ```{r echo=T}
 library(openintro)
@@ -12,7 +12,7 @@ data("male.heights")
 data("nba.heights")
 ```
 
-And then you can inspect them. For example, one of the first things I will do with a data set is ask how big it is (how many rows and columns) and then look at the first few rows. I can do this:
+And then you can inspect them. For example, one of the first things I will do with a data set is ask how big it is (how many rows and columns) and then look at the first few rows.
 
 ```{r echo=T}
 dim(male.heights)
@@ -35,33 +35,44 @@ nbaHeights <- sample(nba.heights$h.in, 100)
 maleHeights <- male.heights$heights
 ```
 
-(I have no idea which 100 NBA players I got! In fact, every time I run this I will get a different sample.) Finally, I would like to compare the *distributions* of heights for these two samples. For which our old friend the histogram is just what the doctor ordered.
+Note that because I did not use a `set.seed` in the code above, I have no idea which 100 NBA players I got. In fact, every time I (or you) run this I (or you) will get a different sample! Finally, I would like to compare the *distributions* of heights for these two samples. For which our old friend the histogram is just what the doctor ordered.
 
 ```{r echo=T}
-
+# defining some colors and bin-breaks to standardize my plots
 malescol <- rgb(0.8,0.2,0,0.2)
 nbacol <- rgb(0,0.3,0.8,0.2)
 mybreaks <- seq(54,90,3)
 
 # plot a histogram showing both height distributions
 hist(maleHeights, col=malescol, breaks=mybreaks, 
-          main="Heights of males", xlab="Height")
+          main="Heights of males", xlab="Height (inches)")
 hist(nbaHeights, col=nbacol, breaks=mybreaks, 
-     main="Heights of NBA players", xlab="Height")
+     main="Heights of NBA players", xlab="Height (inches)")
 
+```
+
+```{r compareheights, echo=T, fig.cap='Histogram of NBA and non-NBA male heights on one plot using transparent colors'}
 hist(maleHeights, col=malescol, breaks=mybreaks, 
-          main="Heights", xlab="Height")
+          main="", xlab="Height (inches)")
 hist(nbaHeights, col=nbacol, breaks=mybreaks, add=T)
 legend("topleft", c("non-NBA", "NBA"), fill = c(malescol, nbacol))
 
 ```
 
+```{r include=FALSE}
+# hidden chunk
 
-I doubt any of you reading this are surprised to see that there is a big difference; that NBA players are, on average, 9 or so inches taller. For the particular subsample I've drawn it happens to be exactly `r round(mean(nbaHeights) - mean(maleHeights), 1)` inches.
+hm <- hist(maleHeights, col=malescol, breaks=mybreaks)
+hnba <- hist(nbaHeights, col=nbacol, breaks=mybreaks)
+```
 
-Now that you are somewhat conversant with sampling variation, you might want wonder: what are the chances of a difference in sample heights like this occuring by chance? After all, if we had a large group of males to begin with, and we sampled from them two different times, we would not expect the averages of the two samples to be identical. We might, by random luck, get a taller sample and a shorter sample, right?
+I have shown three histograms, one with only the male dataset, one with only the NBA data set, and one showing both groups at the same time. I've made the colors in R slightly transparent, so that both distributions are visible at the same time. But it is very important to recognize that in Figure \@ref(fig:compareheights), we are seeing an overlap region of two distributions, *not* three distributions shown with "stacked bars." You sometimes see stacked barplots, where the height of the bar is the total count, and the colors represent contributions to the total from different groups. For example, units sold in the USA and units sold abroad = total units sold. Here, you don't see the total. You would have to estimate it by mentally adding up the *full heights* of each bar. So, for example, the total number (out of 200) of males in the height range of 72-75 inches would be `r hm$counts[7]` from the males data set plus `r hnba$counts[7]` from the NBA dataset.
 
-You can actually simulate and/or calculate an answer to this question. Which of the following would you need to know in order to estimate the chances of the difference in height occuring by chance?
+I doubt any of you reading this are surprised to see that there is a big difference; that NBA players are, on average, 9 or 10 inches taller. For the particular subsample I've drawn it happens to be exactly `r round(mean(nbaHeights) - mean(maleHeights), 1)` inches.
+
+Now that you are somewhat conversant with sampling variation, you might wonder: what are the chances of a difference in sample heights like this occuring by chance? After all, if we had a large group of males to begin with, and we sampled from them two different times, we would not expect the averages of the two samples to be identical. We will probably get a taller sample and a shorter sample, right? But how much taller?
+
+You can actually simulate and/or calculate an answer to these questions. Which of the following would you need to know in order to estimate the chances of a large difference in height occuring by chance?
 
 1. Group sample means (averages)
 2. Group sample variances (a measure of spread)
@@ -71,9 +82,9 @@ B) 2 & 3 only
 C) 1 & 3 only
 D) 1, 2, & 3
 
-Answer here^[The answer is D. Here's why you need each quantity. Sample means. Clearly, if the sample means are very close, you are more likely to accept the possibility that the difference occurred by chance than if they are very different, so sample means are necessary. On the heels of that, the notion of "close" values of the means is itself dependent on the range of values we expect (i.e. on the variance or standard deviation). Two buildings are close in height if one is 271 ft tall and another is 274 ft tall. But a difference of 3 feet among human beings is enormous. It's enormous *relative* to the standard deviation, which for adult human beings is about 4 inches. The standard deviation for building heights is over 200 ft if we include skyscrapers. Finally, the sample size. The law of large numbers tells us that the sample mean gets closer to the population mean as the sample size increases. Intuitively, we can think about it this way: Let's suppose the distributions are different but not so different that they don't overlap. If we sample only two people from each population, we may get two tall people by chance from one (or short ones from the other) in such a way that the means are close by chance. But if we have small differences in means with large samples (say, 1000), then we believe that the means are, in fact, close or even equal.]
+Answer.^[The answer is D. Here's why you need each quantity. **Sample means.** Clearly, if the sample means are very close, you are more likely to accept the possibility that the difference occurred by chance than if they are very different, so sample means are necessary. On the heels of that, the notion of "close" values of the means is itself dependent on the range of values we expect (i.e., on the **variance** or spread). Two buildings are close in height if one is 271 ft tall and another is 274 ft tall. But a difference of 3 feet among human beings is enormous. It's enormous *relative* to the standard deviation, which for adult human beings is about 4 inches. The standard deviation for building heights is over 200 ft if we include skyscrapers. Finally, the **sample size.** The law of large numbers tells us that the sample mean gets closer to the population mean as the sample size increases. However, when the sample size is small, we will have more sampling variance. Intuitively, we can think about it this way: Let's suppose the distributions are different but not so different that they don't overlap. If we sample only two people from each population, we may get two tall people by chance from one (or short ones from the other) in such a way that the means are close by chance. But if we have small differences in means with large samples (say, 1000), then we believe that the means are, in fact, close or even equal.]
 
-In fact, we can go to the National Center for Health Statistics website to retrieve our own larger census of male heights. (You can find Body Measures in the National Health and Nutrition Examination Survey conducted every two years.) Someone has even made an R package to save you the time (`NHANES`). Here is a distribution of roughly 3600 males:
+In fact, we can go to the National Center for Health Statistics website to retrieve a larger census of male heights. (You can find Body Measures in the National Health and Nutrition Examination Survey conducted every two years.) Someone has even made an R package to save you the time (`NHANES`). Here is a distribution of roughly 3600 males. The data set includes females as well as children, so I will filter those out.
 
 ```{r echo=TRUE}
 library(NHANES) #
@@ -83,14 +94,13 @@ lotsoheights <- NHANES %>% filter(Gender == "male" & Age > 18) %>%
                                 select(Height) %>% unlist() %>% na.omit()
 # convert cm to in
 lotsoheights <- as.numeric(lotsoheights) / 2.54
-hist(lotsoheights)
 
 # plot as before
 hist(lotsoheights, col=malescol, breaks=mybreaks, 
-          main="Heights of 3600 males", xlab="Height")
+          main="Heights of 3600 males", xlab="Height (inches)")
 ```
 
-We can now sub-sample from this larger population repeatedly. Let's say we do it 1000 times. That is, we take two samples of 100 and compare the difference in the sample averages. How often do we see differences as extreme as 9 inches? Mind you, we have no idea which of our two samples will turn out taller, so we'll need to look for differences with magnitude (or absolute value) greater than 9. Because the difference could be 9.5 or -9.5 depending on the order of subtraction. Here goes:
+We can now consider a process of sub-sampling from this larger sample repeatedly. That is, we take two samples of 100 and compare the difference in the sample averages. Let's say we do it 1000 times. How often do we see differences as extreme as 9 inches? Mind you, we have no idea which of our two samples will turn out taller, so we'll need to look for differences with magnitude (or absolute value) greater than 9. Because the difference could be 9.5 or -9.5 depending on the order of subtraction. Here goes:
 
 ```{r echo=TRUE}
 
@@ -111,20 +121,23 @@ You'll notice that in 1000 experiments, we never observed a difference in mean h
 
 > Exercise: modify the code to use samples of 10 instead of 100. Do you observe bigger differences? And if so, are they big enough to explain the NBA difference?
 
-Now, suppose we accept that NBA players are systematically taller. Could it be that the NBA makes people taller? Perhaps there is special practice or vitamin supplement that NBA players use that causes them to grow 9-10 inches? Well, we could rule this out if, for example, we examined the heights of NBA players just BEFORE they became NBA players. If we did that, we would see that they were already tall. 
+### None of this is surprising {-}
 
-Another possibility, then, is that NBA players are selected for being tall. Okay, let’s suppose we convince ourselves that this is true. The question we might now ask, though, is: is that fair? We’re saying that short people have a low likelihood of being hired as NBA players. (Note that we’re not suggesting that being tall is sufficient to become an NBA player, but it does seem to be necessary). What do you think? 
+Okay, so suppose we accept that NBA players are systematically taller. Could it be that the NBA makes people taller? Perhaps there is special practice or vitamin supplement that NBA players use that causes them to grow 9-10 inches? Well, we could rule this out if, for example, we examined the heights of NBA players just BEFORE they became NBA players. If we did that, we would see that they were already tall. 
+
+Another possibility, then, is that NBA players are selected for being tall. The question we might now ask, though, is: is that fair? We’re saying that short people have a low likelihood of being hired as NBA players. (Note that we’re not suggesting that being tall is *sufficient* to become an NBA player, but it does seem to be *necessary*). What do you think? 
 
 Which of these statements do you most agree with?
+
 1. It is not fair; everyone should have an equal chance to play in the NBA
-2. It is not fair; shorter people, who are otherwise talented in basketball, should have an equal chance to play in the NBA
+2. It is not fair; shorter people, who are exceptionally talented in basketball, should have an equal chance to play in the NBA
 3. It is fair; tall players perform better because their height provides an advantage in the game of basketball 
-4. It is fair; tall players look better on the court than short players
+4. It is fair; tall players look better on the court than short players, and the NBA has to sell tickets.
 5. It is neither fair nor unfair; it just is.
 
-While I’m not saying it isn’t possible to defend different answers to this particular question of fairness, most of us can agree that professional sports are by design selective on performance. In a game like basketball, height provides an advantage which, along with athleticism (strength, speed, stamina, etc.), makes a player perform better. 
+It may be possible to defend different answers to this particular question of fairness, but most of us can agree that professional sports are, by design, selective on performance. In a game like basketball, height provides an advantage which, along with athleticism (strength, speed, stamina, etc.), makes a player perform better. 
 
-In summary, we observe a difference between groups. NBA players are taller than non-NBA players. This difference does not appear to be consistent with random chance. Indeed, we probably knew enough about basketball to explain the difference in terms of competitive advantage. But, importantly, it is up to us to decide whether selecting players for competitive advantage---even if it means that we discriminate against short athletes---is fair.
+In summary, we have observed a difference between groups. NBA players are taller than non-NBA players. This difference does not appear to be consistent with random chance. Indeed, we probably knew enough about basketball to explain the difference in terms of selection for competitive advantage. But, importantly, it is up to us to decide whether selecting players for competitive advantage---even if it means that we effectively discriminate against short athletes---is fair. 
 
 <!-- We might even draw this set of claims this way: -->
 
@@ -133,30 +146,75 @@ In summary, we observe a difference between groups. NBA players are taller than 
 
 ## Surprising differences {-}
 
-It makes sense that players in the NBA would be selected for height, since height impacts performance in basketball. So professional basketball players are more likely to be tall. What if I told you that professional hockey players are more likely to be….born in the first three months of the calendar year. What? Yes, you heard that right. 
+So professional basketball players are more likely to be tall. What if I told you that professional hockey players are more likely to be….born in the first three months of the calendar year. What? Yes, you heard that right. See Figure \@ref(fig:hockey-fig) (Full paper: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0057753
+).
 
-Okay, let’s work through this idea similarly to the way we did when sampling from the NBA.
-But first, we need to know: in which months are babies born…
-https://www.cdc.gov/nchs/fastats/births.htm
+(ref:hockeycaption) Percentage of NHL draftees born in the first or fourth quarter over time. Blue circles indicate first quarter; yellow triangles indicate fourth quarter. Source: [Born at the Wrong Time: Selection Bias in the NHL Draft](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0057753) 
 
-Let’s take a look at this table of births by month in the United States from 2017. Let’s concentrate on the number of births alone and in particular on the first four months of the year, January, Feb, March, and April. Pause the video to consider the following question: 
+```{r hockey-fig, echo=FALSE, out.width='80%', fig.show='hold', fig.cap='(ref:hockeycaption)'}
+include_graphics("images/hockeybirths.png")
+```
 
-What do you think is the most plausible explanation for the variation in the the number of births in each of these four months
-There is chance variation is any random process, such as childbirth
-Odd numbered months are more likely to have higher birth numbers
-Births are likely to go up and down in month-long cycles 
-The number of days in each of the first four months of 2017* is 31, 28, 31, 30
-(*) Not a leap year
-Answer key:
-While true, the size of the variation between these months is much too large to be explained by chance alone. Sample size is key here! Indeed if January and February were each equally likely, and we observed only 600 births in total instead of 600,000, then the chance of observing 313 or more births in one month or the other is actually about 27%. That is, there’s about a 13.5% chance or January having more than 313 births and a 13.5% chance of it having fewer than 287 births (the rest going to February). However, even if we just up the sample to 6000, the chance of observing more than 3130 births in one month or the other goes down to about 0.05%, while for 600,000 births, the chances of a discrepancy this large is a number so small it has no meaningful interpretation. So, in short, chance alone can’t explain it.
+Okay, let’s work through this idea similarly to the way we did when sampling from the NBA. That is, let us first consider the possibility that these differences are a result of sampling without systematic bias. As before, we need a baseline for comparison. For NBA heights, we needed to compare the distribution to non-NBA males. For hockey birth-months, we need a sense of birth-month distribution in the general population. I won't bother distinguishing male and female births, because I don't have any reason to believe that these occur differently month-by-month.
 
-No, you probably guessed that the length of each month explains most of this effect. But not ALL of it. If every day of the year were equally likely, we can estimate the number of expected births using 3855500/365 = 10563. How many births would we expect in a month that had 30 days? [pause] Well, for months with 31 days, we would expect 31*10563 = 327453 births (rounding), for months with 28 days, 295764. Notice that the difference is large. Notice also, though, that it’s larger than the observed difference, and that each of the observed monthly birth counts are lower than expected. That must mean that some months get MORE births. And indeed this is true. Just look at July-October
+```{r}
+birthsbymonth <- read.csv("data/birthsbymonth2017.txt")
+
+# aggregate by quarter
+birthsbyquarter <- data.frame()
+birthsbyquarter["Q1", "count"] <- birthsbymonth$count %*% c(1,1,1,0,0,0,0,0,0,0,0,0)
+birthsbyquarter["Q2", "count"] <- birthsbymonth$count %*% c(0,0,0,1,1,1,0,0,0,0,0,0)
+birthsbyquarter["Q3", "count"] <- birthsbymonth$count %*% c(0,0,0,0,0,0,1,1,1,0,0,0)
+birthsbyquarter["Q4", "count"] <- birthsbymonth$count %*% c(0,0,0,0,0,0,0,0,0,1,1,1)
+
+# plot(birthsbyquarter$count, main="US Births by Quarter, 2017", xlab="", ylab="", ylim=c(850000,1100000), xaxt="n", las=2)
+# axis(1, at=1:4, labels=c("Q1","Q2","Q3","Q4"))
+
+birthsbyquarter$proportion <- round(birthsbyquarter$count/sum(birthsbyquarter$count),3)
+
+```
+
+From this CDC source (https://www.cdc.gov/nchs/fastats/births.htm), I have produced a table of births by month in the United States from 2017. 
+
+```{r birthmonth-table, echo=FALSE}
+
+kable(birthsbymonth, caption="Births by month (USA, 2017)", booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "striped", 
+                full_width = F) %>%
+  kable_styling(latex_options = c("hold_position"))
+
+```
+
+Let’s concentrate on the number of births and, in particular, on the first four months of the year, January, Feb, March, and April. 
+
+What do you think is the most plausible explanation for the variation in the the number of births in each of these four months?
+
+a. There is chance variation is any random process, such as childbirth
+b. Odd numbered months are more likely to have higher birth numbers
+c. Births are likely to go up and down in month-long cycles 
+d. The number of days in each of the first four months of 2017 (not a leap year) is 31, 28, 31, 30
+
+Consider option (a). While the statement itself is true, the size of the variation between these months is much too large to be explained by chance alone. Sample size is key here! 
+
+If January and February were each equally likely, up to random chance, and we observed only 600 births in total instead of 600,000, then the chance of observing 313 or more births in one month or the other is actually about 27%. That is, there’s about a 13.5% chance of January having more than 313 births and a 13.5% chance of it having fewer than 287 births (the rest of the 600 going to February). However, even if we just up the sample to 6000, the chance of observing more than 3130 births in one month or the other goes down to about 0.05%, while for 600,000 births, the chances of a discrepancy this large is a number so small it has no meaningful interpretation. So, in short, chance alone can’t explain it.
+
+No, you probably guessed that the length of each month explains most of this effect. But not ALL of it. If every day of the year were equally likely, we can estimate the number of expected births per day as `3855500/365 = 10563`. How many births would we expect in a month that had 30 days? Well, for months with 31 days, we would expect `31*10563 = 327453` births (rounding), for months with 28 days, 295764. Notice that the difference is large. Notice also, though, that it is *larger* than the observed difference, and that observed monthly birth counts in January and February are actually lower than expected. That must mean that some other months of the year get MORE births. And indeed this is true. Just look at July-October.
+
+Having examined the data at the month level, we can also combine months, three at a time, into quarters. Here is the quarterly count, as well as the proportion (each quarterly count divided by total).
+
+```{r birthquarter}
+kable(birthsbyquarter, caption="Births by quarter (USA, 2017)", booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = "striped", 
+                full_width = F) %>%
+  kable_styling(latex_options = c("hold_position"))
+
+```
+
+Looking at this, we can see plainly that there are more births in the third quarter of the year (July-Sep) than in the first quarter (Jan-Mar). The proportions in Table \@ref(tab:birthquarter) are what we would expect to see in any collection of people (e.g., professional hockey players) *if they were not systematically selected for birth month*. 
+
+We could understand the NBA players were selected for height, because height offers a competitive advantage in basketball, other things being equal. Why would hockey players be selected for birth month?  The birth-month effect is known as a relative age effect (RAE) and has been replicated in many sports. 
 
 
-
-So, we’ve established that there are more births in the third quarter of the year (July-Sep) than in the first quarter (Jan-Mar). Now that we’ve had a chance to think about what we might expect if there is no bias in birthday months of professional hockey players, it’s time to investigate this in a little more detail.  
-
-Resource: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0057753
 
 
 ## Trans athletes {-}
