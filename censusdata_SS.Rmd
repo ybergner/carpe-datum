@@ -1,0 +1,250 @@
+---
+title: "Getting Census Data"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+```{r, message=FALSE}
+library(censusapi)
+library(dplyr)
+myKey = "6347985e12e867b7c72ed972da2836238502657d"
+```
+
+
+To get census data, you can go to data.census.gov, but be warned. It is a big maze and not that easy to navigate. What the pros do is use the US Census API to make specific requests for data. To do this you need an API key (this is easy enough to get, but you need to [request one here](https://api.census.gov/data/key_signup.html). More importantly, you need to know what you're asking for. That means you need to know which data sets, which variables, which geographic units, etc. A 20-page [API users guide can be found here](https://www.census.gov/content/dam/Census/data/developers/api-user-guide/api-guide.pdf)
+
+### Data Set
+
+We will be interested in the [American Community Survey 5-Year data](https://www.census.gov/data/developers/data-sets/acs-5year.html) which provide estimates aggregated over a 5-year period every two years. The last published data set, i.e., the most current one available, is from 2018.
+
+### Variables
+
+There are something like 20,000 variables available, and these can be requested invidividually or in groups. Some useful groups for our analysis are the following
+
++ B01001	SEX BY AGE	
+  + Keep in mind this has a lot of subcategories, such as Male 5-9 Years, Male 10-14 years, etc.
++ B02001	RACE	
++ B19013	MEDIAN HOUSEHOLD INCOME IN THE PAST 12 MONTHS
+
+For each group, a list of variables can be found on a corresponding website. For example, to find the variables in the SEX BY AGE group, you can go to https://api.census.gov/data/2018/acs/acs5/groups/B01001.html (notice the URL ending is the same as the group). There you will find variables such as
+
++ B01001_002E	Estimate!!Total!!Male
++ B01001_026E	Estimate!!Total!!Female
+
+It turn out you can also query the API to get this information, as we shall see below. In any case, variables that end in E are estimates. For each one there is often a margin of error, which is the same code ending in M instead o E. Finally for both estimates and margins of error, there may be annotations (e.g. B01001_002EA and B01001_002MA), if these numbers are not straightforward. Details about annotation meanings can be found  [here](https://www.census.gov/data/developers/data-sets/acs-1year/notes-on-acs-estimate-and-annotation-values.html).
+
+
++ B01003_001E
+
+### Geography
+
+Census data are available at many levels related to geography. The smallest unit is the census "block"  which typically contains between 600 and 3000 people. A collection of blocks forms a tract. But US states are also divided into counties, and both state and county can be used as identifiers. However, one has to use numberical identifiers. For example, the borough of Brooklyn is actually Kings County, NY, which is county 047 in state 36. And yes, you have to include all three digits, including the leading zero, to identify individual counties. Zip-code tabulation areas is one more option, wherein you specify the five-digit zip code. We will want to use that, because NYC provided COVID-19 testing data at the zip-code level. 
+
+First, let's retrieve some data about the five boroughs. To request the median household income we will request the variable "B19013_001E" (intuitive, right!)
+
+
+```{r echo=TRUE}
+income_boro <- getCensus(name = "acs/acs5",
+vintage = 2018,
+vars = c("NAME", "B19013_001E"),
+region = "county:005,047,061,081,085",
+regionin = "state:36", 
+key = myKey)
+
+income_boro
+```
+There it is, five-year averages, inflation-adjusted for 2018 dollars, by borough. (If you see one-year estimates, they may  be a bit higher than these numbers, if wages went up faster than inflation).
+
+Data from the SEX BY AGE group will be more complicated-looking because this group contains many more variables. In fact, the following API call will have 201 columns, all with names like B01001_047E!
+
+```{r}
+sexByAge_boro <- getCensus(name = "acs/acs5",
+vintage = 2018,
+vars = c("NAME", "group(B01001)"),
+region = "county:005,047,061,081,085",
+regionin = "state:36", 
+key = myKey)
+
+dim(sexByAge_boro)
+```
+
+We'll want to filter this down and rename the variables.
+
+```{r}
+# a list of groups can be found here
+# acs_groups <- listCensusMetadata(name = "acs/acs5", vintage = 2018, type = "groups")
+# head(acs_groups)
+
+# here are the variables in the SEX BY AGE group
+group_B01001 <- listCensusMetadata(name = "acs/acs5",
+vintage = 2018,
+type = "variables",
+group = "B01001")
+head(group_B01001[order(group_B01001$name),], 20)
+
+```
+
+To make the results more readable, we will identify the pattern. First, let's observe the following:
+
+```{r}
+myVars <- paste0("B01001_0",sprintf("%02d", 1:20), "E")
+group_B01001 %>% filter(name %in% myVars) %>% arrange(name)
+
+```
+
+
+We've learned the following. The variable names, after the total, begin with males. First all males, then males by increasing age group. Under 5 years, 5 to 9 years, 10 to 14 years. However, the year breaks are a bit odd. Sometimes they are grouped by 5 years at a time, sometimes 3 years, or two, or even one year. Why? I have no idea.
+
+Maybe we should just look at median age????
+
+```{r}
+medianSexByAge_boro <- getCensus(name = "acs/acs5",
+vintage = 2018,
+vars = c("NAME", "group(B01002)"),
+region = "county:005,047,061,081,085",
+regionin = "state:36", 
+key = myKey)
+
+medianSexByAge_boro
+```
+
+
+
+## Zip-code tabulation area
+
+We're going to want to use zip-code tract areas, and we will get our list from the nyc data
+
+``` {r}
+cases <- read.csv("data/coronavirus-nyc/tests-by-zcta.csv")
+nyc_zipcodes <- cases %>% select(MODZCTA) %>% na.omit() %>% unlist()
+# for the API call, we will want all zipcodes in plain text with comma separation
+nyc_zipcode_string <- paste(nyc_zipcodes, collapse=",")
+
+```
+
+
+```{r}
+zcta_income <- getCensus(name = "acs/acs5",
+vintage = 2018,
+vars = c("NAME", "B19013_001E"),
+region = paste0("zip code tabulation area:",nyc_zipcode_string),
+key=myKey)
+```
+
+```{r}
+View(zcta_income)
+```
+   
+Now, let's get some more information by zip code and save it in a CSV file that we can use.  
+```{r}
+# myVars <- paste0("B01001_0",sprintf("%02d", 1:49), "E")
+# labs <- group_B01001 %>% filter(name %in% myVars) %>% arrange(name) %>% select(name,label)
+
+zcta_data <- getCensus(name = "acs/acs5",
+vintage = 2018,
+vars = c("NAME", "B19013_001E", "B01003_001E", "B02001_001E", "B02001_002E"),
+region = paste0("zip code tabulation area:",nyc_zipcode_string),
+key=myKey)
+
+#update column names
+names(zcta_data)[which(names(zcta_data)=="B19013_001E")] <- "Med_Income"
+names(zcta_data)[which(names(zcta_data)=="B01003_001E")] <- "Population"
+names(zcta_data)[which(names(zcta_data)=="B02001_001E")] <- "Race_Total"
+names(zcta_data)[which(names(zcta_data)=="B02001_002E")] <- "White_Total"
+```
+
+```{r}
+zcta_data <- zcta_data %>% mutate(Prop_White = White_Total/Race_Total,
+                                  Prop_NON_White = 1-(White_Total/Race_Total)) %>%
+  select(zip_code_tabulation_area, Med_Income, Population, Prop_White, Prop_NON_White)
+head(zcta_data)
+```
+  
+In case you want to write this to a new csv file that you can use!
+```{r}
+#write.csv(zcta_data, "census_data_zcta.csv")
+```
+   
+Now, we can replicate some of the maps:  
+```{r, message=FALSE}
+#load additional viz libraries
+library(rgdal)
+library(viridis)
+library(RColorBrewer)
+```
+   
+```{r}
+#read in the shape file for NYC zip codes
+#note: for some reason, a relative file path won't work with readOGR
+filepath <- "/Users/sophiesommer/Desktop/bigquestions-book/Shape_Files/ZIP_CODE_040114.shp"
+NYC_zips <- readOGR(filepath)
+
+#get zipcodes from shape file
+shpcodes <- NYC_zips@data$ZIPCODE %>% as.character %>% as.numeric
+
+#now join these zip codes with the other data
+dat <- data.frame(MODZCTA = shpcodes)
+dat <- dplyr::left_join(dat, cases, by="MODZCTA")
+zcta_data$zip_code_tabulation_area <- as.numeric(zcta_data$zip_code_tabulation_area)
+dat <- dplyr::left_join(dat, zcta_data, 
+                        by = c("MODZCTA" = "zip_code_tabulation_area"))
+#calculate positive rate for tests
+dat <- dat %>% 
+  mutate(posrate =Positive/Population*100)
+
+#create dataset with -.1 inserted for missing values b/c can't plot otherwise
+dat_no_na <- dat
+dat_no_na[is.na(dat)] <- -.1
+```
+
+
+```{r}
+#set up quintiles with an extra category for missing data
+mybreaks <- c(-1, quantile(dat$posrate, probs = seq(0, 1, 0.2), na.rm = T))
+
+#create color palette
+#mycolours <- brewer.pal(length(mybreaks-1), "Blues")
+mycolours <- viridis(length(mybreaks-1))
+mycolours[1] <- "white"
+mycolourscheme <- cut(dat_no_na$posrate, mybreaks) %>%
+  as.numeric()
+mycolourscheme <- mycolours[mycolourscheme]
+
+#plot
+#note: looks better in a quartz window; to do this, need to type quartz() into console:
+#then copy and paste code below into the console as well
+plot(NYC_zips, col = mycolourscheme, 
+     main = "Percent Positive Tests", cex = 10, lwd=0.01)
+levs <- levels(cut(dat$zcta_cum.perc_pos, mybreaks))
+levs[1] <- "No Data"
+legend("topleft", 
+       legend = levs, 
+       fill = mycolours, cex = 0.8, title = "% Pos Tests")
+```
+   
+We could do the same type of plot by race if we were interested and then visually compare the maps:    
+```{r}
+#set up quintiles with an extra category for missing data
+mybreaks <- c(-1, quantile(dat$Prop_NON_White, probs = seq(0, 1, 0.2), na.rm = T))
+
+#create color palette
+#mycolours <- brewer.pal(length(mybreaks-1), "Blues")
+mycolours <- viridis(length(mybreaks-1))
+mycolours[1] <- "white"
+mycolourscheme <- cut(dat_no_na$Prop_NON_White, mybreaks) %>%
+  as.numeric()
+mycolourscheme <- mycolours[mycolourscheme]
+
+#plot
+#note: looks better in a quartz window; to do this, need to type quartz() into console:
+#then copy and paste code below into the console as well
+plot(NYC_zips, col = mycolourscheme, 
+     main = "Percent Positive Tests", cex = 10, lwd=0.01)
+levs <- levels(cut(dat$Prop_NON_White, mybreaks))
+levs[1] <- "No Data"
+legend("topleft", 
+       legend = levs, 
+       fill = mycolours, cex = 0.8, title = "Proportion Non-White")
+```
+
