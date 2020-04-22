@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN">
+<!-- saved from url=(0060)https://api.census.gov/data/2018/acs/acs5/groups/B02001.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Census Data API: /data/2018/acs/acs5/groups/B02001</title>
+
+<meta name="DC.title" content="Census Data API: /data/2018/acs/acs5/groups/B02001">
+<meta name="DC.creator" content="Your friendly API robotic overlord">
+<meta name="DC.description" content="Census Data API: /data/2018/acs/acs5/groups/B02001">
+<meta name="DC.date.created" scheme="ISO8601" content="2011-11-28">
+<meta name="DC.date.reviewed" scheme="ISO8601" content="2020-01-31">
+<meta name="DC.language" scheme="DCTERMS.RFC1766" content="EN-US">
+<meta name="description" content="Census Data API: /data/2018/acs/acs5/groups/B02001">
+<style type="text/css">
+                    table {
+                        counter-reset: counter1 0;
+                        border: thin solid;
+                        border-collapse: collapse;
+                        width:100%;
+                        margin: 2em 0;
+                    }
+
+                    tfoot tr {
+                        border-top: double;
+                    }
+
+                    tfoot tr td {
+                        font-style: italic;
+                        padding-top: 1em;
+                        text-align: center;
+                        vertical-align: bottom;
+                    }
+
+                    th {
+                        vertical-align: bottom;
+                        background: #ACCCFF;
+                    }
+
+                    th, td {
+                        text-align: left;
+                        border: thin solid;
+                        padding: 0.2em;
+                    }
+
+                    caption {
+                        font-style: italic;
+                        padding: 1em;
+                    }
+
+                    tr:nth-child(even) {background: #CCC}
+                    tr:nth-child(odd) {background: #FFF}
+
+                    .hier-sep {
+                        font-style: italic;
+                        font-family: monospace;
+                    }
+
+                    .none, .na { font-style: italic }
+					.geo-level-id {
+						text-align: right;
+						padding-right: 1em;
+						width: 3em;
+						//font-size: smaller;
+					}
+
+                    .tagquery tr td { vertical-align: top }
+
+                    .counter1:before {
+                        counter-increment: counter1;
+                        content: counter(counter1);
+                    }
+
+                </style>
+                
+                
+<script data-dapp-detection="">
+(function() {
+  let alreadyInsertedMetaTag = false
+
+  function __insertDappDetected() {
+    if (!alreadyInsertedMetaTag) {
+      const meta = document.createElement('meta')
+      meta.name = 'dapp-detected'
+      document.head.appendChild(meta)
+      alreadyInsertedMetaTag = true
+    }
+  }
+
+  if (window.hasOwnProperty('web3')) {
+    // Note a closure can't be used for this var because some sites like
+    // www.wnyc.org do a second script execution via eval for some reason.
+    window.__disableDappDetectionInsertion = true
+    // Likely oldWeb3 is undefined and it has a property only because
+    // we defined it. Some sites like wnyc.org are evaling all scripts
+    // that exist again, so this is protection against multiple calls.
+    if (window.web3 === undefined) {
+      return
+    }
+    __insertDappDetected()
+  } else {
+    var oldWeb3 = window.web3
+    Object.defineProperty(window, 'web3', {
+      configurable: true,
+      set: function (val) {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        oldWeb3 = val
+      },
+      get: function () {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        return oldWeb3
+      }
+    })
+  }
+})()</script></head>
+<body>
+<table>
+<caption>Census Data API: Variables in /data/2018/acs/acs5/groups/B02001</caption>
+<!--api:var /data/2018/acs/acs5/groups-->
+<thead>
+<tr>
+<th>Name</th><th>Label</th><th>Concept</th><th>Required</th><th>Attributes</th><th>Limit</th><th>Predicate Type</th><th>Group</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td colspan="9">40 variables</td>
+</tr>
+</tfoot>
+<tbody>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_001E.json" name="B02001_001E">B02001_001E</a></td><td>Estimate!!Total</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_001EA.json" name="B02001_001EA">B02001_001EA</a></td><td>Annotation of Estimate!!Total</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_001M.json" name="B02001_001M">B02001_001M</a></td><td>Margin of Error!!Total</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_001MA.json" name="B02001_001MA">B02001_001MA</a></td><td>Annotation of Margin of Error!!Total</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_002E.json" name="B02001_002E">B02001_002E</a></td><td>Estimate!!Total!!White alone</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_002EA.json" name="B02001_002EA">B02001_002EA</a></td><td>Annotation of Estimate!!Total!!White alone</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_002M.json" name="B02001_002M">B02001_002M</a></td><td>Margin of Error!!Total!!White alone</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_002MA.json" name="B02001_002MA">B02001_002MA</a></td><td>Annotation of Margin of Error!!Total!!White alone</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_003E.json" name="B02001_003E">B02001_003E</a></td><td>Estimate!!Total!!Black or African American alone</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_003EA.json" name="B02001_003EA">B02001_003EA</a></td><td>Annotation of Estimate!!Total!!Black or African American alone</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_003M.json" name="B02001_003M">B02001_003M</a></td><td>Margin of Error!!Total!!Black or African American alone</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_003MA.json" name="B02001_003MA">B02001_003MA</a></td><td>Annotation of Margin of Error!!Total!!Black or African American alone</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_004E.json" name="B02001_004E">B02001_004E</a></td><td>Estimate!!Total!!American Indian and Alaska Native alone</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_004EA.json" name="B02001_004EA">B02001_004EA</a></td><td>Annotation of Estimate!!Total!!American Indian and Alaska Native alone</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_004M.json" name="B02001_004M">B02001_004M</a></td><td>Margin of Error!!Total!!American Indian and Alaska Native alone</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_004MA.json" name="B02001_004MA">B02001_004MA</a></td><td>Annotation of Margin of Error!!Total!!American Indian and Alaska Native alone</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_005E.json" name="B02001_005E">B02001_005E</a></td><td>Estimate!!Total!!Asian alone</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_005EA.json" name="B02001_005EA">B02001_005EA</a></td><td>Annotation of Estimate!!Total!!Asian alone</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_005M.json" name="B02001_005M">B02001_005M</a></td><td>Margin of Error!!Total!!Asian alone</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_005MA.json" name="B02001_005MA">B02001_005MA</a></td><td>Annotation of Margin of Error!!Total!!Asian alone</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_006E.json" name="B02001_006E">B02001_006E</a></td><td>Estimate!!Total!!Native Hawaiian and Other Pacific Islander alone</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_006EA.json" name="B02001_006EA">B02001_006EA</a></td><td>Annotation of Estimate!!Total!!Native Hawaiian and Other Pacific Islander alone</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_006M.json" name="B02001_006M">B02001_006M</a></td><td>Margin of Error!!Total!!Native Hawaiian and Other Pacific Islander alone</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_006MA.json" name="B02001_006MA">B02001_006MA</a></td><td>Annotation of Margin of Error!!Total!!Native Hawaiian and Other Pacific Islander alone</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_007E.json" name="B02001_007E">B02001_007E</a></td><td>Estimate!!Total!!Some other race alone</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_007EA.json" name="B02001_007EA">B02001_007EA</a></td><td>Annotation of Estimate!!Total!!Some other race alone</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_007M.json" name="B02001_007M">B02001_007M</a></td><td>Margin of Error!!Total!!Some other race alone</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_007MA.json" name="B02001_007MA">B02001_007MA</a></td><td>Annotation of Margin of Error!!Total!!Some other race alone</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_008E.json" name="B02001_008E">B02001_008E</a></td><td>Estimate!!Total!!Two or more races</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_008EA.json" name="B02001_008EA">B02001_008EA</a></td><td>Annotation of Estimate!!Total!!Two or more races</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_008M.json" name="B02001_008M">B02001_008M</a></td><td>Margin of Error!!Total!!Two or more races</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_008MA.json" name="B02001_008MA">B02001_008MA</a></td><td>Annotation of Margin of Error!!Total!!Two or more races</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_009E.json" name="B02001_009E">B02001_009E</a></td><td>Estimate!!Total!!Two or more races!!Two races including Some other race</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_009EA.json" name="B02001_009EA">B02001_009EA</a></td><td>Annotation of Estimate!!Total!!Two or more races!!Two races including Some other race</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_009M.json" name="B02001_009M">B02001_009M</a></td><td>Margin of Error!!Total!!Two or more races!!Two races including Some other race</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_009MA.json" name="B02001_009MA">B02001_009MA</a></td><td>Annotation of Margin of Error!!Total!!Two or more races!!Two races including Some other race</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_010E.json" name="B02001_010E">B02001_010E</a></td><td>Estimate!!Total!!Two or more races!!Two races excluding Some other race, and three or more races</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_010EA.json" name="B02001_010EA">B02001_010EA</a></td><td>Annotation of Estimate!!Total!!Two or more races!!Two races excluding Some other race, and three or more races</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_010M.json" name="B02001_010M">B02001_010M</a></td><td>Margin of Error!!Total!!Two or more races!!Two races excluding Some other race, and three or more races</td><td>RACE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B02001_010MA.json" name="B02001_010MA">B02001_010MA</a></td><td>Annotation of Margin of Error!!Total!!Two or more races!!Two races excluding Some other race, and three or more races</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B02001.html">B02001</a></td>
+</tr>
+</tbody>
+</table>
+
+
+</body></html>

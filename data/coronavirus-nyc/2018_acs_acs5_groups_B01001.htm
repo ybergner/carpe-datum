@@ -1,0 +1,724 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN">
+<!-- saved from url=(0060)https://api.census.gov/data/2018/acs/acs5/groups/B01001.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Census Data API: /data/2018/acs/acs5/groups/B01001</title>
+
+<meta name="DC.title" content="Census Data API: /data/2018/acs/acs5/groups/B01001">
+<meta name="DC.creator" content="Your friendly API robotic overlord">
+<meta name="DC.description" content="Census Data API: /data/2018/acs/acs5/groups/B01001">
+<meta name="DC.date.created" scheme="ISO8601" content="2011-11-28">
+<meta name="DC.date.reviewed" scheme="ISO8601" content="2020-01-31">
+<meta name="DC.language" scheme="DCTERMS.RFC1766" content="EN-US">
+<meta name="description" content="Census Data API: /data/2018/acs/acs5/groups/B01001">
+<style type="text/css">
+                    table {
+                        counter-reset: counter1 0;
+                        border: thin solid;
+                        border-collapse: collapse;
+                        width:100%;
+                        margin: 2em 0;
+                    }
+
+                    tfoot tr {
+                        border-top: double;
+                    }
+
+                    tfoot tr td {
+                        font-style: italic;
+                        padding-top: 1em;
+                        text-align: center;
+                        vertical-align: bottom;
+                    }
+
+                    th {
+                        vertical-align: bottom;
+                        background: #ACCCFF;
+                    }
+
+                    th, td {
+                        text-align: left;
+                        border: thin solid;
+                        padding: 0.2em;
+                    }
+
+                    caption {
+                        font-style: italic;
+                        padding: 1em;
+                    }
+
+                    tr:nth-child(even) {background: #CCC}
+                    tr:nth-child(odd) {background: #FFF}
+
+                    .hier-sep {
+                        font-style: italic;
+                        font-family: monospace;
+                    }
+
+                    .none, .na { font-style: italic }
+					.geo-level-id {
+						text-align: right;
+						padding-right: 1em;
+						width: 3em;
+						//font-size: smaller;
+					}
+
+                    .tagquery tr td { vertical-align: top }
+
+                    .counter1:before {
+                        counter-increment: counter1;
+                        content: counter(counter1);
+                    }
+
+                </style>
+                
+                
+<script data-dapp-detection="">
+(function() {
+  let alreadyInsertedMetaTag = false
+
+  function __insertDappDetected() {
+    if (!alreadyInsertedMetaTag) {
+      const meta = document.createElement('meta')
+      meta.name = 'dapp-detected'
+      document.head.appendChild(meta)
+      alreadyInsertedMetaTag = true
+    }
+  }
+
+  if (window.hasOwnProperty('web3')) {
+    // Note a closure can't be used for this var because some sites like
+    // www.wnyc.org do a second script execution via eval for some reason.
+    window.__disableDappDetectionInsertion = true
+    // Likely oldWeb3 is undefined and it has a property only because
+    // we defined it. Some sites like wnyc.org are evaling all scripts
+    // that exist again, so this is protection against multiple calls.
+    if (window.web3 === undefined) {
+      return
+    }
+    __insertDappDetected()
+  } else {
+    var oldWeb3 = window.web3
+    Object.defineProperty(window, 'web3', {
+      configurable: true,
+      set: function (val) {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        oldWeb3 = val
+      },
+      get: function () {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        return oldWeb3
+      }
+    })
+  }
+})()</script></head>
+<body>
+<table>
+<caption>Census Data API: Variables in /data/2018/acs/acs5/groups/B01001</caption>
+<!--api:var /data/2018/acs/acs5/groups-->
+<thead>
+<tr>
+<th>Name</th><th>Label</th><th>Concept</th><th>Required</th><th>Attributes</th><th>Limit</th><th>Predicate Type</th><th>Group</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td colspan="9">196 variables</td>
+</tr>
+</tfoot>
+<tbody>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_001E.json" name="B01001_001E">B01001_001E</a></td><td>Estimate!!Total</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_001EA.json" name="B01001_001EA">B01001_001EA</a></td><td>Annotation of Estimate!!Total</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_001M.json" name="B01001_001M">B01001_001M</a></td><td>Margin of Error!!Total</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_001MA.json" name="B01001_001MA">B01001_001MA</a></td><td>Annotation of Margin of Error!!Total</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_002E.json" name="B01001_002E">B01001_002E</a></td><td>Estimate!!Total!!Male</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_002EA.json" name="B01001_002EA">B01001_002EA</a></td><td>Annotation of Estimate!!Total!!Male</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_002M.json" name="B01001_002M">B01001_002M</a></td><td>Margin of Error!!Total!!Male</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_002MA.json" name="B01001_002MA">B01001_002MA</a></td><td>Annotation of Margin of Error!!Total!!Male</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_003E.json" name="B01001_003E">B01001_003E</a></td><td>Estimate!!Total!!Male!!Under 5 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_003EA.json" name="B01001_003EA">B01001_003EA</a></td><td>Annotation of Estimate!!Total!!Male!!Under 5 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_003M.json" name="B01001_003M">B01001_003M</a></td><td>Margin of Error!!Total!!Male!!Under 5 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_003MA.json" name="B01001_003MA">B01001_003MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!Under 5 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_004E.json" name="B01001_004E">B01001_004E</a></td><td>Estimate!!Total!!Male!!5 to 9 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_004EA.json" name="B01001_004EA">B01001_004EA</a></td><td>Annotation of Estimate!!Total!!Male!!5 to 9 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_004M.json" name="B01001_004M">B01001_004M</a></td><td>Margin of Error!!Total!!Male!!5 to 9 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_004MA.json" name="B01001_004MA">B01001_004MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!5 to 9 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_005E.json" name="B01001_005E">B01001_005E</a></td><td>Estimate!!Total!!Male!!10 to 14 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_005EA.json" name="B01001_005EA">B01001_005EA</a></td><td>Annotation of Estimate!!Total!!Male!!10 to 14 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_005M.json" name="B01001_005M">B01001_005M</a></td><td>Margin of Error!!Total!!Male!!10 to 14 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_005MA.json" name="B01001_005MA">B01001_005MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!10 to 14 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_006E.json" name="B01001_006E">B01001_006E</a></td><td>Estimate!!Total!!Male!!15 to 17 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_006EA.json" name="B01001_006EA">B01001_006EA</a></td><td>Annotation of Estimate!!Total!!Male!!15 to 17 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_006M.json" name="B01001_006M">B01001_006M</a></td><td>Margin of Error!!Total!!Male!!15 to 17 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_006MA.json" name="B01001_006MA">B01001_006MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!15 to 17 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_007E.json" name="B01001_007E">B01001_007E</a></td><td>Estimate!!Total!!Male!!18 and 19 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_007EA.json" name="B01001_007EA">B01001_007EA</a></td><td>Annotation of Estimate!!Total!!Male!!18 and 19 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_007M.json" name="B01001_007M">B01001_007M</a></td><td>Margin of Error!!Total!!Male!!18 and 19 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_007MA.json" name="B01001_007MA">B01001_007MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!18 and 19 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_008E.json" name="B01001_008E">B01001_008E</a></td><td>Estimate!!Total!!Male!!20 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_008EA.json" name="B01001_008EA">B01001_008EA</a></td><td>Annotation of Estimate!!Total!!Male!!20 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_008M.json" name="B01001_008M">B01001_008M</a></td><td>Margin of Error!!Total!!Male!!20 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_008MA.json" name="B01001_008MA">B01001_008MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!20 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_009E.json" name="B01001_009E">B01001_009E</a></td><td>Estimate!!Total!!Male!!21 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_009EA.json" name="B01001_009EA">B01001_009EA</a></td><td>Annotation of Estimate!!Total!!Male!!21 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_009M.json" name="B01001_009M">B01001_009M</a></td><td>Margin of Error!!Total!!Male!!21 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_009MA.json" name="B01001_009MA">B01001_009MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!21 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_010E.json" name="B01001_010E">B01001_010E</a></td><td>Estimate!!Total!!Male!!22 to 24 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_010EA.json" name="B01001_010EA">B01001_010EA</a></td><td>Annotation of Estimate!!Total!!Male!!22 to 24 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_010M.json" name="B01001_010M">B01001_010M</a></td><td>Margin of Error!!Total!!Male!!22 to 24 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_010MA.json" name="B01001_010MA">B01001_010MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!22 to 24 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_011E.json" name="B01001_011E">B01001_011E</a></td><td>Estimate!!Total!!Male!!25 to 29 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_011EA.json" name="B01001_011EA">B01001_011EA</a></td><td>Annotation of Estimate!!Total!!Male!!25 to 29 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_011M.json" name="B01001_011M">B01001_011M</a></td><td>Margin of Error!!Total!!Male!!25 to 29 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_011MA.json" name="B01001_011MA">B01001_011MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!25 to 29 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_012E.json" name="B01001_012E">B01001_012E</a></td><td>Estimate!!Total!!Male!!30 to 34 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_012EA.json" name="B01001_012EA">B01001_012EA</a></td><td>Annotation of Estimate!!Total!!Male!!30 to 34 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_012M.json" name="B01001_012M">B01001_012M</a></td><td>Margin of Error!!Total!!Male!!30 to 34 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_012MA.json" name="B01001_012MA">B01001_012MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!30 to 34 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_013E.json" name="B01001_013E">B01001_013E</a></td><td>Estimate!!Total!!Male!!35 to 39 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_013EA.json" name="B01001_013EA">B01001_013EA</a></td><td>Annotation of Estimate!!Total!!Male!!35 to 39 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_013M.json" name="B01001_013M">B01001_013M</a></td><td>Margin of Error!!Total!!Male!!35 to 39 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_013MA.json" name="B01001_013MA">B01001_013MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!35 to 39 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_014E.json" name="B01001_014E">B01001_014E</a></td><td>Estimate!!Total!!Male!!40 to 44 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_014EA.json" name="B01001_014EA">B01001_014EA</a></td><td>Annotation of Estimate!!Total!!Male!!40 to 44 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_014M.json" name="B01001_014M">B01001_014M</a></td><td>Margin of Error!!Total!!Male!!40 to 44 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_014MA.json" name="B01001_014MA">B01001_014MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!40 to 44 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_015E.json" name="B01001_015E">B01001_015E</a></td><td>Estimate!!Total!!Male!!45 to 49 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_015EA.json" name="B01001_015EA">B01001_015EA</a></td><td>Annotation of Estimate!!Total!!Male!!45 to 49 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_015M.json" name="B01001_015M">B01001_015M</a></td><td>Margin of Error!!Total!!Male!!45 to 49 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_015MA.json" name="B01001_015MA">B01001_015MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!45 to 49 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_016E.json" name="B01001_016E">B01001_016E</a></td><td>Estimate!!Total!!Male!!50 to 54 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_016EA.json" name="B01001_016EA">B01001_016EA</a></td><td>Annotation of Estimate!!Total!!Male!!50 to 54 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_016M.json" name="B01001_016M">B01001_016M</a></td><td>Margin of Error!!Total!!Male!!50 to 54 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_016MA.json" name="B01001_016MA">B01001_016MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!50 to 54 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_017E.json" name="B01001_017E">B01001_017E</a></td><td>Estimate!!Total!!Male!!55 to 59 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_017EA.json" name="B01001_017EA">B01001_017EA</a></td><td>Annotation of Estimate!!Total!!Male!!55 to 59 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_017M.json" name="B01001_017M">B01001_017M</a></td><td>Margin of Error!!Total!!Male!!55 to 59 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_017MA.json" name="B01001_017MA">B01001_017MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!55 to 59 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_018E.json" name="B01001_018E">B01001_018E</a></td><td>Estimate!!Total!!Male!!60 and 61 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_018EA.json" name="B01001_018EA">B01001_018EA</a></td><td>Annotation of Estimate!!Total!!Male!!60 and 61 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_018M.json" name="B01001_018M">B01001_018M</a></td><td>Margin of Error!!Total!!Male!!60 and 61 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_018MA.json" name="B01001_018MA">B01001_018MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!60 and 61 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_019E.json" name="B01001_019E">B01001_019E</a></td><td>Estimate!!Total!!Male!!62 to 64 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_019EA.json" name="B01001_019EA">B01001_019EA</a></td><td>Annotation of Estimate!!Total!!Male!!62 to 64 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_019M.json" name="B01001_019M">B01001_019M</a></td><td>Margin of Error!!Total!!Male!!62 to 64 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_019MA.json" name="B01001_019MA">B01001_019MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!62 to 64 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_020E.json" name="B01001_020E">B01001_020E</a></td><td>Estimate!!Total!!Male!!65 and 66 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_020EA.json" name="B01001_020EA">B01001_020EA</a></td><td>Annotation of Estimate!!Total!!Male!!65 and 66 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_020M.json" name="B01001_020M">B01001_020M</a></td><td>Margin of Error!!Total!!Male!!65 and 66 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_020MA.json" name="B01001_020MA">B01001_020MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!65 and 66 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_021E.json" name="B01001_021E">B01001_021E</a></td><td>Estimate!!Total!!Male!!67 to 69 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_021EA.json" name="B01001_021EA">B01001_021EA</a></td><td>Annotation of Estimate!!Total!!Male!!67 to 69 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_021M.json" name="B01001_021M">B01001_021M</a></td><td>Margin of Error!!Total!!Male!!67 to 69 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_021MA.json" name="B01001_021MA">B01001_021MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!67 to 69 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_022E.json" name="B01001_022E">B01001_022E</a></td><td>Estimate!!Total!!Male!!70 to 74 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_022EA.json" name="B01001_022EA">B01001_022EA</a></td><td>Annotation of Estimate!!Total!!Male!!70 to 74 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_022M.json" name="B01001_022M">B01001_022M</a></td><td>Margin of Error!!Total!!Male!!70 to 74 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_022MA.json" name="B01001_022MA">B01001_022MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!70 to 74 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_023E.json" name="B01001_023E">B01001_023E</a></td><td>Estimate!!Total!!Male!!75 to 79 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_023EA.json" name="B01001_023EA">B01001_023EA</a></td><td>Annotation of Estimate!!Total!!Male!!75 to 79 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_023M.json" name="B01001_023M">B01001_023M</a></td><td>Margin of Error!!Total!!Male!!75 to 79 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_023MA.json" name="B01001_023MA">B01001_023MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!75 to 79 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_024E.json" name="B01001_024E">B01001_024E</a></td><td>Estimate!!Total!!Male!!80 to 84 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_024EA.json" name="B01001_024EA">B01001_024EA</a></td><td>Annotation of Estimate!!Total!!Male!!80 to 84 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_024M.json" name="B01001_024M">B01001_024M</a></td><td>Margin of Error!!Total!!Male!!80 to 84 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_024MA.json" name="B01001_024MA">B01001_024MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!80 to 84 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_025E.json" name="B01001_025E">B01001_025E</a></td><td>Estimate!!Total!!Male!!85 years and over</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_025EA.json" name="B01001_025EA">B01001_025EA</a></td><td>Annotation of Estimate!!Total!!Male!!85 years and over</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_025M.json" name="B01001_025M">B01001_025M</a></td><td>Margin of Error!!Total!!Male!!85 years and over</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_025MA.json" name="B01001_025MA">B01001_025MA</a></td><td>Annotation of Margin of Error!!Total!!Male!!85 years and over</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_026E.json" name="B01001_026E">B01001_026E</a></td><td>Estimate!!Total!!Female</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_026EA.json" name="B01001_026EA">B01001_026EA</a></td><td>Annotation of Estimate!!Total!!Female</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_026M.json" name="B01001_026M">B01001_026M</a></td><td>Margin of Error!!Total!!Female</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_026MA.json" name="B01001_026MA">B01001_026MA</a></td><td>Annotation of Margin of Error!!Total!!Female</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_027E.json" name="B01001_027E">B01001_027E</a></td><td>Estimate!!Total!!Female!!Under 5 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_027EA.json" name="B01001_027EA">B01001_027EA</a></td><td>Annotation of Estimate!!Total!!Female!!Under 5 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_027M.json" name="B01001_027M">B01001_027M</a></td><td>Margin of Error!!Total!!Female!!Under 5 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_027MA.json" name="B01001_027MA">B01001_027MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!Under 5 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_028E.json" name="B01001_028E">B01001_028E</a></td><td>Estimate!!Total!!Female!!5 to 9 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_028EA.json" name="B01001_028EA">B01001_028EA</a></td><td>Annotation of Estimate!!Total!!Female!!5 to 9 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_028M.json" name="B01001_028M">B01001_028M</a></td><td>Margin of Error!!Total!!Female!!5 to 9 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_028MA.json" name="B01001_028MA">B01001_028MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!5 to 9 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_029E.json" name="B01001_029E">B01001_029E</a></td><td>Estimate!!Total!!Female!!10 to 14 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_029EA.json" name="B01001_029EA">B01001_029EA</a></td><td>Annotation of Estimate!!Total!!Female!!10 to 14 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_029M.json" name="B01001_029M">B01001_029M</a></td><td>Margin of Error!!Total!!Female!!10 to 14 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_029MA.json" name="B01001_029MA">B01001_029MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!10 to 14 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_030E.json" name="B01001_030E">B01001_030E</a></td><td>Estimate!!Total!!Female!!15 to 17 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_030EA.json" name="B01001_030EA">B01001_030EA</a></td><td>Annotation of Estimate!!Total!!Female!!15 to 17 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_030M.json" name="B01001_030M">B01001_030M</a></td><td>Margin of Error!!Total!!Female!!15 to 17 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_030MA.json" name="B01001_030MA">B01001_030MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!15 to 17 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_031E.json" name="B01001_031E">B01001_031E</a></td><td>Estimate!!Total!!Female!!18 and 19 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_031EA.json" name="B01001_031EA">B01001_031EA</a></td><td>Annotation of Estimate!!Total!!Female!!18 and 19 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_031M.json" name="B01001_031M">B01001_031M</a></td><td>Margin of Error!!Total!!Female!!18 and 19 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_031MA.json" name="B01001_031MA">B01001_031MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!18 and 19 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_032E.json" name="B01001_032E">B01001_032E</a></td><td>Estimate!!Total!!Female!!20 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_032EA.json" name="B01001_032EA">B01001_032EA</a></td><td>Annotation of Estimate!!Total!!Female!!20 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_032M.json" name="B01001_032M">B01001_032M</a></td><td>Margin of Error!!Total!!Female!!20 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_032MA.json" name="B01001_032MA">B01001_032MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!20 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_033E.json" name="B01001_033E">B01001_033E</a></td><td>Estimate!!Total!!Female!!21 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_033EA.json" name="B01001_033EA">B01001_033EA</a></td><td>Annotation of Estimate!!Total!!Female!!21 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_033M.json" name="B01001_033M">B01001_033M</a></td><td>Margin of Error!!Total!!Female!!21 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_033MA.json" name="B01001_033MA">B01001_033MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!21 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_034E.json" name="B01001_034E">B01001_034E</a></td><td>Estimate!!Total!!Female!!22 to 24 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_034EA.json" name="B01001_034EA">B01001_034EA</a></td><td>Annotation of Estimate!!Total!!Female!!22 to 24 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_034M.json" name="B01001_034M">B01001_034M</a></td><td>Margin of Error!!Total!!Female!!22 to 24 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_034MA.json" name="B01001_034MA">B01001_034MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!22 to 24 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_035E.json" name="B01001_035E">B01001_035E</a></td><td>Estimate!!Total!!Female!!25 to 29 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_035EA.json" name="B01001_035EA">B01001_035EA</a></td><td>Annotation of Estimate!!Total!!Female!!25 to 29 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_035M.json" name="B01001_035M">B01001_035M</a></td><td>Margin of Error!!Total!!Female!!25 to 29 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_035MA.json" name="B01001_035MA">B01001_035MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!25 to 29 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_036E.json" name="B01001_036E">B01001_036E</a></td><td>Estimate!!Total!!Female!!30 to 34 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_036EA.json" name="B01001_036EA">B01001_036EA</a></td><td>Annotation of Estimate!!Total!!Female!!30 to 34 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_036M.json" name="B01001_036M">B01001_036M</a></td><td>Margin of Error!!Total!!Female!!30 to 34 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_036MA.json" name="B01001_036MA">B01001_036MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!30 to 34 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_037E.json" name="B01001_037E">B01001_037E</a></td><td>Estimate!!Total!!Female!!35 to 39 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_037EA.json" name="B01001_037EA">B01001_037EA</a></td><td>Annotation of Estimate!!Total!!Female!!35 to 39 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_037M.json" name="B01001_037M">B01001_037M</a></td><td>Margin of Error!!Total!!Female!!35 to 39 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_037MA.json" name="B01001_037MA">B01001_037MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!35 to 39 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_038E.json" name="B01001_038E">B01001_038E</a></td><td>Estimate!!Total!!Female!!40 to 44 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_038EA.json" name="B01001_038EA">B01001_038EA</a></td><td>Annotation of Estimate!!Total!!Female!!40 to 44 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_038M.json" name="B01001_038M">B01001_038M</a></td><td>Margin of Error!!Total!!Female!!40 to 44 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_038MA.json" name="B01001_038MA">B01001_038MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!40 to 44 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_039E.json" name="B01001_039E">B01001_039E</a></td><td>Estimate!!Total!!Female!!45 to 49 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_039EA.json" name="B01001_039EA">B01001_039EA</a></td><td>Annotation of Estimate!!Total!!Female!!45 to 49 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_039M.json" name="B01001_039M">B01001_039M</a></td><td>Margin of Error!!Total!!Female!!45 to 49 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_039MA.json" name="B01001_039MA">B01001_039MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!45 to 49 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_040E.json" name="B01001_040E">B01001_040E</a></td><td>Estimate!!Total!!Female!!50 to 54 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_040EA.json" name="B01001_040EA">B01001_040EA</a></td><td>Annotation of Estimate!!Total!!Female!!50 to 54 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_040M.json" name="B01001_040M">B01001_040M</a></td><td>Margin of Error!!Total!!Female!!50 to 54 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_040MA.json" name="B01001_040MA">B01001_040MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!50 to 54 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_041E.json" name="B01001_041E">B01001_041E</a></td><td>Estimate!!Total!!Female!!55 to 59 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_041EA.json" name="B01001_041EA">B01001_041EA</a></td><td>Annotation of Estimate!!Total!!Female!!55 to 59 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_041M.json" name="B01001_041M">B01001_041M</a></td><td>Margin of Error!!Total!!Female!!55 to 59 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_041MA.json" name="B01001_041MA">B01001_041MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!55 to 59 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_042E.json" name="B01001_042E">B01001_042E</a></td><td>Estimate!!Total!!Female!!60 and 61 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_042EA.json" name="B01001_042EA">B01001_042EA</a></td><td>Annotation of Estimate!!Total!!Female!!60 and 61 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_042M.json" name="B01001_042M">B01001_042M</a></td><td>Margin of Error!!Total!!Female!!60 and 61 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_042MA.json" name="B01001_042MA">B01001_042MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!60 and 61 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_043E.json" name="B01001_043E">B01001_043E</a></td><td>Estimate!!Total!!Female!!62 to 64 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_043EA.json" name="B01001_043EA">B01001_043EA</a></td><td>Annotation of Estimate!!Total!!Female!!62 to 64 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_043M.json" name="B01001_043M">B01001_043M</a></td><td>Margin of Error!!Total!!Female!!62 to 64 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_043MA.json" name="B01001_043MA">B01001_043MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!62 to 64 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_044E.json" name="B01001_044E">B01001_044E</a></td><td>Estimate!!Total!!Female!!65 and 66 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_044EA.json" name="B01001_044EA">B01001_044EA</a></td><td>Annotation of Estimate!!Total!!Female!!65 and 66 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_044M.json" name="B01001_044M">B01001_044M</a></td><td>Margin of Error!!Total!!Female!!65 and 66 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_044MA.json" name="B01001_044MA">B01001_044MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!65 and 66 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_045E.json" name="B01001_045E">B01001_045E</a></td><td>Estimate!!Total!!Female!!67 to 69 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_045EA.json" name="B01001_045EA">B01001_045EA</a></td><td>Annotation of Estimate!!Total!!Female!!67 to 69 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_045M.json" name="B01001_045M">B01001_045M</a></td><td>Margin of Error!!Total!!Female!!67 to 69 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_045MA.json" name="B01001_045MA">B01001_045MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!67 to 69 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_046E.json" name="B01001_046E">B01001_046E</a></td><td>Estimate!!Total!!Female!!70 to 74 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_046EA.json" name="B01001_046EA">B01001_046EA</a></td><td>Annotation of Estimate!!Total!!Female!!70 to 74 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_046M.json" name="B01001_046M">B01001_046M</a></td><td>Margin of Error!!Total!!Female!!70 to 74 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_046MA.json" name="B01001_046MA">B01001_046MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!70 to 74 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_047E.json" name="B01001_047E">B01001_047E</a></td><td>Estimate!!Total!!Female!!75 to 79 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_047EA.json" name="B01001_047EA">B01001_047EA</a></td><td>Annotation of Estimate!!Total!!Female!!75 to 79 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_047M.json" name="B01001_047M">B01001_047M</a></td><td>Margin of Error!!Total!!Female!!75 to 79 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_047MA.json" name="B01001_047MA">B01001_047MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!75 to 79 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_048E.json" name="B01001_048E">B01001_048E</a></td><td>Estimate!!Total!!Female!!80 to 84 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_048EA.json" name="B01001_048EA">B01001_048EA</a></td><td>Annotation of Estimate!!Total!!Female!!80 to 84 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_048M.json" name="B01001_048M">B01001_048M</a></td><td>Margin of Error!!Total!!Female!!80 to 84 years</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_048MA.json" name="B01001_048MA">B01001_048MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!80 to 84 years</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_049E.json" name="B01001_049E">B01001_049E</a></td><td>Estimate!!Total!!Female!!85 years and over</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_049EA.json" name="B01001_049EA">B01001_049EA</a></td><td>Annotation of Estimate!!Total!!Female!!85 years and over</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_049M.json" name="B01001_049M">B01001_049M</a></td><td>Margin of Error!!Total!!Female!!85 years and over</td><td>SEX BY AGE</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B01001_049MA.json" name="B01001_049MA">B01001_049MA</a></td><td>Annotation of Margin of Error!!Total!!Female!!85 years and over</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html">B01001</a></td>
+</tr>
+</tbody>
+</table>
+
+
+</body></html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN">
+<!-- saved from url=(0060)https://api.census.gov/data/2018/acs/acs5/groups/B19013.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Census Data API: /data/2018/acs/acs5/groups/B19013</title>
+
+<meta name="DC.title" content="Census Data API: /data/2018/acs/acs5/groups/B19013">
+<meta name="DC.creator" content="Your friendly API robotic overlord">
+<meta name="DC.description" content="Census Data API: /data/2018/acs/acs5/groups/B19013">
+<meta name="DC.date.created" scheme="ISO8601" content="2011-11-28">
+<meta name="DC.date.reviewed" scheme="ISO8601" content="2020-01-31">
+<meta name="DC.language" scheme="DCTERMS.RFC1766" content="EN-US">
+<meta name="description" content="Census Data API: /data/2018/acs/acs5/groups/B19013">
+<style type="text/css">
+                    table {
+                        counter-reset: counter1 0;
+                        border: thin solid;
+                        border-collapse: collapse;
+                        width:100%;
+                        margin: 2em 0;
+                    }
+
+                    tfoot tr {
+                        border-top: double;
+                    }
+
+                    tfoot tr td {
+                        font-style: italic;
+                        padding-top: 1em;
+                        text-align: center;
+                        vertical-align: bottom;
+                    }
+
+                    th {
+                        vertical-align: bottom;
+                        background: #ACCCFF;
+                    }
+
+                    th, td {
+                        text-align: left;
+                        border: thin solid;
+                        padding: 0.2em;
+                    }
+
+                    caption {
+                        font-style: italic;
+                        padding: 1em;
+                    }
+
+                    tr:nth-child(even) {background: #CCC}
+                    tr:nth-child(odd) {background: #FFF}
+
+                    .hier-sep {
+                        font-style: italic;
+                        font-family: monospace;
+                    }
+
+                    .none, .na { font-style: italic }
+					.geo-level-id {
+						text-align: right;
+						padding-right: 1em;
+						width: 3em;
+						//font-size: smaller;
+					}
+
+                    .tagquery tr td { vertical-align: top }
+
+                    .counter1:before {
+                        counter-increment: counter1;
+                        content: counter(counter1);
+                    }
+
+                </style>
+                
+                
+<script data-dapp-detection="">
+(function() {
+  let alreadyInsertedMetaTag = false
+
+  function __insertDappDetected() {
+    if (!alreadyInsertedMetaTag) {
+      const meta = document.createElement('meta')
+      meta.name = 'dapp-detected'
+      document.head.appendChild(meta)
+      alreadyInsertedMetaTag = true
+    }
+  }
+
+  if (window.hasOwnProperty('web3')) {
+    // Note a closure can't be used for this var because some sites like
+    // www.wnyc.org do a second script execution via eval for some reason.
+    window.__disableDappDetectionInsertion = true
+    // Likely oldWeb3 is undefined and it has a property only because
+    // we defined it. Some sites like wnyc.org are evaling all scripts
+    // that exist again, so this is protection against multiple calls.
+    if (window.web3 === undefined) {
+      return
+    }
+    __insertDappDetected()
+  } else {
+    var oldWeb3 = window.web3
+    Object.defineProperty(window, 'web3', {
+      configurable: true,
+      set: function (val) {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        oldWeb3 = val
+      },
+      get: function () {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        return oldWeb3
+      }
+    })
+  }
+})()</script></head>
+<body>
+<table>
+<caption>Census Data API: Variables in /data/2018/acs/acs5/groups/B19013</caption>
+<!--api:var /data/2018/acs/acs5/groups-->
+<thead>
+<tr>
+<th>Name</th><th>Label</th><th>Concept</th><th>Required</th><th>Attributes</th><th>Limit</th><th>Predicate Type</th><th>Group</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td colspan="9">4 variables</td>
+</tr>
+</tfoot>
+<tbody>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B19013_001E.json" name="B19013_001E">B19013_001E</a></td><td>Estimate!!Median household income in the past 12 months (in 2018 inflation-adjusted dollars)</td><td>MEDIAN HOUSEHOLD INCOME IN THE PAST 12 MONTHS (IN 2018 INFLATION-ADJUSTED DOLLARS)</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B19013.html">B19013</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B19013_001EA.json" name="B19013_001EA">B19013_001EA</a></td><td>Annotation of Estimate!!Median household income in the past 12 months (in 2018 inflation-adjusted dollars)</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B19013.html">B19013</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B19013_001M.json" name="B19013_001M">B19013_001M</a></td><td>Margin of Error!!Median household income in the past 12 months (in 2018 inflation-adjusted dollars)</td><td>MEDIAN HOUSEHOLD INCOME IN THE PAST 12 MONTHS (IN 2018 INFLATION-ADJUSTED DOLLARS)</td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>int</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B19013.html">B19013</a></td>
+</tr>
+<tr>
+<td><a href="https://api.census.gov/data/2018/acs/acs5/variables/B19013_001MA.json" name="B19013_001MA">B19013_001MA</a></td><td>Annotation of Margin of Error!!Median household income in the past 12 months (in 2018 inflation-adjusted dollars)</td><td></td><td>predicate-only</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/.html"></a></td><td>0</td><td>string</td><td><a href="https://api.census.gov/data/2018/acs/acs5/groups/B19013.html">B19013</a></td>
+</tr>
+</tbody>
+</table>
+
+
+</body></html>
