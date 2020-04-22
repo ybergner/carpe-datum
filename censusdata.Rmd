@@ -83,7 +83,9 @@ head(group_B01001[order(group_B01001$name),], 20)
 
 ```
 
-To make the results more readable, we will identify the pattern. First, let's observe the following:
+Note that our list of variables also includes variable type. Here we have "int" for integers (numbers) and "string" which is the computational shorthand for "string of characters." This is the variable type used for words and sentences as well as passwords or other random strings of characters. 
+
+To make the results more readable, we can try identify the pattern in the order of the variables. First, let's observe the following:
 
 ```{r}
 myVars <- paste0("B01001_0",sprintf("%02d", 1:20), "E")
@@ -107,6 +109,69 @@ key = myKey)
 medianSexByAge_boro
 ```
 
+We can probably just focus on these three variables
+
++ B01001_002E	Estimate!!Total!!Male
++ B01001_026E	Estimate!!Total!!Female
++ B01002_001E	Estimate!!Median age --!!Total
++ B01002_002E	Estimate!!Median age --!!Male
++ B01002_003E	Estimate!!Median age --!!Female
+
+This may do for age and sex variables. 
+
+To match the NYC race-level data we will need these categories of Race/Ethnicity
+
++ All Hispanic
++ Non-Hispanic/Latino: Black,African American
++ Non-Hispanic/Latino: White
++ Non-Hispanic/Latino: Asian
++ Non-Hispanic/Latino: Other
+
+The 2018 population estimates reported for these categories should be as follows, so we can check if we are getting the right totals before we look at zip-codes
+
+Population
+(2018 estimate)
+
+2,449,450
+1,849,077
+2,694,258
+1,231,790
+174,173
+
+First we need to find the necessary race variables
+
+```{r}
+group_B02001 <- listCensusMetadata(name = "acs/acs5",
+vintage = 2018,
+type = "variables",
+group = "B02001")
+head(group_B02001[order(group_B02001$name),], 20)
+```
+
+Okay we're on the right track but it would be nice to see this list without the margin of errors and annotation variables. How can we get a list of variables that end in E but not in M or EA or MA? The answer is something called regular expressions, which is a specialist term for pattern matching. This is a long topic, so we are just going to work out one type of example, which is matching strings with a specific ending.  The R function for "get regular expression" is called `grep()`.
+
+```{r}
+# suppose we have a list of words and we want to know which ones end in the letter "e"
+# The end of a string is denoted by $ in regular expressions, so to match "e at the end"
+# we look for a pattern that we write as "e$"
+# 
+someFruit <- c("apple", "orange", "banana", "pear")
+grep("e$", someFruit)
+```
+
+
+By default `grep` returns the indices of the matched values, not the values themselves. In this case, the first two words matched. If we want the values, we use grep as follows
+
+```{r}
+grep("e$", someFruit, value = TRUE)
+```
+
+You can probably guess how to modify this pattern to find the string ending in "a" instead. If you want both, that is strings ending in either "a" or "e", this is the way to do it.
+
+
+```{r}
+grep("(e|a)$", someFruit, value = TRUE)
+```
 
 
 ## Zip-code tabulation area
@@ -133,3 +198,7 @@ key=myKey)
 ```{r}
 View(zcta_income)
 ```
+
+
+
+
