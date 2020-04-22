@@ -54,6 +54,12 @@ income_boro
 ```
 There it is, five-year averages, inflation-adjusted for 2018 dollars, by borough. (If you see one-year estimates, they may  be a bit higher than these numbers, if wages went up faster than inflation).
 
+```{r}
+boroNames <- c("Queens","Brooklyn","Manhattan","StatenI", "Bronx")
+boro_income <- data.frame(Borough = boroNames, medianIncome = income_boro$B19013_001E)
+boro_income
+```
+
 Data from the SEX BY AGE group will be more complicated-looking because this group contains many more variables. In fact, the following API call will have 201 columns, all with names like B01001_047E!
 
 ```{r}
@@ -88,13 +94,41 @@ Note that our list of variables also includes variable type. Here we have "int" 
 To make the results more readable, we can try identify the pattern in the order of the variables. First, let's observe the following:
 
 ```{r}
-myVars <- paste0("B01001_0",sprintf("%02d", 1:20), "E")
+myVars <- paste0("B01001_0",sprintf("%02d", 20:50), "E")
 group_B01001 %>% filter(name %in% myVars) %>% arrange(name)
 
 ```
 
 
-We've learned the following. The variable names, after the total, begin with males. First all males, then males by increasing age group. Under 5 years, 5 to 9 years, 10 to 14 years. However, the year breaks are a bit odd. Sometimes they are grouped by 5 years at a time, sometimes 3 years, or two, or even one year. Why? I have no idea.
+We've learned the following. The variable names (after the total) begin with males. First all males, then males by increasing age group. The females. Although it looks like it from this sample, the age groups are not all in intervals of 5 years. There are groups of three, two, and even one (e.g., 15-17, 18-19, 20 years). I'm not sure why.
+
+Suppose we wanted to extract the percentage of the population over the age of 65. From this table we would need to do the following
+
++ add up the counts of males in each of the intervals over 65
+ + B01001_020E + B01001_021E + B01001_022E + B01001_023E + B01001_024E + B01001_025E
++ add to this the counts of females in the same age intervals
+  + B01001_044E + B01001_045E + B01001_046E + B01001_047E + B01001_048E + B01001_049E
++ divide by the total
+  + B01001_001E
+
+
+```{r}
+
+maleOver65Vars <- c("B01001_020E","B01001_021E","B01001_022E","B01001_023E","B01001_024E","B01001_025E")
+femaleOver65Vars <- c("B01001_044E","B01001_045E","B01001_046E","B01001_047E","B01001_048E","B01001_049E")
+totalPopVar <- "B01001_001E"
+boro_over65 <- getCensus(name = "acs/acs5",
+                           vintage = 2018,
+                           vars = c("NAME", maleOver65Vars,femaleOver65Vars, totalPopVar),
+                           region = "county:005,047,061,081,085",
+                           regionin = "state:36", 
+                           key = myKey)
+
+proportionsA <- rowSums(boro_over65[,4:15])/boro_over65[,16] 
+boro_over65_proportions <- cbind()
+
+```
+
 
 Maybe we should just look at median age????
 
@@ -201,14 +235,18 @@ race_boro <- getCensus(name = "acs/acs5",
                        key = myKey)
 
 # give variable names
-names(race_boro)[4:9] = c("Hispanic", "NH_Black", "NH_White", "NH_Asian", "NH_Total", "Total")
-# drop state and county ID numbers
-race_boro <- as.data.frame(race_boro[,3:9])
-# create the non-Hispanic Other category
-race_boro$NH_Other = race_boro$NH_Total-race_boro$NH_Black-race_boro$NH_White-race_boro$NH_Asian
-# convert to proportions by dividing by total
-# 
+names(race_boro)[4:9] = c("Hisp", "NH_Black", "NH_White", "NH_Asian", "NH_Total", "Total")
 
+# create the non-Hispanic Other category
+race_boro <- race_boro %>% mutate(NH_Other = NH_Total-NH_Black-NH_White-NH_Asian) 
+
+# convert to proportions by dividing by total
+race_boro_proportion <- race_boro  %>% transmute(Hisp = Hisp/Total, NH_Black = NH_Black/Total, 
+            NH_White=NH_White/Total, NH_Asian=NH_Asian/Total, NH_Other=NH_Other/Total) %>%
+            round(., digits=3) * 100
+
+race_boro_proportion$Borough <- c("Queens","Brooklyn","Manhattan","StatenI", "Bronx")
+race_boro_proportion 
 ``` 
 
 
@@ -224,18 +262,48 @@ nyc_zipcode_string <- paste(nyc_zipcodes, collapse=",")
 
 ```
 
+### Zip-code-level median income
+
 
 ```{r}
 zcta_income <- getCensus(name = "acs/acs5",
                          vintage = 2018,
-                         vars = c("NAME", "B19013_001E"),
+                         vars = c("B19013_001E"),
                          region = paste0("zip code tabulation area:",nyc_zipcode_string),
                          key=myKey)
 ```
 
 ```{r}
+names(zcta_income) <- c("zipcode","median_income")
 View(zcta_income)
 ```
+
+### Zip-code-level race
+
+```{r}
+zcta_race <- getCensus(name = "acs/acs5",
+                       vintage = 2018,
+                       vars = c("B03002_012E", "B03002_004E", "B03002_003E", "B03002_006E",
+                                "B03002_002E", "B03002_001E"),
+                       region = paste0("zip code tabulation area:",nyc_zipcode_string),
+                       key = myKey)
+
+# give variable names
+names(zcta_race) = c("zipcode", "Hisp", "NH_Black", "NH_White", "NH_Asian", "NH_Total", "Total")
+
+# create the non-Hispanic Other category
+zcta_race <- zcta_race %>% mutate(NH_Other = NH_Total-NH_Black-NH_White-NH_Asian) 
+
+# convert to proportions by dividing by total
+zcta_race_proportion <- zcta_race  %>% transmute(Hisp = Hisp/Total, NH_Black = NH_Black/Total, 
+            NH_White=NH_White/Total, NH_Asian=NH_Asian/Total, NH_Other=NH_Other/Total) %>%
+            round(., digits=3) * 100
+
+zcta_race_proportion <- cbind(zipcode=zcta_race$zipcode, zcta_race_proportion) 
+zcta_race_proportion
+``` 
+
+
 
 
 ```{r}
