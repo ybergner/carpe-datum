@@ -81,7 +81,7 @@ group_B01001 <- listCensusMetadata(name = "acs/acs5",
 vintage = 2018,
 type = "variables",
 group = "B01001")
-head(group_B01001[order(group_B01001$name),], 20)
+head(group_B01001[order(group_B01001$name),], 50)
 
 ```
 
@@ -176,8 +176,7 @@ library(RColorBrewer)
    
 ```{r}
 #read in the shape file for NYC zip codes
-#note: for some reason, a relative file path won't work with readOGR
-filepath <- "/Users/sophiesommer/Desktop/bigquestions-book/Shape_Files/ZIP_CODE_040114.shp"
+filepath <- "Shape_Files/ZIP_CODE_040114.shp"
 NYC_zips <- readOGR(filepath)
 
 #get zipcodes from shape file
@@ -193,12 +192,62 @@ dat <- dplyr::left_join(dat, zcta_data,
 dat <- dat %>% 
   mutate(posrate =Positive/Population*100)
 
-#create dataset with -.1 inserted for missing values b/c can't plot otherwise
-dat_no_na <- dat
-dat_no_na[is.na(dat)] <- -.1
 ```
 
 
+```{r}
+#Function to get color information based on some data
+getcolors <- function(data, ntile, missingcol, 
+                      rdgrbl=c(1,0,0), mycolors=NULL){
+  mybreaks <- c(-1, quantile(data, 
+                             probs = seq(0, 1, length.out=ntile+1), 
+                             na.rm = T))
+  mycols <- rgb(rdgrbl[1],rdgrbl[2],rdgrbl[3], 
+                seq(0.1,0.5, length.out = length(mybreaks)-1))
+  if(!is.null(mycolors)){
+    mycols <- mycolors
+  }
+  mycols[1] <- missingcol
+  data[is.na(data)] <- -.1
+  mycolorscheme <- cut(data, mybreaks) %>%
+  as.numeric()
+  mycolorscheme <- mycols[mycolorscheme]
+  levs <- levels(cut(data, mybreaks))
+  levs[1] <- "No Data"
+  return(list(mycolorscheme, levs, mycols))
+}
+
+col_lev <- getcolors(round(dat$posrate*10,1), 5, "white", mycolors=viridis(6))
+
+#plot
+#note: looks better in a quartz window; to do this, need to type quartz() into console:
+#then copy and paste code below into the console as well
+plot(NYC_zips, col = col_lev[[1]], 
+     main = "Positive Tests per 1000 People", cex = 10, lwd=0.01)
+legend("topleft", 
+       legend = col_lev[[2]], 
+       fill = col_lev[[3]], cex = 0.8, title = "Pos Tests")
+```
+   
+We could do the same type of plot by race if we were interested and then visually compare the maps:    
+```{r}
+col_lev <- getcolors(round(dat$Prop_NON_White*100,1), 5, "white", mycolors=viridis(6))
+
+plot(NYC_zips, col = col_lev[[1]], 
+     main = "Percent of Population that is Non-White", cex = 10, lwd=0.01)
+legend("topleft", 
+       legend = col_lev[[2]], 
+       fill = col_lev[[3]], cex = 0.8, title = "% Non-White")
+```
+
+```{r}
+col_lev1 <- getcolors(round(dat$Prop_NON_White*100,1), 5, "white", c(1,0,0))
+col_lev2 <- getcolors(round(dat$posrate*10,1), 5, "white", c(0,0,1))
+
+plot(NYC_zips, col = col_lev1[[1]], main = "", cex = 10, lwd=0.01)
+plot(NYC_zips, col = col_lev2[[1]], add=T, cex = 10, lwd=0.01)
+```
+   
 ```{r}
 #set up quintiles with an extra category for missing data
 mybreaks <- c(-1, quantile(dat$posrate, probs = seq(0, 1, 0.2), na.rm = T))
@@ -210,41 +259,5 @@ mycolours[1] <- "white"
 mycolourscheme <- cut(dat_no_na$posrate, mybreaks) %>%
   as.numeric()
 mycolourscheme <- mycolours[mycolourscheme]
-
-#plot
-#note: looks better in a quartz window; to do this, need to type quartz() into console:
-#then copy and paste code below into the console as well
-plot(NYC_zips, col = mycolourscheme, 
-     main = "Percent Positive Tests", cex = 10, lwd=0.01)
-levs <- levels(cut(dat$zcta_cum.perc_pos, mybreaks))
-levs[1] <- "No Data"
-legend("topleft", 
-       legend = levs, 
-       fill = mycolours, cex = 0.8, title = "% Pos Tests")
-```
-   
-We could do the same type of plot by race if we were interested and then visually compare the maps:    
-```{r}
-#set up quintiles with an extra category for missing data
-mybreaks <- c(-1, quantile(dat$Prop_NON_White, probs = seq(0, 1, 0.2), na.rm = T))
-
-#create color palette
-#mycolours <- brewer.pal(length(mybreaks-1), "Blues")
-mycolours <- viridis(length(mybreaks-1))
-mycolours[1] <- "white"
-mycolourscheme <- cut(dat_no_na$Prop_NON_White, mybreaks) %>%
-  as.numeric()
-mycolourscheme <- mycolours[mycolourscheme]
-
-#plot
-#note: looks better in a quartz window; to do this, need to type quartz() into console:
-#then copy and paste code below into the console as well
-plot(NYC_zips, col = mycolourscheme, 
-     main = "Percent Positive Tests", cex = 10, lwd=0.01)
-levs <- levels(cut(dat$Prop_NON_White, mybreaks))
-levs[1] <- "No Data"
-legend("topleft", 
-       legend = levs, 
-       fill = mycolours, cex = 0.8, title = "Proportion Non-White")
 ```
 
