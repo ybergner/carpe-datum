@@ -74,7 +74,7 @@ We'll want to filter this down and rename the variables.
 ```{r}
 # a list of groups can be found here
 # acs_groups <- listCensusMetadata(name = "acs/acs5", vintage = 2018, type = "groups")
-# head(acs_groups)
+# head(acs_groups) 
 
 # here are the variables in the SEX BY AGE group
 group_B01001 <- listCensusMetadata(name = "acs/acs5",
@@ -88,7 +88,7 @@ head(group_B01001[order(group_B01001$name),], 50)
 To make the results more readable, we will identify the pattern. First, let's observe the following:
 
 ```{r}
-myVars <- paste0("B01001_0",sprintf("%02d", 1:20), "E")
+myVars <- paste0("B01001_0",sprintf("%02d", 1:40), "E")
 group_B01001 %>% filter(name %in% myVars) %>% arrange(name)
 
 ```
@@ -143,7 +143,9 @@ Now, let's get some more information by zip code and save it in a CSV file that 
 
 zcta_data <- getCensus(name = "acs/acs5",
 vintage = 2018,
-vars = c("NAME", "B19013_001E", "B01003_001E", "B02001_001E", "B02001_002E"),
+vars = c("NAME", "B19013_001E", "B01003_001E", "B02001_001E", "B02001_002E",
+         "B01001_002E", "B01001_026E", "B01002_001E", "B01002_002E",
+         "B01002_003E", "B20017_002E", "B20017_005E"),
 region = paste0("zip code tabulation area:",nyc_zipcode_string),
 key=myKey)
 
@@ -152,21 +154,45 @@ names(zcta_data)[which(names(zcta_data)=="B19013_001E")] <- "Med_Income"
 names(zcta_data)[which(names(zcta_data)=="B01003_001E")] <- "Population"
 names(zcta_data)[which(names(zcta_data)=="B02001_001E")] <- "Race_Total"
 names(zcta_data)[which(names(zcta_data)=="B02001_002E")] <- "White_Total"
+names(zcta_data)[which(names(zcta_data)=="B01001_002E")] <- "Male_Total"
+names(zcta_data)[which(names(zcta_data)=="B01001_026E")] <- "Fem_Total"
+names(zcta_data)[which(names(zcta_data)=="B01002_001E")] <- "Median_Age"
+names(zcta_data)[which(names(zcta_data)=="B01002_002E")] <- "Median_Age_Male"
+names(zcta_data)[which(names(zcta_data)=="B01002_003E")] <- "Median_Age_Fem"
+names(zcta_data)[which(names(zcta_data)=="B20017_002E")] <- "Median_Income_Male"
+names(zcta_data)[which(names(zcta_data)=="B20017_005E")] <- "Median_Income_Fem"
 ```
 
 ```{r}
-zcta_data <- zcta_data %>% mutate(Prop_White = White_Total/Race_Total,
-                                  Prop_NON_White = 1-(White_Total/Race_Total)) %>%
-  select(zip_code_tabulation_area, Med_Income, Population, Prop_White, Prop_NON_White)
+bor_data <- getCensus(name = "acs/acs5",
+vintage = 2018,
+vars = c("NAME", "B20017_001E", "B01003_001E", "B02001_001E", "B02001_002E",
+         "B01001_002E", "B01001_026E", "B01002_001E", "B01002_002E",
+         "B01002_003E", "B20017_002E", "B20017_005E"),
+region = "county:005,047,061,081,085",
+regionin = "state:36",
+key=myKey)
+
+#update column names
+names(bor_data)[which(names(bor_data)=="B20017_001E")] <- "Med_Income"
+names(bor_data)[which(names(bor_data)=="B01003_001E")] <- "Population"
+names(bor_data)[which(names(bor_data)=="B02001_001E")] <- "Race_Total"
+names(bor_data)[which(names(bor_data)=="B02001_002E")] <- "White_Total"
+names(bor_data)[which(names(bor_data)=="B01001_002E")] <- "Male_Total"
+names(bor_data)[which(names(bor_data)=="B01001_026E")] <- "Fem_Total"
+names(bor_data)[which(names(bor_data)=="B01002_001E")] <- "Median_Age"
+names(bor_data)[which(names(bor_data)=="B01002_002E")] <- "Median_Age_Male"
+names(bor_data)[which(names(bor_data)=="B01002_003E")] <- "Median_Age_Fem"
+names(bor_data)[which(names(bor_data)=="B20017_002E")] <- "Median_Income_Male"
+names(bor_data)[which(names(bor_data)=="B20017_005E")] <- "Median_Income_Fem"
+```
+
+
+```{r}
 head(zcta_data)
 ```
-  
-In case you want to write this to a new csv file that you can use!
-```{r}
-#write.csv(zcta_data, "census_data_zcta.csv")
-```
    
-Now, we can replicate some of the maps:  
+   
 ```{r, message=FALSE}
 #load additional viz libraries
 library(rgdal)
@@ -179,6 +205,9 @@ library(RColorBrewer)
 filepath <- "Shape_Files/ZIP_CODE_040114.shp"
 NYC_zips <- readOGR(filepath)
 
+#get zip to borough
+zip_bor <- read.csv("data/zip_borough.csv")
+
 #get zipcodes from shape file
 shpcodes <- NYC_zips@data$ZIPCODE %>% as.character %>% as.numeric
 
@@ -188,17 +217,34 @@ dat <- dplyr::left_join(dat, cases, by="MODZCTA")
 zcta_data$zip_code_tabulation_area <- as.numeric(zcta_data$zip_code_tabulation_area)
 dat <- dplyr::left_join(dat, zcta_data, 
                         by = c("MODZCTA" = "zip_code_tabulation_area"))
+dat <- dplyr::left_join(dat, zip_bor, by=c("MODZCTA" = "zip"))
+dat$borough[which(dat$MODZCTA==10065)] <- "Manhattan"
+dat$borough[which(dat$MODZCTA==10075)] <- "Manhattan"
+
+case_bor <- dat %>% group_by(borough) %>% summarize(numcases = sum(Positive, na.rm=T), numtests = sum(Total, na.rm=T))
+bor_data$Positive <- case_bor$numcases[c(4,2,3,5,1)]
+bor_data$Tests <- case_bor$numtests[c(4,2,3,5,1)]
+```
+  
+In case you want to write this to a new csv file that you can use!
+```{r}
+#write.csv(bor_data, "data/data_summ_bor.csv", row.names = F)
+#write.csv(dat, "data/data_summ_zcta.csv", row.names = F)
+```
+  
+```{r}
 #calculate positive rate for tests
 dat <- dat %>% 
   mutate(posrate =Positive/Population*100)
 
+dat <- dat %>% mutate(Prop_White = White_Total/Race_Total,
+                      Prop_NON_White = 1-(White_Total/Race_Total)) 
 ```
-
-
+  
+Now, we can replicate some of the maps:  
 ```{r}
 #Function to get color information based on some data
-getcolors <- function(data, ntile, missingcol, 
-                      rdgrbl=c(1,0,0), mycolors=NULL){
+getcolors <- function(data, ntile, missingcol, rdgrbl=c(1,0,0), mycolors=NULL){
   mybreaks <- c(-1, quantile(data, 
                              probs = seq(0, 1, length.out=ntile+1), 
                              na.rm = T))
@@ -247,17 +293,58 @@ col_lev2 <- getcolors(round(dat$posrate*10,1), 5, "white", c(0,0,1))
 plot(NYC_zips, col = col_lev1[[1]], main = "", cex = 10, lwd=0.01)
 plot(NYC_zips, col = col_lev2[[1]], add=T, cex = 10, lwd=0.01)
 ```
-   
+    
 ```{r}
-#set up quintiles with an extra category for missing data
-mybreaks <- c(-1, quantile(dat$posrate, probs = seq(0, 1, 0.2), na.rm = T))
-
-#create color palette
-#mycolours <- brewer.pal(length(mybreaks-1), "Blues")
-mycolours <- viridis(length(mybreaks-1))
-mycolours[1] <- "white"
-mycolourscheme <- cut(dat_no_na$posrate, mybreaks) %>%
-  as.numeric()
-mycolourscheme <- mycolours[mycolourscheme]
+plot(round(dat$Prop_NON_White*100,1),round(dat$posrate*10,1), xlab="percent non-white", ylab="pos cases per 1000 ppl", col=col_lev1[[1]], pch=16)
+points(round(dat$Prop_NON_White*100,1),round(dat$posrate*10,1),col=col_lev2[[1]], pch=16)
+#abline(lm(round(dat$posrate*10,1)~round(dat$Prop_NON_White*100,1)), lwd=2)
 ```
+    
+```{r}
+getcolors <- function(data, data2, ntile, missingcol, rdgrbl=c(1,0,0), mycolors=NULL){
+  mybreaks <- c(-1, quantile(data, 
+                             probs = seq(0, 1, length.out=ntile+1), 
+                             na.rm = T))
+  mybreaks2 <- c(-1, quantile(data2, 
+                              probs = seq(0, 1, length.out=ntile+1), 
+                              na.rm = T))
+  alphas <- seq(.1, .8, length.out=length(mybreaks)-1)
+  mycols <- alphas
+  for(i in 1:length(alphas)){
+    mycols2 <- rgb(seq(0, 1, length.out = length(mybreaks)-1),
+                0,
+                seq(1, 0, length.out = length(mybreaks)-1),
+                alphas[i])
+    mycols <- rbind(mycols,mycols2)
+  }
+  mycols[1,] <- missingcol
+  mycols <- cbind(rep(missingcol,length(mybreaks)), mycols)
+  if(!is.null(mycolors)){
+    mycols <- mycolors
+  }
+  data[is.na(data)] <- -.1
+  data2[is.na(data2)] <- -.1
+  mycolorscheme1 <- cut(data, mybreaks) %>%
+  as.numeric()
+  mycolorscheme2 <- cut(data2, mybreaks2) %>%
+  as.numeric()
+  for(i in 1:length(data)){
+    mycolorscheme[i] <- mycols[mycolorscheme1[i], mycolorscheme2[i]]
+  }
+  levs <- levels(cut(data, mybreaks))
+  levs[1] <- "No Data"
+  return(mycolorscheme)
+}
+
+col_lev1 <- getcolors(round(dat$posrate*10,1),
+                      round(dat$Prop_NON_White*100,1), 
+                      5, "white", c(1,0,0))
+
+#color by race
+#opacity by case rate
+plot(NYC_zips, col = col_lev1, main = "", cex = 10, lwd=0.01)
+```
+
+    
+
 
