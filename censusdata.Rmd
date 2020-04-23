@@ -408,14 +408,3 @@ zcta_race_proportion <- cbind(zipcode=zcta_race$zipcode, zcta_race_proportion)
 zcta_race_proportion
 ``` 
 
-
-
-
-```{r}
-searchResults <- makeVarlist(name = "acs/acs5",
-                             find = "Asian",
-                             varsearch = "label")
-searchResults
-```
-
-
