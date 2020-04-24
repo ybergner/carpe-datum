@@ -5,22 +5,21 @@ output: html_notebook
 
 # Purpose
 
-On April 10, 2020, [ABC News](https://abcnews.go.com/Health/nyc-stark-contrast-covid-19-infection-rates-based/story?id=69920706) covered an online report (by the NYU Furman Center) that examined cases of COVID-19 in New York City on a neighborhood level. Most COVID-19 data that had been coming out had been reporting on the city as a whole. The main idea here was that neighborhoods tell a different story. Data scientist call this a shift in the unit-of-analysis. For example, some neighborhoods are wealthier and some poorer. Neighborhoods also vary by racial composition. If we examine COVID-19 outcomes by neighborhood, we may be able to see patterns and associations between disease incidence and race or socio-economic variables. Indeed, the Furman Center found such associations. The ABC News report produced images like the following:
+On April 10, 2020, [ABC News](https://abcnews.go.com/Health/nyc-stark-contrast-covid-19-infection-rates-based/story?id=69920706) covered an online report (by the NYU Furman Center) that examined cases of COVID-19 in New York City on a neighborhood level. Most COVID-19 data that had been coming out had been reporting on the city as a whole. The main idea here was that neighborhoods tell a different story. Data scientist call this a shift in the unit-of-analysis. The city is made of boroughs, which themselves are made up of smaller neighborhoods. So the unit of analysis could be the whole city, the boroughs of the city, or something even more fine-grained, like neighborhoods or zipcode areas. For example, some zipcodes are wealthier and some poorer. Zipcode areas also vary by racial composition. If we examine COVID-19 outcomes by neighborhood, we may be able to see patterns and associations between disease incidence and race or socio-economic variables. Indeed, the Furman Center found such associations. The ABC News report produced images like the following:
 
 ![](images/abc_COVID19NycZip_v03_KA_hpEmbed_17x12_992.jpg) 
 
-
-People familiar with the layout of New York City might be able to identify low-income and largely African-American neighborhoods like Hunts Point in the South Bronx.  ABC News produced a corresponding map showing the share of adults with college degree.
+People familiar with the layout of New York City might be able to identify low-income and largely African-American neighborhoods like Hunts Point in the South Bronx.  ABC News produced a corresponding map showing the share of adults with college degree, a measure of educational attainment which the Furman Center report said was associated with disease incidence.
 
 ![](images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg)
 
-It requires switching back and forth between these images, but the dark regions on the COVID map (higher rates of disease) seem to often correspond to the lighter regions on the college degree map (lower college share). 
+It requires switching back and forth between these images, but the dark regions on the COVID map (higher rates of disease) seem to often correspond to the lighter regions on the college degree map (lower college share). In other words, areas with lower educational attainment seem to have higher rates of the disease. There are many possible explanations of this relationship, which are discussed in the Furman report and elsewhere.
  
 How does one make these data visualizations? And are they the best way to "see" the signals in the data?
 
-ABC News also reproduced their own version of table below, showing racial composition. Althought the title may confuse matters, in this table, multiple neighborhoods (zipcodes) are actually grouped together into five sets using **quintiles.** You take all of the zipcodes, rank-order them by COVID-19 concentration, and then select the bottom fifth, the next fifth, and so on up to the top fifth. 
+ABC News also reproduced a version of table below, showing racial composition by neighborhood. The title may confuse matters, however. In this table, multiple neighborhoods (zipcodes) are actually grouped together into five sets using **quintiles.** You take all of the zipcodes, rank-order them by COVID-19 concentration, and then select the bottom fifth, the next fifth, and so on up to the top fifth. These groups are labeled "lowest concentration", "low concentration", and so on up to "highest concentration."
 
-Technically, the quintiles are the cut-points, so for five groups, there are four quintiles. This is very confusing. Of course, this division process can be done for a different number of **quantiles**--note the spelling--not necessarily five. A division of three groups is made by choose (two cut-point) tertiles or terciles. The median is the 2-quantile, as it is the cut-point that divides a data set into two equal parts.
+Technically, the quintiles are the cut-points, so for five groups, there are four quintiles. If you look at the table below, the cut-points/quintiles are {3.33, 4.13, 4.77, 5.87}. Of course, this division process can be done for a different number of **quantiles**--note the spelling--not necessarily five. A division of three groups is made by choosing two (cut-point) tertiles or terciles. The median is the 2-quantile, as it is the cut-point that divides a data set into two equal parts. Unfortunately, the naming conventions here are rather confusing, but you get used to them if you use them a lot.
 
 ![table of data showing](images/abc_COVID19RacialComp_v02_KA_hpEmbed_37x16_992.jpg)
 
@@ -28,12 +27,11 @@ If you look at the table above, you may notice trends or patterns between racial
 
 In the remainder of this tutorial, we will examine how to recreate graphs and tables like the one above from publicly available data. This will enable you to create your own versions or update the ones above with new data. We will also look at alternative representations and at some simulation-based tests to see how likely it is that such disparities might occur by chance.
 
-
 Let's begin!
 
 # Getting some data
 
-In this tutorial, I will walk you through the steps of creating some of the figures and tables that go into media reports about COVID-19 outcomes. The examples here are all NYC-centric, but the methods, especially for US Census data, are completely general. 
+In this tutorial, I will walk you through the steps of creating some of the figures and tables that go into media reports about COVID-19 outcomes. The examples here are all NYC-centric, but the methods, especially for US Census data, are completely general. The hardest part of all of this--and this is generally true about the practice of data science--is getting all of the data from different sources cleaned up and fitted together.
 
 
 ## Local data on COVID from the city and/or state
@@ -44,35 +42,32 @@ For state and municipality-level COVID-19 data in New York, these are some sourc
 + https://github.com/nychealth/coronavirus-data
 + https://health.data.ny.gov/Health/New-York-State-Statewide-COVID-19-Testing/xdss-u53e
 
-These sources are updated daily. I will be working with the GitHub data as of April 23. For example, here I will load and view the borough-level data table. 
+These sources are updated daily. I will be working with the GitHub data as of April 23. This is actually two weeks later than the Furman/ABC reports, so more up-to-date. I downloaded the files from the online repository and put them into a folder on my computer. For example, here I will load and view the borough-level data table. 
 
 ```{r}
-nyc_boro_data <- read.csv("data/coronavirus-nyc/boro.csv")
+nyc_boro_data <- read.csv("data/coronavirus-nyc/boro.csv", stringsAsFactors = F)
 nyc_boro_data
 ```
 
-According to the documentation in the GitHub README file, this contains rates of confirmed cases, by NYC borough of residence. Rates are:
+According to the documentation in the GitHub README file (a valuable source of information), this table contains rates of confirmed cases, by NYC borough of residence. Rates are:
 
 + Cumulative since the start of the outbreak
 + Age adjusted according to [the US 2000 standard population](https://www.cdc.gov/nchs/data/statnt/statnt20.pdf)
 + Per 100,000 people in the borough
 
-What does age-adjusted rate mean? You can read the link, but the main idea here is to try to put all of the boroughs on equal footing in the rate per 100,000 people, even if some boroughs have an older or younger population than others. 
+What does age-adjusted rate mean? You can read the link, but the main idea here is to try to put all of the boroughs on equal footing in the rate per 100,000 people, even if some boroughs have an older or younger population than others. Which it turns out they do. Later, once we have borough populations, we could examine simple population-adjusted rates that are not age-adjusted and see what those look like in comparison.
 
-**Exercise**: Compute the population adjusted rate per 100,000 people using population data from the census. How does it differ from the age-adjusted rate? 
-
-If we wanted to do age-adjustment, or even simpler, population adjustment, we would need to supplement this COVID data with population data, for example obtained from the US Census. Before we turn to that, let us just quickly explore the other data provided by NYC.
+If we wanted to do age-adjustment, or even simpler population adjustment, we would need to supplement this COVID data with population data, for example obtained from the US Census. Before we turn to that, let us just quickly explore the other data provided by NYC.
 
 ```{r}
-nyc_age_data <- read.csv("data/coronavirus-nyc/by-age.csv")
 nyc_sex_data <- read.csv("data/coronavirus-nyc/by-sex.csv")
-
 nyc_sex_data
 ```
 
 Case and fatality rates by sex show that males are being infected and dying at significantly higher rates. Note that each of these is already adjusted to rate per 100,000.
 
 ```{r}
+nyc_age_data <- read.csv("data/coronavirus-nyc/by-age.csv")
 nyc_age_data
 ```
 
@@ -120,15 +115,14 @@ library(dplyr)
 myKey = Sys.getenv("CENSUS_KEY") #store your key in .Renvriron
 ```
 
-
 To get census data, you can go to (https://data.census.gov/), but be warned: it is a big maze and not that easy to navigate. What the pros who make media reports do (probably) is use the US Census API to make specific requests for data. To do this yourself you will need an API key. This is easy enough to get, but you need to [request one here](https://api.census.gov/data/key_signup.html). Once you have a key, you can declare it in your R code or, better for security/code-sharing, embed it in a .Renviron file.
 
 More importantly, you need to know what you're asking for. That means you need to know which data sets, which variables, which geographic units, etc. A 20-page [API users guide can be found here](https://www.census.gov/content/dam/Census/data/developers/api-user-guide/api-guide.pdf). 
 
 
-We will be interested in the [American Community Survey 5-Year data](https://www.census.gov/data/developers/data-sets/acs-5year.html) which provide estimates aggregated over a 5-year period every two years. The last published data set, i.xe., the most current one available, is from 2018.
+We will be interested in the [American Community Survey 5-Year data](https://www.census.gov/data/developers/data-sets/acs-5year.html) which provide estimates aggregated over a 5-year period every two years. The last published data set, i.e., the most current one available, is from 2018.
 
-#### Census Variables
+### Census Variables
 
 There are something like 20,000 variables available, and these can be requested invidividually or in groups. Some useful groups for our analysis are the following
 
@@ -140,19 +134,61 @@ There are something like 20,000 variables available, and these can be requested 
 
 For each group, a list of variables can be found on a corresponding website. For example, to find the variables in the SEX BY AGE group, you can go to https://api.census.gov/data/2018/acs/acs5/groups/B01001.html (notice the URL ending is the same as the group). There you will find variables such as
 
++ B01001_001E	Estimate!!Total
 + B01001_002E	Estimate!!Total!!Male
 + B01001_026E	Estimate!!Total!!Female
 
 It turn out you can also query the API to get this information, as we shall see below. In any case, variables that end in E are estimates. For each one there is often a margin of error, which is the same code ending in M instead of E. Finally for both estimates and margins of error, there may be annotations (e.g. B01001_002EA and B01001_002MA), if these numbers are not straightforward. Details about annotation meanings can be found  [here](https://www.census.gov/data/developers/data-sets/acs-1year/notes-on-acs-estimate-and-annotation-values.html).
 
+### Geography Units
 
-+ B01003_001E
+Census data are available at many levels related to geography. The smallest unit is the census "block" which typically contains between 600 and 3000 people. A collection of blocks forms a census tract (2500 to 8000 people). But US states are also divided into counties, and both state and county can be used as identifiers. Note that to use the Census API, one has to use numerical identifiers for states and counties. For example, the borough of Brooklyn is actually Kings County, NY, which is county 047 in state 36. And yes, you have to include all three digits, including the leading zero, to identify individual counties. Zip-code tabulation areas is another option, wherein you specify the five-digit zip code. We will want to use that, because NYC provided COVID-19 testing data at the zip-code level. 
 
-#### Geography Units
+First, let's retrieve some data about the five boroughs. Let's start with the simplest example and get the size of each population
 
-Census data are available at many levels related to geography. The smallest unit is the census "block"  which typically contains between 600 and 3000 people. A collection of blocks forms a tract. But US states are also divided into counties, and both state and county can be used as identifiers. However, one has to use numberical identifiers. For example, the borough of Brooklyn is actually Kings County, NY, which is county 047 in state 36. And yes, you have to include all three digits, including the leading zero, to identify individual counties. Zip-code tabulation areas is one more option, wherein you specify the five-digit zip code. We will want to use that, because NYC provided COVID-19 testing data at the zip-code level. 
+We will need to request the variable B01001_001E, which is the total population estimate.
 
-First, let's retrieve some data about the five boroughs. To request the median household income we will request the variable "B19013_001E" (intuitive, right!)
+```{r echo=TRUE}
+population_boro <- getCensus(name = "acs/acs5",
+                         vintage = 2018,
+                         vars = c("NAME", "B01001_001E"),
+                         region = "county:005,047,061,081,085",
+                         regionin = "state:36", 
+                         key = myKey)
+
+population_boro
+```
+
+Cool! We've established that we can pull some borough-level information from the US Census to complement data provided by the city or state. Note that the two tables, the one from NYC and the one from the census, don't exactly match up. For one thing, the county names do not align with the borough names.
+
+Now, we can fix this by hand, but there are good ways and less good ways to do this. Ideally, we create a look-up table which we can reuse whenever we need to switch between borough and county names.
+
+```{r}
+# Borough names
+boroNames <- nyc_boro_data$BOROUGH_GROUP[1:5]
+# County names
+countyNames <- population_boro$NAME
+
+# combine, but note that the order is not the same! So we'll reorder
+boro2county <- data.frame(Borough=boroNames, County=countyNames[c(5,2,3,1,4)])
+boro2county
+```
+
+
+Here's is one way we can use this new lookup table
+
+
+
+
+
+
+
+
+To request the median household income we will request the variable "B19013_001E" (intuitive, right!)
+
+
+MOVE THIS DOWN
+**Exercise**: Compute the population adjusted rate per 100,000 people using population data from the census. How does it differ from the age-adjusted rate? 
 
 
 ```{r echo=TRUE}
@@ -471,13 +507,39 @@ zipdata <- read.csv("data/coronavirus-nyc/zipcode_vars.csv")
 
 ```{r}
 
-col_lev <- getcolors(zipdata$Bach_plus_prop, 5, "white", c(0,0,1))
+plot_title <- "College Share by Zipcode"
+legend_title <- "College"
+variableToPlot <-   zipdata$Bach_plus_prop
 
+## you don't need to modify any of this code, but you may if you'd like    
+source("getShapeColors.R") # need this function
+
+col_lev <- getShapeColors(variableToPlot, nbreaks = 5, missingcol = "white", c(0,0,1))
+
+# col_lev <- getcolors(variableToPlot, ntile=c(-1,0,20,40,60,80,100))
 plot(NYC_zips, col = col_lev[[1]], 
-     main = "AverageHH", cex = 10, lwd=0.05)
+     main = plot_title, cex = 10, lwd=0.05)
 legend("topleft", 
        legend = col_lev[[2]], 
-       fill = col_lev[[3]], cex = 0.8, title = "AverageHH")
+       fill = col_lev[[3]], cex = 0.8, title = legend_title)
+
+# col_lev <- getcolors(variableToPlot, 5, "white", c(0,0,1))
+col_lev <- getcolors(variableToPlot, nbreaks=c(0,20,40,60,80,100))
+plot(NYC_zips, col = col_lev[[1]], 
+     main = plot_title, cex = 10, lwd=0.05)
+legend("topleft", 
+       legend = col_lev[[2]], 
+       fill = col_lev[[3]], cex = 0.8, title = legend_title)
+
+
+# col_lev <- getcolors(variableToPlot, 5, "white", c(0,0,1))
+col_lev <- getcolors(variableToPlot, missingcol = "white", nbreaks=10)
+plot(NYC_zips, col = col_lev[[1]], 
+     main = plot_title, cex = 10, lwd=0.05)
+legend("topleft", 
+       legend = col_lev[[2]], 
+       fill = col_lev[[3]], cex = 0.8, title = legend_title)
+
 ```
 
 ```
