@@ -3,9 +3,7 @@ title: "NYC COVID-19 Data: Analysis and Visualization"
 output: html_notebook
 ---
 
-# Part 2
-
-## Census data
+# Part 2: Getting started with US Census data
 
 To get census data, you can go to (https://data.census.gov/), but be warned: it is a big maze and not that easy to navigate. What the pros who make media reports do (probably) is use the US Census API to make specific requests for data. If you use it a lot, you will need an API key. This is easy enough to get, but you need to [request one here](https://api.census.gov/data/key_signup.html). Once you have a key, you can declare it in your R code or, better for security/code-sharing, embed it in a .Renviron file. 
 
@@ -38,32 +36,34 @@ For each group, a list of variables can be found on a corresponding website. For
 + B01001_002E	Estimate!!Total!!Male
 + B01001_026E	Estimate!!Total!!Female
 
-In any case, variables that end in E are estimates. For each one there is often a margin of error, which is the same code ending in M instead of E. Finally for both estimates and margins of error, there may be annotations (e.g. B01001_002EA and B01001_002MA), if these numbers are not straightforward. Details about annotation meanings can be found  [here](https://www.census.gov/data/developers/data-sets/acs-1year/notes-on-acs-estimate-and-annotation-values.html).
+In any case, variables that end in E are estimates. For each one there is often a margin of error, which is the same code ending in M instead of E. Finally for both estimates and margins of error, there may be annotations (e.g. B01001_002EA and B01001_002MA), if these numbers are not straightforward. Details about annotation meanings can be found [here](https://www.census.gov/data/developers/data-sets/acs-1year/notes-on-acs-estimate-and-annotation-values.html). This is just an overview of what the ACS5 variable names look like.
 
 ### Geography Units
 
-Census data are available at many levels related to geography. The smallest unit is the census "block" which typically contains between 600 and 3000 people. A collection of blocks forms a census tract (2500 to 8000 people). But US states are also divided into counties, and both state and county can be used as identifiers. Note that to use the Census API, one has to use numerical identifiers for states and counties. For example, the borough of Brooklyn is actually Kings County, NY, which is county 047 in state 36. And yes, you have to include all three digits, including the leading zero, to identify individual counties. Zip-code tabulation areas is another option, wherein you specify the five-digit zip code. We will want to use that, because NYC provided COVID-19 testing data at the zip-code level. 
+Census data are available at many levels related to geographical units. The smallest unit is called a census "block" and typically covers between 600 and 3000 people. A collection of blocks forms a census tract (2500 to 8000 people). But US states are also divided into counties, and both state and county identifiers can be used as region selectors. Note that to use the Census API, one has to use numerical identifiers for states and counties. For example, the borough of Brooklyn is actually Kings County, New York, which is county 047 in state 36. And yes, you have to include all three digits, including the leading zero, to identify individual counties. Zipcode tabulation areas (aka ZCTA) is another option, wherein you specify the five-digit zip code. We will want to use that, because NYC provided COVID-19 testing data at the zipcode level. 
 
-First, let's retrieve some data about the five boroughs. Let's start with the simplest example and get the size of each population
+#### Borough-level data
 
-We will need to request the variable B01001_001E, which is the total population estimate.
+First, let's retrieve some data about the five boroughs. Let's start with the simplest example and get the size of each borough population.
+
+We will need to request the variable B01001_001E, which is the total population estimate. 
 
 ```{r echo=TRUE}
-population_boro <- getCensus(name = "acs/acs5",
+acs_boro_population <- getCensus(name = "acs/acs5",
                          vintage = 2018,
                          vars = c("NAME", "B01001_001E"),
                          region = "county:005,047,061,081,085",
-                         regionin = "state:36", 
-                         key = myKey)
+                         regionin = "state:36" #, key = myKey
+                         )
 
-population_boro
+acs_boro_population
 ```
 
 Cool! We've established that we can pull some borough-level information from the US Census to complement data provided by the city or state. Note that the two tables, the one from NYC and the one from the census, don't exactly match up. For one thing, the county names do not align with the borough names.
 
 #### Using named vectors as look-up tools
 
-Now, we can fix this by hand, but there are good ways and less good ways to do this. Ideally, we create a look-up table which we can reuse whenever we need to switch between borough and county names.
+Now, we can fix this by hand, but there are good ways and less good ways to do this. Ideally, we create a look-up table which we can reuse whenever we need to switch between borough and county names. For those familiar with database "join" operations, it is indeed possible to use joins in R. However, a simple way to just convert between two different representations (e.g., country name and borough name) is to use "named vectors" in R. Here's how:
 
 ```{r}
 # Borough names
@@ -72,7 +72,7 @@ boroNames <- nyc_boro_data$BOROUGH_GROUP[1:5]
 countyNames <- population_boro$NAME
 
 # combine, but note that the order is not the same! So we'll reorder
-boro2county <- data.frame(Borough=boroNames, County=countyNames[c(5,2,3,1,4)])
+boro2county <- data.frame(Borough=boroNames, County=countyNames[c(5,2,3,1,4)], stringsAsFactors = FALSE)
 
 # create two 'named vectors'
 # one for getting the borough
@@ -85,319 +85,77 @@ names(getCounty) <- boro2county$Borough
 
 ```
 
-
-Here's is one way we can use this new lookup table
+Here's is one way we can use this new lookup table. Note that `getBoro` is not a function (it is a named vector). So we use square brackets to index it, not parentheses.
 
 ```{r}
-
+getBoro["Richmond County, New York"]
+getCounty["Brooklyn"]
 ```
 
+```{r}
+acs_boro_population$Borough <- getBoro[acs_boro_population$NAME]
+acs_boro_population
+```
 
+All that remains is that annoying variable name B01001_001E for Total Population. We should definitely fix this, and there are a few ways to do it. The following may seem like a long-winded way to go about it, but it has the benefit that it will work no matter where the variable B01001_001E appears. It won't accidentally change the wrong column name, and it won't do anything at all if the variable you are trying to rename doesn't exist.
 
+```{r}
+names(acs_boro_population)[which(names(acs_boro_population)=="B01001_001E")] <- "TotalPop"
+acs_boro_population
+```
 
+With this in hand, we can now combine our NYC COVID-19 data with our Census data. Recall 
 
-To request the median household income we will request the variable "B19013_001E" (intuitive, right!)
+```{r}
+nyc_boro_data
+```
 
+We will make some judicious use of dplyr here to simplify the outcome. Mostly, we want to get rid of unnecessary columns from the ACS table
 
-MOVE THIS DOWN
-**Exercise**: Compute the population adjusted rate per 100,000 people using population data from the census. How does it differ from the age-adjusted rate? 
+```{r}
+boro_join <- acs_boro_population %>% select(Borough, countyName=NAME, TotalPop) %>% 
+  left_join(nyc_boro_data, by=c("Borough" =  "BOROUGH_GROUP"))
+boro_join
+```
 
+Woohoo! (I'm keeping countyName for later. You'll see why.)
+
+**Worked Example**: Compute the population adjusted rate per 100,000 people using population data from the census. How does it differ from the age-adjusted rate? 
+
+We can use our population estimates (keep in mind that these are 5-year averages as of 2018) to derive our own rate-per-100,000 as follows
+
+```{r}
+boro_join$Rate2 <-  round(boro_join$COVID_CASE_COUNT/boro_join$TotalPop * 100000, 2)
+boro_join
+```
+
+You'll notice that our rate, which is not age-adjusted, differs somewhat from the NYC rate, which is age-adjusted. Aside from age-adjustment, it is possible that our population numbers (based on 5-year averages) are different from the latest NYC populations estimates. If our population numbers are lower, then our rates would be higher. Or the difference could be a result of the age-adjustment formula.
+
+#### More variables: income, age, and race
+
+To request the median household income we will request the variable "B19013_001E" (intuitive, right!) Alternatively, the variable B20017_001E is earnings per person not by household
 
 ```{r echo=TRUE}
-income_boro <- getCensus(name = "acs/acs5",
+acs_boro_income <- getCensus(name = "acs/acs5",
                          vintage = 2018,
-                         vars = c("NAME", "B19013_001E"),
+                         vars = c("NAME", "B19013_001E", "B20017_001E"),
                          region = "county:005,047,061,081,085",
-                         regionin = "state:36", 
-                         key = myKey)
+                         regionin = "state:36", #key = myKey
+                         )
 
-income_boro
+names(acs_boro_income)[which(names(acs_boro_income)=="B19013_001E")] <- "MedHHIncome"
+names(acs_boro_income)[which(names(acs_boro_income)=="B20017_001E")] <- "MedIncome"
+acs_boro_income
 ```
 There it is, five-year averages, inflation-adjusted for 2018 dollars, by borough. (If you see one-year estimates, they may  be a bit higher than these numbers, if wages went up faster than inflation).
 
-```{r}
-boroNames <- c("Queens","Brooklyn","Manhattan","Staten", "Bronx")
-boro_income <- data.frame(Borough = boroNames, medianIncome = income_boro$B19013_001E)
-boro_income
-```
-
-Data from the SEX BY AGE group will be more complicated-looking because this group contains many more variables. In fact, the following API call will have 201 columns, all with names like B01001_047E!
+We can add these new income variables to the table we've started to build
 
 ```{r}
-sexByAge_boro <- getCensus(name = "acs/acs5",
-                           vintage = 2018,
-                           vars = c("NAME", "group(B01001)"),
-                           region = "county:005,047,061,081,085",
-                           regionin = "state:36", 
-                           key = myKey)
 
-dim(sexByAge_boro)
-```
-
-We'll want to filter this down and rename the variables.
-
-```{r}
-# a list of groups can be found here
-# acs_groups <- listCensusMetadata(name = "acs/acs5", vintage = 2018, type = "groups")
-# head(acs_groups)
-
-# here are the variables in the SEX BY AGE group
-group_B01001 <- listCensusMetadata(name = "acs/acs5",
-                                   vintage = 2018,
-                                   type = "variables",
-                                   group = "B01001")
-head(group_B01001[order(group_B01001$name),], 20)
+left_join(boro_join, 
+          acs_boro_income %>% select(countyName=NAME, MedHHIncome, MedIncome), 
+          by="countyName")
 
 ```
 
-Note that our list of variables also includes variable type. Here we have "int" for integers (numbers) and "string" which is the computational shorthand for "string of characters." This is the variable type used for words and sentences as well as passwords or other random strings of characters. 
-
-To make the results more readable, we can try identify the pattern in the order of the variables. First, let's observe the following:
-
-```{r}
-myVars <- paste0("B01001_0",sprintf("%02d", 20:50), "E")
-group_B01001 %>% filter(name %in% myVars) %>% arrange(name)
-
-```
-
-
-We've learned the following. The variable names (after the total) begin with males. First all males, then males by increasing age group. The females. Although it looks like it from this sample, the age groups are not all in intervals of 5 years. There are groups of three, two, and even one (e.g., 15-17, 18-19, 20 years). I'm not sure why.
-
-Suppose we wanted to extract the percentage of the population over the age of 65. From this table we would need to do the following
-
-+ add up the counts of males in each of the intervals over 65
- + B01001_020E + B01001_021E + B01001_022E + B01001_023E + B01001_024E + B01001_025E
-+ add to this the counts of females in the same age intervals
-  + B01001_044E + B01001_045E + B01001_046E + B01001_047E + B01001_048E + B01001_049E
-+ divide by the total
-  + B01001_001E
-
-
-```{r}
-
-maleOver65Vars <- c("B01001_020E","B01001_021E","B01001_022E","B01001_023E","B01001_024E","B01001_025E")
-femaleOver65Vars <- c("B01001_044E","B01001_045E","B01001_046E","B01001_047E","B01001_048E","B01001_049E")
-totalPopVar <- "B01001_001E"
-boro_over65 <- getCensus(name = "acs/acs5",
-                           vintage = 2018,
-                           vars = c("NAME", maleOver65Vars,femaleOver65Vars, totalPopVar),
-                           region = "county:005,047,061,081,085",
-                           regionin = "state:36", 
-                           key = myKey)
-
-proportionOver65 <- round(rowSums(boro_over65[,4:15])/boro_over65[,16],3)*100
-boro_over65_proportions <- data.frame(Borough=boroNames, over65=proportionOver65)
-
-```
-
-
-If all of that seems not worth the effort, you might want to just extact something like median age per geographic unit. These are variables in the SEX BY AGE group.
-
-+ B01002_001E	Estimate!!Median age --!!Total
-+ B01002_002E	Estimate!!Median age --!!Male
-+ B01002_003E	Estimate!!Median age --!!Female
-
-```{r}
-medianSexByAge_boro <- getCensus(name = "acs/acs5",
-                                 vintage = 2018,
-                                 vars = c("NAME", "B01002_001E", "B01002_002E", "B01002_003E"),
-                                 region = "county:005,047,061,081,085",
-                                 regionin = "state:36", 
-                                 key = myKey)
-
-names(medianSexByAge_boro)[4:6] <- c("medianAge", "medianAgeMale","medianAgeFemale")
-medianSexByAge_boro
-```
-
-
-To match the NYC race-level data we will need these categories of Race/Ethnicity
-
-+ All Hispanic
-+ Non-Hispanic/Latino: Black,African American
-+ Non-Hispanic/Latino: White
-+ Non-Hispanic/Latino: Asian
-+ Non-Hispanic/Latino: Other
-
-The 2018 population estimates reported for these categories should be as follows, so we can check if we are getting the right totals before we look at zip-codes
-
-Population
-(2018 estimate)
-
-2,449,450
-1,849,077
-2,694,258
-1,231,790
-174,173
-
-First we need to find the necessary race variables. The Census organizes this information in different variable groups, some of which separate out Hispanic or Latino origin (B03002) and some which do not (B02001). We will use the first one, again to match the way NYC has been reporting health data.
-
-```{r}
-group_B03002 <- listCensusMetadata(name = "acs/acs5",
-                                   vintage = 2018,
-                                   type = "variables",
-                                   group = "B03002")
-head(group_B03002[order(group_B03002$name),], 20)
-```
-
-Okay we're on the right track but it would be nice to see this list without the margin of errors and annotation variables. How can we get a list of variables that end in E but not in M or EA or MA? The answer is something called regular expressions, which is a specialist term for pattern matching. This is a long topic, so we are just going to work out one type of example, which is matching strings with a specific ending.  The R function for "get regular expression" is called `grep()`.
-
-```{r}
-# suppose we have a list of words and we want to know which ones end in the letter "e"
-# The end of a string is denoted by $ in regular expressions, so to match "e at the end"
-# we look for a pattern that we write as "e$"
-# 
-someFruit <- c("apple", "orange", "banana", "pear")
-grep("e$", someFruit)
-```
-
-
-By default `grep` returns the indices of the matched values, not the values themselves. In this case, the first two words matched. If we want the values, we use grep as follows
-
-```{r}
-grep("e$", someFruit, value = TRUE)
-```
-
-You can probably guess how to modify this pattern to find the string ending in "a" instead. If you want both, that is strings ending in either "a" or "e", this is the way to do it.
-
-
-```{r}
-grep("(e|a)$", someFruit, value = TRUE)
-```
-
-With this, let's reduce the list of variables
-
-```{r}
-View(group_B03002[grep("E$", group_B03002$name),])
-
-```
-
-With this easier to parse table, we can select the variables we want in particular
-
-+ B03002_001E Estimate!!Total	
-+ B03002_002E	Estimate!!Total!!Not Hispanic or Latino
-+	B03002_003E	Estimate!!Total!!Not Hispanic or Latino!!White alone
-+ B03002_004E	Estimate!!Total!!Not Hispanic or Latino!!Black or African American alone
-+ B03002_006E	Estimate!!Total!!Not Hispanic or Latino!!Asian alone
-+ B03002_012E	Estimate!!Total!!Hispanic or Latino
-
-We'll use the first two for normalizing proportions and for determining the non-Hispanic "Other" category. To get race by borough,
-
-```{r}
-race_boro <- getCensus(name = "acs/acs5",
-                       vintage = 2018,
-                       vars = c("NAME", "B03002_012E", "B03002_004E", "B03002_003E", "B03002_006E",
-                                "B03002_002E", "B03002_001E"),
-                       region = "county:005,047,061,081,085",
-                       regionin = "state:36", 
-                       key = myKey)
-
-# give variable names
-names(race_boro)[4:9] = c("Hisp", "NH_Black", "NH_White", "NH_Asian", "NH_Total", "Total")
-
-# create the non-Hispanic Other category
-race_boro <- race_boro %>% mutate(NH_Other = NH_Total-NH_Black-NH_White-NH_Asian) 
-
-# convert to proportions by dividing by total
-race_boro_proportion <- race_boro  %>% transmute(Hisp = Hisp/Total, NH_Black = NH_Black/Total, 
-            NH_White=NH_White/Total, NH_Asian=NH_Asian/Total, NH_Other=NH_Other/Total) %>%
-            round(., digits=3) * 100
-
-race_boro_proportion$Borough <- c("Queens","Brooklyn","Manhattan","Staten", "Bronx")
-race_boro_proportion 
-``` 
-
-
-#### Zip-code tabulation area
-
-We're going to want to use zip-code tract areas, and we will get our list from the nyc data
-
-``` {r}
-nyc_zcta_covid <- read.csv("data/coronavirus-nyc/tests-by-zcta.csv")
-nyc_zipcodes <- nyc_zcta_covid %>% select(MODZCTA) %>% na.omit() %>% unlist()
-# for the API call, we will want all zipcodes in plain text with comma separation
-nyc_zipcode_string <- paste(nyc_zipcodes, collapse=",")
-
-```
-
-### Zip-code-level median income
-
-
-```{r}
-zcta_income <- getCensus(name = "acs/acs5",
-                         vintage = 2018,
-                         vars = c("B19013_001E"),
-                         region = paste0("zip code tabulation area:",nyc_zipcode_string),
-                         key=myKey)
-```
-
-```{r}
-names(zcta_income) <- c("zipcode","median_income")
-View(zcta_income)
-```
-
-### Zip-code-level race
-
-```{r}
-zcta_race <- getCensus(name = "acs/acs5",
-                       vintage = 2018,
-                       vars = c("B03002_012E", "B03002_004E", "B03002_003E", "B03002_006E",
-                                "B03002_002E", "B03002_001E"),
-                       region = paste0("zip code tabulation area:",nyc_zipcode_string),
-                       key = myKey)
-
-# give variable names
-names(zcta_race) = c("zipcode", "Hisp", "NH_Black", "NH_White", "NH_Asian", "NH_Total", "Total")
-
-# create the non-Hispanic Other category
-zcta_race <- zcta_race %>% mutate(NH_Other = NH_Total-NH_Black-NH_White-NH_Asian) 
-
-# convert to proportions by dividing by total
-zcta_race_proportion <- zcta_race  %>% transmute(Hisp = Hisp/Total, NH_Black = NH_Black/Total, 
-            NH_White=NH_White/Total, NH_Asian=NH_Asian/Total, NH_Other=NH_Other/Total) %>%
-            round(., digits=3) * 100
-
-zcta_race_proportion <- cbind(zipcode=zcta_race$zipcode, zcta_race_proportion) 
-zcta_race_proportion
-``` 
-
-
-### Some more variables to play with
-
-#### Household size
-
-+ B08201_007E	Estimate!!Total!!1-person household
-+ B08201_013E	Estimate!!Total!!2-person household
-+ B08201_019E	Estimate!!Total!!3-person household
-+ B08201_025E	Estimate!!Total!!4-or-more-person household
-
-#### Educational attainment
-
-+ B15003_022E	Estimate!!Total!!Bachelor's degree	
-+ B15003_023E	Estimate!!Total!!Master's degree	
-+ B15003_024E	Estimate!!Total!!Professional school degree	
-+ B15003_025E	Estimate!!Total!!Doctorate degree
-
-```{r}
-zcta_college_hh <- getCensus(name = "acs/acs5",
-                       vintage = 2018,
-                       vars = c("B15003_022E", "B15003_023E", "B15003_024E", "B15003_025E", "B15003_001E",
-                                "B08201_007E", "B08201_013E", "B08201_019E", "B08201_025E"),
-                       region = paste0("zip code tabulation area:",nyc_zipcode_string),
-                       key = myKey)
-
-# give variable names
-names(zcta_college_hh) = c("zipcode", "Bachelors", "Masters", "Professional", "Doctorate", "TotalPop",
-                        "HH1pers", "HH2pers", "HH3pers", "HH4plus")
-
-# create the Bach_plus Other category
-zcta_edu_hh <- zcta_college_hh %>% 
-                        mutate(Bach_plus_prop = round((Bachelors+Masters+Professional+Doctorate)/TotalPop,3)*100)
-# create the average household size variable
-zcta_edu_hh <- zcta_coll_hh %>% 
-            mutate(AvgHH = (HH1pers+2*HH2pers+3*HH3pers+4*HH4plus)/(HH1pers+HH2pers+HH3pers+HH4plus)) 
-
-
-
-head(zcta_edu_hh)
-
-``` 
