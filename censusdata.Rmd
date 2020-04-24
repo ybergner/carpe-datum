@@ -1,45 +1,39 @@
 ---
-title: "Geographic COVID-19 Data Analysis and Visualization"
+title: "NYC COVID-19 Data: Analysis and Visualization"
 output: html_notebook
 ---
 
 # Purpose
 
-On April 10, 2020, [ABC News](https://abcnews.go.com/Health/nyc-stark-contrast-covid-19-infection-rates-based/story?id=69920706) covered an online report (by the NYU Furman Center) that examined cases of COVID-19 in New York City on a neighborhood level. Most COVID-19 data that had been coming out had been reporting on the city as a whole. The main idea here was that neighborhoods tell a different story than data at the city level. Data scientist call this a shift in the unit-of-analysis. For example, some neighborhoods are wealthier and some poorer. Neighborhoods also vary by racial composition. If we examine COVID-19 outcomes by neighborhood, we may be able to see patterns and associations between disease incidence and race or socio-economic variables. Indeed, the Furman Center found such associations. The ABC News report produced images like the following:
+On April 10, 2020, [ABC News](https://abcnews.go.com/Health/nyc-stark-contrast-covid-19-infection-rates-based/story?id=69920706) covered an online report (by the NYU Furman Center) that examined cases of COVID-19 in New York City on a neighborhood level. Most COVID-19 data that had been coming out had been reporting on the city as a whole. The main idea here was that neighborhoods tell a different story. Data scientist call this a shift in the unit-of-analysis. For example, some neighborhoods are wealthier and some poorer. Neighborhoods also vary by racial composition. If we examine COVID-19 outcomes by neighborhood, we may be able to see patterns and associations between disease incidence and race or socio-economic variables. Indeed, the Furman Center found such associations. The ABC News report produced images like the following:
 
-![zipcode map showing concentration of COVID-19 cases in  NYC](images/abc_COVID19NycZip_v03_KA_hpEmbed_17x12_992.jpg) 
+![](images/abc_COVID19NycZip_v03_KA_hpEmbed_17x12_992.jpg) 
 
 
 People familiar with the layout of New York City might be able to identify low-income and largely African-American neighborhoods like Hunts Point in the South Bronx.  ABC News produced a corresponding map showing the share of adults with college degree.
 
-![zipcode map showing share of adults with college degree in NYC](images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg)
+![](images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg)
 
-It requires switching back and forth between these images, but the dark regions on the COVID map (higher rates of disease) seem to correspond to the lighter regions on the college degree map (lower college share). 
+It requires switching back and forth between these images, but the dark regions on the COVID map (higher rates of disease) seem to often correspond to the lighter regions on the college degree map (lower college share). 
  
 How does one make these data visualizations? And are they the best way to "see" the signals in the data?
 
-ABC News also reproduced their own version of this table, showing racial composition. Althought the title may confuse matters, in this table, multiple neighborhoods (zipcodes) are actually being grouped together into five sets using **quintiles.** You take all of the zipcodes, rank-order them by COVID-19 concentration, and then select the bottom fifth, the next fifth, and so on up to the top fifth. Technically, the quintiles are the cut-points, so for five groups, there are four quintiles. This is very confusing. Of course, this division process can be done for a different number of **quantiles**--note the spelling--not necessarily five. A division of three groups is made by choose (two cut-point) tertiles or terciles. The median is the 2-quantile, as it is the cut-point that divides a data set into two equal parts.
+ABC News also reproduced their own version of table below, showing racial composition. Althought the title may confuse matters, in this table, multiple neighborhoods (zipcodes) are actually grouped together into five sets using **quintiles.** You take all of the zipcodes, rank-order them by COVID-19 concentration, and then select the bottom fifth, the next fifth, and so on up to the top fifth. 
+
+Technically, the quintiles are the cut-points, so for five groups, there are four quintiles. This is very confusing. Of course, this division process can be done for a different number of **quantiles**--note the spelling--not necessarily five. A division of three groups is made by choose (two cut-point) tertiles or terciles. The median is the 2-quantile, as it is the cut-point that divides a data set into two equal parts.
 
 ![table of data showing](images/abc_COVID19RacialComp_v02_KA_hpEmbed_37x16_992.jpg)
 
-If you look at the table above, you may notice trends or patterns between racial composition (of these groups of neighborhoods) and COVID-19 concentration. The trends are not perfectly linear. But, for example, the proportion of Black and Hispanic people in the low-concentration neighborhoods is37.3%. While in the high concentration neighborhoods, this combined share is 55.6%.
+If you look at the table above, you may notice trends or patterns between racial composition (of these groups of neighborhoods) and COVID-19 concentration. The trends are not perfectly linear. But, for example, the proportion of Black and Hispanic people in the low-concentration neighborhoods is 37.3%. While in the high concentration neighborhoods, this combined share is 55.6%.
 
 In the remainder of this tutorial, we will examine how to recreate graphs and tables like the one above from publicly available data. This will enable you to create your own versions or update the ones above with new data. We will also look at alternative representations and at some simulation-based tests to see how likely it is that such disparities might occur by chance.
 
+
 Let's begin!
 
-# Getting Data
+# Getting some data
 
-```{r}
-library(censusapi)
-library(dplyr)
-myKey = Sys.getenv("CENSUS_KEY") #store your key in .Renvriron
-```
-
-
-To get census data, you can go to (https://data.census.gov/), but be warned: it is a big maze and not that easy to navigate. What the pros who make media reports do (probably) is use the US Census API to make specific requests for data. To do this yourself you will need an API key. This is easy enough to get, but you need to [request one here](https://api.census.gov/data/key_signup.html). Once you have a key, you can declare it in your R code or, better for security/code-sharing, embed it in a .Renviron file.
-
-More importantly, you need to know what you're asking for. That means you need to know which data sets, which variables, which geographic units, etc. A 20-page [API users guide can be found here](https://www.census.gov/content/dam/Census/data/developers/api-user-guide/api-guide.pdf). In this tutorial, I will walk you through the steps of creating some of the figures and tables that go into media reports about COVID-19 outcomes. The examples here are all NYC-centric, but the methods, especially for US Census data, are completely general. 
+In this tutorial, I will walk you through the steps of creating some of the figures and tables that go into media reports about COVID-19 outcomes. The examples here are all NYC-centric, but the methods, especially for US Census data, are completely general. 
 
 
 ## Local data on COVID from the city and/or state
@@ -119,7 +113,20 @@ Notice that the first row is missing a zipcode. Presumably these are COVID tests
 ## Census data
 <!-- (permutation tests the zipcode data) -->
 
-We will be interested in the [American Community Survey 5-Year data](https://www.census.gov/data/developers/data-sets/acs-5year.html) which provide estimates aggregated over a 5-year period every two years. The last published data set, i.e., the most current one available, is from 2018.
+
+```{r}
+library(censusapi)
+library(dplyr)
+myKey = Sys.getenv("CENSUS_KEY") #store your key in .Renvriron
+```
+
+
+To get census data, you can go to (https://data.census.gov/), but be warned: it is a big maze and not that easy to navigate. What the pros who make media reports do (probably) is use the US Census API to make specific requests for data. To do this yourself you will need an API key. This is easy enough to get, but you need to [request one here](https://api.census.gov/data/key_signup.html). Once you have a key, you can declare it in your R code or, better for security/code-sharing, embed it in a .Renviron file.
+
+More importantly, you need to know what you're asking for. That means you need to know which data sets, which variables, which geographic units, etc. A 20-page [API users guide can be found here](https://www.census.gov/content/dam/Census/data/developers/api-user-guide/api-guide.pdf). 
+
+
+We will be interested in the [American Community Survey 5-Year data](https://www.census.gov/data/developers/data-sets/acs-5year.html) which provide estimates aggregated over a 5-year period every two years. The last published data set, i.xe., the most current one available, is from 2018.
 
 #### Census Variables
 
@@ -127,7 +134,8 @@ There are something like 20,000 variables available, and these can be requested 
 
 + B01001	SEX BY AGE	
   + Keep in mind this has a lot of subcategories, such as Male 5-9 Years, Male 10-14 years, etc.
-+ B02001	RACE	
++ B02001	RACE (disregards Hispanic or Latino Origin)	
++ B03002	HISPANIC OR LATINO ORIGIN BY RACE	
 + B19013	MEDIAN HOUSEHOLD INCOME IN THE PAST 12 MONTHS
 
 For each group, a list of variables can be found on a corresponding website. For example, to find the variables in the SEX BY AGE group, you can go to https://api.census.gov/data/2018/acs/acs5/groups/B01001.html (notice the URL ending is the same as the group). There you will find variables such as
@@ -160,7 +168,7 @@ income_boro
 There it is, five-year averages, inflation-adjusted for 2018 dollars, by borough. (If you see one-year estimates, they may  be a bit higher than these numbers, if wages went up faster than inflation).
 
 ```{r}
-boroNames <- c("Queens","Brooklyn","Manhattan","StatenI", "Bronx")
+boroNames <- c("Queens","Brooklyn","Manhattan","Staten", "Bronx")
 boro_income <- data.frame(Borough = boroNames, medianIncome = income_boro$B19013_001E)
 boro_income
 ```
@@ -229,34 +237,30 @@ boro_over65 <- getCensus(name = "acs/acs5",
                            regionin = "state:36", 
                            key = myKey)
 
-proportionsA <- rowSums(boro_over65[,4:15])/boro_over65[,16] 
-boro_over65_proportions <- cbind()
+proportionOver65 <- round(rowSums(boro_over65[,4:15])/boro_over65[,16],3)*100
+boro_over65_proportions <- data.frame(Borough=boroNames, over65=proportionOver65)
 
 ```
 
 
-Maybe we should just look at median age????
+If all of that seems not worth the effort, you might want to just extact something like median age per geographic unit. These are variables in the SEX BY AGE group.
 
-```{r}
-medianSexByAge_boro <- getCensus(name = "acs/acs5",
-                                 vintage = 2018,
-                                 vars = c("NAME", "group(B01002)"),
-                                 region = "county:005,047,061,081,085",
-                                 regionin = "state:36", 
-                                 key = myKey)
-
-medianSexByAge_boro
-```
-
-We can probably just focus on these three variables
-
-+ B01001_002E	Estimate!!Total!!Male
-+ B01001_026E	Estimate!!Total!!Female
 + B01002_001E	Estimate!!Median age --!!Total
 + B01002_002E	Estimate!!Median age --!!Male
 + B01002_003E	Estimate!!Median age --!!Female
 
-This may do for age and sex variables. 
+```{r}
+medianSexByAge_boro <- getCensus(name = "acs/acs5",
+                                 vintage = 2018,
+                                 vars = c("NAME", "B01002_001E", "B01002_002E", "B01002_003E"),
+                                 region = "county:005,047,061,081,085",
+                                 regionin = "state:36", 
+                                 key = myKey)
+
+names(medianSexByAge_boro)[4:6] <- c("medianAge", "medianAgeMale","medianAgeFemale")
+medianSexByAge_boro
+```
+
 
 To match the NYC race-level data we will need these categories of Race/Ethnicity
 
@@ -350,7 +354,7 @@ race_boro_proportion <- race_boro  %>% transmute(Hisp = Hisp/Total, NH_Black = N
             NH_White=NH_White/Total, NH_Asian=NH_Asian/Total, NH_Other=NH_Other/Total) %>%
             round(., digits=3) * 100
 
-race_boro_proportion$Borough <- c("Queens","Brooklyn","Manhattan","StatenI", "Bronx")
+race_boro_proportion$Borough <- c("Queens","Brooklyn","Manhattan","Staten", "Bronx")
 race_boro_proportion 
 ``` 
 
@@ -408,3 +412,81 @@ zcta_race_proportion <- cbind(zipcode=zcta_race$zipcode, zcta_race_proportion)
 zcta_race_proportion
 ``` 
 
+
+### Some more variables to play with
+
++ B08201_007E	Estimate!!Total!!1-person household
++ B08201_013E	Estimate!!Total!!2-person household
++ B08201_019E	Estimate!!Total!!3-person household
++ B08201_025E	Estimate!!Total!!4-or-more-person household
+
++ B15003_022E	Estimate!!Total!!Bachelor's degree	
++ B15003_023E	Estimate!!Total!!Master's degree	
++ B15003_024E	Estimate!!Total!!Professional school degree	
++ B15003_025E	Estimate!!Total!!Doctorate degree
+
+```{r}
+zcta_college_hh <- getCensus(name = "acs/acs5",
+                       vintage = 2018,
+                       vars = c("B15003_022E", "B15003_023E", "B15003_024E", "B15003_025E", "B15003_001E",
+                                "B08201_007E", "B08201_013E", "B08201_019E", "B08201_025E"),
+                       region = paste0("zip code tabulation area:",nyc_zipcode_string),
+                       key = myKey)
+
+# give variable names
+names(zcta_college_hh) = c("zipcode", "Bachelors", "Masters", "Professional", "Doctorate", "TotalPop",
+                        "HH1pers", "HH2pers", "HH3pers", "HH4plus")
+
+# create the Bach_plus Other category
+zcta_coll_hh <- zcta_college_hh %>% 
+                        mutate(Bach_plus_prop = round((Bachelors+Masters+Professional+Doctorate)/TotalPop,3)*100)
+# create the average household size variable
+zcta_coll_hh <- zcta_coll_hh %>% 
+            mutate(AvgHH = (HH1pers+2*HH2pers+3*HH3pers+4*HH4plus)/(HH1pers+HH2pers+HH3pers+HH4plus)) 
+
+
+
+head(zcta_coll_hh)
+
+``` 
+
+
+
+```{r}
+
+tmp <- read.csv("data/data_summ_zcta.csv")
+zcta_race_proportion$zipcode <- as.numeric(as.character(zcta_race_proportion$zipcode))
+zcta_coll_hh$zipcode <- as.numeric(zcta_coll_hh$zipcode)
+tmp2 <- dplyr::left_join(tmp, zcta_race_proportion, 
+                        by = c("MODZCTA" = "zipcode"))
+tmp2 <- dplyr::left_join(tmp2, zcta_coll_hh, 
+                        by = c("MODZCTA" = "zipcode"))
+tmp2 <- tmp2[,-5]
+
+#write.csv(tmp2, "data/coronavirus-nyc/zipcode_vars.csv")
+
+zipdata <- read.csv("data/coronavirus-nyc/zipcode_vars.csv")
+```
+
+
+```{r}
+
+col_lev <- getcolors(zipdata$Bach_plus_prop, 5, "white", c(0,0,1))
+
+plot(NYC_zips, col = col_lev[[1]], 
+     main = "AverageHH", cex = 10, lwd=0.05)
+legend("topleft", 
+       legend = col_lev[[2]], 
+       fill = col_lev[[3]], cex = 0.8, title = "AverageHH")
+```
+
+```
+
+
+```{r}
+# makeVarlist(name = "acs/acs5",
+#             vintage = 2018,
+#             find = "2-person household",
+#             varsearch = "label")
+                      
+```
