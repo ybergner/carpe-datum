@@ -377,8 +377,7 @@ acs_boro_over65 <- getCensus(name = "acs/acs5",
                          )
 
 proportionOver65 <- round(rowSums(acs_boro_over65[,4:15])/acs_boro_over65[,16],3)*100
-boro_over65_proportions <- data.frame(countyName =acs_boro_over65$NAME,
-                                      Borough=unname(getBoro[acs_boro_over65$countyName]), 
+boro_over65_proportions <- data.frame(Borough=unname(getBoro[acs_boro_over65$NAME]), 
                                       over65=proportionOver65)
 boro_over65_proportions
 ```
