@@ -3,25 +3,18 @@ title: "NYC COVID-19 Data: Analysis and Visualization"
 output: html_notebook
 ---
 
-# Part 3: More Census data
+# Part 3: More (and messier) Census data
 
-Data from the SEX BY AGE group will be more complicated-looking because this group contains many more variables. In fact, the following API call will have 201 columns, all with names like B01001_047E!
+## Exploring the ACS data {-}
 
-```{r}
-acs_boro_sexByAge <- getCensus(name = "acs/acs5",
-                           vintage = 2018,
-                           vars = c("NAME", "group(B01001)"),
-                           region = "county:005,047,061,081,085",
-                           regionin = "state:36", #key = myKey
-                           )
+So far, we have been selecting one or two variables at a time, because we knew what we were looking for. Sometimes, though, you're not exactly sure what variables are in the data. Moreoever, since many of the ACS tables combine categories (such as SEX BY AGE), the number of variables grows exponentially (e.g., as the number of SEX categories times the number of AGE categories). Add to that the margin-of-error and annotation variables, and the list gets overwhelming fast.
 
-dim(acs_boro_sexByAge)
-```
+Even data from the SEX BY AGE group (B01001), which seems simple, is rather complicated-looking! I will walk through it deliberately, as I would do if I were exploring the data for the first time and not sure what I was going to find.
 
-We'll want to filter this down and rename the variables.
+First, I will use the function `listCensusMetadata` to request all of the variables in the group B01001 and see what we see.
 
 ```{r}
-# a list of groups can be found here
+# a list of groups can be found here; there are 1135 of them!
 # acs_groups <- listCensusMetadata(name = "acs/acs5", vintage = 2018, type = "groups")
 # head(acs_groups)
 
@@ -34,9 +27,9 @@ head(group_B01001[order(group_B01001$name),], 20)
 
 ```
 
-Note that our list of variables also includes variable type. Here we have "int" for integers (numbers) and "string" which is the computational shorthand for "string of characters." This is the variable type used for words and sentences as well as passwords or other random strings of characters. 
+Note that our table of variables here includes variable name, lable, andtype. For type, we have "int" for integers (numbers) and "string" which is the computational shorthand for "string of characters." This is the variable-type used for words and sentences as well as passwords or other random strings of characters. 
 
-To make the results more readable, we can try identify the pattern in the order of the variables. First, let's observe the following:
+To make the results more readable, we can try identify the pattern in the order of the variables. First, let's observe the following. The numbers after the group name are just increasing from 001, 002, and so on. We might want to look at the middle of this list, e.g, from 020 to 050, which we can do as follows:
 
 ```{r}
 myVars <- paste0("B01001_0",sprintf("%02d", 20:50), "E")
@@ -181,7 +174,7 @@ race_boro_proportion
 
 #### Zip-code tabulation area
 
-We're going to want to use zip-code tract areas, and we will get our list from the nyc data
+We're going to want to use zipcode tract areas, and we will get our list from the nyc data
 
 ``` {r}
 nyc_zcta_covid <- read.csv("data/coronavirus-nyc/tests-by-zcta.csv")

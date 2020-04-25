@@ -69,7 +69,7 @@ Now, we can fix this by hand, but there are good ways and less good ways to do t
 # Borough names
 boroNames <- nyc_boro_data$BOROUGH_GROUP[1:5]
 # County names
-countyNames <- population_boro$NAME
+countyNames <- acs_boro_population$NAME
 
 # combine, but note that the order is not the same! So we'll reorder
 boro2county <- data.frame(Borough=boroNames, County=countyNames[c(5,2,3,1,4)], stringsAsFactors = FALSE)
@@ -101,6 +101,7 @@ All that remains is that annoying variable name B01001_001E for Total Population
 
 ```{r}
 names(acs_boro_population)[which(names(acs_boro_population)=="B01001_001E")] <- "TotalPop"
+names(acs_boro_population)[which(names(acs_boro_population)=="NAME")] <- "countyName"
 acs_boro_population
 ```
 
@@ -110,10 +111,10 @@ With this in hand, we can now combine our NYC COVID-19 data with our Census data
 nyc_boro_data
 ```
 
-We will make some judicious use of dplyr here to simplify the outcome. Mostly, we want to get rid of unnecessary columns from the ACS table
+We will make some judicious use of dplyr here to simplify the outcome. Mostly, we want to get rid of unnecessary columns from the ACS table (using `select`), and then use `join()` to merge the two tables.
 
 ```{r}
-boro_join <- acs_boro_population %>% select(Borough, countyName=NAME, TotalPop) %>% 
+boro_join <- acs_boro_population %>% select(Borough, countyName, TotalPop) %>% 
   left_join(nyc_boro_data, by=c("Borough" =  "BOROUGH_GROUP"))
 boro_join
 ```
@@ -153,9 +154,11 @@ We can add these new income variables to the table we've started to build
 
 ```{r}
 
+# Note that I am renaming NAME to countyName in the select(), so I didn't have to do it ahead of time
 left_join(boro_join, 
           acs_boro_income %>% select(countyName=NAME, MedHHIncome, MedIncome), 
           by="countyName")
 
 ```
 
+In the next part of the series, we will keep assembling more variables related to age and race. We will also change our unit of analysis to zipcode tabulation areas.

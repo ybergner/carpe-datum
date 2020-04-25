@@ -3,64 +3,10 @@ title: "NYC COVID-19 Data: Analysis and Visualization"
 output: html_notebook
 ---
 
-# Part 4: Combining Data and Map-Based Visualization
+# Part 5: Map-Based Visualization
 
-Now, let's get some more information by zip code and save it in a CSV file that we can use.  
-```{r}
-# myVars <- paste0("B01001_0",sprintf("%02d", 1:49), "E")
-# labs <- group_B01001 %>% filter(name %in% myVars) %>% arrange(name) %>% select(name,label)
+In the first parts of this tutorial series, we retrieved and examined data from local NYC sources and from the US Census. We combined the data into borough-level and zipcode-level statistics. 
 
-zcta_data <- getCensus(name = "acs/acs5",
-                       vintage = 2018,
-                       vars = c("NAME", "B19013_001E", "B01003_001E", "B02001_001E", "B02001_002E",
-                                "B01001_002E", "B01001_026E", "B01002_001E", "B01002_002E",
-                                "B01002_003E", "B20017_002E", "B20017_005E"),
-                       region = paste0("zip code tabulation area:",nyc_zipcode_string),
-                       key=myKey)
-
-#update column names
-names(zcta_data)[which(names(zcta_data)=="B19013_001E")] <- "Med_Income"
-names(zcta_data)[which(names(zcta_data)=="B01003_001E")] <- "Population"
-names(zcta_data)[which(names(zcta_data)=="B02001_001E")] <- "Race_Total"
-names(zcta_data)[which(names(zcta_data)=="B02001_002E")] <- "White_Total"
-names(zcta_data)[which(names(zcta_data)=="B01001_002E")] <- "Male_Total"
-names(zcta_data)[which(names(zcta_data)=="B01001_026E")] <- "Fem_Total"
-names(zcta_data)[which(names(zcta_data)=="B01002_001E")] <- "Median_Age"
-names(zcta_data)[which(names(zcta_data)=="B01002_002E")] <- "Median_Age_Male"
-names(zcta_data)[which(names(zcta_data)=="B01002_003E")] <- "Median_Age_Fem"
-names(zcta_data)[which(names(zcta_data)=="B20017_002E")] <- "Median_Income_Male"
-names(zcta_data)[which(names(zcta_data)=="B20017_005E")] <- "Median_Income_Fem"
-```
-
-```{r}
-bor_data <- getCensus(name = "acs/acs5",
-vintage = 2018,
-vars = c("NAME", "B20017_001E", "B01003_001E", "B02001_001E", "B02001_002E",
-         "B01001_002E", "B01001_026E", "B01002_001E", "B01002_002E",
-         "B01002_003E", "B20017_002E", "B20017_005E"),
-region = "county:005,047,061,081,085",
-regionin = "state:36",
-key=myKey)
-
-#update column names
-names(bor_data)[which(names(bor_data)=="B20017_001E")] <- "Med_Income"
-names(bor_data)[which(names(bor_data)=="B01003_001E")] <- "Population"
-names(bor_data)[which(names(bor_data)=="B02001_001E")] <- "Race_Total"
-names(bor_data)[which(names(bor_data)=="B02001_002E")] <- "White_Total"
-names(bor_data)[which(names(bor_data)=="B01001_002E")] <- "Male_Total"
-names(bor_data)[which(names(bor_data)=="B01001_026E")] <- "Fem_Total"
-names(bor_data)[which(names(bor_data)=="B01002_001E")] <- "Median_Age"
-names(bor_data)[which(names(bor_data)=="B01002_002E")] <- "Median_Age_Male"
-names(bor_data)[which(names(bor_data)=="B01002_003E")] <- "Median_Age_Fem"
-names(bor_data)[which(names(bor_data)=="B20017_002E")] <- "Median_Income_Male"
-names(bor_data)[which(names(bor_data)=="B20017_005E")] <- "Median_Income_Fem"
-```
-
-
-```{r}
-head(zcta_data)
-```
-   
    
 ```{r, message=FALSE}
 #load additional viz libraries
@@ -241,19 +187,4 @@ plot(NYC_zips, col = col_lev2[[1]], main = "covid", cex = 10, lwd=0.05)
 plot(NYC_zips, col = col_lev1[[1]], main = "nonwhite+covid", cex = 10, lwd=0.05)
 plot(NYC_zips, col = col_lev2[[1]], add=T, cex = 10, lwd=0.05)
 
-```
-
-
-
-
-
-
-
-
-```{r}
-# makeVarlist(name = "acs/acs5",
-#             vintage = 2018,
-#             find = "2-person household",
-#             varsearch = "label")
-                      
 ```

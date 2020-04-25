@@ -1,9 +1,4 @@
----
-title: "NYC COVID-19 Data: Analysis and Visualization"
-output: html_notebook
----
-
-# Part 1
+# NYC COVID-19 Data Part 1
 
 ## Purpose
 
@@ -118,3 +113,5 @@ head(nyc_zipcode_data)
 ```
 
 There are a couple more tables included in the GitHub repository, for example ones showing the daily tracking of new cases, hospitalizations, and deaths. But as we are focusing on the neighborhood level counts, I will leave them out of these notes. 
+
+In the next part of the series, we will get started with US Census data.

@@ -5,7 +5,7 @@ rmd_files:
   "themodalamerican.Rmd", "personality.Rmd",
   "whenandhowdie.Rmd", "conditionaldeath.Rmd", "somefactsaboutprob.Rmd",
   "howyouwilldie.Rmd",  "willyoumakemoney.Rmd", "bettingonbeer.Rmd", "expectedvalue.Rmd",
-  "isthesystemfair.Rmd", "differences_athletics.Rmd",
+  "isthesystemfair.Rmd", "differences_athletics.Rmd", "nycovid19_chapter.Rmd",
   "appendix.Rmd",
   "references.Rmd"]
 #  latex: ["index.Rmd", "book1intro.Rmd", "categoriescounts.Rmd",
