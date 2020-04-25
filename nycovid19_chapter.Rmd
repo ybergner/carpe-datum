@@ -312,3 +312,278 @@ left_join(boro_join,
 ```
 
 In the next part of the series, we will keep assembling more variables related to age and race. We will also change our unit of analysis to zipcode tabulation areas.
+
+
+# Part 3: More (and messier) Census data
+
+## Exploring the ACS data {-}
+
+So far, we have been selecting one or two variables at a time, because we knew what we were looking for. Sometimes, though, you're not exactly sure what variables are in the data. Moreoever, since many of the ACS tables combine categories (such as SEX BY AGE), the number of variables grows exponentially (e.g., as the number of SEX categories times the number of AGE categories). Add to that the margin-of-error and annotation variables, and the list gets overwhelming fast.
+
+Even data from the SEX BY AGE group (B01001), which seems simple, is rather complicated-looking! I will walk through it deliberately, as I would do if I were exploring the data for the first time and not sure what I was going to find.
+
+First, I will use the function `listCensusMetadata` to request all of the variables in the group B01001 and see what we see.
+
+```{r}
+# a list of groups can be found here; there are 1135 of them!
+# acs_groups <- listCensusMetadata(name = "acs/acs5", vintage = 2018, type = "groups")
+# head(acs_groups)
+
+# here are the variables in the SEX BY AGE group
+group_B01001 <- listCensusMetadata(name = "acs/acs5",
+                                   vintage = 2018,
+                                   type = "variables",
+                                   group = "B01001")
+head(group_B01001[order(group_B01001$name),], 15)
+
+```
+
+Ugh. Note that our table of variables here includes variable name, lable, andtype. For type, we have "int" for integers (numbers) and "string" which is the computational shorthand for "string of characters." This is the variable-type used for words and sentences as well as passwords or other random strings of characters. 
+
+To make the results more readable, we can try identify the pattern in the order of the variables. First, let's observe the following. The numbers after the group name are just increasing from 001, 002, and so on. We might want to look at the middle of this list, e.g, from 025 to 040, which we can do as follows:
+
+```{r}
+myVars <- paste0("B01001_0",sprintf("%02d", 25:40), "E")
+group_B01001 %>% filter(name %in% myVars) %>% arrange(name)
+
+```
+
+
+We've learned the following. The variable names (after the total) begin with males. First all males, then males by increasing age group. The females. Although it looks like it from this sample, the age groups are not all in intervals of 5 years. There are groups of three, two, and even one (e.g., 15-17, 18-19, 20 years). I'm not sure why.
+
+Suppose we wanted to extract the percentage of the population over the age of 65. From this table we would need to do the following
+
++ add up the counts of males in each of the intervals over 65
+ + B01001_020E + B01001_021E + B01001_022E + B01001_023E + B01001_024E + B01001_025E
++ add to this the counts of females in the same age intervals
+  + B01001_044E + B01001_045E + B01001_046E + B01001_047E + B01001_048E + B01001_049E
++ divide by the total
+  + B01001_001E
+
+
+```{r}
+
+maleOver65Vars <- c("B01001_020E","B01001_021E","B01001_022E","B01001_023E",
+                    "B01001_024E","B01001_025E")
+femaleOver65Vars <- c("B01001_044E","B01001_045E","B01001_046E","B01001_047E",
+                      "B01001_048E","B01001_049E")
+totalPopVar <- "B01001_001E"
+acs_boro_over65 <- getCensus(name = "acs/acs5",
+                           vintage = 2018,
+                           vars = c("NAME", maleOver65Vars,femaleOver65Vars, totalPopVar),
+                           region = "county:005,047,061,081,085",
+                           regionin = "state:36", key = myKey
+                         )
+
+proportionOver65 <- round(rowSums(acs_boro_over65[,4:15])/acs_boro_over65[,16],3)*100
+boro_over65_proportions <- data.frame(Borough=boroNames, over65=proportionOver65)
+boro_over65_proportions
+```
+
+
+If all of that seems not worth the effort, you might want to just extact something like median age per geographic unit. These are variables in the SEX BY AGE group.
+
++ B01002_001E	Estimate!!Median age --!!Total
++ B01002_002E	Estimate!!Median age --!!Male
++ B01002_003E	Estimate!!Median age --!!Female
+
+```{r}
+medianSexByAge_boro <- getCensus(name = "acs/acs5",
+                                 vintage = 2018,
+                                 vars = c("NAME", "B01002_001E", "B01002_002E", "B01002_003E"),
+                                 region = "county:005,047,061,081,085",
+                                 regionin = "state:36", 
+                                 key = myKey
+                                 )
+
+names(medianSexByAge_boro)[4:6] <- c("medianAge", "medianAgeMale","medianAgeFemale")
+medianSexByAge_boro
+```
+
+To match the NYC race-level data we will need these categories of Race/Ethnicity
+
++ All Hispanic
++ Non-Hispanic/Latino: Black,African American
++ Non-Hispanic/Latino: White
++ Non-Hispanic/Latino: Asian
++ Non-Hispanic/Latino: Other
+
+First we need to find the necessary race variables. The Census organizes race information in different variable groups, some of which separate out Hispanic or Latino origin (B03002) and some which do not (B02001). We will use the first one, again to match the way NYC has been reporting health data.
+
+```{r}
+group_B03002 <- listCensusMetadata(name = "acs/acs5",
+                                   vintage = 2018,
+                                   type = "variables",
+                                   group = "B03002")
+head(group_B03002[order(group_B03002$name),], 20)
+```
+
+Okay we're on the right track but it would be nice to see this list without the margin of errors and annotation variables. How can we get a list of variables that end in E but not in M or EA or MA? The answer is something called regular expressions, which is a specialist term for pattern matching. This is a long topic, so we are just going to work out one type of example, which is matching strings with a specific ending.  The R function for "get regular expression" is called `grep()`.
+
+```{r}
+# suppose we have a list of words and we want to know which ones end in the letter "e"
+# The end of a string is denoted by $ in regular expressions, so to match "e at the end"
+# we look for a pattern that we write as "e$"
+# 
+someFruit <- c("apple", "orange", "banana", "pear")
+grep("e$", someFruit)
+```
+
+
+By default `grep` returns the indices of the matched values, not the values themselves. In this case, the first two words matched. If we want the values, we use grep as follows
+
+```{r}
+grep("e$", someFruit, value = TRUE)
+```
+
+You can probably guess how to modify this pattern to find the string ending in "a" instead. If you want both, that is strings ending in either "a" or "e", this is the way to do it.
+
+
+```{r}
+grep("(e|a)$", someFruit, value = TRUE)
+```
+
+With this, let's reduce the list of variables
+
+```{r}
+head(group_B03002[grep("E$", group_B03002$name),])
+
+```
+
+With this easier to parse table, we can select the variables we want in particular
+
++ B03002_001E Estimate!!Total	
++ B03002_002E	Estimate!!Total!!Not Hispanic or Latino
++	B03002_003E	Estimate!!Total!!Not Hispanic or Latino!!White alone
++ B03002_004E	Estimate!!Total!!Not Hispanic or Latino!!Black or African American alone
++ B03002_006E	Estimate!!Total!!Not Hispanic or Latino!!Asian alone
++ B03002_012E	Estimate!!Total!!Hispanic or Latino
+
+We'll use the first two for normalizing proportions and for determining the non-Hispanic "Other" category. To get race by borough,
+
+```{r}
+race_boro <- getCensus(name = "acs/acs5",
+                       vintage = 2018,
+                       vars = c("NAME", "B03002_012E", "B03002_004E", "B03002_003E", "B03002_006E",
+                                "B03002_002E", "B03002_001E"),
+                       region = "county:005,047,061,081,085",
+                       regionin = "state:36", 
+                       key = myKey
+                       )
+
+# give variable names
+names(race_boro)[4:9] = c("Hisp", "NH_Black", "NH_White", "NH_Asian", "NH_Total", "Total")
+
+# create the non-Hispanic Other category
+race_boro <- race_boro %>% mutate(NH_Other = NH_Total-NH_Black-NH_White-NH_Asian) 
+
+# convert to proportions by dividing by total
+race_boro_proportion <- race_boro  %>% transmute(Hisp = Hisp/Total, NH_Black = NH_Black/Total, 
+            NH_White=NH_White/Total, NH_Asian=NH_Asian/Total, NH_Other=NH_Other/Total) %>%
+            round(., digits=3) * 100
+
+race_boro_proportion$Borough <- c("Queens","Brooklyn","Manhattan","Staten", "Bronx")
+race_boro_proportion 
+``` 
+
+
+#### Zip-code tabulation area
+
+We're going to want to use zipcode tract areas, and we will get our list from the nyc data
+
+``` {r}
+nyc_zcta_covid <- read.csv("data/coronavirus-nyc/tests-by-zcta.csv")
+nyc_zipcodes <- nyc_zcta_covid %>% select(MODZCTA) %>% na.omit() %>% unlist()
+# for the API call, we will want all zipcodes in plain text with comma separation
+nyc_zipcode_string <- paste(nyc_zipcodes, collapse=",")
+
+```
+
+### Zip-code-level median income
+
+
+```{r}
+zcta_income <- getCensus(name = "acs/acs5",
+                         vintage = 2018,
+                         vars = c("B19013_001E"),
+                         region = paste0("zip code tabulation area:",nyc_zipcode_string),
+                         key=myKey
+                         )
+```
+
+```{r}
+names(zcta_income) <- c("zipcode","median_income")
+head(zcta_income)
+```
+
+### Zip-code-level race
+
+```{r}
+zcta_race <- getCensus(name = "acs/acs5",
+                       vintage = 2018,
+                       vars = c("B03002_012E", "B03002_004E", "B03002_003E", "B03002_006E",
+                                "B03002_002E", "B03002_001E"),
+                       region = paste0("zip code tabulation area:",nyc_zipcode_string),
+                       key = myKey
+                       )
+
+# give variable names
+names(zcta_race) = c("zipcode", "Hisp", "NH_Black", "NH_White", "NH_Asian", "NH_Total", "Total")
+
+# create the non-Hispanic Other category
+zcta_race <- zcta_race %>% mutate(NH_Other = NH_Total-NH_Black-NH_White-NH_Asian) 
+
+# convert to proportions by dividing by total
+zcta_race_proportion <- zcta_race  %>% transmute(Hisp = Hisp/Total, NH_Black = NH_Black/Total, 
+            NH_White=NH_White/Total, NH_Asian=NH_Asian/Total, NH_Other=NH_Other/Total) %>%
+            round(., digits=3) * 100
+
+zcta_race_proportion <- cbind(zipcode=zcta_race$zipcode, zcta_race_proportion) 
+zcta_race_proportion
+``` 
+
+
+### Some more variables to play with
+
+#### Household size
+
++ B08201_007E	Estimate!!Total!!1-person household
++ B08201_013E	Estimate!!Total!!2-person household
++ B08201_019E	Estimate!!Total!!3-person household
++ B08201_025E	Estimate!!Total!!4-or-more-person household
+
+#### Educational attainment
+
++ B15003_022E	Estimate!!Total!!Bachelor's degree	
++ B15003_023E	Estimate!!Total!!Master's degree	
++ B15003_024E	Estimate!!Total!!Professional school degree	
++ B15003_025E	Estimate!!Total!!Doctorate degree
+
+```{r}
+zcta_college_hh <- getCensus(name = "acs/acs5",
+                             vintage = 2018,
+                             vars = c("B15003_022E", "B15003_023E", "B15003_024E", 
+                                      "B15003_025E", "B15003_001E",
+                                      "B08201_007E", "B08201_013E", "B08201_019E", "B08201_025E"),
+                             region = paste0("zip code tabulation area:",nyc_zipcode_string),
+                             key = myKey
+)
+
+# give variable names
+names(zcta_college_hh) = c("zipcode", "Bachelors", "Masters", "Professional", "Doctorate", 
+                           "TotalPop",
+                        "HH1pers", "HH2pers", "HH3pers", "HH4plus")
+
+# create the Bach_plus Other category
+zcta_edu_hh <- zcta_college_hh %>% 
+                  mutate(Bach_plus_prop =
+                           round((Bachelors+Masters+Professional+Doctorate)/TotalPop,3)*100)
+# create the average household size variable
+zcta_edu_hh <- zcta_edu_hh %>% 
+  mutate(AvgHH = (HH1pers+2*HH2pers+3*HH3pers+4*HH4plus)/(HH1pers+HH2pers+HH3pers+HH4plus)) 
+
+
+
+head(zcta_edu_hh)
+
+``` 
