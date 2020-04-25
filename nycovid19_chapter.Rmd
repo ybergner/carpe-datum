@@ -31,7 +31,7 @@ Some additional reports on Coronavirus in New York:
 
 
 
-## Part 1
+## Part 1: COVID NYC
 
 On April 10, 2020, [ABC News](https://abcnews.go.com/Health/nyc-stark-contrast-covid-19-infection-rates-based/story?id=69920706) covered an online report (by the NYU Furman Center) that examined cases of COVID-19 in New York City on a neighborhood level. Most COVID-19 data that had been coming out had been reporting on the city as a whole. The main idea here was that neighborhoods tell a different story. Data scientist call this a shift in the unit-of-analysis. The city is made of boroughs, which themselves are made up of smaller neighborhoods. So the unit of analysis could be the whole city, the boroughs of the city, or something even more fine-grained, like neighborhoods or zipcode areas. For example, some zipcodes are wealthier and some poorer. Zipcode areas also vary by racial composition. If we examine COVID-19 outcomes by neighborhood, we may be able to see patterns and associations between disease incidence and race or socio-economic variables. Indeed, the Furman Center found such associations. The ABC News report produced images like the following:
 
@@ -134,7 +134,7 @@ For each other row, we have a zipcode, the number of positive tests, the number 
 + `(nyc_zipcode_data$Total-nyc_zipcode_data$Positive)*100`
 
 
-Finally, you might want to keep the first row, the one with the missing zipcode, in your data. But I would rather remove it now, because I'm going to try to add information to this zipcode table down the line. While I'm at it, I will also rename the column "MODZCTA" with "zipcode."
+Now you might want to keep the first row, the one with the missing zipcode, in your data. But I would rather remove it now, because I'm going to try to add information to this zipcode table down the line. While I'm at it, I will also rename the column "MODZCTA" with "zipcode."
 
 
 ```{r}
@@ -152,22 +152,27 @@ In the next part of the series, we will get started with US Census data.
 
 To get census data, you can go to (https://data.census.gov/), but be warned: it is a big maze and not that easy to navigate. What the pros who make media reports do (probably) is use the US Census API to make specific requests for data. If you use it a lot, you will need an API key. This is easy enough to get, but you need to [request one here](https://api.census.gov/data/key_signup.html). Once you have a key, you can declare it in your R code or, better for security/code-sharing, embed it in a .Renviron file. 
 
-Here I will load the `censusapi` package (and also `dplyr` while I'm at it), and load my key. You can modify this line with your key. If you don't have one, try removing the `key=myKey` line in the code below (don't forget to remove the preceding comma as well). A lot of the queries will still work, but there is a limit to the size and number of queries per IP address.
+Here I will load the `censusapi` package (and also `dplyr` while I'm at it), and load my key. You can modify this line with your key. If you don't have one, some or all of the code below will still work if you comment out the `key=myKey`. Without an API key, however, there is a limit to the size and number of queries per IP address.
+
+```{r include = FALSE}
+myKey <- "6347985e12e867b7c72ed972da2836238502657d"
+```
 
 ```{r}
 library(censusapi)
 library(dplyr)
-# myKey = Sys.getenv("CENSUS_KEY") #store your key in .Renvriron
+# comment this out if you want to proceed without a key
+# myKey = Sys.getenv("CENSUS_KEY") #store your key in .Renviron
 ```
 
 
-More importantly, you need to know what you're asking for. That means you need to know which data sets, which variables, which geographic units, etc. A 20-page [API users guide can be found here](https://www.census.gov/content/dam/Census/data/developers/api-user-guide/api-guide.pdf). It's a lot for anyone, so you can just follow along here if you want some examples.
+More importantly, when it comes to census data, you need to know what you're asking for. That means you need to know which data sets, which variables, which geographic units, etc. A brief introductory [API users guide can be found here](https://www.census.gov/content/dam/Census/data/developers/api-user-guide/api-guide.pdf). It's 20 pages long. You can just follow along here if you want some examples.
 
-We will be interested in the [American Community Survey 5-Year data](https://www.census.gov/data/developers/data-sets/acs-5year.html) which provide estimates aggregated over a 5-year period, revisited every two years. The last published data set, i.e., the most current one available, is from 2018.
+We will be interested in the [American Community Survey 5-Year data](https://www.census.gov/data/developers/data-sets/acs-5year.html) (aka ACS5) which provides estimates aggregated over a 5-year period, revisited every two years. The last published data set, i.e., the most current one available, is from 2018.
 
 ### Census Variables {-}
 
-There are something like 20,000 variables available, and these can be retrieved through queries invidividually or in groups. Some useful groups for our analysis are the following
+There are something like 20,000 variables available in ACS, and these can be retrieved through queries invidividually or in groups. Some useful groups for our analysis are the following
 
 + B01001	SEX BY AGE	
   + This has a lot of subcategories, such as Male 5-9 Years, Male 10-14 years, etc.
@@ -175,13 +180,13 @@ There are something like 20,000 variables available, and these can be retrieved 
 + B03002	HISPANIC OR LATINO ORIGIN BY RACE	
 + B19013	MEDIAN HOUSEHOLD INCOME IN THE PAST 12 MONTHS
 
-For each group, a list of variables can be found on a corresponding website. For example, to find the variables in the SEX BY AGE group, you can go to https://api.census.gov/data/2018/acs/acs5/groups/B01001.html (notice the URL ending is the same as the group). There you will find variables such as
+For each group, a list of variables can be found on a corresponding census.gov website. For example, to find the variables in the SEX BY AGE group, you can go to https://api.census.gov/data/2018/acs/acs5/groups/B01001.html (notice the URL ending is the same as the group). There you will find variables such as
 
 + B01001_001E	Estimate!!Total
 + B01001_002E	Estimate!!Total!!Male
 + B01001_026E	Estimate!!Total!!Female
 
-In any case, variables that end in E are estimates. For each one there is often a margin of error, which is the same code ending in M instead of E. Finally for both estimates and margins of error, there may be annotations (e.g. B01001_002EA and B01001_002MA), if these numbers are not straightforward. Details about annotation meanings can be found [here](https://www.census.gov/data/developers/data-sets/acs-1year/notes-on-acs-estimate-and-annotation-values.html). This is just an overview of what the ACS5 variable names look like.
+And many more. Variables that end in E are estimates. For each one there is often a margin of error, which is the same code ending in M instead of E. Finally for both estimates and margins of error, there may be annotations (e.g. B01001_002EA and B01001_002MA), if these numbers are missing or not straightforward. Details about annotation meanings can be found [here](https://www.census.gov/data/developers/data-sets/acs-1year/notes-on-acs-estimate-and-annotation-values.html). This is just an overview of what the ACS5 variable names look like.
 
 ### Geography Units {-}
 
@@ -198,7 +203,7 @@ acs_boro_population <- getCensus(name = "acs/acs5",
                          vintage = 2018,
                          vars = c("NAME", "B01001_001E"),
                          region = "county:005,047,061,081,085",
-                         regionin = "state:36" #, key = myKey
+                         regionin = "state:36" , key = myKey
                          )
 
 acs_boro_population
@@ -286,7 +291,7 @@ acs_boro_income <- getCensus(name = "acs/acs5",
                          vintage = 2018,
                          vars = c("NAME", "B19013_001E", "B20017_001E"),
                          region = "county:005,047,061,081,085",
-                         regionin = "state:36", #key = myKey
+                         regionin = "state:36" , key = myKey
                          )
 
 names(acs_boro_income)[which(names(acs_boro_income)=="B19013_001E")] <- "MedHHIncome"
