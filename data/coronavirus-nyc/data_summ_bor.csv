@@ -1,0 +1,6 @@
+"state","county","NAME","Med_Income","Population","Race_Total","White_Total","Male_Total","Fem_Total","Median_Age","Median_Age_Male","Median_Age_Fem","Median_Income_Male","Median_Income_Fem","Positive","Tests"
+"36","081","Queens County, New York",36381,2298513,2298513,896722,1114654,1183859,38.7,37.2,40,39304,32935,41953,70306
+"36","047","Kings County, New York",37123,2600747,2600747,1130251,1231912,1368835,35.1,33.5,36.4,40614,34566,35017,60489
+"36","061","New York County, New York",59620,1632480,1632480,917402,772144,860336,37.3,36.7,37.9,68095,52940,17046,35765
+"36","085","Richmond County, New York",46586,474101,474101,352259,229424,244677,40,38.3,41.3,53786,39417,9964,21882
+"36","005","Bronx County, New York",27074,1437872,1437872,306423,676963,760909,33.9,31.7,35.9,30223,24370,30278,53802
