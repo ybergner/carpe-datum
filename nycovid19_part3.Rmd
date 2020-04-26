@@ -59,7 +59,7 @@ acs_boro_over65 <- getCensus(name = "acs/acs5",
                            vintage = 2018,
                            vars = c("NAME", maleOver65Vars,femaleOver65Vars, totalPopVar),
                            region = "county:005,047,061,081,085",
-                           regionin = "state:36", #key = myKey
+                           regionin = "state:36", key = myKey
                          )
 
 proportionOver65 <- round(rowSums(boro_over65[,4:15])/boro_over65[,16],3)*100
@@ -80,7 +80,8 @@ medianSexByAge_boro <- getCensus(name = "acs/acs5",
                                  vars = c("NAME", "B01002_001E", "B01002_002E", "B01002_003E"),
                                  region = "county:005,047,061,081,085",
                                  regionin = "state:36", 
-                                 key = myKey)
+                                 key = myKey
+                                 )
 
 names(medianSexByAge_boro)[4:6] <- c("medianAge", "medianAgeMale","medianAgeFemale")
 medianSexByAge_boro
@@ -154,7 +155,8 @@ race_boro <- getCensus(name = "acs/acs5",
                                 "B03002_002E", "B03002_001E"),
                        region = "county:005,047,061,081,085",
                        regionin = "state:36", 
-                       key = myKey)
+                       key = myKey
+                       )
 
 # give variable names
 names(race_boro)[4:9] = c("Hisp", "NH_Black", "NH_White", "NH_Asian", "NH_Total", "Total")
@@ -192,7 +194,8 @@ zcta_income <- getCensus(name = "acs/acs5",
                          vintage = 2018,
                          vars = c("B19013_001E"),
                          region = paste0("zip code tabulation area:",nyc_zipcode_string),
-                         key=myKey)
+                         key=myKey
+                         )
 ```
 
 ```{r}
@@ -208,7 +211,8 @@ zcta_race <- getCensus(name = "acs/acs5",
                        vars = c("B03002_012E", "B03002_004E", "B03002_003E", "B03002_006E",
                                 "B03002_002E", "B03002_001E"),
                        region = paste0("zip code tabulation area:",nyc_zipcode_string),
-                       key = myKey)
+                       key = myKey
+                       )
 
 # give variable names
 names(zcta_race) = c("zipcode", "Hisp", "NH_Black", "NH_White", "NH_Asian", "NH_Total", "Total")
@@ -248,7 +252,8 @@ zcta_college_hh <- getCensus(name = "acs/acs5",
                        vars = c("B15003_022E", "B15003_023E", "B15003_024E", "B15003_025E", "B15003_001E",
                                 "B08201_007E", "B08201_013E", "B08201_019E", "B08201_025E"),
                        region = paste0("zip code tabulation area:",nyc_zipcode_string),
-                       key = myKey)
+                       key = myKey
+                       )
 
 # give variable names
 names(zcta_college_hh) = c("zipcode", "Bachelors", "Masters", "Professional", "Doctorate", "TotalPop",
