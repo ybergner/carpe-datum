@@ -1,6 +1,6 @@
 .DS_Store
-.log
-.nb.html
+*.log
+*.nb.html
 .Rproj.user
 .Rhistory
 .RData
