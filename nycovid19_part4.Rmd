@@ -185,7 +185,7 @@ tmp2 <- dplyr::left_join(tmp2, zcta_coll_hh,
                         by = c("MODZCTA" = "zipcode"))
 tmp2 <- tmp2[,-5]
 
-#write.csv(tmp2, "data/coronavirus-nyc/zipcode_vars.csv")
+write.csv(tmp2, "data/coronavirus-nyc/zipcode_vars.csv", row.names = F)
 
 zipdata <- read.csv("data/coronavirus-nyc/zipcode_vars.csv")
 ```
