@@ -156,7 +156,7 @@ legend("topleft",
        fill = col_lev[[3]], cex = 0.8, title = legend_title)
 
 # col_lev <- getcolors(variableToPlot, 5, "white", c(0,0,1))
-col_lev <- getcolors(variableToPlot, nbreaks=c(0,20,40,60,80,100))
+col_lev <- getShapeColors(variableToPlot, nbreaks=c(0,20,40,60,80,100))
 plot(NYC_zips, col = col_lev[[1]], 
      main = plot_title, cex = 10, lwd=0.05)
 legend("topleft", 
@@ -165,7 +165,7 @@ legend("topleft",
 
 
 # col_lev <- getcolors(variableToPlot, 5, "white", c(0,0,1))
-col_lev <- getcolors(variableToPlot, missingcol = "white", nbreaks=10)
+col_lev <- getShapeColors(variableToPlot, missingcol = "white", nbreaks=5)
 plot(NYC_zips, col = col_lev[[1]], 
      main = plot_title, cex = 10, lwd=0.05)
 legend("topleft", 
