@@ -29,6 +29,7 @@ Some additional reports on Coronavirus in New York:
 + [Coronavirus Statistics: Tracking The Epidemic In New York](https://gothamist.com/news/coronavirus-statistics-tracking-epidemic-new-york)
 
 
+There are a bunch of sites that let you engage interactively with COVID-19 data. The purpose of this chapter is to show you how to build your own resource.
 
 
 ## COVID NYC {#part1}
@@ -339,7 +340,7 @@ head(group_B01001[order(group_B01001$name),], 15)
 
 ```
 
-Ugh. Note that our table of variables here includes variable name, lable, andtype. For type, we have "int" for integers (numbers) and "string" which is the computational shorthand for "string of characters." This is the variable-type used for words and sentences as well as passwords or other random strings of characters. 
+Ugh. Note that our table of variables here includes variable name, label, and type. For type, we have "int" for integers (numbers) and "string" which is the computational shorthand for "string of characters." This is the variable-type used for words and sentences as well as passwords or other random strings of characters. 
 
 To make the results more readable, we can try identify the pattern in the order of the variables. First, let's observe the following. The numbers after the group name are just increasing from 001, 002, and so on. We might want to look at the middle of this list, e.g, from 020 to 030, which we can do as follows:
 
@@ -399,7 +400,7 @@ medianSexByAge_boro <- getCensus(name = "acs/acs5",
                                  key = myKey
                                  )
 
-names(medianSexByAge_boro)[4:6] <- c("medianAge", "medianAgeMale","medianAgeFemale")
+names(medianSexByAge_boro)[4:6] <- c("Median_Age", "Median_Age_Male","Median_Age_Female")
 medianSexByAge_boro
 ```
 

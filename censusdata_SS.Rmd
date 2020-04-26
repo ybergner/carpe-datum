@@ -142,12 +142,12 @@ Now, let's get some more information by zip code and save it in a CSV file that 
 # labs <- group_B01001 %>% filter(name %in% myVars) %>% arrange(name) %>% select(name,label)
 
 zcta_data <- getCensus(name = "acs/acs5",
-vintage = 2018,
-vars = c("NAME", "B19013_001E", "B01003_001E", "B02001_001E", "B02001_002E",
-         "B01001_002E", "B01001_026E", "B01002_001E", "B01002_002E",
-         "B01002_003E", "B20017_002E", "B20017_005E"),
-region = paste0("zip code tabulation area:",nyc_zipcode_string),
-key=myKey)
+                       vintage = 2018,
+                       vars = c("NAME", "B19013_001E", "B01003_001E", "B02001_001E", "B02001_002E",
+                                "B01001_002E", "B01001_026E", "B01002_001E", "B01002_002E",
+                                "B01002_003E", "B20017_002E", "B20017_005E"),
+                       region = paste0("zip code tabulation area:",nyc_zipcode_string),
+                       key=myKey)
 
 #update column names
 names(zcta_data)[which(names(zcta_data)=="B19013_001E")] <- "Med_Income"
@@ -203,7 +203,7 @@ library(RColorBrewer)
 ```{r}
 #read in the shape file for NYC zip codes
 filepath <- "Shape_Files/ZIP_CODE_040114.shp"
-NYC_zips <- readOGR(filepath)
+NYC_zips <- readOGR(filepath, stringsAsFactors = F)
 
 #get zip to borough
 zip_bor <- read.csv("data/zip_borough.csv")
@@ -213,7 +213,7 @@ shpcodes <- NYC_zips@data$ZIPCODE %>% as.character %>% as.numeric
 
 #now join these zip codes with the other data
 dat <- data.frame(MODZCTA = shpcodes)
-dat <- dplyr::left_join(dat, cases, by="MODZCTA")
+dat <- dplyr::left_join(dat, na.omit(cases), by="MODZCTA")
 zcta_data$zip_code_tabulation_area <- as.numeric(zcta_data$zip_code_tabulation_area)
 dat <- dplyr::left_join(dat, zcta_data, 
                         by = c("MODZCTA" = "zip_code_tabulation_area"))
@@ -228,8 +228,8 @@ bor_data$Tests <- case_bor$numtests[c(4,2,3,5,1)]
   
 In case you want to write this to a new csv file that you can use!
 ```{r}
-#write.csv(bor_data, "data/data_summ_bor.csv", row.names = F)
-#write.csv(dat, "data/data_summ_zcta.csv", row.names = F)
+write.csv(bor_data, "data/data_summ_bor.csv", row.names = F)
+write.csv(dat, "data/data_summ_zcta.csv", row.names = F)
 ```
   
 ```{r}
@@ -249,7 +249,7 @@ getcolors <- function(data, ntile, missingcol, rdgrbl=c(1,0,0), mycolors=NULL){
                              probs = seq(0, 1, length.out=ntile+1), 
                              na.rm = T))
   mycols <- rgb(rdgrbl[1],rdgrbl[2],rdgrbl[3], 
-                seq(0.1,0.5, length.out = length(mybreaks)-1))
+                seq(0.05,0.65, length.out = length(mybreaks)-1))
   if(!is.null(mycolors)){
     mycols <- mycolors
   }
@@ -290,8 +290,12 @@ legend("topleft",
 col_lev1 <- getcolors(round(dat$Prop_NON_White*100,1), 5, "white", c(1,0,0))
 col_lev2 <- getcolors(round(dat$posrate*10,1), 5, "white", c(0,0,1))
 
-plot(NYC_zips, col = col_lev1[[1]], main = "", cex = 10, lwd=0.01)
-plot(NYC_zips, col = col_lev2[[1]], add=T, cex = 10, lwd=0.01)
+par(mfrow=c(1,3))
+plot(NYC_zips, col = col_lev1[[1]], main = "nonwhite", cex = 10, lwd=0.05)
+plot(NYC_zips, col = col_lev2[[1]], main = "covid", cex = 10, lwd=0.05)
+plot(NYC_zips, col = col_lev1[[1]], main = "nonwhite+covid", cex = 10, lwd=0.05)
+plot(NYC_zips, col = col_lev2[[1]], add=T, cex = 10, lwd=0.05)
+
 ```
     
 ```{r}
@@ -301,7 +305,7 @@ points(round(dat$Prop_NON_White*100,1),round(dat$posrate*10,1),col=col_lev2[[1]]
 ```
     
 ```{r}
-getcolors <- function(data, data2, ntile, missingcol, rdgrbl=c(1,0,0), mycolors=NULL){
+getcolors2 <- function(data, data2, ntile, missingcol, rdgrbl=c(1,0,0), mycolors=NULL){
   mybreaks <- c(-1, quantile(data, 
                              probs = seq(0, 1, length.out=ntile+1), 
                              na.rm = T))
@@ -324,10 +328,8 @@ getcolors <- function(data, data2, ntile, missingcol, rdgrbl=c(1,0,0), mycolors=
   }
   data[is.na(data)] <- -.1
   data2[is.na(data2)] <- -.1
-  mycolorscheme1 <- cut(data, mybreaks) %>%
-  as.numeric()
-  mycolorscheme2 <- cut(data2, mybreaks2) %>%
-  as.numeric()
+  mycolorscheme1 <- cut(data, mybreaks) %>% as.numeric()
+  mycolorscheme2 <- cut(data2, mybreaks2) %>% as.numeric()
   for(i in 1:length(data)){
     mycolorscheme[i] <- mycols[mycolorscheme1[i], mycolorscheme2[i]]
   }
