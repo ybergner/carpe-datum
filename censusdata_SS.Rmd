@@ -328,6 +328,7 @@ getcolors <- function(data, data2, ntile, missingcol, rdgrbl=c(1,0,0), mycolors=
   as.numeric()
   mycolorscheme2 <- cut(data2, mybreaks2) %>%
   as.numeric()
+  mycolorscheme <- vector()
   for(i in 1:length(data)){
     mycolorscheme[i] <- mycols[mycolorscheme1[i], mycolorscheme2[i]]
   }
