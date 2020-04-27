@@ -125,8 +125,8 @@ nyc_age_data <- nyc_age_data %>% mutate(CFR = round(DEATH_RATE/COVID_CASE_RATE,3
 nyc_age_data
 ```
 
-The most captivating data set provided by the city (hence the images we started out with) is probably the zipcode-level data, the first few rows of which look like this:
 
+The most captivating data set provided by the city (hence the images we started out with) is probably the zipcode-level data, the first few rows of which look like this:
 
 ```{r}
 nyc_zipcode_data <- read.csv("data/coronavirus-nyc/tests-by-zcta.csv")
@@ -262,10 +262,12 @@ acs_boro_population
 All that remains is that annoying variable name B01001_001E for Total Population. We should definitely fix this, and there are a few ways to do it. The following may seem like a long-winded way to go about it, but it has the benefit that it will work no matter where the variable B01001_001E appears. It won't accidentally change the wrong column name, and it won't do anything at all if the variable you are trying to rename doesn't exist.
 
 ```{r}
-names(acs_boro_population)[which(names(acs_boro_population)=="B01001_001E")] <- "TotalPop"
+names(acs_boro_population)[which(names(acs_boro_population)=="B01001_001E")] <- "Total_Pop"
 names(acs_boro_population)[which(names(acs_boro_population)=="NAME")] <- "countyName"
 acs_boro_population
 ```
+
+(If you're wondering whether we could have used named vectors to convert between the ACS names, like B01001_001E, and simple names like "Total_Pop", then yes, but you're getting ahead of me. Once we have more than a few of these variables, that would indeed be a good idea.) 
 
 With this in hand, we can now combine our NYC COVID-19 data with our Census data. Recall 
 
@@ -273,10 +275,10 @@ With this in hand, we can now combine our NYC COVID-19 data with our Census data
 nyc_boro_data
 ```
 
-We will make some judicious use of dplyr here to simplify the outcome. Mostly, we want to get rid of unnecessary columns from the ACS table (using `select`), and then use `join()` to merge the two tables.
+We will make some judicious use of dplyr here to simplify the outcome. Mostly, we want to get rid of unnecessary columns from the ACS table (using `select`), and then use `join()` to merge the two tables. The advantage of the pipe operatore `%>%` is that it allows us to think of our data as going through a flow of operations. First we take our table of data, then we select the columns we care about, then we combine it with our other table (the NYC data on COVID-19):
 
 ```{r}
-boro_join <- acs_boro_population %>% select(Borough, countyName, TotalPop) %>% 
+boro_join <- acs_boro_population %>% select(Borough, countyName, Total_Pop) %>% 
   left_join(nyc_boro_data, by=c("Borough" =  "BOROUGH_GROUP"))
 boro_join
 ```
@@ -288,15 +290,24 @@ Woohoo! (I'm keeping countyName for later. You'll see why.)
 We can use our population estimates (keep in mind that these are 5-year averages as of 2018) to derive our own rate-per-100,000 as follows
 
 ```{r}
-boro_join$Rate2 <-  round(boro_join$COVID_CASE_COUNT/boro_join$TotalPop * 100000, 2)
-boro_join
+boro_join$RATE_100K <-  round(boro_join$COVID_CASE_COUNT/boro_join$Total_Pop * 100000, 2)
+boro_join %>% select(Borough, COVID_CASE_RATE, RATE_100K)
 ```
 
 You'll notice that our rate, which is not age-adjusted, differs somewhat from the NYC rate, which is age-adjusted. Aside from age-adjustment, it is possible that our population numbers (based on 5-year averages) are different from the latest NYC populations estimates. If our population numbers are lower, then our rates would be higher. Or the difference could be a result of the age-adjustment formula.
 
+<!-- ```{r} -->
+
+<!-- boro_join %>% select(Borough, COVID_CASE_RATE, RATE_100K) %>% -->
+<!--   mutate(normCR1 = round(COVID_CASE_RATE/COVID_CASE_RATE[3],2),  -->
+<!--          normCR2 = round(RATE_100K/RATE_100K[3],2)) -->
+
+<!-- ``` -->
+
+
 #### More variables: income, age, and race {-}
 
-To request the median household income we will request the variable "B19013_001E" (intuitive, right!) Alternatively, the variable B20017_001E is earnings per person not by household
+To request the median household income we will request the variable "B19013_001E" (intuitive, right?) Alternatively, the variable B20017_001E is earnings per person not by household. Why not examine both?
 
 ```{r echo=TRUE}
 acs_boro_income <- getCensus(name = "acs/acs5",
@@ -306,8 +317,8 @@ acs_boro_income <- getCensus(name = "acs/acs5",
                          regionin = "state:36" , key = myKey
                          )
 
-names(acs_boro_income)[which(names(acs_boro_income)=="B19013_001E")] <- "MedHHIncome"
-names(acs_boro_income)[which(names(acs_boro_income)=="B20017_001E")] <- "MedIncome"
+names(acs_boro_income)[which(names(acs_boro_income)=="B19013_001E")] <- "Median_HH_Income"
+names(acs_boro_income)[which(names(acs_boro_income)=="B20017_001E")] <- "Median_Income"
 acs_boro_income
 ```
 There it is, five-year averages, inflation-adjusted for 2018 dollars, by borough. (If you see one-year estimates, they may  be a bit higher than these numbers, if wages went up faster than inflation).
@@ -319,12 +330,12 @@ We can add these new income variables to the table we've started to build
 # so I didn't have to do it ahead of time
 
 left_join(boro_join, 
-          acs_boro_income %>% select(countyName=NAME, MedHHIncome, MedIncome), 
+          acs_boro_income %>% select(countyName=NAME, Median_HH_Income, Median_Income), 
           by="countyName")
 
 ```
 
-In the next part of the series, we will keep assembling more variables related to age and race. We will also change our unit of analysis to zipcode tabulation areas.
+In the next part of the series, we will keep assembling more variables related to age and race. We will also eventually change our unit of analysis to zipcode tabulation areas.
 
 
 ## More (and messier) Census data {#part3}
@@ -380,10 +391,10 @@ maleOver65Vars <- c("B01001_020E","B01001_021E","B01001_022E","B01001_023E",
                     "B01001_024E","B01001_025E")
 femaleOver65Vars <- c("B01001_044E","B01001_045E","B01001_046E","B01001_047E",
                       "B01001_048E","B01001_049E")
-totalPopVar <- "B01001_001E"
+Total_PopVar <- "B01001_001E"
 acs_boro_over65 <- getCensus(name = "acs/acs5",
                            vintage = 2018,
-                           vars = c("NAME", maleOver65Vars,femaleOver65Vars, totalPopVar),
+                           vars = c("NAME", maleOver65Vars,femaleOver65Vars, Total_PopVar),
                            region = "county:005,047,061,081,085",
                            regionin = "state:36", key = myKey
                          )
@@ -590,13 +601,13 @@ zcta_college_hh <- getCensus(name = "acs/acs5",
 
 # give variable names
 names(zcta_college_hh) = c("zipcode", "Bachelors", "Masters", "Professional", "Doctorate", 
-                           "TotalPop",
+                           "Total_Pop",
                         "HH1pers", "HH2pers", "HH3pers", "HH4plus")
 
 # create the Bach_plus Other category
 zcta_edu_hh <- zcta_college_hh %>% 
                   mutate(Bach_plus_prop =
-                           round((Bachelors+Masters+Professional+Doctorate)/TotalPop,3)*100)
+                           round((Bachelors+Masters+Professional+Doctorate)/Total_Pop,3)*100)
 # create the average household size variable
 zcta_edu_hh <- zcta_edu_hh %>% 
   mutate(AvgHH = (HH1pers+2*HH2pers+3*HH3pers+4*HH4plus)/(HH1pers+HH2pers+HH3pers+HH4plus)) 
