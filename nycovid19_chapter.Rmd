@@ -34,7 +34,7 @@ There are a bunch of sites that let you engage interactively with COVID-19 data.
 
 ## COVID NYC {#part1}
 
-On April 10, 2020, [ABC News](https://abcnews.go.com/Health/nyc-stark-contrast-covid-19-infection-rates-based/story?id=69920706){target="_blank"} covered an online report (by the NYU Furman Center) that examined cases of COVID-19 in New York City on a neighborhood level. Most COVID-19 data that had been coming out had been reporting on the city as a whole. The main idea here was that neighborhoods tell a different story. Data scientist call this a shift in the unit-of-analysis. The city is made of boroughs, which themselves are made up of smaller neighborhoods. So the unit of analysis could be the whole city, the boroughs of the city, or something even more fine-grained, like neighborhoods or zipcode areas. For example, some zipcodes are wealthier and some poorer. Zipcode areas also vary by racial composition. If we examine COVID-19 outcomes by neighborhood, we may be able to see patterns and associations between disease incidence and race or socio-economic variables. Indeed, the Furman Center found such associations. The ABC News report produced images like the following:
+On April 10, 2020, [ABC News](https://abcnews.go.com/Health/nyc-stark-contrast-covid-19-infection-rates-based/story?id=69920706){target="_blank"} covered an online report (by the NYU Furman Center) that examined cases of COVID-19 in New York City on a neighborhood level. Most COVID-19 data that had been coming out had been reporting on the city as a whole. The main idea here was that neighborhoods tell a different story. Data scientists call this a shift in the unit-of-analysis. The city is made of boroughs, which themselves are made up of smaller neighborhoods. So the unit of analysis could be the whole city, the boroughs of the city, or something even more fine-grained, like neighborhoods or zipcode areas. For example, some zipcodes are wealthier and some poorer. Zipcode areas also vary by racial composition. If we examine COVID-19 outcomes by neighborhood, we may be able to see patterns and associations between disease incidence and race or socio-economic variables. Indeed, the Furman Center found such associations. The ABC News report produced images like the following:
 
 ![](images/abc_COVID19NycZip_v03_KA_hpEmbed_17x12_992.jpg) 
 
@@ -113,6 +113,17 @@ From this we see that adults 75 and older have a `r paste0(nyc_age_data$CFR[5]*1
 
 
 **Exercise**: compute the case fatality rate by sex.
+
+Since I'm going to be using this method later, there is another way to add a new CFR variable to the table using the `mutate` function in the `dplyr` package. It looks slightly more complicated, but it has benefits which I won't get into now. The important thing here is just to recognize that there are different ways of achieving the same ends.
+
+```{r}
+# the way from before
+# nyc_age_data$CFR <- round(nyc_age_data$DEATH_RATE/nyc_age_data$COVID_CASE_RATE, 3)
+
+# another way using dplyr
+nyc_age_data <- nyc_age_data %>% mutate(CFR = round(DEATH_RATE/COVID_CASE_RATE,3))
+nyc_age_data
+```
 
 The most captivating data set provided by the city (hence the images we started out with) is probably the zipcode-level data, the first few rows of which look like this:
 
