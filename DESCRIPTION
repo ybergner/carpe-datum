@@ -2,5 +2,5 @@ Package: placeholder
 Type: Book
 Title: Does not matter.
 Version: 0.0.1
-Imports: bookdown, rpart, ggplot2, dplyr, openintro, NHANES, censusapi
+Imports: bookdown, rpart, rpart.plot, ggplot2, dplyr, openintro, NHANES, censusapi, knitr, kableExtra
 Remotes: rstudio/bookdown
