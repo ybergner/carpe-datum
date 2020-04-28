@@ -422,6 +422,8 @@ medianSexByAge_boro <- getCensus(name = "acs/acs5",
                                  key = myKey
                                  )
 
+# this is the easy but less elegant way to rename the variables
+# it works as long as you get the index numbers exactly right
 names(medianSexByAge_boro)[4:6] <- c("Median_Age", "Median_Age_Male","Median_Age_Female")
 medianSexByAge_boro
 ```
@@ -457,13 +459,13 @@ someFruit <- c("apple", "orange", "banana", "pear")
 grep("e$", someFruit)
 ```
 
-By default `grep` returns the indices of the matched values, not the values themselves. In this case, the first two words matched. If we want the values, we use grep as follows
+By default `grep` returns the indices of the matched values, not the values themselves. In this case, the first two words matched. If we want the values, we use `grep` with the `value=TRUE` option as follows
 
 ```{r}
 grep("e$", someFruit, value = TRUE)
 ```
 
-You can probably guess how to modify this pattern to find the string ending in "a" instead. If you want both, that is strings ending in either "a" or "e", this is the way to do it.
+You can probably guess how to modify this pattern to find the string ending in "a" instead. If you want both, that is strings ending in either "a" or "e", this is the way to do it. By the way, the pattern matching is case-sensitive.
 
 ```{r}
 grep("(e|a)$", someFruit, value = TRUE)
@@ -475,7 +477,7 @@ With this, let's reduce the list of variables
 head(group_B03002[grep("E$", group_B03002$name),])
 ```
 
-With this easier to parse table, we can select the variables we want in particular
+With this easier to parse table, we can select the variables we want in particular:
 
 + B03002_001E Estimate!!Total	
 + B03002_002E	Estimate!!Total!!Not Hispanic or Latino
@@ -489,23 +491,35 @@ We'll use the first two for normalizing proportions and for determining the non-
 ```{r}
 race_boro <- getCensus(name = "acs/acs5",
                        vintage = 2018,
-                       vars = c("NAME", "B03002_012E", "B03002_004E", "B03002_003E", "B03002_006E",
-                                "B03002_002E", "B03002_001E"),
+                       vars = c("NAME", "B03002_001E",
+                                "B03002_002E","B03002_003E","B03002_004E", 
+                                "B03002_006E", "B03002_012E"  
+                                 ),
                        region = "county:005,047,061,081,085",
                        regionin = "state:36", 
                        key = myKey
                        )
 
 # give variable names
-names(race_boro)[4:9] = c("Hisp", "NH_Black", "NH_White", "NH_Asian", "NH_Total", "Total")
+# 
+names(race_boro)[which(names(race_boro)=="B03002_001E")] <- "Total_HispRace"
+names(race_boro)[which(names(race_boro)=="B03002_002E")] <- "NH_Total"
+names(race_boro)[which(names(race_boro)=="B03002_003E")] <- "NH_White"
+names(race_boro)[which(names(race_boro)=="B03002_004E")] <- "NH_Black"
+names(race_boro)[which(names(race_boro)=="B03002_006E")] <- "NH_Asian"
+names(race_boro)[which(names(race_boro)=="B03002_012E")] <- "Hisp_Latin"
 
 # create the non-Hispanic Other category
 race_boro <- race_boro %>% mutate(NH_Other = NH_Total-NH_Black-NH_White-NH_Asian) 
 
 # convert to proportions by dividing by total
-race_boro_proportion <- race_boro  %>% transmute(Hisp = Hisp/Total, NH_Black = NH_Black/Total, 
-            NH_White=NH_White/Total, NH_Asian=NH_Asian/Total, NH_Other=NH_Other/Total) %>%
-            round(., digits=3) * 100
+# note use of new data frame, so totals are still stored in race_boro
+race_boro_proportion <- race_boro  %>% transmute(Hisp_Latin = Hisp_Latin/Total_HispRace, 
+                                                 NH_Black = NH_Black/Total_HispRace,
+                                                 NH_White=NH_White/Total_HispRace,
+                                                 NH_Asian=NH_Asian/Total_HispRace,
+                                                 NH_Other=NH_Other/Total_HispRace) %>%
+                                      round(., digits=3) * 100
 
 race_boro_proportion$Borough <- getBoro[race_boro$NAME]
 race_boro_proportion 
@@ -515,7 +529,7 @@ race_boro_proportion
 
 ## Zipcode tabulation area {#zipcode}
 
-As mentioned above, it is possible to query the Census for zipcode tabulation areas. You need to specify which zipcodes, so we will get our list from the NYC data. 
+As we mentioned above, it is possible to query the Census for zipcode tabulation areas. You need to specify which zipcodes, so we will get our list from the NYC data. 
 
 ``` {r}
 nyc_zcta_covid <- read.csv("data/coronavirus-nyc/tests-by-zcta.csv")
