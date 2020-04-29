@@ -14,5 +14,5 @@ Imports: bookdown,
   kableExtra, 
   viridis,
   RColorBrewer,
-  rgdal
+  rgdal@1.3.9
 Remotes: rstudio/bookdown
