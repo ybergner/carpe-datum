@@ -16,6 +16,6 @@ Imports: bookdown,
   viridis,
   RColorBrewer
   
-Remotes: rstudio/bookdown
-before_install:
-  - R -e 'install.packages("rgdal", repos=c("http://R-Forge.R-project.org", "http://cran.rstudio.com"))'
+Remotes: 
+- rstudio/bookdown
+- cran/rgdal@1.3-9
