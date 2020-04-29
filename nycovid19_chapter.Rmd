@@ -713,7 +713,7 @@ zcta_join <- zcta_income %>%
 names(zcta_join)
 ```
 
-And there you have it. `r ncol(zcta_join)-1` variables, each associated with a NYC zip code. Now what do you do once you have all of that? Probably make some pictures. Finally 
+And there you have it. `r ncol(zcta_join)-1` variables, each associated with a NYC zip code. Now what do you do once you have all of that? Probably make some pictures. Finally!
 
 ## Visualizing data on maps {#mapviz}
 
