@@ -2,6 +2,9 @@ language: r
 r:
   - oldrel
 sudo: false
+repos:
+  CRAN: https://cran.rstudio.com
+  rforge: http://R-Forge.R-project.org
 cache:
   packages: yes
   directories:
@@ -16,3 +19,12 @@ script:
 env:
   global:
     secure: FyoGvvZj5q992wb2LsdJ0Z5mU9K5D7tAgh8VWYOmxELaGFX9HLGtBKaR6rAOlKlsc5nX3Ks6h9YgYP4u7iQr1HxqLFpZrIwIMTcAlgifcOoQJgRGrRmDH0czC6bvgWkhm09gvT77VzO59BUSf8/YTvkaIjX/LbWdPEVoD4HBITmC6z/gnGQDEv0Wtyma1rtvvbF/EfFXz2lLUOMZgs4Xouc6XSfQ6Y/sk98RCN0FhIJZLE/Gbb3tzmyBJLFZoSR6bVkPHJ4tzDki2rJu/ttYjuhXGKOBfoOW/heWlTB7XBJS7HJcVptwmBEy1gVeGZf9UsgLo1+pQRek8aw8KRwoyoL1W4e7rq5btpVVNHmcOAJP83QHRclcxZQAgdS5qotLD3vJD89n1lJs+1uPILPM/xfgcgT2AVIapciuDfVhzwt3kNprtcxDm4jbxUbRgRJL6B6vqFh89s9uPecBdO6C2s5mmYD65YrYw0hebu5j2s99XjDKBm4v66hrZ1hGyAD0aOZffxOJg53HlTgT12xW38AusFN1mda3h+6YcXPttd5CxCwhM13grWlpSIMhHtuw7RNNvpPzm/1qFowlRAC7d0mO62wBGR91nMMthnUcIHIG0LBwuaQMaRXxVjWTLAp24aeVG42LUCCbk4aQZgXZSU4xF1ewO/8itSaKQdGWF00=
+addons:
+  apt:
+    packages:
+      - gdal-bin
+      - proj-bin
+      - libgdal-dev
+      - libgdal1-dev
+      - libproj-dev
+      - libgeos-dev
