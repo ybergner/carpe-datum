@@ -15,4 +15,4 @@ Imports: bookdown,
   viridis,
   RColorBrewer,
   rgdal@1.3.9
-Remotes: rstudio/bookdown
+Remotes: rstudio/bookdown, cran/rgdal@1.3.9
