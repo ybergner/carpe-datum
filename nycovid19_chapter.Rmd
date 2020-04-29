@@ -269,7 +269,7 @@ acs_boro_population
 
 (If you're wondering whether we could have used named vectors to convert between the ACS names, like B01001_001E, and simple names like "Total_Pop", then yes, but you're getting ahead of me. Once we have more than a few of these variables, that would indeed be a good idea.) 
 
-With this in hand, we can now combine our NYC COVID-19 data with our Census data. Recall 
+With this in hand, we can now combine our NYC COVID-19 data with our Census data. Let's bring back our first borough table: 
 
 ```{r}
 nyc_boro_data
@@ -529,7 +529,9 @@ race_boro_proportion
 
 ## Zipcode tabulation area {#zipcode}
 
-As we mentioned above, it is possible to query the Census for zipcode tabulation areas. You need to specify which zipcodes, so we will get our list from the NYC data. 
+As we mentioned above, it is possible to query the Census for zipcode tabulation areas. You need to specify which zipcodes, you want. We will get our list from the NYC data, because those are the zipcodes for which we have COVID-19 case counts. 
+
+In the code below, I will extract the zip codes and make one long string ("10001, 10002, 10003, 10004, ... , 11694, 11697") to pass to the Census API query.
 
 ``` {r}
 nyc_zcta_covid <- read.csv("data/coronavirus-nyc/tests-by-zcta.csv")
@@ -538,7 +540,11 @@ nyc_zipcodes <- nyc_zcta_covid %>% select(MODZCTA) %>% na.omit() %>% pull()
 # for the API call, we will want all zipcodes in plain text with comma separation
 nyc_zipcode_string <- paste(nyc_zipcodes, collapse=",")
 
+# show beginning
+substr(nyc_zipcode_string, 1,43)
 ```
+
+Having done that, we do our queries as before for borough data, only instead of county and state region, we use "zip code tabulation area:" followed by our long string of zip codes.
 
 #### Zipcode-level median income {-}
 
@@ -551,16 +557,69 @@ zcta_income <- getCensus(name = "acs/acs5",
                          )
 ```
 
+Remember how we were renaming all of the Census variables by hand before? That was a pain. Having seen many of the variables that we were interested in, an alternative is to keep a table running of these variables alongside our preferred name. 
+
+For example, here is one way to do it. From the 20,000 available census variables, these are the 20-30 variables I may want. (I also included region variables for county and zip code). You can always add to this table.
+
 ```{r}
-names(zcta_income) <- c("zipcode","medianHHincome", "medianIncome")
+acsVars <- read.csv("data/coronavirus-nyc/acs_vars.csv", stringsAsFactors = FALSE)
+head(acsVars,9)
+```
+
+I can then use the named-vector trick from before to convert between the acsName and the realName I like. 
+
+```{r}
+getRealName <- acsVars$realName
+names(getRealName) <- acsVars$acsName
+```
+
+
+```{r}
+names(zcta_income) <- getRealName[names(zcta_income)]
 head(zcta_income)
 ```
 
 That was easy!
 
-#### Zipcode-level race {-}
+#### Zipcode-level race, age, etc. {-}
+
+We can now redo the rest of our queries at the zip code level, including any age, sex, and race variables that we want to include.
 
 ```{r}
+# get proportion over 65 by adding up lots of variables
+zcta_over65 <- getCensus(name = "acs/acs5",
+                             vintage = 2018,
+                             vars = c(maleOver65Vars,femaleOver65Vars, Total_PopVar),
+                             region = paste0("zip code tabulation area:",nyc_zipcode_string),
+                             key = myKey
+)
+
+zcta_propOver65 <- round(rowSums(zcta_over65[,2:13])/zcta_over65[,14],3)*100
+# combine with zipcode column
+zcta_propOver65 <- data.frame(zipcode=zcta_over65$zip_code_tabulation_area,
+                         zcta_propOver65, stringsAsFactors = FALSE)
+
+head(zcta_propOver65)
+
+```
+
+```{r}
+# get median age by sex
+zcta_SexByAge <- getCensus(name = "acs/acs5",
+                                 vintage = 2018,
+                                 vars = c("B01001_001E", "B01002_001E", 
+                                          "B01002_002E", "B01002_003E"),
+                                 region = paste0("zip code tabulation area:",nyc_zipcode_string),
+                                 key = myKey
+)
+# rename the variables
+names(zcta_SexByAge) <- getRealName[names(zcta_SexByAge)]
+head(zcta_SexByAge)
+
+```
+
+```{r}
+# get race including Hispanic/Latino category
 zcta_race <- getCensus(name = "acs/acs5",
                        vintage = 2018,
                        vars = c("B03002_012E", "B03002_004E", "B03002_003E", "B03002_006E",
@@ -569,25 +628,30 @@ zcta_race <- getCensus(name = "acs/acs5",
                        key = myKey
                        )
 
-# give variable names
-names(zcta_race) = c("zipcode", "Hisp", "NH_Black", "NH_White", "NH_Asian", "NH_Total", "Total")
+# rename the variables
+names(zcta_race) <- getRealName[names(zcta_race)]
 
 # create the non-Hispanic Other category
 zcta_race <- zcta_race %>% mutate(NH_Other = NH_Total-NH_Black-NH_White-NH_Asian) 
 
 # convert to proportions by dividing by total
-zcta_race_proportion <- zcta_race  %>% transmute(Hisp = Hisp/Total, NH_Black = NH_Black/Total, 
-            NH_White=NH_White/Total, NH_Asian=NH_Asian/Total, NH_Other=NH_Other/Total) %>%
-            round(., digits=3) * 100
+zcta_race_proportion <- zcta_race  %>% transmute(Hisp_Latin = Hisp_Latin/Total_HispRace, 
+                                                 NH_Black = NH_Black/Total_HispRace,
+                                                 NH_White=NH_White/Total_HispRace,
+                                                 NH_Asian=NH_Asian/Total_HispRace,
+                                                 NH_Other=NH_Other/Total_HispRace) %>%
+                                      round(., digits=3) * 100
 
-zcta_race_proportion <- cbind(zipcode=zcta_race$zipcode, zcta_race_proportion) 
+zcta_race_proportion <- data.frame(zcta_race %>% select(zipcode, Total_HispRace),
+                              zcta_race_proportion) 
 head(zcta_race_proportion)
+
 ``` 
 
 
 ### Some more variables to play with {-}
 
-While we're at it, we can keep collecting variables related to the reports we read. For example, household size seems to be associated with prevalence of COVID-19 and so does the share of college-educated adults (recall the image at the beginning of this chapter). The ACS5 variables we will need are:
+While we're at it, we can keep collecting variables related to the reports we read. For example, household size seems to be associated with prevalence of COVID-19 and so does the share of college-educated adults (recall the image at the beginning of this chapter---by the way, we're almost ready to make our own, even better, version of it). The ACS5 variables we will need are:
 
 #### Household size {-}
 
@@ -603,33 +667,264 @@ While we're at it, we can keep collecting variables related to the reports we re
 + B15003_024E	Estimate!!Total!!Professional school degree	
 + B15003_025E	Estimate!!Total!!Doctorate degree
 
+I've already added those to the `acsVars` table, so we can use the `getRealName` vector to convert the names to human-readable versions.
+
 ```{r}
 zcta_college_hh <- getCensus(name = "acs/acs5",
                              vintage = 2018,
                              vars = c("B15003_022E", "B15003_023E", "B15003_024E", 
                                       "B15003_025E", "B15003_001E",
-                                      "B08201_007E", "B08201_013E", "B08201_019E", "B08201_025E"),
+                                      "B08201_007E", "B08201_013E", 
+                                      "B08201_019E", "B08201_025E"),
                              region = paste0("zip code tabulation area:",nyc_zipcode_string),
                              key = myKey
 )
 
 # give variable names
-names(zcta_college_hh) = c("zipcode", "Bachelors", "Masters", "Professional", "Doctorate", 
-                           "Total_Pop",
-                        "HH1pers", "HH2pers", "HH3pers", "HH4plus")
+names(zcta_college_hh) = getRealName[names(zcta_college_hh)]
 
-# create the Bach_plus Other category
+# Reports mention "College", but this presumably means Bachelors or higher
 zcta_edu_hh <- zcta_college_hh %>% 
-                  mutate(Bach_plus_prop =
-                           round((Bachelors+Masters+Professional+Doctorate)/Total_Pop,3)*100)
+                  mutate(Bach_plus_prop = round( (Bachelors + Masters + 
+                                                    Professional + 
+                                                    Doctorate)/Total_EducPop,3)*100)
+
 # create the average household size variable
 zcta_edu_hh <- zcta_edu_hh %>% 
   mutate(AvgHH = (HH1pers+2*HH2pers+3*HH3pers+4*HH4plus)/(HH1pers+HH2pers+HH3pers+HH4plus)) 
-
-
 
 head(zcta_edu_hh)
 
 ``` 
 
-Having gathered the information in various tables ()
+Having gathered the information in various tables (zcta_income, zcta_propOver65, zcta_SexByAge
+zcta_race_proportion, zcta_edu_hh), we can finally combine them all into one giant zipcode data frame:
+
+```{r}
+
+zcta_join <- zcta_income %>% 
+  left_join(zcta_propOver65, by=c("zipcode")) %>%
+  left_join(zcta_SexByAge, by=c("zipcode")) %>%
+  left_join(zcta_race_proportion, by=c("zipcode")) %>%
+  left_join(zcta_edu_hh, by=c("zipcode")) 
+
+names(zcta_join)
+```
+
+And there you have it. `r ncol(zcta_join)-1` variables, each associated with a NYC zip code. Now what do you do once you have all of that? Probably make some pictures. Finally 
+
+## Visualizing data on maps {#mapviz}
+
+The whole point of using zip codes as units was that they represent distinct geographic areas. It is not easy to make sense of a list of `r nrow(zcta_join)` household income values, ordered by zip code. But if we convert these values to colors or shades and use those to fill in the zip code boundaries of a map, then we can "see" where the money is and where it isn't.
+
+To carry out this feat, we will need to enlist the help of a **shapefile**, which is a data format that was specifically invented for geographical information systems (GIS). You don't need to understand the detailed structure of a shapefile. You only need to know that it will allow you to map, say, the zip code 10003 to some region on a drawing. 
+
+So we will need a shapefile for NYC zip codes. Search for this on the internet, and you'll get one [here](https://catalog.data.gov/dataset/zip-code-boundaries){target="_blank"}. We will need the R package that will do the translation work for us. It is called "R geospatial data abstraction library (`rgdal`)." Lastly, to produce images like you see in the media, we might need some color palettes. These will map numbers (e.g., proportion over 65) to colors in ways that are designed to be visually distinctive. 
+   
+```{r, message=FALSE}
+#load R geospatial data abstraction library 
+library(rgdal)
+
+#load additional viz libraries for color paletts
+library(viridis)
+library(RColorBrewer)
+
+#read in the shape file for NYC zip codes
+filepath <- "Shape_Files/ZIP_CODE_040114.shp"
+NYC_zips <- readOGR(filepath, stringsAsFactors = F)
+```
+
+The data structure of the shapefile is pretty complicated. (Look inside, I dare you!) 
+But right off the bat, we can plot it
+
+```{r}
+# quartz()
+plot(NYC_zips)
+```
+
+Woot! There be zipcodes! Without any other data. Just... boundaries. If you are following along in an RStudio session, you can get a better quality image by uncommenting the `quartz()` command. This will open the drawing in a new window. Note that it takes a little while to finish, and you can see it draw the boundaries of each zipcode one at a time... aww!
+
+To add colors or shades, we need to send this information along with the plot instruction...
+
+
+
+
+<!-- ```{r} -->
+
+<!-- #get zip to borough -->
+<!-- zip_bor <- read.csv("data/zip_borough.csv") -->
+
+<!-- #get zipcodes from shape file -->
+<!-- shpcodes <- NYC_zips@data$ZIPCODE %>% as.character %>% as.numeric -->
+
+<!-- #now join these zip codes with the other data -->
+<!-- dat <- data.frame(MODZCTA = shpcodes) -->
+<!-- dat <- dplyr::left_join(dat, na.omit(cases), by="MODZCTA") -->
+<!-- zcta_data$zip_code_tabulation_area <- as.numeric(zcta_data$zip_code_tabulation_area) -->
+<!-- dat <- dplyr::left_join(dat, zcta_data,  -->
+<!--                         by = c("MODZCTA" = "zip_code_tabulation_area")) -->
+<!-- dat <- dplyr::left_join(dat, zip_bor, by=c("MODZCTA" = "zip")) -->
+
+
+
+
+<!-- dat$borough[which(dat$MODZCTA==10065)] <- "Manhattan" -->
+<!-- dat$borough[which(dat$MODZCTA==10075)] <- "Manhattan" -->
+
+<!-- case_bor <- dat %>% group_by(borough) %>% summarize(numcases = sum(Positive, na.rm=T), numtests = sum(Total, na.rm=T)) -->
+<!-- bor_data$Positive <- case_bor$numcases[c(4,2,3,5,1)] -->
+<!-- bor_data$Tests <- case_bor$numtests[c(4,2,3,5,1)] -->
+<!-- ``` -->
+
+<!-- In case you want to write this to a new csv file that you can use! -->
+<!-- ```{r} -->
+<!-- write.csv(bor_data, "data/coronavirus-nyc/data_summ_bor.csv", row.names = F) -->
+<!-- write.csv(dat, "data/coronavirus-nyc/data_summ_zcta.csv", row.names = F) -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- #calculate positive rate for tests -->
+<!-- dat <- dat %>%  -->
+<!--   mutate(posrate =Positive/Population*100) -->
+
+<!-- dat <- dat %>% mutate(Prop_White = White_Total/Race_Total, -->
+<!--                       Prop_NON_White = 1-(White_Total/Race_Total))  -->
+<!-- ``` -->
+
+<!-- Now, we can replicate some of the maps:   -->
+<!-- ```{r} -->
+<!-- #Function to get color information based on some data -->
+<!-- getcolors <- function(data, ntile, missingcol, rdgrbl=c(1,0,0), mycolors=NULL){ -->
+<!--   mybreaks <- c(-1, quantile(data,  -->
+<!--                              probs = seq(0, 1, length.out=ntile+1),  -->
+<!--                              na.rm = T)) -->
+<!--   mycols <- rgb(rdgrbl[1],rdgrbl[2],rdgrbl[3],  -->
+<!--                 seq(0.05,0.65, length.out = length(mybreaks)-1)) -->
+<!--   if(!is.null(mycolors)){ -->
+<!--     mycols <- mycolors -->
+<!--   } -->
+<!--   mycols[1] <- missingcol -->
+<!--   data[is.na(data)] <- -.1 -->
+<!--   mycolorscheme <- cut(data, mybreaks) %>% -->
+<!--   as.numeric() -->
+<!--   mycolorscheme <- mycols[mycolorscheme] -->
+<!--   levs <- levels(cut(data, mybreaks)) -->
+<!--   levs[1] <- "No Data" -->
+<!--   return(list(mycolorscheme, levs, mycols)) -->
+<!-- } -->
+
+<!-- col_lev <- getcolors(round(dat$posrate*10,1), 5, "white", mycolors=viridis(6)) -->
+
+<!-- #plot -->
+<!-- #note: looks better in a quartz window; to do this, need to type quartz() into console: -->
+<!-- #then copy and paste code below into the console as well -->
+<!-- plot(NYC_zips, col = col_lev[[1]],  -->
+<!--      main = "Positive Tests per 1000 People", cex = 10, lwd=0.01) -->
+<!-- legend("topleft",  -->
+<!--        legend = col_lev[[2]],  -->
+<!--        fill = col_lev[[3]], cex = 0.8, title = "Pos Tests") -->
+<!-- ``` -->
+
+<!-- We could do the same type of plot by race if we were interested and then visually compare the maps:     -->
+<!-- ```{r} -->
+<!-- col_lev <- getcolors(round(dat$Prop_NON_White*100,1), 5, "white", mycolors=viridis(6)) -->
+
+<!-- plot(NYC_zips, col = col_lev[[1]],  -->
+<!--      main = "Percent of Population that is Non-White", cex = 10, lwd=0.01) -->
+<!-- legend("topleft",  -->
+<!--        legend = col_lev[[2]],  -->
+<!--        fill = col_lev[[3]], cex = 0.8, title = "% Non-White") -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- col_lev1 <- getcolors(round(dat$Prop_NON_White*100,1), 5, "white", c(1,0,0)) -->
+<!-- col_lev2 <- getcolors(round(dat$posrate*10,1), 5, "white", c(0,0,1)) -->
+
+<!-- par(mfrow=c(1,3)) -->
+<!-- plot(NYC_zips, col = col_lev1[[1]], main = "nonwhite", cex = 10, lwd=0.05) -->
+<!-- plot(NYC_zips, col = col_lev2[[1]], main = "covid", cex = 10, lwd=0.05) -->
+<!-- plot(NYC_zips, col = col_lev1[[1]], main = "nonwhite+covid", cex = 10, lwd=0.05) -->
+<!-- plot(NYC_zips, col = col_lev2[[1]], add=T, cex = 10, lwd=0.05) -->
+
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- plot(round(dat$Prop_NON_White*100,1),round(dat$posrate*10,1), xlab="percent non-white", ylab="pos cases per 1000 ppl", col=col_lev1[[1]], pch=16) -->
+<!-- points(round(dat$Prop_NON_White*100,1),round(dat$posrate*10,1),col=col_lev2[[1]], pch=16) -->
+<!-- #abline(lm(round(dat$posrate*10,1)~round(dat$Prop_NON_White*100,1)), lwd=2) -->
+<!-- ``` -->
+
+
+<!-- ```{r} -->
+
+<!-- tmp <- read.csv("data/data_summ_zcta.csv") -->
+<!-- zcta_race_proportion$zipcode <- as.numeric(as.character(zcta_race_proportion$zipcode)) -->
+<!-- zcta_coll_hh$zipcode <- as.numeric(zcta_coll_hh$zipcode) -->
+<!-- tmp2 <- dplyr::left_join(tmp, zcta_race_proportion,  -->
+<!--                         by = c("MODZCTA" = "zipcode")) -->
+<!-- tmp2 <- dplyr::left_join(tmp2, zcta_coll_hh,  -->
+<!--                         by = c("MODZCTA" = "zipcode")) -->
+<!-- tmp2 <- tmp2[,-5] -->
+
+<!-- write.csv(tmp2, "data/coronavirus-nyc/zipcode_vars.csv", row.names = F) -->
+
+<!-- zipdata <- read.csv("data/coronavirus-nyc/zipcode_vars.csv") -->
+<!-- ``` -->
+
+
+<!-- ```{r} -->
+
+<!-- plot_title <- "College Share by Zipcode" -->
+<!-- legend_title <- "College" -->
+<!-- variableToPlot <-   zipdata$Bach_plus_prop -->
+
+<!-- ## you don't need to modify any of this code, but you may if you'd like     -->
+<!-- source("getShapeColors.R") # need this function -->
+
+<!-- col_lev <- getShapeColors(variableToPlot, nbreaks = 5, missingcol = "white", c(0,0,1)) -->
+
+<!-- # col_lev <- getcolors(variableToPlot, ntile=c(-1,0,20,40,60,80,100)) -->
+<!-- plot(NYC_zips, col = col_lev[[1]],  -->
+<!--      main = plot_title, cex = 10, lwd=0.05) -->
+<!-- legend("topleft",  -->
+<!--        legend = col_lev[[2]],  -->
+<!--        fill = col_lev[[3]], cex = 0.8, title = legend_title) -->
+
+<!-- # col_lev <- getcolors(variableToPlot, 5, "white", c(0,0,1)) -->
+<!-- col_lev <- getcolors(variableToPlot, nbreaks=c(0,20,40,60,80,100)) -->
+<!-- plot(NYC_zips, col = col_lev[[1]],  -->
+<!--      main = plot_title, cex = 10, lwd=0.05) -->
+<!-- legend("topleft",  -->
+<!--        legend = col_lev[[2]],  -->
+<!--        fill = col_lev[[3]], cex = 0.8, title = legend_title) -->
+
+
+<!-- # col_lev <- getcolors(variableToPlot, 5, "white", c(0,0,1)) -->
+<!-- col_lev <- getcolors(variableToPlot, missingcol = "white", nbreaks=10) -->
+<!-- plot(NYC_zips, col = col_lev[[1]],  -->
+<!--      main = plot_title, cex = 10, lwd=0.05) -->
+<!-- legend("topleft",  -->
+<!--        legend = col_lev[[2]],  -->
+<!--        fill = col_lev[[3]], cex = 0.8, title = legend_title) -->
+
+<!-- ``` -->
+
+
+<!-- #### Combining variables -->
+
+<!-- ```{r} -->
+<!-- col_lev1 <- getcolors(round(dat$Prop_NON_White*100,1), 5, "white", c(1,0,0)) -->
+<!-- col_lev2 <- getcolors(round(dat$posrate*10,1), 5, "white", c(0,0,1)) -->
+
+<!-- par(mfrow=c(1,3)) -->
+<!-- plot(NYC_zips, col = col_lev1[[1]], main = "nonwhite", cex = 10, lwd=0.05) -->
+<!-- plot(NYC_zips, col = col_lev2[[1]], main = "covid", cex = 10, lwd=0.05) -->
+<!-- plot(NYC_zips, col = col_lev1[[1]], main = "nonwhite+covid", cex = 10, lwd=0.05) -->
+<!-- plot(NYC_zips, col = col_lev2[[1]], add=T, cex = 10, lwd=0.05) -->
+
+<!-- ``` -->
+
+
+
+
+
