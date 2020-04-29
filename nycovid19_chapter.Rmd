@@ -1,7 +1,7 @@
 # NYC COVID-19 Data
 
 ```{r global_options, include=FALSE}
-knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.path='Figs/',
+knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.path='figs/',
                       echo=TRUE, warning=FALSE, message=FALSE)
 ```
 
@@ -708,7 +708,8 @@ zcta_join <- zcta_income %>%
   left_join(zcta_propOver65, by=c("zipcode")) %>%
   left_join(zcta_SexByAge, by=c("zipcode")) %>%
   left_join(zcta_race_proportion, by=c("zipcode")) %>%
-  left_join(zcta_edu_hh, by=c("zipcode")) 
+  left_join(zcta_edu_hh, by=c("zipcode")) %>%
+  left_join(nyc_zipcode_data %>% mutate(zipcode = as.character(zipcode)), by=c("zipcode"))
 
 names(zcta_join)
 ```
@@ -748,187 +749,324 @@ plot(NYC_zips)
 
 Woot! There be zipcodes! Without any other data. Just... boundaries. If you are following along in an RStudio session, you can get a better quality image by uncommenting the `quartz()` command. This will open the drawing in a new window. Note that it takes a little while to finish, and you can see it draw the boundaries of each zipcode one at a time... aww!
 
-To add colors or shades, we need to send this information along with the plot instruction...
+To add colors or shades, we will need to send color/shade information along with the plot instruction... but there's something else we need to do first.
 
-<!-- ### Coloring in the shapes {-} -->
+How many zip codes are in our data set? The answer can be found by the number of rows in our data frame:
 
+```{r}
+nrow(zcta_join)
+```
 
-<!-- ```{r} -->
+Is this the same as the number of zip codes in our shapefile? If it isn't, then we will get issues when we combine the data we want to map with the geographic boundary data.
 
-<!-- #get zip to borough -->
-<!-- zip_bor <- read.csv("data/zip_borough.csv") -->
+```{r}
+#get zipcodes from shape file
+shapezips <- NYC_zips@data$ZIPCODE 
+length(shapezips)
 
-<!-- #get zipcodes from shape file -->
-<!-- shpcodes <- NYC_zips@data$ZIPCODE %>% as.character %>% as.numeric -->
+```
 
-<!-- #now join these zip codes with the other data -->
-<!-- dat <- data.frame(MODZCTA = shpcodes) -->
-<!-- dat <- dplyr::left_join(dat, na.omit(cases), by="MODZCTA") -->
-<!-- zcta_data$zip_code_tabulation_area <- as.numeric(zcta_data$zip_code_tabulation_area) -->
-<!-- dat <- dplyr::left_join(dat, zcta_data,  -->
-<!--                         by = c("MODZCTA" = "zip_code_tabulation_area")) -->
-<!-- dat <- dplyr::left_join(dat, zip_bor, by=c("MODZCTA" = "zip")) -->
+Not only are there more zipcodes in the shapefile than we have data for, but, for whatever reason involving the design of shapefiles, some zipcodes appear more than once. This is a small nuisance, but it can be solved by using `join` as before. The main idea is that we pass the data we have, and provide "missing" values (`NA` in R) for everything else.
+Here is how to repackage our dataset to fit with the shapefile
 
+```{r}
+# start with one zipcode variable for everything in the shapefile
+mapData <- data.frame(zipcode = shapezips, stringsAsFactors = FALSE)
 
+# add the rest of our data to this
+mapData <- left_join(mapData, zcta_join, by=c("zipcode"))
+```
 
+Simple enough. We expected there to be zipcodes with missing census/COVID-19 data. Indeed, here are some:
 
-<!-- dat$borough[which(dat$MODZCTA==10065)] <- "Manhattan" -->
-<!-- dat$borough[which(dat$MODZCTA==10075)] <- "Manhattan" -->
+```{r}
+tail(mapData)
+```
 
-<!-- case_bor <- dat %>% group_by(borough) %>% summarize(numcases = sum(Positive, na.rm=T), numtests = sum(Total, na.rm=T)) -->
-<!-- bor_data$Positive <- case_bor$numcases[c(4,2,3,5,1)] -->
-<!-- bor_data$Tests <- case_bor$numtests[c(4,2,3,5,1)] -->
-<!-- ``` -->
-
-<!-- In case you want to write this to a new csv file that you can use! -->
-<!-- ```{r} -->
-<!-- write.csv(bor_data, "data/coronavirus-nyc/data_summ_bor.csv", row.names = F) -->
-<!-- write.csv(dat, "data/coronavirus-nyc/data_summ_zcta.csv", row.names = F) -->
-<!-- ``` -->
-
-<!-- ```{r} -->
-<!-- #calculate positive rate for tests -->
-<!-- dat <- dat %>%  -->
-<!--   mutate(posrate =Positive/Population*100) -->
-
-<!-- dat <- dat %>% mutate(Prop_White = White_Total/Race_Total, -->
-<!--                       Prop_NON_White = 1-(White_Total/Race_Total))  -->
-<!-- ``` -->
-
-<!-- Now, we can replicate some of the maps:   -->
-<!-- ```{r} -->
-<!-- #Function to get color information based on some data -->
-<!-- getcolors <- function(data, ntile, missingcol, rdgrbl=c(1,0,0), mycolors=NULL){ -->
-<!--   mybreaks <- c(-1, quantile(data,  -->
-<!--                              probs = seq(0, 1, length.out=ntile+1),  -->
-<!--                              na.rm = T)) -->
-<!--   mycols <- rgb(rdgrbl[1],rdgrbl[2],rdgrbl[3],  -->
-<!--                 seq(0.05,0.65, length.out = length(mybreaks)-1)) -->
-<!--   if(!is.null(mycolors)){ -->
-<!--     mycols <- mycolors -->
-<!--   } -->
-<!--   mycols[1] <- missingcol -->
-<!--   data[is.na(data)] <- -.1 -->
-<!--   mycolorscheme <- cut(data, mybreaks) %>% -->
-<!--   as.numeric() -->
-<!--   mycolorscheme <- mycols[mycolorscheme] -->
-<!--   levs <- levels(cut(data, mybreaks)) -->
-<!--   levs[1] <- "No Data" -->
-<!--   return(list(mycolorscheme, levs, mycols)) -->
-<!-- } -->
-
-<!-- col_lev <- getcolors(round(dat$posrate*10,1), 5, "white", mycolors=viridis(6)) -->
-
-<!-- #plot -->
-<!-- #note: looks better in a quartz window; to do this, need to type quartz() into console: -->
-<!-- #then copy and paste code below into the console as well -->
-<!-- plot(NYC_zips, col = col_lev[[1]],  -->
-<!--      main = "Positive Tests per 1000 People", cex = 10, lwd=0.01) -->
-<!-- legend("topleft",  -->
-<!--        legend = col_lev[[2]],  -->
-<!--        fill = col_lev[[3]], cex = 0.8, title = "Pos Tests") -->
-<!-- ``` -->
-
-<!-- We could do the same type of plot by race if we were interested and then visually compare the maps:     -->
-<!-- ```{r} -->
-<!-- col_lev <- getcolors(round(dat$Prop_NON_White*100,1), 5, "white", mycolors=viridis(6)) -->
-
-<!-- plot(NYC_zips, col = col_lev[[1]],  -->
-<!--      main = "Percent of Population that is Non-White", cex = 10, lwd=0.01) -->
-<!-- legend("topleft",  -->
-<!--        legend = col_lev[[2]],  -->
-<!--        fill = col_lev[[3]], cex = 0.8, title = "% Non-White") -->
-<!-- ``` -->
-
-<!-- ```{r} -->
-<!-- col_lev1 <- getcolors(round(dat$Prop_NON_White*100,1), 5, "white", c(1,0,0)) -->
-<!-- col_lev2 <- getcolors(round(dat$posrate*10,1), 5, "white", c(0,0,1)) -->
-
-<!-- par(mfrow=c(1,3)) -->
-<!-- plot(NYC_zips, col = col_lev1[[1]], main = "nonwhite", cex = 10, lwd=0.05) -->
-<!-- plot(NYC_zips, col = col_lev2[[1]], main = "covid", cex = 10, lwd=0.05) -->
-<!-- plot(NYC_zips, col = col_lev1[[1]], main = "nonwhite+covid", cex = 10, lwd=0.05) -->
-<!-- plot(NYC_zips, col = col_lev2[[1]], add=T, cex = 10, lwd=0.05) -->
-
-<!-- ``` -->
-
-<!-- ```{r} -->
-<!-- plot(round(dat$Prop_NON_White*100,1),round(dat$posrate*10,1), xlab="percent non-white", ylab="pos cases per 1000 ppl", col=col_lev1[[1]], pch=16) -->
-<!-- points(round(dat$Prop_NON_White*100,1),round(dat$posrate*10,1),col=col_lev2[[1]], pch=16) -->
-<!-- #abline(lm(round(dat$posrate*10,1)~round(dat$Prop_NON_White*100,1)), lwd=2) -->
-<!-- ``` -->
+Why are these zipcodes (and others) missing data? It's hard to know, and you need to look at it case by case. Some of these are zipcodes for special areas, like industrial zones, airports. and train stations. (10119 appears to be Penn Station).
 
 
-<!-- ```{r} -->
+### Coloring in the shapes {-}
 
-<!-- tmp <- read.csv("data/data_summ_zcta.csv") -->
-<!-- zcta_race_proportion$zipcode <- as.numeric(as.character(zcta_race_proportion$zipcode)) -->
-<!-- zcta_coll_hh$zipcode <- as.numeric(zcta_coll_hh$zipcode) -->
-<!-- tmp2 <- dplyr::left_join(tmp, zcta_race_proportion,  -->
-<!--                         by = c("MODZCTA" = "zipcode")) -->
-<!-- tmp2 <- dplyr::left_join(tmp2, zcta_coll_hh,  -->
-<!--                         by = c("MODZCTA" = "zipcode")) -->
-<!-- tmp2 <- tmp2[,-5] -->
+So, suppose we want to color in the zip code boundaries to indicate the share of college educated adults in each region. We either have the college rate in our data frame, or we have the data needed to calculate it. (In this case, we might have total college and total population, so we can compute the case rate.)
 
-<!-- write.csv(tmp2, "data/coronavirus-nyc/zipcode_vars.csv", row.names = F) -->
+But what is the right way to map case rate, which is a numeric/quantitative variable to color? What kind of variable is color? This is a profound question that has to do with perception through our sense. Questions regarding mental perception of sounds, colors, or short-duration verbal cues, for example, are the domain of **psychophysics** (yes, that's a real thing!) 
 
-<!-- zipdata <- read.csv("data/coronavirus-nyc/zipcode_vars.csv") -->
-<!-- ``` -->
+Without delving too deeply into this problem, we can at least try to emulate the common practices in similar visualizations. What you'll see is that in many cases, rather than mapping a continuous range of values (e.g., COVID-19 case rate) to a continuous range of colors/shades, the values and the colors are discretized into a small number of levels. Each zip code area, then, is mapped to one of these levels and thus one of the corresponding colors/shades. In the media reports referenced early in this chapter, five levels was pretty typical.
 
+#### An important digression on choosing your levels {-}
 
-<!-- ```{r} -->
+Let's say we want five levels. Sometimes the level-groupings of data are associated with quintiles. Recall that quintiles divide our ordered data set into five equally-sized partitions. Meaning, we will have the same number of zip codes in the lowest quintile, and the next lowest, and so on. But one could also make five partitions where the *range of values is equally sized* but the number of cases in each partition is not. Think of the bin-breaks in a histogram. These are equally-sized ranges, but each bin does not necessarily have the same number of cases. Say, if the distribution is bell-shaped.
 
-<!-- plot_title <- "College Share by Zipcode" -->
-<!-- legend_title <- "College" -->
-<!-- variableToPlot <-   zipdata$Bach_plus_prop -->
+Here is an example using fake data, drawn in fact from a normal distribution:
 
-<!-- ## you don't need to modify any of this code, but you may if you'd like     -->
-<!-- source("getShapeColors.R") # need this function -->
+```{r}
+# make some data
+someNormalData <- rnorm(200, mean=0, sd = 0.5)
 
-<!-- col_lev <- getShapeColors(variableToPlot, nbreaks = 5, missingcol = "white", c(0,0,1)) -->
+# slice it up into 5 groups, two ways:
+quintileAssignments <- ntile(someNormalData, n=5)
+partitionRanges <- c(-2.5,-1.5,-0.5, 0.5, 1.5,2.5)
+equalRangeAssignments <- cut(someNormalData, partitionRanges)
 
-<!-- # col_lev <- getcolors(variableToPlot, ntile=c(-1,0,20,40,60,80,100)) -->
-<!-- plot(NYC_zips, col = col_lev[[1]],  -->
-<!--      main = plot_title, cex = 10, lwd=0.05) -->
-<!-- legend("topleft",  -->
-<!--        legend = col_lev[[2]],  -->
-<!--        fill = col_lev[[3]], cex = 0.8, title = legend_title) -->
+# show how many cases are bucketed into each level
+table(quintileAssignments)
+table(equalRangeAssignments)
+```
 
-<!-- # col_lev <- getcolors(variableToPlot, 5, "white", c(0,0,1)) -->
-<!-- col_lev <- getcolors(variableToPlot, nbreaks=c(0,20,40,60,80,100)) -->
-<!-- plot(NYC_zips, col = col_lev[[1]],  -->
-<!--      main = plot_title, cex = 10, lwd=0.05) -->
-<!-- legend("topleft",  -->
-<!--        legend = col_lev[[2]],  -->
-<!--        fill = col_lev[[3]], cex = 0.8, title = legend_title) -->
+As you can see, the number of cases that get collected in these buckets can be different, depending on how we slice it. If we were mapping zipcodes to colors based on the values of some data such as these, then we would get very different maps. In the quantile case (quintiles, specifically!), we would have our colors spread out, or varying, more. In the equal range case, we may have only a few extreme colors, while the majority of the zipcodes are the same color. All of this happened because our data distribution was bell-shaped. Admittedly, if the distribution were flat (also known as a uniform distribution), then both methods would divide the cases similarly.
 
+By the way, to see what the actual ranges of the quintiles are (this depends on the data you have), you can do this:
 
-<!-- # col_lev <- getcolors(variableToPlot, 5, "white", c(0,0,1)) -->
-<!-- col_lev <- getcolors(variableToPlot, missingcol = "white", nbreaks=10) -->
-<!-- plot(NYC_zips, col = col_lev[[1]],  -->
-<!--      main = plot_title, cex = 10, lwd=0.05) -->
-<!-- legend("topleft",  -->
-<!--        legend = col_lev[[2]],  -->
-<!--        fill = col_lev[[3]], cex = 0.8, title = legend_title) -->
-
-<!-- ``` -->
-
-
-<!-- #### Combining variables -->
-
-<!-- ```{r} -->
-<!-- col_lev1 <- getcolors(round(dat$Prop_NON_White*100,1), 5, "white", c(1,0,0)) -->
-<!-- col_lev2 <- getcolors(round(dat$posrate*10,1), 5, "white", c(0,0,1)) -->
-
-<!-- par(mfrow=c(1,3)) -->
-<!-- plot(NYC_zips, col = col_lev1[[1]], main = "nonwhite", cex = 10, lwd=0.05) -->
-<!-- plot(NYC_zips, col = col_lev2[[1]], main = "covid", cex = 10, lwd=0.05) -->
-<!-- plot(NYC_zips, col = col_lev1[[1]], main = "nonwhite+covid", cex = 10, lwd=0.05) -->
-<!-- plot(NYC_zips, col = col_lev2[[1]], add=T, cex = 10, lwd=0.05) -->
-
-<!-- ``` -->
+```{r}
+quantile(someNormalData, probs = seq(0, 1, length.out=6)) %>% 
+  cut(someNormalData, .) %>% levels
+```
+ 
+This ends the digression. The reason it is important is that this choice of how to make your level assignments will ultimately change how the map looks, and thus what it communicates. We will have a chance to see this play out next.
 
 
 
+#### College {-}
+
+We already have a variable called "Bach_plus_prop" which accounts for the proportion of college among adults 25 and over. Let's see how this actual data set can get mapped. Because this has already gotten complicated enough, I've wrapped a couple of steps together into a function called `getShapeColors`. Feel free to simply ignore this if you already have enough on your mind and just skip to the example of how to use it.
+
+
+```{r}
+# Safe to ignore this chunk
+getShapeColors <- function(data, nbreaks=5, missingcol="gray88", rdgrbl=c(0,0,1), mycolors=NULL){
+  if(length(nbreaks) == 1) {
+    mybreaks <- c(-1, quantile(data,
+                               probs = seq(0, 1, length.out=nbreaks+1),
+                               na.rm = T))
+  } else {
+    mybreaks <- c(-1,nbreaks)
+  }
+  if(!is.null(mycolors)){
+    mycols <- mycolors
+  } else {
+    mycols <- rgb(rdgrbl[1],rdgrbl[2],rdgrbl[3],
+                  seq(0.05,0.65, length.out = length(mybreaks)-1))
+  }
+  mycols[1] <- missingcol
+  data[is.na(data)] <- -.1
+  mycolorscheme <- cut(data, mybreaks) %>%
+    as.numeric()
+  mycolorscheme <- mycols[mycolorscheme]
+  levs <- levels(cut(data, mybreaks))
+  levs[1] <- "No Data"
+  return(list(regionValues=mycolorscheme, legendText=levs, legendColors=mycols))
+}
+```
+
+
+Here's how you use it:
+```{r}
+bachelorPlus <- mapData$Bach_plus_prop
+myShapeColors <- getShapeColors(bachelorPlus, nbreaks=5)
+
+plot(NYC_zips, col = myShapeColors$regionValues, 
+     main = "Share of Adults with College Degree", cex = 10, lwd=0.05)
+legend("topleft", 
+       legend = myShapeColors$legendText, 
+       fill = myShapeColors$legendColors, cex = 0.8, title = "College Prop")
+```
+
+Hallelujah, we finally have made an image of something. Notice that the output of the `getShapeColors` functions contains three elements (it is technically a list): values (colors values for each geographic area), legend (text for the legend, including the ranges of values), and palette (these are the colors that go into the len).
+
+The input of `getShapeColors` is the data you want to visualize as well as the number of levels. In this example, we chose 5. By default, the color palette is shades of blue, but as it is writte, you can provide different colors if you like. For example, the Furman report used a color palette called viridis, which ranges from dark blue to yellow. The only modification necessary is to add an argument to the function:
+
+```{r}
+
+myShapeColors <- getShapeColors(bachelorPlus, nbreaks=5, mycolors=viridis(6))
+
+plot(NYC_zips, col = myShapeColors$regionValues, 
+     main = "Share of Adults with College Degree", cex = 10, lwd=0.05)
+legend("topleft", 
+       legend = myShapeColors$legendText, 
+       fill = myShapeColors$legendColors, cex = 0.8, title = "College Prop")
+
+```
+
+I don't know exactly how ABCNews made their color palette, but here is my approximation. I played around with the border color and line width as well.
+
+```{r}
+ABCpalette <- c("gray88", "#4e9ccb", "#3b7ba9","#265982", "#133960","#001a3a")
+myShapeColors <- getShapeColors(bachelorPlus, nbreaks=5, mycolors=ABCpalette)
+
+plot(NYC_zips, col = myShapeColors$regionValues, 
+     main = "Share of Adults with College Degree", 
+     cex = 10, border="white", lwd=0.25)
+legend("topleft", 
+       legend = myShapeColors$legendText, 
+       fill = myShapeColors$legendColors, cex = 0.8, title = "College Share")
+
+```
+
+Here is the original again.
+
+```{r abc-college, out.width='80%', fig.cap='ABCNews visualization'}
+knitr::include_graphics("images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg")
+```
+
+
+I hope you agree that it's pretty close! Did you spot the main difference? Sure, there are a few of them, but notice the legend in the ABCNews figure? ABCNews used fixed ranges for their level cutoffs, whereas we were using quintiles! What if we want custom cut-points that are not quantiles?
+
+I anticipated this desire in the getShapeColors function, so it's easy enough. Instead of providing a number (e.g, 5) for `nbreaks`, you provide the actual list of cutpoints. Here it is on its own.
+
+```{r}
+ABCpalette <- c("gray88", "#4e9ccb", "#3b7ba9","#265982", "#133960","#001a3a")
+myShapeColors <- getShapeColors(bachelorPlus, nbreaks=c(0,20,40,60,80,100),
+                                 mycolors=ABCpalette)
+
+plot(NYC_zips, col = myShapeColors$regionValues, 
+     main = "Share of Adults with College Degree", 
+     cex = 10, border="white", lwd=0.25)
+legend("topleft", 
+       legend = myShapeColors$legendText, 
+       fill = myShapeColors$legendColors, cex = 0.8, title = "College Share")
+
+```
+
+And here are two versions of the same data, mapped side-by-side using different cut-points:
+
+
+```{r}
+
+ABCpalette <- c("gray88", "#4e9ccb", "#3b7ba9","#265982", "#133960","#001a3a")
+myShapeColors1 <- getShapeColors(bachelorPlus, nbreaks=5,
+                                 mycolors=ABCpalette)
+myShapeColors2 <- getShapeColors(bachelorPlus, nbreaks=c(0,20,40,60,80,100),
+                                 mycolors=ABCpalette)
+
+par(mfrow=c(1,2))
+
+plot(NYC_zips, col = myShapeColors1$regionValues, 
+     main = "%College using Quintiles", 
+     cex = 10, border="white", lwd=0.25)
+legend("topleft", 
+       legend = myShapeColors1$legendText, 
+       fill = myShapeColors1$legendColors, cex = 0.8, title = "College Share")
+
+
+plot(NYC_zips, col = myShapeColors2$regionValues, 
+     main = "%College using Equal Intervals", 
+     cex = 10, border="white", lwd=0.25)
+legend("topleft", 
+       legend = myShapeColors2$legendText, 
+       fill = myShapeColors2$legendColors, cex = 0.8, title = "College Share")
+
+```
+
+The difference may be subtle, and I believe an argument can be made for either. But all in all, I believe that the level separation by quintiles does a better job in highlighting the difference between the different parts of the city.
+
+This brings us to our next topic, which is comparing COVID-19 incidence maps to maps showing census data (e.g., income, college education, race, etc.)
+
+#### Looking at two variables at the same time {-}
+
+We can borrow the same side-by-side technique as above, but instead of the same data with different cut-points, we can plot two different variables. We'll use quintiles in both cases. 
+
+It turns out that population-adjusted COVID-19 rate is not actually in our data set. We need to make it, but it's easy.
+
+```{r}
+covidPerCapita <- mapData$Positive/mapData$Total_Pop*100
+hist(covidPerCapita, main="Zipcode-level Positive Cases Percent of Population")
+```
+
+
+```{r}
+
+myShapeColors1 <- getShapeColors(covidPerCapita, nbreaks=5)
+myShapeColors2 <- getShapeColors(bachelorPlus, nbreaks=5)
+
+par(mfrow=c(1,2))
+
+plot(NYC_zips, col = myShapeColors1$regionValues, 
+     main = "%COVID Cases", 
+     cex = 10, border="white", lwd=0.25)
+legend("topleft", 
+       legend = myShapeColors1$legendText, 
+       fill = myShapeColors1$legendColors, cex = 0.8, title = "COVID rate")
+
+
+plot(NYC_zips, col = myShapeColors2$regionValues, 
+     main = "%College", 
+     cex = 10, border="white", lwd=0.25)
+legend("topleft", 
+       legend = myShapeColors2$legendText, 
+       fill = myShapeColors2$legendColors, cex = 0.8, title = "College Share")
+
+```
+
+Now we're looking at two different variables, both mapped using quintiles as an organizer of zipcode-level data. It definitely seems like one map is almost an inverse of the other. Where COVID rate is high, college rate is low, and vice versa. Is there some way for us to see both variables on the same map at the same time?
+
+Here's one idea. Suppose we used different colors for each variable, e.g. red and blue, but we used shades from lighter to darker to indicate lowr and higher values. And suppose we made the colors transparent, the way we did when we plotted two histograms on the same plot. When pink and light-blue are both laid over each other, we will see a purplish color. Therefore
+
+1. If both variables are high, we will have darker purple
+2. If both variables are low, we will have lighter purple
+3. If one variable is high and the other low, we will see regions of red or blue
+
+So what happens if we "add" up the two variable maps this way?
+
+```{r}
+myShapeColorsCovid <- getShapeColors(covidPerCapita, nbreaks=5, rdgrbl = c(1,0,0))
+myShapeColorsCollege <- getShapeColors(bachelorPlus, nbreaks=5, rdgrbl = c(0,0,1))
+
+par(mfrow=c(1,3))
+plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid", cex = 10, lwd=0.05)
+plot(NYC_zips, col = myShapeColorsCollege$regionValues, main = "college", cex = 10, lwd=0.05) 
+plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid+college", cex = 10, lwd=0.05)
+plot(NYC_zips, col = myShapeColorsCollege$regionValues, add=T, cex = 10, lwd=0.05)
+
+```
+
+In the case of college education and COVID incidence rates, the variables are negatively associated. Overlaying two color maps, we see red and bluish regions, but we also see some purple stuff.
+
+What would happen if we did the same for two variable with positive association? Let us map COVID-19 incidence against the average household size. 
+
+```{r}
+
+myShapeColorsCovid <- getShapeColors(covidPerCapita, nbreaks=5, rdgrbl = c(1,0,0))
+myShapeColorsHH <- getShapeColors(mapData$AvgHH, nbreaks=5, rdgrbl = c(0,0,1))
+
+par(mfrow=c(1,3))
+plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid", cex = 10, lwd=0.05)
+plot(NYC_zips, col = myShapeColorsHH$regionValues, main = "hh size", cex = 10, lwd=0.05) 
+plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid+hhsize", cex = 10, lwd=0.05)
+plot(NYC_zips, col = myShapeColorsHH$regionValues, add=T, cex = 10, lwd=0.05)
+
+```
+
+Indeed, in this case, we see a map that is much more purplish overall. 
+
+
+Given the code examples above, you should be able to create your own zipcode maps of the variables in our data set. You can even get more variables using census queries. The problem of visualizing two (or more) variables on a map is still a challenge. The fact is, there are other data visualizations that are probably better suited to that task, even though they don't have the narrative association with geography. I'm thinking about the lowly scatterplot
+
+### Scatterplots {-}
+
+Here are the data from the last two examples visualized using both maps and scatterplots.
+
+```{r}
+
+par(mfrow=c(2,2))
+plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid+hhsize", cex = 10, lwd=0.05)
+plot(NYC_zips, col = myShapeColorsHH$regionValues, add=T, cex = 10, lwd=0.05)
+
+plot(mapData$AvgHH, covidPerCapita, col=myShapeColorsCovid$regionValues, pch=16,
+     xlab="Avg Household Size", ylab="COVID rate")
+points(mapData$AvgHH, covidPerCapita, col=myShapeColorsHH$regionValues, pch=16)
+
+
+
+plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid+college", cex = 10, lwd=0.05)
+plot(NYC_zips, col = myShapeColorsCollege$regionValues, add=T, cex = 10, lwd=0.05)
+
+plot(mapData$Bach_plus_prop, covidPerCapita, col=myShapeColorsCovid$regionValues, pch=16,
+     xlab="% College", ylab="COVID rate")
+points(mapData$Bach_plus_prop, covidPerCapita, col=myShapeColorsCollege$regionValues, pch=16)
+
+```
+
+The scatterplots on the right make it easy to see the trends. As average household sizes go up per zipcode, so do COVID rates. As college education goes up, COVID rates go down. The coloring of the points is the same as the coloring of the region. Along the 1-to-1 line (i.e., a perfect positive relationship), we would have all purple points of different shades. The farther away we are from this diagonal, the more red (above the line) or blue (below) the points are.
 
 

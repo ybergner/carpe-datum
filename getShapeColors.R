@@ -19,7 +19,7 @@ getShapeColors <- function(data, nbreaks=5, missingcol="gray88", rdgrbl=c(0,0,1)
   mycolorscheme <- mycols[mycolorscheme]
   levs <- levels(cut(data, mybreaks))
   levs[1] <- "No Data"
-  return(list(mycolorscheme, levs, mycols))
+  return(list(regionValues=mycolorscheme, legendText=levs, legendColors=mycols))
 }
 
 
