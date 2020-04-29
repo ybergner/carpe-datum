@@ -48,7 +48,7 @@ How does one make these data visualizations? And are they the best way to "see" 
 
 ABC News also reproduced a version of table below, showing racial composition by neighborhood. The title may confuse matters, however. In this table, multiple neighborhoods (zipcodes) are actually grouped together into five sets using **quintiles.** You take all of the zipcodes, rank-order them by COVID-19 concentration, and then select the bottom fifth, the next fifth, and so on up to the top fifth. These groups are labeled "lowest concentration", "low concentration", and so on up to "highest concentration."
 
-Technically, the quintiles are the cut-points, so for five groups, there are four quintiles. If you look at the table below, the cut-points/quintiles are {3.33, 4.13, 4.77, 5.87}. Of course, this division process can be done for a different number of **quantiles**--note the spelling--not necessarily five. A division of three groups is made by choosing two (cut-point) tertiles or terciles. The median is the 2-quantile, as it is the cut-point that divides a data set into two equal parts. Unfortunately, the naming conventions here are rather confusing, but you get used to them if you use them a lot.
+To make matters confusing, the word "quintile" is often used referring to the five sets (for example, "the lower quintile"). But strictly speaking, the quintiles are actually the cut-points. So for five groups, there are four quintiles. If you look at the table below, the cut-points/quintiles are {3.33, 4.13, 4.77, 5.87}. Of course, this division process can be done for a different number of **quantiles**--note the spelling--not necessarily five. A division of three groups is made by choosing two (cut-point) tertiles or terciles. The median is the 2-quantile, as it is the cut-point that divides a data set into two equal parts. Unfortunately, the naming conventions here are rather confusing, but you get used to them if you use them a lot.
 
 ![](images/abc_COVID19RacialComp_v02_KA_hpEmbed_37x16_992.jpg)
 
@@ -137,13 +137,15 @@ Notice that the first row is missing a zipcode. Presumably these are COVID tests
 
 For each other row, we have a zipcode, the number of positive tests, the number of total tests, and the percent positive.
 
-**Exercise**: Which of these expressions should give the percent positive tests
+**Exercise**: Which of these expressions should give the percent positive tests?
 
-+ `nyc_zipcode_data$Total/nyc_zipcode_data$Positive*100`
-+ `nyc_zipcode_data$Positive/nyc_zipcode_data$Total`
-+ `nyc_zipcode_data$Positive/nyc_zipcode_data$Total*100`
-+ `(nyc_zipcode_data$Total-nyc_zipcode_data$Positive)`
-+ `(nyc_zipcode_data$Total-nyc_zipcode_data$Positive)*100`
+```
+nyc_zipcode_data$Total/nyc_zipcode_data$Positive*100
+nyc_zipcode_data$Positive/nyc_zipcode_data$Total
+nyc_zipcode_data$Positive/nyc_zipcode_data$Total*100
+(nyc_zipcode_data$Total-nyc_zipcode_data$Positive)
+(nyc_zipcode_data$Total-nyc_zipcode_data$Positive)*100
+```
 
 
 Now you might want to keep the first row, the one with the missing zipcode, in your data. But I would rather remove it now, because I'm going to try to add information to this zipcode table down the line. While I'm at it, I will also rename the column "MODZCTA" with "zipcode."
@@ -717,6 +719,8 @@ And there you have it. `r ncol(zcta_join)-1` variables, each associated with a N
 
 The whole point of using zip codes as units was that they represent distinct geographic areas. It is not easy to make sense of a list of `r nrow(zcta_join)` household income values, ordered by zip code. But if we convert these values to colors or shades and use those to fill in the zip code boundaries of a map, then we can "see" where the money is and where it isn't.
 
+### Shapefiles {-}
+
 To carry out this feat, we will need to enlist the help of a **shapefile**, which is a data format that was specifically invented for geographical information systems (GIS). You don't need to understand the detailed structure of a shapefile. You only need to know that it will allow you to map, say, the zip code 10003 to some region on a drawing. 
 
 So we will need a shapefile for NYC zip codes. Search for this on the internet, and you'll get one [here](https://catalog.data.gov/dataset/zip-code-boundaries){target="_blank"}. We will need the R package that will do the translation work for us. It is called "R geospatial data abstraction library (`rgdal`)." Lastly, to produce images like you see in the media, we might need some color palettes. These will map numbers (e.g., proportion over 65) to colors in ways that are designed to be visually distinctive. 
@@ -746,7 +750,7 @@ Woot! There be zipcodes! Without any other data. Just... boundaries. If you are 
 
 To add colors or shades, we need to send this information along with the plot instruction...
 
-
+### Coloring in the shapes {-}
 
 
 <!-- ```{r} -->
