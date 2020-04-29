@@ -719,36 +719,36 @@ And there you have it. `r ncol(zcta_join)-1` variables, each associated with a N
 
 The whole point of using zip codes as units was that they represent distinct geographic areas. It is not easy to make sense of a list of `r nrow(zcta_join)` household income values, ordered by zip code. But if we convert these values to colors or shades and use those to fill in the zip code boundaries of a map, then we can "see" where the money is and where it isn't.
 
-<!-- ### Shapefiles {-} -->
+### Shapefiles {-}
 
-<!-- To carry out this feat, we will need to enlist the help of a **shapefile**, which is a data format that was specifically invented for geographical information systems (GIS). You don't need to understand the detailed structure of a shapefile. You only need to know that it will allow you to map, say, the zip code 10003 to some region on a drawing.  -->
+To carry out this feat, we will need to enlist the help of a **shapefile**, which is a data format that was specifically invented for geographical information systems (GIS). You don't need to understand the detailed structure of a shapefile. You only need to know that it will allow you to map, say, the zip code 10003 to some region on a drawing.
 
-<!-- So we will need a shapefile for NYC zip codes. Search for this on the internet, and you'll get one [here](https://catalog.data.gov/dataset/zip-code-boundaries){target="_blank"}. We will need the R package that will do the translation work for us. It is called "R geospatial data abstraction library (`rgdal`)." Lastly, to produce images like you see in the media, we might need some color palettes. These will map numbers (e.g., proportion over 65) to colors in ways that are designed to be visually distinctive.  -->
+So we will need a shapefile for NYC zip codes. Search for this on the internet, and you'll get one [here](https://catalog.data.gov/dataset/zip-code-boundaries){target="_blank"}. We will need the R package that will do the translation work for us. It is called "R geospatial data abstraction library (`rgdal`)." Lastly, to produce images like you see in the media, we might need some color palettes. These will map numbers (e.g., proportion over 65) to colors in ways that are designed to be visually distinctive.
 
-<!-- ```{r, message=FALSE} -->
-<!-- #load R geospatial data abstraction library  -->
-<!-- library(rgdal) -->
+```{r, message=FALSE}
+#load R geospatial data abstraction library
+library(rgdal)
 
-<!-- #load additional viz libraries for color paletts -->
-<!-- library(viridis) -->
-<!-- library(RColorBrewer) -->
+#load additional viz libraries for color paletts
+library(viridis)
+library(RColorBrewer)
 
-<!-- #read in the shape file for NYC zip codes -->
-<!-- filepath <- "Shape_Files/ZIP_CODE_040114.shp" -->
-<!-- NYC_zips <- readOGR(filepath, stringsAsFactors = F) -->
-<!-- ``` -->
+#read in the shape file for NYC zip codes
+filepath <- "Shape_Files/ZIP_CODE_040114.shp"
+NYC_zips <- readOGR(filepath, stringsAsFactors = F)
+```
 
-<!-- The data structure of the shapefile is pretty complicated. (Look inside, I dare you!)  -->
-<!-- But right off the bat, we can plot it -->
+The data structure of the shapefile is pretty complicated. (Look inside, I dare you!)
+But right off the bat, we can plot it
 
-<!-- ```{r} -->
-<!-- # quartz() -->
-<!-- plot(NYC_zips) -->
-<!-- ``` -->
+```{r}
+# quartz()
+plot(NYC_zips)
+```
 
-<!-- Woot! There be zipcodes! Without any other data. Just... boundaries. If you are following along in an RStudio session, you can get a better quality image by uncommenting the `quartz()` command. This will open the drawing in a new window. Note that it takes a little while to finish, and you can see it draw the boundaries of each zipcode one at a time... aww! -->
+Woot! There be zipcodes! Without any other data. Just... boundaries. If you are following along in an RStudio session, you can get a better quality image by uncommenting the `quartz()` command. This will open the drawing in a new window. Note that it takes a little while to finish, and you can see it draw the boundaries of each zipcode one at a time... aww!
 
-<!-- To add colors or shades, we need to send this information along with the plot instruction... -->
+To add colors or shades, we need to send this information along with the plot instruction...
 
 <!-- ### Coloring in the shapes {-} -->
 
