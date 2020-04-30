@@ -1071,6 +1071,8 @@ mtext("COVID rate", side = 2, line = 2)
 
 ```
 
-The scatterplots on the right side make it easy to see the trends. As average household sizes go up per zipcode, so do COVID rates. As college education goes up, COVID rates go down. The coloring of the points is the same as the coloring of the region. Along the 1-to-1 line (i.e., a perfect positive relationship), we would have all purple points of different shades. The farther away we are from this diagonal, the more red (above the line) or blue (below) the points are.
+The scatterplots on the right side make it easier to see the relationship between the two variables. As average household sizes go up per zipcode, so do COVID rates. As college education goes up, COVID rates go down. Each point in the scatterplot corresponds to a zipcode region, and in fact, the coloring of the points is the same as the coloring of the regions. But the scatterplot has no geographical information.
+
+Along the 1-to-1 line (i.e., a perfect positive and linear relationship), we would have all purple points, with the colors getting darker at high values. The farther away we are from this diagonal, the more red (above the line) or blue (below) the points are. Note that even with a strongly negative relationship (diagonal trend going down to the right), we will still pass through a purple region. These are regions with average values for both variables.
 
 
