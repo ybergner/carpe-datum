@@ -1048,25 +1048,29 @@ Here are the data from the last two examples visualized using both maps and scat
 
 ```{r}
 
-par(mfrow=c(2,2))
+par(mfrow=c(2,2), mar = c(3, 2, 1, 1))
 plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid+hhsize", cex = 10, lwd=0.05)
 plot(NYC_zips, col = myShapeColorsHH$regionValues, add=T, cex = 10, lwd=0.05)
 
 plot(mapData$AvgHH, covidPerCapita, col=myShapeColorsCovid$regionValues, pch=16,
-     xlab="Avg Household Size", ylab="COVID rate")
+     xlab = "", ylab="")
 points(mapData$AvgHH, covidPerCapita, col=myShapeColorsHH$regionValues, pch=16)
-
+mtext("Avg Household Size", side = 1, line = 2)
+mtext("COVID rate", side = 2, line = 2)
 
 
 plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid+college", cex = 10, lwd=0.05)
 plot(NYC_zips, col = myShapeColorsCollege$regionValues, add=T, cex = 10, lwd=0.05)
 
 plot(mapData$Bach_plus_prop, covidPerCapita, col=myShapeColorsCovid$regionValues, pch=16,
-     xlab="% College", ylab="COVID rate")
+     xlab="", ylab="")
 points(mapData$Bach_plus_prop, covidPerCapita, col=myShapeColorsCollege$regionValues, pch=16)
+mtext("College Percentage", side = 1, line = 2)
+mtext("COVID rate", side = 2, line = 2)
+
 
 ```
 
-The scatterplots on the right make it easy to see the trends. As average household sizes go up per zipcode, so do COVID rates. As college education goes up, COVID rates go down. The coloring of the points is the same as the coloring of the region. Along the 1-to-1 line (i.e., a perfect positive relationship), we would have all purple points of different shades. The farther away we are from this diagonal, the more red (above the line) or blue (below) the points are.
+The scatterplots on the right side make it easy to see the trends. As average household sizes go up per zipcode, so do COVID rates. As college education goes up, COVID rates go down. The coloring of the points is the same as the coloring of the region. Along the 1-to-1 line (i.e., a perfect positive relationship), we would have all purple points of different shades. The farther away we are from this diagonal, the more red (above the line) or blue (below) the points are.
 
 

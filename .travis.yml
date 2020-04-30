@@ -21,6 +21,7 @@ pandoc_version: 1.19.2.1
 before_script:
 - chmod +x ./_build.sh
 - chmod +x ./_deploy.sh
+- R -e 'install.packages("rgdal", repos=c("http://R-Forge.R-project.org", "http://cran.rstudio.com"))'
 script:
 - "./_build.sh"
 - "./_deploy.sh"
