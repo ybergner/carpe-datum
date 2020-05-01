@@ -236,7 +236,8 @@ boroNames <- nyc_boro_data$BOROUGH_GROUP[1:5]
 countyNames <- acs_boro_population$NAME
 
 # combine, but note that the order is not the same! So we'll reorder
-boro2county <- data.frame(Borough=boroNames, County=countyNames[c(5,2,3,1,4)], stringsAsFactors = FALSE)
+boro2county <- data.frame(Borough=boroNames, County=countyNames[c(5,2,3,1,4)], 
+                          stringsAsFactors = FALSE)
 
 # create two 'named vectors'
 # one for getting the borough
@@ -396,7 +397,8 @@ femaleOver65Vars <- c("B01001_044E","B01001_045E","B01001_046E","B01001_047E",
 Total_PopVar <- "B01001_001E"
 acs_boro_over65 <- getCensus(name = "acs/acs5",
                            vintage = 2018,
-                           vars = c("NAME", maleOver65Vars,femaleOver65Vars, Total_PopVar),
+                           vars = c("NAME", 
+                                    maleOver65Vars,femaleOver65Vars, Total_PopVar),
                            region = "county:005,047,061,081,085",
                            regionin = "state:36", key = myKey
                          )
@@ -418,7 +420,8 @@ If all of the above seems not worth the effort to get proportion over 65, you mi
 ```{r}
 medianSexByAge_boro <- getCensus(name = "acs/acs5",
                                  vintage = 2018,
-                                 vars = c("NAME", "B01002_001E", "B01002_002E", "B01002_003E"),
+                                 vars = c("NAME", 
+                                          "B01002_001E", "B01002_002E", "B01002_003E"),
                                  region = "county:005,047,061,081,085",
                                  regionin = "state:36", 
                                  key = myKey
@@ -539,7 +542,8 @@ In the code below, I will extract the zip codes and make one long string ("10001
 nyc_zcta_covid <- read.csv("data/coronavirus-nyc/tests-by-zcta.csv")
 nyc_zipcodes <- nyc_zcta_covid %>% select(MODZCTA) %>% na.omit() %>% pull()
 
-# for the API call, we will want all zipcodes in plain text with comma separation
+# for the API call, we will want all zipcodes 
+# in plain text with comma separation
 nyc_zipcode_string <- paste(nyc_zipcodes, collapse=",")
 
 # show beginning
@@ -591,7 +595,7 @@ We can now redo the rest of our queries at the zip code level, including any age
 # get proportion over 65 by adding up lots of variables
 zcta_over65 <- getCensus(name = "acs/acs5",
                              vintage = 2018,
-                             vars = c(maleOver65Vars,femaleOver65Vars, Total_PopVar),
+                             vars = c(maleOver65Vars,femaleOver65Vars,Total_PopVar),
                              region = paste0("zip code tabulation area:",nyc_zipcode_string),
                              key = myKey
 )
@@ -624,7 +628,8 @@ head(zcta_SexByAge)
 # get race including Hispanic/Latino category
 zcta_race <- getCensus(name = "acs/acs5",
                        vintage = 2018,
-                       vars = c("B03002_012E", "B03002_004E", "B03002_003E", "B03002_006E",
+                       vars = c("B03002_012E", "B03002_004E", 
+                                "B03002_003E", "B03002_006E",
                                 "B03002_002E", "B03002_001E"),
                        region = paste0("zip code tabulation area:",nyc_zipcode_string),
                        key = myKey
@@ -709,7 +714,8 @@ zcta_join <- zcta_income %>%
   left_join(zcta_SexByAge, by=c("zipcode")) %>%
   left_join(zcta_race_proportion, by=c("zipcode")) %>%
   left_join(zcta_edu_hh, by=c("zipcode")) %>%
-  left_join(nyc_zipcode_data %>% mutate(zipcode = as.character(zipcode)), by=c("zipcode"))
+  left_join(nyc_zipcode_data %>% mutate(zipcode = as.character(zipcode)), 
+            by=c("zipcode"))
 
 names(zcta_join)
 ```
@@ -834,7 +840,8 @@ We already have a variable called "Bach_plus_prop" which accounts for the propor
 
 ```{r}
 # Safe to ignore this chunk
-getShapeColors <- function(data, nbreaks=5, missingcol="gray88", rdgrbl=c(0,0,1), mycolors=NULL){
+getShapeColors <- function(data, nbreaks=5, missingcol="gray88", 
+                           rdgrbl=c(0,0,1), mycolors=NULL){
   if(length(nbreaks) == 1) {
     mybreaks <- c(-1, quantile(data,
                                probs = seq(0, 1, length.out=nbreaks+1),
@@ -855,7 +862,9 @@ getShapeColors <- function(data, nbreaks=5, missingcol="gray88", rdgrbl=c(0,0,1)
   mycolorscheme <- mycols[mycolorscheme]
   levs <- levels(cut(data, mybreaks))
   levs[1] <- "No Data"
-  return(list(regionValues=mycolorscheme, legendText=levs, legendColors=mycols))
+  return(list(regionValues=mycolorscheme, 
+              legendText=levs, 
+              legendColors=mycols))
 }
 ```
 
@@ -866,10 +875,12 @@ bachelorPlus <- mapData$Bach_plus_prop
 myShapeColors <- getShapeColors(bachelorPlus, nbreaks=5)
 
 plot(NYC_zips, col = myShapeColors$regionValues, 
-     main = "Share of Adults with College Degree", cex = 10, lwd=0.05)
+     main = "Share of Adults with College Degree", 
+     cex = 10, lwd=0.05)
 legend("topleft", 
        legend = myShapeColors$legendText, 
-       fill = myShapeColors$legendColors, cex = 0.8, title = "College Prop")
+       fill = myShapeColors$legendColors, cex = 0.8, 
+       title = "College Prop")
 ```
 
 Hallelujah, we finally have made an image of something. Notice that the output of the `getShapeColors` functions contains three elements (it is technically a list): values (colors values for each geographic area), legend (text for the legend, including the ranges of values), and palette (these are the colors that go into the len).
@@ -905,7 +916,7 @@ legend("topleft",
 
 Here is the original again.
 
-```{r abc-college, out.width='80%', fig.cap='ABCNews visualization'}
+```{r abc-college, echo=FALSE, out.width='80%', fig.cap='ABCNews visualization'}
 knitr::include_graphics("images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg")
 ```
 
@@ -1009,14 +1020,18 @@ Here's one idea. Suppose we used different colors for each variable, e.g. red an
 So what happens if we "add" up the two variable maps this way?
 
 ```{r}
-myShapeColorsCovid <- getShapeColors(covidPerCapita, nbreaks=5, rdgrbl = c(1,0,0))
-myShapeColorsCollege <- getShapeColors(bachelorPlus, nbreaks=5, rdgrbl = c(0,0,1))
+myShapeColorsCovid <- getShapeColors(covidPerCapita, nbreaks=5, rdgrbl=c(1,0,0))
+myShapeColorsCollege <- getShapeColors(bachelorPlus, nbreaks=5, rdgrbl=c(0,0,1))
 
 par(mfrow=c(1,3))
-plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid", cex = 10, lwd=0.05)
-plot(NYC_zips, col = myShapeColorsCollege$regionValues, main = "college", cex = 10, lwd=0.05) 
-plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid+college", cex = 10, lwd=0.05)
-plot(NYC_zips, col = myShapeColorsCollege$regionValues, add=T, cex = 10, lwd=0.05)
+plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid", 
+     cex = 10, lwd=0.05)
+plot(NYC_zips, col = myShapeColorsCollege$regionValues, main = "college", 
+     cex = 10, lwd=0.05) 
+plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid+college", 
+     cex = 10, lwd=0.05)
+plot(NYC_zips, col = myShapeColorsCollege$regionValues, add=T, 
+     cex = 10, lwd=0.05)
 
 ```
 
@@ -1026,14 +1041,18 @@ What would happen if we did the same for two variable with positive association?
 
 ```{r}
 
-myShapeColorsCovid <- getShapeColors(covidPerCapita, nbreaks=5, rdgrbl = c(1,0,0))
-myShapeColorsHH <- getShapeColors(mapData$AvgHH, nbreaks=5, rdgrbl = c(0,0,1))
+myShapeColorsCovid <- getShapeColors(covidPerCapita, nbreaks=5, rdgrbl=c(1,0,0))
+myShapeColorsHH <- getShapeColors(mapData$AvgHH, nbreaks=5, rdgrbl=c(0,0,1))
 
 par(mfrow=c(1,3))
-plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid", cex = 10, lwd=0.05)
-plot(NYC_zips, col = myShapeColorsHH$regionValues, main = "hh size", cex = 10, lwd=0.05) 
-plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid+hhsize", cex = 10, lwd=0.05)
-plot(NYC_zips, col = myShapeColorsHH$regionValues, add=T, cex = 10, lwd=0.05)
+plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid", 
+     cex = 10, lwd=0.05)
+plot(NYC_zips, col = myShapeColorsHH$regionValues, main = "hh size", 
+     cex = 10, lwd=0.05) 
+plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid+hhsize", 
+     cex = 10, lwd=0.05)
+plot(NYC_zips, col = myShapeColorsHH$regionValues, add=T, 
+     cex = 10, lwd=0.05)
 
 ```
 
@@ -1049,22 +1068,30 @@ Here are the data from the last two examples visualized using both maps and scat
 ```{r}
 
 par(mfrow=c(2,2), mar = c(3, 2, 1, 1))
-plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid+hhsize", cex = 10, lwd=0.05)
-plot(NYC_zips, col = myShapeColorsHH$regionValues, add=T, cex = 10, lwd=0.05)
+plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid+hhsize", 
+     cex = 10, lwd=0.05)
+plot(NYC_zips, col = myShapeColorsHH$regionValues, add=T, 
+     cex = 10, lwd=0.05)
 
-plot(mapData$AvgHH, covidPerCapita, col=myShapeColorsCovid$regionValues, pch=16,
+plot(mapData$AvgHH, covidPerCapita, col=myShapeColorsCovid$regionValues, 
+     pch=16,
      xlab = "", ylab="")
-points(mapData$AvgHH, covidPerCapita, col=myShapeColorsHH$regionValues, pch=16)
+points(mapData$AvgHH, covidPerCapita, col=myShapeColorsHH$regionValues, 
+       pch=16)
 mtext("Avg Household Size", side = 1, line = 2)
 mtext("COVID rate", side = 2, line = 2)
 
 
-plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid+college", cex = 10, lwd=0.05)
-plot(NYC_zips, col = myShapeColorsCollege$regionValues, add=T, cex = 10, lwd=0.05)
+plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid+college", 
+     cex = 10, lwd=0.05)
+plot(NYC_zips, col = myShapeColorsCollege$regionValues, add=T, 
+     cex = 10, lwd=0.05)
 
-plot(mapData$Bach_plus_prop, covidPerCapita, col=myShapeColorsCovid$regionValues, pch=16,
+plot(mapData$Bach_plus_prop, covidPerCapita, col=myShapeColorsCovid$regionValues, 
+     pch=16,
      xlab="", ylab="")
-points(mapData$Bach_plus_prop, covidPerCapita, col=myShapeColorsCollege$regionValues, pch=16)
+points(mapData$Bach_plus_prop, covidPerCapita, col=myShapeColorsCollege$regionValues, 
+       pch=16)
 mtext("College Percentage", side = 1, line = 2)
 mtext("COVID rate", side = 2, line = 2)
 
