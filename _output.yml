@@ -13,3 +13,5 @@ bookdown::pdf_book:
   latex_engine: pdflatex
   citation_package: natbib
   keep_tex: yes
+bookdown::html_book:
+  css: toc.css
