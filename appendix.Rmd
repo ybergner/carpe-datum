@@ -2,25 +2,56 @@
 
 # Randomness {#sec:randomness}
 
-Randomness is an idea, like straightness, that may be hard to observe in perfect form. Consider straightness first. A straight line made using a ruler and a pencil is easily distinguished from a wiggly line or a very curvy one. However, if we examine the pencil markings under a magnifying glass, we can observe tiny wiggles at the edge. These wiggles may be due to the texture of the paper or the imperfections in the graphite (the pencil's "lead") or both. Nevertheless, we are able to hold in our minds a mathematical idea of a straight line. For example, we can define a line algebraically in the $(x,y)$ Euclidean plane by the equation 
+Whereas in common language, we may use the word "random" to mean surprising or unfamiliar, the concept has a more precise meaning in data science and statistics. Interestingly, there is no (formal) idea of randomness without probability. Just like there is no idea of straightness without the idea of space. What are the odds, right? The concept of randomness needs probability to define it, as we shall see. Moreover, randomness is an idea, like straightness, that has a pure ideal form. But what we observe in practice may be less than perfectly random (or straight).
+
+Consider straightness first. A straight line made using a ruler and a pencil is easily distinguished by eye from a wiggly hand-drawn line or a swooping curvy one. However, if we examine the pencil markings of a "straight line" under a magnifying glass, we can observe tiny wiggles at the edge. These wiggles may be due to the texture of the paper or the imperfections in the graphite (the pencil's "lead") or both. So the straight line is not actually perfectly straight. Nevertheless, we are able to hold in our minds a mathematical idea of a straight line. For example, we can define a line using math, specifically coordinate algebra and the $(x,y)$ Euclidean plane. You likely can recognize an equation of this form:
 
 $$ y = 2 x + 3.$$
 
-This formula, which expresses a linear relationship, assumes a fair amount of prior knowledge, which most of us learn in school. For example, that $x$ and $y$ can take on real-number values, that the $y$ axis is perpendicular to the x-axis, etc. The line expressed in the formula is perfectly straight. Even if we draw it using only an approximately straight line.
+This formula, which expresses a linear functional relationship, assumes a fair amount of prior knowledge, which we typically learn in school. For example, that $x$ and $y$ can take on continuous, real-number values, that the $y$ axis is perpendicular to the x-axis, etc. The line expressed in the formula is perfectly straight. Even if we draw it using only an approximately straight line with a pencil or chalk.
 
-YouTuber [Vsauce's video on "What is Random?"](https://www.youtube.com/watch?v=9rIy0xY99a0) explores whether things that we take for granted as being random (e.g., coin flips) really are.  If you watch this video, you may come away convinced the outcome of tossing a coin or rolling a die is not truly random, and that quantum mechanics is the only truly random mechanism in nature. Alternately you may be satisfied that the fact of having limited information is sufficient to justify the treatment of a coin toss as a random event. On this argument, as long as you can't tell the difference between a coin and a truly random coin, you can, for all intents and purposes, treat is as perfectly random.
+YouTuber [Vsauce's video on "What is Random?"](https://www.youtube.com/watch?v=9rIy0xY99a0) explores whether things that we take for granted as being random (e.g., coin flips) really are.  If you watch this video, you may come away convinced the outcome of tossing a coin or rolling a die is not truly random, and that quantum mechanics is the only truly random mechanism in nature. Alternately you may be satisfied that the fact of having limited information is sufficient to justify the treatment of a coin toss as a random event. On this argument, as long as you can't tell the difference between a coin and a truly random coin, you may, for all intents and purposes, treat is as perfectly random.
 
+## Defining random processes
 
-As with straightness, we can define an ideal random process. For example, we can define an ideal fair coin toss using mathematical notation, although this notation is less commonly learned in school. Here's one way:
+As with straightness, we can at least define an ideal random process. For example, we can define an ideal coin toss using mathematical notation, although this notation is less commonly learned in school. Here's one way to do it:
 
 $$ x \in \{H, T\} \qquad P(x=H) = p$$
 
-Now $x$ is not a real number but rather the outcome of a coin toss. The first part of the formula specifies that $x$ can take on two possible values, heads (H) or tails (T). This is abbreviated here in set notation. We can read it as "$x$ is an element of the set containing H and T." The second part defines the probability that $x$ is observed to have a value of H. The probability is $p$, which is a *parameter* that stands in for some number between 0 and 1. For a fair coin $p=0.5$. Although it is not written out explicitly, the probability of a coin coming up tails must be $1-p$ due to the axioms of probability and fact that there are only two possible outcomes.
+In this definition, $x$ is not a real number but rather a discrete **outcome** of a dichotomous **random process**, i.e., the coin toss. The first part of the formula specifies that $x$ can take on two possible values, heads (H) or tails (T). This is abbreviated here in set notation. We can read it as "$x$ is an element of the set containing H and T." The second part defines the probability that $x$ is observed to have a value of H. The probability is $p$, which is a **parameter** that stands in for some number between 0 and 1. For a fair coin, we would put $p=0.5$. Although it is not written out explicitly, the probability of a coin coming up tails must be $1-p$ due to the axioms of probability and the fact that there are only two possible outcomes. The axioms of probability say that the the probability of all possible disjoint outcomes must sum up to one. 
 
-For a fair six-sided die, we can write
+We could have used any discrete process besides a coin toss. For another example, we might think that whether we will pass the course we are taking or not is a random process. Suppose we give ourselves a 60% chance of passing. Then we can write:
+
+$$ x \in \{Pass, Fail\} \qquad P(x=Pass) = 0.6$$
+
+That's all there is to it. We defined a random process, so it's random! But that doesn't mean all of this is intuitive. When we observe the outcome of a coin flip, we observe heads or tails, not both. We either pass the class or not. So what's the *evidence* that the process was random? The only way to collect such evidence is to be able to observe the process occur many many times. Or at least imagine observing in many times. Randomness requires probability. 
+
+By the way, we don't have to stop at binary or dichotomous outcomes. For a fair six-sided die, we can write
 
 $$ x \in \{1, 2, \dots, 6\} \qquad P(x=n) = 1/6 \quad \forall n \in \{1, 2, \dots, 6\}. $$
 
 The "forall" symbol (an upside down A) is a shorthand we use to indicate that all outcomes are equally probable, with probability of 1/6. We can read this part as, "the probability that $x$ is observed to take the value $n$ is equal to 1/6 for all $n$ in the set containing the values 1, 2, 3, 4, 5, and 6."
 
+What will the color be of the next car (excluding taxicabs) that crosses your path on the road? An idealized random description of that observation might look like this (notice that I do not have a compact shortcut "forall" because the probabilities are not the same):
 
+$$ x \in \{\mbox{white, black, gray, silver, red, blue, other}\} \\ 
+P(x=\mbox{white}) = 0.24 \\
+P(x=\mbox{black}) = 0.23 \\
+P(x=\mbox{gray}) = 0.16 \\
+P(x=\mbox{silver}) = 0.15 \\
+P(x=\mbox{red}) = 0.10 \\
+P(x=\mbox{blue}) = 0.09 \\
+P(x=\mbox{other}) = 0.03 $$ 
+
+
+## Predictions about random events
+
+Perfectly random processes may not be very predictable on a case-by-case basis (unless the probability is close to 0 or 1), but good predictions can be made about the outcomes of many observations taken together. 
+
+Suppose I predict that you will not be struck by lightning while reading this sentence. Was I right? Probably, because even though getting struck by lightning may be random, the probability is very close to 0. But if I predict that the next car that crosses your path will be black, I may be wrong *most of the time* even if my description above is an accurate one! If instead I predict that of the first 1000 people reading this sentence (and residing in the United States, on which I based my model) 23% will see a black car cross their path first, then my prediction should be close. How close? Well, quantifying error is part of what statistics is all about...
+
+The examples above, using two-sided coins, pass/fail, six-sided dice, and car colors might suggest to you how a general random process can be defined whenever there are a finite number of possible outcomes. We first define the set of all possible outcomes. Then, for each one, we define the probability that it occurs. The probabilities must still add up to one. This is a formal way of declaring that in our ideal random process, *something*, i.e., one of the possible outcomes, must occur. 
+
+## Modification for continuous observations
+
+When outcomes are continuous and not discrete, the above definitions need to be modified slightly. For example, suppose you were interested in *exactly* how long it will take before a black car crosses your path. (And suppose you have a clock so precise that there is no practical limit on how fine a time difference you can observe. Any fraction of a second is possible.)  By the very nature of continuous measures, you cannot enumerate them, so you can't go one by one and declare what the probability of each possible outcome is. Think about it: you can count seconds (one, two, three,...) but you can't count infinitessimal fractions of seconds. Instead, you have to limit what you can say to things like, "the probability that the outcome (time to crossing by black car) is in some range is..."  The choice of range can be totally arbitrary, say, the probability that it will take between 37 and 49 seconds. Or, you can turn the continous outcome into a discrete set of ranges (e.g., less than a minute, between one and five minutes, five to ten minutes, or longer than ten minutes) and then proceed as before. You will see this kind of thing done a lot. The formal definition of random processes for continuous variables uses calculus. 

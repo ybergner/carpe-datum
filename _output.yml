@@ -6,7 +6,7 @@ bookdown::gitbook:
         <li><a href="./">Carpe Datum: Data Science for Life's Big Questions</a></li>
       after: |
     edit:
-    download: ["pdf"]
+    download: null
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex

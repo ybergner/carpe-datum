@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  17 APR 2020 18:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  18 JAN 2021 18:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1432,7 +1432,7 @@ File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [2
 
 ]
-<images/existence_proof_2x.png, id=372, 1239.63126pt x 486.81876pt>
+<images/existence_proof_2x.png, id=437, 1239.63126pt x 486.81876pt>
 File: images/existence_proof_2x.png Graphic file (type png)
 <use images/existence_proof_2x.png>
 Package pdftex.def Info: images/existence_proof_2x.png  used on input line 220.
@@ -1453,7 +1453,7 @@ Chapter 1.
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 254.
 
-<images/Toilet_paper_orientation_overunder.png, id=398, 819.06pt x 376.40625pt>
+<images/Toilet_paper_orientation_overunder.png, id=462, 819.06pt x 376.40625pt>
 
 File: images/Toilet_paper_orientation_overunder.png Graphic file (type png)
 <use images/Toilet_paper_orientation_overunder.png>
@@ -1486,7 +1486,7 @@ Chapter 2.
 [10
 
 ] [11] [12]
-<images/two-two-kinds.jpg, id=480, 1904.11375pt x 511.9125pt>
+<images/two-two-kinds.jpg, id=545, 1904.11375pt x 511.9125pt>
 File: images/two-two-kinds.jpg Graphic file (type jpg)
 <use images/two-two-kinds.jpg>
 Package pdftex.def Info: images/two-two-kinds.jpg  used on input line 565.
@@ -1505,7 +1505,7 @@ OK STARRING ALTERNATE UNIVERSES
  []
 
 [16]
-<carpedatum_files/figure-latex/shuffle-test-1.pdf, id=513, 427.5975pt x 241.903
+<carpedatum_files/figure-latex/shuffle-test-1.pdf, id=577, 427.5975pt x 241.903
 75pt>
 File: carpedatum_files/figure-latex/shuffle-test-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/shuffle-test-1.pdf>
@@ -1537,7 +1537,7 @@ Chapter 4.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<carpedatum_files/figure-latex/poopy-hist-1.pdf, id=562, 429.605pt x 243.91125p
+<carpedatum_files/figure-latex/poopy-hist-1.pdf, id=626, 429.605pt x 243.91125p
 t>
 File: carpedatum_files/figure-latex/poopy-hist-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/poopy-hist-1.pdf>
@@ -1548,7 +1548,7 @@ n input line 988.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [23] [24 <./carpedatum_files/figure-latex/poopy-hist-1.pdf>]
-<carpedatum_files/figure-latex/poopy-hist-alt-1.pdf, id=590, 438.63875pt x 243.
+<carpedatum_files/figure-latex/poopy-hist-alt-1.pdf, id=654, 438.63875pt x 243.
 91125pt>
 File: carpedatum_files/figure-latex/poopy-hist-alt-1.pdf Graphic file (type pdf
 )
@@ -1556,7 +1556,7 @@ File: carpedatum_files/figure-latex/poopy-hist-alt-1.pdf Graphic file (type pdf
 Package pdftex.def Info: carpedatum_files/figure-latex/poopy-hist-alt-1.pdf  us
 ed on input line 1007.
 (pdftex.def)             Requested size: 386.42494pt x 214.87703pt.
-<carpedatum_files/figure-latex/poopy-two-kinds-1.pdf, id=592, 393.47pt x 257.96
+<carpedatum_files/figure-latex/poopy-two-kinds-1.pdf, id=656, 393.47pt x 257.96
 375pt>
 File: carpedatum_files/figure-latex/poopy-two-kinds-1.pdf Graphic file (type pd
 f)
@@ -1569,14 +1569,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [25 <./carpedatum_files/figure-latex/poopy-hist-alt-1.pdf>] [26 <./carpedatum_f
 iles/figure-latex/poopy-two-kinds-1.pdf>]
-<carpedatum_files/figure-latex/poopy-hist2-1.pdf, id=627, 429.605pt x 243.91125
+<carpedatum_files/figure-latex/poopy-hist2-1.pdf, id=692, 429.605pt x 243.91125
 pt>
 File: carpedatum_files/figure-latex/poopy-hist2-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/poopy-hist2-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/poopy-hist2-1.pdf  used 
 on input line 1052.
 (pdftex.def)             Requested size: 386.41805pt x 219.39154pt.
-<carpedatum_files/figure-latex/poopy-hist-mixture-1.pdf, id=628, 429.605pt x 24
+<carpedatum_files/figure-latex/poopy-hist-mixture-1.pdf, id=693, 429.605pt x 24
 3.91125pt>
 File: carpedatum_files/figure-latex/poopy-hist-mixture-1.pdf Graphic file (type
  pdf)
@@ -1586,7 +1586,7 @@ Package pdftex.def Info: carpedatum_files/figure-latex/poopy-hist-mixture-1.pdf
 (pdftex.def)             Requested size: 386.41805pt x 219.39154pt.
 [27 <./carpedatum_files/figure-latex/poopy-hist2-1.pdf> <./carpedatum_files/fig
 ure-latex/poopy-hist-mixture-1.pdf>]
-<carpedatum_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf, id=655, 422
+<carpedatum_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf, id=719, 422
 .57875pt x 243.91125pt>
 File: carpedatum_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf Graphic
  file (type pdf)
@@ -1595,14 +1595,14 @@ Package pdftex.def Info: carpedatum_files/figure-latex/poopy-hist-mixture-suspi
 cious-1.pdf  used on input line 1072.
 (pdftex.def)             Requested size: 386.42363pt x 223.04262pt.
 [28 <./carpedatum_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf>]
-<carpedatum_files/figure-latex/crappy-hist-1.pdf, id=670, 429.605pt x 249.93375
+<carpedatum_files/figure-latex/crappy-hist-1.pdf, id=734, 429.605pt x 249.93375
 pt>
 File: carpedatum_files/figure-latex/crappy-hist-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/crappy-hist-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/crappy-hist-1.pdf  used 
 on input line 1103.
 (pdftex.def)             Requested size: 386.41805pt x 224.80862pt.
-<carpedatum_files/figure-latex/poopy-crappy-1.pdf, id=672, 436.63126pt x 250.93
+<carpedatum_files/figure-latex/poopy-crappy-1.pdf, id=736, 436.63126pt x 250.93
 75pt>
 File: carpedatum_files/figure-latex/poopy-crappy-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/poopy-crappy-1.pdf>
@@ -1615,7 +1615,7 @@ Underfull \vbox (badness 8094) has occurred while \output is active []
 [29 <./carpedatum_files/figure-latex/crappy-hist-1.pdf>] [30 <./carpedatum_file
 s/figure-latex/poopy-crappy-1.pdf>]
 Chapter 5.
-<carpedatum_files/figure-latex/normal-poopy-1.pdf, id=707, 422.57875pt x 285.06
+<carpedatum_files/figure-latex/normal-poopy-1.pdf, id=771, 422.57875pt x 285.06
 5pt>
 File: carpedatum_files/figure-latex/normal-poopy-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/normal-poopy-1.pdf>
@@ -1645,7 +1645,7 @@ Chapter 8.
 [40
 
 ]
-<carpedatum_files/figure-latex/thirty-worlds-1.pdf, id=810, 356.33125pt x 84.31
+<carpedatum_files/figure-latex/thirty-worlds-1.pdf, id=874, 356.33125pt x 84.31
 5pt>
 File: carpedatum_files/figure-latex/thirty-worlds-1.pdf Graphic file (type pdf)
 
@@ -1657,7 +1657,7 @@ d on input line 1465.
 Underfull \vbox (badness 4686) has occurred while \output is active []
 
 [41] [42 <./carpedatum_files/figure-latex/thirty-worlds-1.pdf>]
-<images/YYHLTLScreenshot1.png, id=829, 1121.18875pt x 626.34pt>
+<images/YYHLTLScreenshot1.png, id=894, 1121.18875pt x 626.34pt>
 File: images/YYHLTLScreenshot1.png Graphic file (type png)
 <use images/YYHLTLScreenshot1.png>
 Package pdftex.def Info: images/YYHLTLScreenshot1.png  used on input line 1510.
@@ -1669,7 +1669,7 @@ Chapter 9.
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 1555.
 
-<carpedatum_files/figure-latex/life-duration-1.pdf, id=852, 426.59375pt x 256.9
+<carpedatum_files/figure-latex/life-duration-1.pdf, id=917, 426.59375pt x 256.9
 6pt>
 File: carpedatum_files/figure-latex/life-duration-1.pdf Graphic file (type pdf)
 
@@ -1680,7 +1680,7 @@ d on input line 1561.
 [46
 
  <./carpedatum_files/figure-latex/life-duration-1.pdf>]
-<carpedatum_files/figure-latex/die-this-year-1.pdf, id=870, 440.64626pt x 259.9
+<carpedatum_files/figure-latex/die-this-year-1.pdf, id=934, 440.64626pt x 259.9
 7125pt>
 File: carpedatum_files/figure-latex/die-this-year-1.pdf Graphic file (type pdf)
 
@@ -1705,7 +1705,7 @@ Overfull \hbox (37.89655pt too wide) in paragraph at lines 1845--1845
  []
 
 [52]
-<carpedatum_files/figure-latex/life-durationMF-1.pdf, id=914, 426.59375pt x 250
+<carpedatum_files/figure-latex/life-durationMF-1.pdf, id=978, 426.59375pt x 250
 .9375pt>
 File: carpedatum_files/figure-latex/life-durationMF-1.pdf Graphic file (type pd
 f)
@@ -1715,7 +1715,7 @@ sed on input line 1864.
 (pdftex.def)             Requested size: 386.43689pt x 227.31581pt.
 [53 <./carpedatum_files/figure-latex/life-durationMF-1.pdf>] [54]
 Chapter 11.
-<images/CausesOfDeath.png, id=941, 1116.17pt x 772.8875pt>
+<images/CausesOfDeath.png, id=1006, 1116.17pt x 772.8875pt>
 File: images/CausesOfDeath.png Graphic file (type png)
 <use images/CausesOfDeath.png>
 Package pdftex.def Info: images/CausesOfDeath.png  used on input line 1945.
@@ -1723,19 +1723,19 @@ Package pdftex.def Info: images/CausesOfDeath.png  used on input line 1945.
 [55
 
 ] [56 <./images/CausesOfDeath.png>]
-<images/HowYouWillDie21-61.png, id=962, 981.6675pt x 599.23875pt>
+<images/HowYouWillDie21-61.png, id=1027, 981.6675pt x 599.23875pt>
 File: images/HowYouWillDie21-61.png Graphic file (type png)
 <use images/HowYouWillDie21-61.png>
 Package pdftex.def Info: images/HowYouWillDie21-61.png  used on input line 1985
 .
 (pdftex.def)             Requested size: 343.48392pt x 209.6727pt.
-<images/HowYouWillDie21-85.png, id=963, 1018.80624pt x 607.26875pt>
+<images/HowYouWillDie21-85.png, id=1028, 1018.80624pt x 607.26875pt>
 File: images/HowYouWillDie21-85.png Graphic file (type png)
 <use images/HowYouWillDie21-85.png>
 Package pdftex.def Info: images/HowYouWillDie21-85.png  used on input line 1994
 .
 (pdftex.def)             Requested size: 343.4825pt x 204.73587pt.
-<images/HowYouWillDie21-97.png, id=964, 990.70125pt x 593.21625pt>
+<images/HowYouWillDie21-97.png, id=1029, 990.70125pt x 593.21625pt>
 File: images/HowYouWillDie21-97.png Graphic file (type png)
 <use images/HowYouWillDie21-97.png>
 Package pdftex.def Info: images/HowYouWillDie21-97.png  used on input line 2003
@@ -1749,7 +1749,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [60] [61]
-<carpedatum_files/figure-latex/unnamed-chunk-20-1.pdf, id=1010, 435.6275pt x 28
+<carpedatum_files/figure-latex/unnamed-chunk-20-1.pdf, id=1074, 435.6275pt x 28
 3.0575pt>
 File: carpedatum_files/figure-latex/unnamed-chunk-20-1.pdf Graphic file (type p
 df)
@@ -1775,7 +1775,7 @@ Chapter 12.
 [65
 
 ] [66]
-<carpedatum_files/figure-latex/converge-binom-1.pdf, id=1046, 440.64626pt x 251
+<carpedatum_files/figure-latex/converge-binom-1.pdf, id=1110, 440.64626pt x 251
 .94125pt>
 File: carpedatum_files/figure-latex/converge-binom-1.pdf Graphic file (type pdf
 )
@@ -1809,7 +1809,7 @@ Overfull \hbox (11.64662pt too wide) in paragraph at lines 2529--2529
  []
 
 [72]
-<images/Drug_Investment.png, id=1096, 436.63126pt x 284.06125pt>
+<images/Drug_Investment.png, id=1161, 436.63126pt x 284.06125pt>
 File: images/Drug_Investment.png Graphic file (type png)
 <use images/Drug_Investment.png>
 Package pdftex.def Info: images/Drug_Investment.png  used on input line 2563.
@@ -1821,7 +1821,7 @@ Overfull \hbox (53.6465pt too wide) in paragraph at lines 2611--2611
  []
 
 [75]
-<carpedatum_files/figure-latex/unnamed-chunk-28-1.pdf, id=1122, 413.545pt x 277
+<carpedatum_files/figure-latex/unnamed-chunk-28-1.pdf, id=1186, 413.545pt x 277
 .035pt>
 File: carpedatum_files/figure-latex/unnamed-chunk-28-1.pdf Graphic file (type p
 df)
@@ -1839,7 +1839,7 @@ Chapter 14.
 [79
 
 ]
-<carpedatum_files/figure-latex/unnamed-chunk-33-1.pdf, id=1152, 427.5975pt x 28
+<carpedatum_files/figure-latex/unnamed-chunk-33-1.pdf, id=1216, 427.5975pt x 28
 6.06876pt>
 File: carpedatum_files/figure-latex/unnamed-chunk-33-1.pdf Graphic file (type p
 df)
@@ -1851,7 +1851,7 @@ used on input line 2797.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [80]
-<carpedatum_files/figure-latex/unnamed-chunk-33-2.pdf, id=1157, 427.5975pt x 28
+<carpedatum_files/figure-latex/unnamed-chunk-33-2.pdf, id=1221, 427.5975pt x 28
 6.06876pt>
 File: carpedatum_files/figure-latex/unnamed-chunk-33-2.pdf Graphic file (type p
 df)
@@ -1865,7 +1865,7 @@ Overfull \vbox (2.11168pt too high) detected at line 2816
 
 [81 <./carpedatum_files/figure-latex/unnamed-chunk-33-1.pdf> <./carpedatum_file
 s/figure-latex/unnamed-chunk-33-2.pdf>]
-<carpedatum_files/figure-latex/compareheights-1.pdf, id=1182, 427.5975pt x 250.
+<carpedatum_files/figure-latex/compareheights-1.pdf, id=1246, 427.5975pt x 250.
 9375pt>
 File: carpedatum_files/figure-latex/compareheights-1.pdf Graphic file (type pdf
 )
@@ -1874,7 +1874,7 @@ Package pdftex.def Info: carpedatum_files/figure-latex/compareheights-1.pdf  us
 ed on input line 2820.
 (pdftex.def)             Requested size: 386.41315pt x 226.76826pt.
 [82 <./carpedatum_files/figure-latex/compareheights-1.pdf>]
-<carpedatum_files/figure-latex/unnamed-chunk-35-1.pdf, id=1205, 427.5975pt x 28
+<carpedatum_files/figure-latex/unnamed-chunk-35-1.pdf, id=1270, 427.5975pt x 28
 6.06876pt>
 File: carpedatum_files/figure-latex/unnamed-chunk-35-1.pdf Graphic file (type p
 df)
@@ -1886,7 +1886,7 @@ used on input line 2879.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [83]
-<carpedatum_files/figure-latex/unnamed-chunk-36-1.pdf, id=1215, 441.65pt x 285.
+<carpedatum_files/figure-latex/unnamed-chunk-36-1.pdf, id=1280, 441.65pt x 285.
 065pt>
 File: carpedatum_files/figure-latex/unnamed-chunk-36-1.pdf Graphic file (type p
 df)
@@ -1899,13 +1899,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [84 <./carpedatum_files/figure-latex/unnamed-chunk-35-1.pdf>] [85 <./carpedatum
 _files/figure-latex/unnamed-chunk-36-1.pdf>]
-<images/hockeybirths.png, id=1247, 224.3582pt x 152.57pt>
+<images/hockeybirths.png, id=1311, 224.3582pt x 152.57pt>
 File: images/hockeybirths.png Graphic file (type png)
 <use images/hockeybirths.png>
 Package pdftex.def Info: images/hockeybirths.png  used on input line 2967.
 (pdftex.def)             Requested size: 224.36792pt x 152.5766pt.
 [86 <./images/hockeybirths.png>] [87] [88]
-<carpedatum_files/figure-latex/marathon-times-1.pdf, id=1283, 442.65375pt x 249
+<carpedatum_files/figure-latex/marathon-times-1.pdf, id=1347, 442.65375pt x 249
 .93375pt>
 File: carpedatum_files/figure-latex/marathon-times-1.pdf Graphic file (type pdf
 )
@@ -1914,7 +1914,7 @@ Package pdftex.def Info: carpedatum_files/figure-latex/marathon-times-1.pdf  us
 ed on input line 3104.
 (pdftex.def)             Requested size: 386.43625pt x 218.1919pt.
 [89]
-<carpedatum_files/figure-latex/marathon-fast-1.pdf, id=1291, 431.6125pt x 249.9
+<carpedatum_files/figure-latex/marathon-fast-1.pdf, id=1355, 431.6125pt x 249.9
 3375pt>
 File: carpedatum_files/figure-latex/marathon-fast-1.pdf Graphic file (type pdf)
 
@@ -1924,26 +1924,393 @@ d on input line 3115.
 (pdftex.def)             Requested size: 386.42578pt x 223.76749pt.
 [90 <./carpedatum_files/figure-latex/marathon-times-1.pdf>] [91 <./carpedatum_f
 iles/figure-latex/marathon-fast-1.pdf>]
-Appendix A.
+Chapter 15.
 [92
 
-] (./carpedatum.bbl [93]) [94
+]
+<images/abc_COVID19NycZip_v03_KA_hpEmbed_17x12_992.jpg, id=1401, 995.72pt x 703
+.62875pt>
+File: images/abc_COVID19NycZip_v03_KA_hpEmbed_17x12_992.jpg Graphic file (type 
+jpg)
+<use images/abc_COVID19NycZip_v03_KA_hpEmbed_17x12_992.jpg>
+Package pdftex.def Info: images/abc_COVID19NycZip_v03_KA_hpEmbed_17x12_992.jpg 
+ used on input line 3173.
+(pdftex.def)             Requested size: 429.35153pt x 303.40265pt.
+<images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg, id=1402, 995.72pt
+ x 703.62875pt>
+File: images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg Graphic file 
+(type jpg)
+<use images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg>
+Package pdftex.def Info: images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_99
+2.jpg  used on input line 3177.
+(pdftex.def)             Requested size: 429.35153pt x 303.40265pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[93 <./images/abc_COVID19NycZip_v03_KA_hpEmbed_17x12_992.jpg>]
+<images/abc_COVID19RacialComp_v02_KA_hpEmbed_37x16_992.jpg, id=1408, 995.72pt x
+ 429.605pt>
+File: images/abc_COVID19RacialComp_v02_KA_hpEmbed_37x16_992.jpg Graphic file (t
+ype jpg)
+<use images/abc_COVID19RacialComp_v02_KA_hpEmbed_37x16_992.jpg>
+Package pdftex.def Info: images/abc_COVID19RacialComp_v02_KA_hpEmbed_37x16_992.
+jpg  used on input line 3187.
+(pdftex.def)             Requested size: 429.35153pt x 185.2444pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[94 <./images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg>] [95 <./ima
+ges/abc_COVID19RacialComp_v02_KA_hpEmbed_37x16_992.jpg>] [96] [97] [98]
+Underfull \hbox (badness 10000) in paragraph at lines 3443--3445
+
+ []
+
+[99] [100] [101] [102] [103] [104] [105] [106]
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3981--3981
+[]\T1/lmtt/m/n/10 ##                                                           
+                                         label[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3982--3982
+[]\T1/lmtt/m/n/10 ## 29                                                        
+                               Estimate!!Total[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3983--3983
+[]\T1/lmtt/m/n/10 ## 67                                                        
+                 Annotation of Estimate!!Total[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3984--3984
+[]\T1/lmtt/m/n/10 ## 30                                                        
+                        Margin of Error!!Total[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3985--3985
+[]\T1/lmtt/m/n/10 ## 68                                                        
+          Annotation of Margin of Error!!Total[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3986--3986
+[]\T1/lmtt/m/n/10 ## 37                                                        
+       Estimate!!Total!!Not Hispanic or Latino[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3987--3987
+[]\T1/lmtt/m/n/10 ## 70                                                 Annotat
+ion of Estimate!!Total!!Not Hispanic or Latino[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3988--3988
+[]\T1/lmtt/m/n/10 ## 38                                                        
+Margin of Error!!Total!!Not Hispanic or Latino[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3989--3989
+[]\T1/lmtt/m/n/10 ## 69                                          Annotation of 
+Margin of Error!!Total!!Not Hispanic or Latino[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3990--3990
+[]\T1/lmtt/m/n/10 ## 35                                                  Estima
+te!!Total!!Not Hispanic or Latino!!White alone[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3991--3991
+[]\T1/lmtt/m/n/10 ## 78                                    Annotation of Estima
+te!!Total!!Not Hispanic or Latino!!White alone[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3992--3992
+[]\T1/lmtt/m/n/10 ## 36                                           Margin of Err
+or!!Total!!Not Hispanic or Latino!!White alone[] 
+ []
+
+[107]
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3993--3993
+[]\T1/lmtt/m/n/10 ## 77                             Annotation of Margin of Err
+or!!Total!!Not Hispanic or Latino!!White alone[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3994--3994
+[]\T1/lmtt/m/n/10 ## 33                              Estimate!!Total!!Not Hispa
+nic or Latino!!Black or African American alone[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3995--3995
+[]\T1/lmtt/m/n/10 ## 80                Annotation of Estimate!!Total!!Not Hispa
+nic or Latino!!Black or African American alone[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3996--3996
+[]\T1/lmtt/m/n/10 ## 34                       Margin of Error!!Total!!Not Hispa
+nic or Latino!!Black or African American alone[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3997--3997
+[]\T1/lmtt/m/n/10 ## 79         Annotation of Margin of Error!!Total!!Not Hispa
+nic or Latino!!Black or African American alone[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3998--3998
+[]\T1/lmtt/m/n/10 ## 31                      Estimate!!Total!!Not Hispanic or L
+atino!!American Indian and Alaska Native alone[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 3999--3999
+[]\T1/lmtt/m/n/10 ## 82        Annotation of Estimate!!Total!!Not Hispanic or L
+atino!!American Indian and Alaska Native alone[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 4000--4000
+[]\T1/lmtt/m/n/10 ## 32               Margin of Error!!Total!!Not Hispanic or L
+atino!!American Indian and Alaska Native alone[] 
+ []
+
+
+Overfull \hbox (132.39627pt too wide) in paragraph at lines 4001--4001
+[]\T1/lmtt/m/n/10 ## 81 Annotation of Margin of Error!!Total!!Not Hispanic or L
+atino!!American Indian and Alaska Native alone[] 
+ []
+
+[108]
+Overfull \hbox (211.14604pt too wide) in paragraph at lines 4082--4082
+[]\T1/lmtt/m/n/10 ##                                                           
+                                                        label[] 
+ []
+
+
+Overfull \hbox (211.14604pt too wide) in paragraph at lines 4083--4083
+[]\T1/lmtt/m/n/10 ## 25 Estimate!!Total!!Hispanic or Latino!!Two or more races!
+!Two races excluding Some other race, and three or more races[] 
+ []
+
+
+Overfull \hbox (211.14604pt too wide) in paragraph at lines 4084--4084
+[]\T1/lmtt/m/n/10 ## 27                          Estimate!!Total!!Hispanic or L
+atino!!Two or more races!!Two races including Some other race[] 
+ []
+
+
+Overfull \hbox (211.14604pt too wide) in paragraph at lines 4085--4085
+[]\T1/lmtt/m/n/10 ## 29                                                        
+                                              Estimate!!Total[] 
+ []
+
+
+Overfull \hbox (211.14604pt too wide) in paragraph at lines 4086--4086
+[]\T1/lmtt/m/n/10 ## 31                                     Estimate!!Total!!No
+t Hispanic or Latino!!American Indian and Alaska Native alone[] 
+ []
+
+
+Overfull \hbox (211.14604pt too wide) in paragraph at lines 4087--4087
+[]\T1/lmtt/m/n/10 ## 33                                             Estimate!!T
+otal!!Not Hispanic or Latino!!Black or African American alone[] 
+ []
+
+
+Overfull \hbox (211.14604pt too wide) in paragraph at lines 4088--4088
+[]\T1/lmtt/m/n/10 ## 35                                                        
+         Estimate!!Total!!Not Hispanic or Latino!!White alone[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4103--4105
+
+ []
+
+
+Overfull \vbox (1.19pt too high) detected at line 4155
+ []
+
+[109] [110] [111] [112]
+Underfull \hbox (badness 10000) in paragraph at lines 4392--4394
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4394--4396
+
+ []
+
+[113]
+Underfull \vbox (badness 1960) detected at line 4464
+ []
+
+[114]
+Overfull \hbox (116.64632pt too wide) in paragraph at lines 4511--4511
+[]\T1/lmtt/m/n/10 ## Source: "/Users/bergner/GitHub/carpe-datum/Shape_Files/ZIP
+_CODE_040114.shp", layer: "ZIP_CODE_040114"[] 
+ []
+
+[115]
+<figs/unnamed-chunk-81-1.pdf, id=1539, 418.56375pt x 413.545pt>
+File: figs/unnamed-chunk-81-1.pdf Graphic file (type pdf)
+<use figs/unnamed-chunk-81-1.pdf>
+Package pdftex.def Info: figs/unnamed-chunk-81-1.pdf  used on input line 4526.
+(pdftex.def)             Requested size: 386.41176pt x 381.77852pt.
+[116 <./figs/unnamed-chunk-81-1.pdf>]
+Overfull \hbox (1.14665pt too wide) in paragraph at lines 4580--4580
+[]\T1/lmtt/m/n/10 ##     zipcode Median_HH_Income Median_Income zcta_propOver65
+ Total_Pop Median_Age 
+ []
+
+
+Overfull \hbox (1.14665pt too wide) in paragraph at lines 4581--4581
+[]\T1/lmtt/m/n/10 ## 258   11414            71648         45640            22.0
+     29219       45.0[] 
+ []
+
+
+Overfull \hbox (1.14665pt too wide) in paragraph at lines 4582--4582
+[]\T1/lmtt/m/n/10 ## 259   10310            72093         44590            13.4
+     23262       38.8[] 
+ []
+
+
+Overfull \hbox (1.14665pt too wide) in paragraph at lines 4583--4583
+[]\T1/lmtt/m/n/10 ## 260   11693            59431         44674            12.3
+     12919       39.5[] 
+ []
+
+
+Overfull \hbox (1.14665pt too wide) in paragraph at lines 4584--4584
+[]\T1/lmtt/m/n/10 ## 261   11249               NA            NA              NA
+        NA         NA[] 
+ []
+
+
+Overfull \hbox (1.14665pt too wide) in paragraph at lines 4585--4585
+[]\T1/lmtt/m/n/10 ## 262   10162               NA            NA              NA
+        NA         NA[] 
+ []
+
+
+Overfull \hbox (1.14665pt too wide) in paragraph at lines 4586--4586
+[]\T1/lmtt/m/n/10 ## 263   10119               NA            NA              NA
+        NA         NA[] 
+ []
+
+[117] [118] [119]
+<figs/unnamed-chunk-89-1.pdf, id=1566, 598.235pt x 464.73625pt>
+File: figs/unnamed-chunk-89-1.pdf Graphic file (type pdf)
+<use figs/unnamed-chunk-89-1.pdf>
+Package pdftex.def Info: figs/unnamed-chunk-89-1.pdf  used on input line 4743.
+(pdftex.def)             Requested size: 386.42001pt x 300.18869pt.
+[120 <./figs/unnamed-chunk-89-1.pdf>]
+<figs/unnamed-chunk-90-1.pdf, id=1586, 598.235pt x 464.73625pt>
+File: figs/unnamed-chunk-90-1.pdf Graphic file (type pdf)
+<use figs/unnamed-chunk-90-1.pdf>
+Package pdftex.def Info: figs/unnamed-chunk-90-1.pdf  used on input line 4761.
+(pdftex.def)             Requested size: 386.42001pt x 300.18869pt.
+<figs/unnamed-chunk-91-1.pdf, id=1587, 597.23125pt x 464.73625pt>
+File: figs/unnamed-chunk-91-1.pdf Graphic file (type pdf)
+<use figs/unnamed-chunk-91-1.pdf>
+Package pdftex.def Info: figs/unnamed-chunk-91-1.pdf  used on input line 4779.
+(pdftex.def)             Requested size: 386.41867pt x 300.69217pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[121 <./figs/unnamed-chunk-90-1.pdf>]
+File: images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg Graphic file 
+(type jpg)
+<use images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg>
+Package pdftex.def Info: images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_99
+2.jpg  used on input line 4785.
+(pdftex.def)             Requested size: 343.4782pt x 242.71997pt.
+[122 <./figs/unnamed-chunk-91-1.pdf>]
+<figs/unnamed-chunk-92-1.pdf, id=1615, 597.23125pt x 464.73625pt>
+File: figs/unnamed-chunk-92-1.pdf Graphic file (type pdf)
+<use figs/unnamed-chunk-92-1.pdf>
+Package pdftex.def Info: figs/unnamed-chunk-92-1.pdf  used on input line 4811.
+(pdftex.def)             Requested size: 386.41867pt x 300.69217pt.
+[123 <./figs/unnamed-chunk-92-1.pdf>]
+<figs/unnamed-chunk-93-1.pdf, id=1628, 765.86125pt x 415.5525pt>
+File: figs/unnamed-chunk-93-1.pdf Graphic file (type pdf)
+<use figs/unnamed-chunk-93-1.pdf>
+Package pdftex.def Info: figs/unnamed-chunk-93-1.pdf  used on input line 4842.
+(pdftex.def)             Requested size: 386.41214pt x 209.6653pt.
+<figs/unnamed-chunk-94-1.pdf, id=1629, 812.03375pt x 538.01pt>
+File: figs/unnamed-chunk-94-1.pdf Graphic file (type pdf)
+<use figs/unnamed-chunk-94-1.pdf>
+Package pdftex.def Info: figs/unnamed-chunk-94-1.pdf  used on input line 4863.
+(pdftex.def)             Requested size: 386.41391pt x 256.01712pt.
+
+Underfull \vbox (badness 6477) has occurred while \output is active []
+
+[124 <./figs/unnamed-chunk-93-1.pdf>]
+<figs/unnamed-chunk-95-1.pdf, id=1644, 765.86125pt x 415.5525pt>
+File: figs/unnamed-chunk-95-1.pdf Graphic file (type pdf)
+<use figs/unnamed-chunk-95-1.pdf>
+Package pdftex.def Info: figs/unnamed-chunk-95-1.pdf  used on input line 4889.
+(pdftex.def)             Requested size: 386.41214pt x 209.6653pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[125 <./figs/unnamed-chunk-94-1.pdf>]
+<figs/unnamed-chunk-96-1.pdf, id=1657, 791.95876pt x 375.4025pt>
+File: figs/unnamed-chunk-96-1.pdf Graphic file (type pdf)
+<use figs/unnamed-chunk-96-1.pdf>
+Package pdftex.def Info: figs/unnamed-chunk-96-1.pdf  used on input line 4925.
+(pdftex.def)             Requested size: 386.41972pt x 183.1698pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[126 <./figs/unnamed-chunk-95-1.pdf>]
+<figs/unnamed-chunk-97-1.pdf, id=1680, 791.95876pt x 375.4025pt>
+File: figs/unnamed-chunk-97-1.pdf Graphic file (type pdf)
+<use figs/unnamed-chunk-97-1.pdf>
+Package pdftex.def Info: figs/unnamed-chunk-97-1.pdf  used on input line 4948.
+(pdftex.def)             Requested size: 386.41972pt x 183.1698pt.
+[127 <./figs/unnamed-chunk-96-1.pdf> <./figs/unnamed-chunk-97-1.pdf>]
+<figs/unnamed-chunk-98-1.pdf, id=1714, 746.79pt x 577.15625pt>
+File: figs/unnamed-chunk-98-1.pdf Graphic file (type pdf)
+<use figs/unnamed-chunk-98-1.pdf>
+Package pdftex.def Info: figs/unnamed-chunk-98-1.pdf  used on input line 4992.
+(pdftex.def)             Requested size: 386.40726pt x 298.63464pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[128] [129 <./figs/unnamed-chunk-98-1.pdf>]
+Appendix A.
+[130
+
+] (./carpedatum.bbl [131]) [132
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3159.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3159.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5027.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 5027.
 (./carpedatum.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3159.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3159.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 5027.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5027.
 
 Package rerunfilecheck Info: File `carpedatum.out' has not changed.
-(rerunfilecheck)             Checksum: E801BC9032F56A74CB276655864F6DA0;14722.
+(rerunfilecheck)             Checksum: 35340522BC93B074F1DF04CD2A6F3CC2;17456.
  ) 
 Here is how much of TeX's memory you used:
- 42434 strings out of 492616
- 808085 string characters out of 6129482
- 912684 words of memory out of 5000000
- 45181 multiletter control sequences out of 15000+600000
+ 42627 strings out of 492616
+ 812508 string characters out of 6129482
+ 921150 words of memory out of 5000000
+ 45280 multiletter control sequences out of 15000+600000
  632745 words of font info for 181 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,15n,101p,1855b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1970,10 +2337,10 @@ sr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/t
 exlive/2019/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/201
 9/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2019/texmf-di
 st/fonts/type1/public/lm/lmtti10.pfb>
-Output written on carpedatum.pdf (94 pages, 3857614 bytes).
+Output written on carpedatum.pdf (132 pages, 15647715 bytes).
 PDF statistics:
- 1495 PDF objects out of 1728 (max. 8388607)
- 1250 compressed objects within 13 object streams
- 370 named destinations out of 1000 (max. 500000)
- 19375 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 1933 PDF objects out of 2073 (max. 8388607)
+ 1610 compressed objects within 17 object streams
+ 464 named destinations out of 1000 (max. 500000)
+ 19573 words of extra memory for PDF output out of 20736 (max. 10000000)
 
