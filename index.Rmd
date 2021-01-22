@@ -2,7 +2,7 @@
 title: "Carpe Datum"
 subtitle: "Data Science for Life's Big Questions"
 author: "Yoav Bergner"
-date: "Spring 2020"
+date: "Spring 2021"
 output: 
   bookdown::pdf_book:
     toc: False
@@ -35,6 +35,7 @@ library(rpart)
 library(rpart.plot)
 library(openintro)
 library(NHANES)
+library(censusapi)
 
 ```
 
@@ -49,7 +50,7 @@ options(knitr.table.format = table_format)
 
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'kableExtra', 'dplyr', 'ggplot2', 'rpart', 'rpart.plot', 'NHANES', 'openintro'
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'kableExtra', 'dplyr', 'ggplot2', 'rpart', 'rpart.plot', 'NHANES', 'openintro', 'censusapi'
 ), 'packages.bib')
 ```
 
