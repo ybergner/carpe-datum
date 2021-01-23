@@ -32,16 +32,18 @@ $$ x \in \{1, 2, \dots, 6\} \qquad P(x=n) = 1/6 \quad \forall n \in \{1, 2, \dot
 
 The "forall" symbol (an upside down A) is a shorthand we use to indicate that all outcomes are equally probable, with probability of 1/6. We can read this part as, "the probability that $x$ is observed to take the value $n$ is equal to 1/6 for all $n$ in the set containing the values 1, 2, 3, 4, 5, and 6."
 
-What will the color be of the next car (excluding taxicabs) that crosses your path on the road? An idealized random description of that observation might look like this (notice that I do not have a compact shortcut "forall" because the probabilities are not the same):
+What will the color be of the next car (excluding taxicabs) that crosses your path on the road? An idealized random description of that observation might look like this. Notice that I do not have a compact shortcut "forall" because the probabilities are not the same.
 
-$$ x \in \{\mbox{white, black, gray, silver, red, blue, other}\} \\ 
-P(x=\mbox{white}) = 0.24 \\
-P(x=\mbox{black}) = 0.23 \\
-P(x=\mbox{gray}) = 0.16 \\
-P(x=\mbox{silver}) = 0.15 \\
-P(x=\mbox{red}) = 0.10 \\
-P(x=\mbox{blue}) = 0.09 \\
-P(x=\mbox{other}) = 0.03 $$ 
+$$ x \in \{\mbox{white, black, gray, silver, red, blue, other}\} $$
+$$ P(x=\mbox{white}) = 0.24 $$ 
+
+$$ P(x=\mbox{black}) = 0.23 $$ 
+$$P(x=\mbox{gray}) = 0.16 $$
+ 
+$$P(x=\mbox{silver}) = 0.15 $$
+$$P(x=\mbox{red}) = 0.10 $$
+$$P(x=\mbox{blue}) = 0.09 $$
+$$P(x=\mbox{other}) = 0.03 $$ 
 
 
 ## Predictions about random events

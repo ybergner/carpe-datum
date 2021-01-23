@@ -39,13 +39,16 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE,
                       message = FALSE, fig.align = "center",
                       fig.height = 2.5, fig.width = 8)
 
-require(knitr)
-require(tibble)
-require(kableExtra)
-require(dplyr)
-require(ggplot2)
-require(rpart)
-require(rpart.plot)
+library(knitr)
+library(tibble)
+library(kableExtra)
+library(dplyr)
+library(ggplot2)
+library(rpart)
+library(rpart.plot)
+library(openintro)
+library(NHANES)
+library(censusapi)
 
 ```
 

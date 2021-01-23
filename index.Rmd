@@ -35,6 +35,7 @@ library(rpart)
 library(rpart.plot)
 library(openintro)
 library(NHANES)
+library(viridis)
 library(censusapi)
 
 ```
@@ -50,7 +51,7 @@ options(knitr.table.format = table_format)
 
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'kableExtra', 'dplyr', 'ggplot2', 'rpart', 'rpart.plot', 'NHANES', 'openintro', 'censusapi'
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'kableExtra', 'dplyr', 'ggplot2', 'rpart', 'rpart.plot', 'NHANES', 'openintro', 'censusapi', 'viridis'
 ), 'packages.bib')
 ```
 

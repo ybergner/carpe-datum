@@ -8,8 +8,8 @@ Let’s start with an example to refresh your memory about sampling and differen
 
 ```{r echo=T}
 library(openintro)
-data("male.heights")
-data("nba.heights")
+data("male_heights")
+data("nba_heights")
 ```
 
 And then you can inspect them. For example, one of the first things I will do with a data set is ask how big it is (how many rows and columns) and then look at the first few rows.
