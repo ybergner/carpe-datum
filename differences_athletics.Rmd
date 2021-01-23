@@ -15,24 +15,24 @@ data("nba_heights")
 And then you can inspect them. For example, one of the first things I will do with a data set is ask how big it is (how many rows and columns) and then look at the first few rows.
 
 ```{r echo=T}
-dim(male.heights)
-head(male.heights)
+dim(male_heights)
+head(male_heights)
 ```
 
-The `male.heights` data table has 100 rows and a single column called "heights." The nba.heights data set is a little different.
+The `male_heights` data table has 100 rows and a single column called "heights." The nba.heights data set is a little different.
 
 ```{r echo=T}
-dim(nba.heights)
-head(nba.heights)
+dim(nba_heights)
+head(nba_heights)
 ```
 
 Notice that there are 435 NBA players from the 2008-2009 season here. We have their first and last names as well as their heights in units of meters and also inches. I'd like to make a comparison between similarly sized samples. So I will just take a subsample of 100 NBA players. I can do this easily using the `sample()` function.
 
 ```{r echo =T}
 # sample 100 values at random from the nba heights in inches
-nbaHeights <- sample(nba.heights$h.in, 100) 
+nbaHeights <- sample(nba_heights$h.in, 100) 
 # rename the male height to match
-maleHeights <- male.heights$heights
+maleHeights <- male_heights$heights
 ```
 
 Note that because I did not use a `set.seed` in the code above, I have no idea which 100 NBA players I got. In fact, every time I (or you) run this, I (or you) will get a different sample! Finally, I would like to compare the *distributions* of heights for these two samples. For which our old friend the histogram is just what the doctor ordered.
