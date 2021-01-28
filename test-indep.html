@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Tests of independence: A first look starring alternate universes | Carpe Datum</title>
+  <meta name="description" content="Chapter 3 Tests of independence: A first look starring alternate universes | Carpe Datum" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Tests of independence: A first look starring alternate universes | Carpe Datum" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="ybergner/carpe-datum" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Tests of independence: A first look starring alternate universes | Carpe Datum" />
+  
+  
+  
+
+<meta name="author" content="Yoav Bergner" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="dimensions.html"/>
+<link rel="next" href="shades.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Carpe Datum: Data Science for Life's Big Questions</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#caveat"><i class="fa fa-check"></i>Caveat</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#guiding-principles-in-this-book"><i class="fa fa-check"></i>Guiding principles in this book</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#question-driven"><i class="fa fa-check"></i>Question-driven</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#no-proofs"><i class="fa fa-check"></i>No proofs</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="how-many-kinds-of-people-are-there.html"><a href="how-many-kinds-of-people-are-there.html"><i class="fa fa-check"></i>How Many Kinds of People Are There?</a><ul>
+<li class="chapter" data-level="" data-path="how-many-kinds-of-people-are-there.html"><a href="how-many-kinds-of-people-are-there.html#things-are-about-to-get-meta-right-from-the-start"><i class="fa fa-check"></i>Things are about to get meta right from the start</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="categories.html"><a href="categories.html"><i class="fa fa-check"></i><b>1</b> Categories, counts, and kinds</a><ul>
+<li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#two-kinds-of-people"><i class="fa fa-check"></i>Two Kinds of People</a></li>
+<li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#samples-and-populations-a-statistical-caveat"><i class="fa fa-check"></i>Samples and Populations: A Statistical Caveat</a></li>
+<li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#a-psychological-caveat"><i class="fa fa-check"></i>A Psychological Caveat</a></li>
+<li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#summarizing-data"><i class="fa fa-check"></i>Summarizing data</a></li>
+<li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#checkpoint"><i class="fa fa-check"></i>Checkpoint</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="dimensions.html"><a href="dimensions.html"><i class="fa fa-check"></i><b>2</b> Dimensions</a><ul>
+<li class="chapter" data-level="" data-path="dimensions.html"><a href="dimensions.html#independence-association-and-contingency"><i class="fa fa-check"></i>Independence, Association, and Contingency</a></li>
+<li class="chapter" data-level="" data-path="dimensions.html"><a href="dimensions.html#latent-factors-and-measurement"><i class="fa fa-check"></i>Latent Factors and Measurement</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="test-indep.html"><a href="test-indep.html"><i class="fa fa-check"></i><b>3</b> Tests of independence: A first look starring alternate universes</a><ul>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#rise-of-the-machines"><i class="fa fa-check"></i>Rise of the machines</a></li>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#hypothesis-testing-just-happened"><i class="fa fa-check"></i>Hypothesis testing just happened</a></li>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#caveats"><i class="fa fa-check"></i>Caveats</a></li>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#sampling-simulations-and-randomness"><i class="fa fa-check"></i>Sampling, simulations, and randomness</a><ul>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#tossing-virtual-coins"><i class="fa fa-check"></i>Tossing (virtual) coins</a></li>
+<li><a href="test-indep.html#but-some-observations-do-occur-more-than-others">But some observations <em>do</em> occur more than others</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="shades.html"><a href="shades.html"><i class="fa fa-check"></i><b>4</b> (An Infinite Number of) Shades of Gray (or Brown)</a><ul>
+<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#poopiness"><i class="fa fa-check"></i>Poopiness</a><ul>
+<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#mixtures"><i class="fa fa-check"></i>Mixtures</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#crappiness"><i class="fa fa-check"></i>Crappiness</a><ul>
+<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#check-your-understanding"><i class="fa fa-check"></i>Check your understanding</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="cut-scores-and-abnormality.html"><a href="cut-scores-and-abnormality.html"><i class="fa fa-check"></i><b>5</b> Cut Scores and Abnormality</a></li>
+<li class="chapter" data-level="6" data-path="the-modal-american.html"><a href="the-modal-american.html"><i class="fa fa-check"></i><b>6</b> The Modal American</a><ul>
+<li class="chapter" data-level="" data-path="the-modal-american.html"><a href="the-modal-american.html#step-one-categories"><i class="fa fa-check"></i>Step one: categories</a></li>
+<li class="chapter" data-level="" data-path="the-modal-american.html"><a href="the-modal-american.html#step-two-contingency-table"><i class="fa fa-check"></i>Step two: contingency table</a></li>
+<li class="chapter" data-level="" data-path="the-modal-american.html"><a href="the-modal-american.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html"><i class="fa fa-check"></i><b>7</b> Sixteen Personalities or Five Factors?</a><ul>
+<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#mbti"><i class="fa fa-check"></i>MBTI</a></li>
+<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#big-five"><i class="fa fa-check"></i>Big Five</a></li>
+<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#twenty-questions-about-extraversion"><i class="fa fa-check"></i>Twenty Questions (about Extraversion)</a></li>
+<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#but-whats-the-point"><i class="fa fa-check"></i>But what’s the point?</a></li>
+<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#still-meta-after-all-these-pages"><i class="fa fa-check"></i>Still meta after all these pages</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html"><i class="fa fa-check"></i><b>8</b> When and How Will You Die?</a><ul>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#not-quite-death-but-um-rain"><i class="fa fa-check"></i>Not Quite Death, but, um… Rain?</a><ul>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#stochastic-vs-deterministic-relationships"><i class="fa fa-check"></i>Stochastic vs Deterministic relationships</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#ways-of-thinking-about-probabilistic-statements"><i class="fa fa-check"></i>Ways of thinking about probabilistic statements</a><ul>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#ensembles"><i class="fa fa-check"></i>Ensembles</a></li>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#degree-of-belief"><i class="fa fa-check"></i>Degree of belief</a></li>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#decisions"><i class="fa fa-check"></i>Decisions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#death"><i class="fa fa-check"></i>Death</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="conditional-death.html"><a href="conditional-death.html"><i class="fa fa-check"></i><b>9</b> Conditional Death</a><ul>
+<li class="chapter" data-level="" data-path="conditional-death.html"><a href="conditional-death.html#how-does-the-death-simulation-work"><i class="fa fa-check"></i>How does the death (simulation) work?</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="somefacts.html"><a href="somefacts.html"><i class="fa fa-check"></i><b>10</b> Some facts about Probabilities</a><ul>
+<li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#conditional-probabilities"><i class="fa fa-check"></i>Conditional Probabilities</a></li>
+<li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#conditional-death-again"><i class="fa fa-check"></i>Conditional death, again</a><ul>
+<li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#just-to-make-things-weird"><i class="fa fa-check"></i>Just to make things weird</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html"><i class="fa fa-check"></i><b>11</b> How You Will Die: Causes or Conditions?</a><ul>
+<li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#causes-of-death-colloquially"><i class="fa fa-check"></i>Causes of death, colloquially</a></li>
+<li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#hold-my-beer"><i class="fa fa-check"></i>Hold my beer</a></li>
+<li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#non-deterministic-causation"><i class="fa fa-check"></i>Non-deterministic Causation</a></li>
+<li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#testing-for-an-association-between-two-variables"><i class="fa fa-check"></i>Testing for an association between two variables</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="will-you-make-money.html"><a href="will-you-make-money.html"><i class="fa fa-check"></i>Will You Make Money?</a><ul>
+<li class="chapter" data-level="" data-path="will-you-make-money.html"><a href="will-you-make-money.html#battle-of-the-bills"><i class="fa fa-check"></i>Battle of the Bills</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html"><i class="fa fa-check"></i><b>12</b> Betting on Beer (or Ice Cream)</a><ul>
+<li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#how-do-statisticians-solve-problems-like-this"><i class="fa fa-check"></i>How do statisticians solve problems like this?</a><ul>
+<li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#the-solution-by-counting-or-combinatorics"><i class="fa fa-check"></i>The solution by counting, or combinatorics</a></li>
+<li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#the-solution-by-distribution-or-statistics"><i class="fa fa-check"></i>The solution by distribution, or statistics</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="expected-value.html"><a href="expected-value.html"><i class="fa fa-check"></i><b>13</b> Expected Value</a><ul>
+<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#betting-on-ice-cream"><i class="fa fa-check"></i>Betting on ice cream</a><ul>
+<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#by-the-statistical-power-of-grayskull"><i class="fa fa-check"></i>By the (Statistical) Power of Grayskull</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#betting-on-your-future"><i class="fa fa-check"></i>Betting on your Future</a><ul>
+<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#why-why-why-multiply-ay-ay"><i class="fa fa-check"></i>Why why why multiply-ay-ay?</a></li>
+<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#where-do-branching-probabilities-come-from"><i class="fa fa-check"></i>Where do branching probabilities come from?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="is-the-system-fair.html"><a href="is-the-system-fair.html"><i class="fa fa-check"></i>Is the System Fair?</a></li>
+<li class="chapter" data-level="14" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html"><i class="fa fa-check"></i><b>14</b> Differences in athletics</a><ul>
+<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#are-professional-basketball-players-taller"><i class="fa fa-check"></i>Are professional basketball players taller?</a><ul>
+<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#none-of-this-is-surprising"><i class="fa fa-check"></i>None of this is surprising</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#surprising-differences"><i class="fa fa-check"></i>Surprising differences</a></li>
+<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#fairness-on-trial-trans-athletes"><i class="fa fa-check"></i>Fairness on trial: trans athletes</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html"><i class="fa fa-check"></i><b>15</b> NYC COVID-19 Data</a><ul>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#prologue"><i class="fa fa-check"></i>Prologue</a></li>
+<li class="chapter" data-level="15.1" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#part1"><i class="fa fa-check"></i><b>15.1</b> COVID NYC</a><ul>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#getting-some-data"><i class="fa fa-check"></i>Getting some data</a></li>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#local-data-on-covid-from-the-city-andor-state"><i class="fa fa-check"></i>Local data on COVID from the city and/or state</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#part2"><i class="fa fa-check"></i><b>15.2</b> Getting started with US Census data</a><ul>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#census-variables"><i class="fa fa-check"></i>Census Variables</a></li>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#geography-units"><i class="fa fa-check"></i>Geography Units</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#part3"><i class="fa fa-check"></i><b>15.3</b> More (and messier) Census data</a><ul>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#exploring-the-acs-data"><i class="fa fa-check"></i>Exploring the ACS data</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#zipcode"><i class="fa fa-check"></i><b>15.4</b> Zipcode tabulation area</a><ul>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#some-more-variables-to-play-with"><i class="fa fa-check"></i>Some more variables to play with</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#mapviz"><i class="fa fa-check"></i><b>15.5</b> Visualizing data on maps</a><ul>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#shapefiles"><i class="fa fa-check"></i>Shapefiles</a></li>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#coloring-in-the-shapes"><i class="fa fa-check"></i>Coloring in the shapes</a></li>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#scatterplots"><i class="fa fa-check"></i>Scatterplots</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="sec-randomness.html"><a href="sec-randomness.html"><i class="fa fa-check"></i><b>A</b> Randomness</a><ul>
+<li class="chapter" data-level="A.1" data-path="sec-randomness.html"><a href="sec-randomness.html#defining-random-processes"><i class="fa fa-check"></i><b>A.1</b> Defining random processes</a></li>
+<li class="chapter" data-level="A.2" data-path="sec-randomness.html"><a href="sec-randomness.html#predictions-about-random-events"><i class="fa fa-check"></i><b>A.2</b> Predictions about random events</a></li>
+<li class="chapter" data-level="A.3" data-path="sec-randomness.html"><a href="sec-randomness.html#modification-for-continuous-observations"><i class="fa fa-check"></i><b>A.3</b> Modification for continuous observations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Carpe Datum</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="test-indep" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Tests of independence: A first look starring alternate universes</h1>
+<p>So far, we have looked at some data in two-way tables and judged them by inspection. That is, we looked at them and said, these two reponses <em>appear</em> to be deterministically related, or they appear to be associated but not deterministally, or they appear to be independent. But we acknowledged that our data come from a sample, and that on another day (on in another universe with rules the same as this one), we might have observed slightly different data.</p>
+<p>It is worth noting that a single dataset often can’t tell us for sure whether two variables are independent or associated (aka dependent/contingent), and whether or not an association is a deterministic one. (Two variables cannot be deterministically independent; that would be a self-contradiction.)</p>
+<p>In this chapter, we’ll take a first look at how a particular two-way table <em>might</em> have come about, and thus how it might have come out differently. Let’s suppose that we observe the data summarized here:</p>
+<table class="table table-bordered table" style="width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:indep-sim">Table 3.1: </span>Another alternate universe
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+chunky
+</th>
+<th style="text-align:right;">
+smooth
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+over
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+under
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+</tbody>
+</table>
+<p>It certainly looks like there is an association between these variables, but let’s investigate further. Let’s take the cell with the largest number of people in it, or the modal value. In this case, the mode occurs for people who answer over and chunky. Which was 17 out of 40.</p>
+<p>Now consider what contributes to making this particular value what it is. For example, what would make it bigger? Well, if there were more over-hangers than under-hangers, that would tend to increase the number of people who could be <em>both</em> over-hangers and chunky-spreaders. Similarly, if there were more chunky-spreaders. Also, if there were just more people in our sample, then of course we could have more people in this cell of the table. And all of the above arguments could work in reverse, if we lowered any of those particular numbers.</p>
+<p>What if, however, we fixed the total number of people, the number over-hangers among them, and the number of chunky-spreaders among them. The technical term for this, by the way, is fixing the <strong>marginal</strong> values. This is because the sums of the columns (22 and 18) and the sums of the rows (23 and 17), when written at the bottom and side of the table, are called margins (just like the margins of a page). We could still have fixed the marginal values and have different values in the table. For example,</p>
+<table class="kable_wrapper table table-bordered table" style="width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-8">Table 3.2: </span>Yet more alternate universes!
+</caption>
+<tbody>
+<tr>
+<td>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+chunky
+</th>
+<th style="text-align:right;">
+smooth
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+over
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+under
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+chunky
+</th>
+<th style="text-align:right;">
+smooth
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+over
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+under
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that the row and column sums are the same. But on the left we would say an association between the variables appears even clearer, whereas on the right, it appears less obvious.</p>
+<p>Recall that the actual data summarized in a two-way table originally came from some observation sample. There were 40 people sampled, and they were each asked two questions. Before we tabulated them, the data might have looked something like this:</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Peanutbutter
+</th>
+<th style="text-align:left;">
+Toiletpaper
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Smooth
+</td>
+<td style="text-align:left;">
+Under
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chunky
+</td>
+<td style="text-align:left;">
+Over
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chunky
+</td>
+<td style="text-align:left;">
+Under
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chunky
+</td>
+<td style="text-align:left;">
+Over
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Smooth
+</td>
+<td style="text-align:left;">
+Under
+</td>
+</tr>
+</tbody>
+</table>
+<p>Now suppose we wrote every person’s response to the peanut butter question on an index card, shuffled them randomly, and then re-distributed them. We then did the same for the toilet paper question. We did this one question at a time, separately. Finally, we ask our sample to show us their cards, and we treat these paired observations as a new data set. We generate a new two-way table from the results. If we do all this, then we will have kept the total number of people the same, as well as the total number of “over” answers and “chunky” answers. Moreover, since we shuffled responses to each question separately, there is absolutely no way for someone’s randomly assigned answer to one question (the index card they got for peanut butter) to influence their randomly assigned answer to the other (the index card for toilet paper). The answers should, by definition, be independent.</p>
+<div id="rise-of-the-machines" class="section level2 unnumbered">
+<h2>Rise of the machines</h2>
+<p>Well, we can do this shuffling experiment very easily on a computer. And we can very easily repeat it 1000 times. So, the question we might then ask is, how many times out of 1000 such <strong>simulations</strong> do we get a value for over and chunky that is as large as (or bigger even) than 17?</p>
+<p>The code to do this, and to visualize the outcome, is below. (You do not need to understand this code yet, but some of it might make sense to you).</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">simulated_overchunky =<span class="st"> </span><span class="kw">c</span>() <span class="co">#initialize empty vector</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>){</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">  <span class="co"># the sample() function does the shuffling</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">  shuffle_data<span class="op">$</span>Peanutbutter =<span class="st"> </span><span class="kw">sample</span>(shuffle_data<span class="op">$</span>Peanutbutter) </a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">  shuffle_data<span class="op">$</span>Toiletpaper =<span class="st"> </span><span class="kw">sample</span>(shuffle_data<span class="op">$</span>Toiletpaper)</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">  <span class="co"># the table() function does the tabulating</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">  simulated_overchunky[i] =<span class="st"> </span><span class="kw">table</span>(shuffle_data)[<span class="st">&quot;Chunky&quot;</span>,<span class="st">&quot;Over&quot;</span>]</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">}</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co"># plot the results using a histogram</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="kw">hist</span>(simulated_overchunky, </a>
+<a class="sourceLine" id="cb5-12" data-line-number="12">     <span class="dt">main =</span> <span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb5-13" data-line-number="13">     <span class="dt">xlab =</span> <span class="st">&quot;Count&quot;</span>, </a>
+<a class="sourceLine" id="cb5-14" data-line-number="14">     <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="kw">abline</span>(<span class="dt">v=</span><span class="dv">17</span>, <span class="dt">lwd=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="dv">3</span>, <span class="dt">lty=</span><span class="dv">2</span>)</a></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:shuffle-test"></span>
+<img src="carpedatum_files/figure-html/shuffle-test-1.png" alt="Counts of 'over and chunky' after 1000 shuffling simulations" width="90%" />
+<p class="caption">
+Figure 3.1: Counts of ‘over and chunky’ after 1000 shuffling simulations
+</p>
+</div>
+<p>Figure <a href="test-indep.html#fig:shuffle-test">3.1</a> is histogram, or a bar plot of count data. We will cover histograms in detail the next chapter, so don’t worry too much if some of this is still confusing. The main thing to notice is that green dotted line at 17, and this: in our 1000 shuffling experiments, we got values greater than or equal to 17 only 5 times. The rest of the time, the values were smaller, and typical values were around 13.</p>
+<p>This simulation we just carried out is a way of validating our intuition, from inspection of Table <a href="test-indep.html#tab:indep-sim">3.1</a>, that 17 was a high value <em>if toilet paper orientation and peanut butter preference</em> were indeed independent. What we showed is that, if indeed the two variables were independent, that such values would be observed only rarely. Since this value was observed on our first day out in the park (in this scenario), we begin to doubt independence. If on the other hand, we had observed 13 over-chunky people (out of 40, and with the same marginal values as before), then we would say that this observation seems quite consistent with independence. Because values near 13 occur very often in our shuffling simulation.</p>
+</div>
+<div id="hypothesis-testing-just-happened" class="section level2 unnumbered">
+<h2>Hypothesis testing just happened</h2>
+<p>What we just did is in fact an example of a <strong>hypothesis test</strong>. In the statistical framework of hypothesis testing, we have a <strong>null hypothesis</strong> (usually, a skeptical position) and an <strong>alternative hypothesis</strong>. Here our null hypothesis was that the two variables represented in our response data are independent. Our alternative hypothesis was that people who are over-hangers are truly more likely to be chunky-spreaders. We didn’t state this hypothesis at the outset. But it was implied by the fact that we were investigating this “high” value in the contingency table. If you take a regular statistics class, however, you will see that, when it comes to <em>inference</em>, it is quite important to take care in constructing your null and alternative hypotheses. For now, we just want to get the main idea.</p>
+<p>The main idea was that we simulated what data might look like under the null hypothesis (independence) and checked if our observations were consistent with that or not. Consistent results would mean that we cannot “reject” the null hypothesis, while highly inconsisent results give us justification to “reject the null” in favor of the alternative. In this example, we would probably reject the independence assumption (null) in favor of the alternative.</p>
+</div>
+<div id="caveats" class="section level2 unnumbered">
+<h2>Caveats</h2>
+<p><strong>Rare events still do happen, rarely.</strong> What our simulation showed us is that high values do still happen by chance. Even if the variables were independent, if we sent 1000 people out in the world to collect data from samples of 40 people each, <em>some</em> of those people would observe large values that <em>look</em> associated. This is to be expected. This is why it is important, if we are seeking the truth, that we not game the system by checking over and over again until we get an answer that we like. This would be like rolling double-sixes on the fourteenth try and then saying “ha! see, I told you I was lucky.”</p>
+<p><strong>What about the other cells in the table?</strong> You might be wondering how we can do this whole simulation just for the one cell in the table that corresponded to over-chunky. You’re right to wonder this (if you are). In time, we will see that we can do independence-tests (or other hypothesis tests) more democratically by examining all of the cells in the table and how they differ from what we would expect under the independence (null) hypothesis. For now, though, note the following. Each of our variables is dichotomous, and we fixed the row and column marginals (totals). So if over-chunky is high, and total count of chunky is held fixed, that means that under-chunky must be low. Our test would have gone the same way if we sought to explain that cell. So, too, must over-smooth be low (lower than it would be under independence assumptions).</p>
+</div>
+<div id="sampling-simulations-and-randomness" class="section level2 unnumbered">
+<h2>Sampling, simulations, and randomness</h2>
+<p>In the last section, we used the <code>sample()</code> function in R to shuffle some values in our simulation. That is, starting with a data set of 40 responses (for example, 23 “over” responses and 17 “under” responses), we wanted to reassign these responses randomly among the people in our observation sample. What if we wanted to simulate the original set of answers in the first place? It turns out we can also use the computer without collecting any data at all.</p>
+<p>To reproduce the exact example above, it would suffice to write down a series of values like this (over, over, over, over, …, over, under, under, … , under), 23 overs and 17 unders, and then shuffle them. Boom. The first shuffle is our simulated data. But that procedure wouldn’t work if we wanted a sample of 3, would it? If we want to be able to simulate data with different sample sizes, we need another approach.</p>
+<div id="tossing-virtual-coins" class="section level3 unnumbered">
+<h3>Tossing (virtual) coins</h3>
+<p>Let’s simplify things for a minute and assume that in actuality, people are equally likely to be over-hangers or under-hangers. Or that for whatever dichotomous question we want to ask, the likelihood of either responses is 50%.
+If you want to simulate an event that has a 50% chance (or probability of 0.5), you can toss a coin. If we want to randomly assign 10 people to one of two groups, say the Sharks and the Jets, we can do the following. First, decide that Heads we choose Sharks (this is, of course, arbitrary). Then, for each person, flip a coin. If heads, then assign them to Sharks. If tails, assign them to Jets.</p>
+<p>Another way to do this is to put two poker chips into a hat, say a red chip (for Sharks) and a blue chip (for Jets). Then blindly reach into the hat and pick out one chip, record the value, and then put it back and shake the hat before the next draw.</p>
+<p>Pulling a chip out of a hat or tossing a coin are equivalent manifestations of the <em>ideal</em> process of sampling a random event with a 50% chance. This is actually a profound idea. The coin toss or hat draw are concrete, mechanical processes. Each has two possible outcomes (heads/tails or red/blue), and, for all intents and purposes, the outcomes in both cases are equally likely. We human beings have learned to abstract from both of these mechanical processes to an idea of a <strong>stochastic process</strong> which is the same thing as a random process and the exact opposite of a deterministic process. This abstract process requires that we have a <strong>state space</strong>, which is just a <strong>set of possible outcomes</strong> (mathematicians refer to some sets as spaces). As long as the set has two possibilities, it doesn’t really matter whether we label them heads/tails, over/under, red/blue, Sharks/Jets, or 0/1, because the label can always be assigned to mean whatever we want it to mean (just as we decided heads corresponds to Sharks). In addition to the state space, we abstract the idea of the <strong>sampling process</strong>. This is what “picks” out one of the possible outcomes. Like the coin-flip or the hat-draw. And it is this sampling process where the probability of the outcome appears.</p>
+<p>We can in fact simulate this sampling process on the computer in R. In fact we can do it several different ways. Here, first, is a more or less direct translation of what our mechanical process would do. The key enabling function here is called <code>sample()</code>, which works just like pulling chips out of a hat. We will tell <code>sample()</code> what’s in the hat by defining a set (a vector, in R) called <code>coinstates</code>. Then we will sample once from the hat for each person.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">8675309</span>) <span class="co"># I&#39;ll explain this later </span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">coinstates &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;H&quot;</span>,<span class="st">&quot;T&quot;</span>)</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">numPeople &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co"># start a blank list to hold my team assignments</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">teamassignments &lt;-<span class="st"> </span><span class="kw">c</span>()</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co"># now, go one by one; this is called a programming &quot;loop&quot;</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>numPeople) {</a>
+<a class="sourceLine" id="cb6-11" data-line-number="11">  <span class="co">## toss coin and observe</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12">  coinresult &lt;-<span class="st"> </span><span class="kw">sample</span>(coinstates, <span class="dv">1</span>) <span class="co"># the 1 means sample once</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13">  <span class="co"># associate outcome with team assignemnt</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14">  <span class="cf">if</span> (coinresult <span class="op">==</span><span class="st"> &quot;H&quot;</span>) {</a>
+<a class="sourceLine" id="cb6-15" data-line-number="15">    team &lt;-<span class="st"> &quot;Sharks&quot;</span></a>
+<a class="sourceLine" id="cb6-16" data-line-number="16">  } <span class="cf">else</span> <span class="cf">if</span> (coinresult <span class="op">==</span><span class="st"> &quot;T&quot;</span>) {</a>
+<a class="sourceLine" id="cb6-17" data-line-number="17">    team &lt;-<span class="st"> &quot;Jets&quot;</span></a>
+<a class="sourceLine" id="cb6-18" data-line-number="18">  }</a>
+<a class="sourceLine" id="cb6-19" data-line-number="19">  <span class="co"># record team assignment</span></a>
+<a class="sourceLine" id="cb6-20" data-line-number="20">  teamassignments &lt;-<span class="st"> </span><span class="kw">c</span>(teamassignments, team)</a>
+<a class="sourceLine" id="cb6-21" data-line-number="21">}</a>
+<a class="sourceLine" id="cb6-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb6-23" data-line-number="23">teamassignments</a></code></pre></div>
+<pre><code>##  [1] &quot;Jets&quot;   &quot;Sharks&quot; &quot;Jets&quot;   &quot;Sharks&quot; &quot;Jets&quot;   &quot;Sharks&quot; &quot;Sharks&quot; &quot;Sharks&quot;
+##  [9] &quot;Jets&quot;   &quot;Sharks&quot;</code></pre>
+<p>Voila. The <code>sample</code> function did the apparent work of the coin flip or, equivalently, picking a “Heads” or “Tails” out of a hat containing both. Just as good, right? Notice that (a) we only got four Jets, not five, and (b) sometimes we got three Sharks in a row. That’s randomness for you.</p>
+<blockquote>
+<p>Technically, it is pseudo-randomness. Notice the first line of the code where I set the “seed” for the random number generator. What this does is make sure that every time I run this code I get the same results. If that seems not random to you, I don’t blame you. But here are some important things to keep in mind. First, even though using this random seed makes my experiment repeatable, I still have no idea what the results are going to be until I run it the first time. Second, if I change the seed, even by a tiny amount, then I will once again have no idea. Try it yourself. Note that if you do not declare a random seed, then the computer will effectively choose one for you, perhaps by using the exact computer time in milliseconds. This way the results will still be different every time you run it. If you want to read (a little bit) more about randomness, see the Appendix.</p>
+</blockquote>
+<p>If you’re thinking we could have removed the coin from this process, you’re right. Coins are not essential to this process. We could imagine a mechanical device that drops marbles into jars directly, provided that we believed the marble dropping process was equivalent to the coin flip in terms of 50/50 chances. In R, here is a faster way. We just sample out of a “hat” containing each of the team names.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">8675309</span>) <span class="co"># same seed, on purpose</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">teamnames &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sharks&quot;</span>,<span class="st">&quot;Jets&quot;</span>)</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">numPeople &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">teamassignments &lt;-<span class="st"> </span><span class="kw">sample</span>(teamnames, numPeople, <span class="dt">replace=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">teamassignments</a></code></pre></div>
+<pre><code>##  [1] &quot;Jets&quot;   &quot;Sharks&quot; &quot;Jets&quot;   &quot;Sharks&quot; &quot;Jets&quot;   &quot;Sharks&quot; &quot;Sharks&quot; &quot;Sharks&quot;
+##  [9] &quot;Jets&quot;   &quot;Sharks&quot;</code></pre>
+<p>Well, that was simpler. Notice also that by using the same random seed, I got the same team assignments, even though the code was completely different.</p>
+<p>There’s another difference here, which is that instead of going one by one for each person, I made the selection all at once by passing the number of people to the sample function instead of asking for one sample. Because I’m sampling <code>numPeople</code> times and there are only two outcomes (“in the hat”), I have to add the argument <code>replace = TRUE</code> when I call the <code>sample()</code> function. This means that after I look at the result, I put it back in the hat (I replace it), and then draw again. Otherwise, I could sample only as many times as I have choices.</p>
+<p>Sampling <em>without replacement</em> is suitable if, as in the independence test from earlier, all I wanted was to put a set of choices in random order. As we said, this is like shuffling a deck of cards by dropping the deck into a big bag, shaking it, and then pulling the cards out one by one. No replacement</p>
+</div>
+<div id="but-some-observations-do-occur-more-than-others" class="section level3 unnumbered">
+<h3>But some observations <em>do</em> occur more than others</h3>
+<p>To complete the functionality of our data-generating machine, we need a way to extend this sampling process to outcomes that are not equally likely. What if we want to base a simulation on the observed proportion that 23 out of 40 people chose “over” and only 17 chose “under”, but we only want to sample 10 people?</p>
+<p>Once more, I will show you two ways to do this. The first way is to put all 40 virtual cards into our virtual hat, and sample 10 times (with or without replacement? what do you think?). The second way involves abandoning our connection to these virtual cards and replacing them with the mathematical abstraction of a probability.</p>
+<p>First, the virtual cards:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">2125551212</span>) <span class="co"># I can choose any see I want</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">tp_cards &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;over&quot;</span>, <span class="dv">23</span>), <span class="kw">rep</span>(<span class="st">&quot;under&quot;</span>, <span class="dv">17</span>))</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">numPeople &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">simulated_tp &lt;-<span class="st"> </span><span class="kw">sample</span>(tp_cards, numPeople, <span class="dt">replace=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">simulated_tp</a></code></pre></div>
+<pre><code>##  [1] &quot;over&quot;  &quot;over&quot;  &quot;under&quot; &quot;under&quot; &quot;under&quot; &quot;under&quot; &quot;under&quot; &quot;over&quot;  &quot;under&quot;
+## [10] &quot;over&quot;</code></pre>
+<p>Hopefully this code seems pretty straightforward. Why did I use <code>replace=TRUE</code>? I didn’t need to do that, since I was only drawing 10 samples from a hat with 40 cards. However, by replacing the card I drew each time, I made sure that the chances were the same for each virtual person in my sample.</p>
+<p>Suppose that I did not replace the samples each time. And suppose that, by dumb luck, I drew five “unders” in a row on my first five draws (this sequence did actually happen on draws 3-7 above). The sixth draw is now coming from a hat with 23 overs and 12 unders. That draw definitely has different chances of coming up under, and, importantly, it is not independent of what happened before. In real-world sampling, I do not expect the answer from the sixth person I ask to depend on the answers given by the previous five. So it is essential that my simulation have this same property. (Of course, it is true that the proportions in the hat changed even after the very first draw, assuming I don’t replace the cards, but I used the sixth draw to make it more obvious.)</p>
+<blockquote>
+<p>Think about this: Now that we have added replacement to the sampling process, if we change the sample size to 40 (<code>numPeople  &lt;- 40</code>), are we guaranteed to get 23 overs and 17 unders?</p>
+</blockquote>
+<p>Now for the second way. I don’t really need to produce 40 cards at all. I just need to recognize that 23/40 or 0.575 is my target probability of “over” on every single sample. (17/40 or 0.425 is the probability of “under” automatically). I can still do everything with the good old <code>sample()</code> function.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">2129981212</span>) <span class="co"># I can choose any see I want</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">numPeople &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">simulated_tp &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;over&quot;</span>,<span class="st">&quot;under&quot;</span>), numPeople, <span class="dt">replace=</span><span class="ot">TRUE</span>, <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.575</span>, <span class="fl">0.425</span>))</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">simulated_tp</a></code></pre></div>
+<pre><code>##  [1] &quot;under&quot; &quot;over&quot;  &quot;over&quot;  &quot;over&quot;  &quot;under&quot; &quot;under&quot; &quot;under&quot; &quot;under&quot; &quot;under&quot;
+## [10] &quot;over&quot;</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">2129981212</span>) <span class="co"># if I want to same results</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">simulated_tp &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;over&quot;</span>,<span class="st">&quot;under&quot;</span>), numPeople, <span class="dt">replace=</span><span class="ot">TRUE</span>, <span class="dt">prob=</span><span class="kw">c</span>(<span class="dv">23</span><span class="op">/</span><span class="dv">40</span>, <span class="dv">17</span><span class="op">/</span><span class="dv">40</span>))</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">simulated_tp</a></code></pre></div>
+<pre><code>##  [1] &quot;under&quot; &quot;over&quot;  &quot;over&quot;  &quot;over&quot;  &quot;under&quot; &quot;under&quot; &quot;under&quot; &quot;under&quot; &quot;under&quot;
+## [10] &quot;over&quot;</code></pre>
+<p>There it is. For good measure, I included the probability expression using decimals and fractions, to prove that it doesn’t matter to R. I did, however, reset the random seed, otherwise I would not have gotten the same results.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="dimensions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="shades.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["carpedatum.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
