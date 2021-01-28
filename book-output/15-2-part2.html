@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="15.2 Getting started with US Census data | Carpe Datum" />
+<meta property="og:type" content="book" />
+
+
+
+
+
+<meta name="author" content="Yoav Bergner" />
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="15.2 Getting started with US Census data | Carpe Datum">
+
+<title>15.2 Getting started with US Census data | Carpe Datum</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<link rel="stylesheet" href="toc.css" type="text/css" />
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li class="has-sub"><a href="index.html#preface">Preface</a><ul>
+<li><a href="caveat.html#caveat">Caveat</a></li>
+<li class="has-sub"><a href="guiding-principles-in-this-book.html#guiding-principles-in-this-book">Guiding principles in this book</a><ul>
+<li><a href="guiding-principles-in-this-book.html#question-driven">Question-driven</a></li>
+<li><a href="guiding-principles-in-this-book.html#no-proofs">No proofs</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="how-many-kinds-of-people-are-there.html#how-many-kinds-of-people-are-there">How Many Kinds of People Are There?</a><ul>
+<li><a href="things-are-about-to-get-meta-right-from-the-start.html#things-are-about-to-get-meta-right-from-the-start">Things are about to get meta right from the start</a></li>
+</ul></li>
+<li class="has-sub"><a href="1-categories.html#categories"><span class="toc-section-number">1</span> Categories, counts, and kinds</a><ul>
+<li><a href="1-categories.html#two-kinds-of-people">Two Kinds of People</a></li>
+<li><a href="1-categories.html#samples-and-populations-a-statistical-caveat">Samples and Populations: A Statistical Caveat</a></li>
+<li><a href="1-categories.html#a-psychological-caveat">A Psychological Caveat</a></li>
+<li><a href="1-categories.html#summarizing-data">Summarizing data</a></li>
+<li><a href="1-categories.html#checkpoint">Checkpoint</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-dimensions.html#dimensions"><span class="toc-section-number">2</span> Dimensions</a><ul>
+<li><a href="independence-association-and-contingency.html#independence-association-and-contingency">Independence, Association, and Contingency</a></li>
+<li><a href="latent-factors-and-measurement.html#latent-factors-and-measurement">Latent Factors and Measurement</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-test-indep.html#test-indep"><span class="toc-section-number">3</span> Tests of independence: A first look starring alternate universes</a><ul>
+<li><a href="rise-of-the-machines.html#rise-of-the-machines">Rise of the machines</a></li>
+<li><a href="hypothesis-testing-just-happened.html#hypothesis-testing-just-happened">Hypothesis testing just happened</a></li>
+<li><a href="caveats.html#caveats">Caveats</a></li>
+<li class="has-sub"><a href="sampling-simulations-and-randomness.html#sampling-simulations-and-randomness">Sampling, simulations, and randomness</a><ul>
+<li><a href="sampling-simulations-and-randomness.html#tossing-virtual-coins">Tossing (virtual) coins</a></li>
+<li><a href="sampling-simulations-and-randomness.html#but-some-observations-do-occur-more-than-others">But some observations <em>do</em> occur more than others</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="4-shades.html#shades"><span class="toc-section-number">4</span> (An Infinite Number of) Shades of Gray (or Brown)</a><ul>
+<li class="has-sub"><a href="poopiness.html#poopiness">Poopiness</a><ul>
+<li><a href="poopiness.html#mixtures">Mixtures</a></li>
+</ul></li>
+<li class="has-sub"><a href="crappiness.html#crappiness">Crappiness</a><ul>
+<li><a href="crappiness.html#check-your-understanding">Check your understanding</a></li>
+</ul></li>
+</ul></li>
+<li><a href="5-cut-scores-and-abnormality.html#cut-scores-and-abnormality"><span class="toc-section-number">5</span> Cut Scores and Abnormality</a></li>
+<li class="has-sub"><a href="6-the-modal-american.html#the-modal-american"><span class="toc-section-number">6</span> The Modal American</a><ul>
+<li><a href="6-the-modal-american.html#step-one-categories">Step one: categories</a></li>
+<li><a href="6-the-modal-american.html#step-two-contingency-table">Step two: contingency table</a></li>
+<li><a href="6-the-modal-american.html#exercises">Exercises</a></li>
+</ul></li>
+<li class="has-sub"><a href="7-sixteen-personalities-or-five-factors.html#sixteen-personalities-or-five-factors"><span class="toc-section-number">7</span> Sixteen Personalities or Five Factors?</a><ul>
+<li><a href="7-sixteen-personalities-or-five-factors.html#mbti">MBTI</a></li>
+<li><a href="7-sixteen-personalities-or-five-factors.html#big-five">Big Five</a></li>
+<li><a href="7-sixteen-personalities-or-five-factors.html#twenty-questions-about-extraversion">Twenty Questions (about Extraversion)</a></li>
+<li><a href="7-sixteen-personalities-or-five-factors.html#but-whats-the-point">But what’s the point?</a></li>
+<li><a href="still-meta-after-all-these-pages.html#still-meta-after-all-these-pages">Still meta after all these pages</a></li>
+</ul></li>
+<li class="has-sub"><a href="8-when-and-how-will-you-die.html#when-and-how-will-you-die"><span class="toc-section-number">8</span> When and How Will You Die?</a><ul>
+<li class="has-sub"><a href="not-quite-death-but-um-rain.html#not-quite-death-but-um-rain">Not Quite Death, but, um… Rain?</a><ul>
+<li><a href="not-quite-death-but-um-rain.html#stochastic-vs-deterministic-relationships">Stochastic vs Deterministic relationships</a></li>
+</ul></li>
+<li class="has-sub"><a href="ways-of-thinking-about-probabilistic-statements.html#ways-of-thinking-about-probabilistic-statements">Ways of thinking about probabilistic statements</a><ul>
+<li><a href="ways-of-thinking-about-probabilistic-statements.html#ensembles">Ensembles</a></li>
+<li><a href="ways-of-thinking-about-probabilistic-statements.html#degree-of-belief">Degree of belief</a></li>
+<li><a href="ways-of-thinking-about-probabilistic-statements.html#decisions">Decisions</a></li>
+</ul></li>
+<li><a href="death.html#death">Death</a></li>
+</ul></li>
+<li class="has-sub"><a href="9-conditional-death.html#conditional-death"><span class="toc-section-number">9</span> Conditional Death</a><ul>
+<li><a href="9-conditional-death.html#how-does-the-death-simulation-work">How does the death (simulation) work?</a></li>
+</ul></li>
+<li class="has-sub"><a href="10-somefacts.html#somefacts"><span class="toc-section-number">10</span> Some facts about Probabilities</a><ul>
+<li><a href="conditional-probabilities.html#conditional-probabilities">Conditional Probabilities</a></li>
+<li class="has-sub"><a href="conditional-death-again.html#conditional-death-again">Conditional death, again</a><ul>
+<li><a href="conditional-death-again.html#just-to-make-things-weird">Just to make things weird</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="11-how-you-will-die-causes-or-conditions.html#how-you-will-die-causes-or-conditions"><span class="toc-section-number">11</span> How You Will Die: Causes or Conditions?</a><ul>
+<li><a href="causes-of-death-colloquially.html#causes-of-death-colloquially">Causes of death, colloquially</a></li>
+<li><a href="hold-my-beer.html#hold-my-beer">Hold my beer</a></li>
+<li><a href="non-deterministic-causation.html#non-deterministic-causation">Non-deterministic Causation</a></li>
+<li><a href="testing-for-an-association-between-two-variables.html#testing-for-an-association-between-two-variables">Testing for an association between two variables</a></li>
+</ul></li>
+<li class="has-sub"><a href="will-you-make-money.html#will-you-make-money">Will You Make Money?</a><ul>
+<li><a href="battle-of-the-bills.html#battle-of-the-bills">Battle of the Bills</a></li>
+</ul></li>
+<li class="has-sub"><a href="12-betting-on-beer-or-ice-cream.html#betting-on-beer-or-ice-cream"><span class="toc-section-number">12</span> Betting on Beer (or Ice Cream)</a><ul>
+<li class="has-sub"><a href="how-do-statisticians-solve-problems-like-this.html#how-do-statisticians-solve-problems-like-this">How do statisticians solve problems like this?</a><ul>
+<li><a href="how-do-statisticians-solve-problems-like-this.html#the-solution-by-counting-or-combinatorics">The solution by counting, or combinatorics</a></li>
+<li><a href="how-do-statisticians-solve-problems-like-this.html#the-solution-by-distribution-or-statistics">The solution by distribution, or statistics</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="13-expected-value.html#expected-value"><span class="toc-section-number">13</span> Expected Value</a><ul>
+<li class="has-sub"><a href="betting-on-ice-cream.html#betting-on-ice-cream">Betting on ice cream</a><ul>
+<li><a href="betting-on-ice-cream.html#by-the-statistical-power-of-grayskull">By the (Statistical) Power of Grayskull</a></li>
+</ul></li>
+<li class="has-sub"><a href="betting-on-your-future.html#betting-on-your-future">Betting on your Future</a><ul>
+<li><a href="betting-on-your-future.html#why-why-why-multiply-ay-ay">Why why why multiply-ay-ay?</a></li>
+<li><a href="betting-on-your-future.html#where-do-branching-probabilities-come-from">Where do branching probabilities come from?</a></li>
+</ul></li>
+</ul></li>
+<li><a href="is-the-system-fair.html#is-the-system-fair">Is the System Fair?</a></li>
+<li class="has-sub"><a href="14-differences-in-athletics.html#differences-in-athletics"><span class="toc-section-number">14</span> Differences in athletics</a><ul>
+<li class="has-sub"><a href="are-professional-basketball-players-taller.html#are-professional-basketball-players-taller">Are professional basketball players taller?</a><ul>
+<li><a href="are-professional-basketball-players-taller.html#none-of-this-is-surprising">None of this is surprising</a></li>
+</ul></li>
+<li><a href="surprising-differences.html#surprising-differences">Surprising differences</a></li>
+<li><a href="fairness-on-trial-trans-athletes.html#fairness-on-trial-trans-athletes">Fairness on trial: trans athletes</a></li>
+</ul></li>
+<li class="has-sub"><a href="15-nyc-covid-19-data.html#nyc-covid-19-data"><span class="toc-section-number">15</span> NYC COVID-19 Data</a><ul>
+<li><a href="prologue.html#prologue">Prologue</a></li>
+<li class="has-sub"><a href="15-1-part1.html#part1"><span class="toc-section-number">15.1</span> COVID NYC</a><ul>
+<li><a href="15-1-part1.html#getting-some-data">Getting some data</a></li>
+<li><a href="15-1-part1.html#local-data-on-covid-from-the-city-andor-state">Local data on COVID from the city and/or state</a></li>
+</ul></li>
+<li class="has-sub"><a href="15-2-part2.html#part2"><span class="toc-section-number">15.2</span> Getting started with US Census data</a><ul>
+<li><a href="15-2-part2.html#census-variables">Census Variables</a></li>
+<li><a href="15-2-part2.html#geography-units">Geography Units</a></li>
+</ul></li>
+<li class="has-sub"><a href="15-3-part3.html#part3"><span class="toc-section-number">15.3</span> More (and messier) Census data</a><ul>
+<li><a href="15-3-part3.html#exploring-the-acs-data">Exploring the ACS data</a></li>
+</ul></li>
+<li class="has-sub"><a href="15-4-zipcode.html#zipcode"><span class="toc-section-number">15.4</span> Zipcode tabulation area</a><ul>
+<li><a href="15-4-zipcode.html#some-more-variables-to-play-with">Some more variables to play with</a></li>
+</ul></li>
+<li class="has-sub"><a href="15-5-mapviz.html#mapviz"><span class="toc-section-number">15.5</span> Visualizing data on maps</a><ul>
+<li><a href="15-5-mapviz.html#shapefiles">Shapefiles</a></li>
+<li><a href="15-5-mapviz.html#coloring-in-the-shapes">Coloring in the shapes</a></li>
+<li><a href="15-5-mapviz.html#scatterplots">Scatterplots</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="has-sub"><a href="A-sec-randomness.html#sec:randomness"><span class="toc-section-number">A</span> Randomness</a><ul>
+<li><a href="A-1-defining-random-processes.html#defining-random-processes"><span class="toc-section-number">A.1</span> Defining random processes</a></li>
+<li><a href="A-2-predictions-about-random-events.html#predictions-about-random-events"><span class="toc-section-number">A.2</span> Predictions about random events</a></li>
+<li><a href="A-3-modification-for-continuous-observations.html#modification-for-continuous-observations"><span class="toc-section-number">A.3</span> Modification for continuous observations</a></li>
+</ul></li>
+<li><a href="references.html#references">References</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="part2" class="section level2">
+<h2><span class="header-section-number">15.2</span> Getting started with US Census data</h2>
+<p>To get census data, you can go to (<a href="https://data.census.gov/" class="uri">https://data.census.gov/</a>), but be warned: it is a big maze and not that easy to navigate. What the pros who make media reports do (probably) is use the US Census API to make specific requests for data. If you use it a lot, you will need an API key. This is easy enough to get, but you need to <a href="https://api.census.gov/data/key_signup.html" target="_blank">request one here</a>. Once you have a key, you can declare it in your R code or, better for security/code-sharing, embed it in a .Renviron file.</p>
+<p>Here I will load the <code>censusapi</code> package (and also <code>dplyr</code> while I’m at it), and load my key. You can modify this line with your key. If you don’t have one, some or all of the code below will still work if you comment out the <code>key=myKey</code>. Without an API key, however, there is a limit to the size and number of queries per IP address.</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="kw">library</span>(censusapi)</a>
+<a class="sourceLine" id="cb110-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb110-3" data-line-number="3"><span class="co"># comment this out if you want to proceed without a key</span></a>
+<a class="sourceLine" id="cb110-4" data-line-number="4"><span class="co"># myKey = Sys.getenv(&quot;CENSUS_KEY&quot;) #store your key in .Renviron</span></a></code></pre></div>
+<p>More importantly, when it comes to census data, you need to know what you’re asking for. That means you need to know which data sets, which variables, which geographic units, etc. A brief introductory <a href="https://www.census.gov/content/dam/Census/data/developers/api-user-guide/api-guide.pdf" target="_blank">API users guide can be found here</a>. It’s 20 pages long. You can just follow along here if you want some examples.</p>
+<p>We will be interested in the <a href="https://www.census.gov/data/developers/data-sets/acs-5year.html" target="_blank">American Community Survey 5-Year data</a> (aka ACS5) which provides estimates aggregated over a 5-year period, revisited every two years. The last published data set, i.e., the most current one available, is from 2018.</p>
+<div id="census-variables" class="section level3 unnumbered">
+<h3>Census Variables</h3>
+<p>There are something like 20,000 variables available in ACS, and these can be retrieved through queries invidividually or in groups. Some useful groups for our analysis are the following</p>
+<ul>
+<li>B01001 SEX BY AGE
+<ul>
+<li>This has a lot of subcategories, such as Male 5-9 Years, Male 10-14 years, etc.</li>
+</ul></li>
+<li>B02001 RACE (disregards Hispanic or Latino Origin)</li>
+<li>B03002 HISPANIC OR LATINO ORIGIN BY RACE<br />
+</li>
+<li>B19013 MEDIAN HOUSEHOLD INCOME IN THE PAST 12 MONTHS</li>
+</ul>
+<p>For each group, a list of variables can be found on a corresponding census.gov website. For example, to find the variables in the SEX BY AGE group, you can go to <a href="https://api.census.gov/data/2018/acs/acs5/groups/B01001.html" class="uri">https://api.census.gov/data/2018/acs/acs5/groups/B01001.html</a> (notice the URL ending is the same as the group). There you will find variables such as</p>
+<ul>
+<li>B01001_001E Estimate!!Total</li>
+<li>B01001_002E Estimate!!Total!!Male</li>
+<li>B01001_026E Estimate!!Total!!Female</li>
+</ul>
+<p>And many more. Variables that end in E are estimates. For each one there is often a margin of error, which is the same code ending in M instead of E. Finally for both estimates and margins of error, there may be annotations (e.g. B01001_002EA and B01001_002MA), if these numbers are missing or not straightforward. Details about annotation meanings can be found <a href="https://www.census.gov/data/developers/data-sets/acs-1year/notes-on-acs-estimate-and-annotation-values.html" target="_blank">here</a>. This is just an overview of what the ACS5 variable names look like.</p>
+</div>
+<div id="geography-units" class="section level3 unnumbered">
+<h3>Geography Units</h3>
+<p>Census data are available at many levels related to geographical units. The smallest unit is called a census “block” and typically covers between 600 and 3000 people. A collection of blocks forms a census tract (2500 to 8000 people). But US states are also divided into counties, and both state and county identifiers can be used as region selectors. Note that to use the Census API, one has to use numerical identifiers for states and counties. For example, the borough of Brooklyn is actually Kings County, New York, which is county 047 in state 36. And yes, you have to include all three digits, including the leading zero, to identify individual counties. Zipcode tabulation areas (aka ZCTA) is another option, wherein you specify the five-digit zip code. We will want to use that, because NYC provided COVID-19 testing data at the zipcode level.</p>
+<div id="borough-level-data" class="section level4 unnumbered">
+<h4>Borough-level data</h4>
+<p>First, let’s retrieve some data about the five boroughs. Let’s start with the simplest example and get the size of each borough population.</p>
+<p>We will need to request the variable B01001_001E, which is the total population estimate.</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1">acs_boro_population &lt;-<span class="st"> </span><span class="kw">getCensus</span>(<span class="dt">name =</span> <span class="st">&quot;acs/acs5&quot;</span>,</a>
+<a class="sourceLine" id="cb111-2" data-line-number="2">                         <span class="dt">vintage =</span> <span class="dv">2018</span>,</a>
+<a class="sourceLine" id="cb111-3" data-line-number="3">                         <span class="dt">vars =</span> <span class="kw">c</span>(<span class="st">&quot;NAME&quot;</span>, <span class="st">&quot;B01001_001E&quot;</span>),</a>
+<a class="sourceLine" id="cb111-4" data-line-number="4">                         <span class="dt">region =</span> <span class="st">&quot;county:005,047,061,081,085&quot;</span>,</a>
+<a class="sourceLine" id="cb111-5" data-line-number="5">                         <span class="dt">regionin =</span> <span class="st">&quot;state:36&quot;</span> , <span class="dt">key =</span> myKey</a>
+<a class="sourceLine" id="cb111-6" data-line-number="6">                         )</a>
+<a class="sourceLine" id="cb111-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb111-8" data-line-number="8">acs_boro_population</a></code></pre></div>
+<pre><code>##   state county                      NAME B01001_001E
+## 1    36    081   Queens County, New York     2298513
+## 2    36    047    Kings County, New York     2600747
+## 3    36    061 New York County, New York     1632480
+## 4    36    085 Richmond County, New York      474101
+## 5    36    005    Bronx County, New York     1437872</code></pre>
+<p>Cool! We’ve established that we can pull some borough-level information from the US Census to complement data provided by the city or state. Note that the two tables, the one from NYC and the one from the census, don’t exactly match up. For one thing, the county names do not align with the borough names.</p>
+</div>
+<div id="using-named-vectors-as-look-up-tools" class="section level4 unnumbered">
+<h4>Using named vectors as look-up tools</h4>
+<p>Now, we can fix this by hand, but there are good ways and less good ways to do this. Ideally, we create a look-up table which we can reuse whenever we need to switch between borough and county names. For those familiar with database “join” operations, it is indeed possible to use joins in R. However, a simple way to just convert between two different representations (e.g., country name and borough name) is to use “named vectors” in R. Here’s how:</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1"><span class="co"># Borough names</span></a>
+<a class="sourceLine" id="cb113-2" data-line-number="2">boroNames &lt;-<span class="st"> </span>nyc_boro_data<span class="op">$</span>BOROUGH_GROUP[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb113-3" data-line-number="3"><span class="co"># County names</span></a>
+<a class="sourceLine" id="cb113-4" data-line-number="4">countyNames &lt;-<span class="st"> </span>acs_boro_population<span class="op">$</span>NAME</a>
+<a class="sourceLine" id="cb113-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb113-6" data-line-number="6"><span class="co"># combine, but note that the order is not the same! So we&#39;ll reorder</span></a>
+<a class="sourceLine" id="cb113-7" data-line-number="7">boro2county &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Borough=</span>boroNames, <span class="dt">County=</span>countyNames[<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">4</span>)], </a>
+<a class="sourceLine" id="cb113-8" data-line-number="8">                          <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb113-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb113-10" data-line-number="10"><span class="co"># create two &#39;named vectors&#39;</span></a>
+<a class="sourceLine" id="cb113-11" data-line-number="11"><span class="co"># one for getting the borough</span></a>
+<a class="sourceLine" id="cb113-12" data-line-number="12">getBoro &lt;-<span class="st"> </span>boro2county<span class="op">$</span>Borough</a>
+<a class="sourceLine" id="cb113-13" data-line-number="13"><span class="kw">names</span>(getBoro) &lt;-<span class="st"> </span>boro2county<span class="op">$</span>County</a>
+<a class="sourceLine" id="cb113-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb113-15" data-line-number="15"><span class="co"># one for getting the county</span></a>
+<a class="sourceLine" id="cb113-16" data-line-number="16">getCounty &lt;-<span class="st"> </span>boro2county<span class="op">$</span>County</a>
+<a class="sourceLine" id="cb113-17" data-line-number="17"><span class="kw">names</span>(getCounty) &lt;-<span class="st"> </span>boro2county<span class="op">$</span>Borough</a></code></pre></div>
+<p>Here’s is one way we can use this new lookup table. Note that <code>getBoro</code> is not a function (it is a named vector). So we use square brackets to index it, not parentheses.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1">getBoro[<span class="st">&quot;Richmond County, New York&quot;</span>]</a></code></pre></div>
+<pre><code>## Richmond County, New York 
+##           &quot;Staten Island&quot;</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1">getCounty[<span class="st">&quot;Brooklyn&quot;</span>]</a></code></pre></div>
+<pre><code>##                 Brooklyn 
+## &quot;Kings County, New York&quot;</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1">acs_boro_population<span class="op">$</span>Borough &lt;-<span class="st"> </span>getBoro[acs_boro_population<span class="op">$</span>NAME]</a>
+<a class="sourceLine" id="cb118-2" data-line-number="2">acs_boro_population</a></code></pre></div>
+<pre><code>##   state county                      NAME B01001_001E       Borough
+## 1    36    081   Queens County, New York     2298513        Queens
+## 2    36    047    Kings County, New York     2600747      Brooklyn
+## 3    36    061 New York County, New York     1632480     Manhattan
+## 4    36    085 Richmond County, New York      474101 Staten Island
+## 5    36    005    Bronx County, New York     1437872     The Bronx</code></pre>
+<p>All that remains is that annoying variable name B01001_001E for Total Population. We should definitely fix this, and there are a few ways to do it. The following may seem like a long-winded way to go about it, but it has the benefit that it will work no matter where the variable B01001_001E appears. It won’t accidentally change the wrong column name, and it won’t do anything at all if the variable you are trying to rename doesn’t exist.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1"><span class="kw">names</span>(acs_boro_population)[<span class="kw">which</span>(<span class="kw">names</span>(acs_boro_population)<span class="op">==</span><span class="st">&quot;B01001_001E&quot;</span>)] &lt;-<span class="st"> &quot;Total_Pop&quot;</span></a>
+<a class="sourceLine" id="cb120-2" data-line-number="2"><span class="kw">names</span>(acs_boro_population)[<span class="kw">which</span>(<span class="kw">names</span>(acs_boro_population)<span class="op">==</span><span class="st">&quot;NAME&quot;</span>)] &lt;-<span class="st"> &quot;countyName&quot;</span></a>
+<a class="sourceLine" id="cb120-3" data-line-number="3">acs_boro_population</a></code></pre></div>
+<pre><code>##   state county                countyName Total_Pop       Borough
+## 1    36    081   Queens County, New York   2298513        Queens
+## 2    36    047    Kings County, New York   2600747      Brooklyn
+## 3    36    061 New York County, New York   1632480     Manhattan
+## 4    36    085 Richmond County, New York    474101 Staten Island
+## 5    36    005    Bronx County, New York   1437872     The Bronx</code></pre>
+<p>(If you’re wondering whether we could have used named vectors to convert between the ACS names, like B01001_001E, and simple names like “Total_Pop”, then yes, but you’re getting ahead of me. Once we have more than a few of these variables, that would indeed be a good idea.)</p>
+<p>With this in hand, we can now combine our NYC COVID-19 data with our Census data. Let’s bring back our first borough table:</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">nyc_boro_data</a></code></pre></div>
+<pre><code>##   BOROUGH_GROUP COVID_CASE_COUNT COVID_CASE_RATE
+## 1     The Bronx            28875         1962.05
+## 2      Brooklyn            34476         1269.58
+## 3     Manhattan            16754          887.36
+## 4        Queens            39856         1589.55
+## 5 Staten Island             9755         1944.40
+## 6      Citywide           129788              NA</code></pre>
+<p>We will make some judicious use of dplyr here to simplify the outcome. Mostly, we want to get rid of unnecessary columns from the ACS table (using <code>select</code>), and then use <code>join()</code> to merge the two tables. The advantage of the pipe operatore <code>%&gt;%</code> is that it allows us to think of our data as going through a flow of operations. First we take our table of data, then we select the columns we care about, then we combine it with our other table (the NYC data on COVID-19):</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1">boro_join &lt;-<span class="st"> </span>acs_boro_population <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(Borough, countyName, Total_Pop) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb124-2" data-line-number="2"><span class="st">  </span><span class="kw">left_join</span>(nyc_boro_data, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;Borough&quot;</span> =<span class="st">  &quot;BOROUGH_GROUP&quot;</span>))</a>
+<a class="sourceLine" id="cb124-3" data-line-number="3">boro_join</a></code></pre></div>
+<pre><code>##         Borough                countyName Total_Pop COVID_CASE_COUNT
+## 1        Queens   Queens County, New York   2298513            39856
+## 2      Brooklyn    Kings County, New York   2600747            34476
+## 3     Manhattan New York County, New York   1632480            16754
+## 4 Staten Island Richmond County, New York    474101             9755
+## 5     The Bronx    Bronx County, New York   1437872            28875
+##   COVID_CASE_RATE
+## 1         1589.55
+## 2         1269.58
+## 3          887.36
+## 4         1944.40
+## 5         1962.05</code></pre>
+<p>Woohoo! (I’m keeping countyName for later. You’ll see why.)</p>
+<p><strong>Worked Example</strong>: Compute the population adjusted rate per 100,000 people using population data from the census. How does it differ from the age-adjusted rate?</p>
+<p>We can use our population estimates (keep in mind that these are 5-year averages as of 2018) to derive our own rate-per-100,000 as follows</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1">boro_join<span class="op">$</span>RATE_100K &lt;-<span class="st">  </span><span class="kw">round</span>(boro_join<span class="op">$</span>COVID_CASE_COUNT<span class="op">/</span>boro_join<span class="op">$</span>Total_Pop <span class="op">*</span><span class="st"> </span><span class="dv">100000</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb126-2" data-line-number="2">boro_join <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(Borough, COVID_CASE_RATE, RATE_100K)</a></code></pre></div>
+<pre><code>##         Borough COVID_CASE_RATE RATE_100K
+## 1        Queens         1589.55   1733.99
+## 2      Brooklyn         1269.58   1325.62
+## 3     Manhattan          887.36   1026.29
+## 4 Staten Island         1944.40   2057.58
+## 5     The Bronx         1962.05   2008.18</code></pre>
+<p>You’ll notice that our rate, which is not age-adjusted, differs somewhat from the NYC rate, which is age-adjusted. Aside from age-adjustment, it is possible that our population numbers (based on 5-year averages) are different from the latest NYC populations estimates. If our population numbers are lower, then our rates would be higher. Or the difference could be a result of the age-adjustment formula.</p>
+<!-- ```{r} -->
+<!-- boro_join %>% select(Borough, COVID_CASE_RATE, RATE_100K) %>% -->
+<!--   mutate(normCR1 = round(COVID_CASE_RATE/COVID_CASE_RATE[3],2),  -->
+<!--          normCR2 = round(RATE_100K/RATE_100K[3],2)) -->
+<!-- ``` -->
+</div>
+<div id="more-variables-income-age-and-race" class="section level4 unnumbered">
+<h4>More variables: income, age, and race</h4>
+<p>To request the median household income we will request the variable “B19013_001E” (intuitive, right?) Alternatively, the variable B20017_001E is earnings per person not by household. Why not examine both?</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1">acs_boro_income &lt;-<span class="st"> </span><span class="kw">getCensus</span>(<span class="dt">name =</span> <span class="st">&quot;acs/acs5&quot;</span>,</a>
+<a class="sourceLine" id="cb128-2" data-line-number="2">                         <span class="dt">vintage =</span> <span class="dv">2018</span>,</a>
+<a class="sourceLine" id="cb128-3" data-line-number="3">                         <span class="dt">vars =</span> <span class="kw">c</span>(<span class="st">&quot;NAME&quot;</span>, <span class="st">&quot;B19013_001E&quot;</span>, <span class="st">&quot;B20017_001E&quot;</span>),</a>
+<a class="sourceLine" id="cb128-4" data-line-number="4">                         <span class="dt">region =</span> <span class="st">&quot;county:005,047,061,081,085&quot;</span>,</a>
+<a class="sourceLine" id="cb128-5" data-line-number="5">                         <span class="dt">regionin =</span> <span class="st">&quot;state:36&quot;</span> , <span class="dt">key =</span> myKey</a>
+<a class="sourceLine" id="cb128-6" data-line-number="6">                         )</a>
+<a class="sourceLine" id="cb128-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb128-8" data-line-number="8"><span class="kw">names</span>(acs_boro_income)[<span class="kw">which</span>(<span class="kw">names</span>(acs_boro_income)<span class="op">==</span><span class="st">&quot;B19013_001E&quot;</span>)] &lt;-<span class="st"> &quot;Median_HH_Income&quot;</span></a>
+<a class="sourceLine" id="cb128-9" data-line-number="9"><span class="kw">names</span>(acs_boro_income)[<span class="kw">which</span>(<span class="kw">names</span>(acs_boro_income)<span class="op">==</span><span class="st">&quot;B20017_001E&quot;</span>)] &lt;-<span class="st"> &quot;Median_Income&quot;</span></a>
+<a class="sourceLine" id="cb128-10" data-line-number="10">acs_boro_income</a></code></pre></div>
+<pre><code>##   state county                      NAME Median_HH_Income Median_Income
+## 1    36    081   Queens County, New York            64987         36381
+## 2    36    047    Kings County, New York            56015         37123
+## 3    36    061 New York County, New York            82459         59620
+## 4    36    085 Richmond County, New York            79267         46586
+## 5    36    005    Bronx County, New York            38085         27074</code></pre>
+<p>There it is, five-year averages, inflation-adjusted for 2018 dollars, by borough. (If you see one-year estimates, they may be a bit higher than these numbers, if wages went up faster than inflation).</p>
+<p>We can add these new income variables to the table we’ve started to build</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1"><span class="co"># Note that I am renaming NAME to countyName in the select(), </span></a>
+<a class="sourceLine" id="cb130-2" data-line-number="2"><span class="co"># so I didn&#39;t have to do it ahead of time</span></a>
+<a class="sourceLine" id="cb130-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb130-4" data-line-number="4"><span class="kw">left_join</span>(boro_join, </a>
+<a class="sourceLine" id="cb130-5" data-line-number="5">          acs_boro_income <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dt">countyName=</span>NAME, Median_HH_Income, Median_Income), </a>
+<a class="sourceLine" id="cb130-6" data-line-number="6">          <span class="dt">by=</span><span class="st">&quot;countyName&quot;</span>)</a></code></pre></div>
+<pre><code>##         Borough                countyName Total_Pop COVID_CASE_COUNT
+## 1        Queens   Queens County, New York   2298513            39856
+## 2      Brooklyn    Kings County, New York   2600747            34476
+## 3     Manhattan New York County, New York   1632480            16754
+## 4 Staten Island Richmond County, New York    474101             9755
+## 5     The Bronx    Bronx County, New York   1437872            28875
+##   COVID_CASE_RATE RATE_100K Median_HH_Income Median_Income
+## 1         1589.55   1733.99            64987         36381
+## 2         1269.58   1325.62            56015         37123
+## 3          887.36   1026.29            82459         59620
+## 4         1944.40   2057.58            79267         46586
+## 5         1962.05   2008.18            38085         27074</code></pre>
+<p>In the next part of the series, we will keep assembling more variables related to age and race. We will also eventually change our unit of analysis to zipcode tabulation areas.</p>
+</div>
+</div>
+</div>
+<p style="text-align: center;">
+<a href="15-1-part1.html"><button class="btn btn-default">Previous</button></a>
+<a href="15-3-part3.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>

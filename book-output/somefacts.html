@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 10 Some facts about Probabilities | Carpe Datum</title>
+  <meta name="description" content="Chapter 10 Some facts about Probabilities | Carpe Datum" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 10 Some facts about Probabilities | Carpe Datum" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="ybergner/carpe-datum" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 10 Some facts about Probabilities | Carpe Datum" />
+  
+  
+  
+
+<meta name="author" content="Yoav Bergner" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="conditional-death.html"/>
+<link rel="next" href="how-you-will-die-causes-or-conditions.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Carpe Datum: Data Science for Life's Big Questions</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#caveat"><i class="fa fa-check"></i>Caveat</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#guiding-principles-in-this-book"><i class="fa fa-check"></i>Guiding principles in this book</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#question-driven"><i class="fa fa-check"></i>Question-driven</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#no-proofs"><i class="fa fa-check"></i>No proofs</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="how-many-kinds-of-people-are-there.html"><a href="how-many-kinds-of-people-are-there.html"><i class="fa fa-check"></i>How Many Kinds of People Are There?</a><ul>
+<li class="chapter" data-level="" data-path="how-many-kinds-of-people-are-there.html"><a href="how-many-kinds-of-people-are-there.html#things-are-about-to-get-meta-right-from-the-start"><i class="fa fa-check"></i>Things are about to get meta right from the start</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="categories.html"><a href="categories.html"><i class="fa fa-check"></i><b>1</b> Categories, counts, and kinds</a><ul>
+<li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#two-kinds-of-people"><i class="fa fa-check"></i>Two Kinds of People</a></li>
+<li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#samples-and-populations-a-statistical-caveat"><i class="fa fa-check"></i>Samples and Populations: A Statistical Caveat</a></li>
+<li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#a-psychological-caveat"><i class="fa fa-check"></i>A Psychological Caveat</a></li>
+<li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#summarizing-data"><i class="fa fa-check"></i>Summarizing data</a></li>
+<li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#checkpoint"><i class="fa fa-check"></i>Checkpoint</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="dimensions.html"><a href="dimensions.html"><i class="fa fa-check"></i><b>2</b> Dimensions</a><ul>
+<li class="chapter" data-level="" data-path="dimensions.html"><a href="dimensions.html#independence-association-and-contingency"><i class="fa fa-check"></i>Independence, Association, and Contingency</a></li>
+<li class="chapter" data-level="" data-path="dimensions.html"><a href="dimensions.html#latent-factors-and-measurement"><i class="fa fa-check"></i>Latent Factors and Measurement</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="test-indep.html"><a href="test-indep.html"><i class="fa fa-check"></i><b>3</b> Tests of independence: A first look starring alternate universes</a><ul>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#rise-of-the-machines"><i class="fa fa-check"></i>Rise of the machines</a></li>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#hypothesis-testing-just-happened"><i class="fa fa-check"></i>Hypothesis testing just happened</a></li>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#caveats"><i class="fa fa-check"></i>Caveats</a></li>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#sampling-simulations-and-randomness"><i class="fa fa-check"></i>Sampling, simulations, and randomness</a><ul>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#tossing-virtual-coins"><i class="fa fa-check"></i>Tossing (virtual) coins</a></li>
+<li><a href="test-indep.html#but-some-observations-do-occur-more-than-others">But some observations <em>do</em> occur more than others</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="shades.html"><a href="shades.html"><i class="fa fa-check"></i><b>4</b> (An Infinite Number of) Shades of Gray (or Brown)</a><ul>
+<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#poopiness"><i class="fa fa-check"></i>Poopiness</a><ul>
+<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#mixtures"><i class="fa fa-check"></i>Mixtures</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#crappiness"><i class="fa fa-check"></i>Crappiness</a><ul>
+<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#check-your-understanding"><i class="fa fa-check"></i>Check your understanding</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="cut-scores-and-abnormality.html"><a href="cut-scores-and-abnormality.html"><i class="fa fa-check"></i><b>5</b> Cut Scores and Abnormality</a></li>
+<li class="chapter" data-level="6" data-path="the-modal-american.html"><a href="the-modal-american.html"><i class="fa fa-check"></i><b>6</b> The Modal American</a><ul>
+<li class="chapter" data-level="" data-path="the-modal-american.html"><a href="the-modal-american.html#step-one-categories"><i class="fa fa-check"></i>Step one: categories</a></li>
+<li class="chapter" data-level="" data-path="the-modal-american.html"><a href="the-modal-american.html#step-two-contingency-table"><i class="fa fa-check"></i>Step two: contingency table</a></li>
+<li class="chapter" data-level="" data-path="the-modal-american.html"><a href="the-modal-american.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html"><i class="fa fa-check"></i><b>7</b> Sixteen Personalities or Five Factors?</a><ul>
+<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#mbti"><i class="fa fa-check"></i>MBTI</a></li>
+<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#big-five"><i class="fa fa-check"></i>Big Five</a></li>
+<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#twenty-questions-about-extraversion"><i class="fa fa-check"></i>Twenty Questions (about Extraversion)</a></li>
+<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#but-whats-the-point"><i class="fa fa-check"></i>But what’s the point?</a></li>
+<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#still-meta-after-all-these-pages"><i class="fa fa-check"></i>Still meta after all these pages</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html"><i class="fa fa-check"></i><b>8</b> When and How Will You Die?</a><ul>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#not-quite-death-but-um-rain"><i class="fa fa-check"></i>Not Quite Death, but, um… Rain?</a><ul>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#stochastic-vs-deterministic-relationships"><i class="fa fa-check"></i>Stochastic vs Deterministic relationships</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#ways-of-thinking-about-probabilistic-statements"><i class="fa fa-check"></i>Ways of thinking about probabilistic statements</a><ul>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#ensembles"><i class="fa fa-check"></i>Ensembles</a></li>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#degree-of-belief"><i class="fa fa-check"></i>Degree of belief</a></li>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#decisions"><i class="fa fa-check"></i>Decisions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#death"><i class="fa fa-check"></i>Death</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="conditional-death.html"><a href="conditional-death.html"><i class="fa fa-check"></i><b>9</b> Conditional Death</a><ul>
+<li class="chapter" data-level="" data-path="conditional-death.html"><a href="conditional-death.html#how-does-the-death-simulation-work"><i class="fa fa-check"></i>How does the death (simulation) work?</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="somefacts.html"><a href="somefacts.html"><i class="fa fa-check"></i><b>10</b> Some facts about Probabilities</a><ul>
+<li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#conditional-probabilities"><i class="fa fa-check"></i>Conditional Probabilities</a></li>
+<li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#conditional-death-again"><i class="fa fa-check"></i>Conditional death, again</a><ul>
+<li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#just-to-make-things-weird"><i class="fa fa-check"></i>Just to make things weird</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html"><i class="fa fa-check"></i><b>11</b> How You Will Die: Causes or Conditions?</a><ul>
+<li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#causes-of-death-colloquially"><i class="fa fa-check"></i>Causes of death, colloquially</a></li>
+<li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#hold-my-beer"><i class="fa fa-check"></i>Hold my beer</a></li>
+<li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#non-deterministic-causation"><i class="fa fa-check"></i>Non-deterministic Causation</a></li>
+<li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#testing-for-an-association-between-two-variables"><i class="fa fa-check"></i>Testing for an association between two variables</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="will-you-make-money.html"><a href="will-you-make-money.html"><i class="fa fa-check"></i>Will You Make Money?</a><ul>
+<li class="chapter" data-level="" data-path="will-you-make-money.html"><a href="will-you-make-money.html#battle-of-the-bills"><i class="fa fa-check"></i>Battle of the Bills</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html"><i class="fa fa-check"></i><b>12</b> Betting on Beer (or Ice Cream)</a><ul>
+<li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#how-do-statisticians-solve-problems-like-this"><i class="fa fa-check"></i>How do statisticians solve problems like this?</a><ul>
+<li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#the-solution-by-counting-or-combinatorics"><i class="fa fa-check"></i>The solution by counting, or combinatorics</a></li>
+<li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#the-solution-by-distribution-or-statistics"><i class="fa fa-check"></i>The solution by distribution, or statistics</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="expected-value.html"><a href="expected-value.html"><i class="fa fa-check"></i><b>13</b> Expected Value</a><ul>
+<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#betting-on-ice-cream"><i class="fa fa-check"></i>Betting on ice cream</a><ul>
+<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#by-the-statistical-power-of-grayskull"><i class="fa fa-check"></i>By the (Statistical) Power of Grayskull</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#betting-on-your-future"><i class="fa fa-check"></i>Betting on your Future</a><ul>
+<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#why-why-why-multiply-ay-ay"><i class="fa fa-check"></i>Why why why multiply-ay-ay?</a></li>
+<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#where-do-branching-probabilities-come-from"><i class="fa fa-check"></i>Where do branching probabilities come from?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="is-the-system-fair.html"><a href="is-the-system-fair.html"><i class="fa fa-check"></i>Is the System Fair?</a></li>
+<li class="chapter" data-level="14" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html"><i class="fa fa-check"></i><b>14</b> Differences in athletics</a><ul>
+<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#are-professional-basketball-players-taller"><i class="fa fa-check"></i>Are professional basketball players taller?</a><ul>
+<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#none-of-this-is-surprising"><i class="fa fa-check"></i>None of this is surprising</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#surprising-differences"><i class="fa fa-check"></i>Surprising differences</a></li>
+<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#fairness-on-trial-trans-athletes"><i class="fa fa-check"></i>Fairness on trial: trans athletes</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html"><i class="fa fa-check"></i><b>15</b> NYC COVID-19 Data</a><ul>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#prologue"><i class="fa fa-check"></i>Prologue</a></li>
+<li class="chapter" data-level="15.1" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#part1"><i class="fa fa-check"></i><b>15.1</b> COVID NYC</a><ul>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#getting-some-data"><i class="fa fa-check"></i>Getting some data</a></li>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#local-data-on-covid-from-the-city-andor-state"><i class="fa fa-check"></i>Local data on COVID from the city and/or state</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#part2"><i class="fa fa-check"></i><b>15.2</b> Getting started with US Census data</a><ul>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#census-variables"><i class="fa fa-check"></i>Census Variables</a></li>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#geography-units"><i class="fa fa-check"></i>Geography Units</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#part3"><i class="fa fa-check"></i><b>15.3</b> More (and messier) Census data</a><ul>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#exploring-the-acs-data"><i class="fa fa-check"></i>Exploring the ACS data</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#zipcode"><i class="fa fa-check"></i><b>15.4</b> Zipcode tabulation area</a><ul>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#some-more-variables-to-play-with"><i class="fa fa-check"></i>Some more variables to play with</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#mapviz"><i class="fa fa-check"></i><b>15.5</b> Visualizing data on maps</a><ul>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#shapefiles"><i class="fa fa-check"></i>Shapefiles</a></li>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#coloring-in-the-shapes"><i class="fa fa-check"></i>Coloring in the shapes</a></li>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#scatterplots"><i class="fa fa-check"></i>Scatterplots</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="sec-randomness.html"><a href="sec-randomness.html"><i class="fa fa-check"></i><b>A</b> Randomness</a><ul>
+<li class="chapter" data-level="A.1" data-path="sec-randomness.html"><a href="sec-randomness.html#defining-random-processes"><i class="fa fa-check"></i><b>A.1</b> Defining random processes</a></li>
+<li class="chapter" data-level="A.2" data-path="sec-randomness.html"><a href="sec-randomness.html#predictions-about-random-events"><i class="fa fa-check"></i><b>A.2</b> Predictions about random events</a></li>
+<li class="chapter" data-level="A.3" data-path="sec-randomness.html"><a href="sec-randomness.html#modification-for-continuous-observations"><i class="fa fa-check"></i><b>A.3</b> Modification for continuous observations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Carpe Datum</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="somefacts" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Some facts about Probabilities</h1>
+<p>In this course, I have taken the strong position that ideas should be driven by questions. So I’ve tried to reason through the example above before setting up any foundations on the basic rules of probability. A standard introduction to these topics can be found in many books, for example OpenIntro Stats, Chapter 3.</p>
+<p>Now is probably a good time to recap some of what we have established about probabilities. We will also introduce the most basic notation <code>P(A)</code> for the probability that event A happens. For example, event A can stand for “you die at age 64” or “it rains in New York tomorrow.”</p>
+<ul>
+<li>When possibilities are disjoint, or mutually exclusive, the probability that either one of them happens is the sum of the individual probabilities</li>
+</ul>
+<blockquote>
+<pre><code>P(A or B) = P(A) + P(B)</code></pre>
+</blockquote>
+<p>An example of this was dying at age 62 or dying at age 64.</p>
+<ul>
+<li>A special case of this addition rule applies when one or the other MUST happen. For example, in logic, either something happens or it doesn’t happen. Either A or NOT A. Since these possibilities are disjoint:
+&gt;<code>&gt;P(A) + P(not A) = 1 &gt;P(not A) = 1 - P(A) &gt;</code></li>
+</ul>
+<p>An example of this was the probability that you do not die at age 0. We found it by subtracting out the probability that you will die from 1.</p>
+<p>The last fact we used is</p>
+<ul>
+<li>The joint probability rule for <strong>independent</strong> events that BOTH occur is the product of the individual probabilities of each event occurring.
+&gt;<code>&gt;P(A and B) = P(A) * P(B) &gt;</code></li>
+</ul>
+<p>We used that to figure out how you survive by not dying every year. Notice that I’ve snuck in the word independent (well, I snuck it in boldy, so it wasn’t that sneaky). There is an intuitive reason why it is important to make a distinction about independent events.</p>
+<p>In the last module, we said that two events (we were talking about responses to questions) are independent if knowing about one of them does not give you any information about what the other one might be. But remember bizarro world where the toilet paper orientation and peanut butter preference were deterministically related, and specifically everyone is either under-chunky or over-smooth? I’ve reproduced this result in Table <a href="somefacts.html#tab:tpxpb-reprise">10.1</a>. If I told you that 53% of the total population prefers smooth, then what proportion of the total population prefers smooth AND likes to over-hang? Also 53%. What proportion prefers smooth AND under-hangs? 0!</p>
+<table class="table table-bordered table" style="width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tpxpb-reprise">Table 10.1: </span>Bizarro world
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+chunky
+</th>
+<th style="text-align:right;">
+smooth
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+over
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+under
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<p>In bizarro world, toilet paper orientation and peanut butter preference are NOT independent, because knowing one of them DOES give you information about the other.</p>
+<pre><code>P(tp = over AND pb = smooth) does NOT equal to P(tp = over) * P(pb = smooth)</code></pre>
+<p>This will become even more clear in the next section.</p>
+<div id="conditional-probabilities" class="section level2 unnumbered">
+<h2>Conditional Probabilities</h2>
+<p>Recall that we would NOT have gotten the right answer to the probability of dying in your 60s if we added up the mortality rates qx for all ages x in [60-69]. (Exercise: verify this.) Rather, we had to multiply these numbers first by the probability of living to age x. Another way to say this is that the mortality rate qx was actually a <strong>conditional probability.</strong> It was the probability of dying at age x <em>on condition that</em> you have survived to age x. To be absolutely clear, we are measuring x in whole numbers, like birthdays, but we don’t mean dying on your xth birthday. Rather, we mean dying anytime between turning age x and turning x+1. We need a special notation to distinguish conditional probabilities. We write,</p>
+<pre><code>qx = P(You die at age x | You survived to age x)</code></pre>
+<p>and we read this as “qx is the probability that you die at age x given that you survived to age x” or as “qx is the probability that you die at age x conditional on your surviving to age x.” These are equivalent, but they differ from</p>
+<pre><code>P(You die at age x)</code></pre>
+<p>which is the <strong>unconditional</strong> probability that you die at age x. This is also different from</p>
+<pre><code>P(You die at age x AND You survived to age x)</code></pre>
+<p>which is called the <strong>joint probablity</strong> of the two events. (Note that the joint probability of events A and B is also often written as P(A, B). The comma functions like the word “and”.) We calculated exactly this joint probability above when we wanted to add up the probabilities that you die at some point in your 60s. The way we computed the joint probability for each year was by application of this general rule for conditional probabilities</p>
+<pre><code>P(A and B) = P(A|B) P(B)</code></pre>
+<p>which we read as “the probability of both A and B happening is equal to the probability of A conditional on B multiplied by the probability of B.” Note that this rule <em>always</em> holds. That’s because what I’ve called the general rule is equivalently just the definition of conditional probability. For example, I could have written it this way:</p>
+<pre><code>P(A|B) = P(A and B) / P(B)</code></pre>
+<p>This is just a rearrangement of the formula, but we have a tendency of seeing whatever is on the left side of an equation as being defined by what is on the right.</p>
+<p>As far as death is concerned, the following are all true:</p>
+<pre><code>P(die at x AND survived to x) = P(die at x | survived to x) * P(survived to x)
+P(die at x AND survived to x) = qx * P(survived to x)
+
+qx = P(die at x AND survived to x) / P(survived to x)</code></pre>
+<p>where in the second line I substituted the mortality rate qx for the conditional probability that defines it. In the last line, you can see how the mortality rate could be estimated from data if you actually observed a whole bunch of people. You would count how many of the die at age, say, 62, and divide that number by the number who survived to age 62. You can also probably see why the following is true:</p>
+<pre><code>P(survived to x | die at x) = 1</code></pre>
+<p>That is, if you died at 62 then you must have survived to that age. That may seem too obvious for words, but it helps to show clearly that for conditional probabilities, it is not generally true that P(A|B) = P(B|A).</p>
+<p>Considering toilet paper in bizarro world, we can see explicitly why the rule for joint probabilities of independent events <code>P(A and B) = P(A) * P(B)</code> did not hold. The conditional probability relationship always holds, but independence is a special case. We can see what it is now:</p>
+<pre><code>P(A and B) = P(A|B) P(B) = {only in special cases} = P(A) * P(B)</code></pre>
+<p>Thus, when A and B are independent, it must be true that</p>
+<pre><code>P(A|B) = P(A)   # for independent events</code></pre>
+<p>which reads as “the probability of A conditional on B is equal to the probability of A (regardless of B).” Another way to say this is that no matter what we know about B, it doesn’t tell us anything informative about A.</p>
+<p>In the real world, this is true about toilet paper and peanut butter.</p>
+<pre><code>P(tp = over | pb = smooth) = P(tp = over) ## real world</code></pre>
+<p>But that was NOT true in bizarro world, where knowing peanut butter preference told us EVERYTHING about toilet paper orientation. If A is the probability that a person is an over-hanger, and B is the probability that they prefer smooth peanut butter, then</p>
+<pre><code>P(tp = over | pb = smooth) = 1  ## bizarro world
+P(tp = over | pb = chunky) = 0</code></pre>
+<p>However, regardless of whether we stay in the real world or in bizarro world, the following will always be true,</p>
+<pre><code>P(tp = over AND pb = smooth) =  P(tp = over | pb = smooth) * P(pb = smooth),</code></pre>
+<p>because this is the definition of conditional probability. Now you might notice that if the above is true, then the following should <em>also</em> be true:</p>
+<pre><code>P(pb = smooth AND tp = over) =  P(pb = smooth | tp = over) * P(tp = over).</code></pre>
+<p>And it is true. For the same reason that this follows from the definition of conditional probability.</p>
+<p>The order of the two joint events on the left-hand-side does not matter. There is no difference between P(A and B) and P(B and A). If both A and B happen, they both happen. There is no implied chronology when we write “A and B” that A came before B. So, that said, it is also true that</p>
+<pre><code>P(tp = over | pb = smooth) * P(pb = smooth) =  P(pb = smooth | tp = over) * P(tp = over).</code></pre>
+<p>By combining the two equations from above. Or, in general</p>
+<pre><code>P(A | B) * P(B) =  P(B | A) * P(A)</code></pre>
+<p>Notice that is <em>not</em> generally true about conditional probabilities that <code>P(A|B) = P(B|A)</code>. Even though it is always true about joint probabilities that <code>P(A,B) = P(B,A)</code> (I used commas instead of “and” here.) Here’s an example. All NYU students are New Yorkers (at least, honorary New Yorkers while in town.) But not all New Yorkers are NYU students. The probability of being a New Yorker conditional on (or given that) you are currently an NYU student is 1. However the probability of being an NYU conditional on being a New Yorker is clearly not 1.</p>
+</div>
+<div id="conditional-death-again" class="section level2 unnumbered">
+<h2>Conditional death, again</h2>
+<p>Earlier I said we would use the life table to answer questions about when you will die assuming nothing else about you. Now, you might be aware that life expectancy is not the same for males and females. Indeed, there are separate life tables for each sex. I’ve plotted the death column dx from both tables in Figure <a href="somefacts.html#fig:life-durationMF">10.1</a>. Females are shown in light blue bars, and males using orange Unfortunately for the males, their mortality rate is higher not only in their later years, but even in their late teens and twenties. (We’ll come back to that when we consider how you will die.)</p>
+<div class="figure" style="text-align: center"><span id="fig:life-durationMF"></span>
+<img src="carpedatum_files/figure-html/life-durationMF-1.png" alt="Deaths by age for male and female (2010)" width="90%"  />
+<p class="caption">
+Figure 10.1: Deaths by age for male and female (2010)
+</p>
+</div>
+<p>Suppose I was interested purely in the likelihood (at birth) of living into ones 90s or beyond, conditional on sex. I can find out the proportions from separate life tables for each sex as follows. (These single-sex life tables go from 0 to 119, and the first row is dying before your 1st birthday. I need to look at the 91st row to see death after age 90.):</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="co">#proportion of females dying from at ages 80-119</span></a>
+<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="kw">sum</span>(lifetableFemale[<span class="dv">91</span><span class="op">:</span><span class="dv">120</span>,<span class="st">&quot;dx&quot;</span>])<span class="op">/</span><span class="kw">sum</span>(lifetableFemale[,<span class="st">&quot;dx&quot;</span>])</a></code></pre></div>
+<pre><code>## [1] 0.2446278</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="co">#proportion of males dying from at ages 80-119</span></a>
+<a class="sourceLine" id="cb41-2" data-line-number="2"><span class="kw">sum</span>(lifetableMale[<span class="dv">91</span><span class="op">:</span><span class="dv">120</span>,<span class="st">&quot;dx&quot;</span>])<span class="op">/</span><span class="kw">sum</span>(lifetableMale[,<span class="st">&quot;dx&quot;</span>])</a></code></pre></div>
+<pre><code>## [1] 0.1347719</code></pre>
+<p>I can make a two way table using these proportions. I will base my table on a sample of 1000 females and 1000 males. <strong>This is not real sample data.</strong> I am just using the life table proportions here to construct an idealized sample.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">sex_age80 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">dieBefore90 =</span> <span class="kw">c</span>(<span class="dv">755</span>,<span class="dv">865</span>), <span class="dt">livePast90 =</span> <span class="kw">c</span>(<span class="dv">245</span>,<span class="dv">135</span>), </a>
+<a class="sourceLine" id="cb43-2" data-line-number="2">                        <span class="dt">row.names=</span><span class="kw">c</span>(<span class="st">&quot;Females&quot;</span>,<span class="st">&quot;Males&quot;</span>))</a></code></pre></div>
+<p>The table looks like this</p>
+<table class="table table-bordered table" style="width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-19">Table 10.2: </span>Will you live into your 90s?
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+dieBefore90
+</th>
+<th style="text-align:right;">
+livePast90
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Females
+</td>
+<td style="text-align:right;">
+755
+</td>
+<td style="text-align:right;">
+245
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Males
+</td>
+<td style="text-align:right;">
+865
+</td>
+<td style="text-align:right;">
+135
+</td>
+</tr>
+</tbody>
+</table>
+<p>The unconditional probability of living past 90 is (245+135)/2000 = 0.19 or 19%. This would be your betting chances if a baby were born and you did not know its sex. We can write this as P(live past 90) = 0.19. But if you knew it was born female, then you need to compute P(live past 90 | sex = female). How would you do this? Well, you can use the table. Of the 1000 females, 245 live past 90, so the answer is 24.5%. For males, it is 13.5%. Sorry, males.</p>
+<div id="just-to-make-things-weird" class="section level3 unnumbered">
+<h3>Just to make things weird</h3>
+<p>Now suppose, for arguments’ sake, that the numbers in the life table apply to everyone born in the last 120 years as of today (they don’t; life expectancy has changed over the years). If I told you that someone was over 90, but nothing else about them, what is the probability that the person is female (at least in terms of sex at birth)? The two-way table I constructed had equal numbers of males and females. We will assume that the birth rates are indeed the same. So the unconditional probability of being female knowing nothing about a person’s status as living or dead is 50%. However, among those alive in their 90s, 245/(245+135) = 0.64 of them are female. Almost 2 to 1.</p>
+<p>Given a two-way table, with variables representing events A and B, it is possible to derive conditional probabilities in both directions. P(A|B) might be the probability of living past 90 given sex at birth. P(B|A) would then be probability of sex at birth given present age over 90.</p>
+<p>In the next chapters, we will start to examine what kinds of things might kill you. This will give us another chance to look at association in two way tables (as distinguished from independence). We will also explore what it means to say that something <em>causes</em> early death. In the example above, we saw that sex is associated with early death. Females live longer; males die younger. Would we say that sex causes early death?</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="conditional-death.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="how-you-will-die-causes-or-conditions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["carpedatum.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
