@@ -21,39 +21,9 @@ documentclass: book
 ---
 
 
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE, 
-                      message = FALSE, fig.align = "center",
-                      out.width='90%')
 
-library(knitr)
-library(tibble)
-library(kableExtra)
-library(dplyr)
-library(ggplot2)
-library(rpart)
-library(rpart.plot)
-library(openintro)
-library(NHANES)
-library(viridis)
-library(censusapi)
 
-```
 
-```{r include=FALSE}
-
-table_format = if(is_html_output()) {
-  "html"
-} else if(is_latex_output()) {
-  "latex"
-}
-options(knitr.table.format = table_format)
-
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'kableExtra', 'dplyr', 'ggplot2', 'rpart', 'rpart.plot', 'NHANES', 'openintro', 'censusapi', 'viridis'
-), 'packages.bib')
-```
 
 
 # Preface {-}
@@ -90,6 +60,11 @@ An elegant and simple proof can be constructed (hint: by induction), but if you 
 
 Now problems like this one are often used to teach proof technique rather than to encode cute number-facts in memory. And indeed, for training statisticians, a rigorous mathematical presentation is important. So, for that matter, is computer simulation. For most users of this book, intuition and understanding are the priority, and the ability to derive formulas is not necessary. We will, in due course, bring out some computer simulations.
 
-```{r xkcd-preamble, echo=FALSE, out.width='90%', fig.cap='Hopefully you are in the right place. Credit   [xkcd.com](https://xkcd.com/1856/)'}
-include_graphics("images/existence_proof_2x.png")
-```
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{images/existence_proof_2x} 
+
+}
+
+\caption{Hopefully you are in the right place. Credit   [xkcd.com](https://xkcd.com/1856/)}(\#fig:xkcd-preamble)
+\end{figure}
