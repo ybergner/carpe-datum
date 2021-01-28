@@ -30,7 +30,7 @@ Notice that there are 435 NBA players from the 2008-2009 season here. We have th
 
 ```{r echo =T}
 # sample 100 values at random from the nba heights in inches
-nbaHeights <- sample(nba_heights$h.in, 100) 
+nbaHeights <- sample(nba_heights$h_in, 100) 
 # rename the male height to match
 maleHeights <- male_heights$heights
 ```

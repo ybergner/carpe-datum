@@ -20,10 +20,10 @@ Now, if someone is making what to *them* appears to be a common-sense claim but 
 
 ### Two Kinds of People {-}
 
-"There are two kinds of people... which one are you?" questions have become something of an internet meme, particulary with the categorizations represented graphically or pictorially. There is a whole [blog devoted to them by João Rocha](https://2kindsofpeople.tumblr.com/). The images in Figure \@ref(fig:tp-fig) probably need no explanation, as they concern the great [toilet paper orientation](https://en.wikipedia.org/wiki/Toilet_paper_orientation) debate.
+"There are two kinds of people... which one are you?" questions have become something of an internet meme, particulary with the categorizations represented graphically or pictorially. There is a whole [blog devoted to them by João Rocha](https://2kindsofpeople.tumblr.com/){target="_blank"}. The images in Figure \@ref(fig:tp-fig) probably need no explanation, as they concern the great [toilet paper orientation](https://en.wikipedia.org/wiki/Toilet_paper_orientation){target="_blank"} debate.
 
 
-(ref:tpcaption) The great debate. Source [Wikimedia Commons User:Elya](https://commons.wikimedia.org/wiki/File:Toilet_paper_orientation_over.jpg) 
+(ref:tpcaption) The great debate. Source [Wikimedia Commons User:Elya](https://commons.wikimedia.org/wiki/File:Toilet_paper_orientation_over.jpg){target="_blank"} 
 
 ```{r tp-fig, echo=FALSE, out.width='90%', fig.show='hold', fig.cap='(ref:tpcaption)'}
 include_graphics("images/Toilet_paper_orientation_overunder.png")
@@ -76,7 +76,7 @@ kable(iamaperson,
 
 That all seems pretty obvious, in part because I made up a *tautology* in the second example there. Being a human being is automatically associated with everyone who can be a *kind of person*. 
 
-But what if I had gotten exactly the same results for the toilet paper question? What if the data looked like Table \@ref(tab:tp-redux). In this **alternate universe**, everyone I ask in Washington Square is an under-hanger. Yes, it's one of those scary alternate universes, like the Twilight Zone. Anyway, does that mean that there is only one kind of person when it comes to toilet paper orientation? Well...not necessarily. After all, this was just a **sample** of people in Washington Square. It was not the whole **population** of Washington Square, even, let alone New York City, let alone the world.
+But what if I had gotten exactly the same results for the toilet paper question? What if the data looked like Table \@ref(tab:tp-redux). In this **alternate universe**, everyone I ask in Washington Square is an under-hanger. Yes, it's one of those scary alternate universes, like the Twilight Zone. Anyway, does that mean that there is only one kind of person when it comes to toilet paper orientation? Well...not necessarily. After all, this was just a **sample** of people in Washington Square (specifically, a convenience sample). It was not the whole **population** of Washington Square, even, let alone New York City, let alone the world.
 
 
 ```{r tp-redux, echo=FALSE}
@@ -164,7 +164,7 @@ While focusing on the great toilet paper debate, we've managed to establish some
 
 > "I always said if I had one breakfast to eat before I die, it would be Wonder Bread toasted, with Skippy Super Chunky melted on it, slices of overripe banana and fresh crisp bacon."
 >
-> --- [Michael Bloomberg](https://nypost.com/2008/07/26/mayors-last-meal-is-a-killer/)
+> --- [Michael Bloomberg](https://nypost.com/2008/07/26/mayors-last-meal-is-a-killer/){target="_blank"}
 
 
 Former NYC mayor Michael Bloomberg is a chunky peanut butter kind of person. Are you? As peanut butter comes in "smooth" and "chunky" varieties (also known as creamy and crunchy, respectively), this question is also a dichotomous one. However, if we add this test question to our question pool, in addition to the one about toilet paper orientation, we will soon find that having two two-kinds-of-people questions begins to imply more than two kinds of people. Wait, what?
@@ -612,9 +612,9 @@ the Meyers-Briggs Type Indicator (MBTI) categories and/or the five-factor model 
 
 > Test yourself:
 >
-> - MBTI-style at [16personalities.com](16personalities.com) or [here](https://openpsychometrics.org/tests/OEJTS/)
+> - MBTI-style at [16personalities.com](16personalities.com){target="_blank"} or [here](https://openpsychometrics.org/tests/OEJTS/){target="_blank"}
 > 
-> - Big Five [here](http://www.personal.psu.edu/~j5j/IPIP/) or [here](https://bigfive-test.com/) or [here](https://openpsychometrics.org/tests/IPIP-BFFM/). [General information about these test items.](https://ipip.ori.org/)
+> - Big Five [here](http://www.personal.psu.edu/~j5j/IPIP/){target="_blank"} or [here](https://bigfive-test.com/){target="_blank"} or [here](https://openpsychometrics.org/tests/IPIP-BFFM/){target="_blank"}. [General information about these test items.](https://ipip.ori.org/){target="_blank"}
 
 I will only minimially describe the MBTI and the Five Factor Model (FFM, or Big Five) here, in terms of the topics we have been discussing. There are many resources for learning more about these personality tests. Some are referenced under further reading.
 
