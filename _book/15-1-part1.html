@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="15.1 COVID NYC | Carpe Datum" />
+<meta property="og:type" content="book" />
+
+
+
+
+
+<meta name="author" content="Yoav Bergner" />
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="15.1 COVID NYC | Carpe Datum">
+
+<title>15.1 COVID NYC | Carpe Datum</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<link rel="stylesheet" href="toc.css" type="text/css" />
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li class="has-sub"><a href="index.html#preface">Preface</a><ul>
+<li><a href="caveat.html#caveat">Caveat</a></li>
+<li class="has-sub"><a href="guiding-principles-in-this-book.html#guiding-principles-in-this-book">Guiding principles in this book</a><ul>
+<li><a href="guiding-principles-in-this-book.html#question-driven">Question-driven</a></li>
+<li><a href="guiding-principles-in-this-book.html#no-proofs">No proofs</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="how-many-kinds-of-people-are-there.html#how-many-kinds-of-people-are-there">How Many Kinds of People Are There?</a><ul>
+<li><a href="things-are-about-to-get-meta-right-from-the-start.html#things-are-about-to-get-meta-right-from-the-start">Things are about to get meta right from the start</a></li>
+</ul></li>
+<li class="has-sub"><a href="1-categories.html#categories"><span class="toc-section-number">1</span> Categories, counts, and kinds</a><ul>
+<li><a href="1-categories.html#two-kinds-of-people">Two Kinds of People</a></li>
+<li><a href="1-categories.html#samples-and-populations-a-statistical-caveat">Samples and Populations: A Statistical Caveat</a></li>
+<li><a href="1-categories.html#a-psychological-caveat">A Psychological Caveat</a></li>
+<li><a href="1-categories.html#summarizing-data">Summarizing data</a></li>
+<li><a href="1-categories.html#checkpoint">Checkpoint</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-dimensions.html#dimensions"><span class="toc-section-number">2</span> Dimensions</a><ul>
+<li><a href="independence-association-and-contingency.html#independence-association-and-contingency">Independence, Association, and Contingency</a></li>
+<li><a href="latent-factors-and-measurement.html#latent-factors-and-measurement">Latent Factors and Measurement</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-test-indep.html#test-indep"><span class="toc-section-number">3</span> Tests of independence: A first look starring alternate universes</a><ul>
+<li><a href="rise-of-the-machines.html#rise-of-the-machines">Rise of the machines</a></li>
+<li><a href="hypothesis-testing-just-happened.html#hypothesis-testing-just-happened">Hypothesis testing just happened</a></li>
+<li><a href="caveats.html#caveats">Caveats</a></li>
+<li class="has-sub"><a href="sampling-simulations-and-randomness.html#sampling-simulations-and-randomness">Sampling, simulations, and randomness</a><ul>
+<li><a href="sampling-simulations-and-randomness.html#tossing-virtual-coins">Tossing (virtual) coins</a></li>
+<li><a href="sampling-simulations-and-randomness.html#but-some-observations-do-occur-more-than-others">But some observations <em>do</em> occur more than others</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="4-shades.html#shades"><span class="toc-section-number">4</span> (An Infinite Number of) Shades of Gray (or Brown)</a><ul>
+<li class="has-sub"><a href="poopiness.html#poopiness">Poopiness</a><ul>
+<li><a href="poopiness.html#mixtures">Mixtures</a></li>
+</ul></li>
+<li class="has-sub"><a href="crappiness.html#crappiness">Crappiness</a><ul>
+<li><a href="crappiness.html#check-your-understanding">Check your understanding</a></li>
+</ul></li>
+</ul></li>
+<li><a href="5-cut-scores-and-abnormality.html#cut-scores-and-abnormality"><span class="toc-section-number">5</span> Cut Scores and Abnormality</a></li>
+<li class="has-sub"><a href="6-the-modal-american.html#the-modal-american"><span class="toc-section-number">6</span> The Modal American</a><ul>
+<li><a href="6-the-modal-american.html#step-one-categories">Step one: categories</a></li>
+<li><a href="6-the-modal-american.html#step-two-contingency-table">Step two: contingency table</a></li>
+<li><a href="6-the-modal-american.html#exercises">Exercises</a></li>
+</ul></li>
+<li class="has-sub"><a href="7-sixteen-personalities-or-five-factors.html#sixteen-personalities-or-five-factors"><span class="toc-section-number">7</span> Sixteen Personalities or Five Factors?</a><ul>
+<li><a href="7-sixteen-personalities-or-five-factors.html#mbti">MBTI</a></li>
+<li><a href="7-sixteen-personalities-or-five-factors.html#big-five">Big Five</a></li>
+<li><a href="7-sixteen-personalities-or-five-factors.html#twenty-questions-about-extraversion">Twenty Questions (about Extraversion)</a></li>
+<li><a href="7-sixteen-personalities-or-five-factors.html#but-whats-the-point">But what’s the point?</a></li>
+<li><a href="still-meta-after-all-these-pages.html#still-meta-after-all-these-pages">Still meta after all these pages</a></li>
+</ul></li>
+<li class="has-sub"><a href="8-when-and-how-will-you-die.html#when-and-how-will-you-die"><span class="toc-section-number">8</span> When and How Will You Die?</a><ul>
+<li class="has-sub"><a href="not-quite-death-but-um-rain.html#not-quite-death-but-um-rain">Not Quite Death, but, um… Rain?</a><ul>
+<li><a href="not-quite-death-but-um-rain.html#stochastic-vs-deterministic-relationships">Stochastic vs Deterministic relationships</a></li>
+</ul></li>
+<li class="has-sub"><a href="ways-of-thinking-about-probabilistic-statements.html#ways-of-thinking-about-probabilistic-statements">Ways of thinking about probabilistic statements</a><ul>
+<li><a href="ways-of-thinking-about-probabilistic-statements.html#ensembles">Ensembles</a></li>
+<li><a href="ways-of-thinking-about-probabilistic-statements.html#degree-of-belief">Degree of belief</a></li>
+<li><a href="ways-of-thinking-about-probabilistic-statements.html#decisions">Decisions</a></li>
+</ul></li>
+<li><a href="death.html#death">Death</a></li>
+</ul></li>
+<li class="has-sub"><a href="9-conditional-death.html#conditional-death"><span class="toc-section-number">9</span> Conditional Death</a><ul>
+<li><a href="9-conditional-death.html#how-does-the-death-simulation-work">How does the death (simulation) work?</a></li>
+</ul></li>
+<li class="has-sub"><a href="10-somefacts.html#somefacts"><span class="toc-section-number">10</span> Some facts about Probabilities</a><ul>
+<li><a href="conditional-probabilities.html#conditional-probabilities">Conditional Probabilities</a></li>
+<li class="has-sub"><a href="conditional-death-again.html#conditional-death-again">Conditional death, again</a><ul>
+<li><a href="conditional-death-again.html#just-to-make-things-weird">Just to make things weird</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="11-how-you-will-die-causes-or-conditions.html#how-you-will-die-causes-or-conditions"><span class="toc-section-number">11</span> How You Will Die: Causes or Conditions?</a><ul>
+<li><a href="causes-of-death-colloquially.html#causes-of-death-colloquially">Causes of death, colloquially</a></li>
+<li><a href="hold-my-beer.html#hold-my-beer">Hold my beer</a></li>
+<li><a href="non-deterministic-causation.html#non-deterministic-causation">Non-deterministic Causation</a></li>
+<li><a href="testing-for-an-association-between-two-variables.html#testing-for-an-association-between-two-variables">Testing for an association between two variables</a></li>
+</ul></li>
+<li class="has-sub"><a href="will-you-make-money.html#will-you-make-money">Will You Make Money?</a><ul>
+<li><a href="battle-of-the-bills.html#battle-of-the-bills">Battle of the Bills</a></li>
+</ul></li>
+<li class="has-sub"><a href="12-betting-on-beer-or-ice-cream.html#betting-on-beer-or-ice-cream"><span class="toc-section-number">12</span> Betting on Beer (or Ice Cream)</a><ul>
+<li class="has-sub"><a href="how-do-statisticians-solve-problems-like-this.html#how-do-statisticians-solve-problems-like-this">How do statisticians solve problems like this?</a><ul>
+<li><a href="how-do-statisticians-solve-problems-like-this.html#the-solution-by-counting-or-combinatorics">The solution by counting, or combinatorics</a></li>
+<li><a href="how-do-statisticians-solve-problems-like-this.html#the-solution-by-distribution-or-statistics">The solution by distribution, or statistics</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="13-expected-value.html#expected-value"><span class="toc-section-number">13</span> Expected Value</a><ul>
+<li class="has-sub"><a href="betting-on-ice-cream.html#betting-on-ice-cream">Betting on ice cream</a><ul>
+<li><a href="betting-on-ice-cream.html#by-the-statistical-power-of-grayskull">By the (Statistical) Power of Grayskull</a></li>
+</ul></li>
+<li class="has-sub"><a href="betting-on-your-future.html#betting-on-your-future">Betting on your Future</a><ul>
+<li><a href="betting-on-your-future.html#why-why-why-multiply-ay-ay">Why why why multiply-ay-ay?</a></li>
+<li><a href="betting-on-your-future.html#where-do-branching-probabilities-come-from">Where do branching probabilities come from?</a></li>
+</ul></li>
+</ul></li>
+<li><a href="is-the-system-fair.html#is-the-system-fair">Is the System Fair?</a></li>
+<li class="has-sub"><a href="14-differences-in-athletics.html#differences-in-athletics"><span class="toc-section-number">14</span> Differences in athletics</a><ul>
+<li class="has-sub"><a href="are-professional-basketball-players-taller.html#are-professional-basketball-players-taller">Are professional basketball players taller?</a><ul>
+<li><a href="are-professional-basketball-players-taller.html#none-of-this-is-surprising">None of this is surprising</a></li>
+</ul></li>
+<li><a href="surprising-differences.html#surprising-differences">Surprising differences</a></li>
+<li><a href="fairness-on-trial-trans-athletes.html#fairness-on-trial-trans-athletes">Fairness on trial: trans athletes</a></li>
+</ul></li>
+<li class="has-sub"><a href="15-nyc-covid-19-data.html#nyc-covid-19-data"><span class="toc-section-number">15</span> NYC COVID-19 Data</a><ul>
+<li><a href="prologue.html#prologue">Prologue</a></li>
+<li class="has-sub"><a href="15-1-part1.html#part1"><span class="toc-section-number">15.1</span> COVID NYC</a><ul>
+<li><a href="15-1-part1.html#getting-some-data">Getting some data</a></li>
+<li><a href="15-1-part1.html#local-data-on-covid-from-the-city-andor-state">Local data on COVID from the city and/or state</a></li>
+</ul></li>
+<li class="has-sub"><a href="15-2-part2.html#part2"><span class="toc-section-number">15.2</span> Getting started with US Census data</a><ul>
+<li><a href="15-2-part2.html#census-variables">Census Variables</a></li>
+<li><a href="15-2-part2.html#geography-units">Geography Units</a></li>
+</ul></li>
+<li class="has-sub"><a href="15-3-part3.html#part3"><span class="toc-section-number">15.3</span> More (and messier) Census data</a><ul>
+<li><a href="15-3-part3.html#exploring-the-acs-data">Exploring the ACS data</a></li>
+</ul></li>
+<li class="has-sub"><a href="15-4-zipcode.html#zipcode"><span class="toc-section-number">15.4</span> Zipcode tabulation area</a><ul>
+<li><a href="15-4-zipcode.html#some-more-variables-to-play-with">Some more variables to play with</a></li>
+</ul></li>
+<li class="has-sub"><a href="15-5-mapviz.html#mapviz"><span class="toc-section-number">15.5</span> Visualizing data on maps</a><ul>
+<li><a href="15-5-mapviz.html#shapefiles">Shapefiles</a></li>
+<li><a href="15-5-mapviz.html#coloring-in-the-shapes">Coloring in the shapes</a></li>
+<li><a href="15-5-mapviz.html#scatterplots">Scatterplots</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="has-sub"><a href="A-sec-randomness.html#sec:randomness"><span class="toc-section-number">A</span> Randomness</a><ul>
+<li><a href="A-1-defining-random-processes.html#defining-random-processes"><span class="toc-section-number">A.1</span> Defining random processes</a></li>
+<li><a href="A-2-predictions-about-random-events.html#predictions-about-random-events"><span class="toc-section-number">A.2</span> Predictions about random events</a></li>
+<li><a href="A-3-modification-for-continuous-observations.html#modification-for-continuous-observations"><span class="toc-section-number">A.3</span> Modification for continuous observations</a></li>
+</ul></li>
+<li><a href="references.html#references">References</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="part1" class="section level2">
+<h2><span class="header-section-number">15.1</span> COVID NYC</h2>
+<p>On April 10, 2020, <a href="https://abcnews.go.com/Health/nyc-stark-contrast-covid-19-infection-rates-based/story?id=69920706" target="_blank">ABC News</a> covered an online report (by the NYU Furman Center) that examined cases of COVID-19 in New York City on a neighborhood level. Most COVID-19 data that had been coming out had been reporting on the city as a whole. The main idea here was that neighborhoods tell a different story. Data scientists call this a shift in the unit-of-analysis. The city is made of boroughs, which themselves are made up of smaller neighborhoods. So the unit of analysis could be the whole city, the boroughs of the city, or something even more fine-grained, like neighborhoods or zipcode areas. For example, some zipcodes are wealthier and some poorer. Zipcode areas also vary by racial composition. If we examine COVID-19 outcomes by neighborhood, we may be able to see patterns and associations between disease incidence and race or socio-economic variables. Indeed, the Furman Center found such associations. The ABC News report produced images like the following:</p>
+<p><img src="images/abc_COVID19NycZip_v03_KA_hpEmbed_17x12_992.jpg" /></p>
+<p>People familiar with the layout of New York City might be able to identify low-income and largely African-American neighborhoods like Hunts Point in the South Bronx. ABC News produced a corresponding map showing the share of adults with college degree, a measure of educational attainment which the Furman Center report said was associated with disease incidence.</p>
+<p><img src="images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg" /></p>
+<p>It requires switching back and forth between these images, but the dark regions on the COVID map (higher rates of disease) seem to often correspond to the lighter regions on the college degree map (lower college share). In other words, areas with lower educational attainment seem to have higher rates of the disease. There are many possible explanations of this relationship, which are discussed in the Furman report and elsewhere.</p>
+<p>How does one make these data visualizations? And are they the best way to “see” the signals in the data?</p>
+<p>ABC News also reproduced a version of table below, showing racial composition by neighborhood. The title may confuse matters, however. In this table, multiple neighborhoods (zipcodes) are actually grouped together into five sets using <strong>quintiles.</strong> You take all of the zipcodes, rank-order them by COVID-19 concentration, and then select the bottom fifth, the next fifth, and so on up to the top fifth. These groups are labeled “lowest concentration”, “low concentration”, and so on up to “highest concentration.”</p>
+<p>To make matters confusing, the word “quintile” is often used referring to the five sets (for example, “the lower quintile”). But strictly speaking, the quintiles are actually the cut-points. So for five groups, there are four quintiles. If you look at the table below, the cut-points/quintiles are {3.33, 4.13, 4.77, 5.87}. Of course, this division process can be done for a different number of <strong>quantiles</strong>–note the spelling–not necessarily five. A division of three groups is made by choosing two (cut-point) tertiles or terciles. The median is the 2-quantile, as it is the cut-point that divides a data set into two equal parts. Unfortunately, the naming conventions here are rather confusing, but you get used to them if you use them a lot.</p>
+<p><img src="images/abc_COVID19RacialComp_v02_KA_hpEmbed_37x16_992.jpg" /></p>
+<p>If you look at the table above, you may notice trends or patterns between racial composition (of these groups of neighborhoods) and COVID-19 concentration. The trends are not perfectly linear. But, for example, the proportion of Black and Hispanic people in the low-concentration neighborhoods is 37.3%. While in the high concentration neighborhoods, this combined share is 55.6%.</p>
+<p>In the remainder of this tutorial, we will examine how to recreate graphs and tables like the one above from publicly available data. This will enable you to create your own versions or update the ones above with new data. We will also look at alternative representations and at some simulation-based tests to see how likely it is that such disparities might occur by chance.</p>
+<p>Let’s begin!</p>
+<div id="getting-some-data" class="section level3 unnumbered">
+<h3>Getting some data</h3>
+<p>In this tutorial, I will walk you through the steps of creating some of the figures and tables that go into media reports about COVID-19 outcomes. The examples here are all NYC-centric, but the methods, especially for US Census data, are completely general. The hardest part of all of this–and this is generally true about the practice of data science–is getting all of the data from different sources cleaned up and fitted together.</p>
+</div>
+<div id="local-data-on-covid-from-the-city-andor-state" class="section level3 unnumbered">
+<h3>Local data on COVID from the city and/or state</h3>
+<p>For state and municipality-level COVID-19 data in New York, these are some sources:</p>
+<ul>
+<li><a href="https://www1.nyc.gov/site/doh/covid/covid-19-data-archive.page" target="_blank">NYC data summaries</a></li>
+<li><a href="https://github.com/nychealth/coronavirus-data" target="_blank">NYC Health GitHub</a></li>
+<li><a href="https://health.data.ny.gov/Health/New-York-State-Statewide-COVID-19-Testing/xdss-u53e" target="_blank">NY Statewide data</a></li>
+</ul>
+<p>These sources are updated daily. I will be working with the GitHub data as of April 23. This is actually two weeks later than the Furman/ABC reports, so more up-to-date. I downloaded the files from the online repository and put them into a folder on my computer. For example, here I will load and view the borough-level data table.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1">nyc_boro_data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/coronavirus-nyc/boro.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> F)</a>
+<a class="sourceLine" id="cb95-2" data-line-number="2">nyc_boro_data</a></code></pre></div>
+<pre><code>##   BOROUGH_GROUP COVID_CASE_COUNT COVID_CASE_RATE
+## 1     The Bronx            28875         1962.05
+## 2      Brooklyn            34476         1269.58
+## 3     Manhattan            16754          887.36
+## 4        Queens            39856         1589.55
+## 5 Staten Island             9755         1944.40
+## 6      Citywide           129788              NA</code></pre>
+<p>According to the documentation in the GitHub README file (a valuable source of information), this table contains rates of confirmed cases, by NYC borough of residence. Rates are:</p>
+<ul>
+<li>Cumulative since the start of the outbreak</li>
+<li>Age adjusted according to <a href="https://www.cdc.gov/nchs/data/statnt/statnt20.pdf" target="_blank">the US 2000 standard population</a></li>
+<li>Per 100,000 people in the borough</li>
+</ul>
+<p>What does age-adjusted rate mean? You can read the link, but the main idea here is to try to put all of the boroughs on equal footing in the rate per 100,000 people, even if some boroughs have an older or younger population than others. Which it turns out they do. Later, once we have borough populations, we could examine simple population-adjusted rates that are not age-adjusted and see what those look like in comparison.</p>
+<p>If we wanted to do age-adjustment, or even simpler population adjustment, we would need to supplement this COVID data with population data, for example obtained from the US Census. Before we turn to that, let us just quickly explore the other data provided by NYC.</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1">nyc_sex_data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/coronavirus-nyc/by-sex.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb97-2" data-line-number="2">nyc_sex_data</a></code></pre></div>
+<pre><code>##        SEX_GROUP COVID_CASE_RATE HOSPITALIZED_CASE_RATE DEATH_RATE
+## 1         Female         1394.88                 324.21      77.38
+## 2           Male         1702.93                 507.52     134.42
+## 3 Citywide total         1545.33                 411.99     104.91</code></pre>
+<p>(By the way, you may get a warning like, “incomplete final line found” when reading this file. You can ignore it. R is expecting each line in a .csv file to end with a newline/return. You can also just open the file and add that newline after the last row if you like).</p>
+<p>Case and fatality rates by sex show that males are being infected and dying at significantly higher rates. Note that each of these is already adjusted to rate per 100,000.</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1">nyc_age_data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/coronavirus-nyc/by-age.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb99-2" data-line-number="2">nyc_age_data</a></code></pre></div>
+<pre><code>##            AGE_GROUP COVID_CASE_RATE HOSPITALIZED_CASE_RATE DEATH_RATE
+## 1         0-17 years          149.86                  12.91       0.17
+## 2        18-44 years         1429.09                 147.79      11.28
+## 3        45-64 years         2305.73                 600.33      96.69
+## 4        65-74 years         2351.39                1123.27     311.68
+## 5 75 and older years         2728.10                1682.16     778.83
+## 6     Citywide total         1545.33                 411.99     104.91</code></pre>
+<p>Age-level data show a few interesting features. For one, children are barely even getting infected. Among adults, infection rates are slightly higher for older adults, but death rates are much higher. We could derive a measure of case fatality rate (CFR) as follows:</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1">nyc_age_data<span class="op">$</span>CFR &lt;-<span class="st"> </span><span class="kw">round</span>(nyc_age_data<span class="op">$</span>DEATH_RATE<span class="op">/</span>nyc_age_data<span class="op">$</span>COVID_CASE_RATE, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb101-2" data-line-number="2">nyc_age_data</a></code></pre></div>
+<pre><code>##            AGE_GROUP COVID_CASE_RATE HOSPITALIZED_CASE_RATE DEATH_RATE   CFR
+## 1         0-17 years          149.86                  12.91       0.17 0.001
+## 2        18-44 years         1429.09                 147.79      11.28 0.008
+## 3        45-64 years         2305.73                 600.33      96.69 0.042
+## 4        65-74 years         2351.39                1123.27     311.68 0.133
+## 5 75 and older years         2728.10                1682.16     778.83 0.285
+## 6     Citywide total         1545.33                 411.99     104.91 0.068</code></pre>
+<p>From this we see that adults 75 and older have a 28.5% chance of dying from COVID-19, compared to a 4.2% for adults between 45-64.</p>
+<p><strong>Exercise</strong>: compute the case fatality rate by sex.</p>
+<p>Since I’m going to be using this method later, there is another way to add a new CFR variable to the table using the <code>mutate</code> function in the <code>dplyr</code> package. It looks slightly more complicated, but it has benefits which I won’t get into now. The important thing here is just to recognize that there are different ways of achieving the same ends.</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1"><span class="co"># the way from before</span></a>
+<a class="sourceLine" id="cb103-2" data-line-number="2"><span class="co"># nyc_age_data$CFR &lt;- round(nyc_age_data$DEATH_RATE/nyc_age_data$COVID_CASE_RATE, 3)</span></a>
+<a class="sourceLine" id="cb103-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb103-4" data-line-number="4"><span class="co"># another way using dplyr</span></a>
+<a class="sourceLine" id="cb103-5" data-line-number="5">nyc_age_data &lt;-<span class="st"> </span>nyc_age_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">CFR =</span> <span class="kw">round</span>(DEATH_RATE<span class="op">/</span>COVID_CASE_RATE,<span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb103-6" data-line-number="6">nyc_age_data</a></code></pre></div>
+<pre><code>##            AGE_GROUP COVID_CASE_RATE HOSPITALIZED_CASE_RATE DEATH_RATE   CFR
+## 1         0-17 years          149.86                  12.91       0.17 0.001
+## 2        18-44 years         1429.09                 147.79      11.28 0.008
+## 3        45-64 years         2305.73                 600.33      96.69 0.042
+## 4        65-74 years         2351.39                1123.27     311.68 0.133
+## 5 75 and older years         2728.10                1682.16     778.83 0.285
+## 6     Citywide total         1545.33                 411.99     104.91 0.068</code></pre>
+<p>The most captivating data set provided by the city (hence the images we started out with) is probably the zipcode-level data, the first few rows of which look like this:</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1">nyc_zipcode_data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/coronavirus-nyc/tests-by-zcta.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb105-2" data-line-number="2"><span class="kw">head</span>(nyc_zipcode_data,<span class="dv">20</span>)</a></code></pre></div>
+<pre><code>##    MODZCTA Positive Total zcta_cum.perc_pos
+## 1       NA     1864  2078             89.70
+## 2    10001      260   571             45.53
+## 3    10002      712  1358             52.43
+## 4    10003      347   830             41.81
+## 5    10004       24    64             37.50
+## 6    10005       44   137             32.12
+## 7    10006       14    54             25.93
+## 8    10007       40   130             30.77
+## 9    10009      518  1180             43.90
+## 10   10010      201   561             35.83
+## 11   10011      394   852             46.24
+## 12   10012      116   330             35.15
+## 13   10013      179   426             42.02
+## 14   10014      233   529             44.05
+## 15   10016      502  1197             41.94
+## 16   10017      107   310             34.52
+## 17   10018      168   375             44.80
+## 18   10019      441   999             44.14
+## 19   10021      431  1148             37.54
+## 20   10022      250   668             37.43</code></pre>
+<p>Notice that the first row is missing a zipcode. Presumably these are COVID tests for which we do not know where the people who were tested actually reside.</p>
+<p>For each other row, we have a zipcode, the number of positive tests, the number of total tests, and the percent positive.</p>
+<p><strong>Exercise</strong>: Which of these expressions should give the percent positive tests?</p>
+<pre><code>nyc_zipcode_data$Total/nyc_zipcode_data$Positive*100
+nyc_zipcode_data$Positive/nyc_zipcode_data$Total
+nyc_zipcode_data$Positive/nyc_zipcode_data$Total*100
+(nyc_zipcode_data$Total-nyc_zipcode_data$Positive)
+(nyc_zipcode_data$Total-nyc_zipcode_data$Positive)*100</code></pre>
+<p>Now you might want to keep the first row, the one with the missing zipcode, in your data. But I would rather remove it now, because I’m going to try to add information to this zipcode table down the line. While I’m at it, I will also rename the column “MODZCTA” with “zipcode.”</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1">nyc_zipcode_data &lt;-<span class="st"> </span><span class="kw">na.omit</span>(nyc_zipcode_data)</a>
+<a class="sourceLine" id="cb108-2" data-line-number="2"><span class="kw">names</span>(nyc_zipcode_data)[<span class="dv">1</span>] &lt;-<span class="st"> &quot;zipcode&quot;</span></a>
+<a class="sourceLine" id="cb108-3" data-line-number="3"><span class="kw">head</span>(nyc_zipcode_data)</a></code></pre></div>
+<pre><code>##   zipcode Positive Total zcta_cum.perc_pos
+## 2   10001      260   571             45.53
+## 3   10002      712  1358             52.43
+## 4   10003      347   830             41.81
+## 5   10004       24    64             37.50
+## 6   10005       44   137             32.12
+## 7   10006       14    54             25.93</code></pre>
+<p>There are a couple more tables included in the GitHub repository, for example ones showing the daily tracking of new cases, hospitalizations, and deaths. But as we are focusing on the neighborhood level counts, I will leave them out of these notes.</p>
+<p>In the next part of the series, we will get started with US Census data.</p>
+</div>
+</div>
+<p style="text-align: center;">
+<a href="prologue.html"><button class="btn btn-default">Previous</button></a>
+<a href="15-2-part2.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>
