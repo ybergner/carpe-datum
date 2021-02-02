@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="A.1 Defining random processes | Carpe Datum" />
@@ -11,7 +10,7 @@
 
 
 
-
+<meta name="github-repo" content="ybergner/carpe-datum" />
 
 <meta name="author" content="Yoav Bergner" />
 
@@ -35,6 +34,7 @@ MathJax.Hub.Config({
 <script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="libs/navigation-1.1/tabsets.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -165,6 +165,7 @@ img {
 <li><a href="sampling-simulations-and-randomness.html#tossing-virtual-coins">Tossing (virtual) coins</a></li>
 <li><a href="sampling-simulations-and-randomness.html#but-some-observations-do-occur-more-than-others">But some observations <em>do</em> occur more than others</a></li>
 </ul></li>
+<li><a href="recap.html#recap">Recap</a></li>
 </ul></li>
 <li class="has-sub"><a href="4-shades.html#shades"><span class="toc-section-number">4</span> (An Infinite Number of) Shades of Gray (or Brown)</a><ul>
 <li class="has-sub"><a href="poopiness.html#poopiness">Poopiness</a><ul>
@@ -285,15 +286,15 @@ img {
 <p>By the way, we don’t have to stop at binary or dichotomous outcomes. For a fair six-sided die, we can write</p>
 <p><span class="math display">\[ x \in \{1, 2, \dots, 6\} \qquad P(x=n) = 1/6 \quad \forall n \in \{1, 2, \dots, 6\}. \]</span></p>
 <p>The “forall” symbol (an upside down A) is a shorthand we use to indicate that all outcomes are equally probable, with probability of 1/6. We can read this part as, “the probability that <span class="math inline">\(x\)</span> is observed to take the value <span class="math inline">\(n\)</span> is equal to 1/6 for all <span class="math inline">\(n\)</span> in the set containing the values 1, 2, 3, 4, 5, and 6.”</p>
-<p>What will the color be of the next car (excluding taxicabs) that crosses your path on the road? An idealized random description of that observation might look like this (notice that I do not have a compact shortcut “forall” because the probabilities are not the same):</p>
-<p><span class="math display">\[ x \in \{\mbox{white, black, gray, silver, red, blue, other}\} \\ 
-P(x=\mbox{white}) = 0.24 \\
-P(x=\mbox{black}) = 0.23 \\
-P(x=\mbox{gray}) = 0.16 \\
-P(x=\mbox{silver}) = 0.15 \\
-P(x=\mbox{red}) = 0.10 \\
-P(x=\mbox{blue}) = 0.09 \\
-P(x=\mbox{other}) = 0.03 \]</span></p>
+<p>What will the color be of the next car (excluding taxicabs) that crosses your path on the road? An idealized random description of that observation might look like this. Notice that I do not have a compact shortcut “forall” because the probabilities are not the same.</p>
+<p><span class="math display">\[ x \in \{\mbox{white, black, gray, silver, red, blue, other}\} \]</span>
+<span class="math display">\[ P(x=\mbox{white}) = 0.24 \]</span></p>
+<p><span class="math display">\[ P(x=\mbox{black}) = 0.23 \]</span>
+<span class="math display">\[P(x=\mbox{gray}) = 0.16 \]</span></p>
+<p><span class="math display">\[P(x=\mbox{silver}) = 0.15 \]</span>
+<span class="math display">\[P(x=\mbox{red}) = 0.10 \]</span>
+<span class="math display">\[P(x=\mbox{blue}) = 0.09 \]</span>
+<span class="math display">\[P(x=\mbox{other}) = 0.03 \]</span></p>
 </div>
 <p style="text-align: center;">
 <a href="A-sec-randomness.html"><button class="btn btn-default">Previous</button></a>
