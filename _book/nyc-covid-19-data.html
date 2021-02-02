@@ -161,6 +161,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#tossing-virtual-coins"><i class="fa fa-check"></i>Tossing (virtual) coins</a></li>
 <li><a href="test-indep.html#but-some-observations-do-occur-more-than-others">But some observations <em>do</em> occur more than others</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#recap"><i class="fa fa-check"></i>Recap</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="shades.html"><a href="shades.html"><i class="fa fa-check"></i><b>4</b> (An Infinite Number of) Shades of Gray (or Brown)</a><ul>
 <li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#poopiness"><i class="fa fa-check"></i>Poopiness</a><ul>
@@ -1113,20 +1114,20 @@ nyc_zipcode_data$Positive/nyc_zipcode_data$Total*100
 <a class="sourceLine" id="cb166-22" data-line-number="22"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">AvgHH =</span> (HH1pers<span class="op">+</span><span class="dv">2</span><span class="op">*</span>HH2pers<span class="op">+</span><span class="dv">3</span><span class="op">*</span>HH3pers<span class="op">+</span><span class="dv">4</span><span class="op">*</span>HH4plus)<span class="op">/</span>(HH1pers<span class="op">+</span>HH2pers<span class="op">+</span>HH3pers<span class="op">+</span>HH4plus)) </a>
 <a class="sourceLine" id="cb166-23" data-line-number="23"></a>
 <a class="sourceLine" id="cb166-24" data-line-number="24"><span class="kw">head</span>(zcta_edu_hh)</a></code></pre></div>
-<pre><code>##   zipcode Bachelors Masters Professional Doctorate Total_EducPop HH1pers HH2pers
-## 1   11222     11797    4846          814       271         30177    6139    6777
-## 2   11233      8449    3310          430       321         49821    9476    8429
-## 3   11235     16573    8694         2083      1053         59442   10886    9914
-## 4   11426      3192    1711          455       143         14569    1256    1757
-## 5   11427      3395    1651          372       153         17320    1691    1938
-## 6   11101      6342    2746         1145       394         22131    4692    4919
-##   HH3pers HH4plus Bach_plus_prop    AvgHH
-## 1    2419    1921           58.7 2.007070
-## 2    5052    6388           25.1 2.284614
-## 3    4816    6653           47.8 2.224240
-## 4     924    2419           37.8 2.708936
-## 5    1318    2553           32.2 2.631067
-## 6    1809    1749           48.0 2.046701</code></pre>
+<pre><code>##   zipcode Bachelors Masters Professional Doctorate Total_EducPop HH1pers
+## 1   11222     11797    4846          814       271         30177    6139
+## 2   11233      8449    3310          430       321         49821    9476
+## 3   11235     16573    8694         2083      1053         59442   10886
+## 4   11426      3192    1711          455       143         14569    1256
+## 5   11427      3395    1651          372       153         17320    1691
+## 6   11101      6342    2746         1145       394         22131    4692
+##   HH2pers HH3pers HH4plus Bach_plus_prop    AvgHH
+## 1    6777    2419    1921           58.7 2.007070
+## 2    8429    5052    6388           25.1 2.284614
+## 3    9914    4816    6653           47.8 2.224240
+## 4    1757     924    2419           37.8 2.708936
+## 5    1938    1318    2553           32.2 2.631067
+## 6    4919    1809    1749           48.0 2.046701</code></pre>
 <p>Having gathered the information in various tables (zcta_income, zcta_propOver65, zcta_SexByAge
 zcta_race_proportion, zcta_edu_hh), we can finally combine them all into one giant zipcode data frame:</p>
 <div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1">zcta_join &lt;-<span class="st"> </span>zcta_income <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -1177,7 +1178,7 @@ zcta_race_proportion, zcta_edu_hh), we can finally combine them all into one gia
 But right off the bat, we can plot it</p>
 <div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1"><span class="co"># quartz()</span></a>
 <a class="sourceLine" id="cb172-2" data-line-number="2"><span class="kw">plot</span>(NYC_zips)</a></code></pre></div>
-<p><img src="figs/unnamed-chunk-81-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="Figs/unnamed-chunk-81-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Woot! There be zipcodes! Without any other data. Just… boundaries. If you are following along in an RStudio session, you can get a better quality image by uncommenting the <code>quartz()</code> command. This will open the drawing in a new window. Note that it takes a little while to finish, and you can see it draw the boundaries of each zipcode one at a time… aww!</p>
 <p>To add colors or shades, we will need to send color/shade information along with the plot instruction… but there’s something else we need to do first.</p>
 <p>How many zip codes are in our data set? The answer can be found by the number of rows in our data frame:</p>
@@ -1309,7 +1310,7 @@ Here is how to repackage our dataset to fit with the shapefile</p>
 <a class="sourceLine" id="cb187-8" data-line-number="8">       <span class="dt">legend =</span> myShapeColors<span class="op">$</span>legendText, </a>
 <a class="sourceLine" id="cb187-9" data-line-number="9">       <span class="dt">fill =</span> myShapeColors<span class="op">$</span>legendColors, <span class="dt">cex =</span> <span class="fl">0.8</span>, </a>
 <a class="sourceLine" id="cb187-10" data-line-number="10">       <span class="dt">title =</span> <span class="st">&quot;College Prop&quot;</span>)</a></code></pre></div>
-<p><img src="figs/unnamed-chunk-89-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="Figs/unnamed-chunk-89-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Hallelujah, we finally have made an image of something. Notice that the output of the <code>getShapeColors</code> functions contains three elements (it is technically a list): values (colors values for each geographic area), legend (text for the legend, including the ranges of values), and palette (these are the colors that go into the len).</p>
 <p>The input of <code>getShapeColors</code> is the data you want to visualize as well as the number of levels. In this example, we chose 5. By default, the color palette is shades of blue, but as it is writte, you can provide different colors if you like. For example, the Furman report used a color palette called viridis, which ranges from dark blue to yellow. The only modification necessary is to add an argument to the function:</p>
 <div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1">myShapeColors &lt;-<span class="st"> </span><span class="kw">getShapeColors</span>(bachelorPlus, <span class="dt">nbreaks=</span><span class="dv">5</span>, <span class="dt">mycolors=</span><span class="kw">viridis</span>(<span class="dv">6</span>))</a>
@@ -1319,7 +1320,7 @@ Here is how to repackage our dataset to fit with the shapefile</p>
 <a class="sourceLine" id="cb188-5" data-line-number="5"><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, </a>
 <a class="sourceLine" id="cb188-6" data-line-number="6">       <span class="dt">legend =</span> myShapeColors<span class="op">$</span>legendText, </a>
 <a class="sourceLine" id="cb188-7" data-line-number="7">       <span class="dt">fill =</span> myShapeColors<span class="op">$</span>legendColors, <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">title =</span> <span class="st">&quot;College Prop&quot;</span>)</a></code></pre></div>
-<p><img src="figs/unnamed-chunk-90-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="Figs/unnamed-chunk-90-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>I don’t know exactly how ABCNews made their color palette, but here is my approximation. I played around with the border color and line width as well.</p>
 <div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" data-line-number="1">ABCpalette &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;gray88&quot;</span>, <span class="st">&quot;#4e9ccb&quot;</span>, <span class="st">&quot;#3b7ba9&quot;</span>,<span class="st">&quot;#265982&quot;</span>, <span class="st">&quot;#133960&quot;</span>,<span class="st">&quot;#001a3a&quot;</span>)</a>
 <a class="sourceLine" id="cb189-2" data-line-number="2">myShapeColors &lt;-<span class="st"> </span><span class="kw">getShapeColors</span>(bachelorPlus, <span class="dt">nbreaks=</span><span class="dv">5</span>, <span class="dt">mycolors=</span>ABCpalette)</a>
@@ -1330,7 +1331,7 @@ Here is how to repackage our dataset to fit with the shapefile</p>
 <a class="sourceLine" id="cb189-7" data-line-number="7"><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, </a>
 <a class="sourceLine" id="cb189-8" data-line-number="8">       <span class="dt">legend =</span> myShapeColors<span class="op">$</span>legendText, </a>
 <a class="sourceLine" id="cb189-9" data-line-number="9">       <span class="dt">fill =</span> myShapeColors<span class="op">$</span>legendColors, <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">title =</span> <span class="st">&quot;College Share&quot;</span>)</a></code></pre></div>
-<p><img src="figs/unnamed-chunk-91-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="Figs/unnamed-chunk-91-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Here is the original again.</p>
 <div class="figure" style="text-align: center"><span id="fig:abc-college"></span>
 <img src="images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg" alt="ABCNews visualization" width="80%" />
@@ -1350,7 +1351,7 @@ Figure 15.1: ABCNews visualization
 <a class="sourceLine" id="cb190-8" data-line-number="8"><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, </a>
 <a class="sourceLine" id="cb190-9" data-line-number="9">       <span class="dt">legend =</span> myShapeColors<span class="op">$</span>legendText, </a>
 <a class="sourceLine" id="cb190-10" data-line-number="10">       <span class="dt">fill =</span> myShapeColors<span class="op">$</span>legendColors, <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">title =</span> <span class="st">&quot;College Share&quot;</span>)</a></code></pre></div>
-<p><img src="figs/unnamed-chunk-92-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="Figs/unnamed-chunk-92-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>And here are two versions of the same data, mapped side-by-side using different cut-points:</p>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" data-line-number="1">ABCpalette &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;gray88&quot;</span>, <span class="st">&quot;#4e9ccb&quot;</span>, <span class="st">&quot;#3b7ba9&quot;</span>,<span class="st">&quot;#265982&quot;</span>, <span class="st">&quot;#133960&quot;</span>,<span class="st">&quot;#001a3a&quot;</span>)</a>
 <a class="sourceLine" id="cb191-2" data-line-number="2">myShapeColors1 &lt;-<span class="st"> </span><span class="kw">getShapeColors</span>(bachelorPlus, <span class="dt">nbreaks=</span><span class="dv">5</span>,</a>
@@ -1374,7 +1375,7 @@ Figure 15.1: ABCNews visualization
 <a class="sourceLine" id="cb191-20" data-line-number="20"><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, </a>
 <a class="sourceLine" id="cb191-21" data-line-number="21">       <span class="dt">legend =</span> myShapeColors2<span class="op">$</span>legendText, </a>
 <a class="sourceLine" id="cb191-22" data-line-number="22">       <span class="dt">fill =</span> myShapeColors2<span class="op">$</span>legendColors, <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">title =</span> <span class="st">&quot;College Share&quot;</span>)</a></code></pre></div>
-<p><img src="figs/unnamed-chunk-93-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="Figs/unnamed-chunk-93-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>The difference may be subtle, and I believe an argument can be made for either. But all in all, I believe that the level separation by quintiles does a better job in highlighting the difference between the different parts of the city.</p>
 <p>This brings us to our next topic, which is comparing COVID-19 incidence maps to maps showing census data (e.g., income, college education, race, etc.)</p>
 </div>
@@ -1384,7 +1385,7 @@ Figure 15.1: ABCNews visualization
 <p>It turns out that population-adjusted COVID-19 rate is not actually in our data set. We need to make it, but it’s easy.</p>
 <div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1">covidPerCapita &lt;-<span class="st"> </span>mapData<span class="op">$</span>Positive<span class="op">/</span>mapData<span class="op">$</span>Total_Pop<span class="op">*</span><span class="dv">100</span></a>
 <a class="sourceLine" id="cb192-2" data-line-number="2"><span class="kw">hist</span>(covidPerCapita, <span class="dt">main=</span><span class="st">&quot;Zipcode-level Positive Cases Percent of Population&quot;</span>)</a></code></pre></div>
-<p><img src="figs/unnamed-chunk-94-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="Figs/unnamed-chunk-94-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" data-line-number="1">myShapeColors1 &lt;-<span class="st"> </span><span class="kw">getShapeColors</span>(covidPerCapita, <span class="dt">nbreaks=</span><span class="dv">5</span>)</a>
 <a class="sourceLine" id="cb193-2" data-line-number="2">myShapeColors2 &lt;-<span class="st"> </span><span class="kw">getShapeColors</span>(bachelorPlus, <span class="dt">nbreaks=</span><span class="dv">5</span>)</a>
 <a class="sourceLine" id="cb193-3" data-line-number="3"></a>
@@ -1404,7 +1405,7 @@ Figure 15.1: ABCNews visualization
 <a class="sourceLine" id="cb193-17" data-line-number="17"><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, </a>
 <a class="sourceLine" id="cb193-18" data-line-number="18">       <span class="dt">legend =</span> myShapeColors2<span class="op">$</span>legendText, </a>
 <a class="sourceLine" id="cb193-19" data-line-number="19">       <span class="dt">fill =</span> myShapeColors2<span class="op">$</span>legendColors, <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">title =</span> <span class="st">&quot;College Share&quot;</span>)</a></code></pre></div>
-<p><img src="figs/unnamed-chunk-95-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="Figs/unnamed-chunk-95-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Now we’re looking at two different variables, both mapped using quintiles as an organizer of zipcode-level data. It definitely seems like one map is almost an inverse of the other. Where COVID rate is high, college rate is low, and vice versa. Is there some way for us to see both variables on the same map at the same time?</p>
 <p>Here’s one idea. Suppose we used different colors for each variable, e.g. red and blue, but we used shades from lighter to darker to indicate lowr and higher values. And suppose we made the colors transparent, the way we did when we plotted two histograms on the same plot. When pink and light-blue are both laid over each other, we will see a purplish color. Therefore</p>
 <ol style="list-style-type: decimal">
@@ -1425,7 +1426,7 @@ Figure 15.1: ABCNews visualization
 <a class="sourceLine" id="cb194-10" data-line-number="10">     <span class="dt">cex =</span> <span class="dv">10</span>, <span class="dt">lwd=</span><span class="fl">0.05</span>)</a>
 <a class="sourceLine" id="cb194-11" data-line-number="11"><span class="kw">plot</span>(NYC_zips, <span class="dt">col =</span> myShapeColorsCollege<span class="op">$</span>regionValues, <span class="dt">add=</span>T, </a>
 <a class="sourceLine" id="cb194-12" data-line-number="12">     <span class="dt">cex =</span> <span class="dv">10</span>, <span class="dt">lwd=</span><span class="fl">0.05</span>)</a></code></pre></div>
-<p><img src="figs/unnamed-chunk-96-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="Figs/unnamed-chunk-96-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>In the case of college education and COVID incidence rates, the variables are negatively associated. Overlaying two color maps, we see red and bluish regions, but we also see some purple stuff.</p>
 <p>What would happen if we did the same for two variable with positive association? Let us map COVID-19 incidence against the average household size.</p>
 <div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" data-line-number="1">myShapeColorsCovid &lt;-<span class="st"> </span><span class="kw">getShapeColors</span>(covidPerCapita, <span class="dt">nbreaks=</span><span class="dv">5</span>, <span class="dt">rdgrbl=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>))</a>
@@ -1440,7 +1441,7 @@ Figure 15.1: ABCNews visualization
 <a class="sourceLine" id="cb195-10" data-line-number="10">     <span class="dt">cex =</span> <span class="dv">10</span>, <span class="dt">lwd=</span><span class="fl">0.05</span>)</a>
 <a class="sourceLine" id="cb195-11" data-line-number="11"><span class="kw">plot</span>(NYC_zips, <span class="dt">col =</span> myShapeColorsHH<span class="op">$</span>regionValues, <span class="dt">add=</span>T, </a>
 <a class="sourceLine" id="cb195-12" data-line-number="12">     <span class="dt">cex =</span> <span class="dv">10</span>, <span class="dt">lwd=</span><span class="fl">0.05</span>)</a></code></pre></div>
-<p><img src="figs/unnamed-chunk-97-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="Figs/unnamed-chunk-97-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Indeed, in this case, we see a map that is much more purplish overall.</p>
 <p>Given the code examples above, you should be able to create your own zipcode maps of the variables in our data set. You can even get more variables using census queries. The problem of visualizing two (or more) variables on a map is still a challenge. The fact is, there are other data visualizations that are probably better suited to that task, even though they don’t have the narrative association with geography. I’m thinking about the lowly scatterplot</p>
 </div>
@@ -1475,7 +1476,7 @@ Figure 15.1: ABCNews visualization
 <a class="sourceLine" id="cb196-25" data-line-number="25">       <span class="dt">pch=</span><span class="dv">16</span>)</a>
 <a class="sourceLine" id="cb196-26" data-line-number="26"><span class="kw">mtext</span>(<span class="st">&quot;College Percentage&quot;</span>, <span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">line =</span> <span class="dv">2</span>)</a>
 <a class="sourceLine" id="cb196-27" data-line-number="27"><span class="kw">mtext</span>(<span class="st">&quot;COVID rate&quot;</span>, <span class="dt">side =</span> <span class="dv">2</span>, <span class="dt">line =</span> <span class="dv">2</span>)</a></code></pre></div>
-<p><img src="figs/unnamed-chunk-98-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="Figs/unnamed-chunk-98-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>The scatterplots on the right side make it easier to see the relationship between the two variables. As average household sizes go up per zipcode, so do COVID rates. As college education goes up, COVID rates go down. Each point in the scatterplot corresponds to a zipcode region, and in fact, the coloring of the points is the same as the coloring of the regions. But the scatterplot has no geographical information.</p>
 <p>Along the 1-to-1 line (i.e., a perfect positive and linear relationship), we would have all purple points, with the colors getting darker at high values. The farther away we are from this diagonal, the more red (above the line) or blue (below) the points are. Note that even with a strongly negative relationship (diagonal trend going down to the right), we will still pass through a purple region. These are regions with average values for both variables.</p>
 

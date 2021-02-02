@@ -1,6 +1,6 @@
 # Tests of independence: A first look starring alternate universes {#test-indep}
 
-So far, we have looked at some data in two-way tables and judged them by inspection. That is, we looked at them and said, these two reponses *appear* to be deterministically related, or they appear to be associated but not deterministally, or they appear to be independent. But we acknowledged that our data come from a sample, and that on another day (on in another universe with rules the same as this one), we might have observed slightly different data. 
+So far, we have looked at some data in two-way tables and judged them by inspection. That is, we looked at them and said, these two responses *appear* to be deterministically related, or they appear to be associated but not deterministically, or they appear to be independent. But we acknowledged that our data come from a sample, and that on another day (on in another universe with rules the same as this one), we might have observed slightly different data. 
 
 It is worth noting that a single dataset often can't tell us for sure whether two variables are independent or associated (aka dependent/contingent), and whether or not an association is a deterministic one. (Two variables cannot be deterministically independent; that would be a self-contradiction.) 
 
@@ -20,11 +20,11 @@ kable(alt_xtab3, caption="Another alternate universe", booktabs = TRUE) %>%
 
 ```
   
-It certainly looks like there is an association between these variables, but let's investigate further. Let's take the cell with the largest number of people in it, or the modal value. In this case, the mode occurs for people who answer over and chunky. Which was 17 out of 40.
+It looks like certain pairs of outcomes are coming up more than we would expect "by chance" if the answers were not associated. Equivalently, it looks like there is an association between these variables, but let's investigate further. Let's take the cell with the largest number of people in it, or the modal value. In this case, the mode occurs for people who answer over and chunky. Which was 17 out of 40.
 
 Now consider what contributes to making this particular value what it is. For example, what would make it bigger? Well, if there were more over-hangers than under-hangers, that would tend to increase the number of people who could be *both* over-hangers and chunky-spreaders. Similarly, if there were more chunky-spreaders. Also, if there were just more people in our sample, then of course we could have more people in this cell of the table. And all of the above arguments could work in reverse, if we lowered any of those particular numbers.
 
-What if, however, we fixed the total number of people, the number over-hangers among them, and the number of chunky-spreaders among them. The technical term for this, by the way, is fixing the **marginal** values. This is because the sums of the columns (22 and 18) and the sums of the rows (23 and 17), when written at the bottom and side of the table, are called margins (just like the margins of a page). We could still have fixed the marginal values and have different values in the table. For example,
+What if, for argument's sake, we fixed the total number of people, the number over-hangers among them, and the number of chunky-spreaders among them. We're going to keep these values constant while letting the individual table elements vary. The technical term for this, by the way, is fixing the **marginal** values. This is because the sums of the columns (22 and 18) and the sums of the rows (23 and 17), when written at the bottom and side of the table, are called margins (just like the margins of a page). We could still have fixed the marginal values and have different values in the table. For example,
 
 ```{r, echo=FALSE, results='asis'}
 alt_xtab5 <- alt_xtab4 <- alt_xtab3
@@ -38,7 +38,7 @@ kable(list(alt_xtab4, alt_xtab5), caption="Yet more alternate universes!", bookt
 
 ```
 
-Notice that the row and column sums are the same. But on the left we would say an association between the variables appears even clearer, whereas on the right, it appears less obvious.
+Notice that the row and column sums are the same. But on the left we would say an association between the variables appears even more clear, whereas on the right, it appears less obvious. Can you see why?
 
 Recall that the actual data summarized in a two-way table originally came from some observation sample. There were 40 people sampled, and they were each asked two questions. Before we tabulated them, the data might have looked something like this:
 
@@ -63,7 +63,7 @@ Well, we can do this shuffling experiment very easily on a computer. And we can 
 
 The code to do this, and to visualize the outcome, is below. (You do not need to understand this code yet, but some of it might make sense to you).  
 
-```{r shuffle-test, echo=TRUE, fig.cap="Counts of 'over and chunky' after 1000 shuffling simulations"}
+```{r shuffle-test, echo=TRUE, fig.cap="Counts of ``over and chunky'' after 1000 shuffling simulations"}
 
 simulated_overchunky = c() #initialize empty vector
 for(i in 1:1000){
@@ -82,7 +82,7 @@ hist(simulated_overchunky,
 abline(v=17, lwd=2, col=3, lty=2)
 ```
   
-Figure \@ref(fig:shuffle-test) is histogram, or a bar plot of count data. We will cover histograms in detail the next chapter, so don't worry too much if some of this is still confusing. The main thing to notice is that green dotted line at 17, and this: in our 1000 shuffling experiments, we got values greater than or equal to 17 only `r length(which(simulated_overchunky >= 17))` times. The rest of the time, the values were smaller, and typical values were around 13.
+Figure \@ref(fig:shuffle-test) is histogram, or a bar plot of count data. We will cover histograms in detail the next chapter, so don't worry too much if some of this is still confusing. The main thing to notice is that green dotted line at 17, and this: in our 1000 shuffling experiments, we got values greater than or equal to 17 only `r length(which(simulated_overchunky >= 17))` times. (You probably can't *see* this in the histogram, but if you run the code, you can ask R to report this: `length(which(simulated_overchunky >= 17))`) The rest of the time, the values were smaller, and typical values were around 13. 
 
 This simulation we just carried out is a way of validating our intuition, from inspection of Table \@ref(tab:indep-sim), that 17 was a high value *if toilet paper orientation and peanut butter preference* were indeed independent. What we showed is that, if indeed the two variables were independent, that such values would be observed only rarely. Since this value was observed on our first day out in the park (in this scenario), we begin to doubt independence. If on the other hand, we had observed 13 over-chunky people (out of 40, and with the same marginal values as before), then we would say that this observation seems quite consistent with independence. Because values near 13 occur very often in our shuffling simulation. 
 
@@ -90,7 +90,7 @@ This simulation we just carried out is a way of validating our intuition, from i
 
 What we just did is in fact an example of a **hypothesis test**. In the statistical framework of hypothesis testing, we have a **null hypothesis** (usually, a skeptical position) and an **alternative hypothesis**. Here our null hypothesis was that the two variables represented in our response data are independent. Our alternative hypothesis was that people who are over-hangers are truly more likely to be chunky-spreaders. We didn't state this hypothesis at the outset. But it was implied by the fact that we were investigating this "high" value in the contingency table. If you take a regular statistics class, however, you will see that, when it comes to *inference*, it is quite important to take care in constructing your null and alternative hypotheses. For now, we just want to get the main idea. 
 
-The main idea was that we simulated what data might look like under the null hypothesis (independence) and checked if our observations were consistent with that or not. Consistent results would mean that we cannot "reject" the null hypothesis, while highly inconsisent results give us justification to "reject the null" in favor of the alternative. In this example, we would probably reject the independence assumption (null) in favor of the alternative.
+The main idea was that we simulated what data might look like under the null hypothesis (independence) and checked if our observations were consistent with that or not. Consistent (with the null) results would mean that we cannot "reject" the null hypothesis, while highly inconsisent results give us justification to "reject the null" in favor of the alternative. In this example, we would probably reject the independence assumption (null) in favor of the alternative. The independence assumption was consistent with values around 13 plus or minus 3 (i.e., the range of 10-16). But 17 is unusually high.  
 
 ## Caveats {-}
 
@@ -163,11 +163,11 @@ teamassignments
 
 ```
 
-Well, that was simpler. Notice also that by using the same random seed, I got the same team assignments, even though the code was completely different.
+Well, that was simpler. Notice also that by using the same random seed, I got the same team assignments, even though the code was completely different. (By the way, the [1] and [9] here are just index--count--values that R writes out when the data flow across multiple rows. So you know that the first value on the second row is in fact the 9th element of the vector.)
 
 There's another difference here, which is that instead of going one by one for each person, I made the selection all at once by passing the number of people to the sample function instead of asking for one sample. Because I'm sampling `numPeople` times and there are only two outcomes ("in the hat"), I have to add the argument `replace = TRUE` when I call the `sample()` function. This means that after I look at the result, I put it back in the hat (I replace it), and then draw again. Otherwise, I could  sample only as many times as I have choices. 
 
-Sampling *without replacement* is suitable if, as in the independence test from earlier, all I wanted was to put a set of choices in random order. As we said, this is like shuffling a deck of cards by dropping the deck into a big bag, shaking it, and then pulling the cards out one by one. No replacement
+Sampling *without replacement* is suitable if, as in the independence test from earlier, all I wanted was to put a set of choices in random order. As we said, this is like shuffling a deck of cards by dropping the deck into a big bag, shaking it, and then pulling the cards out one by one. No replacement.
 
 ### But some observations *do* occur more than others {-}
 
@@ -196,7 +196,7 @@ Suppose that I did not replace the samples each time. And suppose that, by dumb 
 Now for the second way. I don't really need to produce 40 cards at all. I just need to recognize that 23/40 or 0.575 is my target probability of "over" on every single sample. (17/40 or 0.425 is the probability of "under" automatically). I can still do everything with the good old `sample()` function.
 
 ```{r echo = TRUE}
-set.seed(2129981212) # I can choose any see I want
+set.seed(2129981212) # I can choose any seed; I like using phone numbers.
 numPeople <- 10
 simulated_tp <- sample(c("over","under"), numPeople, replace=TRUE, prob=c(0.575, 0.425))
 simulated_tp
@@ -207,3 +207,9 @@ simulated_tp
 ```
 
 There it is. For good measure, I included the probability expression using decimals and fractions, to prove that it doesn't matter to R. I did, however, reset the random seed, otherwise I would not have gotten the same results. 
+
+## Recap {-}
+
+In this chapter, we used computer simulation to overcome one of the limitations of a single data collection with a small sample. We introduced the R function `sample()` which can be used to either shuffle a bunch of data in random order or to select (i.e. sample) some data from a larger set. We saw a couple of different ways of doing this, some in which we literally create the large set and some in which we use probabilities instead that "act like" we have a larger set. More importantly to the original goal, using the R function `sample()` we saw that we can create many replications of simulated data collections. We can use these replications to see what answer-pair observations are consistent with independent answering processes and what observations seem highly unlikely if the answers are truly independent. 
+
+Notice that we keep using this language of likely/unlikely, consistent/inconsistent, etc. None of our results "prove" independence or association between question pairs. That's just not possible with stochastic/random processes and finite samples. We need to be able accept this condition of uncertainty.  Note, though, that if we get larger and larger samples, there are some statements that we can make with more and more confidence. Statistics does not eliminate uncertainty, but it can be used to put  precise bounds on it.

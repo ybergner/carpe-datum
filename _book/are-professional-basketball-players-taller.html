@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="Are professional basketball players taller? | Carpe Datum" />
@@ -11,7 +10,7 @@
 
 
 
-
+<meta name="github-repo" content="ybergner/carpe-datum" />
 
 <meta name="author" content="Yoav Bergner" />
 
@@ -35,6 +34,7 @@ MathJax.Hub.Config({
 <script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="libs/navigation-1.1/tabsets.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -165,6 +165,7 @@ img {
 <li><a href="sampling-simulations-and-randomness.html#tossing-virtual-coins">Tossing (virtual) coins</a></li>
 <li><a href="sampling-simulations-and-randomness.html#but-some-observations-do-occur-more-than-others">But some observations <em>do</em> occur more than others</a></li>
 </ul></li>
+<li><a href="recap.html#recap">Recap</a></li>
 </ul></li>
 <li class="has-sub"><a href="4-shades.html#shades"><span class="toc-section-number">4</span> (An Infinite Number of) Shades of Gray (or Brown)</a><ul>
 <li class="has-sub"><a href="poopiness.html#poopiness">Poopiness</a><ul>
@@ -278,35 +279,39 @@ img {
 <h2>Are professional basketball players taller?</h2>
 <p>Let’s start with an example to refresh your memory about sampling and differences. We’ll walk through this example very naively on purpose. Suppose we take 100 NBA basketball players as a sample (of all basketball players) and 100 NYU students as another sample (of NYU students), and now we look at the distribution of heights in each of our samples. We’ll consider male students, since the NBA players are also males. Actually, I don’t have any data on NYU student heights. So we’ll just consider all adult males. Conveniently, the <code>openintro</code> R package has a data set called male.heights and another data set called <code>nba.heights</code>. You can load them as follows</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="kw">library</span>(openintro)</a>
-<a class="sourceLine" id="cb75-2" data-line-number="2"><span class="kw">data</span>(<span class="st">&quot;male.heights&quot;</span>)</a>
-<a class="sourceLine" id="cb75-3" data-line-number="3"><span class="kw">data</span>(<span class="st">&quot;nba.heights&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb75-2" data-line-number="2"><span class="kw">data</span>(<span class="st">&quot;male_heights&quot;</span>)</a>
+<a class="sourceLine" id="cb75-3" data-line-number="3"><span class="kw">data</span>(<span class="st">&quot;nba_heights&quot;</span>)</a></code></pre></div>
 <p>And then you can inspect them. For example, one of the first things I will do with a data set is ask how big it is (how many rows and columns) and then look at the first few rows.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="kw">dim</span>(male.heights)</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="kw">dim</span>(male_heights)</a></code></pre></div>
 <pre><code>## [1] 100   1</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="kw">head</span>(male.heights)</a></code></pre></div>
-<pre><code>##   heights
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="kw">head</span>(male_heights)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 1
+##   heights
+##     &lt;int&gt;
 ## 1      71
 ## 2      67
 ## 3      69
 ## 4      70
 ## 5      68
 ## 6      63</code></pre>
-<p>The <code>male.heights</code> data table has 100 rows and a single column called “heights.” The nba.heights data set is a little different.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="kw">dim</span>(nba.heights)</a></code></pre></div>
+<p>The <code>male_heights</code> data table has 100 rows and a single column called “heights.” The nba.heights data set is a little different.</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="kw">dim</span>(nba_heights)</a></code></pre></div>
 <pre><code>## [1] 435   4</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1"><span class="kw">head</span>(nba.heights)</a></code></pre></div>
-<pre><code>##   last.name first.name h.meters h.in
-## 1     Acker       Alex     1.96   77
-## 2     Adams     Hassan     1.93   76
-## 3   Afflalo      Arron     1.96   77
-## 4      Ager    Maurice     1.96   77
-## 5    Ajinca     Alexis     2.13   84
-## 6  Aldridge   LaMarcus     2.11   83</code></pre>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1"><span class="kw">head</span>(nba_heights)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+##   last_name first_name h_meters  h_in
+##   &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt; &lt;int&gt;
+## 1 Acker     Alex           1.96    77
+## 2 Adams     Hassan         1.93    76
+## 3 Afflalo   Arron          1.96    77
+## 4 Ager      Maurice        1.96    77
+## 5 Ajinca    Alexis         2.13    84
+## 6 Aldridge  LaMarcus       2.11    83</code></pre>
 <p>Notice that there are 435 NBA players from the 2008-2009 season here. We have their first and last names as well as their heights in units of meters and also inches. I’d like to make a comparison between similarly sized samples. So I will just take a subsample of 100 NBA players. I can do this easily using the <code>sample()</code> function.</p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="co"># sample 100 values at random from the nba heights in inches</span></a>
-<a class="sourceLine" id="cb84-2" data-line-number="2">nbaHeights &lt;-<span class="st"> </span><span class="kw">sample</span>(nba.heights<span class="op">$</span>h.in, <span class="dv">100</span>) </a>
+<a class="sourceLine" id="cb84-2" data-line-number="2">nbaHeights &lt;-<span class="st"> </span><span class="kw">sample</span>(nba_heights<span class="op">$</span>h_in, <span class="dv">100</span>) </a>
 <a class="sourceLine" id="cb84-3" data-line-number="3"><span class="co"># rename the male height to match</span></a>
-<a class="sourceLine" id="cb84-4" data-line-number="4">maleHeights &lt;-<span class="st"> </span>male.heights<span class="op">$</span>heights</a></code></pre></div>
+<a class="sourceLine" id="cb84-4" data-line-number="4">maleHeights &lt;-<span class="st"> </span>male_heights<span class="op">$</span>heights</a></code></pre></div>
 <p>Note that because I did not use a <code>set.seed</code> in the code above, I have no idea which 100 NBA players I got. In fact, every time I (or you) run this, I (or you) will get a different sample! Finally, I would like to compare the <em>distributions</em> of heights for these two samples. For which our old friend the histogram is just what the doctor ordered.</p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="co"># defining some colors and bin-breaks to standardize my plots</span></a>
 <a class="sourceLine" id="cb85-2" data-line-number="2">malescol &lt;-<span class="st"> </span><span class="kw">rgb</span>(<span class="fl">0.8</span>,<span class="fl">0.2</span>,<span class="dv">0</span>,<span class="fl">0.2</span>)</a>
