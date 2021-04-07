@@ -31,7 +31,8 @@
   
   
 <link rel="prev" href="is-the-system-fair.html"/>
-<link rel="next" href="nyc-covid-19-data.html"/>
+<link rel="next" href="sec-randomness.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -54,25 +55,27 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -81,9 +84,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,134 +135,140 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Carpe Datum: Data Science for Life's Big Questions</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#caveat"><i class="fa fa-check"></i>Caveat</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#guiding-principles-in-this-book"><i class="fa fa-check"></i>Guiding principles in this book</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#guiding-principles-in-this-book"><i class="fa fa-check"></i>Guiding principles in this book</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#question-driven"><i class="fa fa-check"></i>Question-driven</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#no-proofs"><i class="fa fa-check"></i>No proofs</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="how-many-kinds-of-people-are-there.html"><a href="how-many-kinds-of-people-are-there.html"><i class="fa fa-check"></i>How Many Kinds of People Are There?</a><ul>
+<li class="chapter" data-level="" data-path="how-many-kinds-of-people-are-there.html"><a href="how-many-kinds-of-people-are-there.html"><i class="fa fa-check"></i>How Many Kinds of People Are There?</a>
+<ul>
 <li class="chapter" data-level="" data-path="how-many-kinds-of-people-are-there.html"><a href="how-many-kinds-of-people-are-there.html#things-are-about-to-get-meta-right-from-the-start"><i class="fa fa-check"></i>Things are about to get meta right from the start</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="categories.html"><a href="categories.html"><i class="fa fa-check"></i><b>1</b> Categories, counts, and kinds</a><ul>
+<li class="chapter" data-level="1" data-path="categories.html"><a href="categories.html"><i class="fa fa-check"></i><b>1</b> Categories, counts, and kinds</a>
+<ul>
 <li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#two-kinds-of-people"><i class="fa fa-check"></i>Two Kinds of People</a></li>
 <li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#samples-and-populations-a-statistical-caveat"><i class="fa fa-check"></i>Samples and Populations: A Statistical Caveat</a></li>
 <li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#a-psychological-caveat"><i class="fa fa-check"></i>A Psychological Caveat</a></li>
 <li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#summarizing-data"><i class="fa fa-check"></i>Summarizing data</a></li>
 <li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#checkpoint"><i class="fa fa-check"></i>Checkpoint</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="dimensions.html"><a href="dimensions.html"><i class="fa fa-check"></i><b>2</b> Dimensions</a><ul>
+<li class="chapter" data-level="2" data-path="dimensions.html"><a href="dimensions.html"><i class="fa fa-check"></i><b>2</b> Dimensions</a>
+<ul>
 <li class="chapter" data-level="" data-path="dimensions.html"><a href="dimensions.html#independence-association-and-contingency"><i class="fa fa-check"></i>Independence, Association, and Contingency</a></li>
 <li class="chapter" data-level="" data-path="dimensions.html"><a href="dimensions.html#latent-factors-and-measurement"><i class="fa fa-check"></i>Latent Factors and Measurement</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="test-indep.html"><a href="test-indep.html"><i class="fa fa-check"></i><b>3</b> Tests of independence: A first look starring alternate universes</a><ul>
+<li class="chapter" data-level="3" data-path="test-indep.html"><a href="test-indep.html"><i class="fa fa-check"></i><b>3</b> Tests of independence: A first look starring alternate universes</a>
+<ul>
 <li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#rise-of-the-machines"><i class="fa fa-check"></i>Rise of the machines</a></li>
 <li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#hypothesis-testing-just-happened"><i class="fa fa-check"></i>Hypothesis testing just happened</a></li>
 <li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#caveats"><i class="fa fa-check"></i>Caveats</a></li>
-<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#sampling-simulations-and-randomness"><i class="fa fa-check"></i>Sampling, simulations, and randomness</a><ul>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#sampling-simulations-and-randomness"><i class="fa fa-check"></i>Sampling, simulations, and randomness</a>
+<ul>
 <li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#tossing-virtual-coins"><i class="fa fa-check"></i>Tossing (virtual) coins</a></li>
 <li><a href="test-indep.html#but-some-observations-do-occur-more-than-others">But some observations <em>do</em> occur more than others</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#recap"><i class="fa fa-check"></i>Recap</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="shades.html"><a href="shades.html"><i class="fa fa-check"></i><b>4</b> (An Infinite Number of) Shades of Gray (or Brown)</a><ul>
-<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#poopiness"><i class="fa fa-check"></i>Poopiness</a><ul>
+<li class="chapter" data-level="4" data-path="shades.html"><a href="shades.html"><i class="fa fa-check"></i><b>4</b> (An Infinite Number of) Shades of Gray (or Brown)</a>
+<ul>
+<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#poopiness"><i class="fa fa-check"></i>Poopiness</a>
+<ul>
 <li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#mixtures"><i class="fa fa-check"></i>Mixtures</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#crappiness"><i class="fa fa-check"></i>Crappiness</a><ul>
+<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#crappiness"><i class="fa fa-check"></i>Crappiness</a>
+<ul>
 <li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#check-your-understanding"><i class="fa fa-check"></i>Check your understanding</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="cut-scores-and-abnormality.html"><a href="cut-scores-and-abnormality.html"><i class="fa fa-check"></i><b>5</b> Cut Scores and Abnormality</a></li>
-<li class="chapter" data-level="6" data-path="the-modal-american.html"><a href="the-modal-american.html"><i class="fa fa-check"></i><b>6</b> The Modal American</a><ul>
+<li class="chapter" data-level="6" data-path="the-modal-american.html"><a href="the-modal-american.html"><i class="fa fa-check"></i><b>6</b> The Modal American</a>
+<ul>
 <li class="chapter" data-level="" data-path="the-modal-american.html"><a href="the-modal-american.html#step-one-categories"><i class="fa fa-check"></i>Step one: categories</a></li>
 <li class="chapter" data-level="" data-path="the-modal-american.html"><a href="the-modal-american.html#step-two-contingency-table"><i class="fa fa-check"></i>Step two: contingency table</a></li>
 <li class="chapter" data-level="" data-path="the-modal-american.html"><a href="the-modal-american.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html"><i class="fa fa-check"></i><b>7</b> Sixteen Personalities or Five Factors?</a><ul>
+<li class="chapter" data-level="7" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html"><i class="fa fa-check"></i><b>7</b> Sixteen Personalities or Five Factors?</a>
+<ul>
 <li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#mbti"><i class="fa fa-check"></i>MBTI</a></li>
 <li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#big-five"><i class="fa fa-check"></i>Big Five</a></li>
 <li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#twenty-questions-about-extraversion"><i class="fa fa-check"></i>Twenty Questions (about Extraversion)</a></li>
 <li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#but-whats-the-point"><i class="fa fa-check"></i>But what’s the point?</a></li>
-<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#still-meta-after-all-these-pages"><i class="fa fa-check"></i>Still meta after all these pages</a></li>
+<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#recap-1"><i class="fa fa-check"></i>Recap</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html"><i class="fa fa-check"></i><b>8</b> When and How Will You Die?</a><ul>
-<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#not-quite-death-but-um-rain"><i class="fa fa-check"></i>Not Quite Death, but, um… Rain?</a><ul>
+<li class="chapter" data-level="8" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html"><i class="fa fa-check"></i><b>8</b> When and How Will You Die?</a>
+<ul>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#not-quite-death-but-um-rain"><i class="fa fa-check"></i>Not Quite Death, but, um… Rain?</a>
+<ul>
 <li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#stochastic-vs-deterministic-relationships"><i class="fa fa-check"></i>Stochastic vs Deterministic relationships</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#ways-of-thinking-about-probabilistic-statements"><i class="fa fa-check"></i>Ways of thinking about probabilistic statements</a><ul>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#ways-of-thinking-about-probabilistic-statements"><i class="fa fa-check"></i>Ways of thinking about probabilistic statements</a>
+<ul>
 <li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#ensembles"><i class="fa fa-check"></i>Ensembles</a></li>
 <li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#degree-of-belief"><i class="fa fa-check"></i>Degree of belief</a></li>
 <li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#decisions"><i class="fa fa-check"></i>Decisions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#death"><i class="fa fa-check"></i>Death</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="conditional-death.html"><a href="conditional-death.html"><i class="fa fa-check"></i><b>9</b> Conditional Death</a><ul>
+<li class="chapter" data-level="9" data-path="conditional-death.html"><a href="conditional-death.html"><i class="fa fa-check"></i><b>9</b> Conditional Death</a>
+<ul>
 <li class="chapter" data-level="" data-path="conditional-death.html"><a href="conditional-death.html#how-does-the-death-simulation-work"><i class="fa fa-check"></i>How does the death (simulation) work?</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="somefacts.html"><a href="somefacts.html"><i class="fa fa-check"></i><b>10</b> Some facts about Probabilities</a><ul>
+<li class="chapter" data-level="10" data-path="somefacts.html"><a href="somefacts.html"><i class="fa fa-check"></i><b>10</b> Some facts about Probabilities</a>
+<ul>
 <li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#conditional-probabilities"><i class="fa fa-check"></i>Conditional Probabilities</a></li>
-<li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#conditional-death-again"><i class="fa fa-check"></i>Conditional death, again</a><ul>
+<li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#conditional-death-again"><i class="fa fa-check"></i>Conditional death, again</a>
+<ul>
 <li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#just-to-make-things-weird"><i class="fa fa-check"></i>Just to make things weird</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html"><i class="fa fa-check"></i><b>11</b> How You Will Die: Causes or Conditions?</a><ul>
+<li class="chapter" data-level="11" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html"><i class="fa fa-check"></i><b>11</b> How You Will Die: Causes or Conditions?</a>
+<ul>
 <li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#causes-of-death-colloquially"><i class="fa fa-check"></i>Causes of death, colloquially</a></li>
 <li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#hold-my-beer"><i class="fa fa-check"></i>Hold my beer</a></li>
 <li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#non-deterministic-causation"><i class="fa fa-check"></i>Non-deterministic Causation</a></li>
 <li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#testing-for-an-association-between-two-variables"><i class="fa fa-check"></i>Testing for an association between two variables</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="will-you-make-money.html"><a href="will-you-make-money.html"><i class="fa fa-check"></i>Will You Make Money?</a><ul>
+<li class="chapter" data-level="" data-path="will-you-make-money.html"><a href="will-you-make-money.html"><i class="fa fa-check"></i>Will You Make Money?</a>
+<ul>
 <li class="chapter" data-level="" data-path="will-you-make-money.html"><a href="will-you-make-money.html#battle-of-the-bills"><i class="fa fa-check"></i>Battle of the Bills</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html"><i class="fa fa-check"></i><b>12</b> Betting on Beer (or Ice Cream)</a><ul>
-<li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#how-do-statisticians-solve-problems-like-this"><i class="fa fa-check"></i>How do statisticians solve problems like this?</a><ul>
+<li class="chapter" data-level="12" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html"><i class="fa fa-check"></i><b>12</b> Betting on Beer (or Ice Cream)</a>
+<ul>
+<li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#how-do-statisticians-solve-problems-like-this"><i class="fa fa-check"></i>How do statisticians solve problems like this?</a>
+<ul>
 <li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#the-solution-by-counting-or-combinatorics"><i class="fa fa-check"></i>The solution by counting, or combinatorics</a></li>
 <li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#the-solution-by-distribution-or-statistics"><i class="fa fa-check"></i>The solution by distribution, or statistics</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="expected-value.html"><a href="expected-value.html"><i class="fa fa-check"></i><b>13</b> Expected Value</a><ul>
-<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#betting-on-ice-cream"><i class="fa fa-check"></i>Betting on ice cream</a><ul>
+<li class="chapter" data-level="13" data-path="expected-value.html"><a href="expected-value.html"><i class="fa fa-check"></i><b>13</b> Expected Value</a>
+<ul>
+<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#betting-on-ice-cream"><i class="fa fa-check"></i>Betting on ice cream</a>
+<ul>
 <li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#by-the-statistical-power-of-grayskull"><i class="fa fa-check"></i>By the (Statistical) Power of Grayskull</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#betting-on-your-future"><i class="fa fa-check"></i>Betting on your Future</a><ul>
+<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#betting-on-your-future"><i class="fa fa-check"></i>Betting on your Future</a>
+<ul>
 <li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#why-why-why-multiply-ay-ay"><i class="fa fa-check"></i>Why why why multiply-ay-ay?</a></li>
 <li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#where-do-branching-probabilities-come-from"><i class="fa fa-check"></i>Where do branching probabilities come from?</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="is-the-system-fair.html"><a href="is-the-system-fair.html"><i class="fa fa-check"></i>Is the System Fair?</a></li>
-<li class="chapter" data-level="14" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html"><i class="fa fa-check"></i><b>14</b> Differences in athletics</a><ul>
-<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#are-professional-basketball-players-taller"><i class="fa fa-check"></i>Are professional basketball players taller?</a><ul>
+<li class="chapter" data-level="14" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html"><i class="fa fa-check"></i><b>14</b> Differences in athletics</a>
+<ul>
+<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#are-professional-basketball-players-taller"><i class="fa fa-check"></i>Are professional basketball players taller?</a>
+<ul>
 <li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#none-of-this-is-surprising"><i class="fa fa-check"></i>None of this is surprising</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#surprising-differences"><i class="fa fa-check"></i>Surprising differences</a></li>
 <li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#fairness-on-trial-trans-athletes"><i class="fa fa-check"></i>Fairness on trial: trans athletes</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html"><i class="fa fa-check"></i><b>15</b> NYC COVID-19 Data</a><ul>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#prologue"><i class="fa fa-check"></i>Prologue</a></li>
-<li class="chapter" data-level="15.1" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#part1"><i class="fa fa-check"></i><b>15.1</b> COVID NYC</a><ul>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#getting-some-data"><i class="fa fa-check"></i>Getting some data</a></li>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#local-data-on-covid-from-the-city-andor-state"><i class="fa fa-check"></i>Local data on COVID from the city and/or state</a></li>
-</ul></li>
-<li class="chapter" data-level="15.2" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#part2"><i class="fa fa-check"></i><b>15.2</b> Getting started with US Census data</a><ul>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#census-variables"><i class="fa fa-check"></i>Census Variables</a></li>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#geography-units"><i class="fa fa-check"></i>Geography Units</a></li>
-</ul></li>
-<li class="chapter" data-level="15.3" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#part3"><i class="fa fa-check"></i><b>15.3</b> More (and messier) Census data</a><ul>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#exploring-the-acs-data"><i class="fa fa-check"></i>Exploring the ACS data</a></li>
-</ul></li>
-<li class="chapter" data-level="15.4" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#zipcode"><i class="fa fa-check"></i><b>15.4</b> Zipcode tabulation area</a><ul>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#some-more-variables-to-play-with"><i class="fa fa-check"></i>Some more variables to play with</a></li>
-</ul></li>
-<li class="chapter" data-level="15.5" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#mapviz"><i class="fa fa-check"></i><b>15.5</b> Visualizing data on maps</a><ul>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#shapefiles"><i class="fa fa-check"></i>Shapefiles</a></li>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#coloring-in-the-shapes"><i class="fa fa-check"></i>Coloring in the shapes</a></li>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#scatterplots"><i class="fa fa-check"></i>Scatterplots</a></li>
-</ul></li>
-</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="sec-randomness.html"><a href="sec-randomness.html"><i class="fa fa-check"></i><b>A</b> Randomness</a><ul>
+<li class="chapter" data-level="A" data-path="sec-randomness.html"><a href="sec-randomness.html"><i class="fa fa-check"></i><b>A</b> Randomness</a>
+<ul>
 <li class="chapter" data-level="A.1" data-path="sec-randomness.html"><a href="sec-randomness.html#defining-random-processes"><i class="fa fa-check"></i><b>A.1</b> Defining random processes</a></li>
 <li class="chapter" data-level="A.2" data-path="sec-randomness.html"><a href="sec-randomness.html#predictions-about-random-events"><i class="fa fa-check"></i><b>A.2</b> Predictions about random events</a></li>
 <li class="chapter" data-level="A.3" data-path="sec-randomness.html"><a href="sec-randomness.html#modification-for-continuous-observations"><i class="fa fa-check"></i><b>A.3</b> Modification for continuous observations</a></li>
@@ -282,19 +291,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="differences-in-athletics" class="section level1">
+<div id="differences-in-athletics" class="section level1" number="14">
 <h1><span class="header-section-number">Chapter 14</span> Differences in athletics</h1>
 <!-- Not everyone excels at sports to the same degree. As data scientists, we might say that athletic ability is not constant, but rather variable. It is distributed. Like many other things that vary across people, this  -->
 <div id="are-professional-basketball-players-taller" class="section level2 unnumbered">
 <h2>Are professional basketball players taller?</h2>
 <p>Let’s start with an example to refresh your memory about sampling and differences. We’ll walk through this example very naively on purpose. Suppose we take 100 NBA basketball players as a sample (of all basketball players) and 100 NYU students as another sample (of NYU students), and now we look at the distribution of heights in each of our samples. We’ll consider male students, since the NBA players are also males. Actually, I don’t have any data on NYU student heights. So we’ll just consider all adult males. Conveniently, the <code>openintro</code> R package has a data set called male.heights and another data set called <code>nba.heights</code>. You can load them as follows</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="kw">library</span>(openintro)</a>
-<a class="sourceLine" id="cb75-2" data-line-number="2"><span class="kw">data</span>(<span class="st">&quot;male_heights&quot;</span>)</a>
-<a class="sourceLine" id="cb75-3" data-line-number="3"><span class="kw">data</span>(<span class="st">&quot;nba_heights&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="differences-in-athletics.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openintro)</span>
+<span id="cb78-2"><a href="differences-in-athletics.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;male_heights&quot;</span>)</span>
+<span id="cb78-3"><a href="differences-in-athletics.html#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;nba_heights&quot;</span>)</span></code></pre></div>
 <p>And then you can inspect them. For example, one of the first things I will do with a data set is ask how big it is (how many rows and columns) and then look at the first few rows.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="kw">dim</span>(male_heights)</a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="differences-in-athletics.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(male_heights)</span></code></pre></div>
 <pre><code>## [1] 100   1</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="kw">head</span>(male_heights)</a></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="differences-in-athletics.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(male_heights)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 1
 ##   heights
 ##     &lt;int&gt;
@@ -305,9 +314,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5      68
 ## 6      63</code></pre>
 <p>The <code>male_heights</code> data table has 100 rows and a single column called “heights.” The nba.heights data set is a little different.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="kw">dim</span>(nba_heights)</a></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="differences-in-athletics.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(nba_heights)</span></code></pre></div>
 <pre><code>## [1] 435   4</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1"><span class="kw">head</span>(nba_heights)</a></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="differences-in-athletics.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nba_heights)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   last_name first_name h_meters  h_in
 ##   &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt; &lt;int&gt;
@@ -318,28 +327,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 Ajinca    Alexis         2.13    84
 ## 6 Aldridge  LaMarcus       2.11    83</code></pre>
 <p>Notice that there are 435 NBA players from the 2008-2009 season here. We have their first and last names as well as their heights in units of meters and also inches. I’d like to make a comparison between similarly sized samples. So I will just take a subsample of 100 NBA players. I can do this easily using the <code>sample()</code> function.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="co"># sample 100 values at random from the nba heights in inches</span></a>
-<a class="sourceLine" id="cb84-2" data-line-number="2">nbaHeights &lt;-<span class="st"> </span><span class="kw">sample</span>(nba_heights<span class="op">$</span>h_in, <span class="dv">100</span>) </a>
-<a class="sourceLine" id="cb84-3" data-line-number="3"><span class="co"># rename the male height to match</span></a>
-<a class="sourceLine" id="cb84-4" data-line-number="4">maleHeights &lt;-<span class="st"> </span>male_heights<span class="op">$</span>heights</a></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="differences-in-athletics.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sample 100 values at random from the nba heights in inches</span></span>
+<span id="cb87-2"><a href="differences-in-athletics.html#cb87-2" aria-hidden="true" tabindex="-1"></a>nbaHeights <span class="ot">&lt;-</span> <span class="fu">sample</span>(nba_heights<span class="sc">$</span>h_in, <span class="dv">100</span>) </span>
+<span id="cb87-3"><a href="differences-in-athletics.html#cb87-3" aria-hidden="true" tabindex="-1"></a><span class="co"># rename the male height to match</span></span>
+<span id="cb87-4"><a href="differences-in-athletics.html#cb87-4" aria-hidden="true" tabindex="-1"></a>maleHeights <span class="ot">&lt;-</span> male_heights<span class="sc">$</span>heights</span></code></pre></div>
 <p>Note that because I did not use a <code>set.seed</code> in the code above, I have no idea which 100 NBA players I got. In fact, every time I (or you) run this, I (or you) will get a different sample! Finally, I would like to compare the <em>distributions</em> of heights for these two samples. For which our old friend the histogram is just what the doctor ordered.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="co"># defining some colors and bin-breaks to standardize my plots</span></a>
-<a class="sourceLine" id="cb85-2" data-line-number="2">malescol &lt;-<span class="st"> </span><span class="kw">rgb</span>(<span class="fl">0.8</span>,<span class="fl">0.2</span>,<span class="dv">0</span>,<span class="fl">0.2</span>)</a>
-<a class="sourceLine" id="cb85-3" data-line-number="3">nbacol &lt;-<span class="st"> </span><span class="kw">rgb</span>(<span class="dv">0</span>,<span class="fl">0.3</span>,<span class="fl">0.8</span>,<span class="fl">0.2</span>)</a>
-<a class="sourceLine" id="cb85-4" data-line-number="4">mybreaks &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">54</span>,<span class="dv">90</span>,<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb85-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb85-6" data-line-number="6"><span class="co"># plot a histogram showing both height distributions, separately</span></a>
-<a class="sourceLine" id="cb85-7" data-line-number="7"><span class="kw">hist</span>(maleHeights, <span class="dt">col=</span>malescol, <span class="dt">breaks=</span>mybreaks, </a>
-<a class="sourceLine" id="cb85-8" data-line-number="8">          <span class="dt">main=</span><span class="st">&quot;Heights of males&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="differences-in-athletics.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># defining some colors and bin-breaks to standardize my plots</span></span>
+<span id="cb88-2"><a href="differences-in-athletics.html#cb88-2" aria-hidden="true" tabindex="-1"></a>malescol <span class="ot">&lt;-</span> <span class="fu">rgb</span>(<span class="fl">0.8</span>,<span class="fl">0.2</span>,<span class="dv">0</span>,<span class="fl">0.2</span>)</span>
+<span id="cb88-3"><a href="differences-in-athletics.html#cb88-3" aria-hidden="true" tabindex="-1"></a>nbacol <span class="ot">&lt;-</span> <span class="fu">rgb</span>(<span class="dv">0</span>,<span class="fl">0.3</span>,<span class="fl">0.8</span>,<span class="fl">0.2</span>)</span>
+<span id="cb88-4"><a href="differences-in-athletics.html#cb88-4" aria-hidden="true" tabindex="-1"></a>mybreaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">54</span>,<span class="dv">90</span>,<span class="dv">3</span>)</span>
+<span id="cb88-5"><a href="differences-in-athletics.html#cb88-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-6"><a href="differences-in-athletics.html#cb88-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a histogram showing both height distributions, separately</span></span>
+<span id="cb88-7"><a href="differences-in-athletics.html#cb88-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(maleHeights, <span class="at">col=</span>malescol, <span class="at">breaks=</span>mybreaks, </span>
+<span id="cb88-8"><a href="differences-in-athletics.html#cb88-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">main=</span><span class="st">&quot;Heights of males&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>)</span></code></pre></div>
 <p><img src="carpedatum_files/figure-html/unnamed-chunk-33-1.png" width="90%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="kw">hist</span>(nbaHeights, <span class="dt">col=</span>nbacol, <span class="dt">breaks=</span>mybreaks, </a>
-<a class="sourceLine" id="cb86-2" data-line-number="2">     <span class="dt">main=</span><span class="st">&quot;Heights of NBA players&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="differences-in-athletics.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(nbaHeights, <span class="at">col=</span>nbacol, <span class="at">breaks=</span>mybreaks, </span>
+<span id="cb89-2"><a href="differences-in-athletics.html#cb89-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Heights of NBA players&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>)</span></code></pre></div>
 <p><img src="carpedatum_files/figure-html/unnamed-chunk-33-2.png" width="90%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="co"># plot a histogram showing both height distributions, together (add=T)</span></a>
-<a class="sourceLine" id="cb87-2" data-line-number="2"><span class="kw">hist</span>(maleHeights, <span class="dt">col=</span>malescol, <span class="dt">breaks=</span>mybreaks, </a>
-<a class="sourceLine" id="cb87-3" data-line-number="3">          <span class="dt">main=</span><span class="st">&quot;&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>)</a>
-<a class="sourceLine" id="cb87-4" data-line-number="4"><span class="kw">hist</span>(nbaHeights, <span class="dt">col=</span>nbacol, <span class="dt">breaks=</span>mybreaks, <span class="dt">add=</span>T)</a>
-<a class="sourceLine" id="cb87-5" data-line-number="5"><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;non-NBA&quot;</span>, <span class="st">&quot;NBA&quot;</span>), <span class="dt">fill =</span> <span class="kw">c</span>(malescol, nbacol))</a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="differences-in-athletics.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a histogram showing both height distributions, together (add=T)</span></span>
+<span id="cb90-2"><a href="differences-in-athletics.html#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(maleHeights, <span class="at">col=</span>malescol, <span class="at">breaks=</span>mybreaks, </span>
+<span id="cb90-3"><a href="differences-in-athletics.html#cb90-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">main=</span><span class="st">&quot;&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>)</span>
+<span id="cb90-4"><a href="differences-in-athletics.html#cb90-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(nbaHeights, <span class="at">col=</span>nbacol, <span class="at">breaks=</span>mybreaks, <span class="at">add=</span>T)</span>
+<span id="cb90-5"><a href="differences-in-athletics.html#cb90-5" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;non-NBA&quot;</span>, <span class="st">&quot;NBA&quot;</span>), <span class="at">fill =</span> <span class="fu">c</span>(malescol, nbacol))</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:compareheights"></span>
 <img src="carpedatum_files/figure-html/compareheights-1.png" alt="Histogram of NBA and non-NBA male heights on one plot using transparent colors" width="90%" />
 <p class="caption">
@@ -363,37 +372,37 @@ Figure 14.1: Histogram of NBA and non-NBA male heights on one plot using transpa
 </ol>
 <p>Answer.<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a></p>
 <p>We can go to the National Center for Health Statistics website to retrieve a larger census of male heights. (You can find Body Measures in the National Health and Nutrition Examination Survey conducted every two years.) Conveniently (again) someone has even made an R package to save you the time (<code>NHANES</code>). The data set includes females as well as children, so I will filter those out. Here is a distribution of roughly 3600 males.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1"><span class="kw">library</span>(NHANES) <span class="co">#</span></a>
-<a class="sourceLine" id="cb88-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb88-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb88-4" data-line-number="4">lotsoheights &lt;-<span class="st"> </span>NHANES <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Gender <span class="op">==</span><span class="st"> &quot;male&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Age <span class="op">&gt;</span><span class="st"> </span><span class="dv">18</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb88-5" data-line-number="5"><span class="st">                                </span><span class="kw">select</span>(Height) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">unlist</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>()</a>
-<a class="sourceLine" id="cb88-6" data-line-number="6"><span class="co"># convert cm to in</span></a>
-<a class="sourceLine" id="cb88-7" data-line-number="7">lotsoheights &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(lotsoheights) <span class="op">/</span><span class="st"> </span><span class="fl">2.54</span></a>
-<a class="sourceLine" id="cb88-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb88-9" data-line-number="9"><span class="co"># plot as before</span></a>
-<a class="sourceLine" id="cb88-10" data-line-number="10"><span class="kw">hist</span>(lotsoheights, <span class="dt">col=</span>malescol, <span class="dt">breaks=</span>mybreaks, </a>
-<a class="sourceLine" id="cb88-11" data-line-number="11">          <span class="dt">main=</span><span class="st">&quot;Heights of 3600 males&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="differences-in-athletics.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NHANES) <span class="co">#</span></span>
+<span id="cb91-2"><a href="differences-in-athletics.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb91-3"><a href="differences-in-athletics.html#cb91-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-4"><a href="differences-in-athletics.html#cb91-4" aria-hidden="true" tabindex="-1"></a>lotsoheights <span class="ot">&lt;-</span> NHANES <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Gender <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">&amp;</span> Age <span class="sc">&gt;</span> <span class="dv">18</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb91-5"><a href="differences-in-athletics.html#cb91-5" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">select</span>(Height) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
+<span id="cb91-6"><a href="differences-in-athletics.html#cb91-6" aria-hidden="true" tabindex="-1"></a><span class="co"># convert cm to in</span></span>
+<span id="cb91-7"><a href="differences-in-athletics.html#cb91-7" aria-hidden="true" tabindex="-1"></a>lotsoheights <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(lotsoheights) <span class="sc">/</span> <span class="fl">2.54</span></span>
+<span id="cb91-8"><a href="differences-in-athletics.html#cb91-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-9"><a href="differences-in-athletics.html#cb91-9" aria-hidden="true" tabindex="-1"></a><span class="co"># plot as before</span></span>
+<span id="cb91-10"><a href="differences-in-athletics.html#cb91-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lotsoheights, <span class="at">col=</span>malescol, <span class="at">breaks=</span>mybreaks, </span>
+<span id="cb91-11"><a href="differences-in-athletics.html#cb91-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">main=</span><span class="st">&quot;Heights of 3600 males&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>)</span></code></pre></div>
 <p><img src="carpedatum_files/figure-html/unnamed-chunk-35-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Now consider a process of sub-sampling from this larger sample repeatedly. That is, we take two samples of 100 and compare the difference in the sample averages. Let’s say we do it 1000 times. How often do we see differences as extreme as 9 inches? Mind you, we have no idea which of our two samples will turn out taller, so we’ll need to look for differences with magnitude (or absolute value) greater than 9. Because the difference could be 9.5 or -9.5 depending on the order of subtraction. Here goes:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1">numSamples &lt;-<span class="st"> </span><span class="dv">1000</span></a>
-<a class="sourceLine" id="cb89-2" data-line-number="2">sampleSize &lt;-<span class="st"> </span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb89-3" data-line-number="3">differences_in_means &lt;-<span class="st"> </span><span class="kw">c</span>()</a>
-<a class="sourceLine" id="cb89-4" data-line-number="4"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>numSamples) {</a>
-<a class="sourceLine" id="cb89-5" data-line-number="5">  sample1 &lt;-<span class="st"> </span><span class="kw">sample</span>(lotsoheights, sampleSize)</a>
-<a class="sourceLine" id="cb89-6" data-line-number="6">  sample2 &lt;-<span class="st"> </span><span class="kw">sample</span>(lotsoheights, sampleSize)</a>
-<a class="sourceLine" id="cb89-7" data-line-number="7">  differences_in_means &lt;-<span class="st"> </span><span class="kw">c</span>(differences_in_means, <span class="kw">mean</span>(sample1) <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(sample2))</a>
-<a class="sourceLine" id="cb89-8" data-line-number="8">}</a>
-<a class="sourceLine" id="cb89-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb89-10" data-line-number="10"><span class="kw">hist</span>(differences_in_means)</a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="differences-in-athletics.html#cb92-1" aria-hidden="true" tabindex="-1"></a>numSamples <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb92-2"><a href="differences-in-athletics.html#cb92-2" aria-hidden="true" tabindex="-1"></a>sampleSize <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb92-3"><a href="differences-in-athletics.html#cb92-3" aria-hidden="true" tabindex="-1"></a>differences_in_means <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb92-4"><a href="differences-in-athletics.html#cb92-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>numSamples) {</span>
+<span id="cb92-5"><a href="differences-in-athletics.html#cb92-5" aria-hidden="true" tabindex="-1"></a>  sample1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(lotsoheights, sampleSize)</span>
+<span id="cb92-6"><a href="differences-in-athletics.html#cb92-6" aria-hidden="true" tabindex="-1"></a>  sample2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(lotsoheights, sampleSize)</span>
+<span id="cb92-7"><a href="differences-in-athletics.html#cb92-7" aria-hidden="true" tabindex="-1"></a>  differences_in_means <span class="ot">&lt;-</span> <span class="fu">c</span>(differences_in_means, <span class="fu">mean</span>(sample1) <span class="sc">-</span> <span class="fu">mean</span>(sample2))</span>
+<span id="cb92-8"><a href="differences-in-athletics.html#cb92-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb92-9"><a href="differences-in-athletics.html#cb92-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-10"><a href="differences-in-athletics.html#cb92-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(differences_in_means)</span></code></pre></div>
 <p><img src="carpedatum_files/figure-html/unnamed-chunk-36-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>You’ll notice that in 1000 experiments, we never observed a difference in mean heights between our two samples of even 2 inches, let alone 9 inches. Here is how you would know for sure</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"><span class="co"># declare a threshold difference of interest</span></a>
-<a class="sourceLine" id="cb90-2" data-line-number="2">thresholdDiff &lt;-<span class="st"> </span><span class="dv">9</span></a>
-<a class="sourceLine" id="cb90-3" data-line-number="3"><span class="co"># compute percentage of events outside of this threshold</span></a>
-<a class="sourceLine" id="cb90-4" data-line-number="4">numExtreme &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">which</span>(<span class="kw">abs</span>(differences_in_means) <span class="op">&gt;</span><span class="st"> </span>thresholdDiff))</a>
-<a class="sourceLine" id="cb90-5" data-line-number="5">percentExtreme &lt;-<span class="st"> </span>numExtreme<span class="op">/</span>numSamples <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb90-6" data-line-number="6"><span class="kw">paste0</span>(percentExtreme,<span class="st">&quot;%&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="differences-in-athletics.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># declare a threshold difference of interest</span></span>
+<span id="cb93-2"><a href="differences-in-athletics.html#cb93-2" aria-hidden="true" tabindex="-1"></a>thresholdDiff <span class="ot">&lt;-</span> <span class="dv">9</span></span>
+<span id="cb93-3"><a href="differences-in-athletics.html#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="co"># compute percentage of events outside of this threshold</span></span>
+<span id="cb93-4"><a href="differences-in-athletics.html#cb93-4" aria-hidden="true" tabindex="-1"></a>numExtreme <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">which</span>(<span class="fu">abs</span>(differences_in_means) <span class="sc">&gt;</span> thresholdDiff))</span>
+<span id="cb93-5"><a href="differences-in-athletics.html#cb93-5" aria-hidden="true" tabindex="-1"></a>percentExtreme <span class="ot">&lt;-</span> numExtreme<span class="sc">/</span>numSamples <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb93-6"><a href="differences-in-athletics.html#cb93-6" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(percentExtreme,<span class="st">&quot;%&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;0%&quot;</code></pre>
 <p>In short, it seems highly implausible that this difference would occur by chance.</p>
 <blockquote>
@@ -626,10 +635,10 @@ Q4
 <div id="aside-sampling-with-more-than-two-groups" class="section level4 unnumbered">
 <h4>Aside: Sampling with more than two groups</h4>
 <p>Previously in this course, for example with two-types-of-people questions and with beer taste-tests, we looked at how to simulate dichotomous outcomes. We used the <code>sample()</code> function in R repeatedly, or we took advantage of the binomial distribution. The function <code>rbinom()</code> can be used to simulate many beer taste-tests, for example, and the function <code>dbinom()</code> can be used to compute the proportion of certain outcomes. Suppose we wanted to simulate a draft of 100 hockey players, drawn from the population at random so that their birth-quarter should reflect the proportion of all births that occur in each quarter of the year. (This is necessary for the RShiny simulation this week.) This is very similar to our simulated “coin-flips” except that we have four possible outcomes. We want to roll a four-sided die, so to speak, but it is a loaded die. Not all outcomes are equally likely. This generalization of two to many is captured in the generalization of the <strong>binomial</strong> distribution to the <strong>multinomial</strong> distribution. The R function <code>rmultinom()</code> can be used like this</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1"><span class="co"># suppose I have four possible outcomes with</span></a>
-<a class="sourceLine" id="cb92-2" data-line-number="2"><span class="co"># probabilities of 0.2, 0.3, 0.4, and 0.1, respectively</span></a>
-<a class="sourceLine" id="cb92-3" data-line-number="3">simulationResults &lt;-<span class="st"> </span><span class="kw">rmultinom</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.1</span>))</a>
-<a class="sourceLine" id="cb92-4" data-line-number="4">simulationResults</a></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="differences-in-athletics.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># suppose I have four possible outcomes with</span></span>
+<span id="cb95-2"><a href="differences-in-athletics.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="co"># probabilities of 0.2, 0.3, 0.4, and 0.1, respectively</span></span>
+<span id="cb95-3"><a href="differences-in-athletics.html#cb95-3" aria-hidden="true" tabindex="-1"></a>simulationResults <span class="ot">&lt;-</span> <span class="fu">rmultinom</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="at">prob=</span><span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.1</span>))</span>
+<span id="cb95-4"><a href="differences-in-athletics.html#cb95-4" aria-hidden="true" tabindex="-1"></a>simulationResults</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
 ## [1,]   21   24   23   21   19   19   26   13   27    26
 ## [2,]   35   23   29   28   37   17   26   32   30    31
@@ -673,10 +682,13 @@ Figure 14.4: Fastest Runners in the 2017 Boston Marathon
 
 </div>
 </div>
+
+
+
 <div class="footnotes">
 <hr />
 <ol start="11">
-<li id="fn11"><p>The answer is D. Here’s why you need each quantity. <strong>Sample means.</strong> Clearly, if the sample means are very close, you are more likely to accept the possibility that the difference occurred by chance than if they are very different, so sample means are necessary. On the heels of that, the notion of “close” values of the means is itself dependent on the range of values we expect (i.e., on the <strong>variance</strong> or spread). Two buildings are close in height if one is 271 ft tall and another is 274 ft tall. But a difference of 3 feet among human beings is enormous. It’s enormous <em>relative</em> to the standard deviation, which for adult human beings is about 4 inches. The standard deviation for building heights is over 200 ft if we include skyscrapers. Finally, the <strong>sample size.</strong> The law of large numbers tells us that the sample mean gets closer to the population mean as the sample size increases. However, when the sample size is small, we will have more sampling variance. Intuitively, we can think about it this way: Let’s suppose the distributions are different but not so different that they don’t overlap. If we sample only two people from each population, we may get two tall people by chance from one (or short ones from the other) in such a way that the means are close by chance. But if we have small differences in means with large samples (say, 1000), then we believe that the means are, in fact, close or even equal.<a href="differences-in-athletics.html#fnref11" class="footnote-back">↩</a></p></li>
+<li id="fn11"><p>The answer is D. Here’s why you need each quantity. <strong>Sample means.</strong> Clearly, if the sample means are very close, you are more likely to accept the possibility that the difference occurred by chance than if they are very different, so sample means are necessary. On the heels of that, the notion of “close” values of the means is itself dependent on the range of values we expect (i.e., on the <strong>variance</strong> or spread). Two buildings are close in height if one is 271 ft tall and another is 274 ft tall. But a difference of 3 feet among human beings is enormous. It’s enormous <em>relative</em> to the standard deviation, which for adult human beings is about 4 inches. The standard deviation for building heights is over 200 ft if we include skyscrapers. Finally, the <strong>sample size.</strong> The law of large numbers tells us that the sample mean gets closer to the population mean as the sample size increases. However, when the sample size is small, we will have more sampling variance. Intuitively, we can think about it this way: Let’s suppose the distributions are different but not so different that they don’t overlap. If we sample only two people from each population, we may get two tall people by chance from one (or short ones from the other) in such a way that the means are close by chance. But if we have small differences in means with large samples (say, 1000), then we believe that the means are, in fact, close or even equal.<a href="differences-in-athletics.html#fnref11" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -685,7 +697,7 @@ Figure 14.4: Fastest Runners in the 2017 Boston Marathon
         </div>
       </div>
 <a href="is-the-system-fair.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="nyc-covid-19-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sec-randomness.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

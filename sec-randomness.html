@@ -30,8 +30,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="nyc-covid-19-data.html"/>
+<link rel="prev" href="betting-on-beer-or-ice-cream.html"/>
 <link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -54,25 +55,27 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -81,9 +84,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,134 +135,118 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Carpe Datum: Data Science for Life's Big Questions</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#caveat"><i class="fa fa-check"></i>Caveat</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#guiding-principles-in-this-book"><i class="fa fa-check"></i>Guiding principles in this book</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#guiding-principles-in-this-book"><i class="fa fa-check"></i>Guiding principles in this book</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#question-driven"><i class="fa fa-check"></i>Question-driven</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#no-proofs"><i class="fa fa-check"></i>No proofs</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="how-many-kinds-of-people-are-there.html"><a href="how-many-kinds-of-people-are-there.html"><i class="fa fa-check"></i>How Many Kinds of People Are There?</a><ul>
+<li class="chapter" data-level="" data-path="how-many-kinds-of-people-are-there.html"><a href="how-many-kinds-of-people-are-there.html"><i class="fa fa-check"></i>How Many Kinds of People Are There?</a>
+<ul>
 <li class="chapter" data-level="" data-path="how-many-kinds-of-people-are-there.html"><a href="how-many-kinds-of-people-are-there.html#things-are-about-to-get-meta-right-from-the-start"><i class="fa fa-check"></i>Things are about to get meta right from the start</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="categories.html"><a href="categories.html"><i class="fa fa-check"></i><b>1</b> Categories, counts, and kinds</a><ul>
+<li class="chapter" data-level="1" data-path="categories.html"><a href="categories.html"><i class="fa fa-check"></i><b>1</b> Categories, counts, and kinds</a>
+<ul>
 <li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#two-kinds-of-people"><i class="fa fa-check"></i>Two Kinds of People</a></li>
 <li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#samples-and-populations-a-statistical-caveat"><i class="fa fa-check"></i>Samples and Populations: A Statistical Caveat</a></li>
 <li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#a-psychological-caveat"><i class="fa fa-check"></i>A Psychological Caveat</a></li>
 <li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#summarizing-data"><i class="fa fa-check"></i>Summarizing data</a></li>
 <li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#checkpoint"><i class="fa fa-check"></i>Checkpoint</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="dimensions.html"><a href="dimensions.html"><i class="fa fa-check"></i><b>2</b> Dimensions</a><ul>
+<li class="chapter" data-level="2" data-path="dimensions.html"><a href="dimensions.html"><i class="fa fa-check"></i><b>2</b> Dimensions</a>
+<ul>
 <li class="chapter" data-level="" data-path="dimensions.html"><a href="dimensions.html#independence-association-and-contingency"><i class="fa fa-check"></i>Independence, Association, and Contingency</a></li>
 <li class="chapter" data-level="" data-path="dimensions.html"><a href="dimensions.html#latent-factors-and-measurement"><i class="fa fa-check"></i>Latent Factors and Measurement</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="test-indep.html"><a href="test-indep.html"><i class="fa fa-check"></i><b>3</b> Tests of independence: A first look starring alternate universes</a><ul>
+<li class="chapter" data-level="3" data-path="test-indep.html"><a href="test-indep.html"><i class="fa fa-check"></i><b>3</b> Tests of independence: A first look starring alternate universes</a>
+<ul>
 <li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#rise-of-the-machines"><i class="fa fa-check"></i>Rise of the machines</a></li>
 <li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#hypothesis-testing-just-happened"><i class="fa fa-check"></i>Hypothesis testing just happened</a></li>
 <li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#caveats"><i class="fa fa-check"></i>Caveats</a></li>
-<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#sampling-simulations-and-randomness"><i class="fa fa-check"></i>Sampling, simulations, and randomness</a><ul>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#sampling-simulations-and-randomness"><i class="fa fa-check"></i>Sampling, simulations, and randomness</a>
+<ul>
 <li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#tossing-virtual-coins"><i class="fa fa-check"></i>Tossing (virtual) coins</a></li>
 <li><a href="test-indep.html#but-some-observations-do-occur-more-than-others">But some observations <em>do</em> occur more than others</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#recap"><i class="fa fa-check"></i>Recap</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="shades.html"><a href="shades.html"><i class="fa fa-check"></i><b>4</b> (An Infinite Number of) Shades of Gray (or Brown)</a><ul>
-<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#poopiness"><i class="fa fa-check"></i>Poopiness</a><ul>
+<li class="chapter" data-level="4" data-path="shades.html"><a href="shades.html"><i class="fa fa-check"></i><b>4</b> (An Infinite Number of) Shades of Gray (or Brown)</a>
+<ul>
+<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#poopiness"><i class="fa fa-check"></i>Poopiness</a>
+<ul>
 <li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#mixtures"><i class="fa fa-check"></i>Mixtures</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#crappiness"><i class="fa fa-check"></i>Crappiness</a><ul>
+<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#crappiness"><i class="fa fa-check"></i>Crappiness</a>
+<ul>
 <li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#check-your-understanding"><i class="fa fa-check"></i>Check your understanding</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="cut-scores-and-abnormality.html"><a href="cut-scores-and-abnormality.html"><i class="fa fa-check"></i><b>5</b> Cut Scores and Abnormality</a></li>
-<li class="chapter" data-level="6" data-path="the-modal-american.html"><a href="the-modal-american.html"><i class="fa fa-check"></i><b>6</b> The Modal American</a><ul>
+<li class="chapter" data-level="6" data-path="the-modal-american.html"><a href="the-modal-american.html"><i class="fa fa-check"></i><b>6</b> The Modal American</a>
+<ul>
 <li class="chapter" data-level="" data-path="the-modal-american.html"><a href="the-modal-american.html#step-one-categories"><i class="fa fa-check"></i>Step one: categories</a></li>
 <li class="chapter" data-level="" data-path="the-modal-american.html"><a href="the-modal-american.html#step-two-contingency-table"><i class="fa fa-check"></i>Step two: contingency table</a></li>
 <li class="chapter" data-level="" data-path="the-modal-american.html"><a href="the-modal-american.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html"><i class="fa fa-check"></i><b>7</b> Sixteen Personalities or Five Factors?</a><ul>
+<li class="chapter" data-level="7" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html"><i class="fa fa-check"></i><b>7</b> Sixteen Personalities or Five Factors?</a>
+<ul>
 <li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#mbti"><i class="fa fa-check"></i>MBTI</a></li>
 <li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#big-five"><i class="fa fa-check"></i>Big Five</a></li>
 <li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#twenty-questions-about-extraversion"><i class="fa fa-check"></i>Twenty Questions (about Extraversion)</a></li>
 <li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#but-whats-the-point"><i class="fa fa-check"></i>But what’s the point?</a></li>
-<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#still-meta-after-all-these-pages"><i class="fa fa-check"></i>Still meta after all these pages</a></li>
+<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#recap-1"><i class="fa fa-check"></i>Recap</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html"><i class="fa fa-check"></i><b>8</b> When and How Will You Die?</a><ul>
-<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#not-quite-death-but-um-rain"><i class="fa fa-check"></i>Not Quite Death, but, um… Rain?</a><ul>
+<li class="chapter" data-level="8" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html"><i class="fa fa-check"></i><b>8</b> When and How Will You Die?</a>
+<ul>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#not-quite-death-but-um-rain"><i class="fa fa-check"></i>Not Quite Death, but, um… Rain?</a>
+<ul>
 <li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#stochastic-vs-deterministic-relationships"><i class="fa fa-check"></i>Stochastic vs Deterministic relationships</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#ways-of-thinking-about-probabilistic-statements"><i class="fa fa-check"></i>Ways of thinking about probabilistic statements</a><ul>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#ways-of-thinking-about-probabilistic-statements"><i class="fa fa-check"></i>Ways of thinking about probabilistic statements</a>
+<ul>
 <li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#ensembles"><i class="fa fa-check"></i>Ensembles</a></li>
 <li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#degree-of-belief"><i class="fa fa-check"></i>Degree of belief</a></li>
 <li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#decisions"><i class="fa fa-check"></i>Decisions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#death"><i class="fa fa-check"></i>Death</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="conditional-death.html"><a href="conditional-death.html"><i class="fa fa-check"></i><b>9</b> Conditional Death</a><ul>
+<li class="chapter" data-level="9" data-path="conditional-death.html"><a href="conditional-death.html"><i class="fa fa-check"></i><b>9</b> Conditional Death</a>
+<ul>
 <li class="chapter" data-level="" data-path="conditional-death.html"><a href="conditional-death.html#how-does-the-death-simulation-work"><i class="fa fa-check"></i>How does the death (simulation) work?</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="somefacts.html"><a href="somefacts.html"><i class="fa fa-check"></i><b>10</b> Some facts about Probabilities</a><ul>
+<li class="chapter" data-level="10" data-path="somefacts.html"><a href="somefacts.html"><i class="fa fa-check"></i><b>10</b> Some facts about Probabilities</a>
+<ul>
 <li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#conditional-probabilities"><i class="fa fa-check"></i>Conditional Probabilities</a></li>
-<li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#conditional-death-again"><i class="fa fa-check"></i>Conditional death, again</a><ul>
+<li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#conditional-death-again"><i class="fa fa-check"></i>Conditional death, again</a>
+<ul>
 <li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#just-to-make-things-weird"><i class="fa fa-check"></i>Just to make things weird</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html"><i class="fa fa-check"></i><b>11</b> How You Will Die: Causes or Conditions?</a><ul>
+<li class="chapter" data-level="11" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html"><i class="fa fa-check"></i><b>11</b> How You Will Die: Causes or Conditions?</a>
+<ul>
 <li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#causes-of-death-colloquially"><i class="fa fa-check"></i>Causes of death, colloquially</a></li>
 <li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#hold-my-beer"><i class="fa fa-check"></i>Hold my beer</a></li>
 <li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#non-deterministic-causation"><i class="fa fa-check"></i>Non-deterministic Causation</a></li>
 <li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#testing-for-an-association-between-two-variables"><i class="fa fa-check"></i>Testing for an association between two variables</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="will-you-make-money.html"><a href="will-you-make-money.html"><i class="fa fa-check"></i>Will You Make Money?</a><ul>
+<li class="chapter" data-level="" data-path="will-you-make-money.html"><a href="will-you-make-money.html"><i class="fa fa-check"></i>Will You Make Money?</a>
+<ul>
 <li class="chapter" data-level="" data-path="will-you-make-money.html"><a href="will-you-make-money.html#battle-of-the-bills"><i class="fa fa-check"></i>Battle of the Bills</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html"><i class="fa fa-check"></i><b>12</b> Betting on Beer (or Ice Cream)</a><ul>
-<li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#how-do-statisticians-solve-problems-like-this"><i class="fa fa-check"></i>How do statisticians solve problems like this?</a><ul>
+<li class="chapter" data-level="12" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html"><i class="fa fa-check"></i><b>12</b> Betting on Beer (or Ice Cream)</a>
+<ul>
+<li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#how-do-statisticians-solve-problems-like-this"><i class="fa fa-check"></i>How do statisticians solve problems like this?</a>
+<ul>
 <li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#the-solution-by-counting-or-combinatorics"><i class="fa fa-check"></i>The solution by counting, or combinatorics</a></li>
 <li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#the-solution-by-distribution-or-statistics"><i class="fa fa-check"></i>The solution by distribution, or statistics</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="expected-value.html"><a href="expected-value.html"><i class="fa fa-check"></i><b>13</b> Expected Value</a><ul>
-<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#betting-on-ice-cream"><i class="fa fa-check"></i>Betting on ice cream</a><ul>
-<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#by-the-statistical-power-of-grayskull"><i class="fa fa-check"></i>By the (Statistical) Power of Grayskull</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#betting-on-your-future"><i class="fa fa-check"></i>Betting on your Future</a><ul>
-<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#why-why-why-multiply-ay-ay"><i class="fa fa-check"></i>Why why why multiply-ay-ay?</a></li>
-<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#where-do-branching-probabilities-come-from"><i class="fa fa-check"></i>Where do branching probabilities come from?</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="is-the-system-fair.html"><a href="is-the-system-fair.html"><i class="fa fa-check"></i>Is the System Fair?</a></li>
-<li class="chapter" data-level="14" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html"><i class="fa fa-check"></i><b>14</b> Differences in athletics</a><ul>
-<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#are-professional-basketball-players-taller"><i class="fa fa-check"></i>Are professional basketball players taller?</a><ul>
-<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#none-of-this-is-surprising"><i class="fa fa-check"></i>None of this is surprising</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#surprising-differences"><i class="fa fa-check"></i>Surprising differences</a></li>
-<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#fairness-on-trial-trans-athletes"><i class="fa fa-check"></i>Fairness on trial: trans athletes</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html"><i class="fa fa-check"></i><b>15</b> NYC COVID-19 Data</a><ul>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#prologue"><i class="fa fa-check"></i>Prologue</a></li>
-<li class="chapter" data-level="15.1" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#part1"><i class="fa fa-check"></i><b>15.1</b> COVID NYC</a><ul>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#getting-some-data"><i class="fa fa-check"></i>Getting some data</a></li>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#local-data-on-covid-from-the-city-andor-state"><i class="fa fa-check"></i>Local data on COVID from the city and/or state</a></li>
-</ul></li>
-<li class="chapter" data-level="15.2" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#part2"><i class="fa fa-check"></i><b>15.2</b> Getting started with US Census data</a><ul>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#census-variables"><i class="fa fa-check"></i>Census Variables</a></li>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#geography-units"><i class="fa fa-check"></i>Geography Units</a></li>
-</ul></li>
-<li class="chapter" data-level="15.3" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#part3"><i class="fa fa-check"></i><b>15.3</b> More (and messier) Census data</a><ul>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#exploring-the-acs-data"><i class="fa fa-check"></i>Exploring the ACS data</a></li>
-</ul></li>
-<li class="chapter" data-level="15.4" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#zipcode"><i class="fa fa-check"></i><b>15.4</b> Zipcode tabulation area</a><ul>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#some-more-variables-to-play-with"><i class="fa fa-check"></i>Some more variables to play with</a></li>
-</ul></li>
-<li class="chapter" data-level="15.5" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#mapviz"><i class="fa fa-check"></i><b>15.5</b> Visualizing data on maps</a><ul>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#shapefiles"><i class="fa fa-check"></i>Shapefiles</a></li>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#coloring-in-the-shapes"><i class="fa fa-check"></i>Coloring in the shapes</a></li>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#scatterplots"><i class="fa fa-check"></i>Scatterplots</a></li>
-</ul></li>
-</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="sec-randomness.html"><a href="sec-randomness.html"><i class="fa fa-check"></i><b>A</b> Randomness</a><ul>
+<li class="chapter" data-level="A" data-path="sec-randomness.html"><a href="sec-randomness.html"><i class="fa fa-check"></i><b>A</b> Randomness</a>
+<ul>
 <li class="chapter" data-level="A.1" data-path="sec-randomness.html"><a href="sec-randomness.html#defining-random-processes"><i class="fa fa-check"></i><b>A.1</b> Defining random processes</a></li>
 <li class="chapter" data-level="A.2" data-path="sec-randomness.html"><a href="sec-randomness.html#predictions-about-random-events"><i class="fa fa-check"></i><b>A.2</b> Predictions about random events</a></li>
 <li class="chapter" data-level="A.3" data-path="sec-randomness.html"><a href="sec-randomness.html#modification-for-continuous-observations"><i class="fa fa-check"></i><b>A.3</b> Modification for continuous observations</a></li>
@@ -282,14 +269,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sec:randomness" class="section level1">
+<div id="sec:randomness" class="section level1" number="13">
 <h1><span class="header-section-number">A</span> Randomness</h1>
 <p>Whereas in common language, we may use the word “random” to mean surprising or unfamiliar, the concept has a more precise meaning in data science and statistics. Interestingly, there is no (formal) idea of randomness without probability. Just like there is no idea of straightness without the idea of space. What are the odds, right? The concept of randomness needs probability to define it, as we shall see. Moreover, randomness is an idea, like straightness, that has a pure ideal form. But what we observe in practice may be less than perfectly random (or straight).</p>
 <p>Consider straightness first. A straight line made using a ruler and a pencil is easily distinguished by eye from a wiggly hand-drawn line or a swooping curvy one. However, if we examine the pencil markings of a “straight line” under a magnifying glass, we can observe tiny wiggles at the edge. These wiggles may be due to the texture of the paper or the imperfections in the graphite (the pencil’s “lead”) or both. So the straight line is not actually perfectly straight. Nevertheless, we are able to hold in our minds a mathematical idea of a straight line. For example, we can define a line using math, specifically coordinate algebra and the <span class="math inline">\((x,y)\)</span> Euclidean plane. You likely can recognize an equation of this form:</p>
 <p><span class="math display">\[ y = 2 x + 3.\]</span></p>
 <p>This formula, which expresses a linear functional relationship, assumes a fair amount of prior knowledge, which we typically learn in school. For example, that <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> can take on continuous, real-number values, that the <span class="math inline">\(y\)</span> axis is perpendicular to the x-axis, etc. The line expressed in the formula is perfectly straight. Even if we draw it using only an approximately straight line with a pencil or chalk.</p>
 <p>YouTuber <a href="https://www.youtube.com/watch?v=9rIy0xY99a0">Vsauce’s video on “What is Random?”</a> explores whether things that we take for granted as being random (e.g., coin flips) really are. If you watch this video, you may come away convinced the outcome of tossing a coin or rolling a die is not truly random, and that quantum mechanics is the only truly random mechanism in nature. Alternately you may be satisfied that the fact of having limited information is sufficient to justify the treatment of a coin toss as a random event. On this argument, as long as you can’t tell the difference between a coin and a truly random coin, you may, for all intents and purposes, treat is as perfectly random.</p>
-<div id="defining-random-processes" class="section level2">
+<div id="defining-random-processes" class="section level2" number="13.1">
 <h2><span class="header-section-number">A.1</span> Defining random processes</h2>
 <p>As with straightness, we can at least define an ideal random process. For example, we can define an ideal coin toss using mathematical notation, although this notation is less commonly learned in school. Here’s one way to do it:</p>
 <p><span class="math display">\[ x \in \{H, T\} \qquad P(x=H) = p\]</span></p>
@@ -310,13 +297,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span class="math display">\[P(x=\mbox{blue}) = 0.09 \]</span>
 <span class="math display">\[P(x=\mbox{other}) = 0.03 \]</span></p>
 </div>
-<div id="predictions-about-random-events" class="section level2">
+<div id="predictions-about-random-events" class="section level2" number="13.2">
 <h2><span class="header-section-number">A.2</span> Predictions about random events</h2>
 <p>Perfectly random processes may not be very predictable on a case-by-case basis (unless the probability is close to 0 or 1), but good predictions can be made about the outcomes of many observations taken together.</p>
 <p>Suppose I predict that you will not be struck by lightning while reading this sentence. Was I right? Probably, because even though getting struck by lightning may be random, the probability is very close to 0. But if I predict that the next car that crosses your path will be black, I may be wrong <em>most of the time</em> even if my description above is an accurate one! If instead I predict that of the first 1000 people reading this sentence (and residing in the United States, on which I based my model) 23% will see a black car cross their path first, then my prediction should be close. How close? Well, quantifying error is part of what statistics is all about…</p>
 <p>The examples above, using two-sided coins, pass/fail, six-sided dice, and car colors might suggest to you how a general random process can be defined whenever there are a finite number of possible outcomes. We first define the set of all possible outcomes. Then, for each one, we define the probability that it occurs. The probabilities must still add up to one. This is a formal way of declaring that in our ideal random process, <em>something</em>, i.e., one of the possible outcomes, must occur.</p>
 </div>
-<div id="modification-for-continuous-observations" class="section level2">
+<div id="modification-for-continuous-observations" class="section level2" number="13.3">
 <h2><span class="header-section-number">A.3</span> Modification for continuous observations</h2>
 <p>When outcomes are continuous and not discrete, the above definitions need to be modified slightly. For example, suppose you were interested in <em>exactly</em> how long it will take before a black car crosses your path. (And suppose you have a clock so precise that there is no practical limit on how fine a time difference you can observe. Any fraction of a second is possible.) By the very nature of continuous measures, you cannot enumerate them, so you can’t go one by one and declare what the probability of each possible outcome is. Think about it: you can count seconds (one, two, three,…) but you can’t count infinitessimal fractions of seconds. Instead, you have to limit what you can say to things like, “the probability that the outcome (time to crossing by black car) is in some range is…” The choice of range can be totally arbitrary, say, the probability that it will take between 37 and 49 seconds. Or, you can turn the continous outcome into a discrete set of ranges (e.g., less than a minute, between one and five minutes, five to ten minutes, or longer than ten minutes) and then proceed as before. You will see this kind of thing done a lot. The formal definition of random processes for continuous variables uses calculus.</p>
 
@@ -327,7 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="nyc-covid-19-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="betting-on-beer-or-ice-cream.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

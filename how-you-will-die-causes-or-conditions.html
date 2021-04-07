@@ -32,6 +32,7 @@
   
 <link rel="prev" href="somefacts.html"/>
 <link rel="next" href="will-you-make-money.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -54,25 +55,27 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -81,9 +84,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,134 +135,118 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Carpe Datum: Data Science for Life's Big Questions</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#caveat"><i class="fa fa-check"></i>Caveat</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#guiding-principles-in-this-book"><i class="fa fa-check"></i>Guiding principles in this book</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#guiding-principles-in-this-book"><i class="fa fa-check"></i>Guiding principles in this book</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#question-driven"><i class="fa fa-check"></i>Question-driven</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#no-proofs"><i class="fa fa-check"></i>No proofs</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="how-many-kinds-of-people-are-there.html"><a href="how-many-kinds-of-people-are-there.html"><i class="fa fa-check"></i>How Many Kinds of People Are There?</a><ul>
+<li class="chapter" data-level="" data-path="how-many-kinds-of-people-are-there.html"><a href="how-many-kinds-of-people-are-there.html"><i class="fa fa-check"></i>How Many Kinds of People Are There?</a>
+<ul>
 <li class="chapter" data-level="" data-path="how-many-kinds-of-people-are-there.html"><a href="how-many-kinds-of-people-are-there.html#things-are-about-to-get-meta-right-from-the-start"><i class="fa fa-check"></i>Things are about to get meta right from the start</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="categories.html"><a href="categories.html"><i class="fa fa-check"></i><b>1</b> Categories, counts, and kinds</a><ul>
+<li class="chapter" data-level="1" data-path="categories.html"><a href="categories.html"><i class="fa fa-check"></i><b>1</b> Categories, counts, and kinds</a>
+<ul>
 <li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#two-kinds-of-people"><i class="fa fa-check"></i>Two Kinds of People</a></li>
 <li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#samples-and-populations-a-statistical-caveat"><i class="fa fa-check"></i>Samples and Populations: A Statistical Caveat</a></li>
 <li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#a-psychological-caveat"><i class="fa fa-check"></i>A Psychological Caveat</a></li>
 <li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#summarizing-data"><i class="fa fa-check"></i>Summarizing data</a></li>
 <li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#checkpoint"><i class="fa fa-check"></i>Checkpoint</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="dimensions.html"><a href="dimensions.html"><i class="fa fa-check"></i><b>2</b> Dimensions</a><ul>
+<li class="chapter" data-level="2" data-path="dimensions.html"><a href="dimensions.html"><i class="fa fa-check"></i><b>2</b> Dimensions</a>
+<ul>
 <li class="chapter" data-level="" data-path="dimensions.html"><a href="dimensions.html#independence-association-and-contingency"><i class="fa fa-check"></i>Independence, Association, and Contingency</a></li>
 <li class="chapter" data-level="" data-path="dimensions.html"><a href="dimensions.html#latent-factors-and-measurement"><i class="fa fa-check"></i>Latent Factors and Measurement</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="test-indep.html"><a href="test-indep.html"><i class="fa fa-check"></i><b>3</b> Tests of independence: A first look starring alternate universes</a><ul>
+<li class="chapter" data-level="3" data-path="test-indep.html"><a href="test-indep.html"><i class="fa fa-check"></i><b>3</b> Tests of independence: A first look starring alternate universes</a>
+<ul>
 <li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#rise-of-the-machines"><i class="fa fa-check"></i>Rise of the machines</a></li>
 <li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#hypothesis-testing-just-happened"><i class="fa fa-check"></i>Hypothesis testing just happened</a></li>
 <li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#caveats"><i class="fa fa-check"></i>Caveats</a></li>
-<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#sampling-simulations-and-randomness"><i class="fa fa-check"></i>Sampling, simulations, and randomness</a><ul>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#sampling-simulations-and-randomness"><i class="fa fa-check"></i>Sampling, simulations, and randomness</a>
+<ul>
 <li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#tossing-virtual-coins"><i class="fa fa-check"></i>Tossing (virtual) coins</a></li>
 <li><a href="test-indep.html#but-some-observations-do-occur-more-than-others">But some observations <em>do</em> occur more than others</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#recap"><i class="fa fa-check"></i>Recap</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="shades.html"><a href="shades.html"><i class="fa fa-check"></i><b>4</b> (An Infinite Number of) Shades of Gray (or Brown)</a><ul>
-<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#poopiness"><i class="fa fa-check"></i>Poopiness</a><ul>
+<li class="chapter" data-level="4" data-path="shades.html"><a href="shades.html"><i class="fa fa-check"></i><b>4</b> (An Infinite Number of) Shades of Gray (or Brown)</a>
+<ul>
+<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#poopiness"><i class="fa fa-check"></i>Poopiness</a>
+<ul>
 <li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#mixtures"><i class="fa fa-check"></i>Mixtures</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#crappiness"><i class="fa fa-check"></i>Crappiness</a><ul>
+<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#crappiness"><i class="fa fa-check"></i>Crappiness</a>
+<ul>
 <li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#check-your-understanding"><i class="fa fa-check"></i>Check your understanding</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="cut-scores-and-abnormality.html"><a href="cut-scores-and-abnormality.html"><i class="fa fa-check"></i><b>5</b> Cut Scores and Abnormality</a></li>
-<li class="chapter" data-level="6" data-path="the-modal-american.html"><a href="the-modal-american.html"><i class="fa fa-check"></i><b>6</b> The Modal American</a><ul>
+<li class="chapter" data-level="6" data-path="the-modal-american.html"><a href="the-modal-american.html"><i class="fa fa-check"></i><b>6</b> The Modal American</a>
+<ul>
 <li class="chapter" data-level="" data-path="the-modal-american.html"><a href="the-modal-american.html#step-one-categories"><i class="fa fa-check"></i>Step one: categories</a></li>
 <li class="chapter" data-level="" data-path="the-modal-american.html"><a href="the-modal-american.html#step-two-contingency-table"><i class="fa fa-check"></i>Step two: contingency table</a></li>
 <li class="chapter" data-level="" data-path="the-modal-american.html"><a href="the-modal-american.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html"><i class="fa fa-check"></i><b>7</b> Sixteen Personalities or Five Factors?</a><ul>
+<li class="chapter" data-level="7" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html"><i class="fa fa-check"></i><b>7</b> Sixteen Personalities or Five Factors?</a>
+<ul>
 <li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#mbti"><i class="fa fa-check"></i>MBTI</a></li>
 <li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#big-five"><i class="fa fa-check"></i>Big Five</a></li>
 <li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#twenty-questions-about-extraversion"><i class="fa fa-check"></i>Twenty Questions (about Extraversion)</a></li>
 <li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#but-whats-the-point"><i class="fa fa-check"></i>But what’s the point?</a></li>
-<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#still-meta-after-all-these-pages"><i class="fa fa-check"></i>Still meta after all these pages</a></li>
+<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#recap-1"><i class="fa fa-check"></i>Recap</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html"><i class="fa fa-check"></i><b>8</b> When and How Will You Die?</a><ul>
-<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#not-quite-death-but-um-rain"><i class="fa fa-check"></i>Not Quite Death, but, um… Rain?</a><ul>
+<li class="chapter" data-level="8" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html"><i class="fa fa-check"></i><b>8</b> When and How Will You Die?</a>
+<ul>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#not-quite-death-but-um-rain"><i class="fa fa-check"></i>Not Quite Death, but, um… Rain?</a>
+<ul>
 <li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#stochastic-vs-deterministic-relationships"><i class="fa fa-check"></i>Stochastic vs Deterministic relationships</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#ways-of-thinking-about-probabilistic-statements"><i class="fa fa-check"></i>Ways of thinking about probabilistic statements</a><ul>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#ways-of-thinking-about-probabilistic-statements"><i class="fa fa-check"></i>Ways of thinking about probabilistic statements</a>
+<ul>
 <li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#ensembles"><i class="fa fa-check"></i>Ensembles</a></li>
 <li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#degree-of-belief"><i class="fa fa-check"></i>Degree of belief</a></li>
 <li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#decisions"><i class="fa fa-check"></i>Decisions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#death"><i class="fa fa-check"></i>Death</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="conditional-death.html"><a href="conditional-death.html"><i class="fa fa-check"></i><b>9</b> Conditional Death</a><ul>
+<li class="chapter" data-level="9" data-path="conditional-death.html"><a href="conditional-death.html"><i class="fa fa-check"></i><b>9</b> Conditional Death</a>
+<ul>
 <li class="chapter" data-level="" data-path="conditional-death.html"><a href="conditional-death.html#how-does-the-death-simulation-work"><i class="fa fa-check"></i>How does the death (simulation) work?</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="somefacts.html"><a href="somefacts.html"><i class="fa fa-check"></i><b>10</b> Some facts about Probabilities</a><ul>
+<li class="chapter" data-level="10" data-path="somefacts.html"><a href="somefacts.html"><i class="fa fa-check"></i><b>10</b> Some facts about Probabilities</a>
+<ul>
 <li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#conditional-probabilities"><i class="fa fa-check"></i>Conditional Probabilities</a></li>
-<li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#conditional-death-again"><i class="fa fa-check"></i>Conditional death, again</a><ul>
+<li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#conditional-death-again"><i class="fa fa-check"></i>Conditional death, again</a>
+<ul>
 <li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#just-to-make-things-weird"><i class="fa fa-check"></i>Just to make things weird</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html"><i class="fa fa-check"></i><b>11</b> How You Will Die: Causes or Conditions?</a><ul>
+<li class="chapter" data-level="11" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html"><i class="fa fa-check"></i><b>11</b> How You Will Die: Causes or Conditions?</a>
+<ul>
 <li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#causes-of-death-colloquially"><i class="fa fa-check"></i>Causes of death, colloquially</a></li>
 <li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#hold-my-beer"><i class="fa fa-check"></i>Hold my beer</a></li>
 <li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#non-deterministic-causation"><i class="fa fa-check"></i>Non-deterministic Causation</a></li>
 <li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#testing-for-an-association-between-two-variables"><i class="fa fa-check"></i>Testing for an association between two variables</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="will-you-make-money.html"><a href="will-you-make-money.html"><i class="fa fa-check"></i>Will You Make Money?</a><ul>
+<li class="chapter" data-level="" data-path="will-you-make-money.html"><a href="will-you-make-money.html"><i class="fa fa-check"></i>Will You Make Money?</a>
+<ul>
 <li class="chapter" data-level="" data-path="will-you-make-money.html"><a href="will-you-make-money.html#battle-of-the-bills"><i class="fa fa-check"></i>Battle of the Bills</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html"><i class="fa fa-check"></i><b>12</b> Betting on Beer (or Ice Cream)</a><ul>
-<li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#how-do-statisticians-solve-problems-like-this"><i class="fa fa-check"></i>How do statisticians solve problems like this?</a><ul>
+<li class="chapter" data-level="12" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html"><i class="fa fa-check"></i><b>12</b> Betting on Beer (or Ice Cream)</a>
+<ul>
+<li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#how-do-statisticians-solve-problems-like-this"><i class="fa fa-check"></i>How do statisticians solve problems like this?</a>
+<ul>
 <li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#the-solution-by-counting-or-combinatorics"><i class="fa fa-check"></i>The solution by counting, or combinatorics</a></li>
 <li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#the-solution-by-distribution-or-statistics"><i class="fa fa-check"></i>The solution by distribution, or statistics</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="expected-value.html"><a href="expected-value.html"><i class="fa fa-check"></i><b>13</b> Expected Value</a><ul>
-<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#betting-on-ice-cream"><i class="fa fa-check"></i>Betting on ice cream</a><ul>
-<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#by-the-statistical-power-of-grayskull"><i class="fa fa-check"></i>By the (Statistical) Power of Grayskull</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#betting-on-your-future"><i class="fa fa-check"></i>Betting on your Future</a><ul>
-<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#why-why-why-multiply-ay-ay"><i class="fa fa-check"></i>Why why why multiply-ay-ay?</a></li>
-<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#where-do-branching-probabilities-come-from"><i class="fa fa-check"></i>Where do branching probabilities come from?</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="is-the-system-fair.html"><a href="is-the-system-fair.html"><i class="fa fa-check"></i>Is the System Fair?</a></li>
-<li class="chapter" data-level="14" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html"><i class="fa fa-check"></i><b>14</b> Differences in athletics</a><ul>
-<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#are-professional-basketball-players-taller"><i class="fa fa-check"></i>Are professional basketball players taller?</a><ul>
-<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#none-of-this-is-surprising"><i class="fa fa-check"></i>None of this is surprising</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#surprising-differences"><i class="fa fa-check"></i>Surprising differences</a></li>
-<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#fairness-on-trial-trans-athletes"><i class="fa fa-check"></i>Fairness on trial: trans athletes</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html"><i class="fa fa-check"></i><b>15</b> NYC COVID-19 Data</a><ul>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#prologue"><i class="fa fa-check"></i>Prologue</a></li>
-<li class="chapter" data-level="15.1" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#part1"><i class="fa fa-check"></i><b>15.1</b> COVID NYC</a><ul>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#getting-some-data"><i class="fa fa-check"></i>Getting some data</a></li>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#local-data-on-covid-from-the-city-andor-state"><i class="fa fa-check"></i>Local data on COVID from the city and/or state</a></li>
-</ul></li>
-<li class="chapter" data-level="15.2" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#part2"><i class="fa fa-check"></i><b>15.2</b> Getting started with US Census data</a><ul>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#census-variables"><i class="fa fa-check"></i>Census Variables</a></li>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#geography-units"><i class="fa fa-check"></i>Geography Units</a></li>
-</ul></li>
-<li class="chapter" data-level="15.3" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#part3"><i class="fa fa-check"></i><b>15.3</b> More (and messier) Census data</a><ul>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#exploring-the-acs-data"><i class="fa fa-check"></i>Exploring the ACS data</a></li>
-</ul></li>
-<li class="chapter" data-level="15.4" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#zipcode"><i class="fa fa-check"></i><b>15.4</b> Zipcode tabulation area</a><ul>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#some-more-variables-to-play-with"><i class="fa fa-check"></i>Some more variables to play with</a></li>
-</ul></li>
-<li class="chapter" data-level="15.5" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#mapviz"><i class="fa fa-check"></i><b>15.5</b> Visualizing data on maps</a><ul>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#shapefiles"><i class="fa fa-check"></i>Shapefiles</a></li>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#coloring-in-the-shapes"><i class="fa fa-check"></i>Coloring in the shapes</a></li>
-<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#scatterplots"><i class="fa fa-check"></i>Scatterplots</a></li>
-</ul></li>
-</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="sec-randomness.html"><a href="sec-randomness.html"><i class="fa fa-check"></i><b>A</b> Randomness</a><ul>
+<li class="chapter" data-level="A" data-path="sec-randomness.html"><a href="sec-randomness.html"><i class="fa fa-check"></i><b>A</b> Randomness</a>
+<ul>
 <li class="chapter" data-level="A.1" data-path="sec-randomness.html"><a href="sec-randomness.html#defining-random-processes"><i class="fa fa-check"></i><b>A.1</b> Defining random processes</a></li>
 <li class="chapter" data-level="A.2" data-path="sec-randomness.html"><a href="sec-randomness.html#predictions-about-random-events"><i class="fa fa-check"></i><b>A.2</b> Predictions about random events</a></li>
 <li class="chapter" data-level="A.3" data-path="sec-randomness.html"><a href="sec-randomness.html#modification-for-continuous-observations"><i class="fa fa-check"></i><b>A.3</b> Modification for continuous observations</a></li>
@@ -282,7 +269,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="how-you-will-die-causes-or-conditions" class="section level1">
+<div id="how-you-will-die-causes-or-conditions" class="section level1" number="11">
 <h1><span class="header-section-number">Chapter 11</span> How You Will Die: Causes or Conditions?</h1>
 <div id="causes-of-death-colloquially" class="section level2 unnumbered">
 <h2>Causes of death, colloquially</h2>
@@ -306,7 +293,7 @@ While the opposite is true in your 80s:</p>
 <pre><code>P(cause = endocrine | race = African-American, sex= male, age = 65-70) = ?</code></pre>
 <p>Yau also draws your attention to another feature of this visualization: “When you select races, you might notice that the smaller groups, American Indian and Asian, appear to be more jagged, whereas cause of death for the larger groups, black and white, appear to be smoother. This is likely due to population size more than anything else. It’s a smaller sample, and there’s higher variance.”</p>
 <p>The sample size factors in here, because CDC data are being used to estimate a proportion. For example, what proportion of 65-year-old deaths are the result of circulatory disease. Suppose we knew the true proportion in the total population. If we took only a sample from this population, we will not always find exactly the same proportion. For small samples, the proportion in each sample will appear to vary a lot. While for large samples, the proportion will vary but in a smaller range. We will revisit this idea again when we discuss making bets.</p>
-<p>Yau’s final visualization in the trio, How You Will Die, combines elements of causes-of-death and years-you-have-left-to-live. The visualization is dynamic, and the passing of time is like a sped up version of your life. In Figures <a href="how-you-will-die-causes-or-conditions.html#fig:how-die-21-1">11.2</a>-<a href="how-you-will-die-causes-or-conditions.html#fig:how-die-21-3">11.4</a>, I have reproduced still snapshots taken at three different “ages”, starting with the simulation settings: Asian female, age 21.</p>
+<p>Yau’s final visualization in the trio, How You Will Die, combines elements of causes-of-death and years-you-have-left-to-live. The visualization is dynamic, and the passing of time is like a sped up version of your life. In Figures <a href="how-you-will-die-causes-or-conditions.html#fig:how-die-21-1">11.2</a>-<a href="how-you-will-die-causes-or-conditions.html#fig:how-die-21-3">11.4</a>, I have reproduced still snapshots taken at three different “ages,” starting with the simulation settings: Asian female, age 21.</p>
 <div class="figure" style="text-align: center"><span id="fig:how-die-21-1"></span>
 <img src="images/HowYouWillDie21-61.png" alt="Screenshot 1 of How You Will Die visualization" width="80%" />
 <p class="caption">
@@ -333,7 +320,7 @@ Figure 11.4: Screenshot 3 of How You Will Die visualization
 <p>If I am about to engage in highly risky behavior, you might not want to put the probability that I die this year at the 1% or 2% base rate from the life tables. You might think I have a 37% chance of dying from an exploded stomach. Which, by the way, is an external cause. So you might think that the conditional probability of death <em>by external causes</em> should go up, but not the probability of death by respiratory disease.</p>
 <!-- By the way, in the foregoing example, you may not be operating on a data set of past cases. You may be using your subjective judgement about my risky behavior in coming up with the numebr 37% -->
 <p>When there is something that you can change, or manipulate, such as engaging in a particular behavior (e.g., driving, rock climbing, or eating Pop Rocks and Coke), then we can imagine what <em>might</em> have happened if you didn’t do something that you did (or did something that in reality you didn’t do). This is what is known as a <em>counterfactual</em> claim, such as “if I didn’t check my email this morning before leaving the house, I would not have missed the train.” Maybe. But how can we know?</p>
-<p>Our knowledge about the world is based on a combination of observations. (I am distinguishing knowledge from belief, but epistemology is a big topic and beyong our scope at the moment!) Some of those observations are of the form where we do not deliberately manipulate conditions in the world, such as treatments, behaviors, or environmental factors. We just observe the joint occurrences of events in samples, such as health outcomes, behaviors, pollution levels, etc. Analysis of these kinds of data are called observational studies. We can also do experiments, sometimes, where we gather a sample of people and assign half of them to do something (e.g., take medicine, or sleep in a cabin) and half of them to do something else (e.g., take a placebo, or watch an informational video). These are experimental studies.</p>
+<p>Our knowledge about the world is based on a combination of observations. (I am distinguishing knowledge from belief, but epistemology is a big topic and beyond our scope at the moment!) Some of those observations are of the form where we do not deliberately manipulate conditions in the world, such as treatments, behaviors, or environmental factors. We just observe the joint occurrences of events in samples, such as health outcomes, behaviors, pollution levels, etc. Analysis of these kinds of data are called observational studies. We can also do experiments, sometimes, where we gather a sample of people and assign half of them to do something (e.g., take medicine, or sleep in a cabin) and half of them to do something else (e.g., take a placebo, or watch an informational video). These are experimental studies.</p>
 <p>It is often said that experimental studies are the best way to develop knowledge about causation, that is, answers to questions of the form, does A cause B? Does eating meat cause heart disease? Does smoking cause lung cancer? And are experiments the only way to answer such questions?</p>
 <p>What does it mean to say A causes B? The philosopher David Hume was one of the first to shed light on the question of how we conceive of causation. In the past twenty years, statistical thinking about causality has also changed a lot. In this course, we are going to take a pragmatic approach and focus on how we use the concept of causation in everyday life. It will be helpful to review our distinction between deterministic and stochastic processes and between associated and independent events.</p>
 </div>
@@ -341,10 +328,10 @@ Figure 11.4: Screenshot 3 of How You Will Die visualization
 <h2>Non-deterministic Causation</h2>
 <p>If I hit a porcelain tea cup hard with hammer and the tea cup breaks, we can safely say that hitting the teacup with a hammer caused the cup to break. We don’t really feel the need to say that if you hit a teacup hard with a hammer, there is a 99.9997% chance that it will break. Even if that’s actually true. And we don’t feel the need to define “hard” in this case either. We use an example like a teacup and hammer when we want to focus on the common-sense big picture and not the details. And the big picture here says that hitting a teacup with a hammer deterministically causes the teacup to break. Let us also assert that if we do not hit the teacup, and it just sits there, then it will not spontaneously break. In the case of the physics of hammers and teacups, we feel that we know this much is true.</p>
 <p>What about buying a lottery ticket? Does buying a lottery ticket cause one to win the lottery? Well, you certainly are not guaranteed to win the lottery if you buy a ticket. (In fact, your chances will be very low. The subject of making money is the next Big Question). But you can’t possibly win if you don’t buy a ticket. So, strictly speaking, buying a ticket does influence the probability of winning.</p>
-<p>We’ve now dicussed two examples. In the first case (hammer and teacup):</p>
+<p>We’ve now discussed two examples. In the first case (hammer and teacup):</p>
 <ul>
 <li>If A (hammer hits teacup) then definitely B (teacup breaks)</li>
-<li>If not A (hammer does not hit teacup) then definitely not B (teacup does not breaks)</li>
+<li>If not A (hammer does not hit teacup) then definitely not B (teacup does not break)</li>
 </ul>
 <p>In table form:</p>
 <table>
@@ -509,39 +496,39 @@ Figure 11.4: Screenshot 3 of How You Will Die visualization
 <p>Based on the sample you observed, you could estimate that approximately <span class="math inline">\(\frac{46+204}{1000}*100=25\)</span> percent of the population smokes and approximately <span class="math inline">\(\frac{46+93}{1000}*100=13.9\)</span> percent of the population has been diagnosed with cancer. If there is no real difference in cancer incidence among smokers and non-smokers, then these two variables are independent: as though 25% of your sample randomly decided to smoke, and 13.9% were randomly diagnosed with cancer.</p>
 <p>It is easy to simulate datasets under this assumption. In two completely separate (independent) steps, we will randomly assign to each of our 1000 people, a 25% chance of being a heavy smoker and a 13.9% chance of getting cancer. In Chapter <a href="test-indep.html#test-indep">3</a>, we imagined starting with a fixed number of responses (e.g., smoker/non-smoker), shuffling those responses, and then redistributing the values among our virtual subjects. The code below actually does something different. It will draw values with replacement for each of the two variables. This means that in each replication, we will not actually have exactly 250 smokers and 139 cancers. The numbers will fluctuate somewhat in each simulated dataset.</p>
 <p>After we generate our simulated datasets, we can calculate <span class="math inline">\(P(\text{Cancer}|\text{Smoke})-P(\text{Cancer}|\text{Not Smoke})\)</span> and observe what range of values occurs. We will be particularly interested in the proportion of the time that this difference is greater than or equal to <span class="math inline">\(0.06\)</span>. That was our observed value. And in this simulation, we know that the two variables are independent. Thus, we are quantifying the chance of observing such a difference in outcomes due to random chance.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">5123</span>)</a>
-<a class="sourceLine" id="cb47-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb47-3" data-line-number="3"><span class="co">#set some number of iterations/replications</span></a>
-<a class="sourceLine" id="cb47-4" data-line-number="4">nIter =<span class="st"> </span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb47-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb47-6" data-line-number="6"><span class="co">#create vector to save differences in proportions</span></a>
-<a class="sourceLine" id="cb47-7" data-line-number="7">differences =<span class="st"> </span><span class="kw">vector</span>(<span class="dt">length =</span> nIter) </a>
-<a class="sourceLine" id="cb47-8" data-line-number="8"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>nIter){ <span class="co">#repeat the following process nIter times</span></a>
-<a class="sourceLine" id="cb47-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb47-10" data-line-number="10">  <span class="co">#create some fake data and save it as &quot;fakedata&quot;</span></a>
-<a class="sourceLine" id="cb47-11" data-line-number="11">  fakedata =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Smoke =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Y&quot;</span>, <span class="st">&quot;N&quot;</span>), <span class="dt">size=</span><span class="dv">1000</span>, </a>
-<a class="sourceLine" id="cb47-12" data-line-number="12">                                       <span class="dt">prob=</span><span class="kw">c</span>(.<span class="dv">25</span>, <span class="fl">.75</span>), <span class="dt">replace =</span> T),</a>
-<a class="sourceLine" id="cb47-13" data-line-number="13">                        <span class="dt">Cancer =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Y&quot;</span>, <span class="st">&quot;N&quot;</span>), <span class="dt">size=</span><span class="dv">1000</span>, </a>
-<a class="sourceLine" id="cb47-14" data-line-number="14">                                        <span class="dt">prob=</span><span class="kw">c</span>(.<span class="dv">139</span>, <span class="fl">.861</span>), <span class="dt">replace =</span> T))</a>
-<a class="sourceLine" id="cb47-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb47-16" data-line-number="16">  <span class="co">#use the fake data to calculate P(cancer|smoke)</span></a>
-<a class="sourceLine" id="cb47-17" data-line-number="17">  CgivenS =<span class="st"> </span><span class="kw">table</span>(fakedata)[<span class="dv">2</span>,<span class="dv">2</span>]<span class="op">/</span><span class="kw">sum</span>(<span class="kw">table</span>(fakedata)[<span class="dv">2</span>,])</a>
-<a class="sourceLine" id="cb47-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb47-19" data-line-number="19">  <span class="co">#use the fake data to calculate P(cancer|not smoke)</span></a>
-<a class="sourceLine" id="cb47-20" data-line-number="20">  CgivenNS =<span class="st"> </span><span class="kw">table</span>(fakedata)[<span class="dv">1</span>,<span class="dv">2</span>]<span class="op">/</span><span class="kw">sum</span>(<span class="kw">table</span>(fakedata)[<span class="dv">1</span>,])</a>
-<a class="sourceLine" id="cb47-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb47-22" data-line-number="22">  <span class="co">#save P(cancer|smoke) - P(cancer|not smoke) in the ith location of differences</span></a>
-<a class="sourceLine" id="cb47-23" data-line-number="23">  differences[i] &lt;-<span class="st"> </span>CgivenS <span class="op">-</span><span class="st"> </span>CgivenNS</a>
-<a class="sourceLine" id="cb47-24" data-line-number="24">}</a>
-<a class="sourceLine" id="cb47-25" data-line-number="25"></a>
-<a class="sourceLine" id="cb47-26" data-line-number="26"><span class="co">#calculate proportion of differences greater than or equal to .06</span></a>
-<a class="sourceLine" id="cb47-27" data-line-number="27">propGreater &lt;-<span class="st"> </span><span class="kw">sum</span>(differences <span class="op">&gt;=</span><span class="st"> </span><span class="fl">.06</span>)<span class="op">/</span>nIter</a>
-<a class="sourceLine" id="cb47-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb47-29" data-line-number="29"><span class="co">#plot a histogram of the differences with a red vertical line at .06</span></a>
-<a class="sourceLine" id="cb47-30" data-line-number="30"><span class="kw">hist</span>(differences, <span class="dt">main=</span><span class="st">&quot;Histogram of P(cancer|smoke) - P(cancer|not smoke)&quot;</span>,</a>
-<a class="sourceLine" id="cb47-31" data-line-number="31">     <span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">0.1</span>), <span class="dt">breaks=</span><span class="kw">seq</span>(<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">0.1</span>,<span class="fl">0.01</span>))</a>
-<a class="sourceLine" id="cb47-32" data-line-number="32"><span class="kw">abline</span>(<span class="dt">v=</span>.<span class="dv">06</span>, <span class="dt">lwd=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb47-33" data-line-number="33"><span class="kw">text</span>(<span class="fl">0.09</span>, nIter<span class="op">/</span><span class="dv">10</span>, <span class="kw">paste0</span>(propGreater<span class="op">*</span><span class="dv">100</span>,<span class="st">&quot;% of cases&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="how-you-will-die-causes-or-conditions.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5123</span>)</span>
+<span id="cb50-2"><a href="how-you-will-die-causes-or-conditions.html#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="how-you-will-die-causes-or-conditions.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co">#set some number of iterations/replications</span></span>
+<span id="cb50-4"><a href="how-you-will-die-causes-or-conditions.html#cb50-4" aria-hidden="true" tabindex="-1"></a>nIter <span class="ot">=</span> <span class="dv">100</span></span>
+<span id="cb50-5"><a href="how-you-will-die-causes-or-conditions.html#cb50-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-6"><a href="how-you-will-die-causes-or-conditions.html#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="co">#create vector to save differences in proportions</span></span>
+<span id="cb50-7"><a href="how-you-will-die-causes-or-conditions.html#cb50-7" aria-hidden="true" tabindex="-1"></a>differences <span class="ot">=</span> <span class="fu">vector</span>(<span class="at">length =</span> nIter) </span>
+<span id="cb50-8"><a href="how-you-will-die-causes-or-conditions.html#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nIter){ <span class="co">#repeat the following process nIter times</span></span>
+<span id="cb50-9"><a href="how-you-will-die-causes-or-conditions.html#cb50-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-10"><a href="how-you-will-die-causes-or-conditions.html#cb50-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#create some fake data and save it as &quot;fakedata&quot;</span></span>
+<span id="cb50-11"><a href="how-you-will-die-causes-or-conditions.html#cb50-11" aria-hidden="true" tabindex="-1"></a>  fakedata <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Smoke =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;Y&quot;</span>, <span class="st">&quot;N&quot;</span>), <span class="at">size=</span><span class="dv">1000</span>, </span>
+<span id="cb50-12"><a href="how-you-will-die-causes-or-conditions.html#cb50-12" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">prob=</span><span class="fu">c</span>(.<span class="dv">25</span>, .<span class="dv">75</span>), <span class="at">replace =</span> T),</span>
+<span id="cb50-13"><a href="how-you-will-die-causes-or-conditions.html#cb50-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">Cancer =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;Y&quot;</span>, <span class="st">&quot;N&quot;</span>), <span class="at">size=</span><span class="dv">1000</span>, </span>
+<span id="cb50-14"><a href="how-you-will-die-causes-or-conditions.html#cb50-14" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">prob=</span><span class="fu">c</span>(.<span class="dv">139</span>, .<span class="dv">861</span>), <span class="at">replace =</span> T))</span>
+<span id="cb50-15"><a href="how-you-will-die-causes-or-conditions.html#cb50-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-16"><a href="how-you-will-die-causes-or-conditions.html#cb50-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#use the fake data to calculate P(cancer|smoke)</span></span>
+<span id="cb50-17"><a href="how-you-will-die-causes-or-conditions.html#cb50-17" aria-hidden="true" tabindex="-1"></a>  CgivenS <span class="ot">=</span> <span class="fu">table</span>(fakedata)[<span class="dv">2</span>,<span class="dv">2</span>]<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">table</span>(fakedata)[<span class="dv">2</span>,])</span>
+<span id="cb50-18"><a href="how-you-will-die-causes-or-conditions.html#cb50-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-19"><a href="how-you-will-die-causes-or-conditions.html#cb50-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">#use the fake data to calculate P(cancer|not smoke)</span></span>
+<span id="cb50-20"><a href="how-you-will-die-causes-or-conditions.html#cb50-20" aria-hidden="true" tabindex="-1"></a>  CgivenNS <span class="ot">=</span> <span class="fu">table</span>(fakedata)[<span class="dv">1</span>,<span class="dv">2</span>]<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">table</span>(fakedata)[<span class="dv">1</span>,])</span>
+<span id="cb50-21"><a href="how-you-will-die-causes-or-conditions.html#cb50-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-22"><a href="how-you-will-die-causes-or-conditions.html#cb50-22" aria-hidden="true" tabindex="-1"></a>  <span class="co">#save P(cancer|smoke) - P(cancer|not smoke) in the ith location of differences</span></span>
+<span id="cb50-23"><a href="how-you-will-die-causes-or-conditions.html#cb50-23" aria-hidden="true" tabindex="-1"></a>  differences[i] <span class="ot">&lt;-</span> CgivenS <span class="sc">-</span> CgivenNS</span>
+<span id="cb50-24"><a href="how-you-will-die-causes-or-conditions.html#cb50-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb50-25"><a href="how-you-will-die-causes-or-conditions.html#cb50-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-26"><a href="how-you-will-die-causes-or-conditions.html#cb50-26" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate proportion of differences greater than or equal to .06</span></span>
+<span id="cb50-27"><a href="how-you-will-die-causes-or-conditions.html#cb50-27" aria-hidden="true" tabindex="-1"></a>propGreater <span class="ot">&lt;-</span> <span class="fu">sum</span>(differences <span class="sc">&gt;=</span> .<span class="dv">06</span>)<span class="sc">/</span>nIter</span>
+<span id="cb50-28"><a href="how-you-will-die-causes-or-conditions.html#cb50-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-29"><a href="how-you-will-die-causes-or-conditions.html#cb50-29" aria-hidden="true" tabindex="-1"></a><span class="co">#plot a histogram of the differences with a red vertical line at .06</span></span>
+<span id="cb50-30"><a href="how-you-will-die-causes-or-conditions.html#cb50-30" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(differences, <span class="at">main=</span><span class="st">&quot;Histogram of P(cancer|smoke) - P(cancer|not smoke)&quot;</span>,</span>
+<span id="cb50-31"><a href="how-you-will-die-causes-or-conditions.html#cb50-31" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>,<span class="fl">0.1</span>), <span class="at">breaks=</span><span class="fu">seq</span>(<span class="sc">-</span><span class="fl">0.1</span>,<span class="fl">0.1</span>,<span class="fl">0.01</span>))</span>
+<span id="cb50-32"><a href="how-you-will-die-causes-or-conditions.html#cb50-32" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span>.<span class="dv">06</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb50-33"><a href="how-you-will-die-causes-or-conditions.html#cb50-33" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.09</span>, nIter<span class="sc">/</span><span class="dv">10</span>, <span class="fu">paste0</span>(propGreater<span class="sc">*</span><span class="dv">100</span>,<span class="st">&quot;% of cases&quot;</span>))</span></code></pre></div>
 <p><img src="carpedatum_files/figure-html/unnamed-chunk-20-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>As you might expect, the histogram of simulated differences (<span class="math inline">\(P(\text{Cancer}|\text{Smoke}) - P(\text{Cancer}|\text{Not Smoke})\)</span>) is centered around zero. If there’s no real difference, then you should expect to observe (close to) zero differences among any random sample of 1000 people. That said, you’ll see from the histogram that it is still possible, by random chance, to observe a difference as large or greater than 6%.</p>
 <p>In fact, in our simulation, this happened 3 times (3% of the time). Remember that our simulation was carried out assuming independence, in which case there should be no difference. So we might interpret our findings as follows: there is a relatively low probability of observing <span class="math inline">\(P(\text{Cancer}|\text{Smoke}) - P(\text{Cancer}|\text{Not Smoke})\ge .06\)</span> in a sample of 1000 people if it were truly the case that this difference was zero.</p>
@@ -555,8 +542,8 @@ Figure 11.4: Screenshot 3 of How You Will Die visualization
 <div class="footnotes">
 <hr />
 <ol start="7">
-<li id="fn7"><p>Operationalization of a variable is a fancy and more specific word for defining it. It doesn’t seem necessary to define “cause of death” in the common-sense use of the word define. But when we decide how many and which categories to include in our use of the variable, we operationalize this definition. For example, we could operationalize cause of death as “natural causes” or “other”. This would be a dichotomous operationalization. And it leaves a lot to the imagination. The Center for Disease Control is particularly interested in diseases and not in external causes. So it makes sense that all external causes are banded together in this figure. However, don’t be fooled. There are many subcategories, including very specific ones like “Pedal cyclist injured in collision with heavy transport vehicle or bus.”<a href="how-you-will-die-causes-or-conditions.html#fnref7" class="footnote-back">↩</a></p></li>
-<li id="fn8"><p>Okay, yeah, this is an urban legend: <a href="https://www.snopes.com/fact-check/pop-rocks-soda/" class="uri">https://www.snopes.com/fact-check/pop-rocks-soda/</a><a href="how-you-will-die-causes-or-conditions.html#fnref8" class="footnote-back">↩</a></p></li>
+<li id="fn7"><p>Operationalization of a variable is a fancy and more specific word for defining it. It doesn’t seem necessary to define “cause of death” in the common-sense use of the word define. But when we decide how many and which categories to include in our use of the variable, we operationalize this definition. For example, we could operationalize cause of death as “natural causes” or “other.” This would be a dichotomous operationalization. And it leaves a lot to the imagination. The Center for Disease Control is particularly interested in diseases and not in external causes. So it makes sense that all external causes are banded together in this figure. However, don’t be fooled. There are many subcategories, including very specific ones like “Pedal cyclist injured in collision with heavy transport vehicle or bus.”<a href="how-you-will-die-causes-or-conditions.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>Okay, yeah, this is an urban legend: <a href="https://www.snopes.com/fact-check/pop-rocks-soda/" class="uri">https://www.snopes.com/fact-check/pop-rocks-soda/</a><a href="how-you-will-die-causes-or-conditions.html#fnref8" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
