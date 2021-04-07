@@ -369,7 +369,7 @@ Figure 13.1: Drug trial tree diagram (source: Wheelan)
 <p>Notice that I had to use the missing value “NA” in the table that I made. If the drug does not cure the disease, the the approval status is neither Yes nor No. It never gets to that stage. So the approval value for those drugs is missing. The data has 1000 rows, many of which are identical. I will show the rows where things change. In between we have a lot of replicas, i.e., drugs with the same exact story.</p>
 <table class="table table-striped table" style="width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:unnamed-chunk-26">Table 13.1: </span>A fake drug development dataset
+<span id="tab:unnamed-chunk-27">Table 13.1: </span>A fake drug development dataset
 </caption>
 <thead>
 <tr>
@@ -539,7 +539,7 @@ Yes
 <a class="sourceLine" id="cb73-7" data-line-number="7">)</a></code></pre></div>
 <p>Ta-da! Don’t believe me? Here is the tree.</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="kw">rpart.plot</span>(wheelan_tree, <span class="dt">type =</span> <span class="dv">5</span>, <span class="dt">digits=</span><span class="dv">3</span>)</a></code></pre></div>
-<p><img src="carpedatum_files/figure-html/unnamed-chunk-28-1.png" width="90%"  style="display: block; margin: auto;" /></p>
+<p><img src="carpedatum_files/figure-html/unnamed-chunk-29-1.png" width="90%"  style="display: block; margin: auto;" /></p>
 <p>The leaf nodes at the bottom (rpart makes top-down trees) show the payout using scientific notation. I don’t know how to suppress that. You can see both the payout and the probability of the payout.</p>
 <p>Hopefully you can see that expected value is quite general. You could use this kind of thinking, for example, to estimate your future income based on decisions you can make about your life. Suppose you major in acting AND you get discovered on the streets of Greenwich Village AND your indie debut film leads to superstardom as the next Marvel superhero! But what if your indie debut never gets off the ground? What if you had majored in accounting instead? Maybe you went to work for a big investment bank, or perhaps it was just a small tax office. If you assign numbers to the scenario above, you can calculate the expected value of your college major in terms of earnings.</p>
 <p>Of course, there are no guarantees, only probabilities.</p>

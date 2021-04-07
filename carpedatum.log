@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  1 FEB 2021 23:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  17 MAR 2021 14:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -689,358 +689,31 @@ Package: amsthm 2017/10/31 v2.20.4
 \thm@postskip=\skip66
 \thm@headsep=\skip67
 \dth@everypar=\toks40
-) (/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
-Package: tcolorbox 2019/03/02 version 4.20 text color boxes
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/loca
-l/texlive/2019/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
-x
-\pgfutil@everybye=\toks41
-\pgfutil@tempdima=\dimen174
-\pgfutil@tempdimb=\dimen175
-
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
-sts.tex))
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box49
-(/usr/local/texlive/2019/texmf-dist/tex/latex/ms/everyshi.sty
-Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
-)) (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.te
-x (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/pgf.revision.tex)
-Package: pgfrcs 2019/04/04 v3.1.2 (3.1.2)
-))
-Package: pgf 2019/04/04 v3.1.2 (3.1.2)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/
-local/texlive/2019/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
-Package: pgfsys 2019/04/04 v3.1.2 (3.1.2)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks42
-\pgfkeys@temptoks=\toks43
-
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
-ode.tex
-\pgfkeys@tmptoks=\toks44
-))
-\pgf@x=\dimen176
-\pgf@y=\dimen177
-\pgf@xa=\dimen178
-\pgf@ya=\dimen179
-\pgf@xb=\dimen180
-\pgf@yb=\dimen181
-\pgf@xc=\dimen182
-\pgf@yc=\dimen183
-\w@pgf@writea=\write4
-\r@pgf@reada=\read2
-\c@pgf@counta=\count150
-\c@pgf@countb=\count151
-\c@pgf@countc=\count152
-\c@pgf@countd=\count153
-\t@pgf@toka=\toks45
-\t@pgf@tokb=\toks46
-\t@pgf@tokc=\toks47
-\pgf@sys@id@count=\count154
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
-File: pgf.cfg 2019/04/04 v3.1.2 (3.1.2)
-)
-Driver file for pgf: pgfsys-pdftex.def
-
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
-ef
-File: pgfsys-pdftex.def 2019/04/04 v3.1.2 (3.1.2)
-
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
-df.def
-File: pgfsys-common-pdf.def 2019/04/04 v3.1.2 (3.1.2)
-)))
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
-code.tex
-File: pgfsyssoftpath.code.tex 2019/04/04 v3.1.2 (3.1.2)
-\pgfsyssoftpath@smallbuffer@items=\count155
-\pgfsyssoftpath@bigbuffer@items=\count156
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
-code.tex
-File: pgfsysprotocol.code.tex 2019/04/04 v3.1.2 (3.1.2)
-))
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
-Package: pgfcore 2019/04/04 v3.1.2 (3.1.2)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr
-/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex (/usr/
-local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen184
-\pgfmath@count=\count157
-\pgfmath@box=\box50
-\pgfmath@toks=\toks48
-\pgfmath@stack@operand=\toks49
-\pgfmath@stack@operation=\toks50
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
-tex
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
-.code.tex)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
-nometric.code.tex)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
-m.code.tex)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
-rison.code.tex)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
-code.tex)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
-.code.tex)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
-code.tex)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
-erarithmetics.code.tex))) (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/m
-ath/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count158
-))
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
-de.tex
-File: pgfcorepoints.code.tex 2019/04/04 v3.1.2 (3.1.2)
-\pgf@picminx=\dimen185
-\pgf@picmaxx=\dimen186
-\pgf@picminy=\dimen187
-\pgf@picmaxy=\dimen188
-\pgf@pathminx=\dimen189
-\pgf@pathmaxx=\dimen190
-\pgf@pathminy=\dimen191
-\pgf@pathmaxy=\dimen192
-\pgf@xx=\dimen193
-\pgf@xy=\dimen194
-\pgf@yx=\dimen195
-\pgf@yy=\dimen196
-\pgf@zx=\dimen197
-\pgf@zy=\dimen198
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
-ruct.code.tex
-File: pgfcorepathconstruct.code.tex 2019/04/04 v3.1.2 (3.1.2)
-\pgf@path@lastx=\dimen199
-\pgf@path@lasty=\dimen256
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
-.code.tex
-File: pgfcorepathusage.code.tex 2019/04/04 v3.1.2 (3.1.2)
-\pgf@shorten@end@additional=\dimen257
-\pgf@shorten@start@additional=\dimen258
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
-de.tex
-File: pgfcorescopes.code.tex 2019/04/04 v3.1.2 (3.1.2)
-\pgfpic=\box51
-\pgf@hbox=\box52
-\pgf@layerbox@main=\box53
-\pgf@picture@serial@count=\count159
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
-ate.code.tex
-File: pgfcoregraphicstate.code.tex 2019/04/04 v3.1.2 (3.1.2)
-\pgflinewidth=\dimen259
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
-ations.code.tex
-File: pgfcoretransformations.code.tex 2019/04/04 v3.1.2 (3.1.2)
-\pgf@pt@x=\dimen260
-\pgf@pt@y=\dimen261
-\pgf@pt@temp=\dimen262
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
-e.tex
-File: pgfcorequick.code.tex 2019/04/04 v3.1.2 (3.1.2)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
-ode.tex
-File: pgfcoreobjects.code.tex 2019/04/04 v3.1.2 (3.1.2)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
-ssing.code.tex
-File: pgfcorepathprocessing.code.tex 2019/04/04 v3.1.2 (3.1.2)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
-de.tex
-File: pgfcorearrows.code.tex 2019/04/04 v3.1.2 (3.1.2)
-\pgfarrowsep=\dimen263
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
-e.tex
-File: pgfcoreshade.code.tex 2019/04/04 v3.1.2 (3.1.2)
-\pgf@max=\dimen264
-\pgf@sys@shading@range@num=\count160
-\pgf@shadingcount=\count161
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
-e.tex
-File: pgfcoreimage.code.tex 2019/04/04 v3.1.2 (3.1.2)
-
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
-code.tex
-File: pgfcoreexternal.code.tex 2019/04/04 v3.1.2 (3.1.2)
-\pgfexternal@startupbox=\box54
-))
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
-de.tex
-File: pgfcorelayers.code.tex 2019/04/04 v3.1.2 (3.1.2)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
-ncy.code.tex
-File: pgfcoretransparency.code.tex 2019/04/04 v3.1.2 (3.1.2)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
-code.tex
-File: pgfcorepatterns.code.tex 2019/04/04 v3.1.2 (3.1.2)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.
-tex
-File: pgfcorerdf.code.tex 2019/04/04 v3.1.2 (3.1.2)
-)))
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
-e.tex
-File: pgfmoduleshapes.code.tex 2019/04/04 v3.1.2 (3.1.2)
-\pgfnodeparttextbox=\box55
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
-tex
-File: pgfmoduleplot.code.tex 2019/04/04 v3.1.2 (3.1.2)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
--0-65.sty
-Package: pgfcomp-version-0-65 2019/04/04 v3.1.2 (3.1.2)
-\pgf@nodesepstart=\dimen265
-\pgf@nodesepend=\dimen266
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
--1-18.sty
-Package: pgfcomp-version-1-18 2019/04/04 v3.1.2 (3.1.2)
-)) (/usr/local/texlive/2019/texmf-dist/tex/latex/tools/verbatim.sty
-Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks51
-\verbatim@line=\toks52
-\verbatim@in@stream=\read3
-) (/usr/local/texlive/2019/texmf-dist/tex/latex/environ/environ.sty
-Package: environ 2014/05/04 v0.3 A new way to define environments
-(/usr/local/texlive/2019/texmf-dist/tex/latex/trimspaces/trimspaces.sty
-Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
-))
-\tcb@titlebox=\box56
-\tcb@upperbox=\box57
-\tcb@lowerbox=\box58
-\tcb@phantombox=\box59
-\c@tcbbreakpart=\count162
-\c@tcblayer=\count163
-\tcolorbox@number=\count164
-\tcb@temp=\box60
-\tcb@temp=\box61
-\tcb@temp=\box62
-\tcb@temp=\box63
-\tcb@out=\write5
-\tcb@record@out=\write6
-(/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcbraster.code.tex
-Library (tcolorbox): 'tcbraster.code.tex' version '4.20'
-\c@tcbrastercolumn=\count165
-\c@tcbrasterrow=\count166
-\c@tcbraster=\count167
-) (/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
-Library (tcolorbox): 'tcbskins.code.tex' version '4.20'
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/
-local/texlive/2019/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/local/te
-xlive/2019/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/local/texlive/2
-019/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/local/texlive
-/2019/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/local/texlive/2019/texmf-
-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/local/texlive/2019/texmf-dis
-t/tex/generic/pgf/utilities/pgffor.code.tex
-Package: pgffor 2019/04/04 v3.1.2 (3.1.2)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen267
-\pgffor@skip=\dimen268
-\pgffor@stack=\toks53
-\pgffor@toks=\toks54
-))
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
-e.tex
-Package: tikz 2019/04/04 v3.1.2 (3.1.2)
-
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
-dlers.code.tex
-File: pgflibraryplothandlers.code.tex 2019/04/04 v3.1.2 (3.1.2)
-\pgf@plot@mark@count=\count168
-\pgfplotmarksize=\dimen269
-)
-\tikz@lastx=\dimen270
-\tikz@lasty=\dimen271
-\tikz@lastxsaved=\dimen272
-\tikz@lastysaved=\dimen273
-\tikzleveldistance=\dimen274
-\tikzsiblingdistance=\dimen275
-\tikz@figbox=\box64
-\tikz@figbox@bg=\box65
-\tikz@tempbox=\box66
-\tikz@tempbox@bg=\box67
-\tikztreelevel=\count169
-\tikznumberofchildren=\count170
-\tikznumberofcurrentchild=\count171
-\tikz@fig@count=\count172
-
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
-e.tex
-File: pgfmodulematrix.code.tex 2019/04/04 v3.1.2 (3.1.2)
-\pgfmatrixcurrentrow=\count173
-\pgfmatrixcurrentcolumn=\count174
-\pgf@matrix@numberofcolumns=\count175
-)
-\tikz@expandcount=\count176
-
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
-s/tikzlibrarytopaths.code.tex
-File: tikzlibrarytopaths.code.tex 2019/04/04 v3.1.2 (3.1.2)
-)))
-\tcb@waterbox=\box68
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
-Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '4.20'
-)) (/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.te
-x
-Library (tcolorbox): 'tcbbreakable.code.tex' version '4.20'
-\tcb@testbox=\box69
-\tcb@totalupperbox=\box70
-\tcb@totallowerbox=\box71
-) (/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcbhooks.code.tex
-Library (tcolorbox): 'tcbhooks.code.tex' version '4.20'
-) (/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
-Library (tcolorbox): 'tcbtheorems.code.tex' version '4.20'
-) (/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcbfitting.code.tex
-Library (tcolorbox): 'tcbfitting.code.tex' version '4.20'
-\tcbfitdim=\dimen276
-\tcb@lowerfitdim=\dimen277
-\tcb@upperfitdim=\dimen278
-\tcb@cur@hbadness=\count177
-) (/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcbxparse.code.tex
-Library (tcolorbox): 'tcbxparse.code.tex' version '4.20'
-(/usr/local/texlive/2019/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (/us
-r/local/texlive/2019/texmf-dist/tex/latex/l3kernel/expl3.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/awesomebox/awesomebox.sty
+Package: awesomebox 2019/04/04 v0.5
+(/usr/local/texlive/2019/texmf-dist/tex/latex/fontawesome5/fontawesome5.sty (/u
+sr/local/texlive/2019/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2019-05-07 L3 programming layer (loader) 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 Package: expl3 2019-05-07 L3 programming layer (code)
-\c_max_int=\count178
-\l_tmpa_int=\count179
-\l_tmpb_int=\count180
-\g_tmpa_int=\count181
-\g_tmpb_int=\count182
-\g__kernel_prg_map_int=\count183
-\c__ior_term_ior=\count184
-\c_log_iow=\count185
-\l_iow_line_count_int=\count186
-\l__iow_line_target_int=\count187
-\l__iow_one_indent_int=\count188
-\l__iow_indent_int=\count189
-\c_zero_dim=\dimen279
-\c_max_dim=\dimen280
-\l_tmpa_dim=\dimen281
-\l_tmpb_dim=\dimen282
-\g_tmpa_dim=\dimen283
-\g_tmpb_dim=\dimen284
+\c_max_int=\count150
+\l_tmpa_int=\count151
+\l_tmpb_int=\count152
+\g_tmpa_int=\count153
+\g_tmpb_int=\count154
+\g__kernel_prg_map_int=\count155
+\c__ior_term_ior=\count156
+\c_log_iow=\count157
+\l_iow_line_count_int=\count158
+\l__iow_line_target_int=\count159
+\l__iow_one_indent_int=\count160
+\l__iow_indent_int=\count161
+\c_zero_dim=\dimen174
+\c_max_dim=\dimen175
+\l_tmpa_dim=\dimen176
+\l_tmpb_dim=\dimen177
+\g_tmpa_dim=\dimen178
+\g_tmpb_dim=\dimen179
 \c_zero_skip=\skip68
 \c_max_skip=\skip69
 \l_tmpa_skip=\skip70
@@ -1053,238 +726,198 @@ Package: expl3 2019-05-07 L3 programming layer (code)
 \l_tmpb_muskip=\muskip15
 \g_tmpa_muskip=\muskip16
 \g_tmpb_muskip=\muskip17
-\l_keys_choice_int=\count190
-\l__intarray_loop_int=\count191
-\c__intarray_sp_dim=\dimen285
-\g__intarray_font_int=\count192
-\c__fp_leading_shift_int=\count193
-\c__fp_middle_shift_int=\count194
-\c__fp_trailing_shift_int=\count195
-\c__fp_big_leading_shift_int=\count196
-\c__fp_big_middle_shift_int=\count197
-\c__fp_big_trailing_shift_int=\count198
-\c__fp_Bigg_leading_shift_int=\count199
-\c__fp_Bigg_middle_shift_int=\count266
-\c__fp_Bigg_trailing_shift_int=\count267
-\c__kernel_randint_max_int=\count268
-\g__fp_array_int=\count269
-\l__fp_array_loop_int=\count270
-\l__sort_length_int=\count271
-\l__sort_min_int=\count272
-\l__sort_top_int=\count273
-\l__sort_max_int=\count274
-\l__sort_true_max_int=\count275
-\l__sort_block_int=\count276
-\l__sort_begin_int=\count277
-\l__sort_end_int=\count278
-\l__sort_A_int=\count279
-\l__sort_B_int=\count280
-\l__sort_C_int=\count281
-\l__tl_analysis_normal_int=\count282
-\l__tl_analysis_index_int=\count283
-\l__tl_analysis_nesting_int=\count284
-\l__tl_analysis_type_int=\count285
-\l__regex_internal_a_int=\count286
-\l__regex_internal_b_int=\count287
-\l__regex_internal_c_int=\count288
-\l__regex_balance_int=\count289
-\l__regex_group_level_int=\count290
-\l__regex_mode_int=\count291
-\c__regex_cs_in_class_mode_int=\count292
-\c__regex_cs_mode_int=\count293
-\l__regex_catcodes_int=\count294
-\l__regex_default_catcodes_int=\count295
-\c__regex_catcode_D_int=\count296
-\c__regex_catcode_S_int=\count297
-\c__regex_catcode_L_int=\count298
-\c__regex_catcode_O_int=\count299
-\c__regex_catcode_A_int=\count300
-\c__regex_all_catcodes_int=\count301
-\l__regex_show_lines_int=\count302
-\l__regex_min_state_int=\count303
-\l__regex_max_state_int=\count304
-\l__regex_left_state_int=\count305
-\l__regex_right_state_int=\count306
-\l__regex_capturing_group_int=\count307
-\l__regex_min_pos_int=\count308
-\l__regex_max_pos_int=\count309
-\l__regex_curr_pos_int=\count310
-\l__regex_start_pos_int=\count311
-\l__regex_success_pos_int=\count312
-\l__regex_curr_char_int=\count313
-\l__regex_curr_catcode_int=\count314
-\l__regex_last_char_int=\count315
-\l__regex_case_changed_char_int=\count316
-\l__regex_curr_state_int=\count317
-\l__regex_step_int=\count318
-\l__regex_min_active_int=\count319
-\l__regex_max_active_int=\count320
-\l__regex_replacement_csnames_int=\count321
-\l__regex_match_count_int=\count322
-\l__regex_min_submatch_int=\count323
-\l__regex_submatch_int=\count324
-\l__regex_zeroth_submatch_int=\count325
-\g__regex_trace_regex_int=\count326
-\c_empty_box=\box72
-\l_tmpa_box=\box73
-\l_tmpb_box=\box74
-\g_tmpa_box=\box75
-\g_tmpb_box=\box76
-\l__box_top_dim=\dimen286
-\l__box_bottom_dim=\dimen287
-\l__box_left_dim=\dimen288
-\l__box_right_dim=\dimen289
-\l__box_top_new_dim=\dimen290
-\l__box_bottom_new_dim=\dimen291
-\l__box_left_new_dim=\dimen292
-\l__box_right_new_dim=\dimen293
-\l__box_internal_box=\box77
-\l__coffin_internal_box=\box78
-\l__coffin_internal_dim=\dimen294
-\l__coffin_offset_x_dim=\dimen295
-\l__coffin_offset_y_dim=\dimen296
-\l__coffin_x_dim=\dimen297
-\l__coffin_y_dim=\dimen298
-\l__coffin_x_prime_dim=\dimen299
-\l__coffin_y_prime_dim=\dimen300
-\c_empty_coffin=\box79
-\l__coffin_aligned_coffin=\box80
-\l__coffin_aligned_internal_coffin=\box81
-\l_tmpa_coffin=\box82
-\l_tmpb_coffin=\box83
-\g_tmpa_coffin=\box84
-\g_tmpb_coffin=\box85
-\l__coffin_bounding_shift_dim=\dimen301
-\l__coffin_left_corner_dim=\dimen302
-\l__coffin_right_corner_dim=\dimen303
-\l__coffin_bottom_corner_dim=\dimen304
-\l__coffin_top_corner_dim=\dimen305
-\l__coffin_scaled_total_height_dim=\dimen306
-\l__coffin_scaled_width_dim=\dimen307
-\c__coffin_empty_coffin=\box86
-\l__coffin_display_coffin=\box87
-\l__coffin_display_coord_coffin=\box88
-\l__coffin_display_pole_coffin=\box89
-\l__coffin_display_offset_dim=\dimen308
-\l__coffin_display_x_dim=\dimen309
-\l__coffin_display_y_dim=\dimen310
-\g__file_internal_ior=\read4
-\l__seq_internal_a_int=\count327
-\l__seq_internal_b_int=\count328
-\c__deprecation_minus_one=\count329
+\l_keys_choice_int=\count162
+\l__intarray_loop_int=\count163
+\c__intarray_sp_dim=\dimen180
+\g__intarray_font_int=\count164
+\c__fp_leading_shift_int=\count165
+\c__fp_middle_shift_int=\count166
+\c__fp_trailing_shift_int=\count167
+\c__fp_big_leading_shift_int=\count168
+\c__fp_big_middle_shift_int=\count169
+\c__fp_big_trailing_shift_int=\count170
+\c__fp_Bigg_leading_shift_int=\count171
+\c__fp_Bigg_middle_shift_int=\count172
+\c__fp_Bigg_trailing_shift_int=\count173
+\c__kernel_randint_max_int=\count174
+\g__fp_array_int=\count175
+\l__fp_array_loop_int=\count176
+\l__sort_length_int=\count177
+\l__sort_min_int=\count178
+\l__sort_top_int=\count179
+\l__sort_max_int=\count180
+\l__sort_true_max_int=\count181
+\l__sort_block_int=\count182
+\l__sort_begin_int=\count183
+\l__sort_end_int=\count184
+\l__sort_A_int=\count185
+\l__sort_B_int=\count186
+\l__sort_C_int=\count187
+\l__tl_analysis_normal_int=\count188
+\l__tl_analysis_index_int=\count189
+\l__tl_analysis_nesting_int=\count190
+\l__tl_analysis_type_int=\count191
+\l__regex_internal_a_int=\count192
+\l__regex_internal_b_int=\count193
+\l__regex_internal_c_int=\count194
+\l__regex_balance_int=\count195
+\l__regex_group_level_int=\count196
+\l__regex_mode_int=\count197
+\c__regex_cs_in_class_mode_int=\count198
+\c__regex_cs_mode_int=\count199
+\l__regex_catcodes_int=\count266
+\l__regex_default_catcodes_int=\count267
+\c__regex_catcode_D_int=\count268
+\c__regex_catcode_S_int=\count269
+\c__regex_catcode_L_int=\count270
+\c__regex_catcode_O_int=\count271
+\c__regex_catcode_A_int=\count272
+\c__regex_all_catcodes_int=\count273
+\l__regex_show_lines_int=\count274
+\l__regex_min_state_int=\count275
+\l__regex_max_state_int=\count276
+\l__regex_left_state_int=\count277
+\l__regex_right_state_int=\count278
+\l__regex_capturing_group_int=\count279
+\l__regex_min_pos_int=\count280
+\l__regex_max_pos_int=\count281
+\l__regex_curr_pos_int=\count282
+\l__regex_start_pos_int=\count283
+\l__regex_success_pos_int=\count284
+\l__regex_curr_char_int=\count285
+\l__regex_curr_catcode_int=\count286
+\l__regex_last_char_int=\count287
+\l__regex_case_changed_char_int=\count288
+\l__regex_curr_state_int=\count289
+\l__regex_step_int=\count290
+\l__regex_min_active_int=\count291
+\l__regex_max_active_int=\count292
+\l__regex_replacement_csnames_int=\count293
+\l__regex_match_count_int=\count294
+\l__regex_min_submatch_int=\count295
+\l__regex_submatch_int=\count296
+\l__regex_zeroth_submatch_int=\count297
+\g__regex_trace_regex_int=\count298
+\c_empty_box=\box49
+\l_tmpa_box=\box50
+\l_tmpb_box=\box51
+\g_tmpa_box=\box52
+\g_tmpb_box=\box53
+\l__box_top_dim=\dimen181
+\l__box_bottom_dim=\dimen182
+\l__box_left_dim=\dimen183
+\l__box_right_dim=\dimen184
+\l__box_top_new_dim=\dimen185
+\l__box_bottom_new_dim=\dimen186
+\l__box_left_new_dim=\dimen187
+\l__box_right_new_dim=\dimen188
+\l__box_internal_box=\box54
+\l__coffin_internal_box=\box55
+\l__coffin_internal_dim=\dimen189
+\l__coffin_offset_x_dim=\dimen190
+\l__coffin_offset_y_dim=\dimen191
+\l__coffin_x_dim=\dimen192
+\l__coffin_y_dim=\dimen193
+\l__coffin_x_prime_dim=\dimen194
+\l__coffin_y_prime_dim=\dimen195
+\c_empty_coffin=\box56
+\l__coffin_aligned_coffin=\box57
+\l__coffin_aligned_internal_coffin=\box58
+\l_tmpa_coffin=\box59
+\l_tmpb_coffin=\box60
+\g_tmpa_coffin=\box61
+\g_tmpb_coffin=\box62
+\l__coffin_bounding_shift_dim=\dimen196
+\l__coffin_left_corner_dim=\dimen197
+\l__coffin_right_corner_dim=\dimen198
+\l__coffin_bottom_corner_dim=\dimen199
+\l__coffin_top_corner_dim=\dimen256
+\l__coffin_scaled_total_height_dim=\dimen257
+\l__coffin_scaled_width_dim=\dimen258
+\c__coffin_empty_coffin=\box63
+\l__coffin_display_coffin=\box64
+\l__coffin_display_coord_coffin=\box65
+\l__coffin_display_pole_coffin=\box66
+\l__coffin_display_offset_dim=\dimen259
+\l__coffin_display_x_dim=\dimen260
+\l__coffin_display_y_dim=\dimen261
+\g__file_internal_ior=\read2
+\l__seq_internal_a_int=\count299
+\l__seq_internal_b_int=\count300
+\c__deprecation_minus_one=\count301
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
 File: l3pdfmode.def 2019-04-06 v L3 Experimental driver: PDF mode
-\l__driver_color_stack_int=\count330
-\l__driver_pdf_tmp_box=\box90
+\l__driver_color_stack_int=\count302
+\l__driver_pdf_tmp_box=\box67
 ))
+Package: fontawesome5 2019/03/20 v5.8.0 Font Awesome 5
+(/usr/local/texlive/2019/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2019-05-03 LaTeX2e option processing using LaTeX3 keys
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 Package: xparse 2019-05-03 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count331
-\g__xparse_grabber_int=\count332
-\l__xparse_m_args_int=\count333
-\l__xparse_v_nesting_int=\count334
-))
-(/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcblistingsutf8.code.te
-x
-Library (tcolorbox): 'tcblistingsutf8.code.tex' version '4.20'
-(/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/listingsutf8.sty
-Package: listingsutf8 2016/05/16 v1.3 Allow UTF-8 in listings input (HO)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count335
-\lst@gtempboxa=\box91
-\lst@token=\toks55
-\lst@length=\count336
-\lst@currlwidth=\dimen311
-\lst@column=\count337
-\lst@pos=\count338
-\lst@lostspace=\dimen312
-\lst@width=\dimen313
-\lst@newlines=\count339
-\lst@lineno=\count340
-\lst@maxwidth=\dimen314
-(/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2019/02/27 1.8b (Carsten Heinz)
-\c@lstnumber=\count341
-\lst@skipnumbers=\count342
-\lst@framebox=\box92
-) (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2019/02/27 1.8b listings configuration
-))
-Package: listings 2019/02/27 1.8b (Carsten Heinz)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/stringenc.sty
-Package: stringenc 2016/05/16 v1.11 Convert strings between diff. encodings (HO
+\l__xparse_current_arg_int=\count303
+\g__xparse_grabber_int=\count304
+\l__xparse_m_args_int=\count305
+\l__xparse_v_nesting_int=\count306
 )
-)) (/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcblistings.code.tex
-Library (tcolorbox): 'tcblistings.code.tex' version '4.20'
+(/usr/local/texlive/2019/texmf-dist/tex/latex/fontawesome5/fontawesome5-generic
+-helper.sty
+Package: fontawesome5-generic-helper 2019/03/20 v5.8.0 non-uTeX helper for font
+awesome5
 
-(/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcblistingscore.code.te
-x
-Library (tcolorbox): 'tcblistingscore.code.tex' version '4.20'
-(/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcbprocessing.code.tex
-Library (tcolorbox): 'tcbprocessing.code.tex' version '4.20'
-(/usr/local/texlive/2019/texmf-dist/tex/latex/tools/shellesc.sty
-Package: shellesc 2016/06/07 v0.02a unified shell escape interface for LaTeX
-Package shellesc Info: Restricted shell escape enabled on input line 69.
-))
-\c@tcblisting=\count343
-))) (/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcbexternal.code.te
-x
-Library (tcolorbox): 'tcbexternal.code.tex' version '4.20'
-) (/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcbmagazine.code.tex
-Library (tcolorbox): 'tcbmagazine.code.tex' version '4.20'
-) (/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcbvignette.code.tex
-Library (tcolorbox): 'tcbvignette.code.tex' version '4.20'
-
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
-s/tikzlibraryfadings.code.tex
-File: tikzlibraryfadings.code.tex 2019/04/04 v3.1.2 (3.1.2)
-
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings
-.code.tex
-File: pgflibraryfadings.code.tex 2019/04/04 v3.1.2 (3.1.2)
-))) (/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcbposter.code.tex
-Library (tcolorbox): 'tcbposter.code.tex' version '4.20'
+(/usr/local/texlive/2019/texmf-dist/tex/latex/fontawesome5/fontawesome5-mapping
+.def)))
+\aweboxleftmargin=\skip74
+\aweboxcontentwidth=\skip75
+\aweboxvskip=\skip76
+\aweboxsignraise=\skip77
+\aweboxrulewidth=\skip78
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+(/usr/local/texlive/2019/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
 (/usr/local/texlive/2019/texmf-dist/tex/latex/threeparttablex/threeparttablex.s
 ty
 Package: threeparttablex 2013/07/23 v0.3 by daleif
-\TPTL@width=\skip74
+\TPTL@width=\skip79
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip75
-\bibsep=\skip76
+\bibhang=\skip80
+\bibsep=\skip81
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count344
+\c@NAT@ctr=\count307
 ) (./carpedatum.aux)
 \openout1 = `carpedatum.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 184.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 184.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 173.
+LaTeX Font Info:    ... okay on input line 173.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 173.
+LaTeX Font Info:    ... okay on input line 173.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 173.
+LaTeX Font Info:    ... okay on input line 173.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 173.
+LaTeX Font Info:    ... okay on input line 173.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 173.
+LaTeX Font Info:    ... okay on input line 173.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 173.
+LaTeX Font Info:    ... okay on input line 173.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 173.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 173.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 184.
+LaTeX Font Info:    ... okay on input line 173.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 173.
+LaTeX Font Info:    ... okay on input line 173.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 173.
+LaTeX Font Info:    ... okay on input line 173.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 173.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \microtypecontext on input line 184.
+LaTeX Info: Redefining \microtypecontext on input line 173.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
@@ -1299,17 +932,17 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 (RS)
 ) (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count345
-\scratchdimen=\dimen315
-\scratchbox=\box93
-\nofMPsegments=\count346
-\nofMParguments=\count347
-\everyMPshowfont=\toks56
-\MPscratchCnt=\count348
-\MPscratchDim=\dimen316
-\MPnumerator=\count349
-\makeMPintoPDFobject=\count350
-\everyMPtoPDFconversion=\toks57
+\scratchcounter=\count308
+\scratchdimen=\dimen262
+\scratchbox=\box68
+\nofMPsegments=\count309
+\nofMParguments=\count310
+\everyMPshowfont=\toks41
+\MPscratchCnt=\count311
+\MPscratchDim=\dimen263
+\MPnumerator=\count312
+\makeMPintoPDFobject=\count313
+\everyMPtoPDFconversion=\toks42
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/grfext.sty
@@ -1325,26 +958,25 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box94
-Package hyperref Info: Link coloring ON on input line 184.
+\AtBeginShipoutBox=\box69
+Package hyperref Info: Link coloring ON on input line 173.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count351
+\c@section@level=\count314
 )
-LaTeX Info: Redefining \ref on input line 184.
-LaTeX Info: Redefining \pageref on input line 184.
-LaTeX Info: Redefining \nameref on input line 184.
+LaTeX Info: Redefining \ref on input line 173.
+LaTeX Info: Redefining \pageref on input line 173.
+LaTeX Info: Redefining \nameref on input line 173.
 (./carpedatum.out) (./carpedatum.out)
-\@outlinefile=\write7
-\openout7 = `carpedatum.out'.
+\@outlinefile=\write4
+\openout4 = `carpedatum.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: float package is loaded.
-Package caption Info: listings package is loaded.
 Package caption Info: threeparttable package is loaded.
 Package caption Info: End \AtBeginDocument code.
 *geometry* driver: auto-detecting
@@ -1381,41 +1013,39 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-ABD: EveryShipout initializing macros
-\c@lstlisting=\count352
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 186.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 175.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 186.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 175.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 186
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 175
 .
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 186
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 175
 .
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 186.
+(Font)              <12> on input line 175.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 186.
+(Font)              <8> on input line 175.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 186.
-LaTeX Font Info:    Try loading font information for U+msa on input line 186.
+(Font)              <6> on input line 175.
+LaTeX Font Info:    Try loading font information for U+msa on input line 175.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 186.
+LaTeX Font Info:    Try loading font information for U+msb on input line 175.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -1424,43 +1054,43 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 221.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 210.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [2
 
 ]
-<images/existence_proof_2x.png, id=453, 1239.63126pt x 486.81876pt>
+<images/existence_proof_2x.png, id=277, 1239.63126pt x 486.81876pt>
 File: images/existence_proof_2x.png Graphic file (type png)
 <use images/existence_proof_2x.png>
-Package pdftex.def Info: images/existence_proof_2x.png  used on input line 233.
+Package pdftex.def Info: images/existence_proof_2x.png  used on input line 222.
 
 (pdftex.def)             Requested size: 386.40022pt x 151.74422pt.
 [3 <./images/existence_proof_2x.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 256.
+(Font)              <10> on input line 245.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 256.
+(Font)              <7> on input line 245.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 256.
+(Font)              <5> on input line 245.
 [4
 
 ]
 Chapter 1.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 267.
+(hyperref)                than one, level fixed on input line 256.
 
-<images/Toilet_paper_orientation_overunder.png, id=478, 819.06pt x 376.40625pt>
+<images/Toilet_paper_orientation_overunder.png, id=302, 819.06pt x 376.40625pt>
 
 File: images/Toilet_paper_orientation_overunder.png Graphic file (type png)
 <use images/Toilet_paper_orientation_overunder.png>
 Package pdftex.def Info: images/Toilet_paper_orientation_overunder.png  used on
- input line 275.
+ input line 264.
 (pdftex.def)             Requested size: 386.4205pt x 177.58295pt.
 
-Overfull \hbox (0.71269pt too wide) in paragraph at lines 282--283
+Overfull \hbox (0.71269pt too wide) in paragraph at lines 271--272
 []\T1/lmr/m/n/10 (-20) Toilet paper orientation is a distinguishing \T1/lmr/bx/
 n/10 test question \T1/lmr/m/n/10 (-20) that separates people into one of two `
 `kinds''
@@ -1476,7 +1106,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [7]
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 411.
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 400.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1485,10 +1115,10 @@ Chapter 2.
 [10
 
 ] [11] [12]
-<images/two-two-kinds.jpg, id=561, 1904.11375pt x 511.9125pt>
+<images/two-two-kinds.jpg, id=385, 1904.11375pt x 511.9125pt>
 File: images/two-two-kinds.jpg Graphic file (type jpg)
 <use images/two-two-kinds.jpg>
-Package pdftex.def Info: images/two-two-kinds.jpg  used on input line 578.
+Package pdftex.def Info: images/two-two-kinds.jpg  used on input line 567.
 (pdftex.def)             Requested size: 386.39445pt x 103.88042pt.
 [13 <./images/two-two-kinds.jpg>] [14]
 Chapter 3.
@@ -1496,7 +1126,7 @@ Chapter 3.
 
 ]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 719.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 708.
 
 Overfull \hbox (38.3917pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10 16 \T1/lmr/m/sl/10 CHAPTER 3.  TESTS OF INDEPENDENCE: A FIRST LO
@@ -1504,12 +1134,12 @@ OK STARRING ALTERNATE UNIVERSES
  []
 
 [16]
-<carpedatum_files/figure-latex/shuffle-test-1.pdf, id=593, 427.5975pt x 241.903
+<carpedatum_files/figure-latex/shuffle-test-1.pdf, id=417, 427.5975pt x 241.903
 75pt>
 File: carpedatum_files/figure-latex/shuffle-test-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/shuffle-test-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/shuffle-test-1.pdf  used
- on input line 739.
+ on input line 728.
 (pdftex.def)             Requested size: 386.41315pt x 218.60461pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1521,7 +1151,7 @@ OK STARRING ALTERNATE UNIVERSES
  []
 
 [18]
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 789
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 778
 .
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1545,77 +1175,77 @@ Chapter 4.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<carpedatum_files/figure-latex/poopy-hist-1.pdf, id=647, 429.605pt x 243.91125p
+<carpedatum_files/figure-latex/poopy-hist-1.pdf, id=472, 429.605pt x 243.91125p
 t>
 File: carpedatum_files/figure-latex/poopy-hist-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/poopy-hist-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/poopy-hist-1.pdf  used o
-n input line 1011.
+n input line 1000.
 (pdftex.def)             Requested size: 386.41805pt x 219.39154pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [24] [25 <./carpedatum_files/figure-latex/poopy-hist-1.pdf>]
-<carpedatum_files/figure-latex/poopy-hist-alt-1.pdf, id=677, 438.63875pt x 243.
+<carpedatum_files/figure-latex/poopy-hist-alt-1.pdf, id=501, 438.63875pt x 243.
 91125pt>
 File: carpedatum_files/figure-latex/poopy-hist-alt-1.pdf Graphic file (type pdf
 )
 <use carpedatum_files/figure-latex/poopy-hist-alt-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/poopy-hist-alt-1.pdf  us
-ed on input line 1030.
+ed on input line 1019.
 (pdftex.def)             Requested size: 386.42494pt x 214.87703pt.
-<carpedatum_files/figure-latex/poopy-two-kinds-1.pdf, id=679, 393.47pt x 257.96
+<carpedatum_files/figure-latex/poopy-two-kinds-1.pdf, id=503, 393.47pt x 257.96
 375pt>
 File: carpedatum_files/figure-latex/poopy-two-kinds-1.pdf Graphic file (type pd
 f)
 <use carpedatum_files/figure-latex/poopy-two-kinds-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/poopy-two-kinds-1.pdf  u
-sed on input line 1041.
+sed on input line 1030.
 (pdftex.def)             Requested size: 386.41447pt x 253.33806pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [26 <./carpedatum_files/figure-latex/poopy-hist-alt-1.pdf>] [27 <./carpedatum_f
 iles/figure-latex/poopy-two-kinds-1.pdf>]
-<carpedatum_files/figure-latex/poopy-hist2-1.pdf, id=713, 429.605pt x 243.91125
+<carpedatum_files/figure-latex/poopy-hist2-1.pdf, id=537, 429.605pt x 243.91125
 pt>
 File: carpedatum_files/figure-latex/poopy-hist2-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/poopy-hist2-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/poopy-hist2-1.pdf  used 
-on input line 1075.
+on input line 1064.
 (pdftex.def)             Requested size: 386.41805pt x 219.39154pt.
-<carpedatum_files/figure-latex/poopy-hist-mixture-1.pdf, id=714, 429.605pt x 24
+<carpedatum_files/figure-latex/poopy-hist-mixture-1.pdf, id=538, 429.605pt x 24
 3.91125pt>
 File: carpedatum_files/figure-latex/poopy-hist-mixture-1.pdf Graphic file (type
  pdf)
 <use carpedatum_files/figure-latex/poopy-hist-mixture-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/poopy-hist-mixture-1.pdf
-  used on input line 1081.
+  used on input line 1070.
 (pdftex.def)             Requested size: 386.41805pt x 219.39154pt.
 [28 <./carpedatum_files/figure-latex/poopy-hist2-1.pdf> <./carpedatum_files/fig
 ure-latex/poopy-hist-mixture-1.pdf>]
-<carpedatum_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf, id=740, 422
+<carpedatum_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf, id=564, 422
 .57875pt x 243.91125pt>
 File: carpedatum_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf Graphic
  file (type pdf)
 <use carpedatum_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/poopy-hist-mixture-suspi
-cious-1.pdf  used on input line 1095.
+cious-1.pdf  used on input line 1084.
 (pdftex.def)             Requested size: 386.42363pt x 223.04262pt.
 [29 <./carpedatum_files/figure-latex/poopy-hist-mixture-suspicious-1.pdf>]
-<carpedatum_files/figure-latex/crappy-hist-1.pdf, id=755, 429.605pt x 249.93375
+<carpedatum_files/figure-latex/crappy-hist-1.pdf, id=579, 429.605pt x 249.93375
 pt>
 File: carpedatum_files/figure-latex/crappy-hist-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/crappy-hist-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/crappy-hist-1.pdf  used 
-on input line 1126.
+on input line 1115.
 (pdftex.def)             Requested size: 386.41805pt x 224.80862pt.
-<carpedatum_files/figure-latex/poopy-crappy-1.pdf, id=757, 436.63126pt x 250.93
+<carpedatum_files/figure-latex/poopy-crappy-1.pdf, id=581, 436.63126pt x 250.93
 75pt>
 File: carpedatum_files/figure-latex/poopy-crappy-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/poopy-crappy-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/poopy-crappy-1.pdf  used
- on input line 1141.
+ on input line 1130.
 (pdftex.def)             Requested size: 386.41531pt x 222.07774pt.
 
 Underfull \vbox (badness 8094) has occurred while \output is active []
@@ -1623,12 +1253,12 @@ Underfull \vbox (badness 8094) has occurred while \output is active []
 [30 <./carpedatum_files/figure-latex/crappy-hist-1.pdf>] [31 <./carpedatum_file
 s/figure-latex/poopy-crappy-1.pdf>]
 Chapter 5.
-<carpedatum_files/figure-latex/normal-poopy-1.pdf, id=794, 422.57875pt x 285.06
+<carpedatum_files/figure-latex/normal-poopy-1.pdf, id=618, 422.57875pt x 285.06
 5pt>
 File: carpedatum_files/figure-latex/normal-poopy-1.pdf Graphic file (type pdf)
 <use carpedatum_files/figure-latex/normal-poopy-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/normal-poopy-1.pdf  used
- on input line 1193.
+ on input line 1182.
 (pdftex.def)             Requested size: 386.42363pt x 260.67532pt.
 [32
 
@@ -1636,7 +1266,7 @@ Package pdftex.def Info: carpedatum_files/figure-latex/normal-poopy-1.pdf  used
 Chapter 6.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 1237.
+(hyperref)                than one, level fixed on input line 1226.
 
 [35
 
@@ -1644,109 +1274,111 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 Chapter 7.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 1314.
+(hyperref)                than one, level fixed on input line 1303.
 
 [37
 
-] [38] [39] [40]
+]
+LaTeX Font Info:    Try loading font information for U+fontawesomefree0 on inpu
+t line 1374.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/fontawesome5/ufontawesomefree0.fd
+) [38] [39] [40]
 Chapter 8.
 [41
 
 ]
-<carpedatum_files/figure-latex/thirty-worlds-1.pdf, id=896, 356.33125pt x 84.31
+<carpedatum_files/figure-latex/thirty-worlds-1.pdf, id=721, 356.33125pt x 84.31
 5pt>
 File: carpedatum_files/figure-latex/thirty-worlds-1.pdf Graphic file (type pdf)
 
 <use carpedatum_files/figure-latex/thirty-worlds-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/thirty-worlds-1.pdf  use
-d on input line 1488.
+d on input line 1487.
 (pdftex.def)             Requested size: 356.3358pt x 84.31606pt.
 
 Underfull \vbox (badness 4686) has occurred while \output is active []
 
 [42] [43 <./carpedatum_files/figure-latex/thirty-worlds-1.pdf>]
-<images/YYHLTLScreenshot1.png, id=916, 1121.18875pt x 626.34pt>
+<images/YYHLTLScreenshot1.png, id=741, 1121.18875pt x 626.34pt>
 File: images/YYHLTLScreenshot1.png Graphic file (type png)
 <use images/YYHLTLScreenshot1.png>
-Package pdftex.def Info: images/YYHLTLScreenshot1.png  used on input line 1533.
+Package pdftex.def Info: images/YYHLTLScreenshot1.png  used on input line 1532.
 
 (pdftex.def)             Requested size: 386.41705pt x 215.8677pt.
 [44 <./images/YYHLTLScreenshot1.png>] [45] [46]
 Chapter 9.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 1578.
+(hyperref)                than one, level fixed on input line 1577.
 
-<carpedatum_files/figure-latex/life-duration-1.pdf, id=938, 426.59375pt x 256.9
+<carpedatum_files/figure-latex/life-duration-1.pdf, id=763, 426.59375pt x 256.9
 6pt>
 File: carpedatum_files/figure-latex/life-duration-1.pdf Graphic file (type pdf)
 
 <use carpedatum_files/figure-latex/life-duration-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/life-duration-1.pdf  use
-d on input line 1584.
+d on input line 1583.
 (pdftex.def)             Requested size: 386.43689pt x 232.7714pt.
 [47
 
  <./carpedatum_files/figure-latex/life-duration-1.pdf>]
-<carpedatum_files/figure-latex/die-this-year-1.pdf, id=955, 440.64626pt x 259.9
+<carpedatum_files/figure-latex/die-this-year-1.pdf, id=780, 440.64626pt x 259.9
 7125pt>
 File: carpedatum_files/figure-latex/die-this-year-1.pdf Graphic file (type pdf)
 
 <use carpedatum_files/figure-latex/die-this-year-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/die-this-year-1.pdf  use
-d on input line 1601.
+d on input line 1600.
 (pdftex.def)             Requested size: 386.43187pt x 227.986pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [48 <./carpedatum_files/figure-latex/die-this-year-1.pdf>] [49] [50]
 Chapter 10.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 [51
 
 ] [52]
-Overfull \hbox (37.89655pt too wide) in paragraph at lines 1868--1868
+Overfull \hbox (37.89655pt too wide) in paragraph at lines 1884--1884
 []\T1/lmtt/m/n/10 P(tp = over | pb = smooth) * P(pb = smooth) =  P(pb = smooth 
-| tp = over) * P(tp = over). 
+| tp = over) * P(tp = over).[] 
  []
 
 [53]
-<carpedatum_files/figure-latex/life-durationMF-1.pdf, id=999, 426.59375pt x 250
+<carpedatum_files/figure-latex/life-durationMF-1.pdf, id=825, 426.59375pt x 250
 .9375pt>
 File: carpedatum_files/figure-latex/life-durationMF-1.pdf Graphic file (type pd
 f)
 <use carpedatum_files/figure-latex/life-durationMF-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/life-durationMF-1.pdf  u
-sed on input line 1887.
+sed on input line 1902.
 (pdftex.def)             Requested size: 386.43689pt x 227.31581pt.
 [54 <./carpedatum_files/figure-latex/life-durationMF-1.pdf>] [55]
 Chapter 11.
-<images/CausesOfDeath.png, id=1028, 1116.17pt x 772.8875pt>
+<images/CausesOfDeath.png, id=853, 1116.17pt x 772.8875pt>
 File: images/CausesOfDeath.png Graphic file (type png)
 <use images/CausesOfDeath.png>
-Package pdftex.def Info: images/CausesOfDeath.png  used on input line 1968.
+Package pdftex.def Info: images/CausesOfDeath.png  used on input line 1983.
 (pdftex.def)             Requested size: 386.40752pt x 267.56635pt.
 [56
 
 ] [57 <./images/CausesOfDeath.png>]
-<images/HowYouWillDie21-61.png, id=1048, 981.6675pt x 599.23875pt>
+<images/HowYouWillDie21-61.png, id=873, 981.6675pt x 599.23875pt>
 File: images/HowYouWillDie21-61.png Graphic file (type png)
 <use images/HowYouWillDie21-61.png>
-Package pdftex.def Info: images/HowYouWillDie21-61.png  used on input line 2008
+Package pdftex.def Info: images/HowYouWillDie21-61.png  used on input line 2023
 .
 (pdftex.def)             Requested size: 343.48392pt x 209.6727pt.
-<images/HowYouWillDie21-85.png, id=1049, 1018.80624pt x 607.26875pt>
+<images/HowYouWillDie21-85.png, id=874, 1018.80624pt x 607.26875pt>
 File: images/HowYouWillDie21-85.png Graphic file (type png)
 <use images/HowYouWillDie21-85.png>
-Package pdftex.def Info: images/HowYouWillDie21-85.png  used on input line 2017
+Package pdftex.def Info: images/HowYouWillDie21-85.png  used on input line 2032
 .
 (pdftex.def)             Requested size: 343.4825pt x 204.73587pt.
-<images/HowYouWillDie21-97.png, id=1050, 990.70125pt x 593.21625pt>
+<images/HowYouWillDie21-97.png, id=875, 990.70125pt x 593.21625pt>
 File: images/HowYouWillDie21-97.png Graphic file (type png)
 <use images/HowYouWillDie21-97.png>
-Package pdftex.def Info: images/HowYouWillDie21-97.png  used on input line 2026
+Package pdftex.def Info: images/HowYouWillDie21-97.png  used on input line 2041
 .
 (pdftex.def)             Requested size: 343.48538pt x 205.67361pt.
 [58 <./images/HowYouWillDie21-61.png> <./images/HowYouWillDie21-85.png>] [59 <.
@@ -1757,598 +1389,75 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [61] [62]
-<carpedatum_files/figure-latex/unnamed-chunk-20-1.pdf, id=1095, 435.6275pt x 28
-3.0575pt>
+<carpedatum_files/figure-latex/unnamed-chunk-20-1.pdf, id=920, 435.6275pt x 283
+.0575pt>
 File: carpedatum_files/figure-latex/unnamed-chunk-20-1.pdf Graphic file (type p
 df)
 <use carpedatum_files/figure-latex/unnamed-chunk-20-1.pdf>
 Package pdftex.def Info: carpedatum_files/figure-latex/unnamed-chunk-20-1.pdf  
-used on input line 2233.
+used on input line 2248.
 (pdftex.def)             Requested size: 386.41106pt x 251.07814pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [63]
-Overfull \hbox (10.0714pt too wide) in paragraph at lines 2235--2236
+Overfull \hbox (10.0714pt too wide) in paragraph at lines 2250--2251
 []\T1/lmr/m/n/10 (-20) As you might ex-pect, the his-togram of sim-u-lated dif-
 fer-ences ($\OML/lmm/m/it/10 P\OT1/lmr/m/n/10 (-20) ([]\OMS/lmsy/m/n/10 j[]\OT1
 /lmr/m/n/10 (-20) ) \OMS/lmsy/m/n/10 ^^@ \OML/lmm/m/it/10 P\OT1/lmr/m/n/10 (-20
 ) ([]\OMS/lmsy/m/n/10 j[]\OT1/lmr/m/n/10 (-20) )$\T1/lmr/m/n/10 (-20) )
  []
 
-[64 <./carpedatum_files/figure-latex/unnamed-chunk-20-1.pdf>] [65
-
-]
-Chapter 12.
-[66
-
-] [67]
-<carpedatum_files/figure-latex/converge-binom-1.pdf, id=1132, 440.64626pt x 251
-.94125pt>
-File: carpedatum_files/figure-latex/converge-binom-1.pdf Graphic file (type pdf
-)
-<use carpedatum_files/figure-latex/converge-binom-1.pdf>
-Package pdftex.def Info: carpedatum_files/figure-latex/converge-binom-1.pdf  us
-ed on input line 2340.
-(pdftex.def)             Requested size: 386.43187pt x 220.94395pt.
-[68 <./carpedatum_files/figure-latex/converge-binom-1.pdf>]
-Overfull \hbox (11.64662pt too wide) in paragraph at lines 2358--2358
-[]\T1/lmtt/m/n/10 {(Michelob, Michelob), (Michelob, Schlitz), (Schlitz, Michelo
-b), (Schlitz, Schlitz)} 
- []
-
-[69]
-
-Package amsmath Warning: Foreign command \atopwithdelims;
-(amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 2402.
-
-
-Underfull \vbox (badness 1072) has occurred while \output is active []
-
-[70] [71]
-Chapter 13.
-[72
-
-]
-Overfull \hbox (11.64662pt too wide) in paragraph at lines 2552--2552
-[]\T1/lmtt/m/n/10 Expected Value = P(outcome 1) * Return(outcome 1) + P(outcome
- 2) * Return(outcome 2) 
- []
-
-[73]
-<images/Drug_Investment.png, id=1183, 436.63126pt x 284.06125pt>
-File: images/Drug_Investment.png Graphic file (type png)
-<use images/Drug_Investment.png>
-Package pdftex.def Info: images/Drug_Investment.png  used on input line 2586.
-(pdftex.def)             Requested size: 300.54301pt x 195.52567pt.
-[74] [75 <./images/Drug_Investment.png>]
-Overfull \hbox (53.6465pt too wide) in paragraph at lines 2634--2634
-[]\T1/lmtt/m/n/10 P(Cure AND Approved AND Beaten)  = P(Beaten | Approved, Cure)
- * P(Approved | Cure) * P(Cure) 
- []
-
-[76]
-<carpedatum_files/figure-latex/unnamed-chunk-28-1.pdf, id=1207, 413.545pt x 277
-.035pt>
-File: carpedatum_files/figure-latex/unnamed-chunk-28-1.pdf Graphic file (type p
-df)
-<use carpedatum_files/figure-latex/unnamed-chunk-28-1.pdf>
-Package pdftex.def Info: carpedatum_files/figure-latex/unnamed-chunk-28-1.pdf  
-used on input line 2705.
-(pdftex.def)             Requested size: 386.4228pt x 258.86577pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[77] [78 <./carpedatum_files/figure-latex/unnamed-chunk-28-1.pdf>] [79
-
-]
-Chapter 14.
-[80
-
-]
-<carpedatum_files/figure-latex/unnamed-chunk-33-1.pdf, id=1237, 427.5975pt x 28
-6.06876pt>
-File: carpedatum_files/figure-latex/unnamed-chunk-33-1.pdf Graphic file (type p
-df)
-<use carpedatum_files/figure-latex/unnamed-chunk-33-1.pdf>
-Package pdftex.def Info: carpedatum_files/figure-latex/unnamed-chunk-33-1.pdf  
-used on input line 2824.
-(pdftex.def)             Requested size: 386.41315pt x 258.51584pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[81]
-<carpedatum_files/figure-latex/unnamed-chunk-33-2.pdf, id=1242, 427.5975pt x 28
-6.06876pt>
-File: carpedatum_files/figure-latex/unnamed-chunk-33-2.pdf Graphic file (type p
-df)
-<use carpedatum_files/figure-latex/unnamed-chunk-33-2.pdf>
-Package pdftex.def Info: carpedatum_files/figure-latex/unnamed-chunk-33-2.pdf  
-used on input line 2833.
-(pdftex.def)             Requested size: 386.41315pt x 258.51584pt.
-
-Overfull \vbox (2.11168pt too high) detected at line 2843
- []
-
-[82 <./carpedatum_files/figure-latex/unnamed-chunk-33-1.pdf> <./carpedatum_file
-s/figure-latex/unnamed-chunk-33-2.pdf>]
-<carpedatum_files/figure-latex/compareheights-1.pdf, id=1268, 427.5975pt x 250.
-9375pt>
-File: carpedatum_files/figure-latex/compareheights-1.pdf Graphic file (type pdf
-)
-<use carpedatum_files/figure-latex/compareheights-1.pdf>
-Package pdftex.def Info: carpedatum_files/figure-latex/compareheights-1.pdf  us
-ed on input line 2847.
-(pdftex.def)             Requested size: 386.41315pt x 226.76826pt.
-[83 <./carpedatum_files/figure-latex/compareheights-1.pdf>]
-<carpedatum_files/figure-latex/unnamed-chunk-35-1.pdf, id=1291, 427.5975pt x 28
-6.06876pt>
-File: carpedatum_files/figure-latex/unnamed-chunk-35-1.pdf Graphic file (type p
-df)
-<use carpedatum_files/figure-latex/unnamed-chunk-35-1.pdf>
-Package pdftex.def Info: carpedatum_files/figure-latex/unnamed-chunk-35-1.pdf  
-used on input line 2906.
-(pdftex.def)             Requested size: 386.41315pt x 258.51584pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[84]
-<carpedatum_files/figure-latex/unnamed-chunk-36-1.pdf, id=1301, 441.65pt x 285.
-065pt>
-File: carpedatum_files/figure-latex/unnamed-chunk-36-1.pdf Graphic file (type p
-df)
-<use carpedatum_files/figure-latex/unnamed-chunk-36-1.pdf>
-Package pdftex.def Info: carpedatum_files/figure-latex/unnamed-chunk-36-1.pdf  
-used on input line 2925.
-(pdftex.def)             Requested size: 386.4293pt x 249.42256pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[85 <./carpedatum_files/figure-latex/unnamed-chunk-35-1.pdf>] [86 <./carpedatum
-_files/figure-latex/unnamed-chunk-36-1.pdf>]
-<images/hockeybirths.png, id=1332, 224.3582pt x 152.57pt>
-File: images/hockeybirths.png Graphic file (type png)
-<use images/hockeybirths.png>
-Package pdftex.def Info: images/hockeybirths.png  used on input line 2994.
-(pdftex.def)             Requested size: 224.36792pt x 152.5766pt.
-[87 <./images/hockeybirths.png>] [88] [89]
-<carpedatum_files/figure-latex/marathon-times-1.pdf, id=1368, 442.65375pt x 249
-.93375pt>
-File: carpedatum_files/figure-latex/marathon-times-1.pdf Graphic file (type pdf
-)
-<use carpedatum_files/figure-latex/marathon-times-1.pdf>
-Package pdftex.def Info: carpedatum_files/figure-latex/marathon-times-1.pdf  us
-ed on input line 3131.
-(pdftex.def)             Requested size: 386.43625pt x 218.1919pt.
-[90]
-<carpedatum_files/figure-latex/marathon-fast-1.pdf, id=1376, 431.6125pt x 249.9
-3375pt>
-File: carpedatum_files/figure-latex/marathon-fast-1.pdf Graphic file (type pdf)
-
-<use carpedatum_files/figure-latex/marathon-fast-1.pdf>
-Package pdftex.def Info: carpedatum_files/figure-latex/marathon-fast-1.pdf  use
-d on input line 3142.
-(pdftex.def)             Requested size: 386.42578pt x 223.76749pt.
-[91 <./carpedatum_files/figure-latex/marathon-times-1.pdf>] [92 <./carpedatum_f
-iles/figure-latex/marathon-fast-1.pdf>]
-Chapter 15.
-[93
-
-]
-<images/abc_COVID19NycZip_v03_KA_hpEmbed_17x12_992.jpg, id=1422, 995.72pt x 703
-.62875pt>
-File: images/abc_COVID19NycZip_v03_KA_hpEmbed_17x12_992.jpg Graphic file (type 
-jpg)
-<use images/abc_COVID19NycZip_v03_KA_hpEmbed_17x12_992.jpg>
-Package pdftex.def Info: images/abc_COVID19NycZip_v03_KA_hpEmbed_17x12_992.jpg 
- used on input line 3200.
-(pdftex.def)             Requested size: 429.35153pt x 303.40265pt.
-<images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg, id=1423, 995.72pt
- x 703.62875pt>
-File: images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg Graphic file 
-(type jpg)
-<use images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg>
-Package pdftex.def Info: images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_99
-2.jpg  used on input line 3204.
-(pdftex.def)             Requested size: 429.35153pt x 303.40265pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[94 <./images/abc_COVID19NycZip_v03_KA_hpEmbed_17x12_992.jpg>]
-<images/abc_COVID19RacialComp_v02_KA_hpEmbed_37x16_992.jpg, id=1429, 995.72pt x
- 429.605pt>
-File: images/abc_COVID19RacialComp_v02_KA_hpEmbed_37x16_992.jpg Graphic file (t
-ype jpg)
-<use images/abc_COVID19RacialComp_v02_KA_hpEmbed_37x16_992.jpg>
-Package pdftex.def Info: images/abc_COVID19RacialComp_v02_KA_hpEmbed_37x16_992.
-jpg  used on input line 3214.
-(pdftex.def)             Requested size: 429.35153pt x 185.2444pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[95 <./images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg>] [96 <./ima
-ges/abc_COVID19RacialComp_v02_KA_hpEmbed_37x16_992.jpg>] [97] [98] [99]
-Underfull \hbox (badness 10000) in paragraph at lines 3470--3472
-
- []
-
-[100] [101] [102] [103] [104] [105] [106] [107]
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4008--4008
-[]\T1/lmtt/m/n/10 ##                                                           
-                                         label[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4009--4009
-[]\T1/lmtt/m/n/10 ## 29                                                        
-                               Estimate!!Total[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4010--4010
-[]\T1/lmtt/m/n/10 ## 67                                                        
-                 Annotation of Estimate!!Total[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4011--4011
-[]\T1/lmtt/m/n/10 ## 30                                                        
-                        Margin of Error!!Total[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4012--4012
-[]\T1/lmtt/m/n/10 ## 68                                                        
-          Annotation of Margin of Error!!Total[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4013--4013
-[]\T1/lmtt/m/n/10 ## 37                                                        
-       Estimate!!Total!!Not Hispanic or Latino[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4014--4014
-[]\T1/lmtt/m/n/10 ## 70                                                 Annotat
-ion of Estimate!!Total!!Not Hispanic or Latino[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4015--4015
-[]\T1/lmtt/m/n/10 ## 38                                                        
-Margin of Error!!Total!!Not Hispanic or Latino[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4016--4016
-[]\T1/lmtt/m/n/10 ## 69                                          Annotation of 
-Margin of Error!!Total!!Not Hispanic or Latino[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4017--4017
-[]\T1/lmtt/m/n/10 ## 35                                                  Estima
-te!!Total!!Not Hispanic or Latino!!White alone[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4018--4018
-[]\T1/lmtt/m/n/10 ## 78                                    Annotation of Estima
-te!!Total!!Not Hispanic or Latino!!White alone[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4019--4019
-[]\T1/lmtt/m/n/10 ## 36                                           Margin of Err
-or!!Total!!Not Hispanic or Latino!!White alone[] 
- []
-
-[108]
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4020--4020
-[]\T1/lmtt/m/n/10 ## 77                             Annotation of Margin of Err
-or!!Total!!Not Hispanic or Latino!!White alone[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4021--4021
-[]\T1/lmtt/m/n/10 ## 33                              Estimate!!Total!!Not Hispa
-nic or Latino!!Black or African American alone[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4022--4022
-[]\T1/lmtt/m/n/10 ## 80                Annotation of Estimate!!Total!!Not Hispa
-nic or Latino!!Black or African American alone[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4023--4023
-[]\T1/lmtt/m/n/10 ## 34                       Margin of Error!!Total!!Not Hispa
-nic or Latino!!Black or African American alone[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4024--4024
-[]\T1/lmtt/m/n/10 ## 79         Annotation of Margin of Error!!Total!!Not Hispa
-nic or Latino!!Black or African American alone[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4025--4025
-[]\T1/lmtt/m/n/10 ## 31                      Estimate!!Total!!Not Hispanic or L
-atino!!American Indian and Alaska Native alone[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4026--4026
-[]\T1/lmtt/m/n/10 ## 82        Annotation of Estimate!!Total!!Not Hispanic or L
-atino!!American Indian and Alaska Native alone[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4027--4027
-[]\T1/lmtt/m/n/10 ## 32               Margin of Error!!Total!!Not Hispanic or L
-atino!!American Indian and Alaska Native alone[] 
- []
-
-
-Overfull \hbox (132.39627pt too wide) in paragraph at lines 4028--4028
-[]\T1/lmtt/m/n/10 ## 81 Annotation of Margin of Error!!Total!!Not Hispanic or L
-atino!!American Indian and Alaska Native alone[] 
- []
-
-[109]
-Overfull \hbox (211.14604pt too wide) in paragraph at lines 4109--4109
-[]\T1/lmtt/m/n/10 ##                                                           
-                                                        label[] 
- []
-
-
-Overfull \hbox (211.14604pt too wide) in paragraph at lines 4110--4110
-[]\T1/lmtt/m/n/10 ## 25 Estimate!!Total!!Hispanic or Latino!!Two or more races!
-!Two races excluding Some other race, and three or more races[] 
- []
-
-
-Overfull \hbox (211.14604pt too wide) in paragraph at lines 4111--4111
-[]\T1/lmtt/m/n/10 ## 27                          Estimate!!Total!!Hispanic or L
-atino!!Two or more races!!Two races including Some other race[] 
- []
-
-
-Overfull \hbox (211.14604pt too wide) in paragraph at lines 4112--4112
-[]\T1/lmtt/m/n/10 ## 29                                                        
-                                              Estimate!!Total[] 
- []
-
-
-Overfull \hbox (211.14604pt too wide) in paragraph at lines 4113--4113
-[]\T1/lmtt/m/n/10 ## 31                                     Estimate!!Total!!No
-t Hispanic or Latino!!American Indian and Alaska Native alone[] 
- []
-
-
-Overfull \hbox (211.14604pt too wide) in paragraph at lines 4114--4114
-[]\T1/lmtt/m/n/10 ## 33                                             Estimate!!T
-otal!!Not Hispanic or Latino!!Black or African American alone[] 
- []
-
-
-Overfull \hbox (211.14604pt too wide) in paragraph at lines 4115--4115
-[]\T1/lmtt/m/n/10 ## 35                                                        
-         Estimate!!Total!!Not Hispanic or Latino!!White alone[] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 4130--4132
-
- []
-
-
-Overfull \vbox (1.19pt too high) detected at line 4182
- []
-
-[110] [111] [112] [113]
-Underfull \hbox (badness 10000) in paragraph at lines 4419--4421
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 4421--4423
-
- []
-
-[114]
-Underfull \vbox (badness 1960) detected at line 4491
- []
-
-[115]
-Overfull \hbox (116.64632pt too wide) in paragraph at lines 4538--4538
-[]\T1/lmtt/m/n/10 ## Source: "/Users/bergner/GitHub/carpe-datum/Shape_Files/ZIP
-_CODE_040114.shp", layer: "ZIP_CODE_040114"[] 
- []
-
-[116]
-<figs/unnamed-chunk-81-1.pdf, id=1560, 418.56375pt x 413.545pt>
-File: figs/unnamed-chunk-81-1.pdf Graphic file (type pdf)
-<use figs/unnamed-chunk-81-1.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-81-1.pdf  used on input line 4553.
-(pdftex.def)             Requested size: 386.41176pt x 381.77852pt.
-[117 <./figs/unnamed-chunk-81-1.pdf>]
-Overfull \hbox (1.14665pt too wide) in paragraph at lines 4607--4607
-[]\T1/lmtt/m/n/10 ##     zipcode Median_HH_Income Median_Income zcta_propOver65
- Total_Pop Median_Age 
- []
-
-
-Overfull \hbox (1.14665pt too wide) in paragraph at lines 4608--4608
-[]\T1/lmtt/m/n/10 ## 258   11414            71648         45640            22.0
-     29219       45.0[] 
- []
-
-
-Overfull \hbox (1.14665pt too wide) in paragraph at lines 4609--4609
-[]\T1/lmtt/m/n/10 ## 259   10310            72093         44590            13.4
-     23262       38.8[] 
- []
-
-
-Overfull \hbox (1.14665pt too wide) in paragraph at lines 4610--4610
-[]\T1/lmtt/m/n/10 ## 260   11693            59431         44674            12.3
-     12919       39.5[] 
- []
-
-
-Overfull \hbox (1.14665pt too wide) in paragraph at lines 4611--4611
-[]\T1/lmtt/m/n/10 ## 261   11249               NA            NA              NA
-        NA         NA[] 
- []
-
-
-Overfull \hbox (1.14665pt too wide) in paragraph at lines 4612--4612
-[]\T1/lmtt/m/n/10 ## 262   10162               NA            NA              NA
-        NA         NA[] 
- []
-
-
-Overfull \hbox (1.14665pt too wide) in paragraph at lines 4613--4613
-[]\T1/lmtt/m/n/10 ## 263   10119               NA            NA              NA
-        NA         NA[] 
- []
-
-[118] [119] [120]
-<figs/unnamed-chunk-89-1.pdf, id=1587, 598.235pt x 464.73625pt>
-File: figs/unnamed-chunk-89-1.pdf Graphic file (type pdf)
-<use figs/unnamed-chunk-89-1.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-89-1.pdf  used on input line 4770.
-(pdftex.def)             Requested size: 386.42001pt x 300.18869pt.
-[121 <./figs/unnamed-chunk-89-1.pdf>]
-<figs/unnamed-chunk-90-1.pdf, id=1608, 598.235pt x 464.73625pt>
-File: figs/unnamed-chunk-90-1.pdf Graphic file (type pdf)
-<use figs/unnamed-chunk-90-1.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-90-1.pdf  used on input line 4788.
-(pdftex.def)             Requested size: 386.42001pt x 300.18869pt.
-<figs/unnamed-chunk-91-1.pdf, id=1609, 597.23125pt x 464.73625pt>
-File: figs/unnamed-chunk-91-1.pdf Graphic file (type pdf)
-<use figs/unnamed-chunk-91-1.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-91-1.pdf  used on input line 4806.
-(pdftex.def)             Requested size: 386.41867pt x 300.69217pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[122 <./figs/unnamed-chunk-90-1.pdf>]
-File: images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg Graphic file 
-(type jpg)
-<use images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_992.jpg>
-Package pdftex.def Info: images/abc_CollegeDegreeNycZip_v02_KA_hpEmbed_17x12_99
-2.jpg  used on input line 4812.
-(pdftex.def)             Requested size: 343.4782pt x 242.71997pt.
-[123 <./figs/unnamed-chunk-91-1.pdf>]
-<figs/unnamed-chunk-92-1.pdf, id=1636, 597.23125pt x 464.73625pt>
-File: figs/unnamed-chunk-92-1.pdf Graphic file (type pdf)
-<use figs/unnamed-chunk-92-1.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-92-1.pdf  used on input line 4838.
-(pdftex.def)             Requested size: 386.41867pt x 300.69217pt.
-[124 <./figs/unnamed-chunk-92-1.pdf>]
-<figs/unnamed-chunk-93-1.pdf, id=1649, 765.86125pt x 415.5525pt>
-File: figs/unnamed-chunk-93-1.pdf Graphic file (type pdf)
-<use figs/unnamed-chunk-93-1.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-93-1.pdf  used on input line 4869.
-(pdftex.def)             Requested size: 386.41214pt x 209.6653pt.
-<figs/unnamed-chunk-94-1.pdf, id=1650, 812.03375pt x 538.01pt>
-File: figs/unnamed-chunk-94-1.pdf Graphic file (type pdf)
-<use figs/unnamed-chunk-94-1.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-94-1.pdf  used on input line 4890.
-(pdftex.def)             Requested size: 386.41391pt x 256.01712pt.
-
-Underfull \vbox (badness 6477) has occurred while \output is active []
-
-[125 <./figs/unnamed-chunk-93-1.pdf>]
-<figs/unnamed-chunk-95-1.pdf, id=1665, 765.86125pt x 415.5525pt>
-File: figs/unnamed-chunk-95-1.pdf Graphic file (type pdf)
-<use figs/unnamed-chunk-95-1.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-95-1.pdf  used on input line 4916.
-(pdftex.def)             Requested size: 386.41214pt x 209.6653pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[126 <./figs/unnamed-chunk-94-1.pdf>]
-<figs/unnamed-chunk-96-1.pdf, id=1678, 791.95876pt x 375.4025pt>
-File: figs/unnamed-chunk-96-1.pdf Graphic file (type pdf)
-<use figs/unnamed-chunk-96-1.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-96-1.pdf  used on input line 4952.
-(pdftex.def)             Requested size: 386.41972pt x 183.1698pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[127 <./figs/unnamed-chunk-95-1.pdf>]
-<figs/unnamed-chunk-97-1.pdf, id=1702, 791.95876pt x 375.4025pt>
-File: figs/unnamed-chunk-97-1.pdf Graphic file (type pdf)
-<use figs/unnamed-chunk-97-1.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-97-1.pdf  used on input line 4975.
-(pdftex.def)             Requested size: 386.41972pt x 183.1698pt.
-[128 <./figs/unnamed-chunk-96-1.pdf> <./figs/unnamed-chunk-97-1.pdf>]
-<figs/unnamed-chunk-98-1.pdf, id=1735, 746.79pt x 577.15625pt>
-File: figs/unnamed-chunk-98-1.pdf Graphic file (type pdf)
-<use figs/unnamed-chunk-98-1.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-98-1.pdf  used on input line 5019.
-(pdftex.def)             Requested size: 386.40726pt x 298.63464pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[129] [130 <./figs/unnamed-chunk-98-1.pdf>]
+[64 <./carpedatum_files/figure-latex/unnamed-chunk-20-1.pdf>]
 Appendix A.
-[131
+[65
 
-] [132] (./carpedatum.bbl [133]) [134
+] [66] (./carpedatum.bbl [67])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2321.
+[68
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5092.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 5092.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2321.
 (./carpedatum.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 5092.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5092.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2321.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2321.
 
 Package rerunfilecheck Info: File `carpedatum.out' has not changed.
-(rerunfilecheck)             Checksum: 1172DFE22793AB37733ADC86D9D49203;18211.
+(rerunfilecheck)             Checksum: 523161F5334C6E92C1E25295077B96A8;11487.
  ) 
 Here is how much of TeX's memory you used:
- 42645 strings out of 492616
- 812836 string characters out of 6129482
- 921359 words of memory out of 5000000
- 45288 multiletter control sequences out of 15000+600000
- 632745 words of font info for 181 fonts, out of 8000000 for 9000
+ 29580 strings out of 492616
+ 507620 string characters out of 6129482
+ 591500 words of memory out of 5000000
+ 32723 multiletter control sequences out of 15000+600000
+ 623874 words of font info for 163 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,15n,101p,1855b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/
-texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/20
-19/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2019/texmf-d
-ist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/
-dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/l
-m-ts1.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmbx10.pfb>
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/loca
-l/texlive/2019/texmf-dist/fonts/type1/public/lm/lmbx8.pfb></usr/local/texlive/2
-019/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/2019/texmf
--dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2019/texmf-dist/font
-s/type1/public/lm/lmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pu
-blic/lm/lmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr
-10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr12.pfb></us
-r/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/tex
-live/2019/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2019/te
-xmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2019/texmf-dist/fon
-ts/type1/public/lm/lmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pub
-lic/lm/lmri10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr
-i8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmro10.pfb></u
-sr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/t
-exlive/2019/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/201
-9/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2019/texmf-di
-st/fonts/type1/public/lm/lmtti10.pfb>
-Output written on carpedatum.pdf (134 pages, 15658260 bytes).
+ 48i,15n,65p,1583b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/
+texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/20
+19/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2019/texmf-d
+ist/fonts/enc/dvips/fontawesome5/fa5free0.enc}{/usr/local/texlive/2019/texmf-di
+st/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/d
+vips/lm/lm-ts1.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/fonta
+wesome5/FontAwesome5Free-Regular.pfb></usr/local/texlive/2019/texmf-dist/fonts/
+type1/public/lm/lmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publ
+ic/lm/lmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmbx
+i10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></
+usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/t
+exlive/2019/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2019
+/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2019/texmf-dist
+/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
+/public/lm/lmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/l
+mr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmri10.pfb></
+usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmro10.pfb></usr/local/
+texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/20
+19/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2019/texmf-d
+ist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2019/texmf-dist/fonts/
+type1/public/lm/lmtti10.pfb>
+Output written on carpedatum.pdf (68 pages, 3588842 bytes).
 PDF statistics:
- 1964 PDF objects out of 2073 (max. 8388607)
- 1639 compressed objects within 17 object streams
- 474 named destinations out of 1000 (max. 500000)
- 19605 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 1089 PDF objects out of 1200 (max. 8388607)
+ 931 compressed objects within 10 object streams
+ 276 named destinations out of 1000 (max. 500000)
+ 17004 words of extra memory for PDF output out of 17280 (max. 10000000)
 

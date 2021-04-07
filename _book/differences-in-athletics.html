@@ -331,10 +331,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb85-6" data-line-number="6"><span class="co"># plot a histogram showing both height distributions, separately</span></a>
 <a class="sourceLine" id="cb85-7" data-line-number="7"><span class="kw">hist</span>(maleHeights, <span class="dt">col=</span>malescol, <span class="dt">breaks=</span>mybreaks, </a>
 <a class="sourceLine" id="cb85-8" data-line-number="8">          <span class="dt">main=</span><span class="st">&quot;Heights of males&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>)</a></code></pre></div>
-<p><img src="carpedatum_files/figure-html/unnamed-chunk-33-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="carpedatum_files/figure-html/unnamed-chunk-34-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="kw">hist</span>(nbaHeights, <span class="dt">col=</span>nbacol, <span class="dt">breaks=</span>mybreaks, </a>
 <a class="sourceLine" id="cb86-2" data-line-number="2">     <span class="dt">main=</span><span class="st">&quot;Heights of NBA players&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>)</a></code></pre></div>
-<p><img src="carpedatum_files/figure-html/unnamed-chunk-33-2.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="carpedatum_files/figure-html/unnamed-chunk-34-2.png" width="90%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="co"># plot a histogram showing both height distributions, together (add=T)</span></a>
 <a class="sourceLine" id="cb87-2" data-line-number="2"><span class="kw">hist</span>(maleHeights, <span class="dt">col=</span>malescol, <span class="dt">breaks=</span>mybreaks, </a>
 <a class="sourceLine" id="cb87-3" data-line-number="3">          <span class="dt">main=</span><span class="st">&quot;&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>)</a>
@@ -374,7 +374,7 @@ Figure 14.1: Histogram of NBA and non-NBA male heights on one plot using transpa
 <a class="sourceLine" id="cb88-9" data-line-number="9"><span class="co"># plot as before</span></a>
 <a class="sourceLine" id="cb88-10" data-line-number="10"><span class="kw">hist</span>(lotsoheights, <span class="dt">col=</span>malescol, <span class="dt">breaks=</span>mybreaks, </a>
 <a class="sourceLine" id="cb88-11" data-line-number="11">          <span class="dt">main=</span><span class="st">&quot;Heights of 3600 males&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Height (inches)&quot;</span>)</a></code></pre></div>
-<p><img src="carpedatum_files/figure-html/unnamed-chunk-35-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="carpedatum_files/figure-html/unnamed-chunk-36-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Now consider a process of sub-sampling from this larger sample repeatedly. That is, we take two samples of 100 and compare the difference in the sample averages. Let’s say we do it 1000 times. How often do we see differences as extreme as 9 inches? Mind you, we have no idea which of our two samples will turn out taller, so we’ll need to look for differences with magnitude (or absolute value) greater than 9. Because the difference could be 9.5 or -9.5 depending on the order of subtraction. Here goes:</p>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1">numSamples &lt;-<span class="st"> </span><span class="dv">1000</span></a>
 <a class="sourceLine" id="cb89-2" data-line-number="2">sampleSize &lt;-<span class="st"> </span><span class="dv">100</span></a>
@@ -386,7 +386,7 @@ Figure 14.1: Histogram of NBA and non-NBA male heights on one plot using transpa
 <a class="sourceLine" id="cb89-8" data-line-number="8">}</a>
 <a class="sourceLine" id="cb89-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb89-10" data-line-number="10"><span class="kw">hist</span>(differences_in_means)</a></code></pre></div>
-<p><img src="carpedatum_files/figure-html/unnamed-chunk-36-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="carpedatum_files/figure-html/unnamed-chunk-37-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>You’ll notice that in 1000 experiments, we never observed a difference in mean heights between our two samples of even 2 inches, let alone 9 inches. Here is how you would know for sure</p>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"><span class="co"># declare a threshold difference of interest</span></a>
 <a class="sourceLine" id="cb90-2" data-line-number="2">thresholdDiff &lt;-<span class="st"> </span><span class="dv">9</span></a>

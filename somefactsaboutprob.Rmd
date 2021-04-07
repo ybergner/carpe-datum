@@ -13,8 +13,12 @@ Now is probably a good time to recap some of what we have established about prob
 An example of this was dying at age 62 or dying at age 64.
 
 - A special case of this addition rule applies when one or the other MUST happen. For example, in logic, either something happens or it doesn't happen. Either A or NOT A. Since these possibilities are disjoint:
+
 >```
 >P(A) + P(not A) = 1
+>```
+
+>```
 >P(not A) = 1 - P(A)
 >```
 
@@ -23,6 +27,7 @@ An example of this was the probability that you do not die at age 0. We found it
 The last fact we used is
 
 - The joint probability rule for **independent** events that BOTH occur is the product of the individual probabilities of each event occurring.
+
 >```
 >P(A and B) = P(A) * P(B)
 >```
@@ -154,13 +159,13 @@ By combining the two equations from above. Or, in general
 P(A | B) * P(B) =  P(B | A) * P(A)
 ```
 
-Notice that is *not* generally true about conditional probabilities that `P(A|B) = P(B|A)`. Even though it is always true about joint probabilities that `P(A,B) = P(B,A)` (I used commas instead of "and" here.) Here's an example. All NYU students are New Yorkers (at least, honorary New Yorkers while in town.) But not all New Yorkers are NYU students. The probability of being a New Yorker conditional on (or given that) you are currently an NYU student is 1. However the probability of being an NYU conditional on being a New Yorker is clearly not 1. 
+Notice that is *not* generally true about conditional probabilities that `P(A|B) = P(B|A)`. Even though it is always true about joint probabilities that `P(A,B) = P(B,A)` (I used commas instead of "and" here.) Here's an example. All NYU students are New Yorkers (at least, honorary New Yorkers while in town.) But not all New Yorkers are NYU students. The probability of being a New Yorker conditional on (or given that) you are currently an NYU student is 1. However the probability of being an NYU student conditional on being a New Yorker is clearly not 1. 
 
 
 
 ## Conditional death, again {-}
 
-Earlier I said we would use the life table to answer questions about when you will die assuming nothing else about you. Now, you might be aware that life expectancy is not the same for males and females. Indeed, there are separate life tables for each sex. I've plotted the death column dx from both tables in Figure \@ref(fig:life-durationMF). Females are shown in light blue bars, and males using orange Unfortunately for the males, their mortality rate is higher not only in their later years, but even in their late teens and twenties. (We'll come back to that when we consider how you will die.)
+Earlier I said we would use the life table to answer questions about when you will die assuming nothing else about you. Now, you might be aware that life expectancy is not the same for males and females. Indeed, there are separate life tables for each sex. I've plotted the death column dx from both tables in Figure \@ref(fig:life-durationMF). Females are shown in light blue bars, and males using orange. Unfortunately for the males, their mortality rate is higher not only in their later years, but even in their late teens and twenties. (We'll come back to that when we consider how you will die.)
 
 
 ```{r life-durationMF, echo=FALSE, out.width='90%', fig.cap='Deaths by age for male and female (2010)', fig.pos='H', out.extra=''}
@@ -208,7 +213,7 @@ The unconditional probability of living past 90 is (245+135)/2000 = 0.19 or 19%.
 
 ### Just to make things weird {-}
 
-Now suppose, for arguments' sake, that the numbers in the life table apply to everyone born in the last 120 years as of today (they don't; life expectancy has changed over the years). If I told you that someone was over 90, but nothing else about them, what is the probability that the person is female (at least in terms of sex at birth)? The two-way table I constructed had equal numbers of males and females. We will assume that the birth rates are indeed the same. So the unconditional probability of being female knowing nothing about a person's status as living or dead is 50%. However, among those alive in their 90s, 245/(245+135) = 0.64 of them are female. Almost 2 to 1. 
+Now suppose, for arguments' sake, that the numbers in the life table apply to everyone born in the last 120 years as of today (they don't; life expectancy has changed over the years). If I told you that someone was over 90, but nothing else about them, what is the probability that the person was female at birth (we will make the simplifying assumption that the life table corresponds to sex at birth)? The two-way table I constructed had equal numbers of males and females. We will assume that the birth rates are indeed the same. So the unconditional probability of being born female knowing nothing about a person's status as living or dead is 50%. However, among those alive in their 90s, 245/(245+135) = 0.64 of them are female. Almost 2 to 1. 
 
 Given a two-way table, with variables representing events A and B, it is possible to derive conditional probabilities in both directions. P(A|B) might be the probability of living past 90 given sex at birth. P(B|A) would then be probability of sex at birth given present age over 90. 
 

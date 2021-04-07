@@ -69,7 +69,7 @@ If I am about to engage in highly risky behavior, you might not want to put the 
 
 When there is something that you can change, or manipulate, such as engaging in a particular behavior (e.g., driving, rock climbing, or eating Pop Rocks and Coke), then we can imagine what *might* have happened if you didn't do something that you did (or did something that in reality you didn't do). This is what is known as a *counterfactual* claim, such as "if I didn't check my email this morning before leaving the house, I would not have missed the train." Maybe. But how can we know? 
 
-Our knowledge about the world is based on a combination of observations. (I am distinguishing knowledge from belief, but epistemology is a big topic and beyong our scope at the moment!) Some of those observations are of the form where we do not deliberately manipulate conditions in the world, such as treatments, behaviors, or environmental factors. We just observe the joint occurrences of events in samples, such as health outcomes, behaviors, pollution levels, etc. Analysis of these kinds of data are called observational studies. We can also do experiments, sometimes, where we gather a sample of people and assign half of them to do something (e.g., take medicine, or sleep in a cabin) and half of them to do something else (e.g., take a placebo, or watch an informational video). These are experimental studies.
+Our knowledge about the world is based on a combination of observations. (I am distinguishing knowledge from belief, but epistemology is a big topic and beyond our scope at the moment!) Some of those observations are of the form where we do not deliberately manipulate conditions in the world, such as treatments, behaviors, or environmental factors. We just observe the joint occurrences of events in samples, such as health outcomes, behaviors, pollution levels, etc. Analysis of these kinds of data are called observational studies. We can also do experiments, sometimes, where we gather a sample of people and assign half of them to do something (e.g., take medicine, or sleep in a cabin) and half of them to do something else (e.g., take a placebo, or watch an informational video). These are experimental studies.
 
 It is often said that experimental studies are the best way to develop knowledge about causation, that is, answers to questions of the form, does A cause B? Does eating meat cause heart disease? Does smoking cause lung cancer? And are experiments the only way to answer such questions?
 
@@ -83,10 +83,10 @@ If I hit a porcelain tea cup hard with hammer and the tea cup breaks, we can saf
 
 What about buying a lottery ticket? Does buying a lottery ticket cause one to win the lottery? Well, you certainly are not guaranteed to win the lottery if you buy a ticket. (In fact, your chances will be very low. The subject of making money is the next Big Question). But you can’t possibly win if you don’t buy a ticket. So, strictly speaking, buying a ticket does influence the probability of winning.
 
-We’ve now dicussed two examples. In the first case (hammer and teacup):
+We’ve now discussed two examples. In the first case (hammer and teacup):
 
 - If A (hammer hits teacup) then definitely B (teacup breaks)
-- If not A (hammer does not hit teacup) then definitely not B (teacup does not breaks)
+- If not A (hammer does not hit teacup) then definitely not B (teacup does not break)
 
 In table form:
 

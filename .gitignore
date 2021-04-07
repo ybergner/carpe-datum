@@ -1,9 +1,16 @@
 .DS_Store
+.DS_Store?
 *.log
 *.nb.html
 .Rproj.user
 .Rhistory
 .RData
 _publish.R
-_bookdown_files
+_book/*
+_bookdown_files/*
 rsconnect
+packages.bib
+*-tikzDictionary
+css/box.css
+latex/blackbox.tex
+latex/infobox.tex
