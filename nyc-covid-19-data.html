@@ -304,7 +304,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#this-just-might-work"><i class="fa fa-check"></i>This just might work</a></li>
 <li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#the-combinatorics-of-gerrymandering"><i class="fa fa-check"></i>The combinatorics of gerrymandering</a></li>
 <li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#move-over-brute-force-hello-random-walk-sampling"><i class="fa fa-check"></i>Move over brute force, hello random walk sampling</a></li>
-<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#seat-count-is-not-the-only-outcome-measure"><i class="fa fa-check"></i>Seat-count is not the only outcome measure</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#seat-count-is-not-the-only-or-most-common-outcome-measure"><i class="fa fa-check"></i>Seat-count is not the only (or most common) outcome measure</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -1036,12 +1036,12 @@ nyc_zipcode_data$Positive/nyc_zipcode_data$Total*100
 <div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="nyc-covid-19-data.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(zcta_income) <span class="ot">&lt;-</span> getRealName[<span class="fu">names</span>(zcta_income)]</span>
 <span id="cb161-2"><a href="nyc-covid-19-data.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(zcta_income)</span></code></pre></div>
 <pre><code>##   zipcode Median_HH_Income Median_Income
-## 1   10472            30977         22953
-## 2   10309           103175         54948
-## 3   10467            37015         26938
-## 4   10456            27106         22862
-## 5   10001            88526         74878
-## 6   10035            30081         32731</code></pre>
+## 1   10007           246813        133000
+## 2   10019            98833         79177
+## 3   10021           118289         86342
+## 4   10038            86058         68478
+## 5   10039            39653         31659
+## 6   10280           169844        105433</code></pre>
 <p>That was easy!</p>
 </div>
 <div id="zipcode-level-race-age-etc." class="section level4 unnumbered">
@@ -1066,12 +1066,12 @@ nyc_zipcode_data$Positive/nyc_zipcode_data$Total*100
 <span id="cb163-17"><a href="nyc-covid-19-data.html#cb163-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb163-18"><a href="nyc-covid-19-data.html#cb163-18" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(zcta_propOver65)</span></code></pre></div>
 <pre><code>##   zipcode zcta_propOver65
-## 1   10472            11.1
-## 2   10309            15.5
-## 3   10467            11.0
-## 4   10456             9.0
-## 5   10001            14.8
-## 6   10035            12.6</code></pre>
+## 1   10007             6.2
+## 2   10019            15.5
+## 3   10021            22.2
+## 4   10038            17.0
+## 5   10039             9.4
+## 6   10280             9.1</code></pre>
 <div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="nyc-covid-19-data.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get median age by sex</span></span>
 <span id="cb165-2"><a href="nyc-covid-19-data.html#cb165-2" aria-hidden="true" tabindex="-1"></a>zcta_SexByAge <span class="ot">&lt;-</span> <span class="fu">getCensus</span>(<span class="at">name =</span> <span class="st">&quot;acs/acs5&quot;</span>,</span>
 <span id="cb165-3"><a href="nyc-covid-19-data.html#cb165-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">vintage =</span> <span class="dv">2018</span>,</span>
@@ -1088,12 +1088,12 @@ nyc_zipcode_data$Positive/nyc_zipcode_data$Total*100
 <span id="cb165-14"><a href="nyc-covid-19-data.html#cb165-14" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(zcta_SexByAge) <span class="ot">&lt;-</span> getRealName[<span class="fu">names</span>(zcta_SexByAge)]</span>
 <span id="cb165-15"><a href="nyc-covid-19-data.html#cb165-15" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(zcta_SexByAge)</span></code></pre></div>
 <pre><code>##   zipcode Total_Pop Median_Age Median_Age_Male Median_Age_Fem
-## 1   10472     68796       32.1            30.0           33.9
-## 2   10309     33531       40.5            37.6           43.1
-## 3   10467    103732       33.7            32.5           34.7
-## 4   10456     94218       30.9            28.7           32.7
-## 5   10001     22924       36.7            40.1           34.3
-## 6   10035     35743       36.3            35.1           37.4</code></pre>
+## 1   10007      7023       36.0            35.9           36.2
+## 2   10019     43703       39.5            39.7           39.1
+## 3   10021     46215       41.0            42.1           40.5
+## 4   10038     22800       36.2            34.7           37.7
+## 5   10039     27726       33.7            31.6           35.1
+## 6   10280      9384       38.1            38.2           38.0</code></pre>
 <div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="nyc-covid-19-data.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get race including Hispanic/Latino category</span></span>
 <span id="cb167-2"><a href="nyc-covid-19-data.html#cb167-2" aria-hidden="true" tabindex="-1"></a>zcta_race <span class="ot">&lt;-</span> <span class="fu">getCensus</span>(<span class="at">name =</span> <span class="st">&quot;acs/acs5&quot;</span>,</span>
 <span id="cb167-3"><a href="nyc-covid-19-data.html#cb167-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">vintage =</span> <span class="dv">2018</span>,</span>
@@ -1126,12 +1126,12 @@ nyc_zipcode_data$Positive/nyc_zipcode_data$Total*100
 <span id="cb167-30"><a href="nyc-covid-19-data.html#cb167-30" aria-hidden="true" tabindex="-1"></a>                              zcta_race_proportion) </span>
 <span id="cb167-31"><a href="nyc-covid-19-data.html#cb167-31" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(zcta_race_proportion)</span></code></pre></div>
 <pre><code>##   zipcode Total_HispRace Hisp_Latin NH_Black NH_White NH_Asian NH_Other
-## 1   10472          68796       64.5     23.8      2.6      6.5      2.6
-## 2   10309          33531        9.3      0.6     85.0      3.6      1.5
-## 3   10467         103732       52.3     30.4      9.4      5.7      2.1
-## 4   10456          94218       61.5     34.3      1.2      0.8      2.1
-## 5   10001          22924       14.2      5.6     53.1     25.0      2.1
-## 6   10035          35743       44.6     37.0     10.2      4.4      3.8</code></pre>
+## 1   10007           7023        8.3      4.2     72.0     11.8      3.8
+## 2   10019          43703       16.8      5.3     56.7     17.3      3.9
+## 3   10021          46215        7.9      0.6     79.3      9.4      2.8
+## 4   10038          22800       14.1      6.8     45.0     31.0      3.1
+## 5   10039          27726       33.8     55.1      6.8      1.6      2.7
+## 6   10280           9384        8.8      1.7     70.5     15.7      3.3</code></pre>
 </div>
 <div id="some-more-variables-to-play-with" class="section level3 unnumbered">
 <h3>Some more variables to play with</h3>
@@ -1184,19 +1184,19 @@ nyc_zipcode_data$Positive/nyc_zipcode_data$Total*100
 <span id="cb169-26"><a href="nyc-covid-19-data.html#cb169-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb169-27"><a href="nyc-covid-19-data.html#cb169-27" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(zcta_edu_hh)</span></code></pre></div>
 <pre><code>##   zipcode Bachelors Masters Professional Doctorate Total_EducPop HH1pers
-## 1   10472      3856    1111          214        27         42234    5550
-## 2   10309      5129    2207          448       121         23537    1934
-## 3   10467      8921    2999          715       315         67420   11847
-## 4   10456      5566    1333          198       101         56252    8552
-## 5   10001      6810    3676         1190       557         17985    6710
-## 6   10035      4343    2118          540       198         25962    6621
+## 1   10007      2269    1177          670       142          5323    1029
+## 2   10019     13819    8590         3493      1229         37458   14002
+## 3   10021     14573    9107         4738      1816         37453   13156
+## 4   10038      6032    2605         1022       250         17155    4035
+## 5   10039      3212    1796          206       276         18072    4207
+## 6   10280      3151    1928          989       262          7160    1897
 ##   HH2pers HH3pers HH4plus Bach_plus_prop    AvgHH
-## 1    5200    4002    7135           12.3 2.581258
-## 2    3323    2239    3968           33.6 2.718859
-## 3    8992    6351    9542           19.2 2.369923
-## 4    7338    5505    9379           12.8 2.510528
-## 5    3897    1072     752           68.0 1.667444
-## 6    3627    2219    1961           27.7 1.966731</code></pre>
+## 1     958     231     513           80.0 2.083486
+## 2    8352    1987    1087           72.4 1.612986
+## 3    6887    2309    2644           80.7 1.777604
+## 4    3774    1502     899           57.8 1.928012
+## 5    3297    1751    1955           30.4 2.129706
+## 6    1423     663     577           88.4 1.982456</code></pre>
 <p>Having gathered the information in various tables (zcta_income, zcta_propOver65, zcta_SexByAge
 zcta_race_proportion, zcta_edu_hh), we can finally combine them all into one giant zipcode data frame:</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="nyc-covid-19-data.html#cb171-1" aria-hidden="true" tabindex="-1"></a>zcta_join <span class="ot">&lt;-</span> zcta_income <span class="sc">%&gt;%</span> </span>
