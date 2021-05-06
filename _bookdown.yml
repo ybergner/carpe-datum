@@ -21,6 +21,7 @@ rmd_files: [
   "isthesystemfair.Rmd",
   "differences_athletics.Rmd",
   "nycovid19_chapter.Rmd",
+  "gerrymandering.Rmd",
   "appendix.Rmd",
   "references.Rmd"
   ]

@@ -1,0 +1,47 @@
+This is BibTeX, Version 0.99d (TeX Live 2021)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: carpedatum.aux
+The style file: apalike.bst
+Database file #1: book.bib
+Database file #2: packages.bib
+You've used 4 entries,
+            1935 wiz_defined-function locations,
+            498 strings with 4474 characters,
+and the built_in function-call counts, 1366 in all, are:
+= -- 127
+> -- 50
+< -- 4
++ -- 16
+- -- 16
+* -- 111
+:= -- 250
+add.period$ -- 12
+call.type$ -- 4
+change.case$ -- 26
+chr.to.int$ -- 4
+cite$ -- 4
+duplicate$ -- 56
+empty$ -- 100
+format.name$ -- 22
+if$ -- 261
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 6
+newline$ -- 23
+num.names$ -- 12
+pop$ -- 26
+preamble$ -- 1
+purify$ -- 28
+quote$ -- 0
+skip$ -- 43
+stack$ -- 0
+substring$ -- 73
+swap$ -- 5
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 20
+warning$ -- 0
+while$ -- 11
+width$ -- 0
+write$ -- 53
