@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="differences-in-athletics.html"/>
-<link rel="next" href="sec-randomness.html"/>
+<link rel="next" href="gerrymandering.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -294,6 +294,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#scatterplots"><i class="fa fa-check"></i>Scatterplots</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="16" data-path="gerrymandering.html"><a href="gerrymandering.html"><i class="fa fa-check"></i><b>16</b> Gerrymandering</a>
+<ul>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#how-to-play-the-gerrymandering-game"><i class="fa fa-check"></i>How to play the gerrymandering game</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#the-politics-of-gerrymandering"><i class="fa fa-check"></i>The politics of gerrymandering</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#the-math-of-gerrymandering"><i class="fa fa-check"></i>The math of gerrymandering</a>
+<ul>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#unfairness-as-deviation-from-expected-outcomes-under-fair-play"><i class="fa fa-check"></i>Unfairness as deviation from expected outcomes under fair play</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#this-just-might-work"><i class="fa fa-check"></i>This just might work</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#the-combinatorics-of-gerrymandering"><i class="fa fa-check"></i>The combinatorics of gerrymandering</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#move-over-brute-force-hello-random-walk-sampling"><i class="fa fa-check"></i>Move over brute force, hello random walk sampling</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#seat-count-is-not-the-only-outcome-measure"><i class="fa fa-check"></i>Seat-count is not the only outcome measure</a></li>
+</ul></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="sec-randomness.html"><a href="sec-randomness.html"><i class="fa fa-check"></i><b>A</b> Randomness</a>
 <ul>
@@ -482,7 +495,7 @@ nyc_zipcode_data$Positive/nyc_zipcode_data$Total*100
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="nyc-covid-19-data.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(censusapi)</span>
 <span id="cb113-2"><a href="nyc-covid-19-data.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb113-3"><a href="nyc-covid-19-data.html#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="co"># comment this out if you want to proceed without a key</span></span>
-<span id="cb113-4"><a href="nyc-covid-19-data.html#cb113-4" aria-hidden="true" tabindex="-1"></a>myKey <span class="ot">=</span> <span class="fu">Sys.getenv</span>(<span class="st">&quot;CENSUS_KEY&quot;</span>) <span class="co">#store your key in .Renviron</span></span></code></pre></div>
+<span id="cb113-4"><a href="nyc-covid-19-data.html#cb113-4" aria-hidden="true" tabindex="-1"></a><span class="co"># myKey = Sys.getenv(&quot;CENSUS_KEY&quot;) #store your key in .Renviron</span></span></code></pre></div>
 <p>More importantly, when it comes to census data, you need to know what you’re asking for. That means you need to know which data sets, which variables, which geographic units, etc. A brief introductory <a href="https://www.census.gov/content/dam/Census/data/developers/api-user-guide/api-guide.pdf" target="_blank">API users guide can be found here</a>. It’s 20 pages long. You can just follow along here if you want some examples.</p>
 <p>We will be interested in the <a href="https://www.census.gov/data/developers/data-sets/acs-5year.html" target="_blank">American Community Survey 5-Year data</a> (aka ACS5) which provides estimates aggregated over a 5-year period, revisited every two years. The last published data set, i.e., the most current one available, is from 2018.</p>
 <div id="census-variables" class="section level3 unnumbered">
@@ -1539,16 +1552,13 @@ Figure 15.1: ABCNews visualization
 </div>
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
 <a href="differences-in-athletics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sec-randomness.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="gerrymandering.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

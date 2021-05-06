@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="nyc-covid-19-data.html"/>
+<link rel="prev" href="gerrymandering.html"/>
 <link rel="next" href="references.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -294,6 +294,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#scatterplots"><i class="fa fa-check"></i>Scatterplots</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="16" data-path="gerrymandering.html"><a href="gerrymandering.html"><i class="fa fa-check"></i><b>16</b> Gerrymandering</a>
+<ul>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#how-to-play-the-gerrymandering-game"><i class="fa fa-check"></i>How to play the gerrymandering game</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#the-politics-of-gerrymandering"><i class="fa fa-check"></i>The politics of gerrymandering</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#the-math-of-gerrymandering"><i class="fa fa-check"></i>The math of gerrymandering</a>
+<ul>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#unfairness-as-deviation-from-expected-outcomes-under-fair-play"><i class="fa fa-check"></i>Unfairness as deviation from expected outcomes under fair play</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#this-just-might-work"><i class="fa fa-check"></i>This just might work</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#the-combinatorics-of-gerrymandering"><i class="fa fa-check"></i>The combinatorics of gerrymandering</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#move-over-brute-force-hello-random-walk-sampling"><i class="fa fa-check"></i>Move over brute force, hello random walk sampling</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#seat-count-is-not-the-only-outcome-measure"><i class="fa fa-check"></i>Seat-count is not the only outcome measure</a></li>
+</ul></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="sec-randomness.html"><a href="sec-randomness.html"><i class="fa fa-check"></i><b>A</b> Randomness</a>
 <ul>
@@ -319,14 +332,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sec:randomness" class="section level1" number="16">
+<div id="sec:randomness" class="section level1" number="17">
 <h1><span class="header-section-number">A</span> Randomness</h1>
 <p>Whereas in common language, we may use the word “random” to mean surprising or unfamiliar, the concept has a more precise meaning in data science and statistics. Interestingly, there is no (formal) idea of randomness without probability. Just like there is no idea of straightness without the idea of space. What are the odds, right? The concept of randomness needs probability to define it, as we shall see. Moreover, randomness is an idea, like straightness, that has a pure ideal form. But what we observe in practice may be less than perfectly random (or straight).</p>
 <p>Consider straightness first. A straight line made using a ruler and a pencil is easily distinguished by eye from a wiggly hand-drawn line or a swooping curvy one. However, if we examine the pencil markings of a “straight line” under a magnifying glass, we can observe tiny wiggles at the edge. These wiggles may be due to the texture of the paper or the imperfections in the graphite (the pencil’s “lead”) or both. So the straight line is not actually perfectly straight. Nevertheless, we are able to hold in our minds a mathematical idea of a straight line. For example, we can define a line using math, specifically coordinate algebra and the <span class="math inline">\((x,y)\)</span> Euclidean plane. You likely can recognize an equation of this form:</p>
 <p><span class="math display">\[ y = 2 x + 3.\]</span></p>
 <p>This formula, which expresses a linear functional relationship, assumes a fair amount of prior knowledge, which we typically learn in school. For example, that <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> can take on continuous, real-number values, that the <span class="math inline">\(y\)</span> axis is perpendicular to the x-axis, etc. The line expressed in the formula is perfectly straight. Even if we draw it using only an approximately straight line with a pencil or chalk.</p>
 <p>YouTuber <a href="https://www.youtube.com/watch?v=9rIy0xY99a0">Vsauce’s video on “What is Random?”</a> explores whether things that we take for granted as being random (e.g., coin flips) really are. If you watch this video, you may come away convinced the outcome of tossing a coin or rolling a die is not truly random, and that quantum mechanics is the only truly random mechanism in nature. Alternately you may be satisfied that the fact of having limited information is sufficient to justify the treatment of a coin toss as a random event. On this argument, as long as you can’t tell the difference between a coin and a truly random coin, you may, for all intents and purposes, treat is as perfectly random.</p>
-<div id="defining-random-processes" class="section level2" number="16.1">
+<div id="defining-random-processes" class="section level2" number="17.1">
 <h2><span class="header-section-number">A.1</span> Defining random processes</h2>
 <p>As with straightness, we can at least define an ideal random process. For example, we can define an ideal coin toss using mathematical notation, although this notation is less commonly learned in school. Here’s one way to do it:</p>
 <p><span class="math display">\[ x \in \{H, T\} \qquad P(x=H) = p\]</span></p>
@@ -347,13 +360,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span class="math display">\[P(x=\mbox{blue}) = 0.09 \]</span>
 <span class="math display">\[P(x=\mbox{other}) = 0.03 \]</span></p>
 </div>
-<div id="predictions-about-random-events" class="section level2" number="16.2">
+<div id="predictions-about-random-events" class="section level2" number="17.2">
 <h2><span class="header-section-number">A.2</span> Predictions about random events</h2>
 <p>Perfectly random processes may not be very predictable on a case-by-case basis (unless the probability is close to 0 or 1), but good predictions can be made about the outcomes of many observations taken together.</p>
 <p>Suppose I predict that you will not be struck by lightning while reading this sentence. Was I right? Probably, because even though getting struck by lightning may be random, the probability is very close to 0. But if I predict that the next car that crosses your path will be black, I may be wrong <em>most of the time</em> even if my description above is an accurate one! If instead I predict that of the first 1000 people reading this sentence (and residing in the United States, on which I based my model) 23% will see a black car cross their path first, then my prediction should be close. How close? Well, quantifying error is part of what statistics is all about…</p>
 <p>The examples above, using two-sided coins, pass/fail, six-sided dice, and car colors might suggest to you how a general random process can be defined whenever there are a finite number of possible outcomes. We first define the set of all possible outcomes. Then, for each one, we define the probability that it occurs. The probabilities must still add up to one. This is a formal way of declaring that in our ideal random process, <em>something</em>, i.e., one of the possible outcomes, must occur.</p>
 </div>
-<div id="modification-for-continuous-observations" class="section level2" number="16.3">
+<div id="modification-for-continuous-observations" class="section level2" number="17.3">
 <h2><span class="header-section-number">A.3</span> Modification for continuous observations</h2>
 <p>When outcomes are continuous and not discrete, the above definitions need to be modified slightly. For example, suppose you were interested in <em>exactly</em> how long it will take before a black car crosses your path. (And suppose you have a clock so precise that there is no practical limit on how fine a time difference you can observe. Any fraction of a second is possible.) By the very nature of continuous measures, you cannot enumerate them, so you can’t go one by one and declare what the probability of each possible outcome is. Think about it: you can count seconds (one, two, three,…) but you can’t count infinitessimal fractions of seconds. Instead, you have to limit what you can say to things like, “the probability that the outcome (time to crossing by black car) is in some range is…” The choice of range can be totally arbitrary, say, the probability that it will take between 37 and 49 seconds. Or, you can turn the continous outcome into a discrete set of ranges (e.g., less than a minute, between one and five minutes, five to ten minutes, or longer than ten minutes) and then proceed as before. You will see this kind of thing done a lot. The formal definition of random processes for continuous variables uses calculus.</p>
 
@@ -364,7 +377,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="nyc-covid-19-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="gerrymandering.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
