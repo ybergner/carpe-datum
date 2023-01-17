@@ -1,29 +1,29 @@
 delete_merged_file: true
-
+output_dir: "docs"
 book_filename: "carpedatum"
 rmd_files: [
   "index.Rmd",
   "book1intro.Rmd",
   "categoriescounts.Rmd",
   "dimensions.Rmd",
-  "testindependence.Rmd",
-  "shadesofgrey.Rmd",
-  "cutscores.Rmd",
-  "themodalamerican.Rmd",
-  "personality.Rmd",
-  "whenandhowdie.Rmd",
-  "conditionaldeath.Rmd",
-  "somefactsaboutprob.Rmd",
-  "howyouwilldie.Rmd",
-  "willyoumakemoney.Rmd",
-  "bettingonbeer.Rmd",
-  "expectedvalue.Rmd",
-  "isthesystemfair.Rmd",
-  "differences_athletics.Rmd",
-  "nycovid19_chapter.Rmd",
-  "gerrymandering.Rmd",
-  "appendix.Rmd",
-  "references.Rmd"
+  # "testindependence.Rmd",
+  # "shadesofgrey.Rmd",
+  # "cutscores.Rmd",
+  # "themodalamerican.Rmd",
+  # "personality.Rmd",
+  # "whenandhowdie.Rmd",
+  # "conditionaldeath.Rmd",
+  # "somefactsaboutprob.Rmd",
+  # "howyouwilldie.Rmd",
+  # "willyoumakemoney.Rmd",
+  # "bettingonbeer.Rmd",
+  # "expectedvalue.Rmd",
+  # "isthesystemfair.Rmd",
+  # "differences_athletics.Rmd",
+  # "nycovid19_chapter.Rmd",
+  # "gerrymandering.Rmd",
+  # "appendix.Rmd",
+  # "references.Rmd"
   ]
 
 language:

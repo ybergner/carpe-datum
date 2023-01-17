@@ -8,8 +8,6 @@ bookdown::gitbook:
     edit:
     download: null
 bookdown::pdf_book:
-  includes:
-    in_header: preamblemin.tex
   latex_engine: pdflatex
   citation_package: natbib
   keep_tex: yes
