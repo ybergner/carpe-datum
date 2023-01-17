@@ -751,11 +751,11 @@ The whole point of using zip codes as units was that they represent distinct geo
 
 To carry out this feat, we will need to enlist the help of a **shapefile**, which is a data format that was specifically invented for geographical information systems (GIS). You don't need to understand the detailed structure of a shapefile. You only need to know that it will allow you to map, say, the zip code 10003 to some region on a drawing.
 
-So we will need a shapefile for NYC zip codes. Search for this on the internet, and you'll get one [here](https://catalog.data.gov/dataset/zip-code-boundaries){target="_blank"}. We will need the R package that will do the translation work for us. It is called "R geospatial data abstraction library (`rgdal`)." Lastly, to produce images like you see in the media, we might need some color palettes. These will map numbers (e.g., proportion over 65) to colors in ways that are designed to be visually distinctive.
+So we will need a shapefile for NYC zip codes. Search for this on the internet, and you'll get one [here](https://catalog.data.gov/dataset/zip-code-boundaries){target="_blank"}. We will need the R package that will do the translation work for us. It is called "Simple Features for R library (`sf`)." Lastly, to produce images like you see in the media, we might need some color palettes. These will map numbers (e.g., proportion over 65) to colors in ways that are designed to be visually distinctive.
 
 ```{r, message=FALSE}
 #load R geospatial data abstraction library
-library(rgdal)
+library(sf)
 
 #load additional viz libraries for color paletts
 library(viridis)
@@ -763,7 +763,7 @@ library(RColorBrewer)
 
 #read in the shape file for NYC zip codes
 filepath <- "Shape_Files/ZIP_CODE_040114.shp"
-NYC_zips <- readOGR(filepath, stringsAsFactors = F)
+NYC_zips <- read_sf(filepath, stringsAsFactors = F)
 ```
 
 The data structure of the shapefile is pretty complicated. (Look inside, I dare you!)
@@ -771,12 +771,12 @@ But right off the bat, we can plot it
 
 ```{r}
 # quartz()
-plot(NYC_zips)
+plot(NYC_zips[,1], max.plot = 1)
 ```
 
-Woot! There be zipcodes! Without any other data. Just... boundaries. If you are following along in an RStudio session, you can get a better quality image by uncommenting the `quartz()` command. This will open the drawing in a new window. Note that it takes a little while to finish, and you can see it draw the boundaries of each zipcode one at a time... aww!
+Woot! There be zipcodes! Without any other data. Just boundaries and a candy-color palette to differentiate each area. If you are following along in an RStudio session, you can get a higher quality image by uncommenting the `quartz()` command. This will open the drawing in a new window. Note that it takes a little while to finish, and you can see it draw the boundaries of each zipcode one at a time... aww!
 
-To add colors or shades, we will need to send color/shade information along with the plot instruction... but there's something else we need to do first.
+To add specific colors or shades, we will need to send color/shade information along with the plot instruction... but there's something else we need to do first.
 
 How many zip codes are in our data set? The answer can be found by the number of rows in our data frame:
 
@@ -788,7 +788,7 @@ Is this the same as the number of zip codes in our shapefile? If it isn't, then 
 
 ```{r}
 #get zipcodes from shape file
-shapezips <- NYC_zips@data$ZIPCODE 
+shapezips <- NYC_zips$ZIPCODE 
 length(shapezips)
 
 ```
@@ -895,7 +895,7 @@ Here's how you use it:
 bachelorPlus <- mapData$Bach_plus_prop
 myShapeColors <- getShapeColors(bachelorPlus, nbreaks=5)
 
-plot(NYC_zips, col = myShapeColors$regionValues, 
+plot(NYC_zips[,1], col = myShapeColors$regionValues, 
      main = "Share of Adults with College Degree", 
      cex = 10, lwd=0.05)
 legend("topleft", 
@@ -906,13 +906,13 @@ legend("topleft",
 
 Hallelujah, we finally have made an image of something. Notice that the output of the `getShapeColors` functions contains three elements (it is technically a list): values (colors values for each geographic area), legend (text for the legend, including the ranges of values), and palette (these are the colors that go into the len).
 
-The input of `getShapeColors` is the data you want to visualize as well as the number of levels. In this example, we chose 5. By default, the color palette is shades of blue, but as it is writte, you can provide different colors if you like. For example, the Furman report used a color palette called viridis, which ranges from dark blue to yellow. The only modification necessary is to add an argument to the function:
+The input of `getShapeColors` is the data you want to visualize as well as the number of levels. In this example, we chose 5. By default, the color palette is shades of blue, but as it is written, you can provide different colors if you like. For example, the Furman report used a color palette called viridis, which ranges from dark blue to yellow. The only modification necessary is to add an argument to the function:
 
 ```{r}
 
 myShapeColors <- getShapeColors(bachelorPlus, nbreaks=5, mycolors=viridis(6))
 
-plot(NYC_zips, col = myShapeColors$regionValues, 
+plot(NYC_zips[,1], col = myShapeColors$regionValues, 
      main = "Share of Adults with College Degree", cex = 10, lwd=0.05)
 legend("topleft", 
        legend = myShapeColors$legendText, 
@@ -926,7 +926,7 @@ I don't know exactly how ABCNews made their color palette, but here is my approx
 ABCpalette <- c("gray88", "#4e9ccb", "#3b7ba9","#265982", "#133960","#001a3a")
 myShapeColors <- getShapeColors(bachelorPlus, nbreaks=5, mycolors=ABCpalette)
 
-plot(NYC_zips, col = myShapeColors$regionValues, 
+plot(NYC_zips[,1], col = myShapeColors$regionValues, 
      main = "Share of Adults with College Degree", 
      cex = 10, border="white", lwd=0.25)
 legend("topleft", 
@@ -951,7 +951,7 @@ ABCpalette <- c("gray88", "#4e9ccb", "#3b7ba9","#265982", "#133960","#001a3a")
 myShapeColors <- getShapeColors(bachelorPlus, nbreaks=c(0,20,40,60,80,100),
                                  mycolors=ABCpalette)
 
-plot(NYC_zips, col = myShapeColors$regionValues, 
+plot(NYC_zips[,1], col = myShapeColors$regionValues, 
      main = "Share of Adults with College Degree", 
      cex = 10, border="white", lwd=0.25)
 legend("topleft", 
@@ -973,7 +973,7 @@ myShapeColors2 <- getShapeColors(bachelorPlus, nbreaks=c(0,20,40,60,80,100),
 
 par(mfrow=c(1,2))
 
-plot(NYC_zips, col = myShapeColors1$regionValues, 
+plot(NYC_zips[,1], col = myShapeColors1$regionValues, 
      main = "%College using Quintiles", 
      cex = 10, border="white", lwd=0.25)
 legend("topleft", 
@@ -981,7 +981,7 @@ legend("topleft",
        fill = myShapeColors1$legendColors, cex = 0.8, title = "College Share")
 
 
-plot(NYC_zips, col = myShapeColors2$regionValues, 
+plot(NYC_zips[,1], col = myShapeColors2$regionValues, 
      main = "%College using Equal Intervals", 
      cex = 10, border="white", lwd=0.25)
 legend("topleft", 
@@ -1013,7 +1013,7 @@ myShapeColors2 <- getShapeColors(bachelorPlus, nbreaks=5)
 
 par(mfrow=c(1,2))
 
-plot(NYC_zips, col = myShapeColors1$regionValues, 
+plot(NYC_zips[,1], col = myShapeColors1$regionValues, 
      main = "%COVID Cases", 
      cex = 10, border="white", lwd=0.25)
 legend("topleft", 
@@ -1021,7 +1021,7 @@ legend("topleft",
        fill = myShapeColors1$legendColors, cex = 0.8, title = "COVID rate")
 
 
-plot(NYC_zips, col = myShapeColors2$regionValues, 
+plot(NYC_zips[,1], col = myShapeColors2$regionValues, 
      main = "%College", 
      cex = 10, border="white", lwd=0.25)
 legend("topleft", 
@@ -1045,13 +1045,13 @@ myShapeColorsCovid <- getShapeColors(covidPerCapita, nbreaks=5, rdgrbl=c(1,0,0))
 myShapeColorsCollege <- getShapeColors(bachelorPlus, nbreaks=5, rdgrbl=c(0,0,1))
 
 par(mfrow=c(1,3))
-plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid", 
+plot(NYC_zips[,1], col = myShapeColorsCovid$regionValues, main = "covid", 
      cex = 10, lwd=0.05)
-plot(NYC_zips, col = myShapeColorsCollege$regionValues, main = "college", 
+plot(NYC_zips[,1], col = myShapeColorsCollege$regionValues, main = "college", 
      cex = 10, lwd=0.05) 
-plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid+college", 
+plot(NYC_zips[,1], col = myShapeColorsCovid$regionValues, main = "covid+college", 
      cex = 10, lwd=0.05)
-plot(NYC_zips, col = myShapeColorsCollege$regionValues, add=T, 
+plot(NYC_zips[,1], col = myShapeColorsCollege$regionValues, add=T, 
      cex = 10, lwd=0.05)
 
 ```
@@ -1066,13 +1066,13 @@ myShapeColorsCovid <- getShapeColors(covidPerCapita, nbreaks=5, rdgrbl=c(1,0,0))
 myShapeColorsHH <- getShapeColors(mapData$AvgHH, nbreaks=5, rdgrbl=c(0,0,1))
 
 par(mfrow=c(1,3))
-plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid", 
+plot(NYC_zips[,1], col = myShapeColorsCovid$regionValues, main = "covid", 
      cex = 10, lwd=0.05)
-plot(NYC_zips, col = myShapeColorsHH$regionValues, main = "hh size", 
+plot(NYC_zips[,1], col = myShapeColorsHH$regionValues, main = "hh size", 
      cex = 10, lwd=0.05) 
-plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid+hhsize", 
+plot(NYC_zips[,1], col = myShapeColorsCovid$regionValues, main = "covid+hhsize", 
      cex = 10, lwd=0.05)
-plot(NYC_zips, col = myShapeColorsHH$regionValues, add=T, 
+plot(NYC_zips[,1], col = myShapeColorsHH$regionValues, add=T, 
      cex = 10, lwd=0.05)
 
 ```
@@ -1089,9 +1089,9 @@ Here are the data from the last two examples visualized using both maps and scat
 ```{r}
 
 par(mfrow=c(2,2), mar = c(3, 2, 1, 1))
-plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid+hhsize", 
+plot(NYC_zips[,1], col = myShapeColorsCovid$regionValues, main = "covid+hhsize", 
      cex = 10, lwd=0.05)
-plot(NYC_zips, col = myShapeColorsHH$regionValues, add=T, 
+plot(NYC_zips[,1], col = myShapeColorsHH$regionValues, add=T, 
      cex = 10, lwd=0.05)
 
 plot(mapData$AvgHH, covidPerCapita, col=myShapeColorsCovid$regionValues, 
@@ -1103,9 +1103,9 @@ mtext("Avg Household Size", side = 1, line = 2)
 mtext("COVID rate", side = 2, line = 2)
 
 
-plot(NYC_zips, col = myShapeColorsCovid$regionValues, main = "covid+college", 
+plot(NYC_zips[,1], col = myShapeColorsCovid$regionValues, main = "covid+college", 
      cex = 10, lwd=0.05)
-plot(NYC_zips, col = myShapeColorsCollege$regionValues, add=T, 
+plot(NYC_zips[,1], col = myShapeColorsCollege$regionValues, add=T, 
      cex = 10, lwd=0.05)
 
 plot(mapData$Bach_plus_prop, covidPerCapita, col=myShapeColorsCovid$regionValues, 
