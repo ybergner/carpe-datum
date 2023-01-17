@@ -1,3 +1,0 @@
-fig:xkcd-preamble
-categories
-dimensions

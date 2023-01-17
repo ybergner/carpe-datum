@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Categories, counts, and kinds | Carpe Datum</title>
-  <meta name="description" content="Chapter 1 Categories, counts, and kinds | Carpe Datum" />
+  <title>Chapter 4 (An Infinite Number of) Shades of Gray (or Brown) | Carpe Datum</title>
+  <meta name="description" content="Chapter 4 (An Infinite Number of) Shades of Gray (or Brown) | Carpe Datum" />
   <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Categories, counts, and kinds | Carpe Datum" />
+  <meta property="og:title" content="Chapter 4 (An Infinite Number of) Shades of Gray (or Brown) | Carpe Datum" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="ybergner/carpe-datum" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Categories, counts, and kinds | Carpe Datum" />
+  <meta name="twitter:title" content="Chapter 4 (An Infinite Number of) Shades of Gray (or Brown) | Carpe Datum" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="how-many-kinds-of-people-are-there.html"/>
-<link rel="next" href="dimensions.html"/>
+<link rel="prev" href="test-indep.html"/>
+<link rel="next" href="cut-scores-and-abnormality.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -356,250 +356,377 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="categories" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Categories, counts, and kinds<a href="categories.html#categories" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="two-kinds-of-people" class="section level3 unnumbered hasAnchor">
-<h3>Two Kinds of People<a href="categories.html#two-kinds-of-people" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>“There are two kinds of people… which one are you?” questions have become something of an internet meme, particulary with the categorizations represented graphically or pictorially. There is a whole <a href="https://2kindsofpeople.tumblr.com/">blog devoted to them by João Rocha</a>. The images in Figure <a href="categories.html#fig:tp-fig">1.1</a> probably need no explanation, as they concern the great <a href="https://en.wikipedia.org/wiki/Toilet_paper_orientation">toilet paper orientation</a> debate.</p>
-
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tp-fig"></span>
-<img src="images/Toilet_paper_orientation_overunder.png" alt="The great debate. Source Wikimedia Commons User:Elya" width="90%" />
-<p class="caption">
-Figure 1.1: The great debate. Source <a href="https://commons.wikimedia.org/wiki/File:Toilet_paper_orientation_over.jpg">Wikimedia Commons User:Elya</a>
-</p>
-</div>
-<p>Toilet paper orientation is a distinguishing <strong>test question</strong> that separates people into one of two “kinds” (or “types” or “categories”; sometimes English has several words that are used interchangeably). A fancy word for this “splitting into two” is dichotomy (die-COT-uh-mee), from the Greek. A <strong>dichotomous question</strong> has two possible answers. Here, you choose one way to orient the roll or the other. Let’s call this roll choice “over” (shown on left) or “under” (shown on right). Perhaps you have debated which is better with a friend or family member. In any case, armed with this particular test question, we can go out and collect some data.</p>
-<table class="table table-striped table" style="width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:tp-table">Table 1.1: </span>How people roll
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-count
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-over
-</td>
-<td style="text-align:right;">
-23
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-under
-</td>
-<td style="text-align:right;">
-17
-</td>
-</tr>
-</tbody>
-</table>
-<p>I went ahead and asked 40 people in Washington Square Park in New York City which kind of person they were, and the results are shown in Table <a href="categories.html#tab:tp-table">1.1</a>. This being a book about data science, you might think I’m going to start calculating proportions right away, for example by saying that 57.5% of New Yorkers are over-hangers.
-Nope. Although you should be able to figure out that proportion conversion, it is not the point I want to focus on right now.</p>
-<p>That point I want to focus on is that, based on our data, there <em>are</em> indeed two kinds of people here. If, for example, everyone in the world were an under-hanger (heaven forbid), then I couldn’t very well say that there were two kinds of people in this world. At least not with regard to toilet paper orientation. It would be like if I presented you with the data in Table <a href="categories.html#tab:dumb-table">1.2</a>. Looking at that, I can’t very well convince you that there are two kinds of people.</p>
-<table class="table table-striped table" style="width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:dumb-table">Table 1.2: </span>Kinds of people in Washington Square
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-count
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-human
-</td>
-<td style="text-align:right;">
-40
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-not human
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
-<p>That all seems pretty obvious, in part because I made up a <em>tautology</em> in the second example there. Being a human being is automatically associated with everyone who can be a <em>kind of person</em>.</p>
-<p>But what if I had gotten exactly the same results for the toilet paper question? What if the data looked like Table <a href="categories.html#tab:tp-redux">1.3</a>. In this <strong>alternate universe</strong>, everyone I ask in Washington Square is an under-hanger. Yes, it’s one of those scary alternate universes, like the Twilight Zone. Anyway, does that mean that there is only one kind of person when it comes to toilet paper orientation? Well…not necessarily. After all, this was just a <strong>sample</strong> of people in Washington Square. It was not the whole <strong>population</strong> of Washington Square, even, let alone New York City, let alone the world.</p>
-<table class="table table-striped table" style="width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:tp-redux">Table 1.3: </span>How people roll (alternate universe)
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-count
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-under
-</td>
-<td style="text-align:right;">
-40
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-over
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="samples-and-populations-a-statistical-caveat" class="section level3 unnumbered hasAnchor">
-<h3>Samples and Populations: A Statistical Caveat<a href="categories.html#samples-and-populations-a-statistical-caveat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Samples and populations are sort of a big deal in statistics and data science, where these words have somewhat specialized meanings. Consider the following utterances:</p>
-<pre><code>The population of New York City is 8.6 million
-The population of New York City is ethnically diverse</code></pre>
-<p>How can both of these statements make sense? In common usage, population often refers to the number or count of people, in a town, area, or country. Among statisticians and data scientists, population refers to a set or collection under consideration. It doesn’t have to be a set of people. It could be a set of rats, non-governmental organizations, or domestic flights originating in Chicago. But let’s suppose the population does refer to a set of people. The <em>number</em> of those people is just one summary about the population, also known as the total <strong>count</strong>. The proportion of over-hangers is another summary of the population, as is the most-common birth-month. The two statements above would be more consistent if the first were rephrased to be: the population (set of people) of New York City <del>is</del> numbers 8.6 million.</p>
-<p>If we always had access to all of the members in a population (the set or collection under consideration), the field of statistics wouldn’t exist. We would just know a bunch of facts about, say, everyone in the whole world. And that would be that. While it is true that data are becoming more and ubiquitous, don’t start betting on the demise of statistics. Even if we did have complete data for everyone in the world today, our population of interest might extend to the world as it will be next month, next year, or ten years from now. That is, we might want to make predictions about the future. In which case, we would want to draw <em>inferences</em> and to generalize from the data we have on hand—our sample—to data we don’t have—the rest of the (i.e., the future) population. Making inferences from samples to populations will always be a compelling and challenging problem.</p>
-<p>Since Washington Square is the center of my universe, that’s where I sample. Even if we agreed that our population of interest were confined to Washington Square, we would still find it difficult to collect data on everyone there. There are a lot of them, many of them are on skateboards, and new people keep leaving and entering the park. It turns out, that’s okay. We don’t actually have to reach everybody to be able to do data science. However, we need to understand that when we sample 40 particular people in Washington Square, we might not get the same exact answers as if we had sampled 40 <em>different</em> people. The sampling process introduces an element of <strong>uncertainty</strong> into our process.</p>
-<p>Coming back to our toilet paper debate, if we did find zero over-hangers in one sample, it doesn’t guarantee that the number of over-hangers will also be zero in the next. The number may vary from sample to sample. Uncertainty does not, however, mean that the information derived from one sample is useless. In fact, soon we’ll see that we can actually learn a lot from a sample simply by recognizing that sample values will vary. We can simulate samples on a computer to see how much they will vary. And then, using our simulations, we will be able to give probabilistic answers to questions like, “what are the chances that there really are no over-hangers in Washington Square?”</p>
-</div>
-<div id="a-psychological-caveat" class="section level3 unnumbered hasAnchor">
-<h3>A Psychological Caveat<a href="categories.html#a-psychological-caveat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The section above explored a statistical caveat about drawing conclusions from samples. But another caveat that applies here is more psychological. I have assumed, for this argument, that a person’s answer to the toilet paper question is a fairly stable thing and not just a transient state-of-mind. That is, if I asked you tomorrow or next week, your answer would be the same as if I asked you today. For the most part. I’m not saying you can’t ever decide to change your mind. But it wouldn’t make sense to describe a person as an over-hanger if there were no stability at all to their answer. A transient state-of-mind, by contrast, could be asking someone if they are hungry. Everyone is hungry some of the time, but not all of the time. And it wouldn’t make any sense, based on that line of questioning, to imply that there are two kinds of people.</p>
-</div>
-<div id="summarizing-data" class="section level3 unnumbered hasAnchor">
-<h3>Summarizing data<a href="categories.html#summarizing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>When I presented my survey results to you in Table <a href="categories.html#tab:tp-table">1.1</a>, notice that I did not present you with the raw data, but rather with a summary of the data. The particular summary I used was called “counts”, that is, a total count of how many people responded “over” or “under.” The raw data, in contrast, would have contained each individual response I collected, labled either with a name of the individual, or perhaps with some other unique identifier (such as a random number), or—if I don’t need to keep track of particular individuals—with just a row number. Something like this, if we examine at the first six responses rather than all 40 of them. Raw data:</p>
+<div id="shades" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> (An Infinite Number of) Shades of Gray (or Brown)<a href="shades.html#shades" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>We’ve taken the two-kinds-of-people idea pretty far already. But it’s time to acknowledge the elephant in the room. Not every question about attributes, preferences, or behaviors can be answered in such an either/or manner. Digitidiness might be one of those things. Consider the following dialogue:</p>
+<blockquote>
+<p>Stacy: “There are liberal and conservative kinds of people, Trang. Which one are you?”
+Trang: “Well, you know I’m not sure I’m exactly one or the other. I think I’m somewhere in the middle.”</p>
+</blockquote>
+<p>Although we often use them as <strong>discrete categories</strong>, the words liberal and conservative might be better thought of as endpoints of <strong>continuous scale</strong>. In fact, they might even apply to different <em>dimensions</em> of political thought with respect to social issues or economic issues. If you think about it, it’s not hard to come up with other examples of “categories” that really just describe one end or another of a continuous scale. Yes, there are short people and tall people, but everyone has a height, and a lot of people are “about average.” Height is just a number on some scale. So it wouldn’t necessarily make sense to put people into the categories of tall or short.</p>
+<p>This may be an old-timey analogy in the age of digital streaming, but think of the knobs on a stereo receiver. Some of them click between categories, like the input-selector (phono, radio, aux). And some of them turn smoothly through continous values, like volume and tone. Categorical, or discrete, variables are the clicky knobs.</p>
+<p>In the great toilet paper debate, we were able to identify two kinds of people based on two possible responses to the question of roll orientation. Two answers; two kinds. If instead of discrete categories, we have a number on a continuous scale, does that mean that there can’t be “kinds” of people anymore? To answer this question, we’ll need to understand what exactly we’re talking about when we characterize people using a continuous scale.</p>
+<div id="poopiness" class="section level2 unnumbered hasAnchor">
+<h2>Poopiness<a href="shades.html#poopiness" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Consider poopiness. And consider a scale where some people are really poopy (close to poopiness = 1), some aren’t poopy at all (close to 0), and many are somewhere near the middle. That’s not a very quantitative description. I used the words “some” and “most”, but I didn’t give you counts like I did in Table <a href="categories.html#tab:tp-table">1.1</a> about toilet roll orientation. I will try to do that in just a minute. Meanwhile, notice that my scale here runs from 0 to 1, which I will also sometimes write as [0,1]. When it comes to height, we have well-established scales, like inches or centimeters, and we can use measuring sticks. But when it comes to liberalism or poopiness, the scale does not necessarily refer to something we can see directly. Nevertheless we can use the scale to compare people and to see how a whole bunch of people “measure up.” I’ve set the scale to [0,1], because it is a common scale, but it could have run from 1 to 10, for example, without significantly changing anything in what I’m about to say.</p>
+<p>If I showed you the poopiness data for a sample of people, the list would look something like Table <a href="shades.html#tab:poopy-counts">4.1</a>. As before, in this table each row stands for one person. To protect their identities, everyone is identified only by a number (e.g., 0083), which is shown in the first column. In the second column is each person’s poopiness value.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:poopy-counts">Table 4.1: </span>Don’t ask me how I got these numbers.
+</caption>
 <thead>
 <tr>
-<th style="text-align:center;">
-row
+<th style="text-align:left;">
 </th>
-<th style="text-align:center;">
-randomID
-</th>
-<th style="text-align:center;">
-response
+<th style="text-align:right;">
+poopiness
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center;">
-1
+<td style="text-align:left;">
+0040
 </td>
-<td style="text-align:center;">
-9246
-</td>
-<td style="text-align:center;">
-under
+<td style="text-align:right;">
+0.319
 </td>
 </tr>
 <tr>
-<td style="text-align:center;">
+<td style="text-align:left;">
+0140
+</td>
+<td style="text-align:right;">
+0.703
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0033
+</td>
+<td style="text-align:right;">
+0.401
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0107
+</td>
+<td style="text-align:right;">
+0.544
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0031
+</td>
+<td style="text-align:right;">
+0.538
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0100
+</td>
+<td style="text-align:right;">
+0.657
+</td>
+</tr>
+</tbody>
+</table>
+<p>Poopiness is shown as a decimal number. Part of the reason I’ve used this scale, instead of 1-100, is to emphasize that the data values can be arbitrarily close to one another. Two values may be different by 0.1 or 0.03, or even 0.000027, if we have enough precision in our data to say such a thing. These data are called <strong>numerical</strong> or <strong>quantitative</strong> as opposed to <strong>categorical</strong>. There are actually 148 values in the data set, but I’ve only shown the first six in Table <a href="shades.html#tab:poopy-counts">4.1</a>.</p>
+<p>It’s not as easy to make sense of a bunch of decimal values like this as it is to look at simple counts of categories (like 17 for chunky, 23 for smooth). However, this sense-making problem has been solved by representing the same data using dot plots, stacked dot plots, frequency tables, and histograms, which you can read all about in any standard textbook (for example OpenIntro Statistics, Chapter 2). I’m going to go straight into the <strong>frequency table</strong> and <strong>histogram</strong>, which you may indeed have seen before. These are the most commonly used representation for data of this kind.</p>
+<p>Again, it is a bit awkward to count how many people have poopiness value of exactly 0.473. Maybe there is one, maybe none. How would we interpret that answer, anyway? Instead, we can group values into ranges, or “bins”, e.g. 0-0.05, 0.05-0.1, 0.1-0.15, etc. so that the ranges together span the entire possible range, which in this case is [0,1]. We can then count how many of our data fall into each bin.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> This table of counts is typically called a frequency table. Frequency is just another word for counts.</p>
+<table class="table table-striped table" style="width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:poopy-freq">Table 4.2: </span>Frequency Table for Poopiness
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Range
+</th>
+<th style="text-align:right;">
+Frequency
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0 - 0.05
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0.05 - 0.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0.1 - 0.15
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0.15 - 0.2
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0.2 - 0.25
+</td>
+<td style="text-align:right;">
 2
 </td>
-<td style="text-align:center;">
-1478
+</tr>
+<tr>
+<td style="text-align:left;">
+0.25 - 0.3
 </td>
-<td style="text-align:center;">
-over
+<td style="text-align:right;">
+9
 </td>
 </tr>
 <tr>
-<td style="text-align:center;">
-3
+<td style="text-align:left;">
+0.3 - 0.35
 </td>
-<td style="text-align:center;">
-8831
-</td>
-<td style="text-align:center;">
-under
+<td style="text-align:right;">
+12
 </td>
 </tr>
 <tr>
-<td style="text-align:center;">
-4
+<td style="text-align:left;">
+0.35 - 0.4
 </td>
-<td style="text-align:center;">
-8194
-</td>
-<td style="text-align:center;">
-over
+<td style="text-align:right;">
+9
 </td>
 </tr>
 <tr>
-<td style="text-align:center;">
+<td style="text-align:left;">
+0.4 - 0.45
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0.45 - 0.5
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0.5 - 0.55
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0.55 - 0.6
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0.6 - 0.65
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0.65 - 0.7
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0.7 - 0.75
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0.75 - 0.8
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0.8 - 0.85
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0.85 - 0.9
+</td>
+<td style="text-align:right;">
 5
 </td>
-<td style="text-align:center;">
-4178
+</tr>
+<tr>
+<td style="text-align:left;">
+0.9 - 0.95
 </td>
-<td style="text-align:center;">
-under
+<td style="text-align:right;">
+1
 </td>
 </tr>
 <tr>
-<td style="text-align:center;">
-6
+<td style="text-align:left;">
+0.95 - 1
 </td>
-<td style="text-align:center;">
-4243
-</td>
-<td style="text-align:center;">
-under
+<td style="text-align:right;">
+0
 </td>
 </tr>
 </tbody>
 </table>
-<p>Counts is an example of a <strong>summary statistic</strong>, which is a fancy term for a number that is derived from the raw data. The count summary is as simple as it gets. It is literally the number of times that each response appears. We might note as well that,</p>
-<pre><code>count(under) + count(over) = total number of responses.</code></pre>
-<p>This mathematical statement is true because there are only two possible responses. If there were more than two responses, then I would need to add the counts for each possible response.</p>
-<p>Note that the <em>proportion</em> of “over” responses is also a summary statistic (which is just the counts of “over” divided by the total number of responses). Another summary statistic could be the ratio of “over” responses (counts) to “under” responses. For example, one way people use summary statistics in reporting data is through statements like, “twice as many people prefer chunky peanut butter to smooth.”</p>
-<div id="no-mean-feat" class="section level4 unnumbered hasAnchor">
-<h4>No mean feat<a href="categories.html#no-mean-feat" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:poopy-hist"></span>
+<img src="carpedatum_files/figure-html/poopy-hist-1.png" alt="Histogram of Poopiness" width="90%" />
+<p class="caption">
+Figure 4.1: Histogram of Poopiness
+</p>
+</div>
+<p>A histogram is a bar plot of counts for values that fall into certain numerical ranges. So it’s a bar plot of the data in Table <a href="shades.html#tab:poopy-freq">4.2</a>. But oftentimes you’ll just see the histogram without the frequency table. It is worth noting that the information contained in the frequency table is equivalent to the information contained in the histogram, but it is sometimes easier to get a general idea of what is going on in the data by looking at the histogram.</p>
+<p>Consider the range of poopiness values from 0.40-0.45. Our data set has 9 values in this range, as you can see in Table <a href="shades.html#tab:poopy-freq">4.2</a>, so the height of the bar above this range of values on the x-axis (horizontal axis) is 9. I’ve colored it in pink only to help you see what I’m referring to. The y-axis in Figure <a href="shades.html#fig:poopy-hist">4.1</a> is labeled “Frequency”, as in the table. Some more jargon: the numerical values that separate the bins are called “breaks.” In Figure <a href="shades.html#fig:poopy-hist">4.1</a>, the breaks occur are at increments of 0.05.</p>
 <blockquote>
-<p>Whenever someone reports a mean (another word for average) value of some set of data, that is also a summary statistic. Does it make sense to construct an average from responses that are either “over” or “under”? No, it doesn’t. That’s because {over, under} is a categorical response, and you can’t average over categories. Unless you’re trying to make fun of statistics with a puerile joke. Different versions of this joke appear: “the average American has one tit and one testicle.” At the risk of explaining the joke too much, here goes: Tits and testicles can certainly be treated as numerical data, and hence can be averaged. This joke hinges on the fact that the existence of testicles (or tits) is associated with a person’s sex, which is categorical and not numerical. Assuming that half of all Americans are female (roughly true), we can’t say that the average American is half male and half female. The real “punch” of this joke is to suggest that summary statistics about averages are just a bunch of nonsense. What do you think?</p>
+<p>Question: Given that there are 20 possible bins in the histogram in Figure <a href="shades.html#fig:poopy-hist">4.1</a>, but only some of them have non-zero counts, are there 20 kinds of people (in terms of poopiness) or 15 kinds of people?</p>
 </blockquote>
-<p>This is about as much as we need to say about summary statistics for the time being. But they’ll be back.</p>
+<p>Trick question? You bet. The breaks (and thus bins) in a histogram are arbitrary. I can choose any breaks I want, as long as all of the data points fall into exactly one bin. (I can’t just exclude some bins, though. That would be cheating.) The histograms in Figure <a href="shades.html#fig:poopy-hist-alt">4.2</a> are both perfectly valid histograms. One of them has four bins, and one of them has only two bins.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:poopy-hist-alt"></span>
+<img src="carpedatum_files/figure-html/poopy-hist-alt-1.png" alt="Other Histograms of Poopiness" width="90%" />
+<p class="caption">
+Figure 4.2: Other Histograms of Poopiness
+</p>
+</div>
+<p>It’s tempting to take the counts on the right of Figure <a href="shades.html#fig:poopy-hist-alt">4.2</a> and declare that there are two kinds of people. After all, this gets us back to familiar territory. Ta-dah!</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:poopy-two-kinds"></span>
+<img src="carpedatum_files/figure-html/poopy-two-kinds-1.png" alt="This is a terrible, horrible, no-good, very-bad thing to do." width="90%" />
+<p class="caption">
+Figure 4.3: This is a terrible, horrible, no-good, very-bad thing to do.
+</p>
+</div>
+<p>As you can tell, because it says so right in the figure caption, this is terrible, horrible, no-good, very-bad thing to do. Why do you think it is a bad thing to do? Choose one:</p>
+<ol style="list-style-type: lower-alpha">
+<li>The split was made at 0.5 on the poopiness scale, but that is not the average value of poopiness in the data set, which is closer to 0.57, as can be seen in Figure <a href="shades.html#fig:poopy-hist">4.1</a> (or from the “raw” data themselves).</li>
+<li>You should always use at least 5 bins when you have numerical data</li>
+<li>Representations of data should communicate honestly about the nature of the data themselves. In this case, poopiness is not a category.</li>
+</ol>
+<p>What I did here was take a numerical/quantitative value (poopiness) and mis-represent it as a categorical value. I did it by <em>dichotomizing</em> it, i.e., by splitting off everyone above 0.5 and labeling them as “poopy”. I could have alternately split at the mean or median value and labeled the resulting two groups as “low poopiness” and “high poopiness.” But this would still have been a mis-representation. It would hide the fact that poopiness comes in a continuous range of values.</p>
+<blockquote>
+<p>ASIDE (<em>delivered in a hushed voice</em>): I won’t be able to convince you of this now, but it turns out that if you do this—if you dichotomize numerical data—you will BREAK STATISTICS! Ok, that sounds a bit dramatic. But in all seriousness, one of the jobs of statistics is to understand associations between different variables, such as poopiness and, say, earning potential. If you treat poopiness (or other variables) as discrete when they are really continuous, you may very well get the wrong answers. As the man down the street from where I used to live often muttered to himself while waving his arms in the air, THAT IS AN ABSOLUTE IRONCLAD MATHEMATICAL FACT. No, but in all seriousness, there is a very good paper on exactly this subject <span class="citation">(<a href="#ref-maccallum2002" role="doc-biblioref">MacCallum et al. 2002</a>)</span>.</p>
+</blockquote>
+<p>Dang it! you say. You’ve taken me down this rabbit hole of poopiness for too long. How many kinds of people are there? Are you saying that if one looks at properties that are described by numbers instead of categories, that are no kinds of people at all? Is it all just shades of gray (or brown)?</p>
+<div id="mixtures" class="section level3 unnumbered hasAnchor">
+<h3>Mixtures<a href="shades.html#mixtures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Remember Figure <a href="shades.html#fig:poopy-hist">4.1</a>? (Don’t click it!) Here it is again so you don’t have to scroll back. Data scientists like to say this picture shows you the <strong>distribution</strong> of poopiness in our sample. Statisticians use the word distribution in a more formal way that is best put off until we actually need it. We don’t need it yet.</p>
+<p><img src="carpedatum_files/figure-html/poopy-hist2-1.png" width="90%"  style="display: block; margin: auto;" /></p>
+<p>What if I told you that there ARE two kinds of people; you just can’t see them unless I give you special glasses (or more information). If I gave you special glasses (or information), you would see this:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:poopy-hist-mixture"></span>
+<img src="carpedatum_files/figure-html/poopy-hist-mixture-1.png" alt="A mixture of poopiness" width="90%"  />
+<p class="caption">
+Figure 4.4: A mixture of poopiness
+</p>
+</div>
+<p><em>By what dark magic have you colorized the data!</em> you say. Or, perhaps you just said, hm, interesting.
+In Figure <a href="shades.html#fig:poopy-hist-mixture">4.4</a>, I’ve made a histogram with bars in two different colors, light green and pink. The colors are slightly transparent so that you can see both the green and pink distributions in their entirety even though they overlap. That’s what the brownish bars mean. You’re looking at the overlap of the green and pink bars, not another set of bars. Now, if you compare this histogram closely with the original, colorless histogram above, you’ll see that the bin ranges are the same (width=0.05), and the the counts of green and pink bars add up to the total values that we had before. If there are green people and pink people, or in any case two different kinds of people, and if their poopiness is distributed as shown in Figure <a href="shades.html#fig:poopy-hist-mixture">4.4</a>, then the poopiness of the mixture of these two groups of people will look just like Figure <a href="shades.html#fig:poopy-hist">4.1</a>.</p>
+<p>Ok, but that doesn’t explain how you would know that there are two groups. If I didn’t tell you. That’s because <em>you wouldn’t necessarily know. You would need to have more information</em>. Now you might suspect something if you saw a distribution that looked like this:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:poopy-hist-mixture-suspicious"></span>
+<img src="carpedatum_files/figure-html/poopy-hist-mixture-suspicious-1.png" alt="A suspicious mixture of poopiness" width="90%"  />
+<p class="caption">
+Figure 4.5: A suspicious mixture of poopiness
+</p>
+</div>
+<p>In Figure <a href="shades.html#fig:poopy-hist-mixture-suspicious">4.5</a>, the distribution has a double-hump like a Bactrian camel. In spite of that, it is not called a Bactrian distribution–which would make me happy–but a <strong>bimodal</strong> distribution. The point that I’m trying to make here is that a bimodal distribution makes you suspect that there could actually be (at least) two groups mixed together in our data.</p>
+<p>But the original data for poopiness did not look bimodal. I suggested to you that you would need more information to determine if there are two groups. And so, I present you with… Crappiness!</p>
 </div>
 </div>
-<div id="checkpoint" class="section level3 unnumbered hasAnchor">
-<h3>Checkpoint<a href="categories.html#checkpoint" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>While focusing on the great toilet paper debate, we’ve managed to establish some important fundamental ideas.</p>
-<ul>
-<li><p>Dichotomous questions split people into two kinds, but only as long as it is actually possible for both answers to occur.</p></li>
-<li><p>In an alternate universe, people might give different answers than they do in this one. (Seriously, this is an important idea).</p></li>
-<li><p>Even when we casually refer to <em>people</em>, we may have a particular set of people, a population, in mind. Data about this population are likely to come from a sample, rather than from the whole population, and this fact introduces some uncertainty into claims about the whole population. Data science to the rescue!</p></li>
-<li><p>If we have types of people in mind, our questions ought to elicit fairly stable answers</p></li>
-<li><p>Clearly, we can ask people questions that prompt them to choose between more than two categories. But “two types of people” questions are more fun.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> I mean there are so many of them! So… does that mean that there really are two types of people? To answer this, we will need to get into another great debate.</p></li>
-</ul>
+<div id="crappiness" class="section level2 unnumbered hasAnchor">
+<h2>Crappiness<a href="shades.html#crappiness" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For each of the subjects in our poopiness data set, we have also collected data on their crappiness. Crappiness is also reported as a numerical value ranging from [0,1]. It’s sort of like poopiness, but different. Here are some values:</p>
+<pre><code>##      poopiness crappiness
+## 0040     0.319      0.564
+## 0140     0.703      0.415
+## 0033     0.401      0.729
+## 0107     0.544      0.374
+## 0031     0.538      0.853
+## 0100     0.657      0.316</code></pre>
+<p>And here…(drum roll please)… is a histogram of crappiness!</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:crappy-hist"></span>
+<img src="carpedatum_files/figure-html/crappy-hist-1.png" alt="Histogram of Crappiness" width="90%"  />
+<p class="caption">
+Figure 4.6: Histogram of Crappiness
+</p>
+</div>
+<p>Hmm. I bet you were hoping that the crappiness data would look obviously bimodal, but it’s not obvious. Nevertheless, hopefully you trust that I wouldn’t lead you on a wild goose chase for no reason. Perhaps you can even see it coming. If we look at poopiness and crappiness separately, there is no clue that there might be distinct groups of people in our data set. But if we look at them together… there is.</p>
+<p>When we looked at categorical data for two two-kinds-of-people questions, we made 2x2 contingency tables. We also used the word “dimension”, for example to say that we were describing people along two dimensions (recall: toilet paper and peanut butter). Now that we are looking at numerical data (poopiness and crappiness), we can also use two dimensions, as in a two-dimensional scatterplot, to examine both variables at once.</p>
+<p>A scatterplot is just a name for a data plot, in which the position of each data point corresponds to its coordinates along more than one dimension. We often refer to two-dimensional coordinate systems as (x,y), where x is the horizontal axis and y is the vertical axis. Technically, in this case our coordinate system is (poopiness, crappiness). These are the names of our dimensions. But we will still often refer back to the idea of an x- or y-axis. This scatterplot is shown in Figure <a href="shades.html#fig:poopy-crappy">4.7</a>. Each point represents data from one person, with their poopiness value on the x-axis and crappiness on the y-axis.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:poopy-crappy"></span>
+<img src="carpedatum_files/figure-html/poopy-crappy-1.png" alt="Scatterplot of Crappiness vs Poopiness" width="90%"  />
+<p class="caption">
+Figure 4.7: Scatterplot of Crappiness vs Poopiness
+</p>
+</div>
+<div class="rejoice">
+Alas, oh data! Your bimodal nature has revealed itself in the higher-dimensional plane!
+</div>
+<p>How many kinds of people are there? When it comes to poopiness and crappiness, people exhibit a continuous range of values, so we can’t neatly put them into buckets. Neither poopiness nor crappiness appear to be bimodally distributed on their own. However, when examined together, as in the scatterplot in Figure <a href="shades.html#fig:poopy-crappy">4.7</a>, a pretty suggestive pattern emerges in the data. There are two <strong>clusters</strong> of points, one group of which is lower in poopiness but higher in crappiness than the other. Interestingly, though, in both groups poopiness and crappiness tend to increase together. That is, they appear to be associated, not independent.</p>
+<p>I do not mean to imply that clusters of points can always be found if we have data along many dimensions. That is certainly not always the case. The present example was concocted (I admit it!) to show that groups <em>can</em> emerge, even in numerical data. Cluster analysis <span class="citation">(<a href="#ref-kaufman2009" role="doc-biblioref">Kaufman and Rousseeuw 2009</a>)</span> refers to set of data-science methods all about looking for the existence of groups in multidimensional data.</p>
+<div id="check-your-understanding" class="section level3 unnumbered hasAnchor">
+<h3>Check your understanding<a href="shades.html#check-your-understanding" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Based on the scatterplot in Figure <a href="shades.html#fig:poopy-crappy">4.7</a> and the grouped-by-color histogram for poopiness in Figure <a href="shades.html#fig:poopy-hist-mixture">4.4</a>, describe what the equivalent grouped-by-color histogram for crappiness would look like. Would it look the same or different? Explain.</li>
+</ol>
 
+</div>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-kaufman2009" class="csl-entry">
+Kaufman, Leonard, and Peter J Rousseeuw. 2009. <em>Finding Groups in Data: An Introduction to Cluster Analysis</em>. Vol. 344. John Wiley &amp; Sons.
+</div>
+<div id="ref-maccallum2002" class="csl-entry">
+MacCallum, Robert C, Shaobo Zhang, Kristopher J Preacher, and Derek D Rucker. 2002. <span>“On the Practice of Dichotomization of Quantitative Variables.”</span> <em>Psychological Methods</em> 7 (1): 19.
 </div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="3">
-<li id="fn3"><p>That was another unsubstantiated claim.<a href="categories.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<ol start="5">
+<li id="fn5"><p>Technically, each range is a semi-open interval, e.g. (0.1,0.15], so that any values exactly equal to 0.1 can only be included in one bin and not the ones on either side.<a href="shades.html#fnref5" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -607,8 +734,8 @@ under
           </div>
         </div>
       </div>
-<a href="how-many-kinds-of-people-are-there.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dimensions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="test-indep.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cut-scores-and-abnormality.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

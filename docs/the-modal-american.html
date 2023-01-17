@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Categories, counts, and kinds | Carpe Datum</title>
-  <meta name="description" content="Chapter 1 Categories, counts, and kinds | Carpe Datum" />
+  <title>Chapter 6 The Modal American | Carpe Datum</title>
+  <meta name="description" content="Chapter 6 The Modal American | Carpe Datum" />
   <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Categories, counts, and kinds | Carpe Datum" />
+  <meta property="og:title" content="Chapter 6 The Modal American | Carpe Datum" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="ybergner/carpe-datum" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Categories, counts, and kinds | Carpe Datum" />
+  <meta name="twitter:title" content="Chapter 6 The Modal American | Carpe Datum" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="how-many-kinds-of-people-are-there.html"/>
-<link rel="next" href="dimensions.html"/>
+<link rel="prev" href="cut-scores-and-abnormality.html"/>
+<link rel="next" href="sixteen-personalities-or-five-factors.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -356,250 +356,39 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="categories" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Categories, counts, and kinds<a href="categories.html#categories" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="two-kinds-of-people" class="section level3 unnumbered hasAnchor">
-<h3>Two Kinds of People<a href="categories.html#two-kinds-of-people" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>“There are two kinds of people… which one are you?” questions have become something of an internet meme, particulary with the categorizations represented graphically or pictorially. There is a whole <a href="https://2kindsofpeople.tumblr.com/">blog devoted to them by João Rocha</a>. The images in Figure <a href="categories.html#fig:tp-fig">1.1</a> probably need no explanation, as they concern the great <a href="https://en.wikipedia.org/wiki/Toilet_paper_orientation">toilet paper orientation</a> debate.</p>
-
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tp-fig"></span>
-<img src="images/Toilet_paper_orientation_overunder.png" alt="The great debate. Source Wikimedia Commons User:Elya" width="90%" />
-<p class="caption">
-Figure 1.1: The great debate. Source <a href="https://commons.wikimedia.org/wiki/File:Toilet_paper_orientation_over.jpg">Wikimedia Commons User:Elya</a>
-</p>
+<div id="the-modal-american" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> The Modal American<a href="the-modal-american.html#the-modal-american" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The NPR podcast Planet Money aired an episode in the summer of 2019 called <a href="https://www.npr.org/2019/08/28/755191639/episode-936-the-modal-american">The Modal American</a>. If you haven’t listened to it, you should stop what you’re doing and listen to it right now. (Seriously, this will make a lot more sense).</p>
+<p>The podcast hosts, Kenny Malone and Jacob Goldstein, set the stage as follows. People sometimes talk about the “average” American, but that doesn’t really make sense, even as an idea. If you average the traits of all Americans, you don’t end up with a real human being.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> Malone suggests that what people are really thinking about is the <em>modal</em> American, i.e., the most common type of American. The kind person you’re more likely to bump into on the street than any other. The hosts then consult with economics and data reporter Ben Casselman to help identify who is the modal American.</p>
+<p>For the purposes of their investigation, the kinds of American the Planet Money hosts are interested in are determined by groupings of demographic variables like those collected by the US Census. The census does not, to my dismay, include questions about peanut butter preference, toilet paper orientation, digitidiness, or poopiness. Rather, they stick with things like sex, race, age, income, marital-status, etc. It turns out that different people mean different things when the ask, “how many kinds of Americans are there?” In any case, this journey to put Americans into buckets leads down some paths that will be very familiar to you by now.</p>
+<div id="step-one-categories" class="section level3 unnumbered hasAnchor">
+<h3>Step one: categories<a href="the-modal-american.html#step-one-categories" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First of all, some of the variables, like sex, race, and marital status, are categorical to begin with. We can ask people to answer these survey questions, and then we can combine their answers into kinds like married-Hispanic-male or <a href="https://www.imdb.com/title/tt0105414/">single-White-female</a> types of people.</p>
+<p>Some of the variables included, like neighborhood-type, are categorical in the way we think about them (read: rural, suburban, or urban), but are actually derived from numerical variables. In this case, neighborhood type is derived from the population density in the census block. Other variables, like income and, arguably, age, are just plain numerical. But to identify the most common kind of American, our podcast hosts need to put people into categories (like rich and poor–to make things dichotomous–or low-, middle-, and high-income). So they <strong>discretize</strong> all of the numerical variables into a small number of categories. They “bin” the incomes as well as the ages, which they combine into generation labels like “Generation X” and “Baby Boomers.”</p>
 </div>
-<p>Toilet paper orientation is a distinguishing <strong>test question</strong> that separates people into one of two “kinds” (or “types” or “categories”; sometimes English has several words that are used interchangeably). A fancy word for this “splitting into two” is dichotomy (die-COT-uh-mee), from the Greek. A <strong>dichotomous question</strong> has two possible answers. Here, you choose one way to orient the roll or the other. Let’s call this roll choice “over” (shown on left) or “under” (shown on right). Perhaps you have debated which is better with a friend or family member. In any case, armed with this particular test question, we can go out and collect some data.</p>
-<table class="table table-striped table" style="width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:tp-table">Table 1.1: </span>How people roll
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-count
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-over
-</td>
-<td style="text-align:right;">
-23
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-under
-</td>
-<td style="text-align:right;">
-17
-</td>
-</tr>
-</tbody>
-</table>
-<p>I went ahead and asked 40 people in Washington Square Park in New York City which kind of person they were, and the results are shown in Table <a href="categories.html#tab:tp-table">1.1</a>. This being a book about data science, you might think I’m going to start calculating proportions right away, for example by saying that 57.5% of New Yorkers are over-hangers.
-Nope. Although you should be able to figure out that proportion conversion, it is not the point I want to focus on right now.</p>
-<p>That point I want to focus on is that, based on our data, there <em>are</em> indeed two kinds of people here. If, for example, everyone in the world were an under-hanger (heaven forbid), then I couldn’t very well say that there were two kinds of people in this world. At least not with regard to toilet paper orientation. It would be like if I presented you with the data in Table <a href="categories.html#tab:dumb-table">1.2</a>. Looking at that, I can’t very well convince you that there are two kinds of people.</p>
-<table class="table table-striped table" style="width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:dumb-table">Table 1.2: </span>Kinds of people in Washington Square
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-count
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-human
-</td>
-<td style="text-align:right;">
-40
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-not human
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
-<p>That all seems pretty obvious, in part because I made up a <em>tautology</em> in the second example there. Being a human being is automatically associated with everyone who can be a <em>kind of person</em>.</p>
-<p>But what if I had gotten exactly the same results for the toilet paper question? What if the data looked like Table <a href="categories.html#tab:tp-redux">1.3</a>. In this <strong>alternate universe</strong>, everyone I ask in Washington Square is an under-hanger. Yes, it’s one of those scary alternate universes, like the Twilight Zone. Anyway, does that mean that there is only one kind of person when it comes to toilet paper orientation? Well…not necessarily. After all, this was just a <strong>sample</strong> of people in Washington Square. It was not the whole <strong>population</strong> of Washington Square, even, let alone New York City, let alone the world.</p>
-<table class="table table-striped table" style="width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:tp-redux">Table 1.3: </span>How people roll (alternate universe)
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-count
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-under
-</td>
-<td style="text-align:right;">
-40
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-over
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
+<div id="step-two-contingency-table" class="section level3 unnumbered hasAnchor">
+<h3>Step two: contingency table<a href="the-modal-american.html#step-two-contingency-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Having done all this, the next step is to combine the data about all Americans along each of these variables into one big contingency table. It’s not a two-way table, because there are more than two variables, but it’s still a contingency table. (It is not very common to use terms like four-way or five-way table.)</p>
+<p>The choice of variables, and specifically the choice of the number of categories to keep for each one, determines how many kinds of Americans there can be. Having made the choices, it is a simple matter of looking to see which is the most common kind.</p>
+<p>Along the way, the idea of dependence, or association, also comes up, but it is not necessarily mentioned by name. Supppose you know the most common age category is Children. And suppose the most common category of marital-status is Married. It does not necessarily follow that married-children is the most common category in a two-way table made from those two variables. Of course, the opposite is true. And this is because age and marital status are associated variables. The older you are, the more likely you are to be (now or previously) married, as opposed to never married. In general, you cannot assume that the most common category in two variables will combine to produce the most common two-variable-category. <strong>But this would be true if the variables were independent.</strong></p>
+<p>For independent variables, it must be the case that the most common joint category will emerge from the simple combination of the most common individual categories. You could actually use that as a definition of independence.</p>
+<p>Take sex and race, for example. In the Planet Money podcast, both of these are actually treated as dichotomous variables (all race categories other than white are combined into one, so it is basically white or not; perhaps you are hearing “there are two kinds of people in this world…”). Since female is the most common sex and white is the most common race category, it has to be the case that white-female comes out as the most common combination. Sex and race are independent.</p>
+<p>Perhaps it is reassuring to you that the ideas we have been developing are not just limited to semi-jokey two-kinds of people questions, or Buzzfeed personality tests. But that they apply exactly as before to serious data.</p>
 </div>
-<div id="samples-and-populations-a-statistical-caveat" class="section level3 unnumbered hasAnchor">
-<h3>Samples and Populations: A Statistical Caveat<a href="categories.html#samples-and-populations-a-statistical-caveat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Samples and populations are sort of a big deal in statistics and data science, where these words have somewhat specialized meanings. Consider the following utterances:</p>
-<pre><code>The population of New York City is 8.6 million
-The population of New York City is ethnically diverse</code></pre>
-<p>How can both of these statements make sense? In common usage, population often refers to the number or count of people, in a town, area, or country. Among statisticians and data scientists, population refers to a set or collection under consideration. It doesn’t have to be a set of people. It could be a set of rats, non-governmental organizations, or domestic flights originating in Chicago. But let’s suppose the population does refer to a set of people. The <em>number</em> of those people is just one summary about the population, also known as the total <strong>count</strong>. The proportion of over-hangers is another summary of the population, as is the most-common birth-month. The two statements above would be more consistent if the first were rephrased to be: the population (set of people) of New York City <del>is</del> numbers 8.6 million.</p>
-<p>If we always had access to all of the members in a population (the set or collection under consideration), the field of statistics wouldn’t exist. We would just know a bunch of facts about, say, everyone in the whole world. And that would be that. While it is true that data are becoming more and ubiquitous, don’t start betting on the demise of statistics. Even if we did have complete data for everyone in the world today, our population of interest might extend to the world as it will be next month, next year, or ten years from now. That is, we might want to make predictions about the future. In which case, we would want to draw <em>inferences</em> and to generalize from the data we have on hand—our sample—to data we don’t have—the rest of the (i.e., the future) population. Making inferences from samples to populations will always be a compelling and challenging problem.</p>
-<p>Since Washington Square is the center of my universe, that’s where I sample. Even if we agreed that our population of interest were confined to Washington Square, we would still find it difficult to collect data on everyone there. There are a lot of them, many of them are on skateboards, and new people keep leaving and entering the park. It turns out, that’s okay. We don’t actually have to reach everybody to be able to do data science. However, we need to understand that when we sample 40 particular people in Washington Square, we might not get the same exact answers as if we had sampled 40 <em>different</em> people. The sampling process introduces an element of <strong>uncertainty</strong> into our process.</p>
-<p>Coming back to our toilet paper debate, if we did find zero over-hangers in one sample, it doesn’t guarantee that the number of over-hangers will also be zero in the next. The number may vary from sample to sample. Uncertainty does not, however, mean that the information derived from one sample is useless. In fact, soon we’ll see that we can actually learn a lot from a sample simply by recognizing that sample values will vary. We can simulate samples on a computer to see how much they will vary. And then, using our simulations, we will be able to give probabilistic answers to questions like, “what are the chances that there really are no over-hangers in Washington Square?”</p>
-</div>
-<div id="a-psychological-caveat" class="section level3 unnumbered hasAnchor">
-<h3>A Psychological Caveat<a href="categories.html#a-psychological-caveat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The section above explored a statistical caveat about drawing conclusions from samples. But another caveat that applies here is more psychological. I have assumed, for this argument, that a person’s answer to the toilet paper question is a fairly stable thing and not just a transient state-of-mind. That is, if I asked you tomorrow or next week, your answer would be the same as if I asked you today. For the most part. I’m not saying you can’t ever decide to change your mind. But it wouldn’t make sense to describe a person as an over-hanger if there were no stability at all to their answer. A transient state-of-mind, by contrast, could be asking someone if they are hungry. Everyone is hungry some of the time, but not all of the time. And it wouldn’t make any sense, based on that line of questioning, to imply that there are two kinds of people.</p>
-</div>
-<div id="summarizing-data" class="section level3 unnumbered hasAnchor">
-<h3>Summarizing data<a href="categories.html#summarizing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>When I presented my survey results to you in Table <a href="categories.html#tab:tp-table">1.1</a>, notice that I did not present you with the raw data, but rather with a summary of the data. The particular summary I used was called “counts”, that is, a total count of how many people responded “over” or “under.” The raw data, in contrast, would have contained each individual response I collected, labled either with a name of the individual, or perhaps with some other unique identifier (such as a random number), or—if I don’t need to keep track of particular individuals—with just a row number. Something like this, if we examine at the first six responses rather than all 40 of them. Raw data:</p>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:center;">
-row
-</th>
-<th style="text-align:center;">
-randomID
-</th>
-<th style="text-align:center;">
-response
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-9246
-</td>
-<td style="text-align:center;">
-under
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-2
-</td>
-<td style="text-align:center;">
-1478
-</td>
-<td style="text-align:center;">
-over
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-3
-</td>
-<td style="text-align:center;">
-8831
-</td>
-<td style="text-align:center;">
-under
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-4
-</td>
-<td style="text-align:center;">
-8194
-</td>
-<td style="text-align:center;">
-over
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-4178
-</td>
-<td style="text-align:center;">
-under
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-6
-</td>
-<td style="text-align:center;">
-4243
-</td>
-<td style="text-align:center;">
-under
-</td>
-</tr>
-</tbody>
-</table>
-<p>Counts is an example of a <strong>summary statistic</strong>, which is a fancy term for a number that is derived from the raw data. The count summary is as simple as it gets. It is literally the number of times that each response appears. We might note as well that,</p>
-<pre><code>count(under) + count(over) = total number of responses.</code></pre>
-<p>This mathematical statement is true because there are only two possible responses. If there were more than two responses, then I would need to add the counts for each possible response.</p>
-<p>Note that the <em>proportion</em> of “over” responses is also a summary statistic (which is just the counts of “over” divided by the total number of responses). Another summary statistic could be the ratio of “over” responses (counts) to “under” responses. For example, one way people use summary statistics in reporting data is through statements like, “twice as many people prefer chunky peanut butter to smooth.”</p>
-<div id="no-mean-feat" class="section level4 unnumbered hasAnchor">
-<h4>No mean feat<a href="categories.html#no-mean-feat" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<blockquote>
-<p>Whenever someone reports a mean (another word for average) value of some set of data, that is also a summary statistic. Does it make sense to construct an average from responses that are either “over” or “under”? No, it doesn’t. That’s because {over, under} is a categorical response, and you can’t average over categories. Unless you’re trying to make fun of statistics with a puerile joke. Different versions of this joke appear: “the average American has one tit and one testicle.” At the risk of explaining the joke too much, here goes: Tits and testicles can certainly be treated as numerical data, and hence can be averaged. This joke hinges on the fact that the existence of testicles (or tits) is associated with a person’s sex, which is categorical and not numerical. Assuming that half of all Americans are female (roughly true), we can’t say that the average American is half male and half female. The real “punch” of this joke is to suggest that summary statistics about averages are just a bunch of nonsense. What do you think?</p>
-</blockquote>
-<p>This is about as much as we need to say about summary statistics for the time being. But they’ll be back.</p>
-</div>
-</div>
-<div id="checkpoint" class="section level3 unnumbered hasAnchor">
-<h3>Checkpoint<a href="categories.html#checkpoint" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>While focusing on the great toilet paper debate, we’ve managed to establish some important fundamental ideas.</p>
-<ul>
-<li><p>Dichotomous questions split people into two kinds, but only as long as it is actually possible for both answers to occur.</p></li>
-<li><p>In an alternate universe, people might give different answers than they do in this one. (Seriously, this is an important idea).</p></li>
-<li><p>Even when we casually refer to <em>people</em>, we may have a particular set of people, a population, in mind. Data about this population are likely to come from a sample, rather than from the whole population, and this fact introduces some uncertainty into claims about the whole population. Data science to the rescue!</p></li>
-<li><p>If we have types of people in mind, our questions ought to elicit fairly stable answers</p></li>
-<li><p>Clearly, we can ask people questions that prompt them to choose between more than two categories. But “two types of people” questions are more fun.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> I mean there are so many of them! So… does that mean that there really are two types of people? To answer this, we will need to get into another great debate.</p></li>
-</ul>
+<div id="exercises" class="section level3 unnumbered hasAnchor">
+<h3>Exercises<a href="the-modal-american.html#exercises" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>At around minute 5:15, the hosts describe the what they see looking at the (histogram of) age distribution. What kind of distribution are the hosts describing?</li>
+<li>Why such (over)simplification? Hint: there is a discussion around 9 minutes in.</li>
+<li>The methodology of the Planet Money analysis is described on <a href="https://www.npr.org/2019/08/28/755191639/episode-936-the-modal-american">their website</a>. From this, determine how many variables there are, how many categories there are for each one, and thus how many kinds of Americans (i.e., how many buckets) there are in total.</li>
+</ol>
 
 </div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="3">
-<li id="fn3"><p>That was another unsubstantiated claim.<a href="categories.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<ol start="6">
+<li id="fn6"><p>We encountered this fact in the form of a joke in Chapter <a href="categories.html#categories">1</a>, specifically <a href="categories.html#no-mean-feat">here</a><a href="the-modal-american.html#fnref6" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -607,8 +396,8 @@ under
           </div>
         </div>
       </div>
-<a href="how-many-kinds-of-people-are-there.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dimensions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="cut-scores-and-abnormality.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sixteen-personalities-or-five-factors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

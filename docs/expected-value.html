@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Categories, counts, and kinds | Carpe Datum</title>
-  <meta name="description" content="Chapter 1 Categories, counts, and kinds | Carpe Datum" />
+  <title>Chapter 13 Expected Value | Carpe Datum</title>
+  <meta name="description" content="Chapter 13 Expected Value | Carpe Datum" />
   <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Categories, counts, and kinds | Carpe Datum" />
+  <meta property="og:title" content="Chapter 13 Expected Value | Carpe Datum" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="ybergner/carpe-datum" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Categories, counts, and kinds | Carpe Datum" />
+  <meta name="twitter:title" content="Chapter 13 Expected Value | Carpe Datum" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="how-many-kinds-of-people-are-there.html"/>
-<link rel="next" href="dimensions.html"/>
+<link rel="prev" href="betting-on-beer-or-ice-cream.html"/>
+<link rel="next" href="is-the-system-fair.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -356,250 +356,276 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="categories" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Categories, counts, and kinds<a href="categories.html#categories" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="two-kinds-of-people" class="section level3 unnumbered hasAnchor">
-<h3>Two Kinds of People<a href="categories.html#two-kinds-of-people" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>“There are two kinds of people… which one are you?” questions have become something of an internet meme, particulary with the categorizations represented graphically or pictorially. There is a whole <a href="https://2kindsofpeople.tumblr.com/">blog devoted to them by João Rocha</a>. The images in Figure <a href="categories.html#fig:tp-fig">1.1</a> probably need no explanation, as they concern the great <a href="https://en.wikipedia.org/wiki/Toilet_paper_orientation">toilet paper orientation</a> debate.</p>
-
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tp-fig"></span>
-<img src="images/Toilet_paper_orientation_overunder.png" alt="The great debate. Source Wikimedia Commons User:Elya" width="90%" />
+<div id="expected-value" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Chapter 13</span> Expected Value<a href="expected-value.html#expected-value" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="betting-on-ice-cream" class="section level2 unnumbered hasAnchor">
+<h2>Betting on ice cream<a href="expected-value.html#betting-on-ice-cream" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The Schlitz example feels a bit contrived, at least to me, because in the scenario, the Schlitz executives don’t really care about the truth. They just care about what will play well to Super Bowl audiences. Nevertheless, we can see the beer taste test as an example of a sampling procedure. We sample from a population (e.g., 100 beer drinkers) to make inferences about the whole population (100 beer drinkers).</p>
+<p>You saw—using the simulation—that whenever you collect data from a sample, you get slightly different results. In this case, you observe a <strong>sampling distribution</strong> in the observed proportion of Schlitz-preference. It had that bell-shaped curve. I want to show you that the same simulation can be used to help you resolve your bet with your friend about whether most people prefer mint chocolate chip or cookies and cream as flavors of ice cream.</p>
+<p>Let’s now return to the ice cream bet that you made with your friend. Now some people just like to bet on any random event like dice rolls and wheel spins; we’ll come back to gambling later. But when you bet your friend, it’s often because you think you are right, but you acknowledge that you are uncertain. Your hunch is that the <em>true</em> value of ice cream preference is greater than 50% in favor of mint chocolate chip. By true value, I mean the answer you would get if you could literally ask everyone in the world this question or, to save time, if you could consult the all-knowing-one and just ask them. This conviction is important, because if both you and your friend believe the proportion really is 50/50, then you are just betting on a coin toss. Which is cool, if you want to do that.</p>
+<p>Suppose you believe that the true value is 65%. Just about two out of three people prefer mint chocolate chip. Your friend thinks the edge goes slightly to cookies and cream, but not enough to notice, and what’s the point of betting on a coin toss. You want to make a point, though, so you’re willing to go out on a limb. You say, “Friend, I will give you 3 to 1 odds on this bet. If you lose, you pay me $3, and if you win, I will pay you $9.” It works. Your friend becomes interested.</p>
+<p>Now that the stakes have been raised, you and your friend start negotiating terms. You both agree that people in Washington Square, for the purposes of this bet, represent an <strong>unbiased sample</strong>. You are not, for example, offering to poll people at the I-heart-Mint festival. You have limited time, but you agree to ask 10 people (you can each pick 5, just to make it fair), and everyone polled has to pick one preference (no ties). If at least 6 out of 10 prefer mint chocolate chip over cookies and cream you win; 5 or fewer and your friend wins. These are the terms.</p>
+<p>Assuming you’re right about the true proportion, <em>will you make money?</em></p>
+<p>By now you know that you are still not guaranteed to observe proportions of 6.5/10 because (a) you can only observe 6 or 7, not 6.5, in a sample size of 10 (no ties!) and (b) because there is variance in the sampling distribution. You want to know the probability of winning the bet, so you can decide whether you gave your friend good odds or maybe you were too impulsive.</p>
+<p>You can use the Schlitz simulation tool even though this is a bet about ice cream. If you use the simulation tool and take 10-person samples one-at-a-time and setting the true probability to 0.65, you might find something like this: 6, 6, 7, … so far so good!… 5, 8, 5, … uh oh, you would have lost 2 out of 6. If you use the Run 100 times feature of the simulation, you might get 70%, 72%, 78%, 75%, 80%, … so it looks like your chances are maybe around 75%. You reason as follows: I have a 75% chance of winning $3 and a 25% chance of losing $9.</p>
+<p><strong>Worked example</strong>: Calculate the exact probability using dbinom() in R.</p>
+<p>We can work out the solution in these steps:</p>
+<ol style="list-style-type: decimal">
+<li>We assume that the true probability in the population for preferring one flavor is 0.65</li>
+<li>A “successful” outcome, if we ask 10 people, would be confirmation from 6, 7, 8, 9, OR 10 of them.</li>
+<li>Since these are disjoint outcomes, the probability of getting any one of them is the sum of the individual probabilities.</li>
+<li><code>dbinom(x, size, prob)</code> will tell us the probability of <code>x</code> “positive” results in a sample of <code>size</code>, when individual probability is <code>prob</code>, so</li>
+<li>We want to sum up this expression with <code>size = 10</code>, <code>prob = 0.65</code>, and <code>x</code> ranging from 6 to 10</li>
+<li><code>sum(dbinom(6:10, 10, prob=0.65))</code> = 0.7515</li>
+</ol>
+<p>By the way, the probability of 5 or lower success is known as the <em>complement</em> event, and by definition it must be equal to 1 minus the probability of 6 or higher. Similarly P(6 or higher) = 1 - P(5 or lower), and indeed <code>1 - sum(dbinom(1:5, 10, prob=0.65))</code> also works.</p>
+<p><strong>Exercise</strong>: If we changed planned to ask only 5 people, how would you compute the probability of a winning bet using dbinom() in R?</p>
+<p>The <strong>weighted average</strong> of these two outcomes is called the <strong>expected value</strong> of the bet. That is, each outcome has a probability and a dollar-valued return, including possible loss. You “weigh” each return by the probability of it occurring. This is done by multiplying each outcome in dollars by the probability of that outcome and adding up the terms. We need to consider losses of money as negative dollar-returns, so</p>
+<pre><code>Expected Value = P(outcome 1) * Return(outcome 1) + P(outcome 2) * Return(outcome 2)
+                 = 0.75 * 3 - 0.25 * 9 = 0
+</code></pre>
+<p>(By the way, weighted averages are not always weighted by probabilities. For example, a course grade may be determined as 50% exams, 30% papers, and 20% homework. But weights, and probabilities, must always add up to 100%, or probability = 1, if you include all of the components. If we were more careful, we should probably call them proportional weights. Course grade weights are deterministic, but in expected values that weights are probabilistic.)</p>
+<p>What does it mean that your expected value (or expected return) for your ice cream bet is 0? For one, it means that you are just as likely to win money as to lose money. In other words, you have proposed a fair bet. Which is the nice thing to do, since after all this is a friendly bet. Your friend originally thought that the two flavors were equally preferred. Given the odds you offered, what was the expected value from your friend’s point of view? (Answer in the footnote).<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>.</p>
+<p>You might now see the relationship between “odds” language and probability language. In the example, we refered to 3 to 1 (or 3:1) odds for the bet. The probability of winning (assuming you were right about the true preference rate) was 0.75. This is three times as high as the probability of losing, which was 0.25. So you made the bet fair by making the payout proportional to this ratio. In fact, the formal definition of odds in mathematical probability is exactly this ratio of the probability of an event divided by the probability of its complement, or <code>p/(1-p)</code>. When the probability is 0.5, this ratio is 1. We say that odds are 1:1 (1 to 1) or use the funny-by-coincidence term “even odds.”</p>
+<p><strong>Exercise</strong>: What would the expected value from your and your friend’s perspective have been if the odds given were 2 to 1 instead of 3 to 1 on a $3 bet? <em>Hint</em>: 2 to 1 odds means you are willing to lose $6</p>
+<p>If the bet described above took place, there would be one outcome. Either you win $3 from your friend or they win $9 from you. The expected value of 0 will never actually occur. But, as we often like to do, we can imagine 100 (or one million) alternative universes to ours. Assuming the probability calculations above, you win the bet in roughly 75% of them and lose the bet in 25% of them. This is what we meant by the probability in the first place. The expected value can be thought of as your average earning across all of these multiple universes.</p>
+<div id="by-the-statistical-power-of-grayskull" class="section level3 unnumbered hasAnchor">
+<h3>By the (Statistical) Power of Grayskull<a href="expected-value.html#by-the-statistical-power-of-grayskull" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<blockquote>
+<p>Sidney says: From playing with the simulations, I have noticed that the range of observed proportions is the true value (say, 0.65) “plus or minus” some amount of variation due to sampling. Furthermore, the variation became smaller as the sample size got larger. I had a 75% of observing a majority when the sample size was 10. But by increasing the sample size to 100 or 1000, then the chance was much higher.</p>
+</blockquote>
+<p>This narrowing of the distribution, or the reduction in “error variance” due to increased sample size, is related to a statistical concept called <strong>power.</strong> This term often comes up in relation to hypothesis testing. When researchers do a study, they want to make sure the sample size is large enough. Even if the alternative hypothesis is correct, small samples may mean that the data are still consistent with null hypothesis. For the example above, the alternative hypothesis test was “more than half prefer mint chocolate chip” and the assumed true value for the proportion was 0.65. With a sample of 10, your power was 0.75. Note that your power came from two sources. One was the size of the difference you wanted to detect, i.e., the <strong>effect</strong> of mint chocolate chip preference. You believed that this effect was reasonably large at 0.65. A preference of 0.52 would be harder to detect in a sample of 10, while a preference rate of 0.91 should be easier. Thus in the latter case, your sample study would have higher power than in the former case (low power).</p>
+<p>You can’t typically control the size of the effect. It is what it is, and perhaps if the effect is small, you may not care as much about it. However, some knowledge is still worth pursuing, even of small effects, and you can often control the size of the sample. Increasing the sample size increases your power to detect effects, even small ones. When scientists design a research study, they will often conduct a power analysis in advance to determine the sample size necessary to make confident claims about the effect of interest. This is analogous to what Schlitz marketing would have had to think through in deciding how many people to include in their live taste test campaign.</p>
+</div>
+</div>
+<div id="betting-on-your-future" class="section level2 unnumbered hasAnchor">
+<h2>Betting on your Future<a href="expected-value.html#betting-on-your-future" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Consider the Investment Decision diagram of Naked Statistics, Chapter 5, that you read at the beginning of this module. The diagram is reproduced in Figure <a href="expected-value.html#fig:wheelan-drug">13.1</a></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:wheelan-drug"></span>
+<img src="images/Drug_Investment.png" alt="Drug trial tree diagram (source: Wheelan)" width="70%" />
 <p class="caption">
-Figure 1.1: The great debate. Source <a href="https://commons.wikimedia.org/wiki/File:Toilet_paper_orientation_over.jpg">Wikimedia Commons User:Elya</a>
+Figure 13.1: Drug trial tree diagram (source: Wheelan)
 </p>
 </div>
-<p>Toilet paper orientation is a distinguishing <strong>test question</strong> that separates people into one of two “kinds” (or “types” or “categories”; sometimes English has several words that are used interchangeably). A fancy word for this “splitting into two” is dichotomy (die-COT-uh-mee), from the Greek. A <strong>dichotomous question</strong> has two possible answers. Here, you choose one way to orient the roll or the other. Let’s call this roll choice “over” (shown on left) or “under” (shown on right). Perhaps you have debated which is better with a friend or family member. In any case, armed with this particular test question, we can go out and collect some data.</p>
+<p>This figure represents the drug approval process from investment to pay off in the form of a tree.<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a> At each branch-point of the graph, there are two possibilities: first, you may or may not develop a drug that cures a particular disease. Next, even if the drug works, it may or may not get approved. And even if it gets approved, it may or may not make it to the market. At each branch, there are also two probabilities corresponding to each path. The end-points of the branches are the leaf nodes of the tree diagram. In this particular tree, one of each forking paths is always a dead-end, or leaf. But the tree can branch in other ways.</p>
+<p>Here are some questions to consider</p>
+<ol style="list-style-type: decimal">
+<li>The final probabilities at each end-point are products of the probabilities along the path to get there. Why?</li>
+<li>How do you think we estimate these branching probabilities in practice?</li>
+</ol>
+<div id="why-why-why-multiply-ay-ay" class="section level3 unnumbered hasAnchor">
+<h3>Why why why multiply-ay-ay?<a href="expected-value.html#why-why-why-multiply-ay-ay" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For the first question, you might reason through the probability “math” as follows. Say this drug investment happens in 1000 alternate universes. In 700 of them, the drug turns out to be a dud, and there is nothing more to say. But in 300 of them it is a wonder-cure. <em>Of the 300 universes in which the drug worked,</em> it is not approved for use in 120 but is approved for use in 180. And so on. This winnowing-down or funneling of our imagined 1000 cases shows that you must keep applying these proportional cuts in sequence. That is, you take 0.3 of the starting amount (300/1000), and then 0.4 of that mount (120/300), which is equivalent to multiplying 1000 by 0.3 and then 0.4. Note that the language in the italicized phrase (“of the…”) is suggestive of the language of conditional probabilities (e.g., “given that…”). This hints at another, perhaps more formal, description of why we multiply probabilities along the path in the tree.</p>
+<p>To get to the endpoint, for example that “a competitor beats you to market,”, three things need to happen. The drug must be a cure, it must be approved, and the competitor must beat you. These are three events, and the probability we need in order to compute expected value is the <em>joint</em> probability of all of them. That is, P(Cure AND Approved AND Beaten) or P(C, A, B). It is tempting to invoke the rule for independent probabilities to explain why this joint probability is the product of the individual probabilities. But it would be missing an important subtlety. These events are <em>not</em> independent; they are only conditionally independent. The probability of being approved is zero if the drug is not a cure. So we clearly cannot say that knowing the drug is a cure does not change our expectation of its likelihood of approval.</p>
+<p>Rather, what is happening here is that we are multiplying conditional probabilities. And we are doing so in accordance with the definition of conditional probabilities that we saw in Chapter <a href="somefacts.html#somefacts">10</a>. Namely, we defined the relationship between joint probabilities and conditional probabilities this way:</p>
+<pre><code>P(A and C) = P(A|C) * P(C).</code></pre>
+<p>In fact, we could keep going for joint probabilities of more than two events. Suppose we added event B to the joing event {A and C}. Then, following above</p>
+<pre><code>P(B and A and C) = P(B|A and C) * P(A and C)
+                 = P(B|A and C) * P(A|C) * P(C)</code></pre>
+<p>In the second line, we used the previous result. This is sometimes written with commas instead of the word “and.” as,</p>
+<p>`<code>P(B, A, C) = P(B|A, C) * P(A|C) * P(C).</code></p>
+<p>This unpacking of a joint probability in terms of conditional probabilities is always true, because it follows from definitions. It is only useful, however, if we know the probabilities on the right hand side. In the case of the example we started from, we do. We wanted to know P(Cure AND Approved AND Beaten). It is just</p>
+<pre><code>P(Cure AND Approved AND Beaten)  = P(Beaten | Approved, Cure) * P(Approved | Cure) * P(Cure)
+                                 = (0.1) * (0.6) * (0.3)</code></pre>
+<p>So this is another way to understand why we multiply the probabilities.</p>
+</div>
+<div id="where-do-branching-probabilities-come-from" class="section level3 unnumbered hasAnchor">
+<h3>Where do branching probabilities come from?<a href="expected-value.html#where-do-branching-probabilities-come-from" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In our workhorse drug-to-market investment example, we used probabilities <em>prospectively</em>, that is forward-looking, to evaluate expected value. We put some probabilities in by hand. Presumably if we wanted to base these numbers on more than just our imagination, we would look for data from the past (retrospectively). We’re not going to find a lot of data about cancer-curing drugs, but there have been lots of other drugs tested, approved, and/or first-to-market to treat other diseases. Specifically, we would try to find a data set that contained the following column names: Drug, Cost to develop, Success in testing, FDA Approval, First to Market, Total Sales. Or something like that. If we had such a data set, then we could actually fit a tree to it.</p>
+<p>I’ll show you how it is done in principle by making a data set that instantiates Wheelan’s fictional data and then fitting it. I will make 1000 cases using Wheelan’s numbers exactly, which is artificial, but it demonstrates the point. That is, my 1000 cases will have the proportions of outcomes that are dictated by the probabilities we used above. Here’s one way to make the data (you can copy this code and experiment with it in your own R session).</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="expected-value.html#cb75-1" aria-hidden="true" tabindex="-1"></a>wheelan_cancer <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb75-2"><a href="expected-value.html#cb75-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">Drug =</span> <span class="fu">paste0</span>(<span class="st">&quot;Drug&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>), <span class="co"># this is just a dummy ID</span></span>
+<span id="cb75-3"><a href="expected-value.html#cb75-3" aria-hidden="true" tabindex="-1"></a>   <span class="at">Cure =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;No&quot;</span>,<span class="dv">700</span>), <span class="fu">rep</span>(<span class="st">&quot;Yes&quot;</span>,<span class="dv">300</span>)), <span class="co"># 70% of drugs will fail to cure</span></span>
+<span id="cb75-4"><a href="expected-value.html#cb75-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">Approved =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">NA</span>,<span class="dv">700</span>), <span class="fu">rep</span>(<span class="st">&quot;No&quot;</span>,<span class="dv">120</span>), <span class="fu">rep</span>(<span class="st">&quot;Yes&quot;</span>,<span class="dv">180</span>)),</span>
+<span id="cb75-5"><a href="expected-value.html#cb75-5" aria-hidden="true" tabindex="-1"></a>   <span class="at">First2Market =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">NA</span>,<span class="dv">820</span>), <span class="fu">rep</span>(<span class="st">&quot;No&quot;</span>, <span class="dv">18</span>), <span class="fu">rep</span>(<span class="st">&quot;Yes&quot;</span>,<span class="dv">162</span>)),</span>
+<span id="cb75-6"><a href="expected-value.html#cb75-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">Payout =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">250000</span>,<span class="dv">700</span>), <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">120</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">18</span>), <span class="fu">rep</span>(<span class="dv">25000000</span>,<span class="dv">162</span>))</span>
+<span id="cb75-7"><a href="expected-value.html#cb75-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Notice that I had to use the missing value “NA” in the table that I made. If the drug does not cure the disease, the the approval status is neither Yes nor No. It never gets to that stage. So the approval value for those drugs is missing. The data has 1000 rows, many of which are identical. I will show the rows where things change. In between we have a lot of replicas, i.e., drugs with the same exact story.</p>
 <table class="table table-striped table" style="width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:tp-table">Table 1.1: </span>How people roll
+<span id="tab:unnamed-chunk-26">Table 13.1: </span>A fake drug development dataset
 </caption>
 <thead>
 <tr>
 <th style="text-align:left;">
+Drug
+</th>
+<th style="text-align:left;">
+Cure
+</th>
+<th style="text-align:left;">
+Approved
+</th>
+<th style="text-align:left;">
+First2Market
 </th>
 <th style="text-align:right;">
-count
+Payout
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
-over
+Drug1
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
 </td>
 <td style="text-align:right;">
-23
+250000
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-under
+Drug700
 </td>
-<td style="text-align:right;">
-17
-</td>
-</tr>
-</tbody>
-</table>
-<p>I went ahead and asked 40 people in Washington Square Park in New York City which kind of person they were, and the results are shown in Table <a href="categories.html#tab:tp-table">1.1</a>. This being a book about data science, you might think I’m going to start calculating proportions right away, for example by saying that 57.5% of New Yorkers are over-hangers.
-Nope. Although you should be able to figure out that proportion conversion, it is not the point I want to focus on right now.</p>
-<p>That point I want to focus on is that, based on our data, there <em>are</em> indeed two kinds of people here. If, for example, everyone in the world were an under-hanger (heaven forbid), then I couldn’t very well say that there were two kinds of people in this world. At least not with regard to toilet paper orientation. It would be like if I presented you with the data in Table <a href="categories.html#tab:dumb-table">1.2</a>. Looking at that, I can’t very well convince you that there are two kinds of people.</p>
-<table class="table table-striped table" style="width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:dumb-table">Table 1.2: </span>Kinds of people in Washington Square
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-count
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
 <td style="text-align:left;">
-human
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
 </td>
 <td style="text-align:right;">
-40
+250000
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-not human
+Drug701
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
 </td>
 <td style="text-align:right;">
 0
 </td>
 </tr>
-</tbody>
-</table>
-<p>That all seems pretty obvious, in part because I made up a <em>tautology</em> in the second example there. Being a human being is automatically associated with everyone who can be a <em>kind of person</em>.</p>
-<p>But what if I had gotten exactly the same results for the toilet paper question? What if the data looked like Table <a href="categories.html#tab:tp-redux">1.3</a>. In this <strong>alternate universe</strong>, everyone I ask in Washington Square is an under-hanger. Yes, it’s one of those scary alternate universes, like the Twilight Zone. Anyway, does that mean that there is only one kind of person when it comes to toilet paper orientation? Well…not necessarily. After all, this was just a <strong>sample</strong> of people in Washington Square. It was not the whole <strong>population</strong> of Washington Square, even, let alone New York City, let alone the world.</p>
-<table class="table table-striped table" style="width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:tp-redux">Table 1.3: </span>How people roll (alternate universe)
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-count
-</th>
-</tr>
-</thead>
-<tbody>
 <tr>
 <td style="text-align:left;">
-under
+Drug820
 </td>
-<td style="text-align:right;">
-40
-</td>
-</tr>
-<tr>
 <td style="text-align:left;">
-over
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
 </td>
 <td style="text-align:right;">
 0
 </td>
 </tr>
-</tbody>
-</table>
-</div>
-<div id="samples-and-populations-a-statistical-caveat" class="section level3 unnumbered hasAnchor">
-<h3>Samples and Populations: A Statistical Caveat<a href="categories.html#samples-and-populations-a-statistical-caveat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Samples and populations are sort of a big deal in statistics and data science, where these words have somewhat specialized meanings. Consider the following utterances:</p>
-<pre><code>The population of New York City is 8.6 million
-The population of New York City is ethnically diverse</code></pre>
-<p>How can both of these statements make sense? In common usage, population often refers to the number or count of people, in a town, area, or country. Among statisticians and data scientists, population refers to a set or collection under consideration. It doesn’t have to be a set of people. It could be a set of rats, non-governmental organizations, or domestic flights originating in Chicago. But let’s suppose the population does refer to a set of people. The <em>number</em> of those people is just one summary about the population, also known as the total <strong>count</strong>. The proportion of over-hangers is another summary of the population, as is the most-common birth-month. The two statements above would be more consistent if the first were rephrased to be: the population (set of people) of New York City <del>is</del> numbers 8.6 million.</p>
-<p>If we always had access to all of the members in a population (the set or collection under consideration), the field of statistics wouldn’t exist. We would just know a bunch of facts about, say, everyone in the whole world. And that would be that. While it is true that data are becoming more and ubiquitous, don’t start betting on the demise of statistics. Even if we did have complete data for everyone in the world today, our population of interest might extend to the world as it will be next month, next year, or ten years from now. That is, we might want to make predictions about the future. In which case, we would want to draw <em>inferences</em> and to generalize from the data we have on hand—our sample—to data we don’t have—the rest of the (i.e., the future) population. Making inferences from samples to populations will always be a compelling and challenging problem.</p>
-<p>Since Washington Square is the center of my universe, that’s where I sample. Even if we agreed that our population of interest were confined to Washington Square, we would still find it difficult to collect data on everyone there. There are a lot of them, many of them are on skateboards, and new people keep leaving and entering the park. It turns out, that’s okay. We don’t actually have to reach everybody to be able to do data science. However, we need to understand that when we sample 40 particular people in Washington Square, we might not get the same exact answers as if we had sampled 40 <em>different</em> people. The sampling process introduces an element of <strong>uncertainty</strong> into our process.</p>
-<p>Coming back to our toilet paper debate, if we did find zero over-hangers in one sample, it doesn’t guarantee that the number of over-hangers will also be zero in the next. The number may vary from sample to sample. Uncertainty does not, however, mean that the information derived from one sample is useless. In fact, soon we’ll see that we can actually learn a lot from a sample simply by recognizing that sample values will vary. We can simulate samples on a computer to see how much they will vary. And then, using our simulations, we will be able to give probabilistic answers to questions like, “what are the chances that there really are no over-hangers in Washington Square?”</p>
-</div>
-<div id="a-psychological-caveat" class="section level3 unnumbered hasAnchor">
-<h3>A Psychological Caveat<a href="categories.html#a-psychological-caveat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The section above explored a statistical caveat about drawing conclusions from samples. But another caveat that applies here is more psychological. I have assumed, for this argument, that a person’s answer to the toilet paper question is a fairly stable thing and not just a transient state-of-mind. That is, if I asked you tomorrow or next week, your answer would be the same as if I asked you today. For the most part. I’m not saying you can’t ever decide to change your mind. But it wouldn’t make sense to describe a person as an over-hanger if there were no stability at all to their answer. A transient state-of-mind, by contrast, could be asking someone if they are hungry. Everyone is hungry some of the time, but not all of the time. And it wouldn’t make any sense, based on that line of questioning, to imply that there are two kinds of people.</p>
-</div>
-<div id="summarizing-data" class="section level3 unnumbered hasAnchor">
-<h3>Summarizing data<a href="categories.html#summarizing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>When I presented my survey results to you in Table <a href="categories.html#tab:tp-table">1.1</a>, notice that I did not present you with the raw data, but rather with a summary of the data. The particular summary I used was called “counts”, that is, a total count of how many people responded “over” or “under.” The raw data, in contrast, would have contained each individual response I collected, labled either with a name of the individual, or perhaps with some other unique identifier (such as a random number), or—if I don’t need to keep track of particular individuals—with just a row number. Something like this, if we examine at the first six responses rather than all 40 of them. Raw data:</p>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
 <tr>
-<th style="text-align:center;">
-row
-</th>
-<th style="text-align:center;">
-randomID
-</th>
-<th style="text-align:center;">
-response
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center;">
-1
+<td style="text-align:left;">
+Drug821
 </td>
-<td style="text-align:center;">
-9246
+<td style="text-align:left;">
+Yes
 </td>
-<td style="text-align:center;">
-under
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
-<td style="text-align:center;">
-2
+<td style="text-align:left;">
+Drug838
 </td>
-<td style="text-align:center;">
-1478
+<td style="text-align:left;">
+Yes
 </td>
-<td style="text-align:center;">
-over
+<td style="text-align:left;">
+Yes
 </td>
-</tr>
-<tr>
-<td style="text-align:center;">
-3
+<td style="text-align:left;">
+No
 </td>
-<td style="text-align:center;">
-8831
-</td>
-<td style="text-align:center;">
-under
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
-<td style="text-align:center;">
-4
+<td style="text-align:left;">
+Drug839
 </td>
-<td style="text-align:center;">
-8194
+<td style="text-align:left;">
+Yes
 </td>
-<td style="text-align:center;">
-over
+<td style="text-align:left;">
+Yes
 </td>
-</tr>
-<tr>
-<td style="text-align:center;">
-5
+<td style="text-align:left;">
+Yes
 </td>
-<td style="text-align:center;">
-4178
-</td>
-<td style="text-align:center;">
-under
+<td style="text-align:right;">
+25000000
 </td>
 </tr>
 <tr>
-<td style="text-align:center;">
-6
+<td style="text-align:left;">
+Drug1000
 </td>
-<td style="text-align:center;">
-4243
+<td style="text-align:left;">
+Yes
 </td>
-<td style="text-align:center;">
-under
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+25000000
 </td>
 </tr>
 </tbody>
 </table>
-<p>Counts is an example of a <strong>summary statistic</strong>, which is a fancy term for a number that is derived from the raw data. The count summary is as simple as it gets. It is literally the number of times that each response appears. We might note as well that,</p>
-<pre><code>count(under) + count(over) = total number of responses.</code></pre>
-<p>This mathematical statement is true because there are only two possible responses. If there were more than two responses, then I would need to add the counts for each possible response.</p>
-<p>Note that the <em>proportion</em> of “over” responses is also a summary statistic (which is just the counts of “over” divided by the total number of responses). Another summary statistic could be the ratio of “over” responses (counts) to “under” responses. For example, one way people use summary statistics in reporting data is through statements like, “twice as many people prefer chunky peanut butter to smooth.”</p>
-<div id="no-mean-feat" class="section level4 unnumbered hasAnchor">
-<h4>No mean feat<a href="categories.html#no-mean-feat" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<blockquote>
-<p>Whenever someone reports a mean (another word for average) value of some set of data, that is also a summary statistic. Does it make sense to construct an average from responses that are either “over” or “under”? No, it doesn’t. That’s because {over, under} is a categorical response, and you can’t average over categories. Unless you’re trying to make fun of statistics with a puerile joke. Different versions of this joke appear: “the average American has one tit and one testicle.” At the risk of explaining the joke too much, here goes: Tits and testicles can certainly be treated as numerical data, and hence can be averaged. This joke hinges on the fact that the existence of testicles (or tits) is associated with a person’s sex, which is categorical and not numerical. Assuming that half of all Americans are female (roughly true), we can’t say that the average American is half male and half female. The real “punch” of this joke is to suggest that summary statistics about averages are just a bunch of nonsense. What do you think?</p>
-</blockquote>
-<p>This is about as much as we need to say about summary statistics for the time being. But they’ll be back.</p>
-</div>
-</div>
-<div id="checkpoint" class="section level3 unnumbered hasAnchor">
-<h3>Checkpoint<a href="categories.html#checkpoint" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>While focusing on the great toilet paper debate, we’ve managed to establish some important fundamental ideas.</p>
-<ul>
-<li><p>Dichotomous questions split people into two kinds, but only as long as it is actually possible for both answers to occur.</p></li>
-<li><p>In an alternate universe, people might give different answers than they do in this one. (Seriously, this is an important idea).</p></li>
-<li><p>Even when we casually refer to <em>people</em>, we may have a particular set of people, a population, in mind. Data about this population are likely to come from a sample, rather than from the whole population, and this fact introduces some uncertainty into claims about the whole population. Data science to the rescue!</p></li>
-<li><p>If we have types of people in mind, our questions ought to elicit fairly stable answers</p></li>
-<li><p>Clearly, we can ask people questions that prompt them to choose between more than two categories. But “two types of people” questions are more fun.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> I mean there are so many of them! So… does that mean that there really are two types of people? To answer this, we will need to get into another great debate.</p></li>
-</ul>
+<p>Now this last part is a bit of black magic, since I have not said anything about how one “fits” a tree, also known as a recursive partition, to data. But here it is. It can be done using a R package called <code>rpart</code> (for recursive partitioning).</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="expected-value.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb76-2"><a href="expected-value.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb76-3"><a href="expected-value.html#cb76-3" aria-hidden="true" tabindex="-1"></a>wheelan_tree <span class="ot">&lt;-</span> <span class="fu">rpart</span>(</span>
+<span id="cb76-4"><a href="expected-value.html#cb76-4" aria-hidden="true" tabindex="-1"></a>  Payout <span class="sc">~</span> Cure <span class="sc">+</span> Approved <span class="sc">+</span> First2Market, </span>
+<span id="cb76-5"><a href="expected-value.html#cb76-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wheelan_cancer, </span>
+<span id="cb76-6"><a href="expected-value.html#cb76-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;anova&quot;</span></span>
+<span id="cb76-7"><a href="expected-value.html#cb76-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Ta-da! Don’t believe me? Here is the tree.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="expected-value.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(wheelan_tree, <span class="at">type =</span> <span class="dv">5</span>, <span class="at">digits=</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="carpedatum_files/figure-html/unnamed-chunk-28-1.png" width="90%"  style="display: block; margin: auto;" /></p>
+<p>The leaf nodes at the bottom (rpart makes top-down trees) show the payout using scientific notation. I don’t know how to suppress that. You can see both the payout and the probability of the payout.</p>
+<p>Hopefully you can see that expected value is quite general. You could use this kind of thinking, for example, to estimate your future income based on decisions you can make about your life. Suppose you major in acting AND you get discovered on the streets of Greenwich Village AND your indie debut film leads to superstardom as the next Marvel superhero! But what if your indie debut never gets off the ground? What if you had majored in accounting instead? Maybe you went to work for a big investment bank, or perhaps it was just a small tax office. If you assign numbers to the scenario above, you can calculate the expected value of your college major in terms of earnings.</p>
+<p>Of course, there are no guarantees, only probabilities.</p>
 
+</div>
 </div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="3">
-<li id="fn3"><p>That was another unsubstantiated claim.<a href="categories.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<ol start="9">
+<li id="fn9"><p>0.5 * 9 - 0.5 * 3 = 3, so three dollars<a href="expected-value.html#fnref9" class="footnote-back">↩︎</a></p></li>
+<li id="fn10"><p>This is a metaphor that mathematicians actually use; the network of lines is a tree because it has no closed loops and there is one unique path to get from the beginning to any of the end-points, which are called leaf nodes.<a href="expected-value.html#fnref10" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -607,8 +633,8 @@ under
           </div>
         </div>
       </div>
-<a href="how-many-kinds-of-people-are-there.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dimensions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="betting-on-beer-or-ice-cream.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="is-the-system-fair.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

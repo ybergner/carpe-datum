@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 16 Gerrymandering | Carpe Datum</title>
+  <meta name="description" content="Chapter 16 Gerrymandering | Carpe Datum" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 16 Gerrymandering | Carpe Datum" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="ybergner/carpe-datum" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 16 Gerrymandering | Carpe Datum" />
+  
+  
+  
+
+<meta name="author" content="Yoav Bergner" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="nyc-covid-19-data.html"/>
+<link rel="next" href="sec:randomness.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Carpe Datum: Data Science for Life's Big Questions</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#caveat"><i class="fa fa-check"></i>Caveat</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#guiding-principles-in-this-book"><i class="fa fa-check"></i>Guiding principles in this book</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#question-driven"><i class="fa fa-check"></i>Question-driven</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#no-proofs"><i class="fa fa-check"></i>No proofs</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="how-many-kinds-of-people-are-there.html"><a href="how-many-kinds-of-people-are-there.html"><i class="fa fa-check"></i>How Many Kinds of People Are There?</a>
+<ul>
+<li class="chapter" data-level="" data-path="how-many-kinds-of-people-are-there.html"><a href="how-many-kinds-of-people-are-there.html#things-are-about-to-get-meta-right-from-the-start"><i class="fa fa-check"></i>Things are about to get meta right from the start</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="categories.html"><a href="categories.html"><i class="fa fa-check"></i><b>1</b> Categories, counts, and kinds</a>
+<ul>
+<li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#two-kinds-of-people"><i class="fa fa-check"></i>Two Kinds of People</a></li>
+<li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#samples-and-populations-a-statistical-caveat"><i class="fa fa-check"></i>Samples and Populations: A Statistical Caveat</a></li>
+<li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#a-psychological-caveat"><i class="fa fa-check"></i>A Psychological Caveat</a></li>
+<li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#summarizing-data"><i class="fa fa-check"></i>Summarizing data</a></li>
+<li class="chapter" data-level="" data-path="categories.html"><a href="categories.html#checkpoint"><i class="fa fa-check"></i>Checkpoint</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="dimensions.html"><a href="dimensions.html"><i class="fa fa-check"></i><b>2</b> Dimensions</a>
+<ul>
+<li class="chapter" data-level="" data-path="dimensions.html"><a href="dimensions.html#independence-association-and-contingency"><i class="fa fa-check"></i>Independence, Association, and Contingency</a></li>
+<li class="chapter" data-level="" data-path="dimensions.html"><a href="dimensions.html#latent-factors-and-measurement"><i class="fa fa-check"></i>Latent Factors and Measurement</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="test-indep.html"><a href="test-indep.html"><i class="fa fa-check"></i><b>3</b> Tests of independence: A first look starring alternate universes</a>
+<ul>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#rise-of-the-machines"><i class="fa fa-check"></i>Rise of the machines</a></li>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#hypothesis-testing-just-happened"><i class="fa fa-check"></i>Hypothesis testing just happened</a></li>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#caveats"><i class="fa fa-check"></i>Caveats</a></li>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#sampling-simulations-and-randomness"><i class="fa fa-check"></i>Sampling, simulations, and randomness</a>
+<ul>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#tossing-virtual-coins"><i class="fa fa-check"></i>Tossing (virtual) coins</a></li>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#but-some-observations-do-occur-more-than-others"><i class="fa fa-check"></i>But some observations <em>do</em> occur more than others</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="test-indep.html"><a href="test-indep.html#recap"><i class="fa fa-check"></i>Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="shades.html"><a href="shades.html"><i class="fa fa-check"></i><b>4</b> (An Infinite Number of) Shades of Gray (or Brown)</a>
+<ul>
+<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#poopiness"><i class="fa fa-check"></i>Poopiness</a>
+<ul>
+<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#mixtures"><i class="fa fa-check"></i>Mixtures</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#crappiness"><i class="fa fa-check"></i>Crappiness</a>
+<ul>
+<li class="chapter" data-level="" data-path="shades.html"><a href="shades.html#check-your-understanding"><i class="fa fa-check"></i>Check your understanding</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="cut-scores-and-abnormality.html"><a href="cut-scores-and-abnormality.html"><i class="fa fa-check"></i><b>5</b> Cut Scores and Abnormality</a></li>
+<li class="chapter" data-level="6" data-path="the-modal-american.html"><a href="the-modal-american.html"><i class="fa fa-check"></i><b>6</b> The Modal American</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-modal-american.html"><a href="the-modal-american.html#step-one-categories"><i class="fa fa-check"></i>Step one: categories</a></li>
+<li class="chapter" data-level="" data-path="the-modal-american.html"><a href="the-modal-american.html#step-two-contingency-table"><i class="fa fa-check"></i>Step two: contingency table</a></li>
+<li class="chapter" data-level="" data-path="the-modal-american.html"><a href="the-modal-american.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html"><i class="fa fa-check"></i><b>7</b> Sixteen Personalities or Five Factors?</a>
+<ul>
+<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#mbti"><i class="fa fa-check"></i>MBTI</a></li>
+<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#big-five"><i class="fa fa-check"></i>Big Five</a></li>
+<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#twenty-questions-about-extraversion"><i class="fa fa-check"></i>Twenty Questions (about Extraversion)</a></li>
+<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#but-whats-the-point"><i class="fa fa-check"></i>But what’s the point?</a></li>
+<li class="chapter" data-level="" data-path="sixteen-personalities-or-five-factors.html"><a href="sixteen-personalities-or-five-factors.html#recap-1"><i class="fa fa-check"></i>Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html"><i class="fa fa-check"></i><b>8</b> When and How Will You Die?</a>
+<ul>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#not-quite-death-but-um-rain"><i class="fa fa-check"></i>Not Quite Death, but, um… Rain?</a>
+<ul>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#stochastic-vs-deterministic-relationships"><i class="fa fa-check"></i>Stochastic vs Deterministic relationships</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#ways-of-thinking-about-probabilistic-statements"><i class="fa fa-check"></i>Ways of thinking about probabilistic statements</a>
+<ul>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#ensembles"><i class="fa fa-check"></i>Ensembles</a></li>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#degree-of-belief"><i class="fa fa-check"></i>Degree of belief</a></li>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#decisions"><i class="fa fa-check"></i>Decisions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="when-and-how-will-you-die.html"><a href="when-and-how-will-you-die.html#death"><i class="fa fa-check"></i>Death</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="conditional-death.html"><a href="conditional-death.html"><i class="fa fa-check"></i><b>9</b> Conditional Death</a>
+<ul>
+<li class="chapter" data-level="" data-path="conditional-death.html"><a href="conditional-death.html#how-does-the-death-simulation-work"><i class="fa fa-check"></i>How does the death (simulation) work?</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="somefacts.html"><a href="somefacts.html"><i class="fa fa-check"></i><b>10</b> Some facts about Probabilities</a>
+<ul>
+<li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#conditional-probabilities"><i class="fa fa-check"></i>Conditional Probabilities</a></li>
+<li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#conditional-death-again"><i class="fa fa-check"></i>Conditional death, again</a>
+<ul>
+<li class="chapter" data-level="" data-path="somefacts.html"><a href="somefacts.html#just-to-make-things-weird"><i class="fa fa-check"></i>Just to make things weird</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html"><i class="fa fa-check"></i><b>11</b> How You Will Die: Causes or Conditions?</a>
+<ul>
+<li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#causes-of-death-colloquially"><i class="fa fa-check"></i>Causes of death, colloquially</a></li>
+<li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#hold-my-beer"><i class="fa fa-check"></i>Hold my beer</a></li>
+<li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#non-deterministic-causation"><i class="fa fa-check"></i>Non-deterministic Causation</a></li>
+<li class="chapter" data-level="" data-path="how-you-will-die-causes-or-conditions.html"><a href="how-you-will-die-causes-or-conditions.html#testing-for-an-association-between-two-variables"><i class="fa fa-check"></i>Testing for an association between two variables</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="will-you-make-money.html"><a href="will-you-make-money.html"><i class="fa fa-check"></i>Will You Make Money?</a>
+<ul>
+<li class="chapter" data-level="" data-path="will-you-make-money.html"><a href="will-you-make-money.html#battle-of-the-bills"><i class="fa fa-check"></i>Battle of the Bills</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html"><i class="fa fa-check"></i><b>12</b> Betting on Beer (or Ice Cream)</a>
+<ul>
+<li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#how-do-statisticians-solve-problems-like-this"><i class="fa fa-check"></i>How do statisticians solve problems like this?</a>
+<ul>
+<li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#the-solution-by-counting-or-combinatorics"><i class="fa fa-check"></i>The solution by counting, or combinatorics</a></li>
+<li class="chapter" data-level="" data-path="betting-on-beer-or-ice-cream.html"><a href="betting-on-beer-or-ice-cream.html#the-solution-by-distribution-or-statistics"><i class="fa fa-check"></i>The solution by distribution, or statistics</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="expected-value.html"><a href="expected-value.html"><i class="fa fa-check"></i><b>13</b> Expected Value</a>
+<ul>
+<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#betting-on-ice-cream"><i class="fa fa-check"></i>Betting on ice cream</a>
+<ul>
+<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#by-the-statistical-power-of-grayskull"><i class="fa fa-check"></i>By the (Statistical) Power of Grayskull</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#betting-on-your-future"><i class="fa fa-check"></i>Betting on your Future</a>
+<ul>
+<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#why-why-why-multiply-ay-ay"><i class="fa fa-check"></i>Why why why multiply-ay-ay?</a></li>
+<li class="chapter" data-level="" data-path="expected-value.html"><a href="expected-value.html#where-do-branching-probabilities-come-from"><i class="fa fa-check"></i>Where do branching probabilities come from?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="is-the-system-fair.html"><a href="is-the-system-fair.html"><i class="fa fa-check"></i>Is the System Fair?</a></li>
+<li class="chapter" data-level="14" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html"><i class="fa fa-check"></i><b>14</b> Differences in athletics</a>
+<ul>
+<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#are-professional-basketball-players-taller"><i class="fa fa-check"></i>Are professional basketball players taller?</a>
+<ul>
+<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#none-of-this-is-surprising"><i class="fa fa-check"></i>None of this is surprising</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#surprising-differences"><i class="fa fa-check"></i>Surprising differences</a></li>
+<li class="chapter" data-level="" data-path="differences-in-athletics.html"><a href="differences-in-athletics.html#fairness-on-trial-trans-athletes"><i class="fa fa-check"></i>Fairness on trial: trans athletes</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html"><i class="fa fa-check"></i><b>15</b> NYC COVID-19 Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#prologue"><i class="fa fa-check"></i>Prologue</a></li>
+<li class="chapter" data-level="15.1" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#part1"><i class="fa fa-check"></i><b>15.1</b> COVID NYC</a>
+<ul>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#getting-some-data"><i class="fa fa-check"></i>Getting some data</a></li>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#local-data-on-covid-from-the-city-andor-state"><i class="fa fa-check"></i>Local data on COVID from the city and/or state</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#part2"><i class="fa fa-check"></i><b>15.2</b> Getting started with US Census data</a>
+<ul>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#census-variables"><i class="fa fa-check"></i>Census Variables</a></li>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#geography-units"><i class="fa fa-check"></i>Geography Units</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#part3"><i class="fa fa-check"></i><b>15.3</b> More (and messier) Census data</a>
+<ul>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#exploring-the-acs-data"><i class="fa fa-check"></i>Exploring the ACS data</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#zipcode"><i class="fa fa-check"></i><b>15.4</b> Zipcode tabulation area</a>
+<ul>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#some-more-variables-to-play-with"><i class="fa fa-check"></i>Some more variables to play with</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#mapviz"><i class="fa fa-check"></i><b>15.5</b> Visualizing data on maps</a>
+<ul>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#shapefiles"><i class="fa fa-check"></i>Shapefiles</a></li>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#coloring-in-the-shapes"><i class="fa fa-check"></i>Coloring in the shapes</a></li>
+<li class="chapter" data-level="" data-path="nyc-covid-19-data.html"><a href="nyc-covid-19-data.html#scatterplots"><i class="fa fa-check"></i>Scatterplots</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="gerrymandering.html"><a href="gerrymandering.html"><i class="fa fa-check"></i><b>16</b> Gerrymandering</a>
+<ul>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#how-to-play-the-gerrymandering-game"><i class="fa fa-check"></i>How to play the gerrymandering game</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#the-politics-of-gerrymandering"><i class="fa fa-check"></i>The politics of gerrymandering</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#the-math-of-gerrymandering"><i class="fa fa-check"></i>The math of gerrymandering</a>
+<ul>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#unfairness-as-deviation-from-expected-outcomes-under-fair-play"><i class="fa fa-check"></i>Unfairness as deviation from expected outcomes under fair play</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#this-just-might-work"><i class="fa fa-check"></i>This just might work</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#the-combinatorics-of-gerrymandering"><i class="fa fa-check"></i>The combinatorics of gerrymandering</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#move-over-brute-force-hello-random-walk-sampling"><i class="fa fa-check"></i>Move over brute force, hello random walk sampling</a></li>
+<li class="chapter" data-level="" data-path="gerrymandering.html"><a href="gerrymandering.html#seat-count-is-not-the-only-or-most-common-outcome-measure"><i class="fa fa-check"></i>Seat-count is not the only (or most common) outcome measure</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="sec:randomness.html"><a href="sec:randomness.html"><i class="fa fa-check"></i><b>A</b> Randomness</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="sec:randomness.html"><a href="sec:randomness.html#defining-random-processes"><i class="fa fa-check"></i><b>A.1</b> Defining random processes</a></li>
+<li class="chapter" data-level="A.2" data-path="sec:randomness.html"><a href="sec:randomness.html#predictions-about-random-events"><i class="fa fa-check"></i><b>A.2</b> Predictions about random events</a></li>
+<li class="chapter" data-level="A.3" data-path="sec:randomness.html"><a href="sec:randomness.html#modification-for-continuous-observations"><i class="fa fa-check"></i><b>A.3</b> Modification for continuous observations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Carpe Datum</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="gerrymandering" class="section level1 hasAnchor" number="16">
+<h1><span class="header-section-number">Chapter 16</span> Gerrymandering<a href="gerrymandering.html#gerrymandering" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Gerrymandering is an awesomely complex topic at the intersection of politics and data science. Almost everyone seems to be unhappy about it, and no one really knows how to fix it. That is, without a radical revision of how elections work in the United States. In this chapter, we’ll take some steps to understand the problem and what data science can and cannot do to shed light on a possible solution.</p>
+<p>We’ll spend a lot of time talking about gerrymandering in a simplified model. Namely, we’ll imagine that maps are squares made up of smaller squares, representing units of voters, and that there are two parties, represented by different colors or letters. While it is true that the simple models we start with are oversimplified, don’t necessarily take this to mean that they can’t help us to understand genuinely complex phenomena. Sometimes, simplicity is a function of grain size. As in, if you zoom in on a photograph, eventually you will see the individual pixels. And these are simple dots of color. But if you zoom back out again, the full complexity of the image is there. It is just built up from a lot of simple parts. So if we can understand gerrymandering on a small/microscopic scale, the full-scale problem might just be bigger rather than fundamentally different.</p>
+<div id="how-to-play-the-gerrymandering-game" class="section level2 unnumbered hasAnchor">
+<h2>How to play the gerrymandering game<a href="gerrymandering.html#how-to-play-the-gerrymandering-game" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:gerrymandering-simple"></span>
+<img src="images/gerrymandering_simple.jpeg" alt="The effect of moving districts around" width="90%" />
+<p class="caption">
+Figure 16.1: The effect of moving districts around
+</p>
+</div>
+<p>Figure <a href="gerrymandering.html#fig:gerrymandering-simple">16.1</a> helps to explain how gerrymandering works in a simple case. There is nothing better for developing an intuition about “packing and cracking” voters as doing it yourself, and there are several online simulations that let you do just that. I’m personally a fan of this one: <a href="http://polytrope.com/district/" class="uri">http://polytrope.com/district/</a></p>
+<p>In this first illustration, we can see three ways to divide 50 people into five districts. The first two are nicely shaped but have different outcomes. In the first, the representation is perfectly proportional. In the second, red voters win no seats at all. In the third, red wins 3 out of 5 districts, or 60% of the seats, even though only 40% of the voters belong to the red party. It is in the third set that the boundaries appear to be deliberately manipulated. The blue voters are either “packed” into long U-shaped districts (along the right side) where many of their votes are wasted. Or they are “cracked” into just-under-majority-sized chunks in the districts on the left-side, where, again, their votes are wasted. In this way, red overcomes a minority of the population to win a majority of the seats.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:gerrymandering-simple2"></span>
+<img src="images/gerrymandering2.jpeg" alt="The effect of moving people around" width="90%" />
+<p class="caption">
+Figure 16.2: The effect of moving people around
+</p>
+</div>
+<p>Figure <a href="gerrymandering.html#fig:gerrymandering-simple2">16.2</a> reproduces another simple illustration, used by Moon Duchin, one of the leading figures contributing to the understanding of the mathematics of gerrymandering (see her organization’s work at <a href="https://mggg.org/" class="uri">https://mggg.org/</a> and also find her recorded talks on YouTube). Suppose there are two kinds of voters in a state, chartreuse and mauve. And suppose the state population is 59% mauve and 41% chartreuse. As Duchin shows, in a situation with five districts, numbered I-V using Roman numerals, the minority party may end up with anywhere between 0% and 80% of the representation (0 to 4 seats) in state government.</p>
+<p>You can imagine that you took all of the chartreuse people in district V and moved one quarter of them each to districts I through IV. Since the districts have a fixed population size, you then moved the excess mauve voters into district V to replace the chartreuse voters you took out.</p>
+<p>A few things to note about this second illustration, in combination with the first. For one, the color choices don’t matter. Okay, that’s not really an important point. First important point: you can change outcomes by moving districts or by moving people. This is <em>actually</em> important. Not because politicians trying to get re-elected will force people to move. But because people do move on their own, and because they also sometimes clump together geographically. For example, big city and college-town dwellers are more likely to be Democrats. In this sense, they are naturally self-packed, even though no one forced it.</p>
+<p>In the first illustration, we see that you can draw funny shapes to tilt the outcomes of the election in favor of red. In the second illustration we see that the shapes remain the same, but the outcomes still vary depending on where the chartreuse and mauve voters are. In other words, the effect of district boundaries on outcomes is an <em>interaction</em> or combination of the shape of the boundaries and the actual location of the voters themselves.</p>
+<div class="tipblock">
+<p>It is important to pause here to note that proportional representation, while appealing, is not the opposite of gerrymandering. As Duchin says, “the opposite of gerrymandering is ‘not gerrymandering.’” We’ll come back to see the wisdom of that remark. Critically, there are times when the geographical distribution of voters in the minority party may be such that, under current voting systems, they will not win proportional representation. Even if there is no gerrymandering at all.</p>
+</div>
+</div>
+<div id="the-politics-of-gerrymandering" class="section level2 unnumbered hasAnchor">
+<h2>The politics of gerrymandering<a href="gerrymandering.html#the-politics-of-gerrymandering" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This section of the chapter is going to be a short aside before we move on to the math of gerrymandering. However, it is important to note that there are in fact various legal and constitutional <strong>redistricting criteria</strong>, or constraints, on drawing district borders that take precedence over other optimization considerations. These can include obvious things like contiguity—districts should be connected—and preservation of town or county boundaries. And they can include more subtle factors like preservation of communities of interest or even the deliberate pursuit of competitive elections. There are federal regulations, for example regarding equal representation and race-based discrimination. And, on top of that, each state also makes their own rules.</p>
+<p>The National Conference of State Legislatures describes where each state stands, on both legislative and congressional districts, here: <a href="https://www.ncsl.org/research/redistricting/redistricting-criteria.aspx" class="uri">https://www.ncsl.org/research/redistricting/redistricting-criteria.aspx</a></p>
+<p>The data journalists at fivethirtyeight.com have produced an excellent podcast series exploring different cases studies in Wisconsin, North Carolina, Arizona, and California. It can be found, along with other resources, here:
+<a href="https://fivethirtyeight.com/tag/the-gerrymandering-project/" class="uri">https://fivethirtyeight.com/tag/the-gerrymandering-project/</a></p>
+<p>And now back to the math…</p>
+</div>
+<div id="the-math-of-gerrymandering" class="section level2 unnumbered hasAnchor">
+<h2>The math of gerrymandering<a href="gerrymandering.html#the-math-of-gerrymandering" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This is the fundamental question for the math, or data science, of gerrymandering:</p>
+<p><em>Is there a quantitative method that can help someone (e.g., a legistlature, independent commission, or a court) decide whether a districting plan is fair or unfair?</em></p>
+<p>After this much time, we have come to see that judging a district as unreasonable just because it has an odd shape is not a reliable formula. People like district boundaries to be more like a blob than a tentacle-monster. But (a) sometimes geographical considerations force irregular shapes, and (b) irregular shapes are not necessarily unfair to any group of voters. Which brings us to the real issue, what do we mean by fair? A lot of mathematical and legal thought has been given to this, but we’re going to limit ourselves to one particular idea.</p>
+<div id="unfairness-as-deviation-from-expected-outcomes-under-fair-play" class="section level3 unnumbered hasAnchor">
+<h3>Unfairness as deviation from expected outcomes under fair play<a href="gerrymandering.html#unfairness-as-deviation-from-expected-outcomes-under-fair-play" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the previous chapters, we have looked at disparate outcomes in athletics (NBA heights, NHL birthdays, sex differences in running times) and health (e.g., COVID-19 case and fatality rates by age, ethnicity, or socioeconomic status). We came to accept that some disparities might be considered “fair play” or even “tough luck”, while others might be evidence of bias.
+We would like to apply the same kind of thinking to the analysis of gerrymandering.</p>
+<p>Let’s start by considering the case of Massachusetts, which is divided into 9 congressional districts. Massachusetts is heavily Democratic; Republicans amount to about 30% of voters. You might think that a fair outcome would be if Republican candidates won approximately 30% of the 9 congressional seats in Massachusetts. Perhaps two or three. In fact, all 9 are held by Democrats, and a Republican has not won a congressional election in Massachusetts since 1993 (although the governor’s office has frequently been held by Republicans). What gives? Is this proof that some kind of gerrymandering is going on? The answer is no. It turns out that <em>there is no way to draw districts in Massachusetts (that satisfy federal and state redistricting criteria) such that Republicans would win a congressional seat.</em> The Republican voters are simply too spread out. They are not packed tightly enough to draw a legal district that is majority Republican. (It takes some pretty cool computational methods to be able to answer this question definitively, as we shall see later).</p>
+<p>The situation for Republican voters in Massachusetts, under current voting laws, may indeed be tough luck. But if you have followed the legal challenges in states like Wisconsin, Maryland, and North Carolina, you know that there are accusations of unfair play. In those cases, someone is saying that the districting plan itself is to blame for an outcome that was not necessarily expected based only on redistricting criteria and voter geographic distribution. The lawsuits charge that legislators have put their thumbs on the scale to tip the outcomes of elections in their party’s favor, unfairly diluting the voting power of individuals.</p>
+<p>It feels like the following might be, at least in principle, an approach to the our fundamental question. Suppose we know where the voters are. We also know how many districts we have to draw. The districts, by federal law, have to be equal-in-population. There may be other requirements. If we can enumerate all of the legal district assignments, we can get a distribution of election outcomes. (Alternate universes, anyone?) If we find what “typical” outcomes look like when there is no agenda involved, we’ll be able to recognize highly unusual outcomes. Maybe this can be a basis for judging, and possibly ruling out, what seem to be obviously biased districting plans.</p>
+<p>Let’s try it! We’ll start small. You’ll see why.</p>
+</div>
+<div id="this-just-might-work" class="section level3 unnumbered hasAnchor">
+<h3>This just might work<a href="gerrymandering.html#this-just-might-work" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Say that there are 4006 possible district assignments or plans. What is the outcome of the election in each of these 4006 plans, given some particular voter geographical distribution?</p>
+<p>Why did I choose 4006? It turns out that this is exactly how many ways you can divide a 5x5 grid into 5 districts. I should add that this number includes the following constraints: districts must be equal in size (5 units each) and be connected and fully reachable by moving up/down and left/right on the grid map. No diagonal hops or other jumps should be required to stay within a district. (If you are conversant with chess as a thinking tool, it might help that mathematicians refer to these shapes on the grid as rook-contiguous; it is also possible to consider queen-contiguous districts, but we won’t. If you don’t play chess, don’t worry about it.)</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:gerrymandering-5x5-1"></span>
+<img src="images/gerrymandering5x5_1.jpeg" alt="Two possible maps dividing a 5x5 grid into 5 districts. The districts are equal in size and rook-contiguous. The map on the right can be obtained from the map on the left by swapping the distict assignments of the two starred squares." width="80%" />
+<p class="caption">
+Figure 16.3: Two possible maps dividing a 5x5 grid into 5 districts. The districts are equal in size and rook-contiguous. The map on the right can be obtained from the map on the left by swapping the distict assignments of the two starred squares.
+</p>
+</div>
+<p>Figure <a href="gerrymandering.html#fig:gerrymandering-5x5-1">16.3</a> shows two of the 4006 possible ways to divide a 5x5 grid into 5 equal-sized, contiguous districts. It would take up a lot of space to show them all, but you can see how to build them step by step here: <a href="https://mggg.org/metagraph/5x5.html" class="uri">https://mggg.org/metagraph/5x5.html</a></p>
+<p>The two plans I’ve shown have a special relationship, which will become important later. The plan on the right can be obtained from the plan on the left by swapping the distict assignments of the two starred squares. What I mean is, we assign one pink square to yellow and vice versa. We can think of the plans as being one swap away from one another, since a swap always involves trading one square. Note that not all swaps would be “legal”, because some would make the resulting districts no longer contiguous. That’s all we want to say about the relationship between these two plans for now. Let’s move on to thinking about how each district plan actually matters in terms of election outcomes.</p>
+<p>The consequences of a particular district map depends of course on the geographical location of the actual voters. If each square represents one unit of voters, one possible scenario for locating the voters is shown in Figure <a href="gerrymandering.html#fig:gerrymandering-5x5-2">16.4</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:gerrymandering-5x5-2"></span>
+<img src="images/gerrymandering5x5_2.jpeg" alt="A possible map of voters, labeled X and O on a 5x5 grid. The map is the same on both sides. It is shown twice to maintain the spatial relationship between the related figures above and below." width="80%" />
+<p class="caption">
+Figure 16.4: A possible map of voters, labeled X and O on a 5x5 grid. The map is the same on both sides. It is shown twice to maintain the spatial relationship between the related figures above and below.
+</p>
+</div>
+<p>Here we have a geographic distribution of 13 X-voters and 12 O-voters. By removing the color-boundaries of the districts, we can imagine that the people/voters live where they live without regard to political boundaries. This is sometimes true, but not necessarily. (Can you think of reasons why voters aligned with the same party might deliberately live within certain districts?) In any case, we will treat this geographical distribution as fact and fixed.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:gerrymandering-5x5-3"></span>
+<img src="images/gerrymandering5x5_3.jpeg" alt="Two district maps, as before, now with the same underlying voter distribution" width="80%" />
+<p class="caption">
+Figure 16.5: Two district maps, as before, now with the same underlying voter distribution
+</p>
+</div>
+<p>Let’s now add the boundaries back, so we can see the voters and the boundaries at the same time. These are shown in Figure <a href="gerrymandering.html#fig:gerrymandering-5x5-3">16.5</a>. If an election were held in each these five districts, who would win? If you look at each mapping, you can see whether X- or O-voters are the majority. To make it easier to focus on the outcome, which you probably were able to figure out on your own, I’ve recolored the district boundaries using only orange and shades of gray in Figure <a href="gerrymandering.html#fig:gerrymandering-5x5-4">16.6</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:gerrymandering-5x5-4"></span>
+<img src="images/gerrymandering5x5_4.jpeg" alt="Two district maps, as before. The majority-X districts are now colored orange, while the majority O districts are shades of gray." width="80%" />
+<p class="caption">
+Figure 16.6: Two district maps, as before. The majority-X districts are now colored orange, while the majority O districts are shades of gray.
+</p>
+</div>
+<p>Let’s recap what we know so far. We’ve looked at two (out of 4006) possible plans which divide a 5x5 grid into 5 districts. We recognize that districts can be redrawn, and that these two district assignments are in a sense “close” to each other, because one swap along neighboring districts can turn one plan into the other. We then fixed in place the distribution of X- and O-type voters. (This is where the voters are, and we won’t try to move them). We see that in the district plan on the left, X-voters win one seat out of five, while in the district plan on the right, X wins two seats. We stand back and scratch our heads, because X-voters actually form a small majority (13 out of 25), but they have a minority of seats in both of these possible districting plans.</p>
+<p>Is the map on the left a gerrymander? The map on the right? How would we decide? There are 4006 alternative plans, including the two shown above. We can ask: given that the voters are where they are, what would the election outcomes be under all 4006 plans? This number may seem large if you were doing the work by hand, but it is a piece of cake for a computer. The answer is shown in Figure <a href="gerrymandering.html#fig:gerrymandering-5x5-5">16.7</a>. This is a screen-capture from the mggg.org interactive, which I used to cook up this example.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:gerrymandering-5x5-5"></span>
+<img src="images/gerrymandering5x5_5.jpeg" alt="A barplot/histogram showing counts of the election outcomes for all 4006 possible plans, given the geographic distribution of voters in Figure 16.4" width="80%" />
+<p class="caption">
+Figure 16.7: A barplot/histogram showing counts of the election outcomes for all 4006 possible plans, given the geographic distribution of voters in Figure <a href="gerrymandering.html#fig:gerrymandering-5x5-2">16.4</a>
+</p>
+</div>
+<p>As shown in Figure <a href="gerrymandering.html#fig:gerrymandering-5x5-5">16.7</a>, X-voters can win anywhere from 1 to 4 seats. There is no way to draw a plan in which they win all seats. Nor is there a way to draw a plan in which they win none. Note that the modal outcome (the most common one) is two seats. Even though X has a slight majority, they will win just two seats under 56% of the possible plans and three seats in 38% of the plans. This suggests that maybe the X-voters self-pack, to their own electoral detriment. Also interesting, the outcome of the left plan, in which X wins only one seat, happens in 194 out of 4006 possible plans. This is just under 5%. Because X-voters self-pack, it is easier to find a plan in which they win one seat (194 possibilities) than a plan in which they win four seats (61 possibilities). But both of those extremes are pretty rare, and either of them might set off our gerrymander-alarm. A legislature dominated by the O party might try to enact a plan like the one on the left. A legislature dominated by the X party might try to enact one in which X wins four seats. (Want to find it? You can try using the mggg.org interactive linked above to recreate the voter distribution. You will substitute hearts and clubs for Xs and Os).</p>
+</div>
+<div id="the-combinatorics-of-gerrymandering" class="section level3 unnumbered hasAnchor">
+<h3>The combinatorics of gerrymandering<a href="gerrymandering.html#the-combinatorics-of-gerrymandering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Enumerating the district plans, computing outcomes based on geographical voter distribution, and looking for outliers seems like a good idea! Unfortunately, there’s a catch. Fortunately, there’s a potential solution to the catch. First, though, the catch.</p>
+<p>So, a 5x5 grid is obviously too simple. But we’re using computers, right? We should be able to make larger grids that are big enough to simulate real districts. Right? Unfortunately, the combinatorics<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> is not on our side. The sheer number of possible districting plans grows very large, very fast.</p>
+<p>If instead of a 5x5 grid, we used a 7x7 grid and divided it into 7 districts, there would be 158,753,814 possible ways to do it. That’s bad but maybe not so bad, for modern computers. For a 9x9 grid into 9 districts, however, the number is 706,152,947,468,301. That’s 706 trillion. For 10x10 into 10, we don’t even know the answer. For real. A cluster of computers at MIT crashed after a month of brute force computation before it finished enumerating all of the possibilities. Regardless of the exact number, we know that it’s too big. We just can’t expect to simulate all possible outcomes of an election even for a model as small as 10x10. (More numbers, including counts of plans where the district populations are not exactly equal, can be found here, along with code links: <a href="https://mggg.org/table.html" class="uri">https://mggg.org/table.html</a>)</p>
+<p>For a realistic context, consider the fact that in the state of Pennsylvania, there are over 9000 precincts (think of a 95 x 95 grid), which must be cobbled together into not only 18 congressional districts but also 50 state senate districts and 203 state house districts. The number of possible divisions is staggering.</p>
+<p>So this is the catch. It is computationally intractable to simulate all of the districts. I told you that there was a potential solution, though.</p>
+</div>
+<div id="move-over-brute-force-hello-random-walk-sampling" class="section level3 unnumbered hasAnchor">
+<h3>Move over brute force, hello random walk sampling<a href="gerrymandering.html#move-over-brute-force-hello-random-walk-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The main idea of sampling in statistics is that your don’t have to have all the data all the time. If you want to get a good sense of how a variable is distributed in the population, it often suffices to get a reasonably large and representative sample. Opinion polls often have sample sizes of about 1000, and the reported margin of error is small (within a few percent). In our simulation studies, we have even used simulated samples. For example, in the beer taste test. If it were true that Schlitz and Michelob taste the same, we can make confident predictions about the range of outcomes of a taste-tester sample of 100. So the first idea we want to carry over to the math of gerrymandering is the idea of sampling from the very large space of district plans.</p>
+<p>This does not solve our problem, though, because generating valid district plans from scratch and automatically is actually not that easy. For example, I can’t, in the case of the 5x5 grid, choose 5 squares at random and expect them to form a legal, contiguous district. They might just be sprinkled around the map. What I can do, though, is start with a legal district plan and turn it into another legal district plan, one swap at a time.</p>
+<p>Recall Figure <a href="gerrymandering.html#fig:gerrymandering-5x5-1">16.3</a>. There we saw a swap between neighboring districts that changed one plan into another plan. Imagine that we keep this process moving along. In each turn, we pick two districts at random, see if there is a legal swap that can be made, and, if so, make the swap. In the process, we will keep sampling from the set of district plans.</p>
+<p>The method of taking one swap step (in a random direction) after another is called a random walk. The outcome of (part of) a random walk can be seen animated here: <a href="https://mggg.org/metagraph/7x7.html" class="uri">https://mggg.org/metagraph/7x7.html</a></p>
+<p><img src="https://media.giphy.com/media/dvu5MNCWSxDeRCdsa9/giphy.gif" alt="animated gif of 7x7 grid with 7 districts random walk" width="250" height="250"/></p>
+<p>To be completely fair, this method of sampling is not obviously a random sample from the set of all district plans. Each district plan that we visit was conditional on the last plan we had. We had a random choice of which step to take, but that still excluded a huge number of plans that were more than one swap-step away. So you would be totally right to ask whether taking each step as a sample of district plans is a legitimate way to sample from all of the possibilities.<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a></p>
+<p>This is actually a profound mathematical question in all instances of <em>Markov Chain Monte Carlo</em>, which is the fancy term for random walk sampling. Namely, we want to know whether the “chain”—the sequence of results we have visited on our randomw walk—is representative of the whole distribution.</p>
+<p>There are a few ways to try to answer this. One of the simplest ways is to start the random walk multiple times from the same and different starting points. Maybe we take 10,000 steps each time we start. We will have visited 10,000 district plans on our chain. We count the number of seats won by each party and make a histogram. We then repeat this again and again with different starting configurations. If the distribution of outcomes from the different chains are similar to one another, then it is plausible that the chains are indeed representative of the whole set of possible plans.</p>
+<p>So here’s the update of our original idea. Rather than enumerate all possible district plans, we will use random walk sampling to find the distribution of election outcomes. We can do this with simple models first, like 10x10 grids, to convince ourselves that it works (it does!). And then we can do it with real data. Here is an example of data submitted as part of an <em>amicus brief</em> submitted by mathematicians (and lawyers) to the Supreme Court in Rucho v. Common Cause. The figure concerns two districts in North Carolina, under random walk samples of alternative district boundaries (source: <a href="https://mggg.org/SCOTUS-MathBrief.pdf" class="uri">https://mggg.org/SCOTUS-MathBrief.pdf</a>)</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:amicus-NC"></span>
+<img src="images/amicus_NCdist.png" alt="Figures submitted in the mathematicians' brief to the Supreme Court in Rucho v. Common Cause" width="70%" />
+<p class="caption">
+Figure 16.8: Figures submitted in the mathematicians’ brief to the Supreme Court in Rucho v. Common Cause
+</p>
+</div>
+<p>North Carolina Districts 10 and 11 both tend toward small Democratic majorities under most plans that conform to the rules. These “random” alternate plans are represented by the light blue distribution. The horizontal axis shows the DEM vote share in the district, which varies if the district borders are altered. The orange and purple dots show the vote share under plans created by Republican legislatures in 2012 and 2016. In these plans, the Democrat voters are “cracked” in District 10 to minority status and “packed” in District 11, so that their votes are diluted.</p>
+<!-- #### Caveat No. 1: It's still more complicated because of incomplete data {-} -->
+<!-- Looks convincing -->
+<!-- I'll be brief in delivering the bad news. The simple models we have discussed so far assume that we know where the voters live (Xs and Os, chartreuse and mauve, every person is a square!). We don't. Even if the census were perfect, party affiliation is not a census question. The quality of available data about voters vary widely by state, district, and municipality. At best, we know the proportion of votes from a particular polling place (where you vote). Unfortunately we don't know who voted there, if that person moved, or that polling place will even draw voters from the same blocks next election. Municipal polling place assignments change; this is controlled by municipalities, and records are not necessarily easy to come by.  -->
+<!-- Because we have only approximate information about where the actual voters live at any given time, one of the ways data scientists look for irregular outcomes is by comparing them to actual outcomes in past elections.  -->
+<!-- Finally,  -->
+</div>
+<div id="seat-count-is-not-the-only-or-most-common-outcome-measure" class="section level3 unnumbered hasAnchor">
+<h3>Seat-count is not the only (or most common) outcome measure<a href="gerrymandering.html#seat-count-is-not-the-only-or-most-common-outcome-measure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For most of this chapter we looked at simple models and simple outcomes, namely total seat count in some representative government body. As you can see in Figure <a href="gerrymandering.html#fig:amicus-NC">16.8</a>, however, total seat count is not the only way to look at it. In fact, in trying to provide evidence about gerrymandering with respect to a single district, total seat count does not even make sense. Democratic vote share does.</p>
+<p>There are several measures that can account for the effect of diluting vote share through deliberate manipulation of district borders. Sam Wang, Princeton neuroscientist and Director of the Electoral Innovation Lab, writes, “To distinguish the effects of gerrymandering from happenstance, courts can try one of several possible objective measurements, all based on district-level returns, including the lopsided-averages test, the efficiency gap, and partisan bias.”</p>
+<p>You can read more about these different measures in Wang’s writings here:</p>
+<ul>
+<li><a href="https://www.theatlantic.com/ideas/archive/2019/03/how-courts-can-objectively-measure-gerrymandering/585574/" class="uri">https://www.theatlantic.com/ideas/archive/2019/03/how-courts-can-objectively-measure-gerrymandering/585574/</a></li>
+<li><a href="https://web.math.princeton.edu/~sswang/wang16_ElectionLawJournal_gerrymandering-MD-WI_.pdf" class="uri">https://web.math.princeton.edu/~sswang/wang16_ElectionLawJournal_gerrymandering-MD-WI_.pdf</a></li>
+</ul>
+<p>Because the problem is complex, mathematicians appreciate the need for multiple measures, each of which may be sensitive to different kinds of discrepancies. At the same time, having multiple measures can make arguments more complicated in court. Judges are not mathematicians. But if the math is clear, they may be willing to consider it. Data scientists and mathematicians are still working on improving communication to the public and the courts. Convergent evidence—when multiple types of quantitative analysis lead to the same conclusion—has been persuasive in getting judges to reject plans in lower courts. For the time being, though, the Supreme Court of the United States is staying out of it.</p>
+
+</div>
+</div>
+</div>
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="12">
+<li id="fn12"><p>The branch of mathematics dealing with combinations of objects belonging to a finite set in accordance with certain constraints, such as those of graph theory.<a href="gerrymandering.html#fnref12" class="footnote-back">↩︎</a></p></li>
+<li id="fn13"><p>Consider the following counterexample. Suppose I want to sample NYU students. The way I do this is I find a student at random, ask them my question, and then ask them if they can recommend a friend of theirs. I then ask the same question to the friend and, as before, ask them to recommend a friend. Each person may choose their recommended friend at random. And so, in a sense, this is a random walk. However, I would be very unlikely to get a random sample of NYU students this way. I may get a random sample of a particular social group, but I may easily get stuck in one “part” of NYU. This would be a case where my random walk is not sampling adequately from the whole population.<a href="gerrymandering.html#fnref13" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="nyc-covid-19-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sec:randomness.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["carpedatum.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

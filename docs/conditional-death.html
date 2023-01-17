@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Categories, counts, and kinds | Carpe Datum</title>
-  <meta name="description" content="Chapter 1 Categories, counts, and kinds | Carpe Datum" />
+  <title>Chapter 9 Conditional Death | Carpe Datum</title>
+  <meta name="description" content="Chapter 9 Conditional Death | Carpe Datum" />
   <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Categories, counts, and kinds | Carpe Datum" />
+  <meta property="og:title" content="Chapter 9 Conditional Death | Carpe Datum" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="ybergner/carpe-datum" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Categories, counts, and kinds | Carpe Datum" />
+  <meta name="twitter:title" content="Chapter 9 Conditional Death | Carpe Datum" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="how-many-kinds-of-people-are-there.html"/>
-<link rel="next" href="dimensions.html"/>
+<link rel="prev" href="when-and-how-will-you-die.html"/>
+<link rel="next" href="somefacts.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -356,259 +356,334 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="categories" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Categories, counts, and kinds<a href="categories.html#categories" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="two-kinds-of-people" class="section level3 unnumbered hasAnchor">
-<h3>Two Kinds of People<a href="categories.html#two-kinds-of-people" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>“There are two kinds of people… which one are you?” questions have become something of an internet meme, particulary with the categorizations represented graphically or pictorially. There is a whole <a href="https://2kindsofpeople.tumblr.com/">blog devoted to them by João Rocha</a>. The images in Figure <a href="categories.html#fig:tp-fig">1.1</a> probably need no explanation, as they concern the great <a href="https://en.wikipedia.org/wiki/Toilet_paper_orientation">toilet paper orientation</a> debate.</p>
-
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tp-fig"></span>
-<img src="images/Toilet_paper_orientation_overunder.png" alt="The great debate. Source Wikimedia Commons User:Elya" width="90%" />
+<div id="conditional-death" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Conditional Death<a href="conditional-death.html#conditional-death" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="how-does-the-death-simulation-work" class="section level3 unnumbered hasAnchor">
+<h3>How does the death (simulation) work?<a href="conditional-death.html#how-does-the-death-simulation-work" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The Flowing Data animated visualization is based on data collected in “life tables”, which can be found online from sources like the National Center for Health Statistics (NCHS) and the Social Security Administration (SSA). Different life tables are produced every year, as life expectancy continues to evolve along with changes in health science and nutrition. Figure <a href="conditional-death.html#fig:life-duration">9.1</a> plots data for age-at-death (for Americans) as of 2010. There is a bar for each age from 0 to 120, and the height of each bar represents a count of deaths at that age per 100,000 people.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:life-duration"></span>
+<img src="carpedatum_files/figure-html/life-duration-1.png" alt="How long Americans were living in 2010" width="90%"  />
 <p class="caption">
-Figure 1.1: The great debate. Source <a href="https://commons.wikimedia.org/wiki/File:Toilet_paper_orientation_over.jpg">Wikimedia Commons User:Elya</a>
+Figure 9.1: How long Americans were living in 2010
 </p>
 </div>
-<p>Toilet paper orientation is a distinguishing <strong>test question</strong> that separates people into one of two “kinds” (or “types” or “categories”; sometimes English has several words that are used interchangeably). A fancy word for this “splitting into two” is dichotomy (die-COT-uh-mee), from the Greek. A <strong>dichotomous question</strong> has two possible answers. Here, you choose one way to orient the roll or the other. Let’s call this roll choice “over” (shown on left) or “under” (shown on right). Perhaps you have debated which is better with a friend or family member. In any case, armed with this particular test question, we can go out and collect some data.</p>
-<table class="table table-striped table" style="width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:tp-table">Table 1.1: </span>How people roll
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-count
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-over
-</td>
-<td style="text-align:right;">
-23
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-under
-</td>
-<td style="text-align:right;">
-17
-</td>
-</tr>
-</tbody>
-</table>
-<p>I went ahead and asked 40 people in Washington Square Park in New York City which kind of person they were, and the results are shown in Table <a href="categories.html#tab:tp-table">1.1</a>. This being a book about data science, you might think I’m going to start calculating proportions right away, for example by saying that 57.5% of New Yorkers are over-hangers.
-Nope. Although you should be able to figure out that proportion conversion, it is not the point I want to focus on right now.</p>
-<p>That point I want to focus on is that, based on our data, there <em>are</em> indeed two kinds of people here. If, for example, everyone in the world were an under-hanger (heaven forbid), then I couldn’t very well say that there were two kinds of people in this world. At least not with regard to toilet paper orientation. It would be like if I presented you with the data in Table <a href="categories.html#tab:dumb-table">1.2</a>. Looking at that, I can’t very well convince you that there are two kinds of people.</p>
-<table class="table table-striped table" style="width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:dumb-table">Table 1.2: </span>Kinds of people in Washington Square
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-count
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-human
-</td>
-<td style="text-align:right;">
-40
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-not human
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
-<p>That all seems pretty obvious, in part because I made up a <em>tautology</em> in the second example there. Being a human being is automatically associated with everyone who can be a <em>kind of person</em>.</p>
-<p>But what if I had gotten exactly the same results for the toilet paper question? What if the data looked like Table <a href="categories.html#tab:tp-redux">1.3</a>. In this <strong>alternate universe</strong>, everyone I ask in Washington Square is an under-hanger. Yes, it’s one of those scary alternate universes, like the Twilight Zone. Anyway, does that mean that there is only one kind of person when it comes to toilet paper orientation? Well…not necessarily. After all, this was just a <strong>sample</strong> of people in Washington Square. It was not the whole <strong>population</strong> of Washington Square, even, let alone New York City, let alone the world.</p>
-<table class="table table-striped table" style="width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:tp-redux">Table 1.3: </span>How people roll (alternate universe)
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-count
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-under
-</td>
-<td style="text-align:right;">
-40
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-over
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
+<p>If you’re like me, the first thing you notice in Figure <a href="conditional-death.html#fig:life-duration">9.1</a> is that little spike at age 0, like a rattle sticking up at the end of a rattle snake’s tail. It shows us that roughly 5 out of 1000 babies don’t make it to their first birthday. After that, your odds get considerably better for a while.</p>
+<p>Another feature that you may detect is that the distribution of age-at-death is not symmetric. It has a long tail to the left. Distributions like this are also called left-skewed.
+<!-- As is well covered in standard texts (e.g., Chapter 2 of OpenIntro Statistics), this means that certain measures of center, such as mean and median age-at-death, may give different answers. --></p>
+<p>So how does age-at-death relate exactly to the years you have left to live? Life tables are a bit of a strange thing. First of all, they are not tables of “raw data” for a sample of 100,000 people. Rather, they represent a summary of data from many more deaths. According to the SSA <a href="https://www.ssa.gov/OACT/HistEst/PerLifeTables/LifeTableDefinitions.pdf">source</a>, “the life table represents a hypothetical cohort of 100,000 persons born at the same instant who experience the rate of mortality represented by qx, the probability that a person age x will die within one year, for each age x throughout their lives.”</p>
+<p>Most of us don’t think about our lives in terms of questions like, are we going to die this year? But that is technically how the life table works. The life table is a set of numbers—including deaths-at-age-x and expected-years-left-to-live-at-age-x—that are all derived from one initial set of numbers which represent <em>the probability that a person age x will die within one year</em>. If you’re curious what that initial set of numbers looks like, I’ve plotted them in Figure <a href="conditional-death.html#fig:die-this-year">9.2</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:die-this-year"></span>
+<img src="carpedatum_files/figure-html/die-this-year-1.png" alt="Mortality rate per year of age" width="90%"  />
+<p class="caption">
+Figure 9.2: Mortality rate per year of age
+</p>
 </div>
-<div id="samples-and-populations-a-statistical-caveat" class="section level3 unnumbered hasAnchor">
-<h3>Samples and Populations: A Statistical Caveat<a href="categories.html#samples-and-populations-a-statistical-caveat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Samples and populations are sort of a big deal in statistics and data science, where these words have somewhat specialized meanings. Consider the following utterances:</p>
-<pre><code>The population of New York City is 8.6 million
-The population of New York City is ethnically diverse</code></pre>
-<p>How can both of these statements make sense? In common usage, population often refers to the number or count of people, in a town, area, or country. Among statisticians and data scientists, population refers to a set or collection under consideration. It doesn’t have to be a set of people. It could be a set of rats, non-governmental organizations, or domestic flights originating in Chicago. But let’s suppose the population does refer to a set of people. The <em>number</em> of those people is just one summary about the population, also known as the total <strong>count</strong>. The proportion of over-hangers is another summary of the population, as is the most-common birth-month. The two statements above would be more consistent if the first were rephrased to be: the population (set of people) of New York City <del>is</del> numbers 8.6 million.</p>
-<p>If we always had access to all of the members in a population (the set or collection under consideration), the field of statistics wouldn’t exist. We would just know a bunch of facts about, say, everyone in the whole world. And that would be that. While it is true that data are becoming more and ubiquitous, don’t start betting on the demise of statistics. Even if we did have complete data for everyone in the world today, our population of interest might extend to the world as it will be next month, next year, or ten years from now. That is, we might want to make predictions about the future. In which case, we would want to draw <em>inferences</em> and to generalize from the data we have on hand—our sample—to data we don’t have—the rest of the (i.e., the future) population. Making inferences from samples to populations will always be a compelling and challenging problem.</p>
-<p>Since Washington Square is the center of my universe, that’s where I sample. Even if we agreed that our population of interest were confined to Washington Square, we would still find it difficult to collect data on everyone there. There are a lot of them, many of them are on skateboards, and new people keep leaving and entering the park. It turns out, that’s okay. We don’t actually have to reach everybody to be able to do data science. However, we need to understand that when we sample 40 particular people in Washington Square, we might not get the same exact answers as if we had sampled 40 <em>different</em> people. The sampling process introduces an element of <strong>uncertainty</strong> into our process.</p>
-<p>Coming back to our toilet paper debate, if we did find zero over-hangers in one sample, it doesn’t guarantee that the number of over-hangers will also be zero in the next. The number may vary from sample to sample. Uncertainty does not, however, mean that the information derived from one sample is useless. In fact, soon we’ll see that we can actually learn a lot from a sample simply by recognizing that sample values will vary. We can simulate samples on a computer to see how much they will vary. And then, using our simulations, we will be able to give probabilistic answers to questions like, “what are the chances that there really are no over-hangers in Washington Square?”</p>
-</div>
-<div id="a-psychological-caveat" class="section level3 unnumbered hasAnchor">
-<h3>A Psychological Caveat<a href="categories.html#a-psychological-caveat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The section above explored a statistical caveat about drawing conclusions from samples. But another caveat that applies here is more psychological. I have assumed, for this argument, that a person’s answer to the toilet paper question is a fairly stable thing and not just a transient state-of-mind. That is, if I asked you tomorrow or next week, your answer would be the same as if I asked you today. For the most part. I’m not saying you can’t ever decide to change your mind. But it wouldn’t make sense to describe a person as an over-hanger if there were no stability at all to their answer. A transient state-of-mind, by contrast, could be asking someone if they are hungry. Everyone is hungry some of the time, but not all of the time. And it wouldn’t make any sense, based on that line of questioning, to imply that there are two kinds of people.</p>
-</div>
-<div id="summarizing-data" class="section level3 unnumbered hasAnchor">
-<h3>Summarizing data<a href="categories.html#summarizing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>When I presented my survey results to you in Table <a href="categories.html#tab:tp-table">1.1</a>, notice that I did not present you with the raw data, but rather with a summary of the data. The particular summary I used was called “counts”, that is, a total count of how many people responded “over” or “under.” The raw data, in contrast, would have contained each individual response I collected, labled either with a name of the individual, or perhaps with some other unique identifier (such as a random number), or—if I don’t need to keep track of particular individuals—with just a row number. Something like this, if we examine at the first six responses rather than all 40 of them. Raw data:</p>
+<p>Looking at Figure <a href="conditional-death.html#fig:die-this-year">9.2</a>, you can say that the probability of dying within one year gets higher as you grow older, which comes as a surprise to no one. If you’re under 65, say, that probability doesn’t even feel that high. It’s less than 0.01 or 1%. The probability that you will die <em>this year</em> only passes 50% after age 100. That’s reassuring, right?</p>
+<p>Well, don’t get too optimistic. Your chances of dying every year may be small, but every year is another draw from this morbid lottery. If your chances of dying were 1 out of 2000, then in 2000 universes, you died in one of them. In the other 1999, you live on to another year, but then you have to press your luck again. This happens every year, and the chances slowly get worse.</p>
+<p>But what if you wanted to know your chances, at birth, of dying in your 60s, that is between 60-69. For now, we will try to answer this question using only the life table and assuming that we know nothing else about you. The rows of the life table corresponding to this age range are these</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:survival">Table 9.1: </span>Life Table
+</caption>
 <thead>
 <tr>
-<th style="text-align:center;">
-row
+<th style="text-align:left;">
+Age
 </th>
-<th style="text-align:center;">
-randomID
+<th style="text-align:right;">
+qx
 </th>
-<th style="text-align:center;">
-response
+<th style="text-align:right;">
+lx
+</th>
+<th style="text-align:right;">
+dx
+</th>
+<th style="text-align:right;">
+L
+</th>
+<th style="text-align:right;">
+Tx
+</th>
+<th style="text-align:right;">
+ex
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center;">
-1
+<td style="text-align:left;">
+60-61
 </td>
-<td style="text-align:center;">
-9246
+<td style="text-align:right;">
+0.008732
 </td>
-<td style="text-align:center;">
-under
+<td style="text-align:right;">
+88745.98
 </td>
-</tr>
-<tr>
-<td style="text-align:center;">
-2
+<td style="text-align:right;">
+774.97
 </td>
-<td style="text-align:center;">
-1478
+<td style="text-align:right;">
+88358.50
 </td>
-<td style="text-align:center;">
-over
+<td style="text-align:right;">
+2051875
 </td>
-</tr>
-<tr>
-<td style="text-align:center;">
-3
-</td>
-<td style="text-align:center;">
-8831
-</td>
-<td style="text-align:center;">
-under
+<td style="text-align:right;">
+23.1
 </td>
 </tr>
 <tr>
-<td style="text-align:center;">
-4
+<td style="text-align:left;">
+61-62
 </td>
-<td style="text-align:center;">
-8194
+<td style="text-align:right;">
+0.009335
 </td>
-<td style="text-align:center;">
-over
+<td style="text-align:right;">
+87971.02
+</td>
+<td style="text-align:right;">
+821.18
+</td>
+<td style="text-align:right;">
+87560.42
+</td>
+<td style="text-align:right;">
+1963516
+</td>
+<td style="text-align:right;">
+22.3
 </td>
 </tr>
 <tr>
-<td style="text-align:center;">
-5
+<td style="text-align:left;">
+62-63
 </td>
-<td style="text-align:center;">
-4178
+<td style="text-align:right;">
+0.009983
 </td>
-<td style="text-align:center;">
-under
+<td style="text-align:right;">
+87149.84
+</td>
+<td style="text-align:right;">
+870.00
+</td>
+<td style="text-align:right;">
+86714.84
+</td>
+<td style="text-align:right;">
+1875956
+</td>
+<td style="text-align:right;">
+21.5
 </td>
 </tr>
 <tr>
-<td style="text-align:center;">
-6
+<td style="text-align:left;">
+63-64
 </td>
-<td style="text-align:center;">
-4243
+<td style="text-align:right;">
+0.010715
 </td>
-<td style="text-align:center;">
-under
+<td style="text-align:right;">
+86279.84
+</td>
+<td style="text-align:right;">
+924.46
+</td>
+<td style="text-align:right;">
+85817.61
+</td>
+<td style="text-align:right;">
+1789241
+</td>
+<td style="text-align:right;">
+20.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+64-65
+</td>
+<td style="text-align:right;">
+0.011568
+</td>
+<td style="text-align:right;">
+85355.38
+</td>
+<td style="text-align:right;">
+987.39
+</td>
+<td style="text-align:right;">
+84861.68
+</td>
+<td style="text-align:right;">
+1703423
+</td>
+<td style="text-align:right;">
+20.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+65-66
+</td>
+<td style="text-align:right;">
+0.012586
+</td>
+<td style="text-align:right;">
+84367.98
+</td>
+<td style="text-align:right;">
+1061.84
+</td>
+<td style="text-align:right;">
+83837.06
+</td>
+<td style="text-align:right;">
+1618562
+</td>
+<td style="text-align:right;">
+19.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+66-67
+</td>
+<td style="text-align:right;">
+0.013763
+</td>
+<td style="text-align:right;">
+83306.15
+</td>
+<td style="text-align:right;">
+1146.57
+</td>
+<td style="text-align:right;">
+82732.86
+</td>
+<td style="text-align:right;">
+1534724
+</td>
+<td style="text-align:right;">
+18.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+67-68
+</td>
+<td style="text-align:right;">
+0.015057
+</td>
+<td style="text-align:right;">
+82159.58
+</td>
+<td style="text-align:right;">
+1237.07
+</td>
+<td style="text-align:right;">
+81541.05
+</td>
+<td style="text-align:right;">
+1451992
+</td>
+<td style="text-align:right;">
+17.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+68-69
+</td>
+<td style="text-align:right;">
+0.016380
+</td>
+<td style="text-align:right;">
+80922.51
+</td>
+<td style="text-align:right;">
+1325.52
+</td>
+<td style="text-align:right;">
+80259.75
+</td>
+<td style="text-align:right;">
+1370451
+</td>
+<td style="text-align:right;">
+16.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+69-70
+</td>
+<td style="text-align:right;">
+0.017756
+</td>
+<td style="text-align:right;">
+79596.98
+</td>
+<td style="text-align:right;">
+1413.34
+</td>
+<td style="text-align:right;">
+78890.31
+</td>
+<td style="text-align:right;">
+1290191
+</td>
+<td style="text-align:right;">
+16.2
 </td>
 </tr>
 </tbody>
 </table>
-<p>Counts is an example of a <strong>summary statistic</strong>, which is a fancy term for a number that is derived from the raw data. The count summary is as simple as it gets. It is literally the number of times that each response appears. We might note as well that,</p>
-<pre><code>count(under) + count(over) = total number of responses.</code></pre>
-<p>This mathematical statement is true because there are only two possible responses. If there were more than two responses, then I would need to add the counts for each possible response.</p>
-<p>Note that the <em>proportion</em> of “over” responses is also a summary statistic (which is just the counts of “over” divided by the total number of responses). Another summary statistic could be the ratio of “over” responses (counts) to “under” responses. For example, one way people use summary statistics in reporting data is through statements like, “twice as many people prefer chunky peanut butter to smooth.”</p>
-<div id="no-mean-feat" class="section level4 unnumbered hasAnchor">
-<h4>No mean feat<a href="categories.html#no-mean-feat" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<blockquote>
-<p>Whenever someone reports a mean (another word for average) value of some set of data, that is also a summary statistic. Does it make sense to construct an average from responses that are either “over” or “under”? No, it doesn’t. That’s because {over, under} is a categorical response, and you can’t average over categories. Unless you’re trying to make fun of statistics with a puerile joke. Different versions of this joke appear: “the average American has one tit and one testicle.” At the risk of explaining the joke too much, here goes: Tits and testicles can certainly be treated as numerical data, and hence can be averaged. This joke hinges on the fact that the existence of testicles (or tits) is associated with a person’s sex, which is categorical and not numerical. Assuming that half of all Americans are female (roughly true), we can’t say that the average American is half male and half female. The real “punch” of this joke is to suggest that summary statistics about averages are just a bunch of nonsense. What do you think?</p>
-</blockquote>
-<p>This is about as much as we need to say about summary statistics for the time being. But they’ll be back.</p>
-</div>
-</div>
-<div id="checkpoint" class="section level3 unnumbered hasAnchor">
-<h3>Checkpoint<a href="categories.html#checkpoint" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>While focusing on the great toilet paper debate, we’ve managed to establish some important fundamental ideas.</p>
-<ul>
-<li><p>Dichotomous questions split people into two kinds, but only as long as it is actually possible for both answers to occur.</p></li>
-<li><p>In an alternate universe, people might give different answers than they do in this one. (Seriously, this is an important idea).</p></li>
-<li><p>Even when we casually refer to <em>people</em>, we may have a particular set of people, a population, in mind. Data about this population are likely to come from a sample, rather than from the whole population, and this fact introduces some uncertainty into claims about the whole population. Data science to the rescue!</p></li>
-<li><p>If we have types of people in mind, our questions ought to elicit fairly stable answers</p></li>
-<li><p>Clearly, we can ask people questions that prompt them to choose between more than two categories. But “two types of people” questions are more fun.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> I mean there are so many of them! So… does that mean that there really are two types of people? To answer this, we will need to get into another great debate.</p></li>
-</ul>
+<p>This is a lot of numbers. Recall that each qx is the mortality rate for age x, the probability of dying within one year of age x. So should you add up the qx-values for each age in the interval 60 to 69? Maybe pause here to think about this question for a moment before reading on.</p>
+<p>Here is a partial answer. You can die at 62 and you can die at 64, but you can’t die at both ages. In that sense, it was okay to add the probabilities of these events because they are <strong>disjoint</strong>, i.e., they can’t both happen and you are interested in whether any one of them does happen. However, if you add up these probabilities, you will still over-estimate the probability for a different reason. Can you guess what you’ve left out?</p>
+<p>Here is the rest of the answer. You’ve left out the fact that these probabilities assume that you have already made it to 60, and there’s a chance (at birth) that you won’t.</p>
+<p>To answer the original question, you want to add up the following probabilities:</p>
+<pre><code>(Probability of making it to 60 and then dying at 60) + 
+(Probability of making it to 61 and then dying at 61) + 
+... +
+(Probability of making it to 69 and then dying at 69) + </code></pre>
+<p>How do you figure out the probability of making it to 60 without dying? It sounds a little bit like a riddle whose answer is “one year at a time.” Indeed, to make it to 60 without dying, you need to not die every year for the first 59 years of your life.</p>
+<p>Note that, while death can occur in only one year of your life, to survive into your sixties you need ALL of the following to be true: NOT dying at 0 AND NOT dying at 1 AND … NOT dying at 59. The probability of each event (not dying in each year) is independent, and the probability that all of them happen is the product of the individual probabilities.</p>
+<pre><code>Probability of NOT dying at 0 * 
+Probability of NOT dying at 1 having made it to 1 * 
+... * 
+Probability of NOT dying at 59 having made it to 59</code></pre>
+<p>Since in any given year, you either die or don’t die, these two probabilities must add up to 1, so having gotten to any age x, the probability of surviving it is (1-qx). Now we can take the product of (that is, multiply) all of the survival probabilities (1 - qx) for each x from 0 up to age 59. (I will include the code here. The data table I have loaded from the National Center for Health Statistics is called “lifetableNCHS”).</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="conditional-death.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prod</span>(<span class="dv">1</span><span class="sc">-</span>lifetableNCHS[<span class="dv">1</span><span class="sc">:</span><span class="dv">60</span>,<span class="st">&quot;qx&quot;</span>])</span></code></pre></div>
+<pre><code>## [1] 0.887458</code></pre>
+<p>You may notice that this probability had already been calculated for you in the life table, but it had been presented slightly differently as column lx, which is the number of persons (in a cohort of 100,000) surviving to exact age x. If we multiply our rate by 100000, we get 88745.8, which (up to a rounding error) is the same as the number in Table <a href="conditional-death.html#tab:survival">9.1</a>.</p>
+<p>Okay, so now we are ready to complete the probability calculation. Recall we wanted to add up ten things: Probability of making it to 60 and then dying at 60, etc. We know that the probability of making it to age x is the same as the value of column lx in the table divided by 100,000. And the probability of dying is qx. So we need to multiply these two numbers in each row and add them up.</p>
+<p>The result is 0.1056. An American child born in 2010 has a 10.5% chance of dying in their 60s (and a 20.7% chance of dying in their 70s).</p>
+<p>So, we’ve figured out how to do that. And we’re almost ready to move on, but it is worth noticing something. The product of the value qx and lx in each row of the life table is the value dx, which is the number of deaths at age x (or between x and x+1). So when we multiplied and added before, we were really just adding up the number of deaths (dx) at ages 60-69 and dividing by 100,000.</p>
+<p>Now hopefully that makes sense to you that this should give us the answer we were originally looking for, namely what are the chances, at birth, of dying in your 60s. We could have looked at our hypothetical cohort of 100,000 people all born at the same time and asked: how many of them will die in their 60s. Well, that would be the sum of the dx-values, namely 10562. It wouldn’t be a probability, though, unless we divided it by the total number of people (100,000).</p>
+<p>So we’ve shown that we can answer our particular question two different ways:</p>
+<ol style="list-style-type: upper-alpha">
+<li>Computing the total probability of your making it to 60 and then dying at 60 <em>or</em> making it to 61 and dying at 61 <em>or</em> making it to 62 and dying at 62 etc. up to age 69.</li>
+</ol>
+<p>or</p>
+<ol start="2" style="list-style-type: upper-alpha">
+<li>Computing the overall proportion, out of 100,000 people, who die in their 60s.</li>
+</ol>
+<p>A = B in this case. An important property of mathematical sciences is that you can arrive at the same answer in different ways. Maybe that sounds like a waste of time, but I view it as one of the most reassuring things about math. If you try something two different ways, and you do <em>not</em> get the same answer even though you should, then something is probably wrong with the way you are thinking about it.</p>
 
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="3">
-<li id="fn3"><p>That was another unsubstantiated claim.<a href="categories.html#fnref3" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="how-many-kinds-of-people-are-there.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dimensions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="when-and-how-will-you-die.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="somefacts.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
