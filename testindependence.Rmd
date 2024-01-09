@@ -178,7 +178,7 @@ Once more, I will show you two ways to do this. The first way is to put all 40 v
 First, the virtual cards:
 
 ```{r echo = TRUE}
-set.seed(2125551212) # I can choose any see I want
+set.seed(2125551212) # I can choose any seed I want
 
 tp_cards <- c(rep("over", 23), rep("under", 17))
 numPeople <- 10
